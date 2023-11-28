@@ -1,0 +1,109 @@
+---
+title: "Syllabus"
+---
+
+**Excerpts of Fall 2021 syllabus from STA 199: Introduction to Data Science at Duke University**
+
+<hr>
+
+## Course Learning Objectives
+
+By the end of the semester, you will...
+
+-   learn to explore, visualize, and analyze data in a reproducible and shareable manner
+-   gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization work on problems and case studies inspired by and based on real-world questions and data
+-   learn to effectively communicate results through written assignments and final project presentation
+
+## Textbooks
+
+All books are freely available online. Hardcopies are also available for purchase.
+
+|                                                                         |                          |                                   |
+|------------------------------------|------------------|------------------|
+| [R for Data Science](http://r4ds.had.co.nz/)                            | Grolemund, Wickham       | O'Reilly, 1st edition, 2016       |
+| [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) | Çetinkaya-Rundel, Hardin | OpenIntro Inc., 1st Edition, 2021 |
+
+## Course community
+
+### Inclusive community
+
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with [Duke's Commitment to Diversity and Inclusion](https://provost.duke.edu/initiatives/commitment-to-diversity-and-inclusion). Your suggestions are encouraged and appreciated.
+
+### Accessibility
+
+If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.
+
+The Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.
+
+### Communication
+
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website.
+
+Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.
+
+## Activities & Assessment
+
+### Labs
+
+In labs, you will apply the concepts discussed in lecture to various data analysis scenarios, with a focus on the computation.
+
+### Homework
+
+In homework, you will apply what you've learned during lecture and lab to complete data analysis tasks.
+
+### Exams
+
+There will be two, take-home, open-note exams. Through these exams you have the opportunity to demonstrate what you've learned in the course thus far.
+
+### Final Project
+
+The purpose of the [final project](/project/) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question.
+
+## Grading
+
+The final course grade will be calculated as follows:
+
+<center>
+
+| Category           | Percentage |
+|--------------------|------------|
+| Homework           | 30%        |
+| Labs               | 15%        |
+| Final Project      | 15%        |
+| Exam 01            | 17.5%      |
+| Exam 02            | 17.5%      |
+| In-class exercises | 5%         |
+
+## Course policies
+
+### Academic honesty
+
+**TL;DR: Don't cheat!**
+
+Please abide by the following as you work on assignments in this course:
+
+-   You may discuss individual homework and lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.
+-   You may not discuss or otherwise work with others on the exams.
+-   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+
+### Late work & extensions
+
+The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest homework and lab assignment will be dropped to accommodate such circumstances.
+
+## Important dates
+
+-   **Aug 23:** Classes begin
+
+-   **Sep 3**: Drop/add ends
+
+-   **Oct 4-5**: Fall break
+
+-   **Nov 5**: Last day to withdraw with W
+
+-   **Nov 24-26:** Thanksgiving recess
+
+-   **Dec 3**: Classes end
+
+-   **Dec 4-7**: Reading period
+
+-   **Dec 8-13**: Final exams
