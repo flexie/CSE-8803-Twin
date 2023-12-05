@@ -1,10 +1,10 @@
 ---
-title: "Introduction to Data Science Course Website"
+title: "Digital Twins for Physical Systems Course Website"
 ---
 
 ## Course overview
 
-**Course overview from STA 199: Introduction to Data Science at Duke University**
+**Course overview from CSE : Digital Twins for Physical Systems**
 
 Intro to data science and statistical thinking. Learn to explore, visualize,and analyze data to understand natural phenomena, investigate patterns, model outcomes,and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, data visualization, and effectively communicating results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language.
 

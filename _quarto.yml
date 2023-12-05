@@ -2,10 +2,10 @@ project:
   type: website
 
 website:
-  title: "Teach Data Science Course Website"
+  title: "Digital Twins for Physical Systems"
   sidebar:
     background: primary
-    logo: "images/logo.png"
+    logo: "images/digitaltwin.png"
     pinned: true
     align: center
     tools:
@@ -23,12 +23,15 @@ website:
         text: Syllabus
       - href: schedule.qmd
         text: Schedule
-        
+      - href: project.qmd
+        text: Final Project 
+      - href: references.qmd  
 format:
   html:
     theme: cosmo
    # css: styles.css
     toc: true
 
+bibliography: references.bib
 
 

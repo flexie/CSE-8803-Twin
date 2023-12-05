@@ -2,7 +2,7 @@
 title: "Syllabus"
 ---
 
-**Excerpts of Fall 2021 syllabus from STA 199: Introduction to Data Science at Duke University**
+**Sprint 2024 syllabus from CSE 199: Digital Twins for Physical Systems**
 
 <hr>
 
@@ -14,26 +14,31 @@ By the end of the semester, you will...
 -   gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization work on problems and case studies inspired by and based on real-world questions and data
 -   learn to effectively communicate results through written assignments and final project presentation
 
-## Textbooks
+## Textbook
 
 All books are freely available online. Hardcopies are also available for purchase.
 
-|                                                                         |                          |                                   |
-|------------------------------------|------------------|------------------|
-| [R for Data Science](http://r4ds.had.co.nz/)                            | Grolemund, Wickham       | O'Reilly, 1st edition, 2016       |
-| [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) | Çetinkaya-Rundel, Hardin | OpenIntro Inc., 1st Edition, 2021 |
+|                                                                                                                                                                 |                        |            |
+|----------------------------------|-------------------|-------------------|
+| [A toolbox for digital twins: from model-based to data-driven](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486) | @asch2022toolbox, Mark | SIAM, 2022 |
+
+##  Journal Papers
+|                                                                                                                                                                                                              |                           |                |
+|----------------------------------|-------------------|-------------------|
+| [A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies](https://openintro-ims.netlify.app/)                                                                             | @thelen2022comprehensivea | Springer, 2022 |
+| [A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives](https://link.springer.com/article/10.1007/00158-022-03410-x) | @thelen2023comprehensiveb | Springer, 2022 |
 
 ## Course community
 
 ### Inclusive community
 
-It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with [Duke's Commitment to Diversity and Inclusion](https://provost.duke.edu/initiatives/commitment-to-diversity-and-inclusion). Your suggestions are encouraged and appreciated.
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with [Georgia Tech's Commitment to Diversity and Inclusion](https://catalog.gatech.edu/policies/diversity/). Your suggestions are encouraged and appreciated.
 
 ### Accessibility
 
 If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.
 
-The Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.
+[Disability Services](https://disabilityservices.gatech.edu/about/accommodations) are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.
 
 ### Communication
 
@@ -43,21 +48,18 @@ Announcements will be emailed through Sakai Announcements periodically. Please c
 
 ## Activities & Assessment
 
-### Labs
+### Computational labs
 
-In labs, you will apply the concepts discussed in lecture to various data analysis scenarios, with a focus on the computation.
+In labs, you will apply the concepts discussed during lectures, with a focus on the computation.
 
-### Homework
-
-In homework, you will apply what you've learned during lecture and lab to complete data analysis tasks.
 
 ### Exams
 
-There will be two, take-home, open-note exams. Through these exams you have the opportunity to demonstrate what you've learned in the course thus far.
+There will be no exams.
 
 ### Final Project
 
-The purpose of the [final project](/project/) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question.
+The purpose of the [Final Project](project.qmd) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question.
 
 ## Grading
 
@@ -67,12 +69,10 @@ The final course grade will be calculated as follows:
 
 | Category           | Percentage |
 |--------------------|------------|
-| Homework           | 30%        |
+|                    | 30%        |
 | Labs               | 15%        |
 | Final Project      | 15%        |
-| Exam 01            | 17.5%      |
-| Exam 02            | 17.5%      |
-| In-class exercises | 5%         |
+
 
 ## Course policies
 
