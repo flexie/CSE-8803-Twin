@@ -4,7 +4,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nAug 29 - Sep 02\n\n\nWelcome to Intro Data Science\n\n\n\n\nWeek 02\n\n\nSep 05 - 09\n\n\nVisualizing Data\n\n\n\n\nWeek 03\n\n\nSep 12 - 16\n\n\nWrangling Data\n\n\n\n\n\nNo matching items",
+    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nAug 29 - Sep 02\n\n\nWelcome to Digital Twins for Physical Systems\n\n\n\n\nWeek 02\n\n\nSep 05 - 09\n\n\nVisualizing Data\n\n\n\n\nWeek 03\n\n\nSep 12 - 16\n\n\nWrangling Data\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Schedule"
     ]
@@ -14,7 +14,7 @@
     "href": "schedule.html#weekly-schedule",
     "title": "Schedule",
     "section": "",
-    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nAug 29 - Sep 02\n\n\nWelcome to Intro Data Science\n\n\n\n\nWeek 02\n\n\nSep 05 - 09\n\n\nVisualizing Data\n\n\n\n\nWeek 03\n\n\nSep 12 - 16\n\n\nWrangling Data\n\n\n\n\n\nNo matching items",
+    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nAug 29 - Sep 02\n\n\nWelcome to Digital Twins for Physical Systems\n\n\n\n\nWeek 02\n\n\nSep 05 - 09\n\n\nVisualizing Data\n\n\n\n\nWeek 03\n\n\nSep 12 - 16\n\n\nWrangling Data\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Schedule"
     ]
@@ -24,9 +24,19 @@
     "href": "schedule.html#assignments",
     "title": "Schedule",
     "section": "Assignments",
-    "text": "Assignments\nBelow are assignment due dates for the semester. You can find details and assignment instructions in the relevant week on the schedule.\n\nHomework\nHomework will be due on Wednesdays at 11:59pm. You will have one week to complete each homework assignment.\n\n\nLabs\nLabs will be due on Fridays at 11:59pm. You will start the lab during your scheduled lab section.\n\n\nExams\nThere will be two exams on the dates:\n\nOctober 12, 9am - October 14, 11:59pm\nNovember 16, 9am - November 16: 11:59pm",
+    "text": "Assignments\nBelow are assignment due dates for the semester. You can find details and assignment instructions in the relevant week on the schedule.\n\nHomework\nHomework will be due on Wednesdays at 11:59pm. You will have one week to complete each homework assignment.\n\n\nLabs\nLabs will be due on Fridays at 11:59pm. You will start the lab during your scheduled lab section.",
     "crumbs": [
       "Schedule"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "References",
+    "crumbs": [
+      "References"
     ]
   },
   {
@@ -83,14 +93,14 @@
     "href": "slides/week-01/02-demo.html#themes",
     "title": "Meet the Toolkit",
     "section": "Themes",
-    "text": "Themes\nCustomize the appearance of the slides using\n\nBuilt-in Reveal theme\nModify built-in theme using Sass\n\nVariant of CSS that supports variables and other features\n\n\nSpecify the theme and/or Sass file (.scss) in the YAML\n\n\n\n🔗 rstudio-conf-2022.github.io/teach-ds-course-website"
+    "text": "Themes\nCustomize the appearance of the slides using\n\nBuilt-in Reveal theme\nModify built-in theme using Sass\n\nVariant of CSS that supports variables and other features\n\n\nSpecify the theme and/or Sass file (.scss) in the YAML"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Introduction to Data Science Course Website",
+    "title": "Digital Twins for Physical Systems Course Website",
     "section": "",
-    "text": "Course overview from STA 199: Introduction to Data Science at Duke University\nIntro to data science and statistical thinking. Learn to explore, visualize,and analyze data to understand natural phenomena, investigate patterns, model outcomes,and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, data visualization, and effectively communicating results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language.",
+    "text": "Course overview from CSE : Digital Twins for Physical Systems\nIBM defines “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making.” During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks, and neural operators where Fourier Neural Operators act as surrogates for solutions of partial-differential equations. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins that can be used to monitor and control complicated processes such as underground storage of CO2 or management of batteries.",
     "crumbs": [
       "Home"
     ]
@@ -98,9 +108,9 @@
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
-    "title": "Introduction to Data Science Course Website",
+    "title": "Digital Twins for Physical Systems Course Website",
     "section": "",
-    "text": "Course overview from STA 199: Introduction to Data Science at Duke University\nIntro to data science and statistical thinking. Learn to explore, visualize,and analyze data to understand natural phenomena, investigate patterns, model outcomes,and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, data visualization, and effectively communicating results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language.",
+    "text": "Course overview from CSE : Digital Twins for Physical Systems\nIBM defines “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making.” During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks, and neural operators where Fourier Neural Operators act as surrogates for solutions of partial-differential equations. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins that can be used to monitor and control complicated processes such as underground storage of CO2 or management of batteries.",
     "crumbs": [
       "Home"
     ]
@@ -108,9 +118,19 @@
   {
     "objectID": "index.html#class-meetings",
     "href": "index.html#class-meetings",
-    "title": "Introduction to Data Science Course Website",
+    "title": "Digital Twins for Physical Systems Course Website",
     "section": "Class meetings",
-    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nRoom A\nMon & Wed 10 - 11:15am\n\n\nLab 01\nRoom B\nThu 10 - 11:15am\n\n\nLab 02\nRoom C\nThu 1:45 - 3pm\n\n\nLab 03\nRoom D\nThu 3:30 - 4:45pm",
+    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nHowey Physics N210\nMon & Wed 5:00 - 6:15am",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Digital Twins for Physical Systems Course Website",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nNumerical Linear Algebra, Statistics, Machine Learning, Experience w/ python, or julia",
     "crumbs": [
       "Home"
     ]
@@ -118,17 +138,45 @@
   {
     "objectID": "index.html#teaching-team",
     "href": "index.html#teaching-team",
-    "title": "Introduction to Data Science Course Website",
+    "title": "Digital Twins for Physical Systems Course Website",
     "section": "Teaching team",
-    "text": "Teaching team\n\n\n\nName\nOffice hours\nLocation\n\n\n\n\nInstructor\nTue 2 - 3pm\nOffice 123\n\n\nTeaching Assistant 1\nMon 5 - 7pm\nZoom\n\n\nTeaching Assistant 2\nFri 11am - 1pm\nZoom",
+    "text": "Teaching team\n\n\n\nName\nOffice hours\nLocation\n\n\n\n\nFelix J. Herrmann\nTue 2 - 3pm\nOffice 123\n\n\nTeaching Assistant 1\nMon 5 - 7pm\nZoom\n\n\nTeaching Assistant 2\nFri 11am - 1pm\nZoom",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "hw/w3-hw02.html",
-    "href": "hw/w3-hw02.html",
-    "title": "HW 02: Data visualization",
+    "objectID": "hw/w2-hw01.html",
+    "href": "hw/w2-hw01.html",
+    "title": "HW 01: Pet Names",
+    "section": "",
+    "text": "Add instructions for assignment."
+  },
+  {
+    "objectID": "weeks/week-01.html",
+    "href": "weeks/week-01.html",
+    "title": "Week 01",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\nWelcome to Digital Twins for Physical Systems\n\n\nFri, Dec 22\n\n\n\n\nMeet the Toolkit\n\n\nWed, Aug 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\nThere are no assignments scheduled this week.\n\n\nReadings\n\n\n\n\n\n\nCourse Syllabus\n\n\nR for Data Science: Chapter 2 - Introduction\n\n\nIntro to Modern Data Science: Chapter 1 - Hello data"
+  },
+  {
+    "objectID": "weeks/week-02.html",
+    "href": "weeks/week-02.html",
+    "title": "Week 02",
+    "section": "",
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\nVisualizing data with ggplot2\n\n\nMon, Sep 05\n\n\n\n\nVisualizing numeric data\n\n\nWed, Sep 07\n\n\n\n\nVisualizing categorical data\n\n\nWed, Sep 07\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nHomework\n\n\nHW 01: Pet Names\n\n\nWed, Sep 14\n\n\n\n\nLab\n\n\nLab 01: Hello R!\n\n\nFri, Sep 16\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization\nIntroduction for Modern Statistics: Chapter 4 - Exploring Categorical Data\nIntroduction to Modern Statistics: Chapter 5- Exploring Numerical Data"
+  },
+  {
+    "objectID": "labs/w3-lab02.html",
+    "href": "labs/w3-lab02.html",
+    "title": "Lab 02: Data visualization with ggplot2!",
+    "section": "",
+    "text": "Add instructions for assignment."
+  },
+  {
+    "objectID": "labs/w2-lab01.html",
+    "href": "labs/w2-lab01.html",
+    "title": "Lab 01: Hello R!",
     "section": "",
     "text": "Add instructions for assignment."
   },
@@ -140,102 +188,182 @@
     "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\nGrammar of data wrangling\n\n\nMon, Sep 12\n\n\n\n\nWorking with a single data frame\n\n\nMon, Sep 12\n\n\n\n\nWorking with multiple data frames\n\n\nWed, Sep 14\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nHomework\n\n\nHW 02: Data visualization\n\n\nWed, Sep 21\n\n\n\n\nLab\n\n\nLab 02: Data visualization with ggplot2!\n\n\nFri, Sep 23\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings"
   },
   {
-    "objectID": "labs/w2-lab01.html",
-    "href": "labs/w2-lab01.html",
-    "title": "Lab 01: Hello R!",
+    "objectID": "hw/w3-hw02.html",
+    "href": "hw/w3-hw02.html",
+    "title": "HW 02: Data visualization",
     "section": "",
     "text": "Add instructions for assignment."
   },
   {
-    "objectID": "labs/w3-lab02.html",
-    "href": "labs/w3-lab02.html",
-    "title": "Lab 02: Data visualization with ggplot2!",
+    "objectID": "goals.html",
+    "href": "goals.html",
+    "title": "Course outline",
     "section": "",
-    "text": "Add instructions for assignment."
+    "text": "Course outline\n\n\nTopics\n\n\nLearning goals",
+    "crumbs": [
+      "Goals"
+    ]
   },
   {
-    "objectID": "weeks/week-02.html",
-    "href": "weeks/week-02.html",
-    "title": "Week 02",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\nVisualizing data with ggplot2\n\n\nMon, Sep 05\n\n\n\n\nVisualizing numeric data\n\n\nWed, Sep 07\n\n\n\n\nVisualizing categorical data\n\n\nWed, Sep 07\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nHomework\n\n\nHW 01: Pet Names\n\n\nWed, Sep 14\n\n\n\n\nLab\n\n\nLab 01: Hello R!\n\n\nFri, Sep 16\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\nR for Data Science: Chapter 3 - Data Visualization\nIntroduction for Modern Statistics: Chapter 4 - Exploring Categorical Data\nIntroduction to Modern Statistics: Chapter 5- Exploring Numerical Data"
+    "objectID": "slides/week-01/01-example.html#introduction",
+    "href": "slides/week-01/01-example.html#introduction",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Introduction",
+    "text": "Introduction\n\nBrief overview of Digital Twins\nImportance of data-model synergy"
   },
   {
-    "objectID": "weeks/week-01.html",
-    "href": "weeks/week-01.html",
-    "title": "Week 01",
-    "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nDate\n\n\n\n\n\n\nWelcome to Intro Data Science\n\n\nMon, Aug 29\n\n\n\n\nMeet the Toolkit\n\n\nWed, Aug 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\nThere are no assignments scheduled this week.\n\n\nReadings\n\n\n\n\n\n\nCourse Syllabus\n\n\nR for Data Science: Chapter 2 - Introduction\n\n\nIntro to Modern Data Science: Chapter 1 - Hello data"
+    "objectID": "slides/week-01/01-example.html#definition-of-digital-twin-asch2022toolbox",
+    "href": "slides/week-01/01-example.html#definition-of-digital-twin-asch2022toolbox",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Definition of Digital Twin (Asch 2022)",
+    "text": "Definition of Digital Twin (Asch 2022)\nDefinition from Asch: “A set of virtual information constructs that mimics the structure, context, and behavior of an individual/unique physical asset, or a group of physical assets, is dynamically updated with data from its physical twin throughout its life cycle and informs decisions that realize value”"
   },
   {
-    "objectID": "hw/w2-hw01.html",
-    "href": "hw/w2-hw01.html",
-    "title": "HW 01: Pet Names",
-    "section": "",
-    "text": "Add instructions for assignment."
+    "objectID": "slides/week-01/01-example.html#definition-of-digital-twin-conted",
+    "href": "slides/week-01/01-example.html#definition-of-digital-twin-conted",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Definition of Digital Twin (cont’ed)",
+    "text": "Definition of Digital Twin (cont’ed)\n\nDefinition by the Aerospace Industries Association\nMirroring physical assets in a dynamic manner\n\nDefinition by IBM: “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision making.”"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#definition-of-digital-twin-conted-national2023foundational",
+    "href": "slides/week-01/01-example.html#definition-of-digital-twin-conted-national2023foundational",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Definition of Digital Twin (cont’ed) (National Academies of Sciences, Medicine, et al. 2023)",
+    "text": "Definition of Digital Twin (cont’ed) (National Academies of Sciences, Medicine, et al. 2023)\nDefinition from National Academy of National Sciences: “A digital twin is a set of virtual information constructs that mimics the structure, context, and behavior of a natural, engineered, or social system (or system-of-systems), is dynamically updated with data from its physical twin, has a predictive capability, and informs decisions that realize value. The bidirectional interaction between the virtual and the physical is central to the digital twin.”"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#cyber-physical-systems-cps",
+    "href": "slides/week-01/01-example.html#cyber-physical-systems-cps",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Cyber-Physical Systems (CPS)",
+    "text": "Cyber-Physical Systems (CPS)\n\nHistorical foundation for Digital Twins\nApplications and impact in various sectors"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#the-inference-cycle",
+    "href": "slides/week-01/01-example.html#the-inference-cycle",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "The Inference Cycle",
+    "text": "The Inference Cycle\n\nScientific method as an inferential process\nAbduction, deduction, and induction in Digital Twins"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#the-concept-of-a-digital-twin",
+    "href": "slides/week-01/01-example.html#the-concept-of-a-digital-twin",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "The Concept of a Digital Twin",
+    "text": "The Concept of a Digital Twin\n\nEssential components: Data, AI, Computational devices\nIndustrial significance"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#the-spectrum-of-digital-twins",
+    "href": "slides/week-01/01-example.html#the-spectrum-of-digital-twins",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "The Spectrum of Digital Twins",
+    "text": "The Spectrum of Digital Twins\n\nFrom model-driven to data-driven\nImportance of models, data, and competencies\n\nChatGPT Certainly! I’ll convert the slide deck outline into Markdown format, and for each slide, I’ll suggest figures or visual aids that could be included. Since I can’t create figures directly, I’ll describe the type of image or diagram that would be appropriate for each slide. You can then source or create these figures based on the descriptions.\nMarkdown Slide Deck Outline with Figure Suggestions Slide 1: Title Slide\nmarkdown Copy code # An Introduction to Digital Twins: Chapter 1 Overview Figure Suggestion: A cover image representing Digital Twins, possibly a graphical illustration of a physical object and its digital counterpart.\nSlide 2: Introduction\nmarkdown Copy code ## Introduction - Brief overview of Digital Twins - Importance of data-model synergy Figure Suggestion: An introductory infographic that visually represents the concept of Digital Twins.\nSlide 3: Definition of Digital Twin\nmarkdown Copy code ## Definition of Digital Twin - Definition by the Aerospace Industries Association - Mirroring physical assets in a dynamic manner Figure Suggestion: A diagram showing a physical asset and its digital twin counterpart, highlighting dynamic data exchange.\nSlide 4: Cyber-Physical Systems (CPS)\nmarkdown Copy code ## Cyber-Physical Systems (CPS) - Historical foundation for Digital Twins - Applications and impact in various sectors Figure Suggestion: An illustration showing the integration of cyber systems with physical processes.\nSlide 5: The Inference Cycle\nmarkdown Copy code ## The Inference Cycle - Scientific method as an inferential process - Abduction, deduction, and induction in Digital Twins Figure Suggestion: A flowchart or cycle diagram showing the steps of abduction, deduction, and induction.\nSlide 6: The Concept of a Digital Twin\nmarkdown Copy code ## The Concept of a Digital Twin - Essential components: Data, AI, Computational devices - Industrial significance Figure Suggestion: A Venn diagram showing the intersection of data, AI algorithms, and computational devices.\nSlide 7: The Spectrum of Digital Twins\nmarkdown Copy code ## The Spectrum of Digital Twins - From model-driven to data-driven - Importance of models, data, and competencies"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#digital-twins-in-the-digital-continuum",
+    "href": "slides/week-01/01-example.html#digital-twins-in-the-digital-continuum",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Digital Twins in the Digital Continuum",
+    "text": "Digital Twins in the Digital Continuum\n\nInteraction with digital infrastructure\nCloud computing, IoT, and cybersecurity"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#models-data-and-coupling-in-digital-twins",
+    "href": "slides/week-01/01-example.html#models-data-and-coupling-in-digital-twins",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Models, Data, and Coupling in Digital Twins",
+    "text": "Models, Data, and Coupling in Digital Twins\n\nTypes of models used\nRole of data\nEffective coupling"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#examples-and-use-cases",
+    "href": "slides/week-01/01-example.html#examples-and-use-cases",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Examples and Use Cases",
+    "text": "Examples and Use Cases\n\nPredictive maintenance, personalized medicine, sports, agriculture"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#recommended-approach---the-triple-loop-method",
+    "href": "slides/week-01/01-example.html#recommended-approach---the-triple-loop-method",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Recommended Approach - The Triple-Loop Method",
+    "text": "Recommended Approach - The Triple-Loop Method\n\nThree loops: Space and time, optimization, decision-making"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#recommendations-for-project-managers",
+    "href": "slides/week-01/01-example.html#recommendations-for-project-managers",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Recommendations for Project Managers",
+    "text": "Recommendations for Project Managers\n\nDeveloping in-house vs purchasing\nIntellectual property, model brittleness, uncertainty quantification"
+  },
+  {
+    "objectID": "slides/week-01/01-example.html#future-directions",
+    "href": "slides/week-01/01-example.html#future-directions",
+    "title": "Welcome to Digital Twins for Physical Systems",
+    "section": "Future Directions",
+    "text": "Future Directions\n\nEvolution from simple to AI-integrated systems\nTheoretical and practical advancements"
   },
   {
     "objectID": "slides/week-01/01-example.html#bullet-point-list",
     "href": "slides/week-01/01-example.html#bullet-point-list",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Bullet point list",
     "text": "Bullet point list\nUnordered\n\nItem A\nItem B\nItem C\n\nOrdered\n\nItem 1\nItem 2\nItem 3"
   },
   {
     "objectID": "slides/week-01/01-example.html#incremental-list",
     "href": "slides/week-01/01-example.html#incremental-list",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Incremental list",
     "text": "Incremental list\n\n\nItem 1\nItem 2\nItem 3"
   },
   {
     "objectID": "slides/week-01/01-example.html#equations",
     "href": "slides/week-01/01-example.html#equations",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Equations",
     "text": "Equations\nWrite mathematical symbols and equations using Latex.\nUse the formulas below to calculate \\(\\hat{\\beta}_1\\), the estimated slope, and \\(\\hat{\\beta}_0\\), the estimated intercept.\n\\[\n\\begin{aligned}\n&\\hat{\\beta}_1 = r \\frac{s_y}{s_x} \\\\\n&\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x}\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/week-01/01-example.html#code",
     "href": "slides/week-01/01-example.html#code",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Code",
     "text": "Code\n\n# Use code chunk option fig-align: center to center the plot. \nggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g, \n                            color = species)) + \n         geom_point() + \n  labs(x = \"Flipper Length (in mm)\",y = \"Body Mass (in g)\",\n       title = \"Flipper length vs. body mass\",\n       subtitle = \"Penguins at Palmer Station, Antartica\") +\n  scale_color_viridis_d()"
   },
   {
     "objectID": "slides/week-01/01-example.html#images",
     "href": "slides/week-01/01-example.html#images",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Images",
     "text": "Images\n\nArtwork by @allison_horst"
   },
   {
     "objectID": "slides/week-01/01-example.html#columns",
     "href": "slides/week-01/01-example.html#columns",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Columns",
     "text": "Columns\n\n\nCalculate the proportion of penguins from each species.\n\n\npenguins |&gt;\n  count(species) |&gt;\n  mutate(prop  = n / sum(n))\n\n# A tibble: 3 × 3\n  species       n  prop\n  &lt;fct&gt;     &lt;int&gt; &lt;dbl&gt;\n1 Adelie      152 0.442\n2 Chinstrap    68 0.198\n3 Gentoo      124 0.360"
   },
   {
     "objectID": "slides/week-01/01-example.html#panels",
     "href": "slides/week-01/01-example.html#panels",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Panels",
-    "text": "Panels\n\nPlotCode\n\n\n\npenguins |&gt;\n  filter(species == \"Adelie\", !is.na(sex)) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = sex)) + \n  geom_point() +\n  labs(x = \"Flipper Length (in mm)\",y = \"Body Mass (in g)\",\n       title = \"Flipper length vs. body mass\",\n       subtitle = \"Adelie Penguins at Palmer Station, Antartica\") +\n  scale_color_viridis_d() + \n  facet_wrap(~island)\n\n\n\n\n\n\n\npenguins |&gt;\n  filter(species == \"Adelie\", !is.na(sex)) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = sex)) + \n  geom_point() +\n  labs(x = \"Flipper Length (in mm)\",y = \"Body Mass (in g)\",\n       title = \"Flipper length vs. body mass\",\n       subtitle = \"Adelie Penguins at Palmer Station, Antartica\") +\n  scale_color_viridis_d() + \n  facet_wrap(~island)"
+    "text": "Panels\n\nPlotCode\n\n\n\npenguins |&gt;\n  filter(species == \"Adelie\", !is.na(sex)) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = sex)) + \n  geom_point() +\n  labs(x = \"Flipper Length (in mm)\",y = \"Body Mass (in g)\",\n       title = \"Flipper length vs. body mass\",\n       subtitle = \"Adelie Penguins at Palmer Station, Antartica\") +\n  scale_color_viridis_d() + \n  facet_wrap(~island)\n\n\n\n\n\n\n\n\n\n\n\npenguins |&gt;\n  filter(species == \"Adelie\", !is.na(sex)) |&gt;\n  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = sex)) + \n  geom_point() +\n  labs(x = \"Flipper Length (in mm)\",y = \"Body Mass (in g)\",\n       title = \"Flipper length vs. body mass\",\n       subtitle = \"Adelie Penguins at Palmer Station, Antartica\") +\n  scale_color_viridis_d() + \n  facet_wrap(~island)"
   },
   {
     "objectID": "slides/week-01/01-example.html#themes",
     "href": "slides/week-01/01-example.html#themes",
-    "title": "Welcome to Intro Data Science",
+    "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Themes",
-    "text": "Themes\nCustomize the appearance of the slides using\n\nBuilt-in Reveal theme\nModify built-in theme using Sass\n\nVariant of CSS that supports variables and other features\n\nCreate custom thing using Sass\n\nSpecify the theme and/or Sass file (.scss) in the YAML\n\n\n\n🔗 rstudio-conf-2022.github.io/teach-ds-course-website"
+    "text": "Themes\nCustomize the appearance of the slides using\n\nBuilt-in Reveal theme\nModify built-in theme using Sass\n\nVariant of CSS that supports variables and other features\n\nCreate custom thing using Sass\n\nSpecify the theme and/or Sass file (.scss) in the YAML\n\n\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM.\n\n\nNational Academies of Sciences, Engineering, Medicine, et al. 2023. “Foundational Research Gaps and Future Directions for Digital Twins.”"
   },
   {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Excerpts of Fall 2021 syllabus from STA 199: Introduction to Data Science at Duke University",
+    "text": "Spring 2024 syllabus: Digital Twins for Physical Systems — 33655 - CSE 8803 - DTP\nSyllabus updates:This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.",
     "crumbs": [
       "Syllabus"
     ]
@@ -245,17 +373,27 @@
     "href": "syllabus.html#course-learning-objectives",
     "title": "Syllabus",
     "section": "Course Learning Objectives",
-    "text": "Course Learning Objectives\nBy the end of the semester, you will…\n\nlearn to explore, visualize, and analyze data in a reproducible and shareable manner\ngain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization work on problems and case studies inspired by and based on real-world questions and data\nlearn to effectively communicate results through written assignments and final project presentation",
+    "text": "Course Learning Objectives\nBy the end of the semester, you will…\n\nlearn to explore, visualize, and analyze data in a reproducible and shareable manner\ngain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization work on problems and case studies inspired by and based on real-world questions and data\nlearn to effectively communicate results through written assignments and final project presentation\n\nFor more de Course outline, Topics, and Learning goals, see Goals.",
     "crumbs": [
       "Syllabus"
     ]
   },
   {
-    "objectID": "syllabus.html#textbooks",
-    "href": "syllabus.html#textbooks",
+    "objectID": "syllabus.html#textbook",
+    "href": "syllabus.html#textbook",
     "title": "Syllabus",
-    "section": "Textbooks",
-    "text": "Textbooks\nAll books are freely available online. Hardcopies are also available for purchase.\n\n\n\nR for Data Science\nGrolemund, Wickham\nO’Reilly, 1st edition, 2016\n\n\nIntroduction to Modern Statistics\nÇetinkaya-Rundel, Hardin\nOpenIntro Inc., 1st Edition, 2021",
+    "section": "Textbook",
+    "text": "Textbook\nAll books are freely available online. Hardcopies are also available for purchase.\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#journal-papers",
+    "href": "syllabus.html#journal-papers",
+    "title": "Syllabus",
+    "section": "Journal Papers",
+    "text": "Journal Papers\n\n\n\nA comprehensive review of digital twin—part 1: modeling and twinning enabling technologies\nThelen et al. (2022)\nSpringer, 2022\n\n\nA comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives\nThelen et al. (2023)\nSpringer, 2022",
     "crumbs": [
       "Syllabus"
     ]
@@ -265,7 +403,7 @@
     "href": "syllabus.html#course-community",
     "title": "Syllabus",
     "section": "Course community",
-    "text": "Course community\n\nInclusive community\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with Duke’s Commitment to Diversity and Inclusion. Your suggestions are encouraged and appreciated.\n\n\nAccessibility\nIf there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.\nThe Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.\n\n\nCommunication\nAll lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website.\nAnnouncements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.",
+    "text": "Course community\n\nInclusive community\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with Georgia Tech’s Commitment to Diversity and Inclusion. Your suggestions are encouraged and appreciated.\n\n\nDiscrimination, Harassment, and Sexual Misconduct\nTo maintain a safe learning environment that fosters the dignity, respect, and success of students, faculty, and staff, Tech prohibits discriminatory harassment, which is unwelcome verbal, nonverbal, or physical conduct directed at any person or group based upon race, color, religion, sex, national origin, age, disability, sexual orientation, gender identity, or veteran status that has the purpose or effect of creating an objectively hostile working or academic environment.\n\n\nAccessibility\nIf there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.\nDisability Services are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.\n\n\nCommunication\nAll lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website.\nAnnouncements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.",
     "crumbs": [
       "Syllabus"
     ]
@@ -275,7 +413,7 @@
     "href": "syllabus.html#activities-assessment",
     "title": "Syllabus",
     "section": "Activities & Assessment",
-    "text": "Activities & Assessment\n\nLabs\nIn labs, you will apply the concepts discussed in lecture to various data analysis scenarios, with a focus on the computation.\n\n\nHomework\nIn homework, you will apply what you’ve learned during lecture and lab to complete data analysis tasks.\n\n\nExams\nThere will be two, take-home, open-note exams. Through these exams you have the opportunity to demonstrate what you’ve learned in the course thus far.\n\n\nFinal Project\nThe purpose of the final project is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.",
+    "text": "Activities & Assessment\n\nComputational labs\nIn labs, you will apply the concepts discussed during lectures, with a focus on the computation.\n\n\nExams\nThere will be no exams.\n\n\nFinal Project\nThe purpose of the Final Project is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.",
     "crumbs": [
       "Syllabus"
     ]
@@ -285,17 +423,7 @@
     "href": "syllabus.html#grading",
     "title": "Syllabus",
     "section": "Grading",
-    "text": "Grading\nThe final course grade will be calculated as follows:\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n30%\n\n\nLabs\n15%\n\n\nFinal Project\n15%\n\n\nExam 01\n17.5%\n\n\nExam 02\n17.5%\n\n\nIn-class exercises\n5%",
-    "crumbs": [
-      "Syllabus"
-    ]
-  },
-  {
-    "objectID": "syllabus.html#course-policies",
-    "href": "syllabus.html#course-policies",
-    "title": "Syllabus",
-    "section": "Course policies",
-    "text": "Course policies\n\nAcademic honesty\nTL;DR: Don’t cheat!\nPlease abide by the following as you work on assignments in this course:\n\nYou may discuss individual homework and lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.\nYou may not discuss or otherwise work with others on the exams.\nReusing code: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.\n\n\n\nLate work & extensions\nThe due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest homework and lab assignment will be dropped to accommodate such circumstances.",
+    "text": "Grading\nThe final course grade will be calculated as follows:\n\n\n\n\nCategory\nPercentage\n\n\n\n\nAssignments\n30%\n\n\nPresentation Journal Paper\n20%\n\n\nFinal Project & Presentation\n50%",
     "crumbs": [
       "Syllabus"
     ]
@@ -305,9 +433,29 @@
     "href": "syllabus.html#important-dates",
     "title": "Syllabus",
     "section": "Important dates",
-    "text": "Important dates\n\nAug 23: Classes begin\nSep 3: Drop/add ends\nOct 4-5: Fall break\nNov 5: Last day to withdraw with W\nNov 24-26: Thanksgiving recess\nDec 3: Classes end\nDec 4-7: Reading period\nDec 8-13: Final exams",
+    "text": "Important dates\n\nJan 4: Phase II Registration\nJan 8: Classes begin\nJan 12: Deadline for Registration/Schedule Changes\nMarch 13: Last day to withdraw\nMarch 18-22: Spring break\nApril 24: Final Instructional Class",
     "crumbs": [
       "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#course-policies",
+    "href": "syllabus.html#course-policies",
+    "title": "Syllabus",
+    "section": "Course policies",
+    "text": "Course policies\n\nAcademic honesty\nPlease abide by the following as you work on assignments in this course:\n\nYou may discuss individual lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.\nReusing code: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.\n\n\n\nGuidance on the use of Generative AI\nAI-based assistance, such as ChatGPT and Copilot, can be used in the same way as collaboration with other people for the following activities: For lab assignments in understanding the lecture and textbook materials, and in developing your ideals for the project proposals. In these activities you are welcome to talk about your ideas and work with other people, both inside and outside the class, as well as with AI- based assistants. In the course, we will discuss how you can use these tools as a study tool, or as an assistant in helping to draft code or summaries.\n\nGenerating Research Ideas or Approaches:\n\nBrainstorming: You can use the AI tool as a brainstorming partner, where you exchange ideas whether the AI prompts you or you prompt the AI for ideas. Brainstorming is an iterative process that can be made more effective with the way that the queries are posted. For more samples or information, post this query: “How can I use AI to help me to brainstorm an idea?”\nSurveying Existing Approaches: Large Language Models, if trained broadly in a topic, can give a good initial overview of existing approaches or existing literature on a topic. Current research sources such as library or professional society databases are more reliable in terms of accuracy of peer-reviewed content.\nPrompt engineering is important: Practice the prompts used for Generative AI. The value of the response depends on the value of the prompt. If you provide a low quality or vague prompt, you will get vague results. Varying skill levels among users might exacerbate existing inequalities among students. For example, students for whom English is the second language might be at a disadvantage.\n\n\n\nAdvice on Usage:\n\nBe very skeptical of the results. Do not trust any outputs that you cannot evaluate yourself or trace back to original credible sources. There are many stories of generative AI giving citations of articles that do not exist (see the article in the Chronicles of Higher Education referenced below).\nBe scientific with your prompts (or queries): Prompting is not deterministic, so the same prompt at a different time may result in a different response. Small changes in the wording of the prompt may yield very different responses. Keep records, make small changes and see how it affects the outcome, etc.\nDon’t share any data or information that is confidential, proprietary, or have IP implications. Your uploaded data or ideas might be incorporated into the learning model to be available for others in your research area, prior to you having a chance to publish it. If you intend to pursue commercialization or other Intellectual Property avenues for your work, putting the information into an open AI platform may be considered as disclosure.\n\n\n\n\nLate work & extensions\nThe due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest lab assignments will be dropped to accommodate such circumstances.\n\n\nCampus Resources for Students\nLinks to Campus Resources for Students — e.g. Center for Academic Success, Communication Center, Office of Disability Services, OMED, Division of Student Life, etc. available at: https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf\n\nQuick Guide on Student Mental Health and Wellness Resources:\nThe Center for Mental Health Care & Resources is here to offer confidential support and services to students in need of mental health care. During regular business hours, students who are not actively in counseling may call 404-894-2575 or walk-in to the office , 353 Ferst DR NW Atlanta GA 30313 (Flag building next to the Student Center). Any time outside of business hours, students may call 404-894-2575 and select the option to speak to the after-hours counselor.\n\n\nAdditional On Campus Options\nStudents who are experiencing an immediate life-threatening emergency on campus, can call the Georgia Tech Campus Police at 404-894-2500\n\n\nLocal and National crisis resources available 24/7:\n\nCrisis Text Line: Text HOME to 741741 https://www.crisistextline.org/\nGeorgia Crisis & Access Line: Call 1-800-715-4225\nNational Suicide Prevention Lifeline: Call 988 or 1-800-273-8255, or access text chat here https://suicidepreventionlifeline.org/chat/\n\n\n\nAdditional services offered by Satellite counselors’ (walk-in consultation hours):\nEach Satellite counselor provides weekly consultation appointments at varying times based on their schedules (see highlighted section below for my Fall ’23 hours). Anyone can access a Satellite counselor during these times, to set up a consultation email is preferable, once a message is received the Satellite counselor will reply with available dates/times and a link. Some Satellite counselors will accommodate in-person walk-ins at these times as well.\n\nWhat it is\n\nConsulting about a brief, non-emergency concern during the counselor’s posted walk-in consultation hours (similar to Let’s Talk). Consultations are approximately 15 minutes.\nProviding information to students about mental health resources on campus and how to get connected\nConsulting with faculty/staff about a student of concern\n\n\n\nWhat it isn’t\n\nNot for a walk-in counseling appointment or initial assessment\nNot for students who are seeking support in their counselor’s absence. Students who need additional/urgent support when their counselor is unavailable should visit the Center for Mental Health Care & Resources\nNot for crisis\nNot for case management\n\nTara Holdampf, MS, LPC, (she/her), Satellite Counselor’s Consultation Hours for the College of Sciences: Please email tara.holdampf@studentlife.gatech.edu for an appointment, or stop by my Office Location: MoSE 1120B. Monday-Friday 3:00 PM - 4:00 PM\n\n\nOther useful web pages to explore:\nGT Wellness Hub: https://gtwellnesshub.com (self-paced online resources for students)\n\nFree Headspace (for Students Only): https://gtwellnesshub.com/personal-guide-to-health- happiness/\nTogetherall (for Students Only): https://gtwellnesshub.com/one-on-one-personal-assistance/\nSilver cloud (for Students Only): https://gtwellnesshub.com/helpful-resources-right-at-your- fingertips/\n\nDivision of Student Engagement and Wellbeing: https://students.gatech.edu/\nHealth, Wellness & Recreation: https://students.gatech.edu/health-wellness-recreation\nTech Ends Suicide: https://mentalhealth.gatech.edu/end-suicide-initiative\nMental Health Services: https://mentalhealth.gatech.edu/about/services",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Final Project\n\nGoal\nThe goal of the Final Project is to give students the opportunity to apply and further develop their understanding of Digital Twins to a topic close to their graduate research interests.\n\n\nRequirements\nThe Final Project consist of three parts\n\nProposal consisting of a “one pager” + “5 min pitch”\nProject presentation of 20 minutes with 5 minutes questions, presented at the end of the term\nA final report\n\n\nOne pager + 5 min pitch\nOn March 1th, everybody needs to give a 5 minute pitch on their project proposal. That same day, the “one pager” outlining the project is due by 6:00 PM. See description below. Your seminar will be evaluated with this form. Please send the slides for your presentation to the course instructor with CSE 8803 in the subject line or bring a memory stick. The 5 minutes presentations include time for questions. Since time is limited, the 5 minute limit will be strictly enforced. So please stick to the main message, the problem you want to tackle, what techniques you will be using, and why it is important.\n\n\nProposal\nConcise description of the work to be undertaken. The description should not exceed two pages and should contain\n\nTitle of the Final Project\nProblem Statement\nRelevance\nIdentification of methodology that will be used to solve the problem\n\nProposal should be submitted in PDF format or a link to an html page. The project proposals are due March 1 at 6:00 PM and presentations are scheduled for that same day during class. The presentations are five minutes each for each person.\n\n\nProject presentation at the end of the term\nEach project presentation will be allotted 20 minutes precisely with 5 minutes of questions. The seminar should reflect the current status of the project, which may be subject to change when the project is finalized.\nThe seminar will be evaluated using the following form2.\n\n\nFinal Report\nThe report needs to be written as a short journal paper. Students will be required to use the IEEE template in two-column mode. The paper should be four-to-six pages including abstract, body text, figures, and bibliography. Reports should consist of\n\nabstract\nintroduction\nproblem statement\nmethodology\nresults\nconclusions\nreferences\nappendices\n\n\n\n\nGrading (project alone)\n\n10% Proposal plus speed presentation\n30% Seminar\n60% Final Report\n\n\n\nLate policy\nLate submission is unacceptable and will lead to deductions in your grade. The deadline for submission will be communicate in class.\n\n\n\n\nCalendar for events",
+    "crumbs": [
+      "Final Project"
     ]
   }
 ]

@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.451">
+  <meta name="generator" content="quarto-1.4.528">
 
-  <meta name="dcterms.date" content="2022-08-29">
-  <title>Teach Data Science Course Website - Welcome to Intro Data Science</title>
+  <meta name="dcterms.date" content="2023-12-22">
+  <title>Digital Twins for Physical Systems - Welcome to Digital Twins for Physical Systems</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -94,7 +94,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -393,18 +413,160 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome to Intro Data Science</h1>
-  <p class="subtitle">Example presentation</p>
+  <h1 class="title">Welcome to Digital Twins for Physical Systems</h1>
+  <p class="subtitle">introduction</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2022-08-29</p>
+  <p class="date">2023-12-22</p>
+</section>
+<section class="slide level2 center">
+
+<!-- <style>
+.pdf {
+  max-width: 100%;
+    width: 600px;
+    height: 600px;
+    border: 10px solid rgba(0,0,0,.2);
+    margin: 0;
+}
+</style>
+
+ -->
+<!-- # Welcome!
+
+::: {.cell}
+
+:::
+
+ -->
 </section>
 <section>
-<section id="welcome" class="title-slide slide level1 center">
-<h1>Welcome!</h1>
+<section id="an-introduction-to-digital-twins-chapter-1-overview" class="title-slide slide level1 center">
+<h1>An Introduction to Digital Twins: Chapter 1 Overview</h1>
 
+<!-- Figure Suggestion: A cover image representing Digital Twins, possibly a graphical illustration of a physical object and its digital counterpart. -->
+<img data-src="https://oden.utexas.edu/media/news-items/dtwinreleaseimageSept2022.png" class="r-stretch quarto-figure-center"><p class="caption">adapted from <a href="https://oden.utexas.edu/media/news-items/dtwinreleaseimageSept2022.png">here</a></p></section>
+<section id="introduction" class="slide level2 center">
+<h2>Introduction</h2>
+<ul>
+<li>Brief overview of Digital Twins</li>
+<li>Importance of data-model synergy</li>
+</ul>
+<!-- Figure Suggestion: An introductory infographic that visually represents the concept of Digital Twins. -->
+</section>
+<section id="definition-of-digital-twin-asch2022toolbox" class="slide level2 center">
+<h2>Definition of Digital Twin <span class="citation" data-cites="asch2022toolbox">(<a href="#/themes" role="doc-biblioref" onclick="">Asch 2022</a>)</span></h2>
+<p>Definition from Asch: “<em>A set of virtual information constructs that mimics the structure, context, and behavior of an individual/unique physical asset, or a group of physical assets, is dynamically updated with data from its physical twin throughout its life cycle and informs decisions that realize value</em>”</p>
+</section>
+<section id="definition-of-digital-twin-conted" class="slide level2 center">
+<h2>Definition of Digital Twin (cont’ed)</h2>
+<ul>
+<li>Definition by the Aerospace Industries Association</li>
+<li>Mirroring physical assets in a dynamic manner</li>
+</ul>
+<p>Definition by IBM: “<em>A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision making.</em>”</p>
+</section>
+<section id="definition-of-digital-twin-conted-national2023foundational" class="slide level2 center">
+<h2>Definition of Digital Twin (cont’ed) <span class="citation" data-cites="national2023foundational">(<a href="#/themes" role="doc-biblioref" onclick="">National Academies of Sciences, Medicine, et al. 2023</a>)</span></h2>
+<p>Definition from National Academy of National Sciences: “<em>A digital twin is a set of virtual information constructs that mimics the structure, context, and behavior of a natural, engineered, or social system (or system-of-systems), is dynamically updated with data from its physical twin, has a predictive capability, and informs decisions that realize value. The bidirectional interaction between the virtual and the physical is central to the digital twin.</em>”</p>
+<!-- Figure Suggestion: A diagram showing a physical asset and its digital twin counterpart, highlighting dynamic data exchange. -->
+</section>
+<section id="cyber-physical-systems-cps" class="slide level2 center">
+<h2>Cyber-Physical Systems (CPS)</h2>
+<ul>
+<li>Historical foundation for Digital Twins</li>
+<li>Applications and impact in various sectors</li>
+</ul>
+<!-- Figure Suggestion: An illustration showing the integration of cyber systems with physical processes. -->
+</section>
+<section id="the-inference-cycle" class="slide level2 center">
+<h2>The Inference Cycle</h2>
+<ul>
+<li>Scientific method as an inferential process</li>
+<li>Abduction, deduction, and induction in Digital Twins</li>
+</ul>
+<!-- Figure Suggestion: A flowchart or cycle diagram showing the steps of abduction, deduction, and induction. -->
+</section>
+<section id="the-concept-of-a-digital-twin" class="slide level2 center">
+<h2>The Concept of a Digital Twin</h2>
+<ul>
+<li>Essential components: Data, AI, Computational devices</li>
+<li>Industrial significance</li>
+</ul>
+<!-- Figure Suggestion: A Venn diagram showing the intersection of data, AI algorithms, and computational devices. -->
+</section>
+<section id="the-spectrum-of-digital-twins" class="slide level2 center">
+<h2>The Spectrum of Digital Twins</h2>
+<ul>
+<li>From model-driven to data-driven</li>
+<li>Importance of models, data, and competencies</li>
+</ul>
+<p>ChatGPT Certainly! I’ll convert the slide deck outline into Markdown format, and for each slide, I’ll suggest figures or visual aids that could be included. Since I can’t create figures directly, I’ll describe the type of image or diagram that would be appropriate for each slide. You can then source or create these figures based on the descriptions.</p>
+<p>Markdown Slide Deck Outline with Figure Suggestions Slide 1: Title Slide</p>
+<p>markdown Copy code # An Introduction to Digital Twins: Chapter 1 Overview Figure Suggestion: A cover image representing Digital Twins, possibly a graphical illustration of a physical object and its digital counterpart.</p>
+<p>Slide 2: Introduction</p>
+<p>markdown Copy code ## Introduction - Brief overview of Digital Twins - Importance of data-model synergy Figure Suggestion: An introductory infographic that visually represents the concept of Digital Twins.</p>
+<p>Slide 3: Definition of Digital Twin</p>
+<p>markdown Copy code ## Definition of Digital Twin - Definition by the Aerospace Industries Association - Mirroring physical assets in a dynamic manner Figure Suggestion: A diagram showing a physical asset and its digital twin counterpart, highlighting dynamic data exchange.</p>
+<p>Slide 4: Cyber-Physical Systems (CPS)</p>
+<p>markdown Copy code ## Cyber-Physical Systems (CPS) - Historical foundation for Digital Twins - Applications and impact in various sectors Figure Suggestion: An illustration showing the integration of cyber systems with physical processes.</p>
+<p>Slide 5: The Inference Cycle</p>
+<p>markdown Copy code ## The Inference Cycle - Scientific method as an inferential process - Abduction, deduction, and induction in Digital Twins Figure Suggestion: A flowchart or cycle diagram showing the steps of abduction, deduction, and induction.</p>
+<p>Slide 6: The Concept of a Digital Twin</p>
+<p>markdown Copy code ## The Concept of a Digital Twin - Essential components: Data, AI, Computational devices - Industrial significance Figure Suggestion: A Venn diagram showing the intersection of data, AI algorithms, and computational devices.</p>
+<p>Slide 7: The Spectrum of Digital Twins</p>
+<p>markdown Copy code ## The Spectrum of Digital Twins - From model-driven to data-driven - Importance of models, data, and competencies</p>
+<!-- Figure Suggestion: A spectrum or continuum graphic showing the range from model-driven to data-driven Digital Twins. -->
+</section>
+<section id="digital-twins-in-the-digital-continuum" class="slide level2 center">
+<h2>Digital Twins in the Digital Continuum</h2>
+<ul>
+<li>Interaction with digital infrastructure</li>
+<li>Cloud computing, IoT, and cybersecurity</li>
+</ul>
+<!-- Figure Suggestion: A conceptual diagram illustrating how Digital Twins interact within the broader digital infrastructure. -->
+</section>
+<section id="models-data-and-coupling-in-digital-twins" class="slide level2 center">
+<h2>Models, Data, and Coupling in Digital Twins</h2>
+<ul>
+<li>Types of models used</li>
+<li>Role of data</li>
+<li>Effective coupling</li>
+</ul>
+<!-- Figure Suggestion: A graphic showing different types of models, data flow, and the coupling process. -->
+</section>
+<section id="examples-and-use-cases" class="slide level2 center">
+<h2>Examples and Use Cases</h2>
+<ul>
+<li>Predictive maintenance, personalized medicine, sports, agriculture</li>
+</ul>
+<!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
+<!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
+</section>
+<section id="recommended-approach---the-triple-loop-method" class="slide level2 center">
+<h2>Recommended Approach - The Triple-Loop Method</h2>
+<ul>
+<li>Three loops: Space and time, optimization, decision-making</li>
+</ul>
+<!-- Figure Suggestion: A triple-loop diagram illustrating the three aspects of the methodology. -->
+</section>
+<section id="recommendations-for-project-managers" class="slide level2 center">
+<h2>Recommendations for Project Managers</h2>
+<ul>
+<li>Developing in-house vs purchasing</li>
+<li>Intellectual property, model brittleness, uncertainty quantification</li>
+</ul>
+<!-- Figure Suggestion: A decision tree or a pros and cons list for in-house development vs. purchasing. -->
+</section>
+<section id="future-directions" class="slide level2 center">
+<h2>Future Directions</h2>
+<ul>
+<li>Evolution from simple to AI-integrated systems</li>
+<li>Theoretical and practical advancements</li>
+</ul>
+<!-- Figure Suggestion: A timeline or roadmap visualizing the evolution and future prospects of Digital Twins. -->
 </section>
 <section id="bullet-point-list" class="slide level2 center">
 <h2>Bullet point list</h2>
@@ -445,21 +607,21 @@
 <section id="code" class="slide level2 center">
 <h2>Code</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Use code chunk option fig-align: center to center the plot. </span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, </span>
-<span id="cb1-3"><a href="#cb1-3"></a>                            <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb1-4"><a href="#cb1-4"></a>         <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length (in mm)"</span>,<span class="at">y =</span> <span class="st">"Body Mass (in g)"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>       <span class="at">title =</span> <span class="st">"Flipper length vs. body mass"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>       <span class="at">subtitle =</span> <span class="st">"Penguins at Palmer Station, Antartica"</span>) <span class="sc">+</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">scale_color_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Use code chunk option fig-align: center to center the plot. </span></span>
+<span id="cb1-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, </span>
+<span id="cb1-3"><a></a>                            <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb1-4"><a></a>         <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb1-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length (in mm)"</span>,<span class="at">y =</span> <span class="st">"Body Mass (in g)"</span>,</span>
+<span id="cb1-6"><a></a>       <span class="at">title =</span> <span class="st">"Flipper length vs. body mass"</span>,</span>
+<span id="cb1-7"><a></a>       <span class="at">subtitle =</span> <span class="st">"Penguins at Palmer Station, Antartica"</span>) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">scale_color_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="01-example_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure-center r-stretch" width="960"></section>
+<img data-src="01-example_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="images" class="slide level2 center">
 <h2>Images</h2>
 
-<img data-src="images/penguins.png" class="r-stretch quarto-figure-center"><p class="caption">Artwork by <a href="https://www.allisonhorst.com/">@allison_horst</a></p></section>
+<img data-src="images/penguins.png" class="quarto-figure quarto-figure-center r-stretch" alt="Three penguins labeled Chinstrap, Gentoo, and Adelie."><p class="caption">Artwork by <a href="https://www.allisonhorst.com/">@allison_horst</a></p></section>
 <section id="columns" class="slide level2 center">
 <h2>Columns</h2>
 <div class="columns">
@@ -467,9 +629,9 @@
 <p>Calculate the proportion of penguins from each species.</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">count</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">mutate</span>(<span class="at">prop  =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">count</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a></a>  <span class="fu">mutate</span>(<span class="at">prop  =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   species       n  prop
@@ -489,37 +651,41 @@
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>, <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length (in mm)"</span>,<span class="at">y =</span> <span class="st">"Body Mass (in g)"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6"></a>       <span class="at">title =</span> <span class="st">"Flipper length vs. body mass"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7"></a>       <span class="at">subtitle =</span> <span class="st">"Adelie Penguins at Palmer Station, Antartica"</span>) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span> </span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>, <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb4-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length (in mm)"</span>,<span class="at">y =</span> <span class="st">"Body Mass (in g)"</span>,</span>
+<span id="cb4-6"><a></a>       <span class="at">title =</span> <span class="st">"Flipper length vs. body mass"</span>,</span>
+<span id="cb4-7"><a></a>       <span class="at">subtitle =</span> <span class="st">"Adelie Penguins at Palmer Station, Antartica"</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span> </span>
+<span id="cb4-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="01-example_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>, <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length (in mm)"</span>,<span class="at">y =</span> <span class="st">"Body Mass (in g)"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6"></a>       <span class="at">title =</span> <span class="st">"Flipper length vs. body mass"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7"></a>       <span class="at">subtitle =</span> <span class="st">"Adelie Penguins at Palmer Station, Antartica"</span>) <span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span> </span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>, <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb5-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length (in mm)"</span>,<span class="at">y =</span> <span class="st">"Body Mass (in g)"</span>,</span>
+<span id="cb5-6"><a></a>       <span class="at">title =</span> <span class="st">"Flipper length vs. body mass"</span>,</span>
+<span id="cb5-7"><a></a>       <span class="at">subtitle =</span> <span class="st">"Adelie Penguins at Palmer Station, Antartica"</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span> </span>
+<span id="cb5-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="themes" class="slide level2 center">
+<section id="themes" class="slide level2 smaller scrollable">
 <h2>Themes</h2>
 <p>Customize the appearance of the slides using</p>
 <ul>
@@ -533,10 +699,20 @@
 <p>Specify the theme and/or Sass file (.scss) in the YAML</p>
 
 
-<img src="images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://rstudio-conf-2022.github.io/teach-ds-course-website">🔗 rstudio-conf-2022.github.io/teach-ds-course-website</a></p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
+Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
 </div>
-</section></section>
+<div id="ref-national2023foundational" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, Medicine, et al. 2023. <span>“Foundational Research Gaps and Future Directions for Digital Twins.”</span>
+</div>
+</div>
+</section><div class="quarto-auto-generated-content">
+<p><img src="images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
+</div>
+</div></section>
     </div>
   </div>
 
@@ -755,12 +931,15 @@
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -771,13 +950,6 @@
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy

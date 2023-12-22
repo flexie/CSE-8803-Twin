@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.451">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Teach Data Science Course Website - Syllabus</title>
+<title>Digital Twins for Physical Systems - Syllabus</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -59,6 +79,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -74,11 +95,11 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./syllabus.html">Syllabus</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -89,10 +110,10 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
     <a href="https://github.com/rstudio-conf-2022/teach-ds-course-website" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -120,14 +141,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Goals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -135,27 +174,30 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#course-learning-objectives" id="toc-course-learning-objectives" class="nav-link active" data-scroll-target="#course-learning-objectives">Course Learning Objectives</a></li>
-  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
+  <li><a href="#textbook" id="toc-textbook" class="nav-link" data-scroll-target="#textbook">Textbook</a></li>
+  <li><a href="#journal-papers" id="toc-journal-papers" class="nav-link" data-scroll-target="#journal-papers">Journal Papers</a></li>
   <li><a href="#course-community" id="toc-course-community" class="nav-link" data-scroll-target="#course-community">Course community</a>
   <ul class="collapse">
   <li><a href="#inclusive-community" id="toc-inclusive-community" class="nav-link" data-scroll-target="#inclusive-community">Inclusive community</a></li>
+  <li><a href="#discrimination-harassment-and-sexual-misconduct" id="toc-discrimination-harassment-and-sexual-misconduct" class="nav-link" data-scroll-target="#discrimination-harassment-and-sexual-misconduct">Discrimination, Harassment, and Sexual Misconduct</a></li>
   <li><a href="#accessibility" id="toc-accessibility" class="nav-link" data-scroll-target="#accessibility">Accessibility</a></li>
   <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
   </ul></li>
   <li><a href="#activities-assessment" id="toc-activities-assessment" class="nav-link" data-scroll-target="#activities-assessment">Activities &amp; Assessment</a>
   <ul class="collapse">
-  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
-  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
+  <li><a href="#computational-labs" id="toc-computational-labs" class="nav-link" data-scroll-target="#computational-labs">Computational labs</a></li>
   <li><a href="#exams" id="toc-exams" class="nav-link" data-scroll-target="#exams">Exams</a></li>
   <li><a href="#final-project" id="toc-final-project" class="nav-link" data-scroll-target="#final-project">Final Project</a></li>
   </ul></li>
   <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#important-dates" id="toc-important-dates" class="nav-link" data-scroll-target="#important-dates">Important dates</a></li>
   <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course policies</a>
   <ul class="collapse">
   <li><a href="#academic-honesty" id="toc-academic-honesty" class="nav-link" data-scroll-target="#academic-honesty">Academic honesty</a></li>
+  <li><a href="#guidance-on-the-use-of-generative-ai" id="toc-guidance-on-the-use-of-generative-ai" class="nav-link" data-scroll-target="#guidance-on-the-use-of-generative-ai">Guidance on the use of Generative AI</a></li>
   <li><a href="#late-work-extensions" id="toc-late-work-extensions" class="nav-link" data-scroll-target="#late-work-extensions">Late work &amp; extensions</a></li>
+  <li><a href="#campus-resources-for-students" id="toc-campus-resources-for-students" class="nav-link" data-scroll-target="#campus-resources-for-students">Campus Resources for Students</a></li>
   </ul></li>
-  <li><a href="#important-dates" id="toc-important-dates" class="nav-link" data-scroll-target="#important-dates">Important dates</a></li>
   </ul>
 </nav>
     </div>
@@ -181,8 +223,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>Excerpts of Fall 2021 syllabus from STA 199: Introduction to Data Science at Duke University</strong></p>
+<p><strong>Spring 2024 syllabus: Digital Twins for Physical Systems — 33655 - CSE 8803 - DTP</strong></p>
 <hr>
+<p><strong>Syllabus updates</strong>:This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.</p>
 <section id="course-learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="course-learning-objectives">Course Learning Objectives</h2>
 <p>By the end of the semester, you will…</p>
@@ -191,21 +234,39 @@ ul.task-list li input[type="checkbox"] {
 <li>gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization work on problems and case studies inspired by and based on real-world questions and data</li>
 <li>learn to effectively communicate results through written assignments and final project presentation</li>
 </ul>
+<p>For more de Course outline, Topics, and Learning goals, see <a href="./goals.html">Goals</a>.</p>
 </section>
-<section id="textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
+<section id="textbook" class="level2">
+<h2 class="anchored" data-anchor-id="textbook">Textbook</h2>
 <p>All books are freely available online. Hardcopies are also available for purchase.</p>
 <table class="table">
 <tbody>
 <tr class="odd">
-<td><a href="http://r4ds.had.co.nz/">R for Data Science</a></td>
-<td>Grolemund, Wickham</td>
-<td>O’Reilly, 1st edition, 2016</td>
+<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&amp;context=L&amp;vid=01GALI_GIT:GT&amp;vid=01GALI_GIT&amp;docid=alma9914381076402947&amp;tab=default_tab&amp;lang=en">Data assimilation: methods, algorithms, and applications</a></td>
+<td><span class="citation" data-cites="asch2016data">Asch, Bocquet, and Nodet (<a href="#ref-asch2016data" role="doc-biblioref">2016</a>)</span>, Mark</td>
+<td>SIAM, 2016</td>
 </tr>
 <tr class="even">
-<td><a href="https://openintro-ims.netlify.app/">Introduction to Modern Statistics</a></td>
-<td>Çetinkaya-Rundel, Hardin</td>
-<td>OpenIntro Inc., 1st Edition, 2021</td>
+<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486">A toolbox for digital twins: from model-based to data-driven</a></td>
+<td><span class="citation" data-cites="asch2022toolbox">Asch (<a href="#ref-asch2022toolbox" role="doc-biblioref">2022</a>)</span>, Mark</td>
+<td>SIAM, 2022</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="journal-papers" class="level2">
+<h2 class="anchored" data-anchor-id="journal-papers">Journal Papers</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="https://openintro-ims.netlify.app/">A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies</a></td>
+<td><span class="citation" data-cites="thelen2022comprehensivea">Thelen et al. (<a href="#ref-thelen2022comprehensivea" role="doc-biblioref">2022</a>)</span></td>
+<td>Springer, 2022</td>
+</tr>
+<tr class="even">
+<td><a href="https://link.springer.com/article/10.1007/00158-022-03410-x">A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives</a></td>
+<td><span class="citation" data-cites="thelen2023comprehensiveb">Thelen et al. (<a href="#ref-thelen2023comprehensiveb" role="doc-biblioref">2023</a>)</span></td>
+<td>Springer, 2022</td>
 </tr>
 </tbody>
 </table>
@@ -214,12 +275,16 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="course-community">Course community</h2>
 <section id="inclusive-community" class="level3">
 <h3 class="anchored" data-anchor-id="inclusive-community">Inclusive community</h3>
-<p>It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with <a href="https://provost.duke.edu/initiatives/commitment-to-diversity-and-inclusion">Duke’s Commitment to Diversity and Inclusion</a>. Your suggestions are encouraged and appreciated.</p>
+<p>It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with <a href="https://catalog.gatech.edu/policies/diversity/">Georgia Tech’s Commitment to Diversity and Inclusion</a>. Your suggestions are encouraged and appreciated.</p>
+</section>
+<section id="discrimination-harassment-and-sexual-misconduct" class="level3">
+<h3 class="anchored" data-anchor-id="discrimination-harassment-and-sexual-misconduct">Discrimination, Harassment, and Sexual Misconduct</h3>
+<p>To maintain a safe learning environment that fosters the dignity, respect, and success of students, faculty, and staff, Tech prohibits discriminatory harassment, which is unwelcome verbal, nonverbal, or physical conduct directed at any person or group based upon race, color, religion, sex, national origin, age, disability, sexual orientation, gender identity, or veteran status that has the purpose or effect of creating an objectively hostile working or academic environment.</p>
 </section>
 <section id="accessibility" class="level3">
 <h3 class="anchored" data-anchor-id="accessibility">Accessibility</h3>
 <p>If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.</p>
-<p>The Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.</p>
+<p><a href="https://disabilityservices.gatech.edu/about/accommodations">Disability Services</a> are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.</p>
 </section>
 <section id="communication" class="level3">
 <h3 class="anchored" data-anchor-id="communication">Communication</h3>
@@ -229,21 +294,17 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="activities-assessment" class="level2">
 <h2 class="anchored" data-anchor-id="activities-assessment">Activities &amp; Assessment</h2>
-<section id="labs" class="level3">
-<h3 class="anchored" data-anchor-id="labs">Labs</h3>
-<p>In labs, you will apply the concepts discussed in lecture to various data analysis scenarios, with a focus on the computation.</p>
-</section>
-<section id="homework" class="level3">
-<h3 class="anchored" data-anchor-id="homework">Homework</h3>
-<p>In homework, you will apply what you’ve learned during lecture and lab to complete data analysis tasks.</p>
+<section id="computational-labs" class="level3">
+<h3 class="anchored" data-anchor-id="computational-labs">Computational labs</h3>
+<p>In labs, you will apply the concepts discussed during lectures, with a focus on the computation.</p>
 </section>
 <section id="exams" class="level3">
 <h3 class="anchored" data-anchor-id="exams">Exams</h3>
-<p>There will be two, take-home, open-note exams. Through these exams you have the opportunity to demonstrate what you’ve learned in the course thus far.</p>
+<p>There will be no exams.</p>
 </section>
 <section id="final-project" class="level3">
 <h3 class="anchored" data-anchor-id="final-project">Final Project</h3>
-<p>The purpose of the <a href="./project/">final project</a> is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.</p>
+<p>The purpose of the <a href="./project.html">Final Project</a> is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.</p>
 </section>
 </section>
 <section id="grading" class="level2">
@@ -259,66 +320,139 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Homework</td>
+<td>Assignments</td>
 <td>30%</td>
 </tr>
 <tr class="even">
-<td>Labs</td>
-<td>15%</td>
+<td>Presentation Journal Paper</td>
+<td>20%</td>
 </tr>
 <tr class="odd">
-<td>Final Project</td>
-<td>15%</td>
-</tr>
-<tr class="even">
-<td>Exam 01</td>
-<td>17.5%</td>
-</tr>
-<tr class="odd">
-<td>Exam 02</td>
-<td>17.5%</td>
-</tr>
-<tr class="even">
-<td>In-class exercises</td>
-<td>5%</td>
+<td>Final Project &amp; Presentation</td>
+<td>50%</td>
 </tr>
 </tbody>
 </table>
 </center></section>
+<section id="important-dates" class="level2">
+<h2 class="anchored" data-anchor-id="important-dates">Important dates</h2>
+<ul>
+<li><p><strong>Jan 4:</strong> Phase II Registration</p></li>
+<li><p><strong>Jan 8:</strong> Classes begin</p></li>
+<li><p><strong>Jan 12:</strong> Deadline for Registration/Schedule Changes</p></li>
+<li><p><strong>March 13</strong>: Last day to withdraw</p></li>
+<li><p><strong>March 18-22:</strong> Spring break</p></li>
+<li><p><strong>April 24:</strong> Final Instructional Class</p></li>
+</ul>
+</section>
 <section id="course-policies" class="level2">
 <h2 class="anchored" data-anchor-id="course-policies">Course policies</h2>
 <section id="academic-honesty" class="level3">
 <h3 class="anchored" data-anchor-id="academic-honesty">Academic honesty</h3>
-<p><strong>TL;DR: Don’t cheat!</strong></p>
 <p>Please abide by the following as you work on assignments in this course:</p>
 <ul>
-<li>You may discuss individual homework and lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.</li>
-<li>You may not discuss or otherwise work with others on the exams.</li>
+<li>You may discuss individual lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.</li>
 <li><strong>Reusing code</strong>: Unless explicitly stated otherwise, you may make use of online resources (e.g.&nbsp;StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.</li>
 </ul>
 </section>
+<section id="guidance-on-the-use-of-generative-ai" class="level3">
+<h3 class="anchored" data-anchor-id="guidance-on-the-use-of-generative-ai">Guidance on the use of Generative AI</h3>
+<p>AI-based assistance, such as ChatGPT and Copilot, can be used in the same way as collaboration with other people for the following activities: For lab assignments in understanding the lecture and textbook materials, and in developing your ideals for the project proposals. In these activities you are welcome to talk about your ideas and work with other people, both inside and outside the class, as well as with AI- based assistants. In the course, we will discuss how you can use these tools as a study tool, or as an assistant in helping to draft code or summaries.</p>
+<section id="generating-research-ideas-or-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="generating-research-ideas-or-approaches">Generating Research Ideas or Approaches:</h4>
+<ul>
+<li><p>Brainstorming: You can use the AI tool as a brainstorming partner, where you exchange ideas whether the AI prompts you or you prompt the AI for ideas. Brainstorming is an iterative process that can be made more effective with the way that the queries are posted. For more samples or information, post this query: “How can I use AI to help me to brainstorm an idea?”</p></li>
+<li><p>Surveying Existing Approaches: Large Language Models, if trained broadly in a topic, can give a good initial overview of existing approaches or existing literature on a topic. Current research sources such as library or professional society databases are more reliable in terms of accuracy of peer-reviewed content.</p></li>
+<li><p>Prompt engineering is important: Practice the prompts used for Generative AI. The value of the response depends on the value of the prompt. If you provide a low quality or vague prompt, you will get vague results. Varying skill levels among users might exacerbate existing inequalities among students. For example, students for whom English is the second language might be at a disadvantage.</p></li>
+</ul>
+</section>
+<section id="advice-on-usage" class="level4">
+<h4 class="anchored" data-anchor-id="advice-on-usage">Advice on Usage:</h4>
+<ul>
+<li><p>Be very skeptical of the results. Do not trust any outputs that you cannot evaluate yourself or trace back to original credible sources. There are many stories of generative AI giving citations of articles that do not exist (see the article in the Chronicles of Higher Education referenced below).</p></li>
+<li><p>Be scientific with your prompts (or queries): Prompting is not deterministic, so the same prompt at a different time may result in a different response. Small changes in the wording of the prompt may yield very different responses. Keep records, make small changes and see how it affects the outcome, etc.</p></li>
+<li><p>Don’t share any data or information that is confidential, proprietary, or have IP implications. Your uploaded data or ideas might be incorporated into the learning model to be available for others in your research area, prior to you having a chance to publish it. If you intend to pursue commercialization or other Intellectual Property avenues for your work, putting the information into an open AI platform may be considered as disclosure.</p></li>
+</ul>
+</section>
+</section>
 <section id="late-work-extensions" class="level3">
 <h3 class="anchored" data-anchor-id="late-work-extensions">Late work &amp; extensions</h3>
-<p>The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest homework and lab assignment will be dropped to accommodate such circumstances.</p>
+<p>The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest lab assignments will be dropped to accommodate such circumstances.</p>
 </section>
+<section id="campus-resources-for-students" class="level3">
+<h3 class="anchored" data-anchor-id="campus-resources-for-students">Campus Resources for Students</h3>
+<p>Links to Campus Resources for Students — e.g.&nbsp;Center for Academic Success, Communication Center, Office of Disability Services, OMED, Division of Student Life, etc. available at: <a href="https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf" class="uri">https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf</a></p>
+<section id="quick-guide-on-student-mental-health-and-wellness-resources" class="level4">
+<h4 class="anchored" data-anchor-id="quick-guide-on-student-mental-health-and-wellness-resources">Quick Guide on Student Mental Health and Wellness Resources:</h4>
+<p>The <a href="https://mentalhealth.gatech.edu">Center for Mental Health Care &amp; Resources</a> is here to offer confidential support and services to students in need of mental health care. During regular business hours, students who are not actively in counseling <strong>may call 404-894-2575 or walk-in to the office , 353 Ferst DR NW Atlanta GA 30313</strong> (Flag building next to the Student Center). Any time outside of business hours, students may call <strong>404-894-2575</strong> and select the option to speak to the after-hours counselor.</p>
 </section>
-<section id="important-dates" class="level2">
-<h2 class="anchored" data-anchor-id="important-dates">Important dates</h2>
+<section id="additional-on-campus-options" class="level4">
+<h4 class="anchored" data-anchor-id="additional-on-campus-options">Additional On Campus Options</h4>
+<p>Students who are experiencing an immediate life-threatening emergency on campus, can call the Georgia Tech Campus Police at <strong>404-894-2500</strong></p>
+</section>
+<section id="local-and-national-crisis-resources-available-247" class="level4">
+<h4 class="anchored" data-anchor-id="local-and-national-crisis-resources-available-247">Local and National crisis resources available 24/7:</h4>
 <ul>
-<li><p><strong>Aug 23:</strong> Classes begin</p></li>
-<li><p><strong>Sep 3</strong>: Drop/add ends</p></li>
-<li><p><strong>Oct 4-5</strong>: Fall break</p></li>
-<li><p><strong>Nov 5</strong>: Last day to withdraw with W</p></li>
-<li><p><strong>Nov 24-26:</strong> Thanksgiving recess</p></li>
-<li><p><strong>Dec 3</strong>: Classes end</p></li>
-<li><p><strong>Dec 4-7</strong>: Reading period</p></li>
-<li><p><strong>Dec 8-13</strong>: Final exams</p></li>
+<li>Crisis Text Line: Text HOME to 741741 <a href="https://www.crisistextline.org/" class="uri">https://www.crisistextline.org/</a></li>
+<li>Georgia Crisis &amp; Access Line: Call 1-800-715-4225</li>
+<li>National Suicide Prevention Lifeline: Call 988 or 1-800-273-8255, or access text chat here <a href="https://suicidepreventionlifeline.org/chat/" class="uri">https://suicidepreventionlifeline.org/chat/</a></li>
 </ul>
+</section>
+<section id="additional-services-offered-by-satellite-counselors-walk-in-consultation-hours" class="level4">
+<h4 class="anchored" data-anchor-id="additional-services-offered-by-satellite-counselors-walk-in-consultation-hours">Additional services offered by Satellite counselors’ (walk-in consultation hours):</h4>
+<p>Each Satellite counselor provides weekly consultation appointments at varying times based on their schedules (see highlighted section below for my Fall ’23 hours). Anyone can access a Satellite counselor during these times, to set up a consultation email is preferable, once a message is received the Satellite counselor will reply with available dates/times and a link. Some Satellite counselors will accommodate in-person walk-ins at these times as well.</p>
+<section id="what-it-is" class="level5">
+<h5 class="anchored" data-anchor-id="what-it-is">What it is</h5>
+<ul>
+<li>Consulting about a brief, non-emergency concern during the counselor’s posted walk-in consultation hours (similar to Let’s Talk). Consultations are approximately 15 minutes.</li>
+<li>Providing information to students about mental health resources on campus and how to get connected</li>
+<li>Consulting with faculty/staff about a student of concern</li>
+</ul>
+</section>
+<section id="what-it-isnt" class="level5">
+<h5 class="anchored" data-anchor-id="what-it-isnt">What it isn’t</h5>
+<ul>
+<li>Not for a walk-in counseling appointment or initial assessment</li>
+<li>Not for students who are seeking support in their counselor’s absence. Students who need additional/urgent support when their counselor is unavailable should visit the Center for Mental Health Care &amp; Resources</li>
+<li>Not for crisis</li>
+<li>Not for case management</li>
+</ul>
+<p>Tara Holdampf, MS, LPC, (she/her), Satellite Counselor’s Consultation Hours for the College of Sciences: Please email <a href="mailto:tara.holdampf@studentlife.gatech.edu">tara.holdampf@studentlife.gatech.edu</a> for an appointment, or stop by my Office Location: MoSE 1120B. Monday-Friday 3:00 PM - 4:00 PM</p>
+</section>
+<section id="other-useful-web-pages-to-explore" class="level5">
+<h5 class="anchored" data-anchor-id="other-useful-web-pages-to-explore">Other useful web pages to explore:</h5>
+<p>GT Wellness Hub: <a href="https://gtwellnesshub.com" class="uri">https://gtwellnesshub.com</a> (self-paced online resources for students)</p>
+<ul>
+<li>Free Headspace (for Students Only): <a href="https://gtwellnesshub.com/personal-guide-to-health-%20happiness/">https://gtwellnesshub.com/personal-guide-to-health- happiness/</a></li>
+<li>Togetherall (for Students Only): <a href="https://gtwellnesshub.com/one-on-one-personal-assistance/" class="uri">https://gtwellnesshub.com/one-on-one-personal-assistance/</a></li>
+<li>Silver cloud (for Students Only): <a href="https://gtwellnesshub.com/helpful-resources-right-at-your-%20fingertips/">https://gtwellnesshub.com/helpful-resources-right-at-your- fingertips/</a></li>
+</ul>
+<p><strong>Division of Student Engagement and Wellbeing:</strong> <a href="https://students.gatech.edu/" class="uri">https://students.gatech.edu/</a><br>
+<strong>Health, Wellness &amp; Recreation:</strong> <a href="https://students.gatech.edu/health-wellness-recreation" class="uri">https://students.gatech.edu/health-wellness-recreation</a><br>
+<strong>Tech Ends Suicide:</strong> <a href="https://mentalhealth.gatech.edu/end-suicide-initiative" class="uri">https://mentalhealth.gatech.edu/end-suicide-initiative</a><br>
+<strong>Mental Health Services:</strong> <a href="https://mentalhealth.gatech.edu/about/services" class="uri">https://mentalhealth.gatech.edu/about/services</a></p>
+
 
 
 </section>
+</section>
+</section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
+Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
+</div>
+<div id="ref-asch2016data" class="csl-entry" role="listitem">
+Asch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. <em>Data Assimilation: Methods, Algorithms, and Applications</em>. SIAM.
+</div>
+<div id="ref-thelen2022comprehensivea" class="csl-entry" role="listitem">
+Thelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michael D Todd, Sankaran Mahadevan, Chao Hu, and Zhen Hu. 2022. <span>“A Comprehensive Review of Digital Twin—Part 1: Modeling and Twinning Enabling Technologies.”</span> <em>Structural and Multidisciplinary Optimization</em> 65 (12): 354.
+</div>
+<div id="ref-thelen2023comprehensiveb" class="csl-entry" role="listitem">
+———. 2023. <span>“A Comprehensive Review of Digital Twin—Part 2: Roles of Uncertainty Quantification and Optimization, a Battery Digital Twin, and Perspectives.”</span> <em>Structural and Multidisciplinary Optimization</em> 66 (1): 1.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -447,38 +581,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -487,7 +611,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }
