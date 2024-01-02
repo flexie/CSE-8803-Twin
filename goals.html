@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="./images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
-    <a href="https://github.com/rstudio-conf-2022/teach-ds-course-website" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://flexie.github.io/CSE-8803-Twin/" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
     <a href="https://rstudio.cloud/spaces/237799" title="RStudio Cloud" class="quarto-navigation-tool px-1" aria-label="RStudio Cloud"><i class="bi bi-cloud-fill"></i></a>
 </div>
       </div>
@@ -153,7 +153,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sec-outline" id="toc-sec-outline" class="nav-link active" data-scroll-target="#sec-outline">Course outline</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#sec-outline" id="toc-sec-outline" class="nav-link" data-scroll-target="#sec-outline">Course outline</a></li>
   <li><a href="#sec-topics" id="toc-sec-topics" class="nav-link" data-scroll-target="#sec-topics">Topics</a></li>
   <li><a href="#sec-goals" id="toc-sec-goals" class="nav-link" data-scroll-target="#sec-goals">Learning goals</a></li>
   </ul>
@@ -165,8 +166,61 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="goal" class="level1">
+<h1>Goal</h1>
+<p>The overall goal of this course is to bring you to where the current literature is regarding the use of Digital Twins to</p>
+<ul>
+<li>monitor physical systems from indirect measurements</li>
+<li>assess uncertainty</li>
+<li>control the system</li>
+</ul>
+<p>The course will start with introducing topics from traditional Data Assimilation (DA) and Bayesian inference and will make it through to the latest developments in Differential Programming (DP), Simulation-Based Inference (SBI), recursive Bayesian Inference (RBI), and learned RBI through the use of Generative AI.</p>
+</section>
 <section id="sec-outline" class="level1">
 <h1>Course outline</h1>
+<ul>
+<li>Introduction
+<ul>
+<li>welcome</li>
+<li>overview Digital Twins</li>
+</ul></li>
+<li>Inverse Problems
+<ul>
+<li>ill-posedness</li>
+<li>Tikhonov regularization</li>
+<li>General Formulation</li>
+<li>Discrepancy principle</li>
+<li>Cross-validation</li>
+</ul></li>
+<li>Basic Data Assimilation
+<ul>
+<li>introduction</li>
+<li>adjoint state method</li>
+<li>variational data assimilation</li>
+</ul></li>
+<li><h2 id="statistical-inverse-problems" class="anchored" data-anchor-id="sec-outline">Statistical Inverse Problems</h2></li>
+<li>differential programming
+<ul>
+<li>reverse-mode = adjoint state</li>
+</ul></li>
+<li>Advanced Data Assimilation</li>
+<li>Neural Density Estimation
+<ul>
+<li>generative Networks</li>
+<li>Normalizing Flows</li>
+<li>conditional Normalizing Flows</li>
+</ul></li>
+<li>Simulation-based inference
+<ul>
+<li>introduction scientific ML</li>
+<li>Bayesian inference</li>
+</ul></li>
+<li>Surrogate Modeling
+<ul>
+<li>Fourier Neural Operators FNOs</li>
+</ul></li>
+<li><h2 id="learned-data-assimilation" class="anchored">Learned Data Assimilation</h2></li>
+</ul>
 </section>
 <section id="sec-topics" class="level1">
 <h1>Topics</h1>
