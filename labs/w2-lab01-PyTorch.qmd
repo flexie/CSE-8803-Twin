@@ -1,0 +1,21 @@
+---
+title: "PyTorch intro"
+date: "Jan 19, 2024"
+categories: "Lab"
+notebook-view: 
+  - notebook: 02Examples/pytorch/pytorch_101.ipynb
+    title: "Basics"
+  - notebook: 02Examples/pytorch/pytorch_102.ipynb
+    title: "NN Basics & Workflows"
+  - notebook: 02Examples/pytorch/Torch_test_GPU_CPU.ipynb
+    title: "GPUs"
+---
+
+Add instructions for assignment. 
+
+  <!-- - notebook: 02Examples/pytorch/pytorch_102.ipynb
+    title: "NN Basics"
+  - notebook: 02Examples/pytorch/Torch_test_GPU_CPU.ipynb
+    title: "GPUs" -->
+
+<!-- jupyter: python3 -->

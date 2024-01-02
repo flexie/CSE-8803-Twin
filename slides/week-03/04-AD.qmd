@@ -1,0 +1,725 @@
+---
+title: "Differential Programming"
+subtitle: "automatic differentiation"
+date: "January 29, 2024"
+footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
+logo: "images/logo.png"
+format: 
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    center: true
+    html-math-method: mathjax
+    preview-links: auto
+
+execute:
+  freeze: auto
+  echo: true
+bibliography: ../../references.bib
+---
+
+## Outline {.smaller}
+
+1.  Automatic differentiation for scientific machine learning:
+
+    a.  [Differentiable programming with autograd and PyTorch and [Zygote.jl](https://fluxml.ai/Zygote.jl/stable/) in [Flux.jl](http://fluxml.ai/Flux.jl/stable/).]{style="color: red"}
+
+    b.  [Gradients, adjoints, backpropagation and inverse problems.]{style="color: red"}
+
+    c.  Neural networks for scientific machine learning.
+
+    d.  Physics-informed neural networks.
+
+    e.  The use of automatic differentiation in scientific machine learning.
+
+    f.  The challenges of applying automatic differentiation to scientific applications.
+
+Differential programming is a technique for [automatically computing the derivatives]{style="color: magenta"} of functions.
+
+This can be done using a variety of techniques, including:
+
+##  {.smaller}
+
+-   **Symbolic differentiation**: This involves using symbolic mathematics to represent the function and its derivatives. This can be a powerful technique, but it can be difficult to use for complex functions.
+
+-   **Numerical differentiation**: This involves using numerical methods to approximate the derivatives of the function. This is a simpler technique than symbolic differentiation, but it is less accurate.
+
+-   [**Automatic differentiation**]{style="color: magenta"}: This is a technique that combines symbolic and numerical differentiation to automatically compute the derivatives of functions. This is the most powerful technique for differential programming, and it is the most commonly used technique in scientific machine learning.
+
+The mathematical theory of differential programming is based on the concept of [gradients]{style="color: magenta"}.
+
+-   The gradient of a function is a vector that tells you how the function changes as its input changes. In other words, the gradient of a function tells you the direction of [steepest]{style="color: magenta"} ascent or descent.
+
+## {.smaller}
+
+-    The gradient of a function can be calculated using the [gradient descent algorithm]{style="color: magenta"}. The gradient descent algorithm works by starting at a point and then moving in the direction of the gradient until it reaches a minimum or maximum.
+
+-   In ML, we use [stochastic gradient]{style="color: magenta"}optimization methods
+
+Differential programming can be used to solve a variety of problems in scientific machine learning, including:
+
+-   Calculating the [gradients of loss functions]{style="color: magenta"} for machine learning models---this is important for training machine learning models.
+
+-   Solving [differential equations]{style="color: magenta"}---this can be used to model the behavior of physical systems.
+
+-   Performing [optimization]{style="color: magenta"}---this can be used to find the optimal solution to a problem.
+
+-   Solving [**inverse and data assimilation problems**]{style="color: magenta"}---this is none other than a special case of optimization.
+
+## 
+::: center
+[**OPTIMIZATION**]{style="color: blue"}
+:::
+
+## Optimization {.smaller}
+
+::: center
+![image](../images/am205_lec16-NL-opt-cnvx.png){width=30%}
+![image](../images/am205_lec16-NL-opt-multi.png){width=30%}
+:::
+
+Optimization routines typically use [local information]{style="color: magenta"} about a function to iteratively approach a [local minimum.]{style="color: magenta"}
+
+In this (rare) case, where we have a [convex]{style="color: magenta"} function, we easily find a global minimum.
+
+But in general, global optimization can be very difficult
+
+[We usually get stuck in local minima!]{style="color: red"}
+
+Things get MUCH harder in [higher spatial dimensions]{style="color: magenta"}...
+
+## 
+
+::: center
+[**DIFFERENTIAL PROGRAMMING**]{style="color: blue"}
+:::
+
+## Differential Programming {.smaller}
+
+There are 3 ways to compute derivatives of functions:
+
+1.  [Symbolic]{style="color: magenta"} differentiation.
+
+2.  [Numerical]{style="color: magenta"} differentiation.
+
+3.  [Automatic]{style="color: magenta"} differentiation.
+
+See Notebooks for [Intro Pytorch](../../labs/w2-lab01-PyTorch.qmd) and [Differential Programming](../../labs/w3-lab02-Diff-Prog.qmd).
+
+## Symbolic Differentiation{.smaller}
+
+Computes exact, [analytical]{style="color: magenta"} derivatives, in the form of a mathematical expression.
+
+-   There is no approximation error.
+
+-   Operates recursively by applying simple rules to symbols.
+
+- [ ] There may be no analytical expression for gradients of some functions.
+
+- [ ] Can lead to redundant and overly complex expressions.
+
+
+Based on the [`sympy`](https://www.sympy.org/en/index.html) package of Python.
+
+-   Other software: Mathematica, Maple, Sage, etc.
+
+## Numerical Differentiation{.smaller}
+
+::: {#def-fd}
+If $f$ is a differentiable function, then $$f'(x)=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}$$
+:::
+
+Using Taylor expansions, and the definition of the derivative, we can obtain finite-difference, [numerical approximations]{style="color: magenta"}to the derivatives of $f,$ such as $$f'(x)=\frac{f(x+h)-f(x)}{h}+\mathcal{O}(h),$$ $$f'(x)=\frac{f(x+h)-f(x-h)}{2h}+\mathcal{O}(h^{2})$$
+
+-   conceptually simple and very easy to code
+
+-   compute gradients of $f\colon\mathbb{R}^{m}\rightarrow\mathbb{R},$ requires at least $\mathcal{O}(m)$ function evaluations
+
+-   big numerical errors due to truncation and roundoff.
+
+## 
+
+::: center
+[**AUTOMATIC DIFFERENTIATION**]{style="color: blue"}
+:::
+
+## Automatic Differentiation {.smaller}
+
+Automatic differentiation is an [umbrella term]{style="color: magenta"} for a variety of techniques for efficiently computing accurate derivatives of more or less general programs.
+
+-   It is employed by all major neural network frameworks, where a single reverse-mode AD backpass (also known as ["backpropagation"]{style="color: magenta"}) can compute a full gradient.
+
+-   Numerical differentiation would either require many forward passes or symbolic differentiation that is simply untenable due to expression explosion.
+
+-   The survey paper [@Baydin2018] provides an excellent review of all the methods and tools available.
+
+Many algorithms in machine learning, computer vision, physical simulation, and other fields require the calculation of gradients and other derivatives.
+
+-   [Manual]{style="color: magenta"} derivation of gradients can be both time-consuming and error-prone.
+
+-   [Automatic]{style="color: magenta"} differentiation comprises a set of techniques to calculate the derivative of a numerical computation expressed as a [computer code.]{style="color: magenta"}
+
+## {.smaller}
+
+-   These techniques of AD, commonly used for [data assimilation]{style="color: magenta"} in atmospheric sciences and optimal design in computational fluid dynamics, have more recently also been adopted by machine learning researchers.
+
+-   The [backpropagation]{style="color: magenta"} algorithm, used for optimally computing the weights of a neural network, is just a special case of general AD.
+
+-   AD can be found in all the major software libraries for ML/DL, such as TensorFlow, [PyTorch]{style="color: magenta"}, JaX, and Julia's [Flux.jl](http://fluxml.ai/Flux.jl/stable/)/[Zygote.jl](http://fluxml.ai/Zygote.jl/stable/).
+
+<!-- -   It is also found in the most recent implementations of MCMC that are based on Hamiltonian Monte Carlo (HMC), such as Stan, PyMC3, Pyro and others---see lecture on [Probabilistic Programming]{style="color: magenta"}. -->
+
+Practitioners across many fields have built a wide set of [automatic differentiation tools]{style="color: magenta"}, using different programming languages, computational primitives, and intermediate compiler representations.
+
+-   Each of these choices comes with positive and negative trade-offs, in terms of their usability, flexibility, and performance in specific domains.
+
+## {.smaller}
+
+-   Nevertheless, the availability of such tools should not be neglected, since the potential gain from their use is very large.
+
+-   Moreover, the fact that they are already built-in to a large number of ML methods, makes their use quite straightforward.
+
+AD can be readily and extensively used and is thus applicable to many industrial and practical [Digital Twin]{style="color: magenta"} contexts [@asch2022toolbox].
+
+However Digital Twins that require large-scale ML remain challenging.
+
+While substantial efforts are made within the ML communities of PyTorch/Tensorflow, these approaches struggle for large-scale problems that need to
+
+- be frugal with memory use
+- exploit parallelism across multiple nodes/GPUs
+- integrate with existing (parallel) CSE applications
+
+Worthwhile to explore Julia's more integrated approach to HPC Differential Programming [@innes2019differentiable] and [SciML](https://sciml.ai) [@rackauckas2017differentialequations].
+
+## AD for SciML{.smaller}
+
+Recent progress in machine learning (ML) technology has been spectacular.
+
+At the heart of these advances is the ability to obtain high-quality solutions to [non-convex optimization problems]{style="color: magenta"} for functions with billions---or even hundreds of billions---of parameters.
+
+Incredible [opportunity]{style="color: magenta"} for progress in classical applied mathematics problems.
+
+-   In particular, the increased proficiency for systematically handling large, non-convex optimization scenarios may help solve some classical problems that have long been a challenge.
+
+-   We now have the chance to make substantial headway on questions that have not yet been formulated or studied because we lacked the [tools]{style="color: magenta"} to solve them.
+
+## {.smaller}
+-   To be clear, we do not wish to oversell the state of the art, however:
+
+    -   Algorithms that identify the [global optimum]{style="color: magenta"} for non-convex optimization problems do not yet exist.
+
+    -   The ML community has instead developed efficient, open source software tools that find [candidate]{style="color: magenta"} solutions.
+
+    -   They have created [benchmarks]{style="color: magenta"} to measure solution quality.
+
+    -   They have cultivated a culture of [competition]{style="color: magenta"} against these benchmarks.
+
+## Automatic Differentiation—backprop, autograd, Zygote.jl, etc.{.smaller}
+
+-   [Backprop]{style="color: magenta"} is a special case of Algorithmic Differentiation (AD).
+
+-   [Autograd]{style="color: magenta"} is a particular AD package that us supported w/i Python (as part of Pytorch).
+
+-   Most exercises of this course use [PyTorch]{style="color: magenta"}'s AD. 
+ 
+-   Having said that we strongly encourage students to do the exercises in Julia using its extensive AD capabilities (see [JuliaDiff](https://juliadiff.org)), integration in the Julia language, and use of abstractions that allow for
+
+- mixing of hand-derived (adjoint-state) gradients and AD via [ChainRules.jl](https://github.com/JuliaDiff/ChainRules.jl)
+
+- a single AD interface irrespective of the AD backend through the use of [AbstractDifferentiation.jl](https://github.com/JuliaDiff/AbstractDifferentiation.jl).
+
+## {.smaller}
+
+:::{.callout-important}
+AD is [NOT]{style="color: magenta"} finite differences, nor
+symbolic differentiation. Finite differences are too
+[expensive]{style="color: magenta"} (one forward pass for each discrete
+point). They induce huge [numerical errors]{style="color: magenta"}
+(truncation/approximation and roundoff) and are very unstable in the
+presence of noise.
+:::
+
+:::{.callout-note}
+AD is both [efficient]{style="color: magenta"}---linear in
+the cost of computing the value---and numerically
+[stable]{style="color: magenta"}.
+:::
+
+:::{.callout-note}
+The goal of AD is not a formula, but a
+[procedure]{style="color: magenta"} for computing derivatives.
+:::
+
+## Tools for AD {.smaller}
+
+New opportunities that exist because of the widespread, open-source
+    deployment of effective [software tools for automatic
+    differentiation]{style="color: magenta"}.
+
+While the [mathematical framework]{style="color: magenta"} for
+    automatic differentiation was established long ago---dating back at
+    least to the evolution of adjoint-based optimization in optimal
+    control [@asch2016data; @asch2022toolbox]---ML researchers have recently
+    designed efficient software frameworks that natively run on
+    [hardware accelerators]{style="color: magenta"} (GPUs).
+
+-   These frameworks have served as a core technology for the ML
+    revolution over the last decade and inspired [high-quality
+    software]{style="color: magenta"} libraries such as
+
+    -   JAX,
+
+    -   [PyTorch]{style="color: magenta"} and TensorFlow
+    
+    -   Julia's ML with Flux.jl and AD with Zygote.jl and abstractions with ChainRules.jl and AbstractDifferentiation.jl
+
+## Statements{.smaller}
+
+The technology's key feature is: **the computational cost of
+    computing derivatives of a target loss function is independent of
+    the number of parameters;**
+
+-   this trait makes it possible for users to implement
+        [gradient-based optimization]{style="color: magenta"} algorithms
+        for functions with staggering numbers of parameters.
+
+> ["Gradient descent can write code better than you, I'm sorry."
+> ]{style="color: orange"}
+>
+> ["Yes, you should understand backprop." ]{style="color: orange"}
+>
+> ["I've been using PyTorch a few months now and I've never felt better.
+> I have more energy. My skin is clearer. My eye sight has
+> improved."]{style="color: orange"}
+
+-   Andrej Karpathy \[\~2017\] (Tesla AI, OpenAI)
+
+:::{.callout-note}
+
+Tools such as PyTorch and TensorFlow may not scale to 3D problems and are challenging to integrate with physics-based simulations and gradients (via adjoint state).
+:::
+
+## 
+::: center
+**[BACKPROPAGATION]{style="color: blue"}**
+:::
+
+## Backpropagation---optimization problem{.smaller}
+
+We want to solve a (nonlinear, non-convex) [optimization
+    problem]{style="color: magenta"}, either
+
+-   for a [dynamic system]{style="color: magenta"},
+        $$\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=f(\mathbf{x};\mathbf{\theta}),$$
+        where $\mathbf{x}\in\mathbb{R}^{n}$ and
+        $\mathbf{\theta}\in\mathbb{R}^{p}$ with $n,p\gg1.$
+
+-   or for a [machine learning]{style="color: magenta"} model
+        $$\mathbf{y}=f(\mathbf{x};\mathbf{w}),$$ where
+        $\mathbf{x}\in\mathbb{R}^{n}$ and $\mathbf{w}\in\mathbb{R}^{p}$
+        with $n,p\gg1.$
+
+To find the [minimum/optimum]{style="color: magenta"}, we want to
+    minimize an appropriate [cost/loss function]{style="color: magenta"}
+    $$J(\mathbf{x},\mathbf{\theta}),\quad\mathcal{L}(\mathbf{w},\mathbf{\theta})$$
+
+## {.smaller}
+
+usually some[ error norm]{style="color: magenta"}, and then
+    (usually) compute its average
+
+The best/fastest way to solve this optimization problem, is to use
+    [gradients]{style="color: magenta"} and gradient-based methods.
+
+:::{#def-backprop}
+
+**Backpropagation** is an algorithm for computing
+    [gradients]{style="color: magenta"}.
+
+Backpropagation is an instance of [reverse-mode automatic
+    differentiation]{style="color: magenta"}
+
+-   very broadly applicable to machine learning, [data
+        assimilation]{style="color: magenta"} and inverse problems in
+        general
+
+-   it is "just" a clever and efficient use of the [Chain Rule]{style="color: magenta"} for derivatives
+:::
+
+## {.smaller}
+
+We can prove [mathematically]{style="color: magenta"} the following
+    equivalences:
+
+```{mermaid .hidden}
+flowchart TD
+  A[Backpropagation]<-->B[Reverse-mode automatic differentiation]<-->C[Discrete adjoint-state method]
+```
+
+:::{.callout-note}
+Recall: the adjoint-state method is the theoretical basis for [Data
+    Assimilation]{style="color: magenta"}, as well as many other inverse
+    problems---see Basic Course, Lecture on Adjoint Methods).
+:::
+
+## Chain Rule{.smaller}
+
+We want to compute the cost/loss function gradient, which is usually
+    the average over the training samples of the [loss
+    gradient]{style="color: magenta"},
+    $$\nabla_{w}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial w},\quad\nabla_{\theta}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial\theta},$$
+    or, in general
+    $$\nabla_{z}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial z},$$
+    where $z=w$ or $z=\theta,$ etc.
+
+Recall: if $f(x)$ and $x(t)$ are
+    [univariate]{style="color: magenta"} (differentiable) functions,
+    then
+    $$\frac{\mathrm{d}}{\mathrm{d}t}f(x(t))=\frac{\mathrm{d}f}{\mathrm{d}x}\frac{\mathrm{d}x}{\mathrm{d}t}$$
+
+## {.smaller}
+
+and this can be easily generalized to the
+    [multivariate]{style="color: magenta"} case, such as
+    $$\frac{\mathrm{d}}{\mathrm{d}t}f(x(t),y(t))=\frac{\mathrm{d}f}{\mathrm{d}x}\frac{\mathrm{d}x}{\mathrm{d}t}+\frac{\mathrm{d}f}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}t}$$
+
+:::{#exm-simple}
+Consider $$f(x,y,z)=(x+y)z$$
+
+Decompose $f$ into [simple differentiable
+    elements]{style="color: magenta"} $$q(x,y)=x+y,$$ then $$f=qz$$
+:::
+
+:::{.callout-note}
+
+Each element has an [analytical]{style="color: magenta"}
+    (exact/known) derivative---eg. sums, products, sines, cosines, min,
+    max, exp, log, etc.
+:::
+
+## {.smaller}
+
+Compute the gradient of $f$ with respect to its three
+    variables, using the [chain rule]{style="color: magenta"}
+
+-   we begin with
+        $$\frac{\partial f}{\partial q}=z,\quad\frac{\partial f}{\partial z}=q$$
+        and
+        $$\frac{\partial q}{\partial x}=1,\quad\frac{\partial q}{\partial y}=1$$
+
+-   then the [chain rule]{style="color: magenta"} gives the terms of
+        the [gradient]{style="color: magenta"}, $$\begin{aligned}
+        \frac{\partial f}{\partial x} & =\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=z\cdot1\\
+        \frac{\partial f}{\partial y} & =\frac{\partial f}{\partial q}\frac{\partial q}{\partial y}=z\cdot1\\
+        \frac{\partial f}{\partial z} & =q
+        \end{aligned}$$
+
+## {.smaller}
+
+```{python}
+# set some inputs
+x = -2; y = 5; z = -4
+# perform the forward pass
+q = x + y # q becomes 3
+f = q * z # f becomes -12
+# perform the backward pass (backpropagation)
+# in reverse order:
+# first backprop through f = q * z 
+dfdz = q  # df/dz = q, so gradient on z becomes 3 
+dfdq = z  # df/dq = z, so gradient on q becomes -4 
+dqdx = 1.0
+dqdy = 1.0
+
+# now backprop through q = x + y
+# dfdx = dfdq * dqdx  # The * here is the chain rule!
+dfdy = dfdq * dqdy
+```
+We obtain the [gradient]{style="color: magenta"} in the variables
+    [`[``dfdx, dfdy, dfdz``]`]{style="color: teal"} that give us the
+    [sensitivity]{style="color: magenta"} of the function
+    [`f`]{style="color: teal"} to the variables
+    [`x, y`]{style="color: teal"} and [`z`]{style="color: teal"}.
+
+It's all done with [graphs]{style="color: magenta"}\... DAGs, in
+    fact
+
+## {.smaller}
+
+The above computation can be visualized with a circuit diagram:
+
+::: center
+![](../images/comp_graph_simple.png){width=50%}
+:::
+
+the [forward pass]{style="color: green"}, computes values from
+    inputs to outputs
+
+the [backward pass]{style="color: red"} then performs
+    backpropagation, starting at the end and recursively applying the
+    chain rule to compute the gradients all the way to the inputs of the
+    circuit.
+
+-   The gradients can be thought of as [flowing
+        backwards]{style="color: magenta"} through the circuit.
+
+## Forward vs Reverse Mode{.smaller}
+
+[Forward]{style="color: magenta"} mode is used for
+
+-   solving nonlinear equations
+
+-   sensitivity analysis
+
+-   uncertainty propagation/quantification
+        $$f(x+\Delta x)\approx f(x)+f'(x)\Delta x$$
+
+[Reverse]{style="color: magenta"} mode is used for
+
+-   machine/deep learning
+
+-   optimization
+
+## Backprop - ML example{.smaller}
+
+For a univariate, logistic least-squares problem, we have:
+
+-   [linear model]{style="color: magenta"}/function of $x$: $z=wx+b$
+
+-   [nonlinear activation]{style="color: magenta"}: $y=\sigma(x)$
+
+-   [quadratic loss]{style="color: magenta"}:
+        $\mathcal{L}=(1/2)(y-t)^{2},$ where $t$ is the target/observed
+        value
+
+**Objective**: find the values of the parameters/weights, $w$ and
+    $b,$ that [minimize]{style="color: magenta"} the loss $\mathcal{L}$
+
+-   to do this, we will use the [gradient]{style="color: magenta"}
+        of $\mathcal{L}$ with respect to the parameters/weights, $w$ and
+        $b,$
+        $$\nabla_{w}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial w},\quad\nabla_{b}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial b}$$
+
+## Brute force {.smaller}
+
+[Calculus]{style="color: magenta"} approach:
+
+::: center
+![](../images/univariate_chain.png)
+:::
+
+[It's a mess]{style="color: magenta"}\... too many computations, too
+    complex to program!
+
+## {.smaller}
+
+[Structured]{style="color: magenta"} approach: $$\begin{aligned}
+     & \mathrm{compute\ loss} &  & \mathrm{compute\ derivatives}\\
+     & \mathrm{{\color{blue}forwards}} &  & \mathrm{{\color{red}backwards}}\\
+    z & =wx+b & \frac{\partial\mathcal{L}}{\partial y} & =y-t\\
+    y & =\sigma(z) & \frac{\partial\mathcal{L}}{\partial z} & =\frac{\partial\mathcal{L}}{\partial y}\frac{\partial y}{\partial z}=\frac{\partial\mathcal{L}}{\partial y}\sigma'(z)\\
+    \mathcal{L} & =\frac{1}{2}(y-t)^{2} & \frac{\partial\mathcal{L}}{\partial w} & =\frac{\partial\mathcal{L}}{\partial z}\frac{\partial z}{\partial w}=\frac{\partial\mathcal{L}}{\partial z}x\\
+     &  & \frac{\partial\mathcal{L}}{\partial b} & =\frac{\partial\mathcal{L}}{\partial z}\frac{\partial z}{\partial b}=\frac{\partial\mathcal{L}}{\partial z}\cdot1
+    \end{aligned}$$
+
+-   can easily be written as a [computational graph
+        ]{style="color: magenta"}with
+
+-   nodes = inputs and computed quantities
+
+-   edges = nodes computed directly as functions of other nodes
+
+## {.smaller}
+
+::: center
+![](../images/comp_graph.png){width="30%"}
+:::
+
+[Loss ]{style="color: magenta"}is computed in the
+    [forward]{style="color: magenta"} pass
+
+[Gradient]{style="color: magenta"} is computed in the
+    [backward]{style="color: magenta"} pass
+
+-   the derivatives of $y$ and $z$ are
+        [exact/known]{style="color: magenta"}
+
+-   the derivatives of $\mathcal{L}$ are
+        [computed]{style="color: magenta"}, starting from the end
+
+-   the gradients wrt to the parameters are readily obtained by
+        [backpropagation]{style="color: magenta"} using the [chain
+        rule]{style="color: magenta"}!
+
+<!-- ## {.smaller}
+-   Consider the function
+    $$f(x,y)=\frac{x+\sigma(y)}{\sigma(x)+(x+y)^{2}},\quad\sigma(x)=\frac{1}{1+e^{-x}}$$
+
+-   TBC\... (exercise) -->
+
+## Full Backprop Algorithm {.smaller}
+
+::: center
+![](../images/backprop_algo.png){width="70%"}
+:::
+
+where $\bar{v}_{i}$ denotes the derivatives of the loss function with
+respect to $v_{i},$ $$\frac{\partial\mathcal{L}}{\partial v_{i}}$$
+
+## {.smaller}
+
+[Computational cost]{style="color: magenta"} of backprop:
+    approximately two forward passes, and hence
+    [linear]{style="color: magenta"} in the number of unknowns
+
+-   Backprop is used to train the overwhelming majority of [neural
+        nets]{style="color: magenta"} today.
+
+-   [Optimization]{style="color: magenta"} algorithms, in addition
+        to gradient descent (e.g. second-order methods) use backprop to
+        compute the gradients.
+
+-   Backprop can thus be used in [SciML]{style="color: magenta"},
+        and in particular for Digital Twins (direct and inverse
+        problems), wherever derivatives and/or gradients need to be
+        computed.
+
+##
+
+::: center
+**[AUTOGRAD]{style="color: blue"}**
+:::
+
+## Autograd{.smaller}
+
+[`Autograd`]{style="color: blue"} can automatically differentiate
+    native Python and Numpy code.
+
+-   It can handle a [large subset]{style="color: magenta"} of
+        Python's features, including loops, ifs, recursion and closures.
+
+-   It can even take [derivatives]{style="color: magenta"} of
+        [derivatives]{style="color: magenta"} of
+        [derivatives]{style="color: magenta"}, etc.
+
+-   It supports [reverse-mode
+        differentiation]{style="color: magenta"} (a.k.a.
+        [backpropagation]{style="color: magenta"}), which means it can
+        efficiently take gradients of scalar-valued functions with
+        respect to array-valued arguments, as well as [forward-mode
+        differentiation]{style="color: magenta"} (to compute
+        sensitivities), and the two can be composed arbitrarily.
+
+-   The main intended application of Autograd is [gradient-based
+        optimization]{style="color: red"}.
+
+After a function is evaluated, [`Autograd`]{style="color: blue"} has
+    a [graph]{style="color: magenta"} specifying all operations that
+    were performed on the inputs with respect to which we want to
+    differentiate.
+
+-   This is the [computational graph]{style="color: magenta"} of the
+        function evaluation.
+
+## {.smaller}
+
+-   To compute the derivative, we simply apply the basic rules of
+        (analytical) differentiation to each
+        [node]{style="color: magenta"} in the graph.
+
+[Reverse mode differentiation]{style="color: magenta"}
+
+-   Given a function made up of several nested function calls, there
+        are several ways to compute its derivative.
+
+-   For example, given $$L(x)=F(G(H(x))),$$ the chain rule says that
+        its gradient is
+        $$\mathrm{d}L/\mathrm{d}x=\mathrm{d}F/\mathrm{d}G*\mathrm{d}G/\mathrm{d}H*\mathrm{d}H/\mathrm{d}x.$$
+
+## {.smaller}
+
+-   If we evaluate this product from right-to-left:
+        $$(\mathrm{d}F/\mathrm{d}G*(\mathrm{d}G/\mathrm{d}H*\mathrm{d}H/\mathrm{d}x)),$$
+        the same order as the computations themselves were performed,
+        this is called [forward-mode
+        differentiation]{style="color: magenta"}.
+
+-   If we evaluate this product from left-to-right:
+        $$((\mathrm{d}F/\mathrm{d}G*\mathrm{d}G/\mathrm{d}H)*\mathrm{d}H/\mathrm{d}x),$$
+        the reverse order as the computations themselves were performed,
+        this is called [reverse-mode
+        differentiation]{style="color: magenta"}.
+
+Compared to finite differences or forward-mode, reverse-mode
+    differentiation is by far the more practical method for
+    differentiating functions that take in a (very)[ large vector
+    ]{style="color: magenta"}and output a single number.
+
+In the machine learning community, reverse-mode differentiation is
+    known as ['backpropagation',]{style="color: magenta"} since the
+    gradients propagate backwards through the function (as seen above).
+
+## {.smaller} 
+
+It's particularly nice since you don't need to instantiate the
+    intermediate Jacobian matrices explicitly, and instead only rely on
+    applying a sequence of matrix-free [vector-Jacobian product
+    ]{style="color: magenta"}functions (VJPs).
+
+Because Autograd supports [higher
+    derivatives]{style="color: magenta"} as well,
+    [Hessian]{style="color: magenta"}-vector products (a form of
+    second-derivative) are also available and efficient to compute.
+
+:::{.callout-important} 
+Autograd is now being superseded by [`JAX`]{style="color: blue"}.
+:::
+
+## PyTorch versus Julia{.smaller}
+
+While extremely easy to use and featured, PyTorch & Jax are walled gardens 
+
+- making it difficult integrate w/ CSE software
+- go off the beaten path
+
+In response to the prompt "Can you list in Markdown table form pros and cons of PyTorch and Julia AD systems" ChatGTP4.0 generated the following adapted table
+
+:::{#tab-procon_a}
+| Feature | PyTorch | Julia AD |
+|---------|---------|----------|
+| **Language** | Python-based, widely used in ML community | Julia, known for high performance and mathematical syntax |
+| **Performance** | Fast, but can be limited by Python's speed | Generally faster, benefits from Julia's performance |
+| **Ease of Use** | User-friendly, extensive documentation and community support | Steeper learning curve, but elegant for mathematical operations |
+:::
+
+## {.smaller}
+
+:::{#tab-procon_b}
+| Feature | PyTorch | Julia AD |
+|---------|---------|----------|
+| **Dynamic Computation Graph** | Yes, allows flexibility | Yes, with support for advanced features |
+| **Ecosystem** | Extensive, with many libraries and tools | Growing, with packages for scientific computing |
+| **Community Support** | Large community, well-established in industry and academia | Smaller but growing community, strong in scientific computing |
+| **Integration** | Easy integration with Python libraries and tools | Good integration w/i Julia ecosystem|
+| **Debugging** | Good debugging tools, but can be tricky due to dynamic nature | Good, with benefits from Julia's compiler & type system |
+| **Parallel & GPU ** | Excellent support | Excellent, potentially faster due to Julia's design |
+| **Maturity** | Mature, widely adopted | Less but rapidly evolving |
+
+:::
+
+## {.smaller}
+
+:::{.callout-important} 
+This table highlights key aspects but may not cover all nuances. Both systems are continuously evolving, so it's always good to check the latest developments and community feedback when making a choice.
+:::
+
+::: {style="text-align: margin-top: 1em"}
+For those of you interested in Julia checkout the lecture [Forward- & Reverse-Mode AD by Adrian Hill](https://adrianhill.de/julia-ml-course/L6_Automatic_Differentiation/){preview-link="true" style="text-align: center"}
+:::
+
+# References {.unnumbered .smaller}
+
+::: {#refs}
+:::

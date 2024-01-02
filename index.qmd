@@ -6,21 +6,25 @@ title: "Digital Twins for Physical Systems Course Website"
 
 **Course overview from CSE : Digital Twins for Physical Systems**
 
-Intro to data science and statistical thinking. Learn to explore, visualize,and analyze data to understand natural phenomena, investigate patterns, model outcomes,and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, data visualization, and effectively communicating results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language.
+*IBM defines "A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making." During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks, and neural operators where Fourier Neural Operators act as surrogates for solutions of partial-differential equations. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins that can be used to monitor and control complicated processes such as underground storage of CO~2~ or management of batteries.*
+
+<!-- Intro to data science and statistical thinking. Learn to explore, visualize,and analyze data to understand natural phenomena, investigate patterns, model outcomes,and make predictions, and do so in a reproducible and shareable manner. Gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, data visualization, and effectively communicating results. Work on problems and case studies inspired by and based on real-world questions and data. The course will focus on the R statistical computing language. -->
 
 ## Class meetings
 
 | Meeting | Location | Time                   |
 |---------|----------|------------------------|
-| Lecture | Room A   | Mon & Wed 10 - 11:15am |
-| Lab 01  | Room B   | Thu 10 - 11:15am       |
-| Lab 02  | Room C   | Thu 1:45 - 3pm         |
-| Lab 03  | Room D   | Thu 3:30 - 4:45pm      |
+| Lecture | Howey Physics N210  | Mon & Wed 5:00 - 6:15am |
+
+## Prerequisites
+
+Numerical Linear Algebra, Statistics, Machine Learning, Experience w/ Python, or Julia
 
 ## Teaching team 
 
 | Name                 | Office hours   | Location   |
 |----------------------|----------------|------------|
-| Instructor           | Tue 2 - 3pm    | Office 123 |
-| Teaching Assistant 1 | Mon 5 - 7pm    | Zoom       |
-| Teaching Assistant 2 | Fri 11am - 1pm | Zoom       |
+| [Felix J. Herrmann](mailto:felix.herrmann@gatech.edu) (Instructor)    | TBD            | Zoom       |
+| [Rafael Orozco](mailto:rorozco@gatech.edu) (TA) | TBD            | Zoom       |
+
+

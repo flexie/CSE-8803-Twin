@@ -1,0 +1,14 @@
+---
+title: "Differentiable Programming"
+date: "September 16, 2022"
+categories: "Lab"
+notebook-view: 
+  - notebook: 02Examples/ad/diff_prog.ipynb
+    title: "Intro Differentiable Programming"
+  - notebook: 02Examples/ad/autograd_lin_reg.ipynb
+    title: "Linear Regression with `autograd`"
+  - notebook: 02Examples/ad/autograd_tut.ipynb
+    title: "`Autograd` tutorial"
+---
+
+Add instructions for assignment. 

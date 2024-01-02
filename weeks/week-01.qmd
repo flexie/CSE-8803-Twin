@@ -1,15 +1,15 @@
 ---
 title: "Week 01"
-subtitle: "Welcome to Intro Data Science"
-description: "Aug 29 - Sep 02"
-author: ""
+subtitle: "Welcome to Digital Twins for Physical Systems"
+description: "Jan 08  - Jan 12"
+author: "Felix J. Herrmann"
 date: ""
 listing:
   - id: slides
     contents:
       - ../slides/week-01/*.qmd
     type: table
-    fields: [title, date]
+    fields: [title, subtitle, date]
     date-format: "ddd, MMM DD"
     field-display-names:
       title: "Topic"
@@ -17,20 +17,20 @@ listing:
     sort: [filename]
     sort-ui: false
     filter-ui: false
-  # - id: assignments
-  #   contents:
-  #     - ../hw/w1-*.qmd
-  #     - ../labs/w1-*.qmd
-  #   type: table
-  #   fields: [categories, title, date]
-  #   date-format: "ddd, MMM DD"
-  #   field-display-names:
-  #     categories: "Assignment"
-  #     title: "Title"
-  #     date: "Due"
-  #   sort: [date]
-  #   sort-ui: false
-  #   filter-ui: false
+  - id: assignments
+    contents:
+  #     - ../hw/w2-*.qmd
+       - ../labs/w1-*.qmd
+    type: table
+    fields: [categories, title, date]
+    date-format: "ddd, MMM DD"
+    field-display-names:
+      categories: "Assignment"
+      title: "Title"
+      date: "Due"
+    sort: [date]
+    sort-ui: false
+    filter-ui: false
 tbl-colwidths: [10,50,40]
 ---
 
@@ -41,12 +41,17 @@ tbl-colwidths: [10,50,40]
 
 # Assignments
 
-There are no assignments scheduled this week.
+::: {#assignments}
+:::
+
 
 # Readings
 
 |                                                                                                           |
 |-----------------------------------------------------------------------------------------------------------|
-| Course Syllabus                                                                                           |
-| [R for Data Science: Chapter 2 - Introduction](https://r4ds.had.co.nz/explore-intro.html)                 |
-| [Intro to Modern Data Science: Chapter 1 - Hello data](https://openintro-ims.netlify.app/data-hello.html) |
+| [Course Syllabus](../syllabus.qmd)                                                                        |
+| [Chapter 1 --- A toolbox for digital twins](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 |
+| [Section --- 2 A comprehensive review of digital twin — part 1](https://link.springer.com/article/10.1007/s00158-022-03425-4) |
+| [Chapter 8 --- A toolbox for digital twins until section 8.7[^1] ](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 |
+
+[^1]: There is a lot of material there that you may want to read through. Use material presented in class as a guide what is important.

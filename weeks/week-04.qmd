@@ -1,13 +1,13 @@
 ---
-title: "Week 03"
+title: "Week 04"
 subtitle: "Data Assimilation"
-description: "January 22- 26"
+description: "jan/Feb 29 - 02"
 author: ""
 date: ""
 listing:
   - id: slides
     contents:
-      - ../slides/week-03/*.qmd
+      - ../slides/week-04/*.qmd
     type: table
     fields: [title, subtitle, date]
     date-format: "ddd, MMM DD"
@@ -20,7 +20,7 @@ listing:
   - id: assignments
     contents:
       # - ../hw/w3-*.qmd
-      - ../labs/w3-*.qmd
+      - ../labs/w4-*.qmd
     type: table
     fields: [categories, title, date]
     date-format: "ddd, MMM DD"

@@ -1,0 +1,381 @@
+---
+title: "Adjoint state"
+subtitle: "Data Assimilation"
+date: "January 24, 2024"
+footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
+logo: "images/logo.png"
+format: 
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    center: true
+    html-math-method: mathjax
+execute:
+  freeze: auto
+  echo: true
+bibliography: ../../references.bib
+---
+
+## Outline{.smaller}
+
+[Adjoint methods and variational data assimilation]{fig-align="color: blue"}
+
+1.  Introduction to data assimilation: setting, history, overview,
+    definitions.
+
+2.  [Adjoint method.]{style="color: red"}
+
+3.  [Variational data assimilation methods: ]{style="color: lightgray"}
+
+    a.  [3D-Var, ]{style="color: lightgray"}
+
+    a.  [4D-Var.]{style="color: lightgray"}
+
+## Outline {.smaller}
+
+[Statistical estimation, Kalman filters and sequential data assimilation
+(4h)]{style="color: blue"}
+
+::: enumerate
+::: {style="color: lightgray"}
+Introduction to statistical DA.
+
+Statistical estimation.
+
+The Kalman filter.
+
+Nonlinear extensions and ensemble filters.
+
+:::
+:::
+
+## Text books
+
+::: center
+![](../images/FA11_Asch-Boucquet_cover10-24-16.png){width="80%"}
+:::
+
+## 
+
+::: center
+![](../images/MN06_ASCH_COVER_B_V6.png){width="80%"}
+:::
+
+##
+
+::: center
+**[ADJOINT METHOD FOR INVERSE PROBLEMS]{style="color: blue"}**
+:::
+
+## Adjoint-state Methods{.smaller .nostretch} 
+
+A very [general approach]{style="color: magenta"} for solving
+    inverse problems\... including [Machine
+    Learning!]{style="color: magenta"}
+
+[Variational DA]{style="color: magenta"} is based on an [adjoint
+    approach]{style="color: magenta"}.
+
+![](../images/adjoint.png){fig-align="center" width="40%"}
+
+::: {#def-adjoint}
+[*An **adjoint** is a general mathematical technique, based on variational calculus, that enables the computation of the gradient of an objective, or cost functional with respect to the model
+parameters in a very efficient manner.*]{style="color: red"}
+:::
+
+## Adjoint-state---continuous formulation{.smaller .nostretch}
+
+Let $\mathbf{u}(\mathbf{x},t)$ be the state of a *[dynamical
+    system]{style="color: magenta"}* whose behavior depends on model
+    parameters $\mathbf{m}(\mathbf{x},t)$ and is described by a
+    differential operator equation
+    $$\mathbf{L}(\mathbf{u},\mathbf{m})=\mathbf{f},$$ where
+    $\mathbf{f}(\mathbf{x},t)$ represents external forces.
+
+Define a *[cost function]{style="color: magenta"}* $J(\mathbf{m})$
+    as an energy functional[^1] or, more commonly, as a [misfit
+    functional ]{style="color: magenta"}that quantifies the error
+    ($L^{2}$-distance[^2]) between the observation and the model
+    prediction $\mathbf{u}(\mathbf{x},t;\mathbf{m}).$ For example,
+    $$J(\mathbf{m})=\int_{0}^{T}\int_{\Omega}\left(\mathbf{u}(\mathbf{x},t;\mathbf{m})-\mathbf{u}^{\mathrm{obs}}(\mathbf{x},t)\right)^{2}\,\mathrm{d}\mathbf{x}\:\mathrm{d}t,$$
+    where $\mathbf{x}\in\Omega\subset\mathbb{R}^{n},\,n=1,2,3,$ and
+    $0\le t\le T.$
+
+[^1]: A functional is a generalization of a function. The functional
+    depends on functions, whereas a function depends on variables. We
+    then say that a functional is mapping from a space of functions into
+    the real numbers.
+
+[^2]: The $L^{2}$-space is a Hilbert space of (measurable) functions
+    that are square-integrable (in Lebesgue sense). 
+
+## Adjoint-state---continuous formulation{.smaller .nostretch}
+
+Our [objective]{style="color: magenta"} is to choose the model
+    parameters $\mathbf{m}$ as a function of the observed output
+    $\mathbf{u}^{\mathrm{obs}},$ such that the cost function
+    $J(\mathbf{m})$ is [minimized]{style="color: magenta"}.
+
+The minimization is most frequently performed by a gradient-based
+    method, the simplest of which is steepest gradient, though usually
+    some variant of a quasi-Newton approach is used, see @asch2022toolbox, 
+    @wright2006numerical.
+
+If we can obtain an expression for the gradient, then the
+    minimization will be considerably facilitated.
+
+This is the objective of the adjoint method that provides an
+    **[explicit formula for the gradient of
+    $J(\mathbf{m}).$]{style="color: magenta"}**
+
+
+## Adjoint methods---optimization formulation{.smaller}
+
+Suppose we are given a (P)DE,
+
+$$F(\mathbf{u};\mathbf{m})=0,$${#eq-pde}
+
+where
+
+-   $\mathbf{u}$ is the state vector,
+
+-   $\mathbf{m}$ is the parameter vector, and
+
+-   $F$ includes the partial differential operator $\mathbf{L},$ the
+        right-hand side (source) $\mathbf{f},$ boundary and initial
+        conditions.
+
+Note that the components of $\mathbf{m}$ can appear as any
+    combination of
+
+-   coefficients in the equation,
+
+-   the source,
+
+-   or as components of the boundary/initial conditions.
+
+## {.smaller}
+
+To solve this very general parameter estimation problem, we are
+    given a cost function $J(\mathbf{m};\mathbf{u}).$
+
+The constrained optimization problem is then $$\begin{cases}
+        \mathrm{minimize}_{\mathbf{m}} & J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
+        \mathrm{subject\,to} & F(\mathbf{u};\mathbf{m})=0,
+        \end{cases}$$ where $J$ can depend on both $\mathbf{u}$ and on
+        $\mathbf{m}$ explicitly in the presence of eventual
+        regularization terms.
+
+:::{.callout-note}
+
+-   the constraint is a (partial) differential equation and
+
+-   the minimization is with respect to a (vector) function.
+:::
+
+This type of optimization is the subject of [variational
+        calculus]{style="color: magenta"}, a generalization of classical
+        calculus where differentiation is performed with respect to a
+        variable, not a function.
+
+## {.smaller}
+
+The [gradient]{style="color: magenta"} of $J$ with respect to
+    $\mathbf{m}$ (also known as the *sensitivity*) is then obtained by
+    the [chain-rule]{style="color: magenta"},
+    $$\nabla_{\mathbf{m}}J=\frac{\partial J}{\partial\mathbf{u}}\frac{\partial\mathbf{u}}{\partial\mathbf{m}}+\frac{\partial J}{\partial\mathbf{m}}.$$
+
+-   The partial derivatives of $J$ with respect to $\mathbf{u}$ and
+        $\mathbf{m}$ are readily computed from the expression for $J,$
+
+-   but the derivative of $\mathbf{u}$ with respect to $\mathbf{m}$
+        requires a potentially very large number of evaluations,
+        corresponding to the product of the dimensions of $\mathbf{u}$
+        and $\mathbf{m}$ that can both be very large.
+
+The adjoint method is a way to [avoid]{style="color: red"}
+    calculating all of these derivatives.
+
+We use the fact that if $F(\mathbf{u};\mathbf{m})=0$ everywhere,
+    then this implies that the total derivative of $F$ with respect to
+    $\mathbf{m}$ is equal to zero everywhere too.
+
+## {.smaller}
+
+Differentiating the PDE [-@eq-pde], we can thus write
+    $$\frac{\partial F}{\partial\mathbf{u}}\frac{\partial\mathbf{u}}{\partial\mathbf{m}}+\nabla_{\mathbf{m}}F=0.$$
+
+This can be solved for the untractable derivative of $\mathbf{u}$
+    with respect to $\mathbf{m},$ to give
+    $$\frac{\partial\mathbf{u}}{\partial\mathbf{m}}=-\left(\frac{\partial F}{\partial\mathbf{u}}\right)^{-1}\nabla_{\mathbf{m}}F$$
+    assuming that the inverse of $\partial F/\partial{\mathbf{u}}$
+    exists.
+
+Substituting in the expression for the gradient of $J,$ we obtain
+    $$\begin{aligned}
+    \nabla_{\mathbf{m}}J & =-\frac{\partial J}{\partial\mathbf{u}}\left(\frac{\partial F}{\partial\mathbf{u}}\right)^{-1}\nabla_{\mathbf{m}}F+\frac{\partial J}{\partial\mathbf{m}},\\
+     & =\mathbf{p}\nabla_{\mathbf{m}}F+\frac{\partial J}{\partial\mathbf{m}}
+    \end{aligned}$$ 
+    
+## {.smaller}    
+
+where we have conveniently defined $\mathbf{p}$ as the solution of the
+        [*adjoint equation*]{style="color: magenta"}
+        $$\left(\frac{\partial F}{\partial\mathbf{u}}\right)^{\mathrm{T}}\mathbf{p}=-\frac{\partial J}{\partial\mathbf{u}}.$$
+
+## Adjoint Methods---summing up{.smaller}
+
+In summary, we have a three-step procedure that combines a model-based
+approach (through the PDE) with a data-driven approach (through the cost
+function):
+
+1. Solve the [*adjoint equation*]{style="color: magenta"} for the
+    adjoint state, $\mathbf{p}.$
+
+2. Using the adjoint state, compute the
+    [*gradient*]{style="color: magenta"} of the cost function $J.$
+
+3.  Using the gradient, solve the
+    [*optimization*]{style="color: magenta"} problem to estimate the
+    parameters $\mathbf{m}$ that [*minimize the
+    mismatch*]{style="color: magenta"} between model and observations.
+
+::: {.callout-important}
+This key result enables us to compute the desired gradient $\nabla_\mathbf{m}J$, without the explicit knowledge of the variation of $\mathbf{u}$.
+:::
+
+## {.smaller}
+
+A number of important remarks can be made.
+
+1.  We obtain [*explicit*]{style="color: magenta"}[
+        ]{style="color: magenta"} formulasin terms of the adjoint
+        statefor the gradient with respect to each/any model parameter.
+        Note that this has been done in a completely general setting,
+        without any restrictions on the operator ${F}$ or on the model
+        parameters $\mathbf{m}.$
+
+2.  The [*computational cost*]{style="color: magenta"}[
+        ]{style="color: magenta"}is one solution of the adjoint equation
+        which is usually of the same order as (if not identical to) the
+        direct equation, but with a reversal of time. Note that for
+        nonlinear equations this may not be the case and one may require
+        four or five times the computational effort.
+
+3.  The [*variation*]{style="color: magenta"} (Gâteaux derivative)
+        of ${F}$ with respect to the model parameters $\mathbf{m}$ is,
+        in general, straightforward to compute.
+
+4.  We have not explicitly considered boundary (or initial)
+        conditions in the above, general approach. In real cases, these
+        are potential sources of difficulties for the use of the adjoint
+        approach the *discrete adjoint* can provide a way to overcome
+        this hurdle.
+
+## {.smaller}
+
+5.  For complete mathematical rigor, the above development should be
+        performed in an appropriate [*Hilbert
+        space*]{style="color: magenta"}[
+        ]{style="color: magenta"}setting that guarantees the existence
+        of all the inner products and adjoint operators. The interested
+        reader could consult @troltzsch2010optimal.
+
+6.  In many real problems, the optimization of the misfit functional
+        leads to [*multiple local minima*]{style="color: magenta"} and
+        often to very "flat" cost functions. These are hard problems for
+        gradient-based optimization methods. These difficulties can be
+        (partially) overcome by a panoply of tools:
+
+    a.  [*Regularization*]{style="color: magenta"} terms can
+            alleviate the non-uniqueness problem.
+
+    b.  [*Rescaling*]{style="color: magenta"} the parameters and/or
+            variables in the equations can help with the "flatness."
+            This technique is often employed in numerical optimization.
+
+    c.  [*Hybrid*]{style="color: magenta"} algorithms, that combine
+            stochastic and deterministic optimization (e.g., Simulated
+            Annealing), can be used to avoid local minima.
+
+    d.  Judicious use of [machine learning]{style="color: magenta"}
+            techniques and methods.
+
+## {.smaller}
+
+7.  When measurement and modeling errors can be modeled by Gaussian
+        distributions and a background (prior) solution exists, the
+        objective function may be generalized by including suitable
+        [*covariance
+        matrices*]{style="color: magenta"}[.]{style="color: magenta"}
+        This is the approach employed systematically in data
+        assimilationsee below.
+
+## Adjoint-state method---Discrete systems{.smaller}
+
+In practice, we often work with *discretized* systems of equations, e.g. discretized PDEs.
+
+Assume that $\mathbf{x}$ depends, as usual on a parameter vector, $\mathbf{m}, made up of $p$
+
+- control variables, design parameters, or decision parameters
+
+**Goal:** To optimize these values for a given cost function, $J(\mathbf{x}, \mathbf{m})$, we need to
+
+- evaluate $J(\mathbf{x}, \mathbf{m})$ and compute, as for the continuous case, the gradient $\mathrm{d}J/\mathrm{d}\mathbf{m}$. 
+
+Possible with an adjoint-state method at a cost that is independent of $p$. 
+
+Involves inversion of linear system at $\mathcal{O}(n^3)$ operations --- making it computational feasible to deal with problems of this type 
+
+$$A[\mathbf{m}]\mathbf{x}=\mathbf{q}$${#eq-A}
+
+where $A[\mathbf{m}]$ represents the discretized PDE, $\mathcal{m}$ spatially varying coefficients of the PDE, and $\mathbf{q}$ a source term. 
+
+## Automatic Differentiation {.smaller}
+
+Gradients w.r.t $\mathbf{m}$ of objectives that include $A[\mathbf{m}]$, e.g.
+
+$$J(\mathbf{m})=\frac{1}{2}\|\mathbf{b}-PA^{-1}[\mathbf{m}]\mathbf{q}\|^2_2$$
+
+can be calculated with the adjoint-state method leading to
+
+- fast and scalable codes (e.g. Full-waveform inversion)
+- but coding can be involved especially when combined with machine learning (e.g. when $\mathbf{m}$ is parameterized by a neural network)
+
+Use automatic differentiation (AD) tools instead of analytical tools. 
+
+Two approaches to compute the adjoint state and the resulting gradients
+
+- Continuous case --- discretization of the (analytical) adjoint, denoted by **AtD** = adjoint then discretize;
+- Discrete case --- adjoint of the discretization (the code), denoted as **DtA** = discretize then adjoint.
+
+## Problems AD{.smaller}
+
+Realistic (complex and large scale) solved with **DtA** using AD --- provided by ML  
+
+- PyTorch, TensorFlow (Python), or Flux.jl (Julia)
+
+::: {.callout-caution}
+While convenient, AD as part of ML tools (known as backpropagation)
+
+- does not scale
+- integrate poorly with existing CSE codes
+:::
+
+::: {.callout-tip}
+**Solution:** Combine hand-derived gradients (via the adjoint-state method) w/ Automatic Differentiation
+
+- use ChainRules.jl to include hand-derived gradients in AD systems (e.g. Zygote.jl)
+- known as intrusive automatic differentiation [@li2020coupled], see e.g. @louboutin2023learned for Julia implementation 
+:::
+
+We will devote a separate lecture on AD.
+
+
+# References {.unnumbered .smaller}
+
+::: {#refs}
+:::
