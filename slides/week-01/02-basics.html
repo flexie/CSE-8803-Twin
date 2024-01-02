@@ -10,8 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.528">
 
-  <meta name="dcterms.date" content="2023-12-23">
-  <title>Digital Twins for Physical Systems - Data Assimilation</title>
+  <meta name="dcterms.date" content="2024-01-10">
+  <title>Digital Twins for Physical Systems - Basics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -348,17 +348,22 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Data Assimilation</h1>
-  <p class="subtitle">Basics</p>
+  <h1 class="title">Basics</h1>
+  <p class="subtitle">Data Assimilation</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2023-12-23</p>
+  <p class="date">2024-01-10</p>
 </section>
-<section id="outline" class="slide level2 center">
-<h2>Outline</h2>
-<h3 id="section"></h3>
+<section id="text-book" class="slide level2 center">
+<h2>Text book</h2>
+<div class="center">
+<p><img data-src="../images/MN06_ASCH_COVER_B_V6.png" style="width:80.0%"></p>
+</div>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">INTRODUCTION</span></strong></p>
 </div>
@@ -426,7 +431,7 @@
 <li><p>Finance.</p></li>
 </ol>
 </section>
-<section id="introduction-nonlinearity" class="slide level2 center">
+<section id="introduction-nonlinearity" class="slide level2 smaller center">
 <h2>Introduction: nonlinearity</h2>
 <p>The problems of data assimilation (in particular) and inverse problems in general arise from:</p>
 <ol type="1">
@@ -437,12 +442,10 @@
 <section id="introduction-iterative-process" class="slide level2 smaller center">
 <h2>Introduction: iterative process</h2>
 
-<img data-src="../images/model-assimilation-observations.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><ul>
-<li><p>Closely related to (see Advanced Course)</p>
+<img data-src="../images/model-assimilation-observations.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>Closely related to</p>
 <ul>
 <li><p>the <span style="color: magenta">inference cycle</span></p></li>
 <li><p><span style="color: magenta">machine learning</span>…</p></li>
-</ul></li>
 </ul>
 </section>
 <section class="slide level2 center">
@@ -472,12 +475,10 @@
 <p>Observation <span style="color: magenta">equation</span>: <span class="math display">\[f(t,\theta)=\mathcal{H}z(t,\theta),\]</span> where <span class="math inline">\(\mathcal{H}\)</span> is the observation operator — to account for the fact that observations are never completely known (in space-time).</p>
 <p>Usually we have a finite number of discrete (space-time) <span style="color: magenta">observations</span> <span class="math display">\[\left\{\widetilde{y}_{j}\right\} _{j=1}^{n},\]</span> where <span class="math display">\[\widetilde{y}_{j}\approx f(t_{j},\theta).\]</span></p>
 </section>
-<section id="model-and-data-driven-inverse-problems" class="slide level2 smaller center">
-<h2>Model— and data-driven inverse problems</h2>
-<ul>
-<li><p><span style="color: magenta">Model</span>-driven: <span class="math display">\[\widetilde{y}_{j}=f(t_{j},\theta)\]</span></p></li>
-<li><p><span style="color: magenta">Data</span>-driven: <span class="math display">\[\widetilde{y}_{j}=f(t_{j},\theta)+\varepsilon_{j},\]</span> where <span class="math inline">\(\varepsilon_{j}\)</span> is error and requires that we introduce <span style="color: magenta">variability/uncertainty</span> into the modeling and analysis.</p></li>
-</ul>
+<section id="noise-free-and-noise-data" class="slide level2 smaller center">
+<h2>Noise-free and noise data</h2>
+<p><span style="color: magenta">Noise-free:</span> <span class="math display">\[\widetilde{y}_{j}=f(t_{j},\theta)\]</span></p>
+<p><span style="color: magenta">Noisy Data:</span> <span class="math display">\[\widetilde{y}_{j}=f(t_{j},\theta)+\varepsilon_{j},\]</span> where <span class="math inline">\(\varepsilon_{j}\)</span> is error and requires that we introduce <span style="color: magenta">variability/uncertainty</span> into the modeling and analysis.</p>
 </section>
 <section id="well-posedness" class="slide level2 smaller center">
 <h2>Well-posedness</h2>
@@ -497,27 +498,27 @@
 <dl>
 <dt>WP1</dt>
 <dd>
-<p>Existence—for every <span class="math inline">\(y\in Y\)</span> there is (at least) one solution <span class="math inline">\(x\in X\)</span> such that <span class="math inline">\(Kx=y.\)</span></p>
+<p><strong>Existence</strong>—for every <span class="math inline">\(y\in Y\)</span> there is (at least) one solution <span class="math inline">\(x\in X\)</span> such that <span class="math inline">\(Kx=y.\)</span></p>
 </dd>
 <dt>WP2</dt>
 <dd>
-<p>Uniqueness—for every <span class="math inline">\(y\in Y\)</span> there is at most one <span class="math inline">\(x\in X\)</span> such that <span class="math inline">\(Kx=y.\)</span></p>
+<p><strong>Uniqueness</strong>—for every <span class="math inline">\(y\in Y\)</span> there is at most one <span class="math inline">\(x\in X\)</span> such that <span class="math inline">\(Kx=y.\)</span></p>
 </dd>
 <dt>WP3</dt>
 <dd>
-<p>Stability— the solution <span class="math inline">\(x\)</span> depends continuously on the data <span class="math inline">\(y\)</span> in that for every sequence <span class="math inline">\(\left\{ x_{n}\right\} \subset X\)</span> with <span class="math inline">\(Kx_{n}\rightarrow Kx\)</span> as <span class="math inline">\(n\rightarrow\infty,\)</span> we have that <span class="math inline">\(x_{n}\rightarrow x\)</span> as <span class="math inline">\(n\rightarrow\infty.\)</span></p>
+<p><strong>Stability</strong>— the solution <span class="math inline">\(x\)</span> depends continuously on the data <span class="math inline">\(y\)</span> in that for every sequence <span class="math inline">\(\left\{ x_{n}\right\} \subset X\)</span> with <span class="math inline">\(Kx_{n}\rightarrow Kx\)</span> as <span class="math inline">\(n\rightarrow\infty,\)</span> we have that <span class="math inline">\(x_{n}\rightarrow x\)</span> as <span class="math inline">\(n\rightarrow\infty.\)</span></p>
 </dd>
 </dl>
 </section>
-<section class="slide level2 center">
-
+<section id="section-1" class="slide level2 center">
+<h2></h2>
 <ul>
 <li><p>This concept of ill-posedness will help us to understand and distinguish between direct and inverse models.</p></li>
 <li><p>It will provide us with basic comprehension of the methods and algorithms that will be used to solve inverse problems.</p></li>
 <li><p>Finally, it will assist us in the analysis of “what went wrong?” when we attempt to solve the inverse problems.</p></li>
 </ul>
 </section>
-<section id="ill-posedness-of-inverse-problems" class="slide level2 center">
+<section id="ill-posedness-of-inverse-problems" class="slide level2 smaller center">
 <h2>Ill-posedness of inverse problems</h2>
 <p><strong>Many inverse problems are ill-posed!</strong></p>
 <p>Simplest case: one observation <span class="math inline">\(\tilde{y}\)</span> for <span class="math inline">\(f(\theta)\)</span> and we need to find the pre-image <span class="math display">\[\theta^{*}=f^{-1}(\widetilde{y})\]</span> for a given <span class="math inline">\(\widetilde{y}.\)</span></p>
@@ -526,11 +527,9 @@
 <section id="simplest-case" class="slide level2 smaller center">
 <h2>Simplest case</h2>
 
-<img data-src="../images/simplest.png" class="quarto-figure quarto-figure-center r-stretch"><ul>
-<li><p><span style="color: magenta">Non-existence</span>: there is no <span class="math inline">\(\theta_{3}\)</span> such that <span class="math inline">\(f(\theta_{3})=y_{3}\)</span></p></li>
-<li><p><span style="color: magenta">Non-uniqueness</span>: <span class="math inline">\(y_{j}=f(\theta_{j})=f(\widetilde{\theta}_{j})\)</span> for <span class="math inline">\(j=1,2.\)</span></p></li>
-<li><p><span style="color: magenta">Lack of continuity</span>of inverse map: <span class="math inline">\(\left|y_{1}-y_{2}\right|\)</span> small <span class="math inline">\(\nRightarrow\left|f^{-1}(y_{1})-f^{-1}(y_{2})\right|=\left|\theta_{1}-\tilde{\theta}_{2}\right|\)</span> small.</p></li>
-</ul>
+<img data-src="../images/simplest.png" class="quarto-figure quarto-figure-center r-stretch"><p><span style="color: magenta">Non-existence</span>: there is no <span class="math inline">\(\theta_{3}\)</span> such that <span class="math inline">\(f(\theta_{3})=y_{3}\)</span></p>
+<p><span style="color: magenta">Non-uniqueness</span>: <span class="math inline">\(y_{j}=f(\theta_{j})=f(\widetilde{\theta}_{j})\)</span> for <span class="math inline">\(j=1,2.\)</span></p>
+<p><span style="color: magenta">Lack of continuity</span> of inverse map: <span class="math inline">\(\left|y_{1}-y_{2}\right|\)</span> small <span class="math inline">\(\nRightarrow\left|f^{-1}(y_{1})-f^{-1}(y_{2})\right|=\left|\theta_{1}-\widetilde{\theta}_{2}\right|\)</span> small.</p>
 </section>
 <section id="why-is-this-so-important" class="slide level2 smaller center">
 <h2>Why is this so important?</h2>
@@ -544,9 +543,6 @@
 </section>
 <section id="what-went-wrong" class="slide level2 smaller center">
 <h2>What went wrong</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">This behavior is not the fault of steepest descent algorithms.</label></li>
-</ul>
 <p>✗ This behavior is not the fault of steepest descent algorithms.</p>
 <p>✗ It is a manifestation of the <span style="color: magenta">inherent ill-posedness</span> of the problem.</p>
 <p>✗ How to fix this problem is the subject of much research over the past <span style="color: red">50 years</span>!!!</p>
@@ -560,10 +556,10 @@
 <section id="tikhonov-regularization" class="slide level2 smaller center">
 <h2>Tikhonov regularization</h2>
 <p><strong>Idea:</strong> is to replace the ill-posed problem for <span class="math inline">\(J(\theta)=\left|y_{1}-f(\theta)\right|^{2}\)</span> by a “nearby” problem for <span class="math display">\[J_{\beta}(\theta)=\left|y_{1}-f(\theta)\right|^{2}+\beta\left|\theta-\theta_{0}\right|^{2}\]</span> where <span class="math inline">\(\beta\)</span> is “suitably chosen” regularization/penalization parametersee below for details.</p>
-<ul class="task-list">
+<ul>
 <li><p><label><input type="checkbox" checked="">When it is done correctly, TR provides convexity and compactness.</label></p></li>
-<li><p><label><input type="checkbox">Even when done correctly, it <span style="color: red"><em>modifies the problem</em></span> and new solutions may be far from the original ones.</label></p></li>
-<li><p><label><input type="checkbox">It is not trivial to regularize correctly or even to know if you have succeeded…</label></p></li>
+<li><p>Even when done correctly, it <span style="color: red"><em>modifies the problem</em></span> and new solutions may be far from the original ones.</p></li>
+<li><p>It is not trivial to regularize correctly or even to know if you have succeeded…</p></li>
 </ul>
 </section>
 <section id="non-uniqueness-seismic-travel-time-tomography" class="slide level2 smaller nostretch center">
@@ -583,82 +579,97 @@
 </section>
 <section id="inverse-problems-general-formulation" class="slide level2 smaller center">
 <h2>Inverse Problems: General Formulation</h2>
-<ul>
-<li><p>All inverse problems share a <span style="color: magenta">common formulation</span>.</p></li>
-<li><p>Let the <span style="color: magenta">model parameters</span><sup>1</sup> be a vector (in general, a multivariate random variable), <span class="math inline">\(\mathbf{m},\)</span> and the <span style="color: magenta">data</span> be <span class="math inline">\(\mathbf{d},\)</span> <span class="math display">\[\begin{aligned}
-\mathbf{m} &amp; =\left(m_{1},\ldots,m_{p}\right)\in\mathcal{M},\\
-\mathbf{d} &amp; =\left(d_{1},\ldots,d_{n}\right)\in\mathcal{D},
-\end{aligned}\]</span></p>
-<p>where <span class="math inline">\(\mathcal{M}\)</span> and <span class="math inline">\(\mathcal{D}\)</span> are the corresponding model parameter space and data space.</p></li>
-<li><p>The mapping <span class="math inline">\(G\colon\mathcal{M}\rightarrow\mathcal{D}\)</span> is defined by the <span style="color: magenta">direct</span>(or forward) model <span id="eq-forward"><span class="math display">\[\mathbf{d}=g(\mathbf{m}), \qquad(1)\]</span></span> where</p></li>
-</ul>
+<p>All inverse problems share a <span style="color: magenta">common formulation</span>.</p>
+<p>Let the <span style="color: magenta">model parameters</span><sup>1</sup> be a vector (in general, a multivariate random variable), <span class="math inline">\(\mathbf{m},\)</span> and the <span style="color: magenta">data</span> be <span class="math inline">\(\mathbf{d},\)</span> <span class="math display">\[\begin{aligned}
+    \mathbf{m} &amp; =\left(m_{1},\ldots,m_{p}\right)\in\mathcal{M},\\
+    \mathbf{d} &amp; =\left(d_{1},\ldots,d_{n}\right)\in\mathcal{D},
+    \end{aligned}\]</span></p>
+<p>where <span class="math inline">\(\mathcal{M}\)</span> and <span class="math inline">\(\mathcal{D}\)</span> are the corresponding model parameter space and data space.</p>
+<p>The mapping <span class="math inline">\(G\colon\mathcal{M}\rightarrow\mathcal{D}\)</span> is defined by the <span style="color: magenta">direct</span>(or forward) model</p>
+<p><span id="eq-forward"><span class="math display">\[\mathbf{d}=g(\mathbf{m}), \qquad(1)\]</span></span> where</p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Applied mathematicians often call the equation <span class="math inline">\(G(m)=d\)</span> a mathematical model and <span class="math inline">\(m\)</span> the parameters. Other scientists call <span class="math inline">\(G\)</span> the forward operator and <span class="math inline">\(m\)</span> the model. We will adopt the more mathematical convention, where <span class="math inline">\(m\)</span> will be referred to as the model parameters, <span class="math inline">\(G\)</span> the model and <span class="math inline">\(d\)</span> the data.</p></li></ol></aside></section>
-<section id="section-1" class="slide level2 smaller center">
+<section id="section-2" class="slide level2 smaller center">
 <h2></h2>
+<p>– <span class="math inline">\(g\in G\)</span> is an operator that describes the “physical” model and can take numerous forms, such as algebraic equations, differential equations, integral equations, or linear systems.</p>
 <ul>
-<li><p><span class="math inline">\(g\in G\)</span> is an operator that describes the “physical” model and can take numerous forms, such as algebraic equations, differential equations, integral equations, or linear systems.</p></li>
-<li><p>Then we can add the <span style="color: magenta">observations</span>or predictions, <span class="math inline">\(\mathbf{y}=(y_{1},\ldots,y_{r}),\)</span> corresponding to the mapping from data space into observation space, <span class="math inline">\(H\colon\mathcal{D}\rightarrow\mathcal{Y},\)</span> and described by <span class="math display">\[\mathbf{y}=h(\mathbf{d})=h\left(g(\mathbf{m})\right),\]</span> where</p>
-<ul>
-<li><span class="math inline">\(h\in H\)</span> is the <span style="color: magenta">observation operator</span>, usually some projection into an observable subset of <span class="math inline">\(\mathcal{D}.\)</span></li>
-</ul></li>
-<li><p>Note that, in addition, there will be some <span style="color: magenta">random noise</span> in the system, usually modeled as additive noise, giving the more realistic, stochastic direct model <span id="eq-noisy"><span class="math display">\[\mathbf{d}=g(\mathbf{m})+\mathbf{\epsilon},\label{eq:stat-inv-pb} \qquad(2)\]</span></span> where <span class="math inline">\(\mathbf{\epsilon}\)</span> is a random vector.</p></li>
+<li><p>Then we can add the <span style="color: magenta">observations</span>or predictions, <span class="math inline">\(\mathbf{y}=(y_{1},\ldots,y_{r}),\)</span> corresponding to the mapping from data space into observation space, <span class="math inline">\(H\colon\mathcal{D}\rightarrow\mathcal{Y},\)</span> and described by <span class="math display">\[\mathbf{y}=h(\mathbf{d})=h\left(g(\mathbf{m})\right),\]</span> where</p></li>
+<li><p><span class="math inline">\(h\in H\)</span> is the <span style="color: magenta">observation operator</span>, usually some projection into an observable subset of <span class="math inline">\(\mathcal{D}.\)</span></p></li>
 </ul>
+</section>
+<section id="section-3" class="slide level2 center">
+<h2></h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>In addition, there will be some <span style="color: magenta">random noise</span> in the system, usually modeled as additive noise, giving the more realistic, stochastic direct model <span id="eq-noisy"><span class="math display">\[\mathbf{d}=g(\mathbf{m})+\mathbf{\epsilon},\label{eq:stat-inv-pb} \qquad(2)\]</span></span> where <span class="math inline">\(\mathbf{\epsilon}\)</span> is a random vector.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="inverse-problemsclassification" class="slide level2 smaller center">
 <h2>Inverse Problems—Classification</h2>
-<ul>
-<li><p>We can now classify inverse problems as:</p>
+<p>We can now classify inverse problems as:</p>
 <ul>
 <li><p><span style="color: magenta">deterministic</span> inverse problems that solve <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> for <span class="math inline">\(\mathbf{m},\)</span></p></li>
-<li><p><span style="color: magenta">statistical</span> inverse problems that solve <a href="#/section-1" class="quarto-xref">2</a> for <span class="math inline">\(\mathbf{m}.\)</span></p></li>
-</ul></li>
-<li><p>The first class will be treated by linear algebra and <span style="color: magenta">optimization</span>methods.</p></li>
-<li><p>The latter can be treated by a <span style="color: magenta">Bayesian (filtering)</span>approach, and by weighted least-squares, maximum likelihood and DA techniques</p></li>
-<li><p>Both classes can be further broken down into:</p>
+<li><p><span style="color: magenta">statistical</span> inverse problems that solve <a href="#/section-3" class="quarto-xref">2</a> for <span class="math inline">\(\mathbf{m}.\)</span></p></li>
+</ul>
+<p>The first class will be treated by linear algebra and <span style="color: magenta">optimization</span>methods.</p>
+<p>The latter can be treated by a <span style="color: magenta">Bayesian (filtering)</span>approach, and by weighted least-squares, maximum likelihood and DA techniques</p>
+<p>Both classes can be further broken down into:</p>
 <ul>
-<li><p><span style="color: magenta">Linear</span> inverse problems, where <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> or <a href="#/section-1" class="quarto-xref">2</a> are linear equations. These include linear systems that are often the result of discretizing (partial) differential equations and integral equations.</p></li>
+<li><p><span style="color: magenta">Linear</span> inverse problems, where <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> or <a href="#/section-3" class="quarto-xref">2</a> are linear equations. These include linear systems that are often the result of discretizing (partial) differential equations and integral equations.</p></li>
 <li><p><span style="color: magenta">Nonlinear</span> inverse problems where the algebraic or differential operators are nonlinear.</p></li>
-</ul></li>
 </ul>
 </section>
-<section id="section-2" class="slide level2 smaller center">
+<section id="section-4" class="slide level2 smaller center">
 <h2></h2>
+<p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution see <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Also note that we will be inverting here between the model and data spaces, that are usually both of high dimension and thus this model-based inversion will invariably be <span style="color: magenta">computationally expensive</span>.</p>
+<p>This will motivate us to employ</p>
 <ul>
-<li><p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution see <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references-1" role="doc-biblioref" onclick="">2022</a>)</span></p></li>
-<li><p>Also note that we will be inverting here between the model and data spaces, that are usually both of high dimension and thus this model-based inversion will invariably be <span style="color: magenta">computationally expensive</span>.</p></li>
-<li><p>This will motivate us to employ</p>
-<ul>
-<li><p><span style="color: magenta">reduced order methods</span> based on suitable projections,</p></li>
-<li><p>inversion between the data and observation spaces in a purely data-driven approach, using <span style="color: magenta">machine learning methods</span> (see Advanced Course)</p></li>
-</ul></li>
+<li>inversion between the data and observation spaces in a purely data-driven approach, using <span style="color: magenta">machine learning methods</span></li>
 </ul>
 </section>
 <section id="tikhonov-regularizationintroduction" class="slide level2 smaller center">
 <h2>Tikhonov Regularization—Introduction</h2>
-<ul>
-<li><p>Tikhonov regularization (TR) is probably the most widely used method for <span style="color: magenta">regularizing</span> ill-posed, discrete and continuous <span style="color: magenta">inverse problems</span>.</p></li>
-<li><p>Note that the <span style="color: magenta">LASSO</span> and <span style="color: magenta">ridge regression</span> methods—see ML Lectures—are special cases of TR,</p></li>
-<li><p>The theory is the subject of entire books...</p></li>
-<li><p>Recall:</p>
+<p>Tikhonov regularization (TR) is probably the most widely used method for <span style="color: magenta">regularizing</span> ill-posed, discrete and continuous <span style="color: magenta">inverse problems</span>.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that the <span style="color: magenta">LASSO</span> and <span style="color: magenta">ridge regression</span> methods—see ML Lectures—are special cases of TR.</p>
+</div>
+</div>
+</div>
+<p>The theory is the subject of entire books...</p>
+<p>Recall:</p>
 <ul>
 <li><p>the objective of TR is to reduce, or remove, ill-posedness in optimization problems by modifying the objective function.</p></li>
 <li><p>the three sources of ill-posedness: non-existence, non-uniqueness and sensitivity to perturbations.</p></li>
 <li><p>TR, in principle, addresses and alleviates <span style="color: magenta">all three sources</span> of ill-posedness and is thus a vital tool for the solution of inverse problems.</p></li>
-</ul></li>
 </ul>
 </section>
 <section id="tikhonov-regularizationformulation" class="slide level2 smaller center">
 <h2>Tikhonov Regularization—Formulation</h2>
-<ul>
-<li><p>The most general TR <span style="color: magenta">objective function</span> is <span class="math display">\[\mathcal{T}_{\alpha}(\mathbf{m};\mathbf{d})=\rho\left(G(\mathbf{m}),\mathbf{d}\right)+\alpha J(\mathbf{m}),\]</span> where</p>
+<p>The most general TR <span style="color: magenta">objective function</span> is <span class="math display">\[\mathcal{T}_{\alpha}(\mathbf{m};\mathbf{d})=\rho\left(G(\mathbf{m}),\mathbf{d}\right)+\alpha J(\mathbf{m}),\]</span> where</p>
 <ul>
 <li><p><span class="math inline">\(\rho\)</span> is the <span style="color: magenta"><em>data discrepancy functional</em></span> that quantifies the difference between the model output and the measured data;</p></li>
 <li><p><span class="math inline">\(J\)</span> is the <span style="color: magenta"><em>regularization functional</em></span> that represents some desired quality of the sought for model parameters, usually smoothness;</p></li>
 <li><p><span class="math inline">\(\alpha\)</span> is the <em>r</em><span style="color: magenta"><em>egularization parameter</em></span> that needs to be <span style="color: magenta"><em>tuned</em></span>, and determines the relative importance of the regularization term.</p></li>
-</ul></li>
-<li><p>Each domain, each application and each context will require <span style="color: magenta"><em>specific choices</em></span>of these three items, and often we will have to rely either on previous experience, or on some sort of numerical experimentation (trial-and-error) to make a good choice.</p></li>
-<li><p>In some cases there exist empirical algorithms, in particular for the choice of <span class="math inline">\(\alpha.\)</span></p></li>
 </ul>
+<p>Each domain, each application and each context will require <span style="color: magenta"><em>specific choices</em></span>of these three items, and often we will have to rely either on previous experience, or on some sort of numerical experimentation (trial-and-error) to make a good choice.</p>
+<p>In some cases there exist empirical algorithms, in particular for the choice of <span class="math inline">\(\alpha.\)</span></p>
 </section>
 <section id="tikhonov-regularizationdiscrepancy" class="slide level2 smaller center">
 <h2>Tikhonov Regularization—Discrepancy</h2>
@@ -679,26 +690,22 @@
 </section>
 <section id="trcomputing-the-regularization-parameter" class="slide level2 smaller center">
 <h2>TR—Computing the Regularization Parameter</h2>
-<ul>
-<li><p>Once the data discrepancy and regularization functionals have been chosen, we need to <span style="color: magenta">tune</span> the regularization parameter, <span class="math inline">\(\alpha.\)</span></p></li>
-<li><p>We have here, similarly to the <span style="color: magenta">bias-variance trade-off</span> of ML Lectures, a competition between the discrepancy error and the magnitude of the regularization term.</p>
-<ul>
-<li>We need to choose, the best <span style="color: magenta">compromise</span> between the two.</li>
-</ul></li>
-<li><p>We will briefly present three frequently used approaches:</p>
+<p>Once the data discrepancy and regularization functionals have been chosen, we need to <span style="color: magenta">tune</span> the regularization parameter, <span class="math inline">\(\alpha.\)</span></p>
+<p>We have here, similarly to the <span style="color: magenta">bias-variance trade-off</span> of ML Lectures, a competition between the discrepancy error and the magnitude of the regularization term.</p>
+<p>We need to choose, the best <span style="color: magenta">compromise</span> between the two.</p>
+<p>We will briefly present three frequently used approaches:</p>
 <ol type="1">
 <li><p>L-curve method.</p></li>
 <li><p>Discrepancy principle.</p></li>
 <li><p>Cross-validation and LOOCV.</p></li>
-</ol></li>
-</ul>
+</ol>
 </section>
 <section id="trcomputing-the-regularization-parameter-1" class="slide level2 smaller nostretch center">
 <h2>TR—Computing the Regularization Parameter</h2>
-<div id="fig-L" class="quarto-figure quarto-figure-center" width="30%" data-fig-align="center">
+<div id="fig-L" class="quarto-figure quarto-figure-center" width="35%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-L-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../images/L-curve.png" id="fig-L" class="quarto-figure quarto-figure-center" style="width:30.0%">
+<img data-src="../images/L-curve.png" id="fig-L" class="quarto-figure quarto-figure-center" style="width:35.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-L-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
@@ -707,11 +714,11 @@ Figure&nbsp;1
 </div>
 <p>The <strong><span style="color: magenta">L-curve criterion</span></strong> is an empirical method for picking a value of <span class="math inline">\(\alpha.\)</span></p>
 <ul>
-<li><p>Since <span class="math inline">\(e_{m}(\alpha)=\Vert\mathbf{m}\Vert_{2}\)</span> is a strictly decreasing function of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(e_{d}(\alpha)=\Vert G\mathbf{m}-\mathbf{d}\Vert_{2}\)</span> is a strictly increasing one,</p></li>
+<li><p>since <span class="math inline">\(e_{m}(\alpha)=\Vert\mathbf{m}\Vert_{2}\)</span> is a strictly decreasing function of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(e_{d}(\alpha)=\Vert G\mathbf{m}-\mathbf{d}\Vert_{2}\)</span> is a strictly increasing one,</p></li>
 <li><p>we plot <span class="math inline">\(\log e_{m}\)</span> against <span class="math inline">\(\log e_{d}\)</span> we will always obtain an L-shaped curve that has an “elbow” at the optimal value of <span class="math inline">\(\alpha=\alpha_{L},\)</span> or at least at a good approximation of this optimal value see <a href="#/trcomputing-the-regularization-parameter-1" class="quarto-xref">Figure&nbsp;1</a>.</p></li>
 </ul>
 </section>
-<section id="section-3" class="slide level2 smaller center">
+<section id="section-5" class="slide level2 smaller center">
 <h2></h2>
 <ul>
 <li><p>This trade-off curve gives us a visual recipe for choosing the regularization parameter, reminiscent of the bias-variance trade off</p></li>
@@ -720,22 +727,22 @@ Figure&nbsp;1
 <p>The <strong><span style="color: magenta">discrepancy principle</span></strong></p>
 <ul>
 <li><p>choose the value of <span class="math inline">\(\alpha=\alpha_{D}\)</span> such that the residual error (first term) is equal to an <em>a priori</em> bound, <span class="math inline">\(\delta,\)</span> that we would like to attain.</p></li>
-<li><p>On the L-curve, this corresponds to the intersection with the vertical line at this bound, as shown in <a href="#/trcomputing-the-regularization-parameter-1" class="quarto-xref">Figure&nbsp;1</a>.</p></li>
-<li><p>A good approximation for the bound is to put <span class="math inline">\(\delta=\sigma\sqrt{n},\)</span> where <span class="math inline">\(\sigma^{2}\)</span> is the variance and <span class="math inline">\(n\)</span> the number of observations.<sup>1</sup> This can be thought of as the noise level of the data.</p></li>
-<li><p>The discrepancy principle is also related to regularization by the truncated singular value decomposition (TSVD), in which case the truncation level implicitly defines the regularization parameter.</p></li>
+<li><p>on the L-curve, this corresponds to the intersection with the vertical line at this bound, as shown in <a href="#/trcomputing-the-regularization-parameter-1" class="quarto-xref">Figure&nbsp;1</a>.</p></li>
+<li><p>a good approximation for the bound is to put <span class="math inline">\(\delta=\sigma\sqrt{n},\)</span> where <span class="math inline">\(\sigma^{2}\)</span> is the variance and <span class="math inline">\(n\)</span> the number of observations.<sup>1</sup> This can be thought of as the noise level of the data.</p></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>This is strictly valid under the hypothesis of i.i.d. Gaussian noise.</p></li></ol></aside></section>
-<section id="section-4" class="slide level2 smaller center">
+<section id="section-6" class="slide level2 smaller center">
 <h2></h2>
 <ul>
-<li><p><strong><span style="color: magenta">Cross-validation</span></strong>, as we explained in ML Lectures, is a way of using the observations themselves to estimate a parameter.</p>
+<li>the discrepancy principle is also related to regularization by the truncated singular value decomposition (TSVD), in which case the truncation level implicitly defines the regularization parameter.</li>
+</ul>
+<p><strong><span style="color: magenta">Cross-validation</span></strong>, as we explained in ML Lectures, is a way of using the observations themselves to estimate a parameter.</p>
 <ul>
 <li><p>We then employ the classical approach of either LOOCV or <span class="math inline">\(k\)</span>-fold cross validation, and choose the value of <span class="math inline">\(\alpha\)</span> that minimizes the RSS (Residual Sum of Squares) of the test sets.</p></li>
 <li><p>In order to reduce the computational cost, a generalized cross validation (GCV) method can be used.</p></li>
-</ul></li>
 </ul>
 </section>
-<section id="section-5" class="slide level2 center">
+<section id="section-7" class="slide level2 center">
 <h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">DATA ASSIMILATION</span></strong></p>
@@ -763,7 +770,7 @@ Figure&nbsp;1
 <p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/eq:state" data-reference-type="ref" data-reference="eq:state">[eq:state]</a>) by random or systematic errors.</p>
 <p><span style="color: blue">Observations</span>, or measurements, at time <span class="math inline">\(t_{k}\)</span> are defined by</p>
 </section>
-<section id="section-6" class="slide level2 smaller center">
+<section id="section-8" class="slide level2 smaller center">
 <h2></h2>
 <p><span class="math display">\[\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},\]</span></p>
 <ul>
@@ -789,19 +796,19 @@ Figure&nbsp;1
 <li>For PDEs, where there is in addition a dependence on space, attention must be paid to the function spaces, especially when performing variational analysis.</li>
 </ul>
 </section>
-<section id="section-7" class="slide level2 smaller center">
+<section id="section-9" class="slide level2 smaller center">
 <h2></h2>
 <ul>
 <li>With a PDE model, the field (state) variable is commonly denoted by <span class="math inline">\(\boldsymbol{u}(\mathbf{x},t),\)</span> where <span class="math inline">\(\mathbf{x}\)</span> represents the space variables (no longer the state variable as above!), and the model dynamics is now a <span style="color: magenta">nonlinear partial differential operator,</span> <span class="math display">\[\mathcal{M}=\mathcal{M}\left[\partial_{\mathbf{x}}^{\alpha},\boldsymbol{u}(\mathbf{x},t),\mathbf{x},t\right]\]</span> with <span class="math inline">\(\partial_{\mathbf{x}}^{\alpha}\)</span> denoting the partial derivatives with respect to the space variables of order up to <span class="math inline">\(\left|\alpha\right|\le m\)</span> where <span class="math inline">\(m\)</span> is usually equal to two and in general varies between one and four.</li>
 </ul>
 </section>
-<section id="section-8" class="slide level2 center">
+<section id="section-10" class="slide level2 center">
 <h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">CONCLUSIONS</span></strong></p>
 </div>
 </section>
-<section id="section-9" class="slide level2 center">
+<section id="section-11" class="slide level2 smaller center">
 <h2></h2>
 <p>Data assimilation requires not only the observations and a background, but also knowledge of:</p>
 <ul class="task-list">
@@ -810,8 +817,8 @@ Figure&nbsp;1
 </ul>
 <p>The challenge of data assimilation is in <span style="color: magenta">combining</span> our stochastic knowledge with our physical knowledge.</p>
 </section>
-<section id="ope-source-software" class="slide level2 smaller center">
-<h2>Ope-source software</h2>
+<section id="open-source-software" class="slide level2 smaller center">
+<h2>Open-source software</h2>
 <p>Various open-source repositories and codes are available for both academic and operational data assimilation.</p>
 <ol type="1">
 <li><p>DARC: <a href="https://research.reading.ac.uk/met-darc/" class="uri">https://research.reading.ac.uk/met-darc/</a> from Reading, UK.</p></li>
@@ -824,7 +831,7 @@ Figure&nbsp;1
 <li><p>EnKF; <a href="https://enkf.nersc.no/" class="uri">https://enkf.nersc.no/</a>, the original Ensemble KF from Geir Evensen.</p></li>
 </ol>
 </section>
-<section id="references" class="slide level2 smaller center">
+<section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <ol type="1">
 <li><p>K. Law, A. Stuart, K. Zygalakis. <em>Data Assimilation. A Mathematical Introduction</em>. Springer, 2015.</p></li>
@@ -836,9 +843,7 @@ Figure&nbsp;1
 <li><p>J. Nocedal, S.J. Wright. <em>Numerical Optimization</em>. Springer, 2006.</p></li>
 <li><p>F. Tröltzsch. <em>Optimal Control of Partial Differential Equations</em>. AMS, 2010.</p></li>
 </ol>
-</section>
-<section id="references-1" class="title-slide slide level1 unnumbered smaller scrollable">
-<h1>References</h1>
+<!-- # References {.unnumbered .smaller} -->
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
 Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
@@ -847,7 +852,6 @@ Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driv
 
 
 </section>
-
 
     <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>

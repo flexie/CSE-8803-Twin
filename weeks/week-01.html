@@ -97,6 +97,34 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-assignments .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-categories','listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-assignments'] = new List('listing-assignments', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -273,7 +301,7 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1704690000000" data-listing-file-modified-sort="1704217256368" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="861" data-listing-title-sort="Welcome to Digital Twins for Physical Systems" data-listing-filename-sort="01-intro.qmd">
+<tr data-index="0" data-listing-date-sort="1704690000000" data-listing-file-modified-sort="1704232964641" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2052" data-listing-title-sort="Welcome to Digital Twins for Physical Systems" data-listing-filename-sort="01-intro.qmd">
 <td>
 <a href="../slides/week-01/01-intro.html" class="title listing-title">Welcome to Digital Twins for Physical Systems</a>
 </td>
@@ -284,26 +312,15 @@ Date
 <span class="listing-date">Mon, Jan 08</span>
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1703307600000" data-listing-file-modified-sort="1703780103797" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3880" data-listing-title-sort="Data Assimilation" data-listing-filename-sort="02-basics.qmd">
+<tr data-index="1" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1704231056731" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3665" data-listing-title-sort="Basics" data-listing-filename-sort="02-basics.qmd">
 <td>
-<a href="../slides/week-01/02-basics.html" class="title listing-title">Data Assimilation</a>
+<a href="../slides/week-01/02-basics.html" class="title listing-title">Basics</a>
 </td>
 <td>
-<span class="listing-subtitle">Basics</span>
+<span class="listing-subtitle">Data Assimilation</span>
 </td>
 <td>
-<span class="listing-date">Sat, Dec 23</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1703307600000" data-listing-file-modified-sort="1703778992378" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2042" data-listing-title-sort="Data Assimilation" data-listing-filename-sort="03-adjoint.qmd">
-<td>
-<a href="../slides/week-01/03-adjoint.html" class="title listing-title">Data Assimilation</a>
-</td>
-<td>
-<span class="listing-subtitle">adjoint state</span>
-</td>
-<td>
-<span class="listing-date">Sat, Dec 23</span>
+<span class="listing-date">Wed, Jan 10</span>
 </td>
 </tr>
 </tbody>
@@ -315,7 +332,39 @@ No matching items
 </section>
 <section id="assignments" class="level1">
 <h1>Assignments</h1>
-<p>There are no assignments scheduled this week.</p>
+<div id="listing-assignments" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Assignment
+</th>
+<th>
+Title
+</th>
+<th>
+Due
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="Lab" data-listing-date-sort="1704949200000" data-listing-file-modified-sort="1704225834231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="First Lab" data-listing-filename-sort="w1-lab01-intro.qmd">
+<td>
+<span class="listing-categories">Lab</span>
+</td>
+<td>
+<a href="../labs/w1-lab01-intro.html" class="title listing-title">First Lab</a>
+</td>
+<td>
+<span class="listing-date">Thu, Jan 11</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 </section>
 <section id="readings" class="level1">
 <h1>Readings</h1>
@@ -331,7 +380,10 @@ No matching items
 <td><a href="https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486">Chapter 1 — A toolbox for digital twins</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://link.springer.com/article/10.1007/s00158-022-03425-4">Section 2 o “A comprehensive review of digital twin — part 1”</a></td>
+<td><a href="https://link.springer.com/article/10.1007/s00158-022-03425-4">Section — 2 A comprehensive review of digital twin — part 1</a></td>
+</tr>
+<tr class="even">
+<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486">Chapter 8 — A toolbox for digital twins until section 8.7</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
 </tr>
 </tbody>
 </table>
@@ -340,7 +392,13 @@ No matching items
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>There is a lot of material there that you may want to read through. Use material presented in class as a guide what is important.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

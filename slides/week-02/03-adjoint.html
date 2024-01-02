@@ -10,8 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.528">
 
-  <meta name="dcterms.date" content="2023-12-23">
-  <title>Digital Twins for Physical Systems - Data Assimilation</title>
+  <meta name="dcterms.date" content="2024-01-24">
+  <title>Digital Twins for Physical Systems - Adjoint state</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -348,17 +348,17 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Data Assimilation</h1>
-  <p class="subtitle">adjoint state</p>
+  <h1 class="title">Adjoint state</h1>
+  <p class="subtitle">Data Assimilation</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2023-12-23</p>
+  <p class="date">2024-01-24</p>
 </section>
 <section id="outline" class="slide level2 smaller center">
 <h2>Outline</h2>
-<p><span data-fig-align="color: blue">Adjoint methods and variational data assimilation (4h)</span></p>
+<p><span data-fig-align="color: blue">Adjoint methods and variational data assimilation</span></p>
 <ol type="1">
 <li><p>Introduction to data assimilation: setting, history, overview, definitions.</p></li>
 <li><p><span style="color: red">Adjoint method.</span></p></li>
@@ -402,7 +402,7 @@
 <section id="adjoint-state-methods" class="slide level2 smaller nostretch center">
 <h2>Adjoint-state Methods</h2>
 <p>A very <span style="color: magenta">general approach</span> for solving inverse problems... including <span style="color: magenta">Machine Learning!</span></p>
-<p><span style="color: magenta">Variational DA</span>is based on an <span style="color: magenta">adjoint approach</span>.</p>
+<p><span style="color: magenta">Variational DA</span> is based on an <span style="color: magenta">adjoint approach</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="../images/adjoint.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
@@ -412,13 +412,13 @@
 <p><span class="theorem-title"><strong>Definition 1 </strong></span><span style="color: red"><em>An <strong>adjoint</strong> is a general mathematical technique, based on variational calculus, that enables the computation of the gradient of an objective, or cost functional with respect to the model parameters in a very efficient manner.</em></span></p>
 </div>
 </section>
-<section id="adjoint-state-continuous-formulation" class="slide level2 smaller nostretch center">
-<h2>Adjoint-state —continuous formulation</h2>
+<section id="adjoint-statecontinuous-formulation" class="slide level2 smaller nostretch center">
+<h2>Adjoint-state—continuous formulation</h2>
 <p>Let <span class="math inline">\(\mathbf{u}(\mathbf{x},t)\)</span> be the state of a <em><span style="color: magenta">dynamical system</span></em> whose behavior depends on model parameters <span class="math inline">\(\mathbf{m}(\mathbf{x},t)\)</span> and is described by a differential operator equation <span class="math display">\[\mathbf{L}(\mathbf{u},\mathbf{m})=\mathbf{f},\]</span> where <span class="math inline">\(\mathbf{f}(\mathbf{x},t)\)</span> represents external forces.</p>
 <p>Define a <em><span style="color: magenta">cost function</span></em> <span class="math inline">\(J(\mathbf{m})\)</span> as an energy functional<sup>1</sup> or, more commonly, as a <span style="color: magenta">misfit functional</span>that quantifies the error (<span class="math inline">\(L^{2}\)</span>-distance<sup>2</sup>) between the observation and the model prediction <span class="math inline">\(\mathbf{u}(\mathbf{x},t;\mathbf{m}).\)</span> For example, <span class="math display">\[J(\mathbf{m})=\int_{0}^{T}\int_{\Omega}\left(\mathbf{u}(\mathbf{x},t;\mathbf{m})-\mathbf{u}^{\mathrm{obs}}(\mathbf{x},t)\right)^{2}\,\mathrm{d}\mathbf{x}\:\mathrm{d}t,\]</span> where <span class="math inline">\(\mathbf{x}\in\Omega\subset\mathbb{R}^{n},\,n=1,2,3,\)</span> and <span class="math inline">\(0\le t\le T.\)</span></p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>A functional is a generalization of a function. The functional depends on functions, whereas a function depends on variables. We then say that a functional is mapping from a space of functions into the real numbers.</p></li><li id="fn2"><p>The <span class="math inline">\(L^{2}\)</span>-space is a Hilbert space of (measurable) functions that are square-integrable (in Lebesgue sense).</p></li></ol></aside></section>
-<section id="adjoint-state-continuous-formulation-1" class="slide level2 smaller nostretch center">
-<h2>Adjoint-state —continuous formulation</h2>
+<section id="adjoint-statecontinuous-formulation-1" class="slide level2 smaller nostretch center">
+<h2>Adjoint-state—continuous formulation</h2>
 <p>Our <span style="color: magenta">objective</span> is to choose the model parameters <span class="math inline">\(\mathbf{m}\)</span> as a function of the observed output <span class="math inline">\(\mathbf{u}^{\mathrm{obs}},\)</span> such that the cost function <span class="math inline">\(J(\mathbf{m})\)</span> is <span style="color: magenta">minimized</span>.</p>
 <p>The minimization is most frequently performed by a gradient-based method, the simplest of which is steepest gradient, though usually some variant of a quasi-Newton approach is used, see <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, <span class="citation" data-cites="wright2006numerical">Wright (<a href="#/references" role="doc-biblioref" onclick="">2006</a>)</span>.</p>
 <p>If we can obtain an expression for the gradient, then the minimization will be considerably facilitated.</p>
@@ -448,11 +448,22 @@
         \mathrm{minimize}_{\mathbf{m}} &amp; J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
         \mathrm{subject\,to} &amp; F(\mathbf{u};\mathbf{m})=0,
         \end{cases}\]</span> where <span class="math inline">\(J\)</span> can depend on both <span class="math inline">\(\mathbf{u}\)</span> and on <span class="math inline">\(\mathbf{m}\)</span> explicitly in the presence of eventual regularization terms.</p>
-<p>Note:</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
 <ul>
 <li><p>the constraint is a (partial) differential equation and</p></li>
 <li><p>the minimization is with respect to a (vector) function.</p></li>
 </ul>
+</div>
+</div>
+</div>
 <p>This type of optimization is the subject of <span style="color: magenta">variational calculus</span>, a generalization of classical calculus where differentiation is performed with respect to a variable, not a function.</p>
 </section>
 <section id="section-3" class="slide level2 smaller center">
@@ -480,14 +491,12 @@
 </section>
 <section id="adjoint-methodssumming-up" class="slide level2 smaller center">
 <h2>Adjoint Methods—summing up</h2>
-<ul>
-<li><p>In summary, we have a three-step procedure that combines a model-based approach (through the PDE) with a data-driven approach (through the cost function):</p>
+<p>In summary, we have a three-step procedure that combines a model-based approach (through the PDE) with a data-driven approach (through the cost function):</p>
 <ol type="1">
 <li><p>Solve the <span style="color: magenta"><em>adjoint equation</em></span> for the adjoint state, <span class="math inline">\(\mathbf{p}.\)</span></p></li>
 <li><p>Using the adjoint state, compute the <span style="color: magenta"><em>gradient</em></span> of the cost function <span class="math inline">\(J.\)</span></p></li>
 <li><p>Using the gradient, solve the <span style="color: magenta"><em>optimization</em></span> problem to estimate the parameters <span class="math inline">\(\mathbf{m}\)</span> that <span style="color: magenta"><em>minimize the mismatch</em></span> between model and observations.</p></li>
-</ol></li>
-</ul>
+</ol>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">

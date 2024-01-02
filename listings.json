@@ -4,26 +4,32 @@
     "items": [
       "/weeks/week-01.html",
       "/weeks/week-02.html",
-      "/weeks/week-03.html"
+      "/weeks/week-03.html",
+      "/weeks/week-04.html"
     ]
   },
   {
     "listing": "/weeks/week-03.html",
     "items": [
-      "/slides/week-03/07-DA-stat.html",
-      "/slides/week-03/08-DA-Bayes.html",
-      "/slides/week-03/09-multiple-data-frames.html",
-      "/labs/w3-lab02-Diff-Prog.html",
-      "/hw/w3-hw02.html"
+      "/slides/week-03/04-AD.html",
+      "/slides/week-03/05-variational.html",
+      "/slides/week-03/06-Bayes-Inference.html",
+      "/labs/w3-lab02-Diff-Prog.html"
+    ]
+  },
+  {
+    "listing": "/weeks/week-04.html",
+    "items": [
+      "/slides/week-04/07-DA-stat.html",
+      "/slides/week-04/08-DA-Bayes.html",
+      "/slides/week-04/09-UQ.html",
+      "/labs/w4-lab02-Diff-Prog.html"
     ]
   },
   {
     "listing": "/weeks/week-02.html",
     "items": [
-      "/slides/week-02/04-AD.html",
-      "/slides/week-02/05-variational.html",
-      "/slides/week-02/06-Bayes-Inference.html",
-      "/hw/w2-hw01.html",
+      "/slides/week-02/03-adjoint.html",
       "/labs/w2-lab01-PyTorch.html"
     ]
   },
@@ -32,7 +38,7 @@
     "items": [
       "/slides/week-01/01-intro.html",
       "/slides/week-01/02-basics.html",
-      "/slides/week-01/03-adjoint.html"
+      "/labs/w1-lab01-intro.html"
     ]
   }
 ]

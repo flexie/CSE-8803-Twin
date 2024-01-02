@@ -362,26 +362,88 @@
 
 <!-- Figure Suggestion: A cover image representing Digital Twins, possibly a graphical illustration of a physical object and its digital counterpart. -->
 <img data-src="https://oden.utexas.edu/media/news-items/dtwinreleaseimageSept2022.png" class="r-stretch quarto-figure-center"><p class="caption">adapted from <a href="https://oden.utexas.edu/media/news-items/dtwinreleaseimageSept2022.png">here</a></p></section>
+<section id="course-outline" class="slide level2 center">
+<h2>Course outline</h2>
+<p>This is a new advanced course that is being developed during this term.</p>
+<ul>
+<li><a href="../../syllabus.html">Syllabus</a></li>
+<li><a href="../../schedule.html">Schedule</a></li>
+<li>etc.</li>
+</ul>
+<p>are all made available and constantly updated on</p>
+<p><a href="https://flexie.github.io/CSE-8803-Twin//">https://flexie.github.io/CSE-8803-Twin//</a></p>
+</section>
+<section id="objectives" class="slide level2 smaller center">
+<h2>Objectives</h2>
+<p>By the end of the semester, you will be made familiar with …</p>
+<ul>
+<li>the concept of Digital Twins and how they interact with their environment</li>
+<li>Statistical Inverse Problems and Bayesian Inference</li>
+<li>techniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]</li>
+</ul>
+<p>For more on the Course outline, Topics, and Learning goals, see <a href="../../goals.html">Goals</a>.</p>
+</section>
+<section id="textbook" class="slide level2 smaller center">
+<h2>Textbook</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&amp;context=L&amp;vid=01GALI_GIT:GT&amp;vid=01GALI_GIT&amp;docid=alma9914381076402947&amp;tab=default_tab&amp;lang=en">Data assimilation: methods, algorithms, and applications</a></td>
+<td><span class="citation" data-cites="asch2016data">Asch, Bocquet, and Nodet (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>, Mark</td>
+<td>SIAM, 2016</td>
+</tr>
+<tr class="even">
+<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486">A toolbox for digital twins: from model-based to data-driven</a></td>
+<td><span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, Mark</td>
+<td>SIAM, 2022</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="journal-papers" class="slide level2 smaller center">
+<h2>Journal Papers</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="https://openintro-ims.netlify.app/">A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies</a></td>
+<td><span class="citation" data-cites="thelen2022comprehensivea">Thelen et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></td>
+<td>Springer, 2022</td>
+</tr>
+<tr class="even">
+<td><a href="https://link.springer.com/article/10.1007/00158-022-03410-x">A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives</a></td>
+<td><span class="citation" data-cites="thelen2023comprehensiveb">Thelen et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></td>
+<td>Springer, 2022</td>
+</tr>
+<tr class="odd">
+<td><a href="https://arxiv.org/abs/2201.08180">Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial</a></td>
+<td><span class="citation" data-cites="tatsis2022sequential">Tatsis, Dertimanis, and Chatzi (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></td>
+<td>Arxiv, 2022</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="introduction" class="slide level2 smaller center">
 <h2>Introduction</h2>
 <ul>
-<li>Brief overview of Digital Twins</li>
-<li>Importance of data-model synergy</li>
+<li>Different definitions of Digital Twins</li>
+<li>Data Flows</li>
+<li>Dimensions Digital Twins</li>
+<li>the Inference Cycle</li>
 </ul>
 <!-- Figure Suggestion: An introductory infographic that visually represents the concept of Digital Twins. -->
 </section>
-<section id="definition-of-digital-twin-asch2022toolbox" class="slide level2 smaller center">
-<h2>Definition of Digital Twin <span class="citation" data-cites="asch2022toolbox">(<a href="#/references" role="doc-biblioref" onclick="">Asch 2022</a>)</span></h2>
-<p>Definition from Asch: “<em>A set of virtual information constructs that mimics the structure, context, and behavior of an individual/unique physical asset, or a group of physical assets, is dynamically updated with data from its physical twin throughout its life cycle and informs decisions that realize value.</em>”</p>
+<section id="definition-of-digital-twin" class="slide level2 smaller center">
+<h2>Definition of Digital Twin</h2>
+<p>Definition from <span class="citation" data-cites="asch2022toolbox">(<a href="#/references" role="doc-biblioref" onclick="">Asch 2022</a>)</span>: “<em>A set of virtual information constructs that mimics the structure, context, and behavior of an individual/unique physical asset, or a group of physical assets, is dynamically updated with data from its physical twin throughout its life cycle and informs decisions that realize value.</em>”</p>
 <ul>
 <li>Definition by the Aerospace Industries Association</li>
 <li>Mirroring physical assets in a dynamic manner</li>
 </ul>
-<p>Definition by IBM: “<em>A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision making.</em>”</p>
+<p>Definition by <a href="https://www.ibm.com/topics/what-is-a-digital-twin">IBM</a>: “<em>A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision making.</em>”</p>
 </section>
-<section id="definition-of-digital-twin-conted-national2023foundational" class="slide level2 smaller center">
-<h2>Definition of Digital Twin (cont’ed) <span class="citation" data-cites="national2023foundational">(<a href="#/references" role="doc-biblioref" onclick="">National Academies of Sciences, Medicine, et al. 2023</a>)</span></h2>
-<p>Definition from National Academy of National Sciences: “<em>A digital twin is a set of virtual information constructs that mimics the structure, context, and behavior of a natural, engineered, or social system (or system-of-systems), is dynamically updated with data from its physical twin, has a predictive capability, and informs decisions that realize value. The bidirectional interaction between the virtual and the physical is central to the digital twin.</em>”</p>
+<section id="definition-of-digital-twin-conted" class="slide level2 smaller center">
+<h2>Definition of Digital Twin (cont’ed)</h2>
+<p>Definition from <span class="citation" data-cites="national2023foundational">(<a href="#/references" role="doc-biblioref" onclick="">National Academies of Sciences, Medicine, et al. 2023</a>)</span>: “<em>A digital twin is a set of virtual information constructs that mimics the structure, context, and behavior of a natural, engineered, or social system (or system-of-systems), is dynamically updated with data from its physical twin, has a predictive capability, and informs decisions that realize value. The bidirectional interaction between the virtual and the physical is central to the digital twin.</em>”</p>
 <p>Also see discussion <a href="https://link.springer.com/article/10.1007/s00158-022-03425-4">Section 2 of “A comprehensive review of digital twin — part 1”</a>.</p>
 <!-- Figure Suggestion: A diagram showing a physical asset and its digital twin counterpart, highlighting dynamic data exchange. -->
 </section>
@@ -474,11 +536,18 @@
 </div>
 <!-- Figure Suggestion: A flowchart or cycle diagram showing the steps of abduction, deduction, and induction. -->
 </section>
-<section id="the-concept-of-a-digital-twin" class="slide level2 center">
+<section id="the-concept-of-a-digital-twin" class="slide level2 smaller center">
 <h2>The Concept of a Digital Twin</h2>
 <ul>
-<li>Essential components: Data, AI, Computational devices</li>
-<li>Industrial significance</li>
+<li><p>the availability of (large) volumes of (often real-time) data, • the accessibility to this data,</p></li>
+<li><p>the tools and implementations of AI-based algorithms,</p></li>
+<li><p>the body of knowledge of mathematical models,</p></li>
+<li><p>the readiness and low cost of computational devices,</p></li>
+</ul>
+<p>Necessary ingredients for a Digital Twin that learns during its life cycle</p>
+<ul>
+<li><p>consists of <em>static</em> part — initial model, design, and</p></li>
+<li><p><em>dynamic</em> part — includes the simulation process, coupled with data acquisition, and finally autoupdating.</p></li>
 </ul>
 <!-- Figure Suggestion: A Venn diagram showing the intersection of data, AI algorithms, and computational devices. -->
 </section>
@@ -490,89 +559,98 @@
 </ul>
 <!-- Figure Suggestion: A spectrum or continuum graphic showing the range from model-driven to data-driven Digital Twins. -->
 </section>
-<section id="digital-twins-in-the-digital-continuum" class="slide level2 center">
+<section id="digital-twins-in-the-digital-continuum" class="slide level2 smaller center">
 <h2>Digital Twins in the Digital Continuum</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Interaction with digital infrastructure</li>
 <li>Cloud computing, IoT, and cybersecurity</li>
+<li>Emphasis in this course will be on monitoring &amp; control of physical systems ruled by PDEs
+<ul>
+<li>geological CO<sub>2</sub> storage</li>
+<li>battery life</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../images/continuum.png" style="width:80.0%"></p>
+<figcaption>Source <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="geological-carbon-storage" class="slide level2 smaller center">
+<h2>Geological Carbon Storage</h2>
+
+<img data-src="https://slim.gatech.edu/Website-ResearchWebInfo/GeologicalCarbonStorage/figs/gcs.png" class="r-stretch"><ul>
+<li>coupling of fluid-flow physics and</li>
+<li>wave physics</li>
 </ul>
 <!-- Figure Suggestion: A conceptual diagram illustrating how Digital Twins interact within the broader digital infrastructure. -->
 </section>
-<section id="models-data-and-coupling-in-digital-twins" class="slide level2 center">
+<section id="models-data-and-coupling-in-digital-twins" class="slide level2 smaller center">
 <h2>Models, Data, and Coupling in Digital Twins</h2>
-<ul>
-<li>Types of models used</li>
-<li>Role of data</li>
-<li>Effective coupling</li>
-</ul>
+<p>Questions: 1. What is meant by a “model”?</p>
+<ol start="2" type="1">
+<li><p>What are data to be used for?</p></li>
+<li><p>How, if possible, can we couple the above two to construct the most informative DT?</p></li>
+</ol>
+<p>Will be discussing two types of models throughout the book:</p>
+<ol type="1">
+<li>Equation-based models that are derived, most often, from some conservation laws.</li>
+<li>Statistical, data-driven models that are based on measured data and its analysis.</li>
+</ol>
+<p><strong>A good statistical model:</strong> should attain a good balance between underfitting.</p>
+<p><strong>Physical models:</strong> need to capture the higher order terms and neglect small terms</p>
+<p>Bloated models will often be difficult to solve numerically.</p>
 <!-- Figure Suggestion: A graphic showing different types of models, data flow, and the coupling process. -->
 </section>
 <section id="examples-and-use-cases" class="slide level2 center">
 <h2>Examples and Use Cases</h2>
 <ul>
-<li>Predictive maintenance, personalized medicine, sports, agriculture</li>
+<li>Predictive maintenance, personalized medicine, sports, agriculture, geophysics</li>
 </ul>
 <!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
 <!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
 </section>
-<section id="recommended-approach---the-triple-loop-method" class="slide level2 center">
-<h2>Recommended Approach - The Triple-Loop Method</h2>
+<section id="recommended-approachthe-triple-loop-method" class="slide level2 smaller center">
+<h2>Recommended Approach—The Triple-Loop Method</h2>
+<p>Three loops: Space and time, optimization, decision-making</p>
 <ul>
-<li>Three loops: Space and time, optimization, decision-making</li>
+<li><p>Loops over space and time and solution of the physical problem in the inner loop.</p></li>
+<li><p>Optimization in the outer loop, including control, solution of an inverse problem, parameter estimation, uncertainty quantification, and multifidelity modeling using surrogates.</p></li>
+<li><p>Decision making in the outer-outer loop— preventative maintenance, shutting down operations …</p></li>
 </ul>
+<p>Important to ensure trustworthiness of the DT - checking operational and validity regimes of the model, and - implement an expert system based on engineering experience.</p>
 <!-- Figure Suggestion: A triple-loop diagram illustrating the three aspects of the methodology. -->
-</section>
-<section id="recommendations-for-project-managers" class="slide level2 center">
-<h2>Recommendations for Project Managers</h2>
-<ul>
-<li>Developing in-house vs purchasing</li>
-<li>Intellectual property, model brittleness, uncertainty quantification</li>
-</ul>
+<!-- ## Recommendations for Project Managers
+
+-   Developing in-house vs purchasing
+-   Intellectual property, model brittleness, uncertainty quantification -->
 <!-- Figure Suggestion: A decision tree or a pros and cons list for in-house development vs. purchasing. -->
 </section>
-<section id="future-directions" class="slide level2 center">
+<section id="future-directions" class="slide level2 smaller center">
 <h2>Future Directions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Evolution from simple to AI-integrated systems</li>
 <li>Theoretical and practical advancements</li>
+<li>Facilitates a more general interpretation where we can map machine learning techniques, or AI, to any of the stages</li>
 </ul>
-<!-- Figure Suggestion: A timeline or roadmap visualizing the evolution and future prospects of Digital Twins. -->
-</section>
-<section id="bullet-point-list" class="slide level2 smaller center">
-<h2>Bullet point list</h2>
-<p><strong>Unordered</strong></p>
-<ul>
-<li>Item A</li>
-<li>Item B</li>
-<li>Item C</li>
-</ul>
-<p><strong>Ordered</strong></p>
-<ol type="1">
-<li>Item 1</li>
-<li>Item 2</li>
-<li>Item 3</li>
-</ol>
-</section>
-<section id="incremental-list" class="slide level2 center">
-<h2>Incremental list</h2>
-<div>
-<ul>
-<li class="fragment">Item 1</li>
-<li class="fragment">Item 2</li>
-<li class="fragment">Item 3</li>
-</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../images/inference_cycle.png"></p>
+<figcaption>from <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
+</figure>
 </div>
-</section>
-<section id="equations" class="slide level2 center">
-<h2>Equations</h2>
-<p>Write mathematical symbols and equations using Latex.</p>
-<p>Use the formulas below to calculate <span class="math inline">\(\hat{\beta}_1\)</span>, the estimated slope, and <span class="math inline">\(\hat{\beta}_0\)</span>, the estimated intercept.</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;\hat{\beta}_1 = r \frac{s_y}{s_x} \\
-&amp;\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
-\end{aligned}
-\]</span></p>
+</div>
+</div>
+<!-- Figure Suggestion: A timeline or roadmap visualizing the evolution and future prospects of Digital Twins. -->
 </section>
 <section id="references" class="slide level2 unnumbered smaller scrollable">
 <h2>References</h2>
@@ -580,11 +658,20 @@
 <div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
 Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
 </div>
+<div id="ref-asch2016data" class="csl-entry" role="listitem">
+Asch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. <em>Data Assimilation: Methods, Algorithms, and Applications</em>. SIAM.
+</div>
 <div id="ref-national2023foundational" class="csl-entry" role="listitem">
 National Academies of Sciences, Engineering, Medicine, et al. 2023. <span>“Foundational Research Gaps and Future Directions for Digital Twins.”</span>
 </div>
+<div id="ref-tatsis2022sequential" class="csl-entry" role="listitem">
+Tatsis, Konstantinos E, Vasilis K Dertimanis, and Eleni N Chatzi. 2022. <span>“Sequential Bayesian Inference for Uncertain Nonlinear Dynamic Systems: A Tutorial.”</span> <em>arXiv Preprint arXiv:2201.08180</em>.
+</div>
 <div id="ref-thelen2022comprehensivea" class="csl-entry" role="listitem">
 Thelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michael D Todd, Sankaran Mahadevan, Chao Hu, and Zhen Hu. 2022. <span>“A Comprehensive Review of Digital Twin—Part 1: Modeling and Twinning Enabling Technologies.”</span> <em>Structural and Multidisciplinary Optimization</em> 65 (12): 354.
+</div>
+<div id="ref-thelen2023comprehensiveb" class="csl-entry" role="listitem">
+———. 2023. <span>“A Comprehensive Review of Digital Twin—Part 2: Roles of Uncertainty Quantification and Optimization, a Battery Digital Twin, and Perspectives.”</span> <em>Structural and Multidisciplinary Optimization</em> 66 (1): 1.
 </div>
 </div>
 
