@@ -10,17 +10,19 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/rstudio-conf-2022/teach-ds-course-website
+        href: https://flexie.github.io/CSE-8803-Twin/
         text: GitHub
-      - icon: cloud-fill
-        href: https://rstudio.cloud/spaces/237799
-        text: RStudio Cloud
+      # - icon: cloud-fill
+        # href: https://rstudio.cloud/spaces/237799
+        # text: RStudio Cloud
     style: docked
     contents:
       - href: index.qmd
         text: Home
       - href: syllabus.qmd
         text: Syllabus
+      - href: goals.qmd
+        text: Goals        
       - href: schedule.qmd
         text: Schedule
       - href: project.qmd
@@ -33,5 +35,6 @@ format:
     toc: true
 
 bibliography: references.bib
+license: CC-BY
 
 
