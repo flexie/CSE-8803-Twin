@@ -14,7 +14,7 @@ title: "Digital Twins for Physical Systems Course Website"
 
 | Meeting | Location | Time                   |
 |---------|----------|------------------------|
-| Lecture | Howey Physics N210  | Mon & Wed 5:00 - 6:15am |
+| Lecture | Howey Physics N210  | Mon & Wed 5:00 - 6:15PM |
 
 ## Prerequisites
 
