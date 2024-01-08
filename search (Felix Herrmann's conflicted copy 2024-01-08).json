@@ -576,11 +576,11 @@
     "text": "Objectives\nBy the end of the semester, you will be made familiar with …\n\nthe concept of Digital Twins and how they interact with their environment\nStatistical Inverse Problems and Bayesian Inference\ntechniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]\n\nFor more on the Course outline, Topics, and Learning goals, see Goals."
   },
   {
-    "objectID": "slides/week-01/01-intro.html#textbooks",
-    "href": "slides/week-01/01-intro.html#textbooks",
+    "objectID": "slides/week-01/01-intro.html#textbook",
+    "href": "slides/week-01/01-intro.html#textbook",
     "title": "Welcome to Digital Twins for Physical Systems",
-    "section": "Textbooks",
-    "text": "Textbooks\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven1\nAsch (2022), Mark\nSIAM, 2022\n\n\n\nThis 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage. This book is available in electronic form (pdf) when online on Georgia Tech Campus."
+    "section": "Textbook",
+    "text": "Textbook\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven1\nAsch (2022), Mark\nSIAM, 2022\n\n\n\nThis 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage."
   },
   {
     "objectID": "slides/week-01/01-intro.html#journal-papers",
@@ -678,7 +678,7 @@
     "href": "slides/week-01/01-intro.html#models-data-and-coupling-in-digital-twins",
     "title": "Welcome to Digital Twins for Physical Systems",
     "section": "Models, Data, and Coupling in Digital Twins",
-    "text": "Models, Data, and Coupling in Digital Twins\nQuestions:\n\nWhat is meant by a “model”?\nWhat are data to be used for?\nHow, if possible, can we couple the above two to construct the most informative DT?\n\nWill be discussing two types of models throughout the book:\n\nEquation-based models that are derived, most often, from some conservation laws.\nStatistical, data-driven models that are based on measured data and its analysis.\n\nA good statistical model: should attain a good balance between under/overfitting.\nPhysical models: need to capture the higher order terms and neglect small terms.\nBloated models will often be difficult to solve numerically."
+    "text": "Models, Data, and Coupling in Digital Twins\nQuestions:\n\nWhat is meant by a “model”?\nWhat are data to be used for?\nHow, if possible, can we couple the above two to construct the most informative DT?\n\nWill be discussing two types of models throughout the book:\n\nEquation-based models that are derived, most often, from some conservation laws.\nStatistical, data-driven models that are based on measured data and its analysis.\n\nA good statistical model: should attain a good balance between underfitting.\nPhysical models: need to capture the higher order terms and neglect small terms\nBloated models will often be difficult to solve numerically."
   },
   {
     "objectID": "slides/week-01/01-intro.html#examples-and-use-cases",
@@ -2416,11 +2416,11 @@
     ]
   },
   {
-    "objectID": "syllabus.html#textbooks",
-    "href": "syllabus.html#textbooks",
+    "objectID": "syllabus.html#textbook",
+    "href": "syllabus.html#textbook",
     "title": "Syllabus",
-    "section": "Textbooks",
-    "text": "Textbooks\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022\n\n\n\n\nThese electronic books are only available when online at Georgia Tech!",
+    "section": "Textbook",
+    "text": "Textbook\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022",
     "crumbs": [
       "Syllabus"
     ]
@@ -2503,6 +2503,46 @@
     "text": "Final Project\n\nGoal\nThe goal of the Final Project is to give students the opportunity to apply and further develop their understanding of Digital Twins to a topic close to their graduate research interests.\n\n\nRequirements\nThe Final Project consist of three parts\n\nProposal consisting of a “one pager” + “5 min pitch”\nProject presentation of 20 minutes with 5 minutes questions, presented at the end of the term\nA final report\n\n\nOne pager + 5 min pitch\nOn March 1th, everybody needs to give a 5 minute pitch on their project proposal. That same day, the “one pager” outlining the project is due by 6:00 PM. See description below. Your seminar will be evaluated with this form. Please send the slides for your presentation to the course instructor with CSE 8803 in the subject line or bring a memory stick. The 5 minutes presentations include time for questions. Since time is limited, the 5 minute limit will be strictly enforced. So please stick to the main message, the problem you want to tackle, what techniques you will be using, and why it is important.\n\n\nProposal\nConcise description of the work to be undertaken. The description should not exceed two pages and should contain\n\nTitle of the Final Project\nProblem Statement\nRelevance\nIdentification of methodology that will be used to solve the problem\n\nProposal should be submitted in PDF format or a link to an html page. The project proposals are due March 1 at 6:00 PM and presentations are scheduled for that same day during class. The presentations are five minutes each for each person.\n\n\nProject presentation at the end of the term\nEach project presentation will be allotted 20 minutes precisely with 5 minutes of questions. The seminar should reflect the current status of the project, which may be subject to change when the project is finalized.\nThe seminar will be evaluated using the following form2.\n\n\nFinal Report\nThe report needs to be written as a short journal paper. Students will be required to use the IEEE template in two-column mode. The paper should be four-to-six pages including abstract, body text, figures, and bibliography. Reports should consist of\n\nabstract\nintroduction\nproblem statement\nmethodology\nresults\nconclusions\nreferences\nappendices\n\n\n\n\nGrading (project alone)\n\n10% Proposal plus speed presentation\n30% Seminar\n60% Final Report\n\n\n\nLate policy\nLate submission is unacceptable and will lead to deductions in your grade. The deadline for submission will be communicate in class.\n\n\n\n\nCalendar for events\n\n\n\n\n\n\n\nReuseCC-BY",
     "crumbs": [
       "Final Project"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#textbook3",
+    "href": "syllabus.html#textbook3",
+    "title": "Syllabus",
+    "section": "Textbook1",
+    "text": "Textbook1\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#footnotes",
+    "href": "syllabus.html#footnotes",
+    "title": "Syllabus",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThese electronic books are only available when online at Georgia Tech!↩︎",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#textbooks3",
+    "href": "syllabus.html#textbooks3",
+    "title": "Syllabus",
+    "section": "Textbooks1",
+    "text": "Textbooks1\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#textbooks",
+    "href": "syllabus.html#textbooks",
+    "title": "Syllabus",
+    "section": "Textbooks",
+    "text": "Textbooks\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022\n\n\n\n\nThese electronic books are only available when online at Georgia Tech!",
+    "crumbs": [
+      "Syllabus"
     ]
   }
 ]
