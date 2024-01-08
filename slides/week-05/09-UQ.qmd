@@ -1,0 +1,79 @@
+---
+title: "Uncertainty Quantification"
+subtitle: "Bayesian Data Assimilation"
+date: "December 23, 2023"
+footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
+logo: "images/logo.png"
+format: 
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    center: true
+    html-math-method: mathjax
+    smaller: true
+title-slide-attributes:
+  data-background-image: ../images/3DVAR.png
+  data-background-size: contain
+  data-background-opacity: "0.5"
+# include-in-header:
+#       - text: |
+#           <script>
+#           window.MathJax = {
+#             tex: {
+#               tags: 'ams'
+#             }
+#           };
+#           </script>
+execute:
+  freeze: auto
+  echo: true
+bibliography: ../../references.bib
+---
+
+## Uncertainty Quantification {.smaller}
+
+**Definition 11.1 (UQ).** *UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).*
+
+**Definition 11.2 (QoI).** *In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.*
+
+We can decompose UQ into a number of subtasks:
+
+1.  Quantify uncertainties in model inputs by specifying probability distributions.
+2.  Propagate input uncertainties through the model and quantify effects on the QoI.
+3.  Quantify variability in the true physical QoI
+4.  Aggregate uncertainties arising from different sources to appraise overall uncertainty (input, model, numerical errors, inherent variability)
+5.  Compute sensitivities of output variables with respect to input variables (forward UQ)
+
+
+
+## Bayesian Parameter Estimation in State Space Models {.smaller}
+
+$$
+\begin{aligned}
+\boldsymbol{\theta} & \sim p(\boldsymbol{\theta}) \\
+\mathbf{x}_0 & \sim p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \\
+\mathbf{x}_k & \sim p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right) \\
+\mathbf{y}_k & \sim p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right), \quad k=0,1,2, \ldots
+\end{aligned}
+$$
+
+Applying Bayes' Law of Theorem 2.61, we can compute the complete posterior distribution of the state plus parameters as $$
+p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\frac{p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right) p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right) p(\boldsymbol{\theta})}{p\left(\mathbf{y}_{1: T}\right)},
+$$ where the joint prior of the states, $\mathbf{x}_{0: T}=\left\{\mathbf{x}_0, \ldots, \mathbf{x}_T\right\}$, and the joint likelihood of the measurements, $\mathbf{y}_{1: T}=\left\{\mathbf{y}_1, \ldots, \mathbf{y}_T\right\}$, conditioned on the parameters, are
+
+##  {.smaller}
+
+$$
+p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right)=p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \prod_{k=1}^T p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right)
+$$ and $$
+p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right)=\prod_{k=1}^T p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right)
+$$ respectively. Finally, we need to marginalize over the state to obtain the predictive posterior for the parameter $\boldsymbol{\theta}$, $$
+p\left(\boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\int p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right) \mathrm{d} \mathbf{x}_{0: T}
+$$
+
+Integrals are difficult to compute --- will seek iterative (learned) methods to capture statistics
+
+

@@ -33,22 +33,22 @@ bibliography: ../../references.bib
 
 ## What is data assimilation {.smaller}
 
--   Simplest view: a method of combining observations with model output.
+Simplest view: a method of combining observations with model output.
 
--   Why do we need data assimilation? Why not just use the observations? (cf. [Regression]{style="color: green"})
+Why do we need data assimilation? Why not just use the observations? (cf. [Regression]{style="color: green"})
 
-    -   We want to predict the future!
+We want to predict the future!
 
-        -   For that we need models.
+-   For that we need models.
 
-        -   But when models are not constrained periodically by reality, they are of little value.
+-   But when models are not constrained periodically by reality, they are of little value.
 
-        -   Therefore, it is necessary to [fit the model state as closely as possible to the observations]{style="color: magenta"}, before a prediction is made.
+-   Therefore, it is necessary to [fit the model state as closely as possible to the observations]{style="color: magenta"}, before a prediction is made.
 
 ------------------------------------------------------------------------
 
 ::: {#def-DA}
-Data assimilation (DA) is the approximation of the true state of some physical system at a given time, by combining time-distributed observations with a dynamic model in an optimal way.
+**Data assimilation (DA)** *is the approximation of the true state of some physical system at a given time, by combining time-distributed observations with a dynamic model in an optimal way.*
 :::
 
 ## Data assimilation methods {.smaller}
@@ -59,29 +59,29 @@ There are two major classes of methods:
 
 2.  [Statistical methods]{style="color: magenta"} where we compute the best linear unbiased estimate (BLUE) by algebraic computations using the Kalman filter.
 
--   They provide the same result in the linear case, which is the only context where their optimality can be rigorously proved.
+They provide the same result in the linear case, which is the only context where their optimality can be rigorously proved.
 
--   They both have difficulties in dealing with non-linearities and large problems.
+They both have difficulties in dealing with non-linearities and large problems.
 
--   The error statistics that are required by both, are in general poorly known.
+The error statistics that are required by both, are in general poorly known.
 
 ## Introduction: approaches {.smaller}
 
--   DA is an approach for solving a specific class of [inverse]{style="color: magenta"}, or parameter estimation problems, where the parameter we seek is the [initial condition]{style="color: magenta"}.
+DA is an approach for solving a specific class of [inverse]{style="color: magenta"}, or parameter estimation problems, where the parameter we seek is the [initial condition]{style="color: magenta"}.
 
--   Assimilation problems can be approached from many directions (depending on your background/preferences):
+Assimilation problems can be approached from many directions (depending on your background/preferences):
 
-    -   [control theory]{style="color: blue"};
+-   [control theory]{style="color: blue"};
 
-    -   [variational calculus;]{style="color: blue"}
+-   [variational calculus;]{style="color: blue"}
 
-    -   [statistical estimation theory;]{style="color: magenta"}
+-   [statistical estimation theory;]{style="color: magenta"}
 
-    -   [probability theory,]{style="color: magenta"}
+-   [probability theory,]{style="color: magenta"}
 
-    -   stochastic differential equations.
+-   stochastic differential equations.
 
--   Newer approaches (see [Advanced]{style="color: magenta"} Course): nudging methods, reduced methods, ensemble methods and hybrid methods that combine variational and statistical approaches, [Machine/Deep Learning based approaches]{style="color: magenta"}.
+Newer approaches (discussed later): nudging methods, reduced methods, ensemble methods and hybrid methods that combine variational and statistical approaches, [Machine/Deep Learning based approaches]{style="color: magenta"}.
 
 ## Introduction: approaches {.smaller}
 
@@ -89,7 +89,7 @@ There are two major classes of methods:
 
 2.  Remote sensing: satellite data.
 
-3.  Geophysics: seismic exploration, geo-prospection, earthquake prediction.
+3.  Geophysics: seismic exploration, geophysical prospecting, earthquake prediction.
 
 4.  Air and noise pollution, source estimation
 
@@ -107,7 +107,7 @@ There are two major classes of methods:
 
 The problems of data assimilation (in particular) and inverse problems in general arise from:
 
-1.  The [nonlinear dynamics]{style="color: magenta"}of the physical model equations.
+1.  The [nonlinear dynamics]{style="color: magenta"} of the physical model equations.
 
 2.  The nonlinearity of the [inverse problem]{style="color: magenta"}.
 
@@ -135,7 +135,7 @@ Closely related to
 
 Consider a parameter-dependent dynamical system, $$\frac{dz}{dt}=g(t,z;\theta),\qquad z(t_{0})=z_{0},$$ with $g$ known, $\theta\in\Theta,$ $z(t)\in\mathbb{R}^{k}.$
 
-------------------------------------------------------------------------
+## 
 
 **Forward problem:** [Given $\theta,$]{style="color: blue"} [$z_{0},$]{style="color: blue"}[find $z(t)$]{style="color: orange"} for $t\ge t_{0}.$
 
@@ -337,8 +337,7 @@ We can now classify inverse problems as:
 The first class will be treated by linear algebra and [optimization
     ]{style="color: magenta"}methods.
 
-The latter can be treated by a [Bayesian (filtering)
-    ]{style="color: magenta"}approach, and by weighted least-squares,
+The latter can be treated by a [Bayesian (filtering)]{style="color: magenta"} approach, and by weighted least-squares,
     maximum likelihood and DA techniques
 
 Both classes can be further broken down into:
@@ -554,7 +553,7 @@ Analysis is based on:
 
 - [observational]{style="color: magenta"} data,
 
-- a [model ]{style="color: magenta"}of the physical system,
+- a [model]{style="color: magenta"} of the physical system,
 
 - [background]{style="color: magenta"} information on initial and boundary
 conditions.

@@ -51,7 +51,10 @@ For more on the Course outline, Topics, and Learning goals, see [Goals](../../go
 |                                                                                                                                                                                                                                          |                        |            |
 |---------------------------------------------------|-----------|-----------|
 | [Data assimilation: methods, algorithms, and applications](https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&context=L&vid=01GALI_GIT:GT&vid=01GALI_GIT&docid=alma9914381076402947&tab=default_tab&lang=en) | @asch2016data, Mark    | SIAM, 2016 |
-| [A toolbox for digital twins: from model-based to data-driven](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 |
+| [A toolbox for digital twins: from model-based to data-driven[^3]](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 |
+
+[^3]: This 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage.
+
 
 ## Journal Papers{.smaller}
 
@@ -180,7 +183,9 @@ $$\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})$$
 
 ## The Concept of a Digital Twin {.smaller}
 
-- the availability of (large) volumes of (often real-time) data, • the accessibility to this data,
+- the availability of (large) volumes of (often real-time) data, 
+
+-  the accessibility to this data,
   
 - the tools and implementations of AI-based algorithms,
   
@@ -236,6 +241,7 @@ Necessary ingredients for a Digital Twin that learns during its life cycle
 ## Models, Data, and Coupling in Digital Twins{.smaller}
 
 Questions:
+
 1. What is meant by a “model”?
    
 2. What are data to be used for?

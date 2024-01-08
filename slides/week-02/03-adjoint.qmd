@@ -1,7 +1,7 @@
 ---
 title: "Adjoint state"
-subtitle: "Data Assimilation"
-date: "January 24, 2024"
+subtitle: "Inverse Problems"
+date: "January 17, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 
@@ -19,6 +19,22 @@ execute:
 bibliography: ../../references.bib
 ---
 
+## 
+
+::: center
+![](../images/MN06_ASCH_COVER_B_V6.png){width="80%"}
+:::
+
+## Inverse problems{.smaller}
+
+:::{fig-inverse_prob}
+![from @asch2022toolbox](../images/inverse_prob.png){width="70%"}
+
+Ingredients of an inverse problem: the physical reality (top) and the direct mathematical model (bottom). The inverse problem uses the difference between the model- predicted observations, u (calculated at the receiver array points xr), and the real observations measured on the array, in order to find the unknown model parameters, m, or the source s (or both).
+
+:::
+
+<!-- 
 ## Outline{.smaller}
 
 [Adjoint methods and variational data assimilation]{fig-align="color: blue"}
@@ -69,6 +85,7 @@ Nonlinear extensions and ensemble filters.
 ::: center
 **[ADJOINT METHOD FOR INVERSE PROBLEMS]{style="color: blue"}**
 :::
+ -->
 
 ## Adjoint-state Methods{.smaller .nostretch} 
 
@@ -259,7 +276,7 @@ A number of important remarks can be made.
         parameters $\mathbf{m}.$
 
 2.  The [*computational cost*]{style="color: magenta"}[
-        ]{style="color: magenta"}is one solution of the adjoint equation
+        ]{style="color: magenta"} is one solution of the adjoint equation
         which is usually of the same order as (if not identical to) the
         direct equation, but with a reversal of time. Note that for
         nonlinear equations this may not be the case and one may require
@@ -280,7 +297,7 @@ A number of important remarks can be made.
 5.  For complete mathematical rigor, the above development should be
         performed in an appropriate [*Hilbert
         space*]{style="color: magenta"}[
-        ]{style="color: magenta"}setting that guarantees the existence
+        ]{style="color: magenta"} setting that guarantees the existence
         of all the inner products and adjoint operators. The interested
         reader could consult @troltzsch2010optimal.
 
@@ -318,7 +335,7 @@ A number of important remarks can be made.
 
 In practice, we often work with *discretized* systems of equations, e.g. discretized PDEs.
 
-Assume that $\mathbf{x}$ depends, as usual on a parameter vector, $\mathbf{m}, made up of $p$
+Assume that $\mathbf{x}$ depends, as usual on a parameter vector, $\mathbf{m}$, made up of $p$
 
 - control variables, design parameters, or decision parameters
 
@@ -330,9 +347,9 @@ Possible with an adjoint-state method at a cost that is independent of $p$.
 
 Involves inversion of linear system at $\mathcal{O}(n^3)$ operations --- making it computational feasible to deal with problems of this type 
 
-$$A[\mathbf{m}]\mathbf{x}=\mathbf{q}$${#eq-A}
+$$A[\mathbf{m}]\mathbf{x}=\mathbf{b}$${#eq-A}
 
-where $A[\mathbf{m}]$ represents the discretized PDE, $\mathcal{m}$ spatially varying coefficients of the PDE, and $\mathbf{q}$ a source term. 
+where $A[\mathbf{m}]$ represents the discretized PDE, $\mathbf{m}$ spatially varying coefficients of the PDE, and $\mathbf{b}$ a source term. 
 
 ## Automatic Differentiation {.smaller}
 
@@ -356,13 +373,13 @@ Two approaches to compute the adjoint state and the resulting gradients
 
 Realistic (complex and large scale) solved with **DtA** using AD --- provided by ML  
 
-- PyTorch, TensorFlow (Python), or Flux.jl (Julia)
+- PyTorch, TensorFlow (Python), or Flux.jl/Zygote.jl (Julia)
 
 ::: {.callout-caution}
 While convenient, AD as part of ML tools (known as backpropagation)
 
-- does not scale
-- integrate poorly with existing CSE codes
+- may not scale
+- integrates poorly with existing CSE codes
 :::
 
 ::: {.callout-tip}
