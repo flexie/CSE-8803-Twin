@@ -46,14 +46,14 @@ By the end of the semester, you will be made familiar with ...
 
 For more on the Course outline, Topics, and Learning goals, see [Goals](../../goals.qmd).
 
-## Textbook {.smaller}
+## Textbooks {.smaller}
 
 |                                                                                                                                                                                                                                          |                        |            |
 |---------------------------------------------------|-----------|-----------|
 | [Data assimilation: methods, algorithms, and applications](https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&context=L&vid=01GALI_GIT:GT&vid=01GALI_GIT&docid=alma9914381076402947&tab=default_tab&lang=en) | @asch2016data, Mark    | SIAM, 2016 |
-| [A toolbox for digital twins: from model-based to data-driven[^3]](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 |
+| [A toolbox for digital twins: from model-based to data-driven[^3]](https://epubs.siam.org/doi/book/10.1137/1.9781611976977)                                                                            | @asch2022toolbox, Mark | SIAM, 2022 |
 
-[^3]: This 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage.
+[^3]: This 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage. **This book is available in electronic form (pdf) when online on Georgia Tech Campus.**
 
 
 ## Journal Papers{.smaller}
@@ -253,9 +253,9 @@ Will be discussing two types of models throughout the book:
 1. Equation-based models that are derived, most often, from some conservation laws.
 2. Statistical, data-driven models that are based on measured data and its analysis.
 
-**A good statistical model:** should attain a good balance between underfitting. 
+**A good statistical model:** should attain a good balance between under/overfitting. 
 
-**Physical models:** need to capture the higher order terms and neglect small terms 
+**Physical models:** need to capture the higher order terms and neglect small terms.
 
 Bloated models will often be difficult to solve numerically.
 
