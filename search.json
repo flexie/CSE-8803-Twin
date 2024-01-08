@@ -2410,7 +2410,7 @@
     "href": "syllabus.html#course-learning-objectives",
     "title": "Syllabus",
     "section": "Course Learning Objectives",
-    "text": "Course Learning Objectives\nBy the end of the semester, you will be made familiar with …\n\nthe concept of Digital Twins and how they interact with their environment\nStatistical Inverse Problems and Bayesian Inference\ntechniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]\n\nFor more on the Course outline, Topics, and Learning goals, see Goals.",
+    "text": "Course Learning Objectives\nBy the end of the semester, you will be made familiar with …\n\nthe concept of Digital Twins and how they interact with their environment\nStatistical Inverse Problems and Bayesian Inference\ntechniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]\n\nFor more on the Course outline, Topics, and Learning goals, see Goals.\nFor a motivational article see Digital Twins in the era of generative AI",
     "crumbs": [
       "Syllabus"
     ]
