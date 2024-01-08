@@ -4,7 +4,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nJan 08 - Jan 12\n\n\nWelcome to Digital Twins for Physical Systems\n\n\n\n\nWeek 02\n\n\nJanuary 15 - 19\n\n\nAdjoint methods for inverse problems\n\n\n\n\nWeek 03\n\n\nJanuary 22- 26\n\n\nAutomatic Differentiation & Variational Data Assimilation\n\n\n\n\nWeek 04\n\n\nJan/Feb 29 - 02\n\n\nData Assimilation\n\n\n\n\nWeek 05\n\n\n/Feb 05 - 09\n\n\nBayesian Data Assimilation\n\n\n\n\n\nNo matching items\n\n\n\n\nLabs will be due on Fridays at 11:59pm.",
+    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nJan 08 - Jan 12\n\n\nWelcome to Digital Twins for Physical Systems\n\n\n\n\nWeek 02\n\n\nJanuary 15 - 19\n\n\nAdjoint methods for inverse problems\n\n\n\n\nWeek 03\n\n\nJanuary 22- 26\n\n\nAutomatic Differentiation & Variational Data Assimilation\n\n\n\n\nWeek 04\n\n\nJan/Feb 29 - 02\n\n\nData Assimilation\n\n\n\n\nWeek 05\n\n\nFeb 05 - 09\n\n\nBayesian Data Assimilation\n\n\n\n\n\nNo matching items\n\n\n\n\nLabs will be due on Fridays at 11:59pm.",
     "crumbs": [
       "Schedule"
     ]
@@ -14,7 +14,7 @@
     "href": "schedule.html#weekly-schedule",
     "title": "Schedule",
     "section": "",
-    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nJan 08 - Jan 12\n\n\nWelcome to Digital Twins for Physical Systems\n\n\n\n\nWeek 02\n\n\nJanuary 15 - 19\n\n\nAdjoint methods for inverse problems\n\n\n\n\nWeek 03\n\n\nJanuary 22- 26\n\n\nAutomatic Differentiation & Variational Data Assimilation\n\n\n\n\nWeek 04\n\n\nJan/Feb 29 - 02\n\n\nData Assimilation\n\n\n\n\nWeek 05\n\n\n/Feb 05 - 09\n\n\nBayesian Data Assimilation\n\n\n\n\n\nNo matching items\n\n\n\n\nLabs will be due on Fridays at 11:59pm.",
+    "text": "Week\n\n\nDates\n\n\nTopic\n\n\n\n\n\n\nWeek 01\n\n\nJan 08 - Jan 12\n\n\nWelcome to Digital Twins for Physical Systems\n\n\n\n\nWeek 02\n\n\nJanuary 15 - 19\n\n\nAdjoint methods for inverse problems\n\n\n\n\nWeek 03\n\n\nJanuary 22- 26\n\n\nAutomatic Differentiation & Variational Data Assimilation\n\n\n\n\nWeek 04\n\n\nJan/Feb 29 - 02\n\n\nData Assimilation\n\n\n\n\nWeek 05\n\n\nFeb 05 - 09\n\n\nBayesian Data Assimilation\n\n\n\n\n\nNo matching items\n\n\n\n\nLabs will be due on Fridays at 11:59pm.",
     "crumbs": [
       "Schedule"
     ]
@@ -730,7 +730,7 @@
     "href": "weeks/week-03.html",
     "title": "Week 03",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nDifferential Programming\n\n\nAutomatic Differentiation\n\n\nMon, Jan 29\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nWed, Jan 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nDifferentiable Programming\n\n\nFri, Sep 16\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins sections until section 9.4\n\n\n\n\n\n\n\n\nReuseCC-BY"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nDifferential Programming\n\n\nAutomatic Differentiation\n\n\nMon, Jan 22\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nWed, Jan 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nDifferentiable Programming\n\n\nFri, Sep 16\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins sections until section 9.4\n\n\n\n\n\n\n\n\nReuseCC-BY"
   },
   {
     "objectID": "weeks/week-05.html",
@@ -1052,7 +1052,7 @@
     "href": "weeks/week-02.html",
     "title": "Week 02",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nAdjoint state\n\n\nInverse Problems\n\n\nWed, Jan 24\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nPyTorch intro\n\n\nFri, Jan 19\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 8 — A toolbox for digital twins section 8.7\n\n\n\n\n\n\n\n\nReuseCC-BY"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nAdjoint state\n\n\nInverse Problems\n\n\nWed, Jan 17\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nPyTorch intro\n\n\nFri, Jan 19\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 8 — A toolbox for digital twins section 8.7\n\n\n\n\n\n\n\n\nReuseCC-BY"
   },
   {
     "objectID": "weeks/week-01.html",
