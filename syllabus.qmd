@@ -18,6 +18,8 @@ By the end of the semester, you will be made familiar with ...
 
 For more on the Course outline, Topics, and Learning goals, see [Goals](goals.qmd).
 
+For a motivational article see [Digital Twins in the era of generative AI](https://slim.gatech.edu/Publications/Public/Journals/TheLeadingEdge/2023/herrmann2023dte/PresidentsPage.pdf)
+
 ## Textbook
 
 |                                                                                                                                                                                                                                          |                        |            |
