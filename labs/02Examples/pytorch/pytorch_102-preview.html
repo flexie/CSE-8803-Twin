@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.528">
+    <meta name="generator" content="quarto-1.4.526">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,10 +275,7 @@
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#intro-to-pytorch" id="toc-intro-to-pytorch" class="nav-link active" data-scroll-target="#intro-to-pytorch">Intro to PyTorch</a>
-  <ul class="collapse">
-  <li><a href="#pytorch-workflows" id="toc-pytorch-workflows" class="nav-link" data-scroll-target="#pytorch-workflows">2. Pytorch Workflows</a></li>
-  </ul></li>
+  <li><a href="#pytorch-workflows" id="toc-pytorch-workflows" class="nav-link active" data-scroll-target="#pytorch-workflows">2. Pytorch Workflows</a></li>
   <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link" data-scroll-target="#prepare-the-data">2.1. Prepare the data</a></li>
   <li><a href="#train-validate-test-split" id="toc-train-validate-test-split" class="nav-link" data-scroll-target="#train-validate-test-split">Train, validate, test split</a></li>
   <li><a href="#build-the-model" id="toc-build-the-model" class="nav-link" data-scroll-target="#build-the-model">2.2 Build the model</a></li>
@@ -318,14 +315,11 @@
 
 
 </header>     <div id="7c7d91f7" class="cell markdown">
-<section id="intro-to-pytorch" class="level1">
-<h1>Intro to PyTorch</h1>
 <section id="pytorch-workflows" class="level2">
 <h2 class="anchored" data-anchor-id="pytorch-workflows">2. Pytorch Workflows</h2>
 <p>Based on Bourkes’s https://www.learnpytorch.io/</p>
 <p>Here’s a standard PyTorch workflow.</p>
 <p><img src="./01_a_pytorch_workflow.png" class="img-fluid"></p>
-</section>
 </section>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="35ae889f" class="cell" data-execution_count="1">
@@ -1331,6 +1325,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -1345,14 +1360,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -1361,9 +1372,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }

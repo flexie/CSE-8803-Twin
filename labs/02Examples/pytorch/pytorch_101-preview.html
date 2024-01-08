@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.528">
+    <meta name="generator" content="quarto-1.4.526">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,11 +275,7 @@
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-to-pytorch" id="toc-introduction-to-pytorch" class="nav-link active" data-scroll-target="#introduction-to-pytorch">Introduction to PyTorch</a>
-  <ul class="collapse">
-  <li><a href="#tensors-are-everywhere" id="toc-tensors-are-everywhere" class="nav-link" data-scroll-target="#tensors-are-everywhere">1. Tensors are everywhere</a></li>
-  </ul></li>
-  <li><a href="#random-valued-tensors" id="toc-random-valued-tensors" class="nav-link" data-scroll-target="#random-valued-tensors">Random-valued Tensors</a></li>
+  <li><a href="#random-valued-tensors" id="toc-random-valued-tensors" class="nav-link active" data-scroll-target="#random-valued-tensors">Random-valued Tensors</a></li>
   <li><a href="#other-special-tensors" id="toc-other-special-tensors" class="nav-link" data-scroll-target="#other-special-tensors">Other special tensors</a></li>
   <li><a href="#tensor-datatypes" id="toc-tensor-datatypes" class="nav-link" data-scroll-target="#tensor-datatypes">Tensor datatypes</a></li>
   <li><a href="#get-info-from-tensors" id="toc-get-info-from-tensors" class="nav-link" data-scroll-target="#get-info-from-tensors">Get info from tensors</a></li>
@@ -316,13 +312,10 @@
 
 
 </header>     <div id="8f2c09d7-d3d2-46ca-98ed-fedb2d8c4c5d" class="cell markdown">
-<section id="introduction-to-pytorch" class="level1">
-<h1>Introduction to PyTorch</h1>
 <p>Based on Bourkes’s https://www.learnpytorch.io/</p>
 <section id="tensors-are-everywhere" class="level2">
 <h2 class="anchored" data-anchor-id="tensors-are-everywhere">1. Tensors are everywhere</h2>
 <p>Tensors are the fundamental building blocks of machine learning.</p>
-</section>
 </section>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="398dc2b2-a6a1-43e3-b803-d97b9b1489fd" class="cell" data-execution_count="2">
@@ -1281,6 +1274,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -1295,14 +1309,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -1311,9 +1321,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
