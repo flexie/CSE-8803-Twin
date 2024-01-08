@@ -10,8 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.528">
 
-  <meta name="dcterms.date" content="2024-01-08">
-  <title>Digital Twins for Physical Systems - Welcome to Digital Twins for Physical Systems</title>
+  <meta name="dcterms.date" content="2023-12-23">
+  <title>Digital Twins for Physical Systems - Uncertainty Quantification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,27 +29,7 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -347,345 +327,61 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome to Digital Twins for Physical Systems</h1>
-  <p class="subtitle">Introduction</p>
+<section id="title-slide" data-background-image="../images/3DVAR.png" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">Uncertainty Quantification</h1>
+  <p class="subtitle">Bayesian Data Assimilation</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2024-01-08</p>
+  <p class="date">2023-12-23</p>
 </section>
-<section>
-<section id="an-introduction-to-digital-twins-chapter-1-overview" class="title-slide slide level1 center">
-<h1>An Introduction to Digital Twins: Chapter 1 Overview</h1>
-
-<!-- Figure Suggestion: A cover image representing Digital Twins, possibly a graphical illustration of a physical object and its digital counterpart. -->
-<img data-src="https://oden.utexas.edu/media/news-items/dtwinreleaseimageSept2022.png" class="r-stretch quarto-figure-center"><p class="caption">adapted from <a href="https://oden.utexas.edu/media/news-items/dtwinreleaseimageSept2022.png">here</a></p></section>
-<section id="course-outline" class="slide level2 center">
-<h2>Course outline</h2>
-<p>This is a new advanced course that is being developed during this term.</p>
-<ul>
-<li><a href="../../syllabus.html">Syllabus</a></li>
-<li><a href="../../schedule.html">Schedule</a></li>
-<li>etc.</li>
-</ul>
-<p>are all made available and constantly updated on</p>
-<p><a href="https://flexie.github.io/CSE-8803-Twin//">https://flexie.github.io/CSE-8803-Twin//</a></p>
-</section>
-<section id="objectives" class="slide level2 smaller center">
-<h2>Objectives</h2>
-<p>By the end of the semester, you will be made familiar with …</p>
-<ul>
-<li>the concept of Digital Twins and how they interact with their environment</li>
-<li>Statistical Inverse Problems and Bayesian Inference</li>
-<li>techniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]</li>
-</ul>
-<p>For more on the Course outline, Topics, and Learning goals, see <a href="../../goals.html">Goals</a>.</p>
-</section>
-<section id="textbook" class="slide level2 smaller center">
-<h2>Textbook</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&amp;context=L&amp;vid=01GALI_GIT:GT&amp;vid=01GALI_GIT&amp;docid=alma9914381076402947&amp;tab=default_tab&amp;lang=en">Data assimilation: methods, algorithms, and applications</a></td>
-<td><span class="citation" data-cites="asch2016data">Asch, Bocquet, and Nodet (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>, Mark</td>
-<td>SIAM, 2016</td>
-</tr>
-<tr class="even">
-<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486">A toolbox for digital twins: from model-based to data-driven</a><sup>1</sup></td>
-<td><span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, Mark</td>
-<td>SIAM, 2022</td>
-</tr>
-</tbody>
-</table>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>This 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage.</p></li></ol></aside></section>
-<section id="journal-papers" class="slide level2 smaller center">
-<h2>Journal Papers</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td><a href="https://openintro-ims.netlify.app/">A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies</a></td>
-<td><span class="citation" data-cites="thelen2022comprehensivea">Thelen et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></td>
-<td>Springer, 2022</td>
-</tr>
-<tr class="even">
-<td><a href="https://link.springer.com/article/10.1007/00158-022-03410-x">A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives</a></td>
-<td><span class="citation" data-cites="thelen2023comprehensiveb">Thelen et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></td>
-<td>Springer, 2022</td>
-</tr>
-<tr class="odd">
-<td><a href="https://arxiv.org/abs/2201.08180">Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial</a></td>
-<td><span class="citation" data-cites="tatsis2022sequential">Tatsis, Dertimanis, and Chatzi (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></td>
-<td>Arxiv, 2022</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="introduction" class="slide level2 smaller center">
-<h2>Introduction</h2>
-<ul>
-<li>Different definitions of Digital Twins</li>
-<li>Data Flows</li>
-<li>Dimensions Digital Twins</li>
-<li>the Inference Cycle</li>
-</ul>
-<!-- Figure Suggestion: An introductory infographic that visually represents the concept of Digital Twins. -->
-</section>
-<section id="definition-of-digital-twin" class="slide level2 smaller center">
-<h2>Definition of Digital Twin</h2>
-<p>Definition from <span class="citation" data-cites="asch2022toolbox">(<a href="#/references" role="doc-biblioref" onclick="">Asch 2022</a>)</span>: “<em>A set of virtual information constructs that mimics the structure, context, and behavior of an individual/unique physical asset, or a group of physical assets, is dynamically updated with data from its physical twin throughout its life cycle and informs decisions that realize value.</em>”</p>
-<ul>
-<li>Definition by the Aerospace Industries Association</li>
-<li>Mirroring physical assets in a dynamic manner</li>
-</ul>
-<p>Definition by <a href="https://www.ibm.com/topics/what-is-a-digital-twin">IBM</a>: “<em>A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision making.</em>”</p>
-</section>
-<section id="definition-of-digital-twin-conted" class="slide level2 smaller center">
-<h2>Definition of Digital Twin (cont’ed)</h2>
-<p>Definition from <span class="citation" data-cites="national2023foundational">(<a href="#/references" role="doc-biblioref" onclick="">National Academies of Sciences, Medicine, et al. 2023</a>)</span>: “<em>A digital twin is a set of virtual information constructs that mimics the structure, context, and behavior of a natural, engineered, or social system (or system-of-systems), is dynamically updated with data from its physical twin, has a predictive capability, and informs decisions that realize value. The bidirectional interaction between the virtual and the physical is central to the digital twin.</em>”</p>
-<p>Also see discussion <a href="https://link.springer.com/article/10.1007/s00158-022-03425-4">Section 2 of “A comprehensive review of digital twin — part 1”</a>.</p>
-<!-- Figure Suggestion: A diagram showing a physical asset and its digital twin counterpart, highlighting dynamic data exchange. -->
-</section>
-<section id="cyber-physical-systems-cps" class="slide level2 smaller center">
-<h2>Cyber-Physical Systems (CPS)</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li>Model Systems of Systems (SoS) by equations</li>
-<li>How the two worlds—digital and physical—intertwine?</li>
-<li>How does the digital inform the physical, and how does the physical shape our understanding of digital processes?</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/smartcity.png" style="width:80.0%"></p>
-<figcaption><a href="https://www.techtarget.com/iotagenda/definition/smart-city">Source</a></figcaption>
-</figure>
-</div>
-</div>
-</div>
-<!-- Figure Suggestion: An illustration showing the integration of cyber systems with physical processes. -->
-</section>
-<section id="data-flows" class="slide level2 smaller center">
-<h2>Data flows</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li><p>For a digital model, data flow between the physical space and virtual space is optional</p></li>
-<li><p>For a digital shadow, data flow is unidirectional from physical to digital.</p></li>
-<li><p>But for digital twin, the data flow has to be bidirectional. See Figure.</p></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../images/data_flow.png"></p>
-<figcaption>from <span class="citation" data-cites="thelen2022comprehensivea">(<a href="#/references" role="doc-biblioref" onclick="">Thelen et al. 2022</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="five-dimensional-digital-twin" class="slide level2 smaller center">
-<h2>Five dimensional Digital Twin</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><span class="math display">\[\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})\]</span></p>
-<p>five- dimensional digital twin model consists of</p>
-<ul>
-<li><p>a physical system (PS),</p></li>
-<li><p>a digital system (DS),</p></li>
-<li><p>an updating engine (P2V),</p></li>
-<li><p>a prediction engine (V2P),</p></li>
-<li><p>and an optimization dimension (OPT).</p></li>
-</ul>
-<p><span class="math inline">\(\mathbb{F}(⋅)\)</span> integrates all five dimensions together to define a <strong>Digital Twin</strong>.</p>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../images/five_dim.png"></p>
-<figcaption>from <span class="citation" data-cites="thelen2022comprehensivea">(<a href="#/references" role="doc-biblioref" onclick="">Thelen et al. 2022</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="five-dimensions" class="slide level2 center">
-<h2>Five dimensions</h2>
-<p><span class="math display">\[\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})\]</span></p>
-
-<img data-src="../images/p2v.png" class="r-stretch quarto-figure-center"><p class="caption">from <span class="citation" data-cites="thelen2022comprehensivea">(<a href="#/references" role="doc-biblioref" onclick="">Thelen et al. 2022</a>)</span></p></section>
-<section id="the-inference-cycle" class="slide level2 smaller center">
-<h2>The Inference Cycle</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li>Scientific method — inferential process</li>
-<li>Abduction — going from (unexplained) effect to (possible) cause</li>
-<li>Deduction — going from cause to effect</li>
-<li>Induction — going from specific to general</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/cycle.png" style="width:80.0%"></p>
-<figcaption>Source <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-<!-- Figure Suggestion: A flowchart or cycle diagram showing the steps of abduction, deduction, and induction. -->
-</section>
-<section id="the-concept-of-a-digital-twin" class="slide level2 smaller center">
-<h2>The Concept of a Digital Twin</h2>
-<ul>
-<li><p>the availability of (large) volumes of (often real-time) data,</p></li>
-<li><p>the accessibility to this data,</p></li>
-<li><p>the tools and implementations of AI-based algorithms,</p></li>
-<li><p>the body of knowledge of mathematical models,</p></li>
-<li><p>the readiness and low cost of computational devices,</p></li>
-</ul>
-<p>Necessary ingredients for a Digital Twin that learns during its life cycle</p>
-<ul>
-<li><p>consists of <em>static</em> part — initial model, design, and</p></li>
-<li><p><em>dynamic</em> part — includes the simulation process, coupled with data acquisition, and finally autoupdating.</p></li>
-</ul>
-<!-- Figure Suggestion: A Venn diagram showing the intersection of data, AI algorithms, and computational devices. -->
-</section>
-<section id="the-spectrum-of-digital-twins" class="slide level2 center">
-<h2>The Spectrum of Digital Twins</h2>
-<ul>
-<li>From model-driven to data-driven</li>
-<li>Importance of models, data, and competencies</li>
-</ul>
-<!-- Figure Suggestion: A spectrum or continuum graphic showing the range from model-driven to data-driven Digital Twins. -->
-</section>
-<section id="digital-twins-in-the-digital-continuum" class="slide level2 smaller center">
-<h2>Digital Twins in the Digital Continuum</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Interaction with digital infrastructure</li>
-<li>Cloud computing, IoT, and cybersecurity</li>
-<li>Emphasis in this course will be on monitoring &amp; control of physical systems ruled by PDEs
-<ul>
-<li>geological CO<sub>2</sub> storage</li>
-<li>battery life</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../images/continuum.png" style="width:80.0%"></p>
-<figcaption>Source <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="geological-carbon-storage" class="slide level2 smaller center">
-<h2>Geological Carbon Storage</h2>
-
-<img data-src="https://slim.gatech.edu/Website-ResearchWebInfo/GeologicalCarbonStorage/figs/gcs.png" class="r-stretch"><ul>
-<li>coupling of fluid-flow physics and</li>
-<li>wave physics</li>
-</ul>
-<!-- Figure Suggestion: A conceptual diagram illustrating how Digital Twins interact within the broader digital infrastructure. -->
-</section>
-<section id="models-data-and-coupling-in-digital-twins" class="slide level2 smaller center">
-<h2>Models, Data, and Coupling in Digital Twins</h2>
-<p>Questions:</p>
+<section id="uncertainty-quantification" class="slide level2 smaller center">
+<h2>Uncertainty Quantification</h2>
+<p><strong>Definition 11.1 (UQ).</strong> <em>UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).</em></p>
+<p><strong>Definition 11.2 (QoI).</strong> <em>In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.</em></p>
+<p>We can decompose UQ into a number of subtasks:</p>
 <ol type="1">
-<li><p>What is meant by a “model”?</p></li>
-<li><p>What are data to be used for?</p></li>
-<li><p>How, if possible, can we couple the above two to construct the most informative DT?</p></li>
+<li>Quantify uncertainties in model inputs by specifying probability distributions.</li>
+<li>Propagate input uncertainties through the model and quantify effects on the QoI.</li>
+<li>Quantify variability in the true physical QoI</li>
+<li>Aggregate uncertainties arising from different sources to appraise overall uncertainty (input, model, numerical errors, inherent variability)</li>
+<li>Compute sensitivities of output variables with respect to input variables (forward UQ)</li>
 </ol>
-<p>Will be discussing two types of models throughout the book:</p>
-<ol type="1">
-<li>Equation-based models that are derived, most often, from some conservation laws.</li>
-<li>Statistical, data-driven models that are based on measured data and its analysis.</li>
-</ol>
-<p><strong>A good statistical model:</strong> should attain a good balance between underfitting.</p>
-<p><strong>Physical models:</strong> need to capture the higher order terms and neglect small terms</p>
-<p>Bloated models will often be difficult to solve numerically.</p>
-<!-- Figure Suggestion: A graphic showing different types of models, data flow, and the coupling process. -->
 </section>
-<section id="examples-and-use-cases" class="slide level2 center">
-<h2>Examples and Use Cases</h2>
-<ul>
-<li>Predictive maintenance, personalized medicine, sports, agriculture, geophysics</li>
-</ul>
-<!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
-<!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
+<section id="bayesian-parameter-estimation-in-state-space-models" class="slide level2 smaller center">
+<h2>Bayesian Parameter Estimation in State Space Models</h2>
+<p><span class="math display">\[
+\begin{aligned}
+\boldsymbol{\theta} &amp; \sim p(\boldsymbol{\theta}) \\
+\mathbf{x}_0 &amp; \sim p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \\
+\mathbf{x}_k &amp; \sim p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right) \\
+\mathbf{y}_k &amp; \sim p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right), \quad k=0,1,2, \ldots
+\end{aligned}
+\]</span></p>
+<p>Applying Bayes’ Law of Theorem 2.61, we can compute the complete posterior distribution of the state plus parameters as <span class="math display">\[
+p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\frac{p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right) p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right) p(\boldsymbol{\theta})}{p\left(\mathbf{y}_{1: T}\right)},
+\]</span> where the joint prior of the states, <span class="math inline">\(\mathbf{x}_{0: T}=\left\{\mathbf{x}_0, \ldots, \mathbf{x}_T\right\}\)</span>, and the joint likelihood of the measurements, <span class="math inline">\(\mathbf{y}_{1: T}=\left\{\mathbf{y}_1, \ldots, \mathbf{y}_T\right\}\)</span>, conditioned on the parameters, are</p>
 </section>
-<section id="recommended-approachthe-triple-loop-method" class="slide level2 smaller center">
-<h2>Recommended Approach—The Triple-Loop Method</h2>
-<p>Three loops: Space and time, optimization, decision-making</p>
-<ul>
-<li><p>Loops over space and time and solution of the physical problem in the inner loop.</p></li>
-<li><p>Optimization in the outer loop, including control, solution of an inverse problem, parameter estimation, uncertainty quantification, and multifidelity modeling using surrogates.</p></li>
-<li><p>Decision making in the outer-outer loop— preventative maintenance, shutting down operations …</p></li>
-</ul>
-<p>Important to ensure trustworthiness of the DT - checking operational and validity regimes of the model, and - implement an expert system based on engineering experience.</p>
-<!-- Figure Suggestion: A triple-loop diagram illustrating the three aspects of the methodology. -->
-<!-- ## Recommendations for Project Managers
-
--   Developing in-house vs purchasing
--   Intellectual property, model brittleness, uncertainty quantification -->
-<!-- Figure Suggestion: A decision tree or a pros and cons list for in-house development vs. purchasing. -->
-</section>
-<section id="future-directions" class="slide level2 smaller center">
-<h2>Future Directions</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Evolution from simple to AI-integrated systems</li>
-<li>Theoretical and practical advancements</li>
-<li>Facilitates a more general interpretation where we can map machine learning techniques, or AI, to any of the stages</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../images/inference_cycle.png"></p>
-<figcaption>from <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-<!-- Figure Suggestion: A timeline or roadmap visualizing the evolution and future prospects of Digital Twins. -->
-</section>
-<section id="references" class="slide level2 unnumbered smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
-Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
-</div>
-<div id="ref-asch2016data" class="csl-entry" role="listitem">
-Asch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. <em>Data Assimilation: Methods, Algorithms, and Applications</em>. SIAM.
-</div>
-<div id="ref-national2023foundational" class="csl-entry" role="listitem">
-National Academies of Sciences, Engineering, Medicine, et al. 2023. <span>“Foundational Research Gaps and Future Directions for Digital Twins.”</span>
-</div>
-<div id="ref-tatsis2022sequential" class="csl-entry" role="listitem">
-Tatsis, Konstantinos E, Vasilis K Dertimanis, and Eleni N Chatzi. 2022. <span>“Sequential Bayesian Inference for Uncertain Nonlinear Dynamic Systems: A Tutorial.”</span> <em>arXiv Preprint arXiv:2201.08180</em>.
-</div>
-<div id="ref-thelen2022comprehensivea" class="csl-entry" role="listitem">
-Thelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michael D Todd, Sankaran Mahadevan, Chao Hu, and Zhen Hu. 2022. <span>“A Comprehensive Review of Digital Twin—Part 1: Modeling and Twinning Enabling Technologies.”</span> <em>Structural and Multidisciplinary Optimization</em> 65 (12): 354.
-</div>
-<div id="ref-thelen2023comprehensiveb" class="csl-entry" role="listitem">
-———. 2023. <span>“A Comprehensive Review of Digital Twin—Part 2: Roles of Uncertainty Quantification and Optimization, a Battery Digital Twin, and Perspectives.”</span> <em>Structural and Multidisciplinary Optimization</em> 66 (1): 1.
-</div>
-</div>
+<section id="section" class="slide level2 smaller center">
+<h2></h2>
+<p><span class="math display">\[
+p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right)=p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \prod_{k=1}^T p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right)
+\]</span> and <span class="math display">\[
+p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right)=\prod_{k=1}^T p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right)
+\]</span> respectively. Finally, we need to marginalize over the state to obtain the predictive posterior for the parameter <span class="math inline">\(\boldsymbol{\theta}\)</span>, <span class="math display">\[
+p\left(\boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\int p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right) \mathrm{d} \mathbf{x}_{0: T}
+\]</span></p>
+<p>Integrals are difficult to compute — will seek iterative (learned) methods to capture statistics</p>
 
 
-</section><div class="quarto-auto-generated-content">
+</section>
+    <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
 </div>
-</div></section>
-
-    </div>
+</div></div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
@@ -718,7 +414,7 @@ Thelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michae
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -871,7 +567,7 @@ Thelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michae
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

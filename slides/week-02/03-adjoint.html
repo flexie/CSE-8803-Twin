@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.528">
 
-  <meta name="dcterms.date" content="2024-01-24">
+  <meta name="dcterms.date" content="2024-01-17">
   <title>Digital Twins for Physical Systems - Adjoint state</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -349,43 +349,12 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Adjoint state</h1>
-  <p class="subtitle">Data Assimilation</p>
+  <p class="subtitle">Inverse Problems</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2024-01-24</p>
-</section>
-<section id="outline" class="slide level2 smaller center">
-<h2>Outline</h2>
-<p><span data-fig-align="color: blue">Adjoint methods and variational data assimilation</span></p>
-<ol type="1">
-<li><p>Introduction to data assimilation: setting, history, overview, definitions.</p></li>
-<li><p><span style="color: red">Adjoint method.</span></p></li>
-<li><p><span style="color: lightgray">Variational data assimilation methods:</span></p>
-<ol type="a">
-<li><p><span style="color: lightgray">3D-Var,</span></p></li>
-<li><p><span style="color: lightgray">4D-Var.</span></p></li>
-</ol></li>
-</ol>
-</section>
-<section id="outline-1" class="slide level2 smaller center">
-<h2>Outline</h2>
-<p><span style="color: blue">Statistical estimation, Kalman filters and sequential data assimilation (4h)</span></p>
-<div class="enumerate">
-<div style="color: lightgray">
-<p>Introduction to statistical DA.</p>
-<p>Statistical estimation.</p>
-<p>The Kalman filter.</p>
-<p>Nonlinear extensions and ensemble filters.</p>
-</div>
-</div>
-</section>
-<section id="text-books" class="slide level2 center">
-<h2>Text books</h2>
-<div class="center">
-<p><img data-src="../images/FA11_Asch-Boucquet_cover10-24-16.png" style="width:80.0%"></p>
-</div>
+  <p class="date">2024-01-17</p>
 </section>
 <section id="section" class="slide level2 center">
 <h2></h2>
@@ -393,11 +362,69 @@
 <p><img data-src="../images/MN06_ASCH_COVER_B_V6.png" style="width:80.0%"></p>
 </div>
 </section>
-<section id="section-1" class="slide level2 center">
-<h2></h2>
-<div class="center">
-<p><strong><span style="color: blue">ADJOINT METHOD FOR INVERSE PROBLEMS</span></strong></p>
+<section id="inverse-problems" class="slide level2 smaller center">
+<h2>Inverse problems</h2>
+<div class="{fig-inverse_prob}">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../images/inverse_prob.png" style="width:70.0%"></p>
+<figcaption>from <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
+</figure>
 </div>
+<p>Ingredients of an inverse problem: the physical reality (top) and the direct mathematical model (bottom). The inverse problem uses the difference between the model- predicted observations, u (calculated at the receiver array points xr), and the real observations measured on the array, in order to find the unknown model parameters, m, or the source s (or both).</p>
+</div>
+<!-- 
+## Outline{.smaller}
+
+[Adjoint methods and variational data assimilation]{fig-align="color: blue"}
+
+1.  Introduction to data assimilation: setting, history, overview,
+    definitions.
+
+2.  [Adjoint method.]{style="color: red"}
+
+3.  [Variational data assimilation methods: ]{style="color: lightgray"}
+
+    a.  [3D-Var, ]{style="color: lightgray"}
+
+    a.  [4D-Var.]{style="color: lightgray"}
+
+## Outline {.smaller}
+
+[Statistical estimation, Kalman filters and sequential data assimilation
+(4h)]{style="color: blue"}
+
+::: enumerate
+::: {style="color: lightgray"}
+Introduction to statistical DA.
+
+Statistical estimation.
+
+The Kalman filter.
+
+Nonlinear extensions and ensemble filters.
+
+:::
+:::
+
+## Text books
+
+::: center
+![](../images/FA11_Asch-Boucquet_cover10-24-16.png){width="80%"}
+:::
+
+## 
+
+::: center
+![](../images/MN06_ASCH_COVER_B_V6.png){width="80%"}
+:::
+
+##
+
+::: center
+**[ADJOINT METHOD FOR INVERSE PROBLEMS]{style="color: blue"}**
+:::
+ -->
 </section>
 <section id="adjoint-state-methods" class="slide level2 smaller nostretch center">
 <h2>Adjoint-state Methods</h2>
@@ -441,7 +468,7 @@
 <li><p>or as components of the boundary/initial conditions.</p></li>
 </ul>
 </section>
-<section id="section-2" class="slide level2 smaller center">
+<section id="section-1" class="slide level2 smaller center">
 <h2></h2>
 <p>To solve this very general parameter estimation problem, we are given a cost function <span class="math inline">\(J(\mathbf{m};\mathbf{u}).\)</span></p>
 <p>The constrained optimization problem is then <span class="math display">\[\begin{cases}
@@ -466,7 +493,7 @@
 </div>
 <p>This type of optimization is the subject of <span style="color: magenta">variational calculus</span>, a generalization of classical calculus where differentiation is performed with respect to a variable, not a function.</p>
 </section>
-<section id="section-3" class="slide level2 smaller center">
+<section id="section-2" class="slide level2 smaller center">
 <h2></h2>
 <p>The <span style="color: magenta">gradient</span> of <span class="math inline">\(J\)</span> with respect to <span class="math inline">\(\mathbf{m}\)</span> (also known as the <em>sensitivity</em>) is then obtained by the <span style="color: magenta">chain-rule</span>, <span class="math display">\[\nabla_{\mathbf{m}}J=\frac{\partial J}{\partial\mathbf{u}}\frac{\partial\mathbf{u}}{\partial\mathbf{m}}+\frac{\partial J}{\partial\mathbf{m}}.\]</span></p>
 <ul>
@@ -476,7 +503,7 @@
 <p>The adjoint method is a way to <span style="color: red">avoid</span> calculating all of these derivatives.</p>
 <p>We use the fact that if <span class="math inline">\(F(\mathbf{u};\mathbf{m})=0\)</span> everywhere, then this implies that the total derivative of <span class="math inline">\(F\)</span> with respect to <span class="math inline">\(\mathbf{m}\)</span> is equal to zero everywhere too.</p>
 </section>
-<section id="section-4" class="slide level2 smaller center">
+<section id="section-3" class="slide level2 smaller center">
 <h2></h2>
 <p>Differentiating the PDE <a href="#/adjoint-methodsoptimization-formulation" class="quarto-xref">1</a>, we can thus write <span class="math display">\[\frac{\partial F}{\partial\mathbf{u}}\frac{\partial\mathbf{u}}{\partial\mathbf{m}}+\nabla_{\mathbf{m}}F=0.\]</span></p>
 <p>This can be solved for the untractable derivative of <span class="math inline">\(\mathbf{u}\)</span> with respect to <span class="math inline">\(\mathbf{m},\)</span> to give <span class="math display">\[\frac{\partial\mathbf{u}}{\partial\mathbf{m}}=-\left(\frac{\partial F}{\partial\mathbf{u}}\right)^{-1}\nabla_{\mathbf{m}}F\]</span> assuming that the inverse of <span class="math inline">\(\partial F/\partial{\mathbf{u}}\)</span> exists.</p>
@@ -485,7 +512,7 @@
      &amp; =\mathbf{p}\nabla_{\mathbf{m}}F+\frac{\partial J}{\partial\mathbf{m}}
     \end{aligned}\]</span></p>
 </section>
-<section id="section-5" class="slide level2 smaller center">
+<section id="section-4" class="slide level2 smaller center">
 <h2></h2>
 <p>where we have conveniently defined <span class="math inline">\(\mathbf{p}\)</span> as the solution of the <span style="color: magenta"><em>adjoint equation</em></span> <span class="math display">\[\left(\frac{\partial F}{\partial\mathbf{u}}\right)^{\mathrm{T}}\mathbf{p}=-\frac{\partial J}{\partial\mathbf{u}}.\]</span></p>
 </section>
@@ -511,20 +538,20 @@
 </div>
 </div>
 </section>
-<section id="section-6" class="slide level2 smaller center">
+<section id="section-5" class="slide level2 smaller center">
 <h2></h2>
 <p>A number of important remarks can be made.</p>
 <ol type="1">
 <li><p>We obtain <span style="color: magenta"><em>explicit</em></span><span style="color: magenta"></span> formulasin terms of the adjoint statefor the gradient with respect to each/any model parameter. Note that this has been done in a completely general setting, without any restrictions on the operator <span class="math inline">\({F}\)</span> or on the model parameters <span class="math inline">\(\mathbf{m}.\)</span></p></li>
-<li><p>The <span style="color: magenta"><em>computational cost</em></span><span style="color: magenta"></span>is one solution of the adjoint equation which is usually of the same order as (if not identical to) the direct equation, but with a reversal of time. Note that for nonlinear equations this may not be the case and one may require four or five times the computational effort.</p></li>
+<li><p>The <span style="color: magenta"><em>computational cost</em></span><span style="color: magenta"></span> is one solution of the adjoint equation which is usually of the same order as (if not identical to) the direct equation, but with a reversal of time. Note that for nonlinear equations this may not be the case and one may require four or five times the computational effort.</p></li>
 <li><p>The <span style="color: magenta"><em>variation</em></span> (Gâteaux derivative) of <span class="math inline">\({F}\)</span> with respect to the model parameters <span class="math inline">\(\mathbf{m}\)</span> is, in general, straightforward to compute.</p></li>
 <li><p>We have not explicitly considered boundary (or initial) conditions in the above, general approach. In real cases, these are potential sources of difficulties for the use of the adjoint approach the <em>discrete adjoint</em> can provide a way to overcome this hurdle.</p></li>
 </ol>
 </section>
-<section id="section-7" class="slide level2 smaller center">
+<section id="section-6" class="slide level2 smaller center">
 <h2></h2>
 <ol start="5" type="1">
-<li><p>For complete mathematical rigor, the above development should be performed in an appropriate <span style="color: magenta"><em>Hilbert space</em></span><span style="color: magenta"></span>setting that guarantees the existence of all the inner products and adjoint operators. The interested reader could consult <span class="citation" data-cites="troltzsch2010optimal">Tröltzsch (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>.</p></li>
+<li><p>For complete mathematical rigor, the above development should be performed in an appropriate <span style="color: magenta"><em>Hilbert space</em></span><span style="color: magenta"></span> setting that guarantees the existence of all the inner products and adjoint operators. The interested reader could consult <span class="citation" data-cites="troltzsch2010optimal">Tröltzsch (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>.</p></li>
 <li><p>In many real problems, the optimization of the misfit functional leads to <span style="color: magenta"><em>multiple local minima</em></span> and often to very “flat” cost functions. These are hard problems for gradient-based optimization methods. These difficulties can be (partially) overcome by a panoply of tools:</p>
 <ol type="a">
 <li><p><span style="color: magenta"><em>Regularization</em></span> terms can alleviate the non-uniqueness problem.</p></li>
@@ -534,7 +561,7 @@
 </ol></li>
 </ol>
 </section>
-<section id="section-8" class="slide level2 smaller center">
+<section id="section-7" class="slide level2 smaller center">
 <h2></h2>
 <ol start="7" type="1">
 <li>When measurement and modeling errors can be modeled by Gaussian distributions and a background (prior) solution exists, the objective function may be generalized by including suitable <span style="color: magenta"><em>covariance matrices</em></span><span style="color: magenta">.</span> This is the approach employed systematically in data assimilationsee below.</li>
@@ -543,7 +570,7 @@
 <section id="adjoint-state-methoddiscrete-systems" class="slide level2 smaller center">
 <h2>Adjoint-state method—Discrete systems</h2>
 <p>In practice, we often work with <em>discretized</em> systems of equations, e.g.&nbsp;discretized PDEs.</p>
-<p>Assume that <span class="math inline">\(\mathbf{x}\)</span> depends, as usual on a parameter vector, $, made up of <span class="math inline">\(p\)</span></p>
+<p>Assume that <span class="math inline">\(\mathbf{x}\)</span> depends, as usual on a parameter vector, <span class="math inline">\(\mathbf{m}\)</span>, made up of <span class="math inline">\(p\)</span></p>
 <ul>
 <li>control variables, design parameters, or decision parameters</li>
 </ul>
@@ -553,8 +580,8 @@
 </ul>
 <p>Possible with an adjoint-state method at a cost that is independent of <span class="math inline">\(p\)</span>.</p>
 <p>Involves inversion of linear system at <span class="math inline">\(\mathcal{O}(n^3)\)</span> operations — making it computational feasible to deal with problems of this type</p>
-<p><span id="eq-A"><span class="math display">\[A[\mathbf{m}]\mathbf{x}=\mathbf{q} \tag{2}\]</span></span></p>
-<p>where <span class="math inline">\(A[\mathbf{m}]\)</span> represents the discretized PDE, <span class="math inline">\(\mathcal{m}\)</span> spatially varying coefficients of the PDE, and <span class="math inline">\(\mathbf{q}\)</span> a source term.</p>
+<p><span id="eq-A"><span class="math display">\[A[\mathbf{m}]\mathbf{x}=\mathbf{b} \tag{2}\]</span></span></p>
+<p>where <span class="math inline">\(A[\mathbf{m}]\)</span> represents the discretized PDE, <span class="math inline">\(\mathbf{m}\)</span> spatially varying coefficients of the PDE, and <span class="math inline">\(\mathbf{b}\)</span> a source term.</p>
 </section>
 <section id="automatic-differentiation" class="slide level2 smaller center">
 <h2>Automatic Differentiation</h2>
@@ -576,7 +603,7 @@
 <h2>Problems AD</h2>
 <p>Realistic (complex and large scale) solved with <strong>DtA</strong> using AD — provided by ML</p>
 <ul>
-<li>PyTorch, TensorFlow (Python), or Flux.jl (Julia)</li>
+<li>PyTorch, TensorFlow (Python), or Flux.jl/Zygote.jl (Julia)</li>
 </ul>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
@@ -589,8 +616,8 @@
 <div class="callout-content">
 <p>While convenient, AD as part of ML tools (known as backpropagation)</p>
 <ul>
-<li>does not scale</li>
-<li>integrate poorly with existing CSE codes</li>
+<li>may not scale</li>
+<li>integrates poorly with existing CSE codes</li>
 </ul>
 </div>
 </div>

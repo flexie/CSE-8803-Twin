@@ -5,7 +5,8 @@
       "/weeks/week-01.html",
       "/weeks/week-02.html",
       "/weeks/week-03.html",
-      "/weeks/week-04.html"
+      "/weeks/week-04.html",
+      "/weeks/week-05.html"
     ]
   },
   {
@@ -13,16 +14,22 @@
     "items": [
       "/slides/week-03/04-AD.html",
       "/slides/week-03/05-variational.html",
-      "/slides/week-03/06-Bayes-Inference.html",
       "/labs/w3-lab02-Diff-Prog.html"
+    ]
+  },
+  {
+    "listing": "/weeks/week-05.html",
+    "items": [
+      "/slides/week-04/06-Bayes-Inference.html",
+      "/slides/week-04/07-DA-stat.html",
+      "/labs/w4-lab02-Diff-Prog.html"
     ]
   },
   {
     "listing": "/weeks/week-04.html",
     "items": [
+      "/slides/week-04/06-Bayes-Inference.html",
       "/slides/week-04/07-DA-stat.html",
-      "/slides/week-04/08-DA-Bayes.html",
-      "/slides/week-04/09-UQ.html",
       "/labs/w4-lab02-Diff-Prog.html"
     ]
   },
