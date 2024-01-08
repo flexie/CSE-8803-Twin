@@ -3,7 +3,7 @@ title: "First Lab"
 date: "January 11, 2024"
 categories: "Lab"
 notebook-view: 
-  - notebook: 01Intro/underfitting_overfitting.ipynb
+  - notebook: 01intro/underfitting_overfitting.ipynb
     title: "Intro"
 ---
 
