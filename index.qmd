@@ -28,3 +28,6 @@ Numerical Linear Algebra, Statistics, Machine Learning, Experience w/ Python, or
 | [Rafael Orozco](mailto:rorozco@gatech.edu) (TA) | TBD            | Zoom       |
 
 
+## Access to Piazza
+
+Students are encouraged to post their questions on [Piazza](https://gatech.instructure.com/courses/380456/external_tools/18649) on Canvas or [Piazza direct](https://piazza.com/class/lr4dw5ds5ac394), which will be monitored by [Rafael Orozco](mailto:rorozco@gatech.edu).
