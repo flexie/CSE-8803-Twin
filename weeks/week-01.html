@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.526">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -129,6 +129,33 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -273,7 +300,7 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1704690000000" data-listing-file-modified-sort="1704745297678" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2084" data-listing-title-sort="Welcome to Digital Twins for Physical Systems" data-listing-filename-sort="01-intro.qmd">
+<tr data-index="0" data-listing-date-sort="1704690000000" data-listing-file-modified-sort="1704745297000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2097" data-listing-title-sort="Welcome to Digital Twins for Physical Systems" data-listing-filename-sort="01-intro.qmd">
 <td>
 <a href="../slides/week-01/01-intro.html" class="title listing-title">Welcome to Digital Twins for Physical Systems</a>
 </td>
@@ -284,7 +311,7 @@ Date
 <span class="listing-date">Mon, Jan 08</span>
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1704671726000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3588" data-listing-title-sort="Basics" data-listing-filename-sort="02-basics.qmd">
+<tr data-index="1" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1704833412367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3588" data-listing-title-sort="Basics" data-listing-filename-sort="02-basics.qmd">
 <td>
 <a href="../slides/week-01/02-basics.html" class="title listing-title">Basics</a>
 </td>
@@ -320,7 +347,7 @@ Due
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="Lab" data-listing-date-sort="1704949200000" data-listing-file-modified-sort="1704730046880" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="First Lab" data-listing-filename-sort="w1-lab01-intro.qmd">
+<tr data-index="0" data-categories="Lab" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1704832047378" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="First Lab" data-listing-filename-sort="w1-lab01-intro.qmd">
 <td>
 <span class="listing-categories">Lab</span>
 </td>
@@ -328,7 +355,7 @@ Due
 <a href="../labs/w1-lab01-intro.html" class="title listing-title">First Lab</a>
 </td>
 <td>
-<span class="listing-date">Thu, Jan 11</span>
+<span class="listing-date">Wed, Jan 10</span>
 </td>
 </tr>
 </tbody>
@@ -499,27 +526,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -534,10 +540,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -546,7 +556,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

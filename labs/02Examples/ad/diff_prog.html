@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.526">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -103,6 +103,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar docked">
@@ -188,7 +215,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#numerical-differentiation" id="toc-numerical-differentiation" class="nav-link active" data-scroll-target="#numerical-differentiation">Numerical Differentiation</a></li>
+  <li><a href="#differentiable-programming-101" id="toc-differentiable-programming-101" class="nav-link active" data-scroll-target="#differentiable-programming-101">Differentiable Programming 101</a></li>
+  <li><a href="#numerical-differentiation" id="toc-numerical-differentiation" class="nav-link" data-scroll-target="#numerical-differentiation">Numerical Differentiation</a></li>
   <li><a href="#symbolic-differentiation" id="toc-symbolic-differentiation" class="nav-link" data-scroll-target="#symbolic-differentiation">Symbolic Differentiation</a></li>
   <li><a href="#automatic-differentiation" id="toc-automatic-differentiation" class="nav-link" data-scroll-target="#automatic-differentiation">Automatic Differentiation</a></li>
   </ul>
@@ -216,12 +244,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="differentiable-programming-101" class="level1">
+<h1>Differentiable Programming 101</h1>
 <p>We study some initial examples of</p>
 <ul>
 <li>numerical differentiation</li>
 <li>symbolic differentiation</li>
 <li>automatic differentiation</li>
 </ul>
+</section>
 <section id="numerical-differentiation" class="level1">
 <h1>Numerical Differentiation</h1>
 <p>Consider the sine function and its derivative,</p>
@@ -473,27 +504,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -508,10 +518,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -520,7 +534,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

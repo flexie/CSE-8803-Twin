@@ -349,7 +349,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Basics</h1>
-  <p class="subtitle">Data Assimilation &amp; Inverse Problems</p>
+  <p class="subtitle">Data Assimilation and Inverse Problems</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -440,22 +440,8 @@
 <li><p><span style="color: magenta">machine learning</span>…</p></li>
 </ul>
 </section>
-<section id="motivational-example-digital-twin-for-geological-co2-storage" class="slide level2 center">
-<h2>Motivational Example — Digital Twin for Geological CO<sub>2</sub> storage</h2>
-<div style="text-align: margin-top: 1em">
-<ul>
-<li><a href="https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/bruer2023ML4SEISMICcrm/#/our-co2-system" data-preview-link="true" style="text-align: center">Plume development &amp; associated time-lapse seismic images</a></li>
-</ul>
-</div>
-<div style="text-align: margin-top: 1em">
-<ul>
-<li><a href="https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/herrmann2023ML4SEISMICmsc/#79" data-preview-link="true" style="text-align: center">Recovery of the CO~2 ~ plume</a></li>
-</ul>
-</div>
-<p>See for <a href="https://slim.gatech.edu">SLIM website</a> for our research on <a href="https://slim.gatech.edu/research/geological-carbon-storage">Geological CO<sub>2</sub> Storage</a>.</p>
-</section>
-<section id="section-1" class="slide level2 center">
-<h2></h2>
+<section class="slide level2 center">
+
 <div class="center">
 <p><span style="color: blue"><strong>FORWARD AND INVERSE PROBLEMS</strong></span></p>
 </div>
@@ -471,7 +457,7 @@
 </div>
 <p>Consider a parameter-dependent dynamical system, <span class="math display">\[\frac{dz}{dt}=g(t,z;\theta),\qquad z(t_{0})=z_{0},\]</span> with <span class="math inline">\(g\)</span> known, <span class="math inline">\(\theta\in\Theta,\)</span> <span class="math inline">\(z(t)\in\mathbb{R}^{k}.\)</span></p>
 </section>
-<section id="section-2" class="slide level2 center">
+<section id="section-1" class="slide level2 center">
 <h2></h2>
 <p><strong>Forward problem:</strong> <span style="color: blue">Given <span class="math inline">\(\theta,\)</span></span> <span style="color: blue"><span class="math inline">\(z_{0},\)</span></span><span style="color: orange">find <span class="math inline">\(z(t)\)</span></span> for <span class="math inline">\(t\ge t_{0}.\)</span></p>
 <p><strong>Inverse problem:</strong> <span style="color: orange">Given <span class="math inline">\(z(t)\)</span></span>for <span class="math inline">\(t\ge t_{0},\)</span> <span style="color: blue">find <span class="math inline">\(\theta\in\Theta.\)</span></span></p>
@@ -516,7 +502,7 @@
 </dd>
 </dl>
 </section>
-<section id="section-3" class="slide level2 center">
+<section id="section-2" class="slide level2 center">
 <h2></h2>
 <ul>
 <li><p>This concept of ill-posedness will help us to understand and distinguish between direct and inverse models.</p></li>
@@ -594,7 +580,7 @@
 <p>The mapping <span class="math inline">\(G\colon\mathcal{M}\rightarrow\mathcal{D}\)</span> is defined by the <span style="color: magenta">direct</span>(or forward) model</p>
 <p><span id="eq-forward"><span class="math display">\[\mathbf{d}=g(\mathbf{m}), \qquad(1)\]</span></span> where</p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Applied mathematicians often call the equation <span class="math inline">\(G(m)=d\)</span> a mathematical model and <span class="math inline">\(m\)</span> the parameters. Other scientists call <span class="math inline">\(G\)</span> the forward operator and <span class="math inline">\(m\)</span> the model. We will adopt the more mathematical convention, where <span class="math inline">\(m\)</span> will be referred to as the model parameters, <span class="math inline">\(G\)</span> the model and <span class="math inline">\(d\)</span> the data.</p></li></ol></aside></section>
-<section id="section-4" class="slide level2 smaller center">
+<section id="section-3" class="slide level2 smaller center">
 <h2></h2>
 <p>– <span class="math inline">\(g\in G\)</span> is an operator that describes the “physical” model and can take numerous forms, such as algebraic equations, differential equations, integral equations, or linear systems.</p>
 <ul>
@@ -602,7 +588,7 @@
 <li><p><span class="math inline">\(h\in H\)</span> is the <span style="color: magenta">observation operator</span>, usually some projection into an observable subset of <span class="math inline">\(\mathcal{D}.\)</span></p></li>
 </ul>
 </section>
-<section id="section-5" class="slide level2 center">
+<section id="section-4" class="slide level2 center">
 <h2></h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -623,17 +609,17 @@
 <p>We can now classify inverse problems as:</p>
 <ul>
 <li><p><span style="color: magenta">deterministic</span> inverse problems that solve <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> for <span class="math inline">\(\mathbf{m},\)</span></p></li>
-<li><p><span style="color: magenta">statistical</span> inverse problems that solve <a href="#/section-5" class="quarto-xref">2</a> for <span class="math inline">\(\mathbf{m}.\)</span></p></li>
+<li><p><span style="color: magenta">statistical</span> inverse problems that solve <a href="#/section-4" class="quarto-xref">2</a> for <span class="math inline">\(\mathbf{m}.\)</span></p></li>
 </ul>
 <p>The first class will be treated by linear algebra and <span style="color: magenta">optimization</span>methods.</p>
 <p>The latter can be treated by a <span style="color: magenta">Bayesian (filtering)</span> approach, and by weighted least-squares, maximum likelihood and DA techniques</p>
 <p>Both classes can be further broken down into:</p>
 <ul>
-<li><p><span style="color: magenta">Linear</span> inverse problems, where <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> or <a href="#/section-5" class="quarto-xref">2</a> are linear equations. These include linear systems that are often the result of discretizing (partial) differential equations and integral equations.</p></li>
+<li><p><span style="color: magenta">Linear</span> inverse problems, where <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> or <a href="#/section-4" class="quarto-xref">2</a> are linear equations. These include linear systems that are often the result of discretizing (partial) differential equations and integral equations.</p></li>
 <li><p><span style="color: magenta">Nonlinear</span> inverse problems where the algebraic or differential operators are nonlinear.</p></li>
 </ul>
 </section>
-<section id="section-6" class="slide level2 smaller center">
+<section id="section-5" class="slide level2 smaller center">
 <h2></h2>
 <p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution see <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 <p>Also note that we will be inverting here between the model and data spaces, that are usually both of high dimension and thus this model-based inversion will invariably be <span style="color: magenta">computationally expensive</span>.</p>
@@ -724,7 +710,7 @@ Figure&nbsp;1
 <li><p>we plot <span class="math inline">\(\log e_{m}\)</span> against <span class="math inline">\(\log e_{d}\)</span> we will always obtain an L-shaped curve that has an “elbow” at the optimal value of <span class="math inline">\(\alpha=\alpha_{L},\)</span> or at least at a good approximation of this optimal value see <a href="#/trcomputing-the-regularization-parameter-1" class="quarto-xref">Figure&nbsp;1</a>.</p></li>
 </ul>
 </section>
-<section id="section-7" class="slide level2 smaller center">
+<section id="section-6" class="slide level2 smaller center">
 <h2></h2>
 <ul>
 <li><p>This trade-off curve gives us a visual recipe for choosing the regularization parameter, reminiscent of the bias-variance trade off</p></li>
@@ -737,7 +723,7 @@ Figure&nbsp;1
 <li><p>a good approximation for the bound is to put <span class="math inline">\(\delta=\sigma\sqrt{n},\)</span> where <span class="math inline">\(\sigma^{2}\)</span> is the variance and <span class="math inline">\(n\)</span> the number of observations.<sup>1</sup> This can be thought of as the noise level of the data.</p></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>This is strictly valid under the hypothesis of i.i.d. Gaussian noise.</p></li></ol></aside></section>
-<section id="section-8" class="slide level2 smaller center">
+<section id="section-7" class="slide level2 smaller center">
 <h2></h2>
 <ul>
 <li>the discrepancy principle is also related to regularization by the truncated singular value decomposition (TSVD), in which case the truncation level implicitly defines the regularization parameter.</li>
@@ -748,7 +734,7 @@ Figure&nbsp;1
 <li><p>In order to reduce the computational cost, a generalized cross validation (GCV) method can be used.</p></li>
 </ul>
 </section>
-<section id="section-9" class="slide level2 center">
+<section id="section-8" class="slide level2 center">
 <h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">DATA ASSIMILATION</span></strong></p>
@@ -776,7 +762,7 @@ Figure&nbsp;1
 <p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/eq:state" data-reference-type="ref" data-reference="eq:state">[eq:state]</a>) by random or systematic errors.</p>
 <p><span style="color: blue">Observations</span>, or measurements, at time <span class="math inline">\(t_{k}\)</span> are defined by</p>
 </section>
-<section id="section-10" class="slide level2 smaller center">
+<section id="section-9" class="slide level2 smaller center">
 <h2></h2>
 <p><span class="math display">\[\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},\]</span></p>
 <ul>
@@ -802,19 +788,19 @@ Figure&nbsp;1
 <li>For PDEs, where there is in addition a dependence on space, attention must be paid to the function spaces, especially when performing variational analysis.</li>
 </ul>
 </section>
-<section id="section-11" class="slide level2 smaller center">
+<section id="section-10" class="slide level2 smaller center">
 <h2></h2>
 <ul>
 <li>With a PDE model, the field (state) variable is commonly denoted by <span class="math inline">\(\boldsymbol{u}(\mathbf{x},t),\)</span> where <span class="math inline">\(\mathbf{x}\)</span> represents the space variables (no longer the state variable as above!), and the model dynamics is now a <span style="color: magenta">nonlinear partial differential operator,</span> <span class="math display">\[\mathcal{M}=\mathcal{M}\left[\partial_{\mathbf{x}}^{\alpha},\boldsymbol{u}(\mathbf{x},t),\mathbf{x},t\right]\]</span> with <span class="math inline">\(\partial_{\mathbf{x}}^{\alpha}\)</span> denoting the partial derivatives with respect to the space variables of order up to <span class="math inline">\(\left|\alpha\right|\le m\)</span> where <span class="math inline">\(m\)</span> is usually equal to two and in general varies between one and four.</li>
 </ul>
 </section>
-<section id="section-12" class="slide level2 center">
+<section id="section-11" class="slide level2 center">
 <h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">CONCLUSIONS</span></strong></p>
 </div>
 </section>
-<section id="section-13" class="slide level2 smaller center">
+<section id="section-12" class="slide level2 smaller center">
 <h2></h2>
 <p>Data assimilation requires not only the observations and a background, but also knowledge of:</p>
 <ul class="task-list">
