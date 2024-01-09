@@ -44,10 +44,6 @@ tbl-colwidths: [10,50,40]
 ::: {#assignments}
 :::
 
-# Lab Submission instructions
-
-To submit assignments please export your notebook as PDF and send to TA's Gatech email: [Rafael Orozco](mailto:rorozco@gatech.edu) with subject line that includes the phrase "CSE-8803 Lab [# of lab]". To export notebook as PDF in Google collab: File -> Print -> Set Destination to "save as PDF" -> Save.
-
 # Readings
 
 |                                                                                                           |
