@@ -162,7 +162,7 @@ Consider a parameter-dependent dynamical system, $$\frac{d\mathbf{z}}{dt}=g(t,\m
 
 **Forward problem:** [Given $\boldsymbol{\theta},$]{style="color: blue"} [$\mathbf{z}_{0},$]{style="color: blue"}[find $\mathbf{z}(t)$]{style="color: orange"} for $t\ge t_{0}.$
 
-**Inverse problem:** [Given $\mathbf{z}(t)$]{style="color: orange"}for $t\ge t_{0},$ [find $\boldsymbol{\theta}\in\Theta.$]{style="color: blue"}
+**Inverse problem:** [Given $\mathbf{z}(t)$]{style="color: orange"} for $t\ge t_{0},$ [find $\boldsymbol{\theta}\in\Theta.$]{style="color: blue"}
 
 ## Observations {.smaller}
 
