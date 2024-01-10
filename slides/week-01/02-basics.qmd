@@ -4,9 +4,11 @@ subtitle: "Data Assimilation & Inverse Problems"
 date: "January 10, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
+license: CC BY
 format: 
   revealjs:
     theme: solarized
+    # theme: [default, theme.scss]
     transition: fade
     slide-number: true
     incremental: false 
@@ -139,31 +141,40 @@ See for [SLIM website](https://slim.gatech.edu) for our research on [Geological 
 [**FORWARD AND INVERSE PROBLEMS**]{style="color: blue"}
 :::
 
+## Inverse problems{.smaller}
+
+:::{fig-inverse_prob}
+![from @asch2022toolbox](../images/inverse_prob.png){width="70%"}
+
+Ingredients of an inverse problem: the physical reality (top) and the direct mathematical model (bottom). The inverse problem uses the difference between the model- predicted observations, u (calculated at the receiver array points xr), and the real observations measured on the array, in order to find the unknown model parameters, m, or the source s (or both).
+
+:::
+
 ## Forward and inverse problems {.smaller}
 
 ::: center
 ![](../images/direct_inverse.png){fig-align="center" width="60%"}
 :::
 
-Consider a parameter-dependent dynamical system, $$\frac{dz}{dt}=g(t,z;\theta),\qquad z(t_{0})=z_{0},$$ with $g$ known, $\theta\in\Theta,$ $z(t)\in\mathbb{R}^{k}.$
+Consider a parameter-dependent dynamical system, $$\frac{d\mathbf{z}}{dt}=g(t,\mathbf{z};\boldsymbol{\theta}),\qquad \mathbf{z}(t_{0})=\mathbf{z}_{0},$$ with $g$ known, $\mathbf{z}_0$ the initial condition, $\boldsymbol{\theta}\in\Theta$ parameters of the system,  $\mathbf{z}(t)\in\mathbb{R}^{k}$ the system's state.
 
 ## 
 
-**Forward problem:** [Given $\theta,$]{style="color: blue"} [$z_{0},$]{style="color: blue"}[find $z(t)$]{style="color: orange"} for $t\ge t_{0}.$
+**Forward problem:** [Given $\boldsymbol{\theta},$]{style="color: blue"} [$\mathbf{z}_{0},$]{style="color: blue"}[find $\mathbf{z}(t)$]{style="color: orange"} for $t\ge t_{0}.$
 
-**Inverse problem:** [Given $z(t)$]{style="color: orange"}for $t\ge t_{0},$ [find $\theta\in\Theta.$]{style="color: blue"}
+**Inverse problem:** [Given $\mathbf{z}(t)$]{style="color: orange"}for $t\ge t_{0},$ [find $\boldsymbol{\theta}\in\Theta.$]{style="color: blue"}
 
 ## Observations {.smaller}
 
-Observation [equation]{style="color: magenta"}: $$f(t,\theta)=\mathcal{H}z(t,\theta),$$ where $\mathcal{H}$ is the observation operator --- to account for the fact that observations are never completely known (in space-time).
+Observation [equation]{style="color: magenta"}: $$f(t,\boldsymbol{\theta})=\mathcal{H}\mathbf{z}(t,\boldsymbol{\theta}),$$ where $\mathcal{H}$ is the observation operator --- to account for the fact that observations are never completely known (in space-time).
 
-Usually we have a finite number of discrete (space-time) [observations]{style="color: magenta"} $$\left\{\widetilde{y}_{j}\right\} _{j=1}^{n},$$ where $$\widetilde{y}_{j}\approx f(t_{j},\theta).$$
+Usually we have a finite number of discrete (space-time) [observations]{style="color: magenta"} $$\left\{\widetilde{y}_{j}\right\} _{j=1}^{n},$$ where $$\widetilde{y}_{j}\approx f(t_{j},\boldsymbol{\theta}).$$
 
 ## Noise-free and noise data {.smaller}
 
-[Noise-free:]{style="color: magenta"} $$\widetilde{y}_{j}=f(t_{j},\theta)$$
+[Noise-free:]{style="color: magenta"} $$\widetilde{y}_{j}=f(t_{j},\boldsymbol{\theta})$$
 
-[Noisy Data:]{style="color: magenta"} $$\widetilde{y}_{j}=f(t_{j},\theta)+\varepsilon_{j},$$ where $\varepsilon_{j}$ is error and requires that we introduce [variability/uncertainty]{style="color: magenta"} into the modeling and analysis.
+[Noisy Data:]{style="color: magenta"} $$\widetilde{y}_{j}=f(t_{j},\boldsymbol{\theta})+\varepsilon_{j},$$ where $\varepsilon_{j}$ is error and requires that we introduce [variability/uncertainty]{style="color: magenta"} into the modeling and analysis.
 
 ## Well-posedness {.smaller}
 
@@ -207,7 +218,7 @@ WP3
 
 **Many inverse problems are ill-posed!**
 
-Simplest case: one observation $\tilde{y}$ for $f(\theta)$ and we need to find the pre-image $$\theta^{*}=f^{-1}(\widetilde{y})$$ for a given $\widetilde{y}.$
+Simplest case: one observation $\widetilde{y}$ for $f(\theta)$ and we need to find the pre-image $$\theta^{*}=f^{-1}(\widetilde{y})$$ for a given $\widetilde{y}.$
 
 ![](../images/ill.png){fig-align="center"}
 
@@ -312,17 +323,17 @@ $$\mathbf{d}=g(\mathbf{m}),$${#eq-forward} where
 
 ## {.smaller}
 
--- $g\in G$ is an operator that describes the "physical" model and
+- $g\in G$ is an operator that describes the "physical" model and
         can take numerous forms, such as algebraic equations,
         differential equations, integral equations, or linear systems.
 
--  Then we can add the [observations ]{style="color: magenta"}or
+Then we can add the [observations]{style="color: magenta"} or
     predictions, $\mathbf{y}=(y_{1},\ldots,y_{r}),$ corresponding to the
     mapping from data space into observation space,
     $H\colon\mathcal{D}\rightarrow\mathcal{Y},$ and described by
-    $$\mathbf{y}=h(\mathbf{d})=h\left(g(\mathbf{m})\right),$$ where
-
--   $h\in H$ is the [observation operator]{style="color: magenta"},
+    $$\mathbf{y}=h(\mathbf{d})=h\left(g(\mathbf{m})\right),$$ where  
+    
+- $h\in H$ is the [observation operator]{style="color: magenta"},
         usually some projection into an observable subset of
         $\mathcal{D}.$
 
@@ -346,8 +357,7 @@ We can now classify inverse problems as:
 -   [statistical]{style="color: magenta"} inverse problems that
         solve [-@eq-noisy] for $\mathbf{m}.$
 
-The first class will be treated by linear algebra and [optimization
-    ]{style="color: magenta"}methods.
+The first class will be treated by linear algebra and [optimization]{style="color: magenta"} methods.
 
 The latter can be treated by a [Bayesian (filtering)]{style="color: magenta"} approach, and by weighted least-squares,
     maximum likelihood and DA techniques
@@ -366,7 +376,7 @@ Both classes can be further broken down into:
 
 Finally, since most inverse problems cannot be solved explicitly,
     [computational methods]{style="color: magenta"} are indispensable
-    for their solution see @asch2022toolbox
+    for their solution, see sections 8.4 and 8.5 of @asch2022toolbox
 
 Also note that we will be inverting here between the model and
     data spaces, that are usually both of high dimension and thus this
@@ -378,6 +388,7 @@ This will motivate us to employ
 -   inversion between the data and observation spaces in a purely
         data-driven approach, using [machine learning
         methods]{style="color: magenta"} 
+- this aspect will be treated later during this course
 
 ## Tikhonov Regularization---Introduction{.smaller}
 
@@ -419,13 +430,13 @@ The most general TR [objective function]{style="color: magenta"} is
         that represents some desired quality of the sought for model
         parameters, usually smoothness;
 
--   $\alpha$ is the *r*[*egularization
+-   $\alpha$ is the [*regularization
         parameter*]{style="color: magenta"} that needs to be
         [*tuned*]{style="color: magenta"}, and determines the relative
         importance of the regularization term.
 
 Each domain, each application and each context will require
-    [*specific choices* ]{style="color: magenta"}of these three items,
+    [*specific choices* ]{style="color: magenta"} of these three items,
     and often we will have to rely either on previous experience, or on
     some sort of numerical experimentation (trial-and-error) to make a
     good choice.
@@ -577,20 +588,19 @@ model is called [data assimilation]{style="color: red"}.
 
 A [discrete model f]{style="color: blue"}or the evolution of a
     physical (atmospheric, oceanic, etc.) system from time $t_{k}$ to
-    time $t_{k+1}$ is described by a dynamic, state equation
+    time $t_{k+1}$ is described by a dynamic, *state equation*
 
 $$\mathbf{x}^{f}(t_{k+1})=M\left[\mathbf{x}^{f}(t_{k})\right],$${#eq-state}
 
--   $\mathbf{x}$ is the model's state vector of dimension $n,$
+-   $\mathbf{x}$ is the model's *state vector* of dimension $n,$
 
--   $M$ is the corresponding dynamics operator (finite difference or
+-   $M$ is the corresponding *dynamics operator* (finite difference or
         finite element discretization).
 
 The [error covariance matrix]{style="color: blue"} associated with
     $\mathbf{x}$ is given by $\mathbf{P}$ since the true state will
     differ from the simulated state
-    ([\[eq:state\]](#eq:state){reference-type="ref"
-    reference="eq:state"}) by random or systematic errors.
+    ([@eq-state]) by random or systematic errors.
 
 [Observations]{style="color: blue"}, or measurements, at time
     $t_{k}$ are defined by
@@ -599,7 +609,7 @@ The [error covariance matrix]{style="color: blue"} associated with
 
 $$\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},$$
 
--   $H$ is an [observation operator]{style="color: magenta"}
+-   $H$ is an [observation operator]{style="color: magenta"} that can be time dependent
 
 -   $\varepsilon$ is a [white noise process]{style="color: magenta"}
         zero mean and covariance matrix $\mathbf{R}$ (instrument errors
