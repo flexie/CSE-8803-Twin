@@ -1455,7 +1455,7 @@
     "href": "slides/week-01/02-basics.html#open-source-software",
     "title": "Basics",
     "section": "Open-source software",
-    "text": "Open-source software\nVarious open-source repositories and codes are available for both academic and operational data assimilation.\n\nDARC: https://research.reading.ac.uk/met-darc/ from Reading, UK.\nDAPPER: https://github.com/nansencenter/DAPPER from Nansen, Norway.\nDART: https://dart.ucar.edu/ from NCAR, US, specialized in ensemble DA.\nOpenDA: https://www.openda.org/.\nVerdandi: http://verdandi.sourceforge.net/ from INRIA, France.\nPyDA: https://github.com/Shady-Ahmed/PyDA, a Python implementation for academic use.\nFilterpy: https://github.com/rlabbe/filterpy, dedicated to KF variants.\nEnKF; https://enkf.nersc.no/, the original Ensemble KF from Geir Evensen."
+    "text": "Open-source software\nVarious open-source repositories and codes are available for both academic and operational data assimilation.\n\nDARC: https://research.reading.ac.uk/met-darc/ from Reading, UK.\nDAPPER: https://github.com/nansencenter/DAPPER from Nansen, Norway.\nDART: https://dart.ucar.edu/ from NCAR, US, specialized in ensemble DA.\nOpenDA: https://www.openda.org/.\nVerdandi: http://verdandi.sourceforge.net/ from INRIA, France.\nPyDA: https://github.com/Shady-Ahmed/PyDA, a Python implementation for academic use.\nFilterpy: https://github.com/rlabbe/filterpy, dedicated to KF variants.\nEnKF; https://enkf.nersc.no/, the original Ensemble KF from Geir Evensen.\nDataAssim.jl\nEnKF.jl"
   },
   {
     "objectID": "slides/week-01/02-basics.html#references",
