@@ -608,12 +608,10 @@
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Applied mathematicians often call the equation <span class="math inline">\(G(m)=d\)</span> a mathematical model and <span class="math inline">\(m\)</span> the parameters. Other scientists call <span class="math inline">\(G\)</span> the forward operator and <span class="math inline">\(m\)</span> the model. We will adopt the more mathematical convention, where <span class="math inline">\(m\)</span> will be referred to as the model parameters, <span class="math inline">\(G\)</span> the model and <span class="math inline">\(d\)</span> the data.</p></li></ol></aside></section>
 <section id="section-4" class="slide level2 smaller center">
 <h2></h2>
+<p>– <span class="math inline">\(g\in G\)</span> is an operator that describes the “physical” model and can take numerous forms, such as algebraic equations, differential equations, integral equations, or linear systems.</p>
 <ul>
-<li><span class="math inline">\(g\in G\)</span> is an operator that describes the “physical” model and can take numerous forms, such as algebraic equations, differential equations, integral equations, or linear systems.</li>
-</ul>
-<p>Then we can add the <span style="color: magenta">observations</span> or predictions, <span class="math inline">\(\mathbf{y}=(y_{1},\ldots,y_{r}),\)</span> corresponding to the mapping from data space into observation space, <span class="math inline">\(H\colon\mathcal{D}\rightarrow\mathcal{Y},\)</span> and described by <span class="math display">\[\mathbf{y}=h(\mathbf{d})=h\left(g(\mathbf{m})\right),\]</span> where</p>
-<ul>
-<li><span class="math inline">\(h\in H\)</span> is the <span style="color: magenta">observation operator</span>, usually some projection into an observable subset of <span class="math inline">\(\mathcal{D}.\)</span></li>
+<li><p>Then we can add the <span style="color: magenta">observations</span>or predictions, <span class="math inline">\(\mathbf{y}=(y_{1},\ldots,y_{r}),\)</span> corresponding to the mapping from data space into observation space, <span class="math inline">\(H\colon\mathcal{D}\rightarrow\mathcal{Y},\)</span> and described by <span class="math display">\[\mathbf{y}=h(\mathbf{d})=h\left(g(\mathbf{m})\right),\]</span> where</p></li>
+<li><p><span class="math inline">\(h\in H\)</span> is the <span style="color: magenta">observation operator</span>, usually some projection into an observable subset of <span class="math inline">\(\mathcal{D}.\)</span></p></li>
 </ul>
 </section>
 <section id="section-5" class="slide level2 center">
@@ -639,7 +637,7 @@
 <li><p><span style="color: magenta">deterministic</span> inverse problems that solve <a href="#/inverse-problems-general-formulation" class="quarto-xref">1</a> for <span class="math inline">\(\mathbf{m},\)</span></p></li>
 <li><p><span style="color: magenta">statistical</span> inverse problems that solve <a href="#/section-5" class="quarto-xref">2</a> for <span class="math inline">\(\mathbf{m}.\)</span></p></li>
 </ul>
-<p>The first class will be treated by linear algebra and <span style="color: magenta">optimization</span> methods.</p>
+<p>The first class will be treated by linear algebra and <span style="color: magenta">optimization</span>methods.</p>
 <p>The latter can be treated by a <span style="color: magenta">Bayesian (filtering)</span> approach, and by weighted least-squares, maximum likelihood and DA techniques</p>
 <p>Both classes can be further broken down into:</p>
 <ul>
@@ -649,12 +647,11 @@
 </section>
 <section id="section-6" class="slide level2 smaller center">
 <h2></h2>
-<p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution, see sections 8.4 and 8.5 of <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution see <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 <p>Also note that we will be inverting here between the model and data spaces, that are usually both of high dimension and thus this model-based inversion will invariably be <span style="color: magenta">computationally expensive</span>.</p>
 <p>This will motivate us to employ</p>
 <ul>
 <li>inversion between the data and observation spaces in a purely data-driven approach, using <span style="color: magenta">machine learning methods</span></li>
-<li>this aspect will be treated later during this course</li>
 </ul>
 </section>
 <section id="tikhonov-regularizationintroduction" class="slide level2 smaller center">
@@ -687,9 +684,9 @@
 <ul>
 <li><p><span class="math inline">\(\rho\)</span> is the <span style="color: magenta"><em>data discrepancy functional</em></span> that quantifies the difference between the model output and the measured data;</p></li>
 <li><p><span class="math inline">\(J\)</span> is the <span style="color: magenta"><em>regularization functional</em></span> that represents some desired quality of the sought for model parameters, usually smoothness;</p></li>
-<li><p><span class="math inline">\(\alpha\)</span> is the <span style="color: magenta"><em>regularization parameter</em></span> that needs to be <span style="color: magenta"><em>tuned</em></span>, and determines the relative importance of the regularization term.</p></li>
+<li><p><span class="math inline">\(\alpha\)</span> is the <em>r</em><span style="color: magenta"><em>egularization parameter</em></span> that needs to be <span style="color: magenta"><em>tuned</em></span>, and determines the relative importance of the regularization term.</p></li>
 </ul>
-<p>Each domain, each application and each context will require <span style="color: magenta"><em>specific choices</em></span> of these three items, and often we will have to rely either on previous experience, or on some sort of numerical experimentation (trial-and-error) to make a good choice.</p>
+<p>Each domain, each application and each context will require <span style="color: magenta"><em>specific choices</em></span>of these three items, and often we will have to rely either on previous experience, or on some sort of numerical experimentation (trial-and-error) to make a good choice.</p>
 <p>In some cases there exist empirical algorithms, in particular for the choice of <span class="math inline">\(\alpha.\)</span></p>
 </section>
 <section id="tikhonov-regularizationdiscrepancy" class="slide level2 smaller center">
@@ -723,7 +720,7 @@
 </section>
 <section id="trcomputing-the-regularization-parameter-1" class="slide level2 smaller nostretch center">
 <h2>TR—Computing the Regularization Parameter</h2>
-<div id="fig-L" class="quarto-figure quarto-figure-center" data-fig-align="center" width="35%">
+<div id="fig-L" class="quarto-figure quarto-figure-center" width="35%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-L-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="../images/L-curve.png" id="fig-L" class="quarto-figure quarto-figure-center" style="width:35.0%">
@@ -782,20 +779,20 @@ Figure&nbsp;1
 </section>
 <section id="standard-notation" class="slide level2 smaller center">
 <h2>Standard notation</h2>
-<p>A <span style="color: blue">discrete model f</span>or the evolution of a physical (atmospheric, oceanic, etc.) system from time <span class="math inline">\(t_{k}\)</span> to time <span class="math inline">\(t_{k+1}\)</span> is described by a dynamic, <em>state equation</em></p>
+<p>A <span style="color: blue">discrete model f</span>or the evolution of a physical (atmospheric, oceanic, etc.) system from time <span class="math inline">\(t_{k}\)</span> to time <span class="math inline">\(t_{k+1}\)</span> is described by a dynamic, state equation</p>
 <p><span id="eq-state"><span class="math display">\[\mathbf{x}^{f}(t_{k+1})=M\left[\mathbf{x}^{f}(t_{k})\right], \qquad(3)\]</span></span></p>
 <ul>
-<li><p><span class="math inline">\(\mathbf{x}\)</span> is the model’s <em>state vector</em> of dimension <span class="math inline">\(n,\)</span></p></li>
-<li><p><span class="math inline">\(M\)</span> is the corresponding <em>dynamics operator</em> (finite difference or finite element discretization).</p></li>
+<li><p><span class="math inline">\(\mathbf{x}\)</span> is the model’s state vector of dimension <span class="math inline">\(n,\)</span></p></li>
+<li><p><span class="math inline">\(M\)</span> is the corresponding dynamics operator (finite difference or finite element discretization).</p></li>
 </ul>
-<p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/standard-notation" class="quarto-xref">Equation&nbsp;3</a>) by random or systematic errors.</p>
+<p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/eq:state" data-reference-type="ref" data-reference="eq:state">[eq:state]</a>) by random or systematic errors.</p>
 <p><span style="color: blue">Observations</span>, or measurements, at time <span class="math inline">\(t_{k}\)</span> are defined by</p>
 </section>
 <section id="section-10" class="slide level2 smaller center">
 <h2></h2>
 <p><span class="math display">\[\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},\]</span></p>
 <ul>
-<li><p><span class="math inline">\(H\)</span> is an <span style="color: magenta">observation operator</span> that can be time dependent</p></li>
+<li><p><span class="math inline">\(H\)</span> is an <span style="color: magenta">observation operator</span></p></li>
 <li><p><span class="math inline">\(\varepsilon\)</span> is a <span style="color: magenta">white noise process</span> zero mean and covariance matrix <span class="math inline">\(\mathbf{R}\)</span> (instrument errors and representation errors due to the discretization)</p></li>
 <li><p>observation vector <span class="math inline">\(\mathbf{y}_{k}^{\mathrm{o}}=\mathbf{y}^{\mathrm{o}}(t_{k})\)</span> has dimension <span class="math inline">\(p_{k}\)</span> (usually <span class="math inline">\(p_{k}\ll n.\)</span> )</p></li>
 </ul>

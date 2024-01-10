@@ -649,12 +649,11 @@
 </section>
 <section id="section-6" class="slide level2 smaller center">
 <h2></h2>
-<p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution, see sections 8.4 and 8.5 of <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Finally, since most inverse problems cannot be solved explicitly, <span style="color: magenta">computational methods</span> are indispensable for their solution see <span class="citation" data-cites="asch2022toolbox">Asch (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 <p>Also note that we will be inverting here between the model and data spaces, that are usually both of high dimension and thus this model-based inversion will invariably be <span style="color: magenta">computationally expensive</span>.</p>
 <p>This will motivate us to employ</p>
 <ul>
 <li>inversion between the data and observation spaces in a purely data-driven approach, using <span style="color: magenta">machine learning methods</span></li>
-<li>this aspect will be treated later during this course</li>
 </ul>
 </section>
 <section id="tikhonov-regularizationintroduction" class="slide level2 smaller center">
@@ -687,9 +686,9 @@
 <ul>
 <li><p><span class="math inline">\(\rho\)</span> is the <span style="color: magenta"><em>data discrepancy functional</em></span> that quantifies the difference between the model output and the measured data;</p></li>
 <li><p><span class="math inline">\(J\)</span> is the <span style="color: magenta"><em>regularization functional</em></span> that represents some desired quality of the sought for model parameters, usually smoothness;</p></li>
-<li><p><span class="math inline">\(\alpha\)</span> is the <span style="color: magenta"><em>regularization parameter</em></span> that needs to be <span style="color: magenta"><em>tuned</em></span>, and determines the relative importance of the regularization term.</p></li>
+<li><p><span class="math inline">\(\alpha\)</span> is the <em>r</em><span style="color: magenta"><em>egularization parameter</em></span> that needs to be <span style="color: magenta"><em>tuned</em></span>, and determines the relative importance of the regularization term.</p></li>
 </ul>
-<p>Each domain, each application and each context will require <span style="color: magenta"><em>specific choices</em></span> of these three items, and often we will have to rely either on previous experience, or on some sort of numerical experimentation (trial-and-error) to make a good choice.</p>
+<p>Each domain, each application and each context will require <span style="color: magenta"><em>specific choices</em></span>of these three items, and often we will have to rely either on previous experience, or on some sort of numerical experimentation (trial-and-error) to make a good choice.</p>
 <p>In some cases there exist empirical algorithms, in particular for the choice of <span class="math inline">\(\alpha.\)</span></p>
 </section>
 <section id="tikhonov-regularizationdiscrepancy" class="slide level2 smaller center">
@@ -782,20 +781,20 @@ Figure&nbsp;1
 </section>
 <section id="standard-notation" class="slide level2 smaller center">
 <h2>Standard notation</h2>
-<p>A <span style="color: blue">discrete model f</span>or the evolution of a physical (atmospheric, oceanic, etc.) system from time <span class="math inline">\(t_{k}\)</span> to time <span class="math inline">\(t_{k+1}\)</span> is described by a dynamic, <em>state equation</em></p>
+<p>A <span style="color: blue">discrete model f</span>or the evolution of a physical (atmospheric, oceanic, etc.) system from time <span class="math inline">\(t_{k}\)</span> to time <span class="math inline">\(t_{k+1}\)</span> is described by a dynamic, state equation</p>
 <p><span id="eq-state"><span class="math display">\[\mathbf{x}^{f}(t_{k+1})=M\left[\mathbf{x}^{f}(t_{k})\right], \qquad(3)\]</span></span></p>
 <ul>
-<li><p><span class="math inline">\(\mathbf{x}\)</span> is the model’s <em>state vector</em> of dimension <span class="math inline">\(n,\)</span></p></li>
-<li><p><span class="math inline">\(M\)</span> is the corresponding <em>dynamics operator</em> (finite difference or finite element discretization).</p></li>
+<li><p><span class="math inline">\(\mathbf{x}\)</span> is the model’s state vector of dimension <span class="math inline">\(n,\)</span></p></li>
+<li><p><span class="math inline">\(M\)</span> is the corresponding dynamics operator (finite difference or finite element discretization).</p></li>
 </ul>
-<p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/standard-notation" class="quarto-xref">Equation&nbsp;3</a>) by random or systematic errors.</p>
+<p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/eq:state" data-reference-type="ref" data-reference="eq:state">[eq:state]</a>) by random or systematic errors.</p>
 <p><span style="color: blue">Observations</span>, or measurements, at time <span class="math inline">\(t_{k}\)</span> are defined by</p>
 </section>
 <section id="section-10" class="slide level2 smaller center">
 <h2></h2>
 <p><span class="math display">\[\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},\]</span></p>
 <ul>
-<li><p><span class="math inline">\(H\)</span> is an <span style="color: magenta">observation operator</span> that can be time dependent</p></li>
+<li><p><span class="math inline">\(H\)</span> is an <span style="color: magenta">observation operator</span></p></li>
 <li><p><span class="math inline">\(\varepsilon\)</span> is a <span style="color: magenta">white noise process</span> zero mean and covariance matrix <span class="math inline">\(\mathbf{R}\)</span> (instrument errors and representation errors due to the discretization)</p></li>
 <li><p>observation vector <span class="math inline">\(\mathbf{y}_{k}^{\mathrm{o}}=\mathbf{y}^{\mathrm{o}}(t_{k})\)</span> has dimension <span class="math inline">\(p_{k}\)</span> (usually <span class="math inline">\(p_{k}\ll n.\)</span> )</p></li>
 </ul>
