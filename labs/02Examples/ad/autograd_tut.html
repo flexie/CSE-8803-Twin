@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.528">
+<meta name="generator" content="quarto-1.4.526">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -103,33 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
 </head>
 
 <body class="nav-sidebar docked">
@@ -215,9 +188,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#autograd-tutorial" id="toc-autograd-tutorial" class="nav-link active" data-scroll-target="#autograd-tutorial">Autograd Tutorial</a>
-  <ul class="collapse">
-  <li><a href="#recall-approaches-for-computing-derivatives" id="toc-recall-approaches-for-computing-derivatives" class="nav-link" data-scroll-target="#recall-approaches-for-computing-derivatives">Recall: Approaches for Computing Derivatives</a></li>
+  <li><a href="#recall-approaches-for-computing-derivatives" id="toc-recall-approaches-for-computing-derivatives" class="nav-link active" data-scroll-target="#recall-approaches-for-computing-derivatives">Recall: Approaches for Computing Derivatives</a></li>
   <li><a href="#reverse-mode-automatic-differentiation" id="toc-reverse-mode-automatic-differentiation" class="nav-link" data-scroll-target="#reverse-mode-automatic-differentiation">Reverse Mode Automatic Differentiation</a>
   <ul class="collapse">
   <li><a href="#general-idea-for-implementation" id="toc-general-idea-for-implementation" class="nav-link" data-scroll-target="#general-idea-for-implementation">General Idea for Implementation</a></li>
@@ -230,7 +201,6 @@ window.Quarto = {
   <li><a href="#autograd-vs-manual-gradients-via-staged-computation" id="toc-autograd-vs-manual-gradients-via-staged-computation" class="nav-link" data-scroll-target="#autograd-vs-manual-gradients-via-staged-computation">Autograd vs Manual Gradients via Staged Computation</a></li>
   <li><a href="#gradient-functions" id="toc-gradient-functions" class="nav-link" data-scroll-target="#gradient-functions">Gradient Functions</a></li>
   <li><a href="#modularity-implementing-custom-gradients" id="toc-modularity-implementing-custom-gradients" class="nav-link" data-scroll-target="#modularity-implementing-custom-gradients">Modularity: Implementing Custom Gradients</a></li>
-  </ul></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
   <ul class="collapse">
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a>
@@ -269,8 +239,6 @@ window.Quarto = {
 </header>
 
 
-<section id="autograd-tutorial" class="level1">
-<h1>Autograd Tutorial</h1>
 <p>References:</p>
 <ul>
 <li>R. Grosse’ NN and ML course: https://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/</li>
@@ -334,11 +302,11 @@ window.Quarto = {
 </section>
 <section id="autograd-basic-usage" class="level2">
 <h2 class="anchored" data-anchor-id="autograd-basic-usage">Autograd Basic Usage</h2>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np <span class="co"># Import thinly-wrapped numpy</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd <span class="im">import</span> grad   <span class="co"># Basicallly the only function you need</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function as usual, using Python and Numpy</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tanh(x):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.exp(<span class="op">-</span>x)</span>
@@ -381,7 +349,7 @@ s(c) = \frac{1}{c}.
 <blockquote class="blockquote">
 <p>Given a vector-to-scalar function, <span class="math inline">\(\mathbb{R}^D \to \mathbb{R}\)</span>, composed of a set of primitive functions <span class="math inline">\(\mathbb{R}^M \to \mathbb{R}^N\)</span> (for various <span class="math inline">\(M\)</span>, <span class="math inline">\(N\)</span>), the gradient of the composition is given by the product of the gradients of the primitive functions, according to the chain rule. But the chain rule doesn’t prescribe the order in which to multiply the gradients. From the perspective of computational complexity, the order makes all the difference.</p>
 </blockquote>
-<div id="cell-6" class="cell" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> grad_sigmoid_manual(x):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Implements the gradient of the logistic sigmoid function </span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    $\sigma(x) = 1 / (1 + e^{-x})$ using staged computation</span></span>
@@ -451,7 +419,7 @@ s(c) = \frac{1}{c}.
 <li>When your code depends on <strong>external library calls</strong></li>
 </ol>
 <p>The <code>@primitive</code> decorator wraps a function so that its gradient can be specified manually and its invocation can be recorded.</p>
-<div id="cell-9" class="cell" data-execution_count="6">
+<div id="cell-10" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy.random <span class="im">as</span> npr</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd <span class="im">import</span> grad</span>
@@ -477,7 +445,7 @@ s(c) = \frac{1}{c}.
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we tell autograd that logsumexmp has a gradient-making function.</span></span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>defvjp(logsumexp, make_grad_logsumexp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="7">
+<div id="cell-11" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can use logsumexp() inside a larger function that we want to differentiate.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example_func(y):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> y<span class="op">**</span><span class="dv">2</span></span>
@@ -496,7 +464,6 @@ s(c) = \frac{1}{c}.
  -0.57149671 -0.0969613  -0.27697817  1.59207253]</code></pre>
 </div>
 </div>
-</section>
 </section>
 <section id="examples" class="level1">
 <h1>Examples</h1>
@@ -520,7 +487,7 @@ y_i = wx_i + b
 <p>The <strong>cost function</strong> is the loss averaged over all the training examples: <span class="math display">\[
 \mathcal{E}(w,b) = \frac{1}{N} \sum_{i=1}^N \mathcal{L}(y_i, t_i) = \frac{1}{N} \sum_{i=1}^N \frac{1}{2} \left(wx_i + b - t_i \right)^2
 \]</span></p>
-<div id="cell-14" class="cell" data-execution_count="8">
+<div id="cell-15" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np <span class="co"># Import wrapped NumPy from Autograd</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy.random <span class="im">as</span> npr <span class="co"># For convenient access to numpy.random</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd <span class="im">import</span> grad <span class="co"># To compute gradients</span></span>
@@ -537,7 +504,7 @@ y_i = wx_i + b
 t_i = 4 x_i + 10 + \epsilon
 \]</span></p>
 <p>Here, <span class="math inline">\(\epsilon \sim \mathcal{N}(0, 2),\)</span> that is, <span class="math inline">\(\epsilon\)</span> is drawn from a Gaussian distribution with mean 0 and variance 2. This introduces some random fluctuation in the data, to mimic real data that has an underlying regularity, but for which individual observations are corrupted by random noise.</p>
-<div id="cell-17" class="cell" data-execution_count="9">
+<div id="cell-18" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In our synthetic data, we have w = 4 and b = 10</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># Number of training data points</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, N)</span>
@@ -551,7 +518,7 @@ t_i = 4 x_i + 10 + \epsilon
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="10">
+<div id="cell-19" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize random parameters</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> npr.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> npr.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
@@ -580,7 +547,7 @@ t_i = 4 x_i + 10 + \epsilon
 <pre><code>{'w': 4.084961144270687, 'b': 9.264915086528749}</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="11">
+<div id="cell-20" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the training data, together with the line defined by y = wx + b,</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># where w and b are our final learned parameters</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>)</span>
@@ -606,7 +573,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 <p>In this case, we have <span class="math inline">\(x \in \mathbb{R}\)</span>, and we define the feature mapping: <span class="math display">\[
 \mathbf{\phi}(x) = \begin{pmatrix}\phi_1(x) \\ \phi_2(x) \\ \phi_3(x) \\ \phi_4(x) \end{pmatrix} = \begin{pmatrix}1\\x\\x^2\\x^3\end{pmatrix}
 \]</span></p>
-<div id="cell-22" class="cell" data-execution_count="12">
+<div id="cell-23" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># Number of data points</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, N) <span class="co"># Generate N values linearly-spaced between -3 and 3</span></span>
@@ -620,7 +587,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="13">
+<div id="cell-24" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> <span class="dv">4</span> <span class="co"># Degree of polynomial to fit to the data (this is a hyperparameter)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>feature_matrix <span class="op">=</span> np.array([[item <span class="op">**</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(M<span class="op">+</span><span class="dv">1</span>)] <span class="cf">for</span> item <span class="kw">in</span> x]) <span class="co"># Construct a feature matrix </span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> npr.randn(feature_matrix.shape[<span class="op">-</span><span class="dv">1</span>])</span>
@@ -645,7 +612,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 <pre><code>[  0.0545782   10.42891793 -10.10707337  -0.03126282   1.02186303]</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="15">
+<div id="cell-25" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original training data again, together with the polynomial we fit</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x, np.dot(feature_matrix, W), <span class="st">'b-'</span>)</span>
@@ -663,7 +630,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 <h2 class="anchored" data-anchor-id="neural-net-regression">Neural Net Regression</h2>
 <p>In this example we will implement a (nonlinear) regression model using a neural network.</p>
 <p>To implement and train a neural net using Autograd, you only have to define the forward pass of the network and the loss function you wish to use; you do <em>not</em> need to implement the <em>backward pass</em> of the network. When you take the gradient of the loss function using <code>grad</code>, Autograd automatically computes the backward pass. It essentially executes the backpropagation algorithm implicitly.</p>
-<div id="cell-27" class="cell" data-execution_count="16">
+<div id="cell-28" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np</span>
@@ -691,7 +658,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
         x = x + step_size * velocity
     return unflatten(x)</code></pre>
 <p>The next example shows how to use the <code>sgd</code> function.</p>
-<div id="cell-29" class="cell" data-execution_count="17">
+<div id="cell-30" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> x <span class="op">**</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">20</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">10</span> <span class="op">+</span> npr.normal(<span class="dv">0</span>, <span class="dv">4</span>, x.shape[<span class="dv">0</span>])</span>
@@ -704,7 +671,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="23">
+<div id="cell-31" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> x.reshape(x.shape[<span class="op">-</span><span class="dv">1</span>],<span class="dv">1</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>W1 <span class="op">=</span> npr.randn(<span class="dv">1</span>,<span class="dv">4</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> npr.randn(<span class="dv">4</span>)</span>
@@ -764,7 +731,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-scrolled="true" data-execution_count="19">
+<div id="cell-32" class="cell" data-scrolled="true" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A plot of the result of this model using tanh activations</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, final_y, <span class="st">'b-'</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -776,7 +743,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell" data-scrolled="false" data-execution_count="24">
+<div id="cell-33" class="cell" data-scrolled="false" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A plot of the result of this model using ReLU activations</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, final_y, <span class="st">'b-'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -923,6 +890,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -937,14 +925,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -953,9 +937,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
