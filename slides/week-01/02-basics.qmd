@@ -714,6 +714,10 @@ academic and operational data assimilation.
 8.  EnKF; <https://enkf.nersc.no/>, the original Ensemble KF from Geir
     Evensen.
 
+9. [DataAssim.jl](https://juliapackages.com/p/dataassim)
+
+10. [EnKF.jl](https://nextjournal.com/mleprovost/enkfjl-tools-for-data-assimilation-with-ensemble-kalman-filter-1)
+
 ## References{.smaller}
 
 1.  K. Law, A. Stuart, K. Zygalakis. *Data Assimilation. A Mathematical
