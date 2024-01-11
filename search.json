@@ -1196,7 +1196,7 @@
     "href": "slides/week-01/02-basics.html#inverse-problems",
     "title": "Basics",
     "section": "Inverse problems",
-    "text": "Inverse problems\n\n\n\n\nfrom Asch (2022)\n\n\nIngredients of an inverse problem: the physical reality (top) and the direct mathematical model (bottom). The inverse problem uses the difference between the model- predicted observations, u (calculated at the receiver array points xr), and the real observations measured on the array, in order to find the unknown model parameters, m, or the source s (or both)."
+    "text": "Inverse problems\n\n\n\n\nfrom Asch (2022)\n\n\nIngredients of an inverse problem: the physical reality (top) and the direct mathematical model (bottom). The inverse problem uses the difference between the model- predicted observations, u (calculated at the receiver array points \\(x_r\\)), and the real observations measured on the array, in order to find the unknown model parameters, m, or the source s (or both)."
   },
   {
     "objectID": "slides/week-01/02-basics.html#forward-and-inverse-problems",
@@ -2441,7 +2441,7 @@
     "href": "syllabus.html#textbooks",
     "title": "Syllabus",
     "section": "Textbooks",
-    "text": "Textbooks\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022\n\n\n\n\nThese electronic books are only available when online at Georgia Tech!",
+    "text": "Textbooks\n\n\n\nData assimilation: methods, algorithms, and applications\nAsch, Bocquet, and Nodet (2016), Mark\nSIAM, 2016\n\n\nA toolbox for digital twins: from model-based to data-driven\nAsch (2022), Mark\nSIAM, 2022\n\n\nNotebook: Kalman and Bayesian Filters in Python\nRoger R. Labbe\nPrivate, 2020\n\n\n\n\n\nThese electronic books are only available when online at Georgia Tech!\n\nThe Python notebook is hands on, very practical, and contains very useful exercises with answers. You are encouraged to explore and we will incorporate material from this notebook in this course.",
     "crumbs": [
       "Syllabus"
     ]
