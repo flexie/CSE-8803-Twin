@@ -26,10 +26,13 @@ For a motivational article see [Digital Twins in the era of generative AI](https
 |---------------------------------------------------|-----------|-----------|
 | [Data assimilation: methods, algorithms, and applications](https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&context=L&vid=01GALI_GIT:GT&vid=01GALI_GIT&docid=alma9914381076402947&tab=default_tab&lang=en) | @asch2016data, Mark    | SIAM, 2016 |
 | [A toolbox for digital twins: from model-based to data-driven](https://epubs.siam.org/doi/book/10.1137/1.9781611976977)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 |
+| [Notebook: Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python)                                                                          | Roger R. Labbe | Private, 2020 |
 
 <!-- | [A toolbox for digital twins: from model-based to data-driven](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 | -->
+  
 
-**These electronic books are only available when online at Georgia Tech!** 
+- **These electronic books are only available when online at Georgia Tech!**  
+- **The [Python notebook](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) is hands on, very practical, and contains very useful exercises with answers. You are encouraged to explore and we will incorporate material from this [notebook](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) in this course.**
 
 
 ## Journal Papers
