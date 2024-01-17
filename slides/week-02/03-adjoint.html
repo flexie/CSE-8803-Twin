@@ -470,9 +470,9 @@ Nonlinear extensions and ensemble filters.
 </section>
 <section id="section-1" class="slide level2 smaller center">
 <h2></h2>
-<p>To solve this very general parameter estimation problem, we are given a cost function <span class="math inline">\(J(\mathbf{m};\mathbf{u}).\)</span></p>
+<p>To solve this very general parameter estimation problem, we are given a cost function <span class="math inline">\(J(\mathbf{u};\mathbf{m}).\)</span></p>
 <p>The constrained optimization problem is then <span class="math display">\[\begin{cases}
-        \underset{\mathbf{m}}{\operatorname{minimize}} &amp; J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
+        \underset{\mathbf{m}}{\operatorname{minimize}} &amp; J\left(\mathbf{u}(\mathbf{m});\mathbf{m}\right)\\
         \mathrm{subject\,to} &amp; F(\mathbf{u};\mathbf{m})=0,
         \end{cases}\]</span> where <span class="math inline">\(J\)</span> can depend on both <span class="math inline">\(\mathbf{u}\)</span> and on <span class="math inline">\(\mathbf{m}\)</span> explicitly in the presence of eventual regularization terms.</p>
 <div class="callout callout-note callout-titled callout-style-default">
