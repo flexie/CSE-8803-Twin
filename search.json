@@ -146,7 +146,7 @@
     "href": "slides/week-03/04-AD.html#section-1",
     "title": "Differential Programming",
     "section": "",
-    "text": "The gradient of a function can be calculated using the gradient descent algorithm. The gradient descent algorithm works by starting at a point and then moving in the direction of the gradient until it reaches a minimum or maximum.\nIn ML, we use stochastic gradientoptimization methods\n\nDifferential programming can be used to solve a variety of problems in scientific machine learning, including:\n\nCalculating the gradients of loss functions for machine learning models—this is important for training machine learning models.\nSolving differential equations—this can be used to model the behavior of physical systems.\nPerforming optimization—this can be used to find the optimal solution to a problem.\nSolving inverse and data assimilation problems—this is none other than a special case of optimization."
+    "text": "The gradient of a function can be calculated using the gradient descent algorithm. The gradient descent algorithm works by starting at a point and then moving in the direction of the gradient until it reaches a minimum or maximum.\nIn ML, we use stochastic gradient optimization methods\n\nDifferential programming can be used to solve a variety of problems in scientific machine learning, including:\n\nCalculating the gradients of loss functions for machine learning models—this is important for training machine learning models.\nSolving differential equations—this can be used to model the behavior of physical systems. (Caution: this does not scale!!!)\nPerforming optimization—this can be used to find the optimal solution to a problem.\nSolving inverse and data assimilation problems—this is none other than a special case of optimization."
   },
   {
     "objectID": "slides/week-03/04-AD.html#section-2",
@@ -279,14 +279,14 @@
     "href": "slides/week-03/04-AD.html#section-10",
     "title": "Differential Programming",
     "section": "",
-    "text": "usually someerror norm, and then (usually) compute its average\nThe best/fastest way to solve this optimization problem, is to use gradients and gradient-based methods.\n\nDefinition 2 Backpropagation is an algorithm for computing gradients.\nBackpropagation is an instance of reverse-mode automatic differentiation\n\nvery broadly applicable to machine learning, data assimilation and inverse problems in general\nit is “just” a clever and efficient use of the Chain Rule for derivatives"
+    "text": "usually some error norm, and then (usually) compute its average\nThe best/fastest way to solve this optimization problem, is to use gradients and gradient-based methods.\n\nDefinition 2 Backpropagation is an algorithm for computing gradients.\nBackpropagation is an instance of reverse-mode automatic differentiation\n\nvery broadly applicable to machine learning, data assimilation and inverse problems in general\nit is “just” a clever and efficient use of the Chain Rule for derivatives"
   },
   {
     "objectID": "slides/week-03/04-AD.html#section-11",
     "href": "slides/week-03/04-AD.html#section-11",
     "title": "Differential Programming",
     "section": "",
-    "text": "We can prove mathematically the following equivalences:\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nRecall: the adjoint-state method is the theoretical basis for Data Assimilation, as well as many other inverse problems—see Basic Course, Lecture on Adjoint Methods)."
+    "text": "We can prove mathematically the following equivalences:\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nRecall: the adjoint-state method is the theoretical basis for Data Assimilation, as well as many other inverse problems — Lecture on Adjoint Methods)."
   },
   {
     "objectID": "slides/week-03/04-AD.html#chain-rule",
@@ -349,14 +349,14 @@
     "href": "slides/week-03/04-AD.html#section-16",
     "title": "Differential Programming",
     "section": "",
-    "text": "Structured approach: \\[\\begin{aligned}\n     & \\mathrm{compute\\ loss} &  & \\mathrm{compute\\ derivatives}\\\\\n     & \\mathrm{{\\color{blue}forwards}} &  & \\mathrm{{\\color{red}backwards}}\\\\\n    z & =wx+b & \\frac{\\partial\\mathcal{L}}{\\partial y} & =y-t\\\\\n    y & =\\sigma(z) & \\frac{\\partial\\mathcal{L}}{\\partial z} & =\\frac{\\partial\\mathcal{L}}{\\partial y}\\frac{\\partial y}{\\partial z}=\\frac{\\partial\\mathcal{L}}{\\partial y}\\sigma'(z)\\\\\n    \\mathcal{L} & =\\frac{1}{2}(y-t)^{2} & \\frac{\\partial\\mathcal{L}}{\\partial w} & =\\frac{\\partial\\mathcal{L}}{\\partial z}\\frac{\\partial z}{\\partial w}=\\frac{\\partial\\mathcal{L}}{\\partial z}x\\\\\n     &  & \\frac{\\partial\\mathcal{L}}{\\partial b} & =\\frac{\\partial\\mathcal{L}}{\\partial z}\\frac{\\partial z}{\\partial b}=\\frac{\\partial\\mathcal{L}}{\\partial z}\\cdot1\n    \\end{aligned}\\]\n\ncan easily be written as a computational graphwith\nnodes = inputs and computed quantities\nedges = nodes computed directly as functions of other nodes"
+    "text": "Structured approach: \\[\\begin{aligned}\n     & \\mathrm{compute\\ loss} &  & \\mathrm{compute\\ derivatives}\\\\\n     & \\mathrm{{\\color{blue}forwards}} &  & \\mathrm{{\\color{red}backwards}}\\\\\n    z & =wx+b & \\frac{\\partial\\mathcal{L}}{\\partial y} & =y-t\\\\\n    y & =\\sigma(z) & \\frac{\\partial\\mathcal{L}}{\\partial z} & =\\frac{\\partial\\mathcal{L}}{\\partial y}\\frac{\\partial y}{\\partial z}=\\frac{\\partial\\mathcal{L}}{\\partial y}\\sigma'(z)\\\\\n    \\mathcal{L} & =\\frac{1}{2}(y-t)^{2} & \\frac{\\partial\\mathcal{L}}{\\partial w} & =\\frac{\\partial\\mathcal{L}}{\\partial z}\\frac{\\partial z}{\\partial w}=\\frac{\\partial\\mathcal{L}}{\\partial z}x\\\\\n     &  & \\frac{\\partial\\mathcal{L}}{\\partial b} & =\\frac{\\partial\\mathcal{L}}{\\partial z}\\frac{\\partial z}{\\partial b}=\\frac{\\partial\\mathcal{L}}{\\partial z}\\cdot1\n    \\end{aligned}\\]\n\ncan easily be written as a computational graph with\nnodes = inputs and computed quantities\nedges = nodes computed directly as functions of other nodes"
   },
   {
     "objectID": "slides/week-03/04-AD.html#section-17",
     "href": "slides/week-03/04-AD.html#section-17",
     "title": "Differential Programming",
     "section": "",
-    "text": "Lossis computed in the forward pass\nGradient is computed in the backward pass\n\nthe derivatives of \\(y\\) and \\(z\\) are exact/known\nthe derivatives of \\(\\mathcal{L}\\) are computed, starting from the end\nthe gradients wrt to the parameters are readily obtained by backpropagation using the chain rule!"
+    "text": "Loss is computed in the forward pass\nGradient is computed in the backward pass\n\nthe derivatives of \\(y\\) and \\(z\\) are exact/known\nthe derivatives of \\(\\mathcal{L}\\) are computed, starting from the end\nthe gradients wrt to the parameters are readily obtained by backpropagation using the chain rule!"
   },
   {
     "objectID": "slides/week-03/04-AD.html#full-backprop-algorithm",
@@ -398,7 +398,7 @@
     "href": "slides/week-03/04-AD.html#section-21",
     "title": "Differential Programming",
     "section": "",
-    "text": "If we evaluate this product from right-to-left: \\[(\\mathrm{d}F/\\mathrm{d}G*(\\mathrm{d}G/\\mathrm{d}H*\\mathrm{d}H/\\mathrm{d}x)),\\] the same order as the computations themselves were performed, this is called forward-mode differentiation.\nIf we evaluate this product from left-to-right: \\[((\\mathrm{d}F/\\mathrm{d}G*\\mathrm{d}G/\\mathrm{d}H)*\\mathrm{d}H/\\mathrm{d}x),\\] the reverse order as the computations themselves were performed, this is called reverse-mode differentiation.\n\nCompared to finite differences or forward-mode, reverse-mode differentiation is by far the more practical method for differentiating functions that take in a (very)large vectorand output a single number.\nIn the machine learning community, reverse-mode differentiation is known as ‘backpropagation’, since the gradients propagate backwards through the function (as seen above)."
+    "text": "If we evaluate this product from right-to-left: \\[(\\mathrm{d}F/\\mathrm{d}G*(\\mathrm{d}G/\\mathrm{d}H*\\mathrm{d}H/\\mathrm{d}x)),\\] the same order as the computations themselves were performed, this is called forward-mode differentiation.\nIf we evaluate this product from left-to-right: \\[((\\mathrm{d}F/\\mathrm{d}G*\\mathrm{d}G/\\mathrm{d}H)*\\mathrm{d}H/\\mathrm{d}x),\\] the reverse order as the computations themselves were performed, this is called reverse-mode differentiation.\n\nCompared to finite differences or forward-mode, reverse-mode differentiation is by far the more practical method for differentiating functions that take in a (very) large vector and output a single number.\nIn the machine learning community, reverse-mode differentiation is known as ‘backpropagation’, since the gradients propagate backwards through the function (as seen above)."
   },
   {
     "objectID": "slides/week-03/04-AD.html#section-22",
@@ -447,7 +447,7 @@
     "href": "slides/week-02/03-adjoint.html#adjoint-statecontinuous-formulation",
     "title": "Adjoint state",
     "section": "Adjoint-state—continuous formulation",
-    "text": "Adjoint-state—continuous formulation\nLet \\(\\mathbf{u}(\\mathbf{x},t)\\) be the state of a dynamical system whose behavior depends on model parameters \\(\\mathbf{m}(\\mathbf{x},t)\\) and is described by a differential operator equation \\[\\mathbf{L}(\\mathbf{u},\\mathbf{m})=\\mathbf{f},\\] where \\(\\mathbf{f}(\\mathbf{x},t)\\) represents external forces.\nDefine a cost function \\(J(\\mathbf{m})\\) as an energy functional1 or, more commonly, as a misfit functionalthat quantifies the error (\\(L^{2}\\)-distance2) between the observation and the model prediction \\(\\mathbf{u}(\\mathbf{x},t;\\mathbf{m}).\\) For example, \\[J(\\mathbf{m})=\\int_{0}^{T}\\int_{\\Omega}\\left(\\mathbf{u}(\\mathbf{x},t;\\mathbf{m})-\\mathbf{u}^{\\mathrm{obs}}(\\mathbf{x},t)\\right)^{2}\\,\\mathrm{d}\\mathbf{x}\\:\\mathrm{d}t,\\] where \\(\\mathbf{x}\\in\\Omega\\subset\\mathbb{R}^{n},\\,n=1,2,3,\\) and \\(0\\le t\\le T.\\)\nA functional is a generalization of a function. The functional depends on functions, whereas a function depends on variables. We then say that a functional is mapping from a space of functions into the real numbers.The \\(L^{2}\\)-space is a Hilbert space of (measurable) functions that are square-integrable (in Lebesgue sense)."
+    "text": "Adjoint-state—continuous formulation\nLet \\(\\mathbf{u}(\\mathbf{x},t)\\) be the state of a dynamical system whose behavior depends on model parameters \\(\\mathbf{m}(\\mathbf{x},t)\\) and is described by a differential operator equation \\[\\mathbf{L}(\\mathbf{u},\\mathbf{m})=\\mathbf{f},\\] where \\(\\mathbf{f}(\\mathbf{x},t)\\) represents external forces.\nDefine a cost function \\(J(\\mathbf{m})\\) as an energy functional1 or, more commonly, as a misfit functional that quantifies the error (\\(L^{2}\\)-distance2) between the observation and the model prediction \\(\\mathbf{u}(\\mathbf{x},t;\\mathbf{m}).\\) For example, \\[J(\\mathbf{m})=\\int_{0}^{T}\\int_{\\Omega}\\left(\\mathbf{u}(\\mathbf{x},t;\\mathbf{m})-\\mathbf{u}^{\\mathrm{obs}}(\\mathbf{x},t)\\right)^{2}\\,\\mathrm{d}\\mathbf{x}\\:\\mathrm{d}t,\\] where \\(\\mathbf{x}\\in\\Omega\\subset\\mathbb{R}^{n},\\,n=1,2,3,\\) and \\(0\\le t\\le T.\\)\nA functional is a generalization of a function. The functional depends on functions, whereas a function depends on variables. We then say that a functional is mapping from a space of functions into the real numbers.The \\(L^{2}\\)-space is a Hilbert space of (measurable) functions that are square-integrable (in Lebesgue sense)."
   },
   {
     "objectID": "slides/week-02/03-adjoint.html#adjoint-statecontinuous-formulation-1",
@@ -468,7 +468,7 @@
     "href": "slides/week-02/03-adjoint.html#section-1",
     "title": "Adjoint state",
     "section": "",
-    "text": "To solve this very general parameter estimation problem, we are given a cost function \\(J(\\mathbf{m};\\mathbf{u}).\\)\nThe constrained optimization problem is then \\[\\begin{cases}\n        \\mathrm{minimize}_{\\mathbf{m}} & J\\left(\\mathbf{u}(\\mathbf{m}),\\mathbf{m}\\right)\\\\\n        \\mathrm{subject\\,to} & F(\\mathbf{u};\\mathbf{m})=0,\n        \\end{cases}\\] where \\(J\\) can depend on both \\(\\mathbf{u}\\) and on \\(\\mathbf{m}\\) explicitly in the presence of eventual regularization terms.\n\n\n\n\n\n\nNote\n\n\n\nthe constraint is a (partial) differential equation and\nthe minimization is with respect to a (vector) function.\n\n\n\n\nThis type of optimization is the subject of variational calculus, a generalization of classical calculus where differentiation is performed with respect to a variable, not a function."
+    "text": "To solve this very general parameter estimation problem, we are given a cost function \\(J(\\mathbf{m};\\mathbf{u}).\\)\nThe constrained optimization problem is then \\[\\begin{cases}\n        \\underset{\\mathbf{m}}{\\operatorname{minimize}} & J\\left(\\mathbf{u}(\\mathbf{m}),\\mathbf{m}\\right)\\\\\n        \\mathrm{subject\\,to} & F(\\mathbf{u};\\mathbf{m})=0,\n        \\end{cases}\\] where \\(J\\) can depend on both \\(\\mathbf{u}\\) and on \\(\\mathbf{m}\\) explicitly in the presence of eventual regularization terms.\n\n\n\n\n\n\nNote\n\n\n\nthe constraint is a (partial) differential equation and\nthe minimization is with respect to a (vector) function.\n\n\n\n\nThis type of optimization is the subject of variational calculus, a generalization of classical calculus where differentiation is performed with respect to a variable, not a function."
   },
   {
     "objectID": "slides/week-02/03-adjoint.html#section-2",
@@ -503,7 +503,7 @@
     "href": "slides/week-02/03-adjoint.html#section-5",
     "title": "Adjoint state",
     "section": "",
-    "text": "A number of important remarks can be made.\n\nWe obtain explicit formulasin terms of the adjoint statefor the gradient with respect to each/any model parameter. Note that this has been done in a completely general setting, without any restrictions on the operator \\({F}\\) or on the model parameters \\(\\mathbf{m}.\\)\nThe computational cost is one solution of the adjoint equation which is usually of the same order as (if not identical to) the direct equation, but with a reversal of time. Note that for nonlinear equations this may not be the case and one may require four or five times the computational effort.\nThe variation (Gâteaux derivative) of \\({F}\\) with respect to the model parameters \\(\\mathbf{m}\\) is, in general, straightforward to compute.\nWe have not explicitly considered boundary (or initial) conditions in the above, general approach. In real cases, these are potential sources of difficulties for the use of the adjoint approach the discrete adjoint can provide a way to overcome this hurdle."
+    "text": "A number of important remarks can be made.\n\nWe obtain explicit formulas — in terms of the adjoint state — for the gradient with respect to each/any model parameter. Note that this has been done in a completely general setting, without any restrictions on the operator \\({F}\\) or on the model parameters \\(\\mathbf{m}.\\)\nThe computational cost is one solution of the adjoint equation which is usually of the same order as (if not identical to) the direct equation, but with a reversal of time. Note that for nonlinear equations this may not be the case and one may require four or five times the computational effort.\nThe variation (Gâteaux derivative) of \\({F}\\) with respect to the model parameters \\(\\mathbf{m}\\) is, in general, straightforward to compute.\nWe have not explicitly considered boundary (or initial) conditions in the above, general approach. In real cases, these are potential sources of difficulties for the use of the adjoint approach — see Section 8.7.3, where the the discrete adjoint can provide a way to overcome this hurdle."
   },
   {
     "objectID": "slides/week-02/03-adjoint.html#section-6",
@@ -517,7 +517,7 @@
     "href": "slides/week-02/03-adjoint.html#section-7",
     "title": "Adjoint state",
     "section": "",
-    "text": "When measurement and modeling errors can be modeled by Gaussian distributions and a background (prior) solution exists, the objective function may be generalized by including suitable covariance matrices. This is the approach employed systematically in data assimilationsee below."
+    "text": "When measurement and modeling errors can be modeled by Gaussian distributions and a background (prior) solution exists, the objective function may be generalized by including suitable covariance matrices. This is the approach employed systematically in data assimilation, see below."
   },
   {
     "objectID": "slides/week-02/03-adjoint.html#adjoint-state-methoddiscrete-systems",
@@ -744,7 +744,7 @@
     "href": "labs/w2-lab01-PyTorch.html",
     "title": "PyTorch intro",
     "section": "",
-    "text": "Add instructions for assignment.\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Read over (or run if you need practice) notebooks 1-Basics. Run all of notebook 2-NN basics and workflows. Rerun notebook 2 and make the task a bit more difficult by:\n\nadding Gaussian standard noise to the data. (w/ at least sigma=0.01)\nadjust training hyperparameters as necessary to achieve good results.\n\nFor extra credit run notebook 3. If you do not have access to a GPU, use free tier Google collab GPU with instructions outlined in https://flexie.github.io/CSE-8803-Twin/schedule.html.\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "labs/w1-lab01-intro.html",
@@ -1182,7 +1182,7 @@
     "href": "slides/week-01/02-basics.html#motivational-example-digital-twin-for-geological-co2-storage",
     "title": "Basics",
     "section": "Motivational Example — Digital Twin for Geological CO2 storage",
-    "text": "Motivational Example — Digital Twin for Geological CO2 storage\n\n\nPlume development & associated time-lapse seismic images\n\n\n\n\nRecovery of the CO~2 ~ plume\n\n\nSee for SLIM website for our research on Geological CO2 Storage."
+    "text": "Motivational Example — Digital Twin for Geological CO2 storage\n\n\nPlume development & associated time-lapse seismic images\n\n\n\n\nRecovery of the CO2 plume\n\n\nSee for SLIM website for our research on Geological CO2 Storage."
   },
   {
     "objectID": "slides/week-01/02-basics.html#section-1",
@@ -1329,7 +1329,7 @@
     "href": "slides/week-01/02-basics.html#tikhonov-regularizationintroduction",
     "title": "Basics",
     "section": "Tikhonov Regularization—Introduction",
-    "text": "Tikhonov Regularization—Introduction\nTikhonov regularization (TR) is probably the most widely used method for regularizing ill-posed, discrete and continuous inverse problems.\n\n\n\n\n\n\nNote\n\n\nNote that the LASSO and ridge regression methods—see ML Lectures—are special cases of TR.\n\n\n\nThe theory is the subject of entire books...\nRecall:\n\nthe objective of TR is to reduce, or remove, ill-posedness in optimization problems by modifying the objective function.\nthe three sources of ill-posedness: non-existence, non-uniqueness and sensitivity to perturbations.\nTR, in principle, addresses and alleviates all three sources of ill-posedness and is thus a vital tool for the solution of inverse problems."
+    "text": "Tikhonov Regularization—Introduction\nTikhonov regularization (TR) is probably the most widely used method for regularizing ill-posed, discrete and continuous inverse problems.\n\n\n\n\n\n\nNote\n\n\nNote that the LASSO and ridge regression methods—are special cases of TR.\n\n\n\nThe theory is the subject of entire books...\nRecall:\n\nthe objective of TR is to reduce, or remove, ill-posedness in optimization problems by modifying the objective function.\nthe three sources of ill-posedness: non-existence, non-uniqueness and sensitivity to perturbations.\nTR, in principle, addresses and alleviates all three sources of ill-posedness and is thus a vital tool for the solution of inverse problems."
   },
   {
     "objectID": "slides/week-01/02-basics.html#tikhonov-regularizationformulation",
@@ -1399,14 +1399,14 @@
     "href": "slides/week-01/02-basics.html#standard-notation",
     "title": "Basics",
     "section": "Standard notation",
-    "text": "Standard notation\nA discrete model for the evolution of a physical (atmospheric, oceanic, etc.) system from time \\(t_{k}\\) to time \\(t_{k+1}\\) is described by a dynamic, state equation\n\\[\\mathbf{x}^{f}(t_{k+1})=M\\left[\\mathbf{x}^{f}(t_{k})\\right], \\qquad(3)\\]\n\n\\(\\mathbf{x}\\) is the model’s state vector of dimension \\(n,\\)\n\\(M\\) is the corresponding dynamics operator (finite difference or finite element discretization).\n\nThe error covariance matrix associated with \\(\\mathbf{x}\\) is given by \\(\\mathbf{P}\\) since the true state will differ from the simulated state (Equation 3) by random or systematic errors.\nObservations, or measurements, at time \\(t_{k}\\) are defined by"
+    "text": "Standard notation\nA discrete model for the evolution of a physical (atmospheric, oceanic, etc.) system from time \\(t_{k}\\) to time \\(t_{k+1}\\) is described by a dynamic, state equation\n\\[\\mathbf{x}^{f}(t_{k+1})=M_{k+1}\\left[\\mathbf{x}^{f}(t_{k})\\right], \\qquad(3)\\]\n\n\\(\\mathbf{x}\\) is the model’s state vector of dimension \\(n,\\)\n\\(M\\) is the corresponding dynamics operator (finite difference or finite element discretization), which can be time dependent.\n\nThe error covariance matrix associated with \\(\\mathbf{x}\\) is given by \\(\\mathbf{P}\\) since the true state will differ from the simulated state (Equation 3) by random or systematic errors.\nObservations, or measurements, at time \\(t_{k}\\) are defined by"
   },
   {
     "objectID": "slides/week-01/02-basics.html#section-10",
     "href": "slides/week-01/02-basics.html#section-10",
     "title": "Basics",
     "section": "",
-    "text": "\\[\\mathbf{y}_{k}^{\\mathrm{o}}=H_{k}\\left[\\mathbf{x}^{t}(t_{k})\\right]+\\varepsilon_{k},\\]\n\n\\(H\\) is an observation operator that can be time dependent\n\\(\\varepsilon\\) is a white noise process zero mean and covariance matrix \\(\\mathbf{R}\\) (instrument errors and representation errors due to the discretization)\nobservation vector \\(\\mathbf{y}_{k}^{\\mathrm{o}}=\\mathbf{y}^{\\mathrm{o}}(t_{k})\\) has dimension \\(p_{k}\\) (usually \\(p_{k}\\ll n.\\) )\n\nSubscripts are used to denote the discrete time index, the corresponding spatial indices or the vector with respect to which an error covariance matrix is defined.\nSuperscripts refer to the nature of the vectors/matrices\n\n“a” for analysis,\n“b” for background (or ‘initial/first guess’),\n“f” for forecast,\n“o” for observation and\n“t” for the (unknown) true state."
+    "text": "\\[\\mathbf{y}_{k}^{\\mathrm{o}}=H_{k}\\left[\\mathbf{x}^{t}(t_{k})\\right]+\\varepsilon_{k}^{\\mathrm{o}},\\]\n\n\\(H\\) is an observation operator that can be time dependent\n\\(\\varepsilon_k^{\\mathrm{o}}\\) is a white noise process zero mean and covariance matrix \\(\\mathbf{R}\\) (instrument errors and representation errors due to the discretization)\nobservation vector \\(\\mathbf{y}_{k}^{\\mathrm{o}}=\\mathbf{y}^{\\mathrm{o}}(t_{k})\\) has dimension \\(p_{k}\\) (usually \\(p_{k}\\ll n.\\) )\n\nSubscripts are used to denote the discrete time index, the corresponding spatial indices or the vector with respect to which an error covariance matrix is defined.\nSuperscripts refer to the nature of the vectors/matrices\n\n“a” for analysis, “b” for background (or ‘initial/first guess’),\n“f” for forecast, “o” for observation, and\n“t” for the (unknown) true state.\n\nAn analysis that combines time-distributed observations and a dynamic model is called data assimilation."
   },
   {
     "objectID": "slides/week-01/02-basics.html#standard-notationcontinuous-system",

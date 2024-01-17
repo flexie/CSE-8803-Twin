@@ -449,7 +449,7 @@
 </div>
 <div style="text-align: margin-top: 1em">
 <ul>
-<li><a href="https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/herrmann2023ML4SEISMICmsc/#79" data-preview-link="true" style="text-align: center">Recovery of the CO~2 ~ plume</a></li>
+<li><a href="https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/herrmann2023ML4SEISMICmsc/#79" data-preview-link="true" style="text-align: center">Recovery of the CO<sub>2</sub> plume</a></li>
 </ul>
 </div>
 <p>See for <a href="https://slim.gatech.edu">SLIM website</a> for our research on <a href="https://slim.gatech.edu/research/geological-carbon-storage">Geological CO<sub>2</sub> Storage</a>.</p>
@@ -669,7 +669,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Note that the <span style="color: magenta">LASSO</span> and <span style="color: magenta">ridge regression</span> methods—see ML Lectures—are special cases of TR.</p>
+<p>Note that the <span style="color: magenta">LASSO</span> and <span style="color: magenta">ridge regression</span> methods—are special cases of TR.</p>
 </div>
 </div>
 </div>
@@ -783,31 +783,30 @@ Figure&nbsp;1
 <section id="standard-notation" class="slide level2 smaller center">
 <h2>Standard notation</h2>
 <p>A <span style="color: blue">discrete model f</span>or the evolution of a physical (atmospheric, oceanic, etc.) system from time <span class="math inline">\(t_{k}\)</span> to time <span class="math inline">\(t_{k+1}\)</span> is described by a dynamic, <em>state equation</em></p>
-<p><span id="eq-state"><span class="math display">\[\mathbf{x}^{f}(t_{k+1})=M\left[\mathbf{x}^{f}(t_{k})\right], \qquad(3)\]</span></span></p>
+<p><span id="eq-state"><span class="math display">\[\mathbf{x}^{f}(t_{k+1})=M_{k+1}\left[\mathbf{x}^{f}(t_{k})\right], \qquad(3)\]</span></span></p>
 <ul>
 <li><p><span class="math inline">\(\mathbf{x}\)</span> is the model’s <em>state vector</em> of dimension <span class="math inline">\(n,\)</span></p></li>
-<li><p><span class="math inline">\(M\)</span> is the corresponding <em>dynamics operator</em> (finite difference or finite element discretization).</p></li>
+<li><p><span class="math inline">\(M\)</span> is the corresponding <em>dynamics operator</em> (finite difference or finite element discretization), which can be time dependent.</p></li>
 </ul>
-<p>The <span style="color: blue">error covariance matrix</span> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/standard-notation" class="quarto-xref">Equation&nbsp;3</a>) by random or systematic errors.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Covariance_matrix">error covariance matrix</a> associated with <span class="math inline">\(\mathbf{x}\)</span> is given by <span class="math inline">\(\mathbf{P}\)</span> since the true state will differ from the simulated state (<a href="#/standard-notation" class="quarto-xref">Equation&nbsp;3</a>) by random or systematic errors.</p>
 <p><span style="color: blue">Observations</span>, or measurements, at time <span class="math inline">\(t_{k}\)</span> are defined by</p>
 </section>
 <section id="section-10" class="slide level2 smaller center">
 <h2></h2>
-<p><span class="math display">\[\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},\]</span></p>
+<p><span class="math display">\[\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k}^{\mathrm{o}},\]</span></p>
 <ul>
 <li><p><span class="math inline">\(H\)</span> is an <span style="color: magenta">observation operator</span> that can be time dependent</p></li>
-<li><p><span class="math inline">\(\varepsilon\)</span> is a <span style="color: magenta">white noise process</span> zero mean and covariance matrix <span class="math inline">\(\mathbf{R}\)</span> (instrument errors and representation errors due to the discretization)</p></li>
+<li><p><span class="math inline">\(\varepsilon_k^{\mathrm{o}}\)</span> is a <span style="color: magenta">white noise process</span> zero mean and covariance matrix <span class="math inline">\(\mathbf{R}\)</span> (instrument errors and representation errors due to the discretization)</p></li>
 <li><p>observation vector <span class="math inline">\(\mathbf{y}_{k}^{\mathrm{o}}=\mathbf{y}^{\mathrm{o}}(t_{k})\)</span> has dimension <span class="math inline">\(p_{k}\)</span> (usually <span class="math inline">\(p_{k}\ll n.\)</span> )</p></li>
 </ul>
 <p>Subscripts are used to denote the discrete time index, the corresponding spatial indices or the vector with respect to which an error covariance matrix is defined.</p>
 <p>Superscripts refer to the nature of the vectors/matrices</p>
 <ul>
-<li><p>“a” for <span style="color: magenta">analysis</span>,</p></li>
-<li><p>“b” for <span style="color: magenta">background</span> (or ‘initial/first guess’),</p></li>
-<li><p>“f” for <span style="color: magenta">forecast</span>,</p></li>
-<li><p>“o” for <span style="color: magenta">observation</span> and</p></li>
+<li><p>“a” for <span style="color: magenta">analysis</span>, “b” for <span style="color: magenta">background</span> (or ‘initial/first guess’),</p></li>
+<li><p>“f” for <span style="color: magenta">forecast</span>, “o” for <span style="color: magenta">observation</span>, and</p></li>
 <li><p>“t” for the (unknown) <span style="color: magenta">true</span> state.</p></li>
 </ul>
+<p>An analysis that combines time-distributed observations and a dynamic model is called <em>data assimilation</em>.</p>
 </section>
 <section id="standard-notationcontinuous-system" class="slide level2 smaller center">
 <h2>Standard notation—continuous system</h2>

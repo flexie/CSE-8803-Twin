@@ -442,7 +442,7 @@ Nonlinear extensions and ensemble filters.
 <section id="adjoint-statecontinuous-formulation" class="slide level2 smaller nostretch center">
 <h2>Adjoint-state—continuous formulation</h2>
 <p>Let <span class="math inline">\(\mathbf{u}(\mathbf{x},t)\)</span> be the state of a <em><span style="color: magenta">dynamical system</span></em> whose behavior depends on model parameters <span class="math inline">\(\mathbf{m}(\mathbf{x},t)\)</span> and is described by a differential operator equation <span class="math display">\[\mathbf{L}(\mathbf{u},\mathbf{m})=\mathbf{f},\]</span> where <span class="math inline">\(\mathbf{f}(\mathbf{x},t)\)</span> represents external forces.</p>
-<p>Define a <em><span style="color: magenta">cost function</span></em> <span class="math inline">\(J(\mathbf{m})\)</span> as an energy functional<sup>1</sup> or, more commonly, as a <span style="color: magenta">misfit functional</span>that quantifies the error (<span class="math inline">\(L^{2}\)</span>-distance<sup>2</sup>) between the observation and the model prediction <span class="math inline">\(\mathbf{u}(\mathbf{x},t;\mathbf{m}).\)</span> For example, <span class="math display">\[J(\mathbf{m})=\int_{0}^{T}\int_{\Omega}\left(\mathbf{u}(\mathbf{x},t;\mathbf{m})-\mathbf{u}^{\mathrm{obs}}(\mathbf{x},t)\right)^{2}\,\mathrm{d}\mathbf{x}\:\mathrm{d}t,\]</span> where <span class="math inline">\(\mathbf{x}\in\Omega\subset\mathbb{R}^{n},\,n=1,2,3,\)</span> and <span class="math inline">\(0\le t\le T.\)</span></p>
+<p>Define a <em><span style="color: magenta">cost function</span></em> <span class="math inline">\(J(\mathbf{m})\)</span> as an energy functional<sup>1</sup> or, more commonly, as a <span style="color: magenta">misfit functional</span> that quantifies the error (<span class="math inline">\(L^{2}\)</span>-distance<sup>2</sup>) between the observation and the model prediction <span class="math inline">\(\mathbf{u}(\mathbf{x},t;\mathbf{m}).\)</span> For example, <span class="math display">\[J(\mathbf{m})=\int_{0}^{T}\int_{\Omega}\left(\mathbf{u}(\mathbf{x},t;\mathbf{m})-\mathbf{u}^{\mathrm{obs}}(\mathbf{x},t)\right)^{2}\,\mathrm{d}\mathbf{x}\:\mathrm{d}t,\]</span> where <span class="math inline">\(\mathbf{x}\in\Omega\subset\mathbb{R}^{n},\,n=1,2,3,\)</span> and <span class="math inline">\(0\le t\le T.\)</span></p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>A functional is a generalization of a function. The functional depends on functions, whereas a function depends on variables. We then say that a functional is mapping from a space of functions into the real numbers.</p></li><li id="fn2"><p>The <span class="math inline">\(L^{2}\)</span>-space is a Hilbert space of (measurable) functions that are square-integrable (in Lebesgue sense).</p></li></ol></aside></section>
 <section id="adjoint-statecontinuous-formulation-1" class="slide level2 smaller nostretch center">
 <h2>Adjoint-state—continuous formulation</h2>
@@ -472,7 +472,7 @@ Nonlinear extensions and ensemble filters.
 <h2></h2>
 <p>To solve this very general parameter estimation problem, we are given a cost function <span class="math inline">\(J(\mathbf{m};\mathbf{u}).\)</span></p>
 <p>The constrained optimization problem is then <span class="math display">\[\begin{cases}
-        \mathrm{minimize}_{\mathbf{m}} &amp; J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
+        \underset{\mathbf{m}}{\operatorname{minimize}} &amp; J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
         \mathrm{subject\,to} &amp; F(\mathbf{u};\mathbf{m})=0,
         \end{cases}\]</span> where <span class="math inline">\(J\)</span> can depend on both <span class="math inline">\(\mathbf{u}\)</span> and on <span class="math inline">\(\mathbf{m}\)</span> explicitly in the presence of eventual regularization terms.</p>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -542,10 +542,10 @@ Nonlinear extensions and ensemble filters.
 <h2></h2>
 <p>A number of important remarks can be made.</p>
 <ol type="1">
-<li><p>We obtain <span style="color: magenta"><em>explicit</em></span><span style="color: magenta"></span> formulasin terms of the adjoint statefor the gradient with respect to each/any model parameter. Note that this has been done in a completely general setting, without any restrictions on the operator <span class="math inline">\({F}\)</span> or on the model parameters <span class="math inline">\(\mathbf{m}.\)</span></p></li>
+<li><p>We obtain <span style="color: magenta"><em>explicit</em></span><span style="color: magenta"></span> formulas — in terms of the adjoint state — for the gradient with respect to each/any model parameter. Note that this has been done in a completely general setting, without any restrictions on the operator <span class="math inline">\({F}\)</span> or on the model parameters <span class="math inline">\(\mathbf{m}.\)</span></p></li>
 <li><p>The <span style="color: magenta"><em>computational cost</em></span><span style="color: magenta"></span> is one solution of the adjoint equation which is usually of the same order as (if not identical to) the direct equation, but with a reversal of time. Note that for nonlinear equations this may not be the case and one may require four or five times the computational effort.</p></li>
 <li><p>The <span style="color: magenta"><em>variation</em></span> (Gâteaux derivative) of <span class="math inline">\({F}\)</span> with respect to the model parameters <span class="math inline">\(\mathbf{m}\)</span> is, in general, straightforward to compute.</p></li>
-<li><p>We have not explicitly considered boundary (or initial) conditions in the above, general approach. In real cases, these are potential sources of difficulties for the use of the adjoint approach the <em>discrete adjoint</em> can provide a way to overcome this hurdle.</p></li>
+<li><p>We have not explicitly considered boundary (or initial) conditions in the above, general approach. In real cases, these are potential sources of difficulties for the use of the adjoint approach — see Section 8.7.3, where the the <em>discrete adjoint</em> can provide a way to overcome this hurdle.</p></li>
 </ol>
 </section>
 <section id="section-6" class="slide level2 smaller center">
@@ -564,7 +564,7 @@ Nonlinear extensions and ensemble filters.
 <section id="section-7" class="slide level2 smaller center">
 <h2></h2>
 <ol start="7" type="1">
-<li>When measurement and modeling errors can be modeled by Gaussian distributions and a background (prior) solution exists, the objective function may be generalized by including suitable <span style="color: magenta"><em>covariance matrices</em></span><span style="color: magenta">.</span> This is the approach employed systematically in data assimilationsee below.</li>
+<li>When measurement and modeling errors can be modeled by Gaussian distributions and a background (prior) solution exists, the objective function may be generalized by including suitable <span style="color: magenta"><em>covariance matrices</em></span><span style="color: magenta">.</span> This is the approach employed systematically in data assimilation, see below.</li>
 </ol>
 </section>
 <section id="adjoint-state-methoddiscrete-systems" class="slide level2 smaller center">

@@ -456,12 +456,12 @@
 <h2></h2>
 <ul>
 <li><p>The gradient of a function can be calculated using the <span style="color: magenta">gradient descent algorithm</span>. The gradient descent algorithm works by starting at a point and then moving in the direction of the gradient until it reaches a minimum or maximum.</p></li>
-<li><p>In ML, we use <span style="color: magenta">stochastic gradient</span>optimization methods</p></li>
+<li><p>In ML, we use <span style="color: magenta">stochastic gradient</span> optimization methods</p></li>
 </ul>
 <p>Differential programming can be used to solve a variety of problems in scientific machine learning, including:</p>
 <ul>
 <li><p>Calculating the <span style="color: magenta">gradients of loss functions</span> for machine learning models—this is important for training machine learning models.</p></li>
-<li><p>Solving <span style="color: magenta">differential equations</span>—this can be used to model the behavior of physical systems.</p></li>
+<li><p>Solving <span style="color: magenta">differential equations</span>—this can be used to model the behavior of physical systems. (<strong>Caution: this does not scale!!!</strong>)</p></li>
 <li><p>Performing <span style="color: magenta">optimization</span>—this can be used to find the optimal solution to a problem.</p></li>
 <li><p>Solving <span style="color: magenta"><strong>inverse and data assimilation problems</strong></span>—this is none other than a special case of optimization.</p></li>
 </ul>
@@ -707,7 +707,7 @@
 </section>
 <section id="section-10" class="slide level2 smaller center">
 <h2></h2>
-<p>usually some<span style="color: magenta">error norm</span>, and then (usually) compute its average</p>
+<p>usually some <span style="color: magenta">error norm</span>, and then (usually) compute its average</p>
 <p>The best/fastest way to solve this optimization problem, is to use <span style="color: magenta">gradients</span> and gradient-based methods.</p>
 <div id="def-backprop" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 2 </strong></span><strong>Backpropagation</strong> is an algorithm for computing <span style="color: magenta">gradients</span>.</p>
@@ -743,7 +743,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Recall: the adjoint-state method is the theoretical basis for <span style="color: magenta">Data Assimilation</span>, as well as many other inverse problems—see Basic Course, Lecture on Adjoint Methods).</p>
+<p>Recall: the adjoint-state method is the theoretical basis for <span style="color: magenta">Data Assimilation</span>, as well as many other inverse problems — Lecture on Adjoint Methods).</p>
 </div>
 </div>
 </div>
@@ -788,7 +788,7 @@
 </section>
 <section id="section-14" class="slide level2 smaller center">
 <h2></h2>
-<div id="399a78f8" class="cell" data-execution_count="1">
+<div id="03734286" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># set some inputs</span></span>
 <span id="cb2-2"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">;</span> y <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> z <span class="op">=</span> <span class="op">-</span><span class="dv">4</span></span>
 <span id="cb2-3"><a></a><span class="co"># perform the forward pass</span></span>
@@ -867,7 +867,7 @@
      &amp;  &amp; \frac{\partial\mathcal{L}}{\partial b} &amp; =\frac{\partial\mathcal{L}}{\partial z}\frac{\partial z}{\partial b}=\frac{\partial\mathcal{L}}{\partial z}\cdot1
     \end{aligned}\]</span></p>
 <ul>
-<li><p>can easily be written as a <span style="color: magenta">computational graph</span>with</p></li>
+<li><p>can easily be written as a <span style="color: magenta">computational graph</span> with</p></li>
 <li><p>nodes = inputs and computed quantities</p></li>
 <li><p>edges = nodes computed directly as functions of other nodes</p></li>
 </ul>
@@ -877,7 +877,7 @@
 <div class="center">
 <p><img data-src="../images/comp_graph.png" style="width:30.0%"></p>
 </div>
-<p><span style="color: magenta">Loss</span>is computed in the <span style="color: magenta">forward</span> pass</p>
+<p><span style="color: magenta">Loss</span> is computed in the <span style="color: magenta">forward</span> pass</p>
 <p><span style="color: magenta">Gradient</span> is computed in the <span style="color: magenta">backward</span> pass</p>
 <ul>
 <li><p>the derivatives of <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> are <span style="color: magenta">exact/known</span></p></li>
@@ -943,7 +943,7 @@
 <li><p>If we evaluate this product from right-to-left: <span class="math display">\[(\mathrm{d}F/\mathrm{d}G*(\mathrm{d}G/\mathrm{d}H*\mathrm{d}H/\mathrm{d}x)),\]</span> the same order as the computations themselves were performed, this is called <span style="color: magenta">forward-mode differentiation</span>.</p></li>
 <li><p>If we evaluate this product from left-to-right: <span class="math display">\[((\mathrm{d}F/\mathrm{d}G*\mathrm{d}G/\mathrm{d}H)*\mathrm{d}H/\mathrm{d}x),\]</span> the reverse order as the computations themselves were performed, this is called <span style="color: magenta">reverse-mode differentiation</span>.</p></li>
 </ul>
-<p>Compared to finite differences or forward-mode, reverse-mode differentiation is by far the more practical method for differentiating functions that take in a (very)<span style="color: magenta">large vector</span>and output a single number.</p>
+<p>Compared to finite differences or forward-mode, reverse-mode differentiation is by far the more practical method for differentiating functions that take in a (very) <span style="color: magenta">large vector</span> and output a single number.</p>
 <p>In the machine learning community, reverse-mode differentiation is known as <span style="color: magenta">‘backpropagation’,</span> since the gradients propagate backwards through the function (as seen above).</p>
 </section>
 <section id="section-22" class="slide level2 smaller center">
