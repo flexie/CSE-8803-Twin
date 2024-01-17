@@ -130,7 +130,7 @@ Closely related to
 :::
 
 ::: {style="text-align: margin-top: 1em"}
-- [Recovery of the CO~2 ~ plume](https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/herrmann2023ML4SEISMICmsc/#79){preview-link="true" style="text-align: center"}
+- [Recovery of the CO~2~ plume](https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/herrmann2023ML4SEISMICmsc/#79){preview-link="true" style="text-align: center"}
 :::
 
 See for [SLIM website](https://slim.gatech.edu) for our research on [Geological CO~2~ Storage](https://slim.gatech.edu/research/geological-carbon-storage).
@@ -398,7 +398,7 @@ Tikhonov regularization (TR) is probably the most widely used method
 
 :::{.callout-note}
 Note that the [LASSO]{style="color: magenta"} and [ridge
-    regression]{style="color: magenta"} methods---see ML Lectures---are
+    regression]{style="color: magenta"} methods---are
     special cases of TR.
 :::
 
@@ -590,14 +590,14 @@ A [discrete model f]{style="color: blue"}or the evolution of a
     physical (atmospheric, oceanic, etc.) system from time $t_{k}$ to
     time $t_{k+1}$ is described by a dynamic, *state equation*
 
-$$\mathbf{x}^{f}(t_{k+1})=M\left[\mathbf{x}^{f}(t_{k})\right],$${#eq-state}
+$$\mathbf{x}^{f}(t_{k+1})=M_{k+1}\left[\mathbf{x}^{f}(t_{k})\right],$${#eq-state}
 
 -   $\mathbf{x}$ is the model's *state vector* of dimension $n,$
 
 -   $M$ is the corresponding *dynamics operator* (finite difference or
-        finite element discretization).
+        finite element discretization), which can be time dependent.
 
-The [error covariance matrix]{style="color: blue"} associated with
+The [error covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix) associated with
     $\mathbf{x}$ is given by $\mathbf{P}$ since the true state will
     differ from the simulated state
     ([@eq-state]) by random or systematic errors.
@@ -607,11 +607,11 @@ The [error covariance matrix]{style="color: blue"} associated with
 
 ## {.smaller}
 
-$$\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k},$$
+$$\mathbf{y}_{k}^{\mathrm{o}}=H_{k}\left[\mathbf{x}^{t}(t_{k})\right]+\varepsilon_{k}^{\mathrm{o}},$$
 
 -   $H$ is an [observation operator]{style="color: magenta"} that can be time dependent
 
--   $\varepsilon$ is a [white noise process]{style="color: magenta"}
+-   $\varepsilon_k^{\mathrm{o}}$ is a [white noise process]{style="color: magenta"}
         zero mean and covariance matrix $\mathbf{R}$ (instrument errors
         and representation errors due to the discretization)
 
@@ -625,16 +625,14 @@ Subscripts are used to denote the discrete time index, the
 
 Superscripts refer to the nature of the vectors/matrices 
 
--   "a" for [analysis]{style="color: magenta"},
-
--   "b" for [background]{style="color: magenta"} (or 'initial/first
+-   "a" for [analysis]{style="color: magenta"},  "b" for [background]{style="color: magenta"} (or 'initial/first
         guess'),
 
--   "f" for [forecast]{style="color: magenta"},
-
--   "o" for [observation]{style="color: magenta"} and
+-   "f" for [forecast]{style="color: magenta"},  "o" for [observation]{style="color: magenta"}, and
 
 -   "t" for the (unknown) [true]{style="color: magenta"} state.
+
+An analysis that combines time-distributed observations and a dynamic model is called *data assimilation*.
 
 ## Standard notation---continuous system{.smaller}
 

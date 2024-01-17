@@ -114,7 +114,7 @@ Let $\mathbf{u}(\mathbf{x},t)$ be the state of a *[dynamical
 
 Define a *[cost function]{style="color: magenta"}* $J(\mathbf{m})$
     as an energy functional[^1] or, more commonly, as a [misfit
-    functional ]{style="color: magenta"}that quantifies the error
+    functional]{style="color: magenta"} that quantifies the error
     ($L^{2}$-distance[^2]) between the observation and the model
     prediction $\mathbf{u}(\mathbf{x},t;\mathbf{m}).$ For example,
     $$J(\mathbf{m})=\int_{0}^{T}\int_{\Omega}\left(\mathbf{u}(\mathbf{x},t;\mathbf{m})-\mathbf{u}^{\mathrm{obs}}(\mathbf{x},t)\right)^{2}\,\mathrm{d}\mathbf{x}\:\mathrm{d}t,$$
@@ -180,7 +180,7 @@ To solve this very general parameter estimation problem, we are
     given a cost function $J(\mathbf{m};\mathbf{u}).$
 
 The constrained optimization problem is then $$\begin{cases}
-        \mathrm{minimize}_{\mathbf{m}} & J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
+        \underset{\mathbf{m}}{\operatorname{minimize}} & J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
         \mathrm{subject\,to} & F(\mathbf{u};\mathbf{m})=0,
         \end{cases}$$ where $J$ can depend on both $\mathbf{u}$ and on
         $\mathbf{m}$ explicitly in the presence of eventual
@@ -269,8 +269,8 @@ This key result enables us to compute the desired gradient $\nabla_\mathbf{m}J$,
 A number of important remarks can be made.
 
 1.  We obtain [*explicit*]{style="color: magenta"}[
-        ]{style="color: magenta"} formulasin terms of the adjoint
-        statefor the gradient with respect to each/any model parameter.
+        ]{style="color: magenta"} formulas --- in terms of the adjoint
+        state --- for the gradient with respect to each/any model parameter.
         Note that this has been done in a completely general setting,
         without any restrictions on the operator ${F}$ or on the model
         parameters $\mathbf{m}.$
@@ -289,7 +289,7 @@ A number of important remarks can be made.
 4.  We have not explicitly considered boundary (or initial)
         conditions in the above, general approach. In real cases, these
         are potential sources of difficulties for the use of the adjoint
-        approach the *discrete adjoint* can provide a way to overcome
+        approach --- see Section 8.7.3, where the the *discrete adjoint* can provide a way to overcome
         this hurdle.
 
 ## {.smaller}
@@ -329,7 +329,7 @@ A number of important remarks can be made.
         [*covariance
         matrices*]{style="color: magenta"}[.]{style="color: magenta"}
         This is the approach employed systematically in data
-        assimilationsee below.
+        assimilation, see below.
 
 ## Adjoint-state method---Discrete systems{.smaller}
 

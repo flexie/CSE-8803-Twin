@@ -57,13 +57,13 @@ The mathematical theory of differential programming is based on the concept of [
 
 -    The gradient of a function can be calculated using the [gradient descent algorithm]{style="color: magenta"}. The gradient descent algorithm works by starting at a point and then moving in the direction of the gradient until it reaches a minimum or maximum.
 
--   In ML, we use [stochastic gradient]{style="color: magenta"}optimization methods
+-   In ML, we use [stochastic gradient]{style="color: magenta"} optimization methods
 
 Differential programming can be used to solve a variety of problems in scientific machine learning, including:
 
 -   Calculating the [gradients of loss functions]{style="color: magenta"} for machine learning models---this is important for training machine learning models.
 
--   Solving [differential equations]{style="color: magenta"}---this can be used to model the behavior of physical systems.
+-   Solving [differential equations]{style="color: magenta"}---this can be used to model the behavior of physical systems. (**Caution: this does not scale!!!**)
 
 -   Performing [optimization]{style="color: magenta"}---this can be used to find the optimal solution to a problem.
 
@@ -328,7 +328,7 @@ To find the [minimum/optimum]{style="color: magenta"}, we want to
 
 ## {.smaller}
 
-usually some[ error norm]{style="color: magenta"}, and then
+usually some [error norm]{style="color: magenta"}, and then
     (usually) compute its average
 
 The best/fastest way to solve this optimization problem, is to use
@@ -362,7 +362,7 @@ flowchart TD
 :::{.callout-note}
 Recall: the adjoint-state method is the theoretical basis for [Data
     Assimilation]{style="color: magenta"}, as well as many other inverse
-    problems---see Basic Course, Lecture on Adjoint Methods).
+    problems --- Lecture on Adjoint Methods).
 :::
 
 ## Chain Rule{.smaller}
@@ -524,8 +524,7 @@ For a univariate, logistic least-squares problem, we have:
      &  & \frac{\partial\mathcal{L}}{\partial b} & =\frac{\partial\mathcal{L}}{\partial z}\frac{\partial z}{\partial b}=\frac{\partial\mathcal{L}}{\partial z}\cdot1
     \end{aligned}$$
 
--   can easily be written as a [computational graph
-        ]{style="color: magenta"}with
+-   can easily be written as a [computational graph]{style="color: magenta"} with
 
 -   nodes = inputs and computed quantities
 
@@ -537,7 +536,7 @@ For a univariate, logistic least-squares problem, we have:
 ![](../images/comp_graph.png){width="30%"}
 :::
 
-[Loss ]{style="color: magenta"}is computed in the
+[Loss]{style="color: magenta"} is computed in the
     [forward]{style="color: magenta"} pass
 
 [Gradient]{style="color: magenta"} is computed in the
@@ -654,8 +653,7 @@ After a function is evaluated, [`Autograd`]{style="color: blue"} has
 
 Compared to finite differences or forward-mode, reverse-mode
     differentiation is by far the more practical method for
-    differentiating functions that take in a (very)[ large vector
-    ]{style="color: magenta"}and output a single number.
+    differentiating functions that take in a (very) [large vector]{style="color: magenta"} and output a single number.
 
 In the machine learning community, reverse-mode differentiation is
     known as ['backpropagation',]{style="color: magenta"} since the
