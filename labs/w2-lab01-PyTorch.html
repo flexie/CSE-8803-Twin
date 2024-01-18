@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.526">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -188,10 +188,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p>adjust training hyperparameters as necessary to achieve good results.</p></li>
 </ul>
 <p>For extra credit run notebook 3. If you do not have access to a GPU, use free tier Google collab GPU with instructions outlined in <a href="https://flexie.github.io/CSE-8803-Twin/schedule.html">https://flexie.github.io/CSE-8803-Twin/schedule.html</a>.</p>
-<p><!-- - notebook: 02Examples/pytorch/pytorch_102.ipynb
-    title: "NN Basics"
-  - notebook: 02Examples/pytorch/Torch_test_GPU_CPU.ipynb
-    title: "GPUs" --></p>
+<p>The notebooks can be downloaded from here</p>
+<ul>
+<li><p><a href="https://www.dropbox.com/scl/fi/0b4639h7bh51p84m8d1uo/pytorch_101.ipynb?rlkey=k4pyq5la76cid6mpfcdlq4i0k&amp;dl=0">Basics - pytorch_101.ipynb</a></p></li>
+<li><p><a href="https://www.dropbox.com/scl/fi/p1o7ytu22k7mwjsprtyro/pytorch_102.ipynb?rlkey=oof1b25tdnoi4qvls1sff9zyr&amp;dl=0">NN Basics &amp; Workflows - pytorch_102.ipynb</a></p></li>
+<li><p><a href="https://www.dropbox.com/scl/fi/wsgdho4a78bfd79kxgbw0/Torch_test_GPU_CPU.ipynb?rlkey=5fnpy11l1rh7r8zuisy99kth5&amp;dl=0">GPUs - Torch_test_GPU_CPU.ipynb</a></p>
+<!-- - notebook: 02Examples/pytorch/pytorch_102.ipynb
+  title: "NN Basics"
+- notebook: 02Examples/pytorch/Torch_test_GPU_CPU.ipynb
+  title: "GPUs" --></li>
+</ul>
 <!-- jupyter: python3 -->
 
 
@@ -325,27 +331,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -360,10 +345,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -372,7 +361,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
       return note.innerHTML;
     }
   }

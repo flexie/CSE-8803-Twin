@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.526">
+  <meta name="generator" content="quarto-1.4.528">
 
   <meta name="dcterms.date" content="2024-01-31">
   <title>Digital Twins for Physical Systems - Variational Data Assimilation</title>
@@ -442,7 +442,7 @@
 </div>
 </div>
 <p>The <span style="color: magenta">necessary condition</span> for the existence of a (local) minimum is (as usual...) <span class="math display">\[\nabla J(\mathbf{x}_{0}^{\mathrm{a}})=0.\]</span></p>
-<p>Variational DA is based on an<span style="color: magenta">adjoint approach</span> that is explained inthe previous Lecture.</p>
+<p>Variational DA is based on an <span style="color: magenta">adjoint approach</span> that is explained in the previous Lecture.</p>
 <p>The particularity here is that the adjoint is used to solve an inverse problem for the unknown <span style="color: magenta"><em>initial condition</em></span>.</p>
 </section>
 <section id="variational-da3d-var" class="slide level2 smaller center">
@@ -464,7 +464,7 @@
 <li><p><span class="math inline">\(\mathbf{R}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are the observation and background <span style="color: magenta">error covariance matrices</span> respectively.</p></li>
 </ul>
 <p>This quadratic function attempts to strike a <span style="color: magenta">balance</span> between some <em>a priori</em> knowledge about a <span style="color: magenta">background</span> (or historical) state and the actual measured, or <span style="color: magenta">observed</span>, state.</p>
-<p>It also assumes that we know and that we can <span style="color: magenta">invert</span>the matrices <span class="math inline">\(\mathbf{R}\)</span> and <span class="math inline">\(\mathbf{B}\)</span>. This, as we will be pointed out below, is not always obvious.</p>
+<p>It also assumes that we know and that we can <span style="color: magenta">invert</span> the matrices <span class="math inline">\(\mathbf{R}\)</span> and <span class="math inline">\(\mathbf{B}\)</span>. This, as we will be pointed out below, is not always obvious.</p>
 <p>Furthermore, it represents the sum of the (weighted) background deviations and the (weighted) observation deviations. The basic methodology is presented in the Algorithm below, which is nothing more than a classical <span style="color: magenta">gradient descent</span> algorithm.</p>
 </section>
 <section id="section-3" class="slide level2 smaller nostretch center">
@@ -549,14 +549,14 @@
 <p>Suppose that the measurements are available at a succession of instants, <span class="math inline">\(t_{k},\)</span> <span class="math inline">\(k=0,1,\ldots,K\)</span> and are of the form <span id="eq-4DvarObs"><span class="math display">\[\mathbf{y}_{k}=\mathbf{H}_{k}\mathbf{x}_{k}+\boldsymbol{\epsilon}^{\mathrm{o}}_{k}, \tag{6}\]</span></span> where</p>
 <ul>
 <li><p><span class="math inline">\(\mathbf{H}_{k}\)</span> is a linear <span style="color: magenta">observation operator</span> and</p></li>
-<li><p><span class="math inline">\(\boldsymbol{\epsilon}^{\mathrm{o}}_{k}\)</span> is the <span style="color: magenta">observation error</span>with <span style="color: magenta">covariance</span> matrix <span class="math inline">\(\mathbf{R}_{k},\)</span></p></li>
+<li><p><span class="math inline">\(\boldsymbol{\epsilon}^{\mathrm{o}}_{k}\)</span> is the <span style="color: magenta">observation error</span> with <span style="color: magenta">covariance</span> matrix <span class="math inline">\(\mathbf{R}_{k},\)</span></p></li>
 <li><p>and suppose that these observation errors are <span style="color: magenta">uncorrelated</span> in time.</p></li>
 </ul>
 </section>
 <section>
 <section id="section-10" class="title-slide slide level1 smaller center">
 <h1></h1>
-<p>Now we add the <span style="color: magenta">dynamics</span> described by the<span style="color: magenta">state equation</span>, <span id="eq-4DvarState"><span class="math display">\[\mathbf{x}_{k+1}=\mathbf{M}_{k+1}\mathbf{x}_{k}, \tag{7}\]</span></span> where we have neglected any model error.<sup>1</sup></p>
+<p>Now we add the <span style="color: magenta">dynamics</span> described by the <span style="color: magenta">state equation</span>, <span id="eq-4DvarState"><span class="math display">\[\mathbf{x}_{k+1}=\mathbf{M}_{k+1}\mathbf{x}_{k}, \tag{7}\]</span></span> where we have neglected any model error.<sup>1</sup></p>
 <p>We suppose also that at time index <span class="math inline">\(k=0\)</span> we know</p>
 <ul>
 <li><p>the <span style="color: magenta">background</span> state <span class="math inline">\(\mathbf{x}^{\mathrm{b}}_{0}\)</span> and</p></li>
@@ -703,13 +703,15 @@ Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driv
 </div>
 
 
-<img src="images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
-</div>
 </section>
 
 
-    </div>
+    <div class="quarto-auto-generated-content">
+<p><img src="images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
+</div>
+</div></div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
