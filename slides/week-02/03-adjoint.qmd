@@ -177,10 +177,10 @@ Note that the components of $\mathbf{m}$ can appear as any
 ## {.smaller}
 
 To solve this very general parameter estimation problem, we are
-    given a cost function $J(\mathbf{m};\mathbf{u}).$
+    given a cost function $J(\mathbf{u};\mathbf{m}).$
 
 The constrained optimization problem is then $$\begin{cases}
-        \underset{\mathbf{m}}{\operatorname{minimize}} & J\left(\mathbf{u}(\mathbf{m}),\mathbf{m}\right)\\
+        \underset{\mathbf{m}}{\operatorname{minimize}} & J\left(\mathbf{u}(\mathbf{m});\mathbf{m}\right)\\
         \mathrm{subject\,to} & F(\mathbf{u};\mathbf{m})=0,
         \end{cases}$$ where $J$ can depend on both $\mathbf{u}$ and on
         $\mathbf{m}$ explicitly in the presence of eventual

@@ -310,7 +310,7 @@ Let the [model parameters]{style="color: magenta"}[^1] be a vector
 where $\mathcal{M}$ and $\mathcal{D}$ are the corresponding model
         parameter space and data space.
 
-The mapping $G\colon\mathcal{M}\rightarrow\mathcal{D}$ is defined by the [direct ]{style="color: magenta"}(or forward) model
+The mapping $G\colon\mathcal{M}\rightarrow\mathcal{D}$ is defined by the [direct]{style="color: magenta"} (or forward) model
 
 $$\mathbf{d}=g(\mathbf{m}),$${#eq-forward} where
 

@@ -142,8 +142,8 @@ The [necessary condition]{style="color: magenta"} for the existence
     $$\nabla J(\mathbf{x}_{0}^{\mathrm{a}})=0.$$
 
 
-Variational DA is based on an[ adjoint
-    approach]{style="color: magenta"} that is explained inthe previous
+Variational DA is based on an [adjoint
+    approach]{style="color: magenta"} that is explained in the previous
     Lecture.
 
 The particularity here is that the adjoint is used to solve an
@@ -186,8 +186,7 @@ This quadratic function attempts to strike a
     and the actual measured, or [observed]{style="color: magenta"},
     state.
 
-It also assumes that we know and that we can [invert
-    ]{style="color: magenta"}the matrices $\mathbf{R}$ and $\mathbf{B}$.
+It also assumes that we know and that we can [invert]{style="color: magenta"} the matrices $\mathbf{R}$ and $\mathbf{B}$.
     This, as we will be pointed out below, is not always obvious.
 
 Furthermore, it represents the sum of the (weighted) background
@@ -360,8 +359,7 @@ Suppose that the measurements are available at a succession of
 -   $\mathbf{H}_{k}$ is a linear [observation
         operator]{style="color: magenta"} and
 
--   $\boldsymbol{\epsilon}^{\mathrm{o}}_{k}$ is the [observation
-        error ]{style="color: magenta"}with
+-   $\boldsymbol{\epsilon}^{\mathrm{o}}_{k}$ is the [observation error ]{style="color: magenta"} with
         [covariance]{style="color: magenta"} matrix $\mathbf{R}_{k},$
 
 -   and suppose that these observation errors are
@@ -369,8 +367,7 @@ Suppose that the measurements are available at a succession of
 
 # {.smaller}
 
-Now we add the [dynamics]{style="color: magenta"} described by the[
-    state equation]{style="color: magenta"},
+Now we add the [dynamics]{style="color: magenta"} described by the [state equation]{style="color: magenta"},
     $$\mathbf{x}_{k+1}=\mathbf{M}_{k+1}\mathbf{x}_{k},$${#eq-4DvarState}
     where we have neglected any model error.[^1]
 
