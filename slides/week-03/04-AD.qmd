@@ -217,7 +217,7 @@ Incredible [opportunity]{style="color: magenta"} for progress in classical appli
 
     -   They have cultivated a culture of [competition]{style="color: magenta"} against these benchmarks.
 
-## Automatic Differentiation—backprop, autograd, Zygote.jl, etc.{.smaller}
+## Automatic Differentiation—backprop, autograd, [Zygote.jl](https://fluxml.ai/Zygote.jl/stable/), etc.{.smaller}
 
 -   [Backprop]{style="color: magenta"} is a special case of Algorithmic Differentiation (AD).
 
@@ -274,7 +274,7 @@ While the [mathematical framework]{style="color: magenta"} for
 
     -   [PyTorch]{style="color: magenta"} and TensorFlow
     
-    -   Julia's ML with Flux.jl and AD with Zygote.jl and abstractions with ChainRules.jl and AbstractDifferentiation.jl
+    -   Julia's ML with [Flux.jl](http://fluxml.ai/Flux.jl/stable/) and AD with [Zygote.jl](https://fluxml.ai/Zygote.jl/stable/) and abstractions with [ChainRules.jl](https://github.com/JuliaDiff/ChainRules.jl) and [AbstractDifferentiation.jl](https://github.com/JuliaDiff/AbstractDifferentiation.jl)
 
 ## Statements{.smaller}
 

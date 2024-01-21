@@ -1,7 +1,7 @@
 ---
 title: "Adjoint state"
 subtitle: "Inverse Problems"
-date: "January 17, 2024"
+date: "January 22, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 
