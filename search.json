@@ -531,7 +531,7 @@
     "href": "slides/week-03/03-adjoint.html#automatic-differentiation",
     "title": "Adjoint state",
     "section": "Automatic Differentiation",
-    "text": "Automatic Differentiation\nGradients w.r.t \\(\\mathbf{m}\\) of objectives that include \\(A[\\mathbf{m}]\\), e.g.\n\\[J(\\mathbf{m})=\\frac{1}{2}\\|\\mathbf{b}-PA^{-1}[\\mathbf{m}]\\mathbf{q}\\|^2_2\\]\ncan be calculated with the adjoint-state method leading to\n\nfast and scalable codes (e.g. Full-waveform inversion)\nbut coding can be involved especially when combined with machine learning (e.g. when \\(\\mathbf{m}\\) is parameterized by a neural network)\n\nUse automatic differentiation (AD) tools instead of analytical tools.\nTwo approaches to compute the adjoint state and the resulting gradients\n\nContinuous case — discretization of the (analytical) adjoint, denoted by AtD = adjoint then discretize;\nDiscrete case — adjoint of the discretization (the code), denoted as DtA = discretize then adjoint."
+    "text": "Automatic Differentiation\nGradients w.r.t \\(\\mathbf{m}\\) of objectives that include \\(A[\\mathbf{m}]\\), e.g.\n\\[J(\\mathbf{m})=\\frac{1}{2}\\|\\mathbf{b}-PA^{-1}[\\mathbf{m}]\\mathbf{q}\\|^2_2\\]\ncan be calculated with the adjoint-state method leading to\n\nfast and scalable codes (e.g. Full-waveform inversion, see also JUDI.jl)\nbut coding can be involved especially when combined with machine learning (e.g. when \\(\\mathbf{m}\\) is parameterized by a neural network)\n\nUse automatic differentiation (AD) tools instead of analytical tools.\nTwo approaches to compute the adjoint state and the resulting gradients\n\nContinuous case — discretization of the (analytical) adjoint, denoted by AtD = adjoint then discretize;\nDiscrete case — adjoint of the discretization (the code), denoted as DtA = discretize then adjoint."
   },
   {
     "objectID": "slides/week-03/03-adjoint.html#problems-ad",
@@ -1592,7 +1592,7 @@
     "href": "weeks/week-03.html",
     "title": "Week 03",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nAdjoint state\n\n\nInverse Problems\n\n\nMon, Jan 22\n\n\n\n\nDifferential Programming\n\n\nAutomatic Differentiation\n\n\nMon, Jan 22\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nWed, Jan 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nDifferentiable Programming\n\n\nFri, Sep 16\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 8 — A toolbox for digital twins section 8.7\n\n\nChapter 9 — A toolbox for digital twins sections until section 9.4\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nAdjoint state\n\n\nInverse Problems\n\n\nMon, Jan 22\n\n\n\n\nDifferential Programming\n\n\nAutomatic Differentiation\n\n\nMon, Jan 22\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nWed, Jan 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nDifferentiable Programming\n\n\nFri, Jan 26\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 8 — A toolbox for digital twins section 8.7\n\n\nChapter 9 — A toolbox for digital twins sections until section 9.4\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "hw/w3-hw02.html",
