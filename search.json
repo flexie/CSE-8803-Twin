@@ -132,7 +132,7 @@
     "href": "slides/week-03/04-AD.html#outline",
     "title": "Differential Programming",
     "section": "Outline",
-    "text": "Outline\n\nAutomatic differentiation for scientific machine learning:\n\nDifferentiable programming with autograd and PyTorch and Zygote.jl in Flux.jl.\nGradients, adjoints, backpropagation and inverse problems.\nNeural networks for scientific machine learning.\nPhysics-informed neural networks.\nThe use of automatic differentiation in scientific machine learning.\nThe challenges of applying automatic differentiation to scientific applications.\n\n\nDifferential programming is a technique for automatically computing the derivatives of functions.\nThis can be done using a variety of techniques, including:"
+    "text": "Outline\n\nAutomatic differentiation for scientific machine learning:\n\nDifferentiable programming with autograd and PyTorch and Zygote.jl in Flux.jl.\nGradients, adjoints, backpropagation and inverse problems.\nNeural networks for scientific machine learning.\nPhysics-informed neural networks.\nThe use of automatic differentiation in scientific machine learning.\nThe challenges of applying automatic differentiation to scientific applications.\n\n\nDifferential programming is a technique for automatically computing the derivatives of functions (code).\nThis can be done using a variety of techniques, including:"
   },
   {
     "objectID": "slides/week-03/04-AD.html#section",
@@ -286,7 +286,7 @@
     "href": "slides/week-03/04-AD.html#section-11",
     "title": "Differential Programming",
     "section": "",
-    "text": "We can prove mathematically the following equivalences:\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nRecall: the adjoint-state method is the theoretical basis for Data Assimilation, as well as many other inverse problems — Lecture on Adjoint Methods)."
+    "text": "We can prove mathematically the following equivalences:\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\nflowchart TD\n  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nRecall: the adjoint-state method is the theoretical basis for Data Assimilation, as well as many other inverse problems — Lecture on Adjoint Methods."
   },
   {
     "objectID": "slides/week-03/04-AD.html#chain-rule",
