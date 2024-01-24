@@ -27,6 +27,7 @@
   {
     "listing": "/weeks/week-04.html",
     "items": [
+      "/slides/week-04/05-variational.html",
       "/slides/week-04/06-Bayes-Inference.html",
       "/slides/week-04/07-DA-stat.html",
       "/labs/w4-lab02-Diff-Prog.html"
@@ -35,6 +36,7 @@
   {
     "listing": "/weeks/week-05.html",
     "items": [
+      "/slides/week-04/05-variational.html",
       "/slides/week-04/06-Bayes-Inference.html",
       "/slides/week-04/07-DA-stat.html",
       "/labs/w4-lab02-Diff-Prog.html"
@@ -45,7 +47,6 @@
     "items": [
       "/slides/week-03/03-adjoint.html",
       "/slides/week-03/04-AD.html",
-      "/slides/week-03/05-variational.html",
       "/labs/w3-lab02-Diff-Prog.html"
     ]
   }
