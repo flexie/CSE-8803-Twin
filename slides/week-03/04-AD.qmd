@@ -37,7 +37,7 @@ bibliography: ../../references.bib
 
     f.  The challenges of applying automatic differentiation to scientific applications.
 
-Differential programming is a technique for [automatically computing the derivatives]{style="color: magenta"} of functions.
+Differential programming is a technique for [automatically computing the derivatives]{style="color: magenta"} of functions (code).
 
 This can be done using a variety of techniques, including:
 
@@ -362,7 +362,7 @@ flowchart TD
 :::{.callout-note}
 Recall: the adjoint-state method is the theoretical basis for [Data
     Assimilation]{style="color: magenta"}, as well as many other inverse
-    problems --- Lecture on Adjoint Methods).
+    problems --- Lecture on Adjoint Methods.
 :::
 
 ## Chain Rule{.smaller}
