@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.528">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="dcterms.date" content="2024-01-22">
   <title>Digital Twins for Physical Systems - Differential Programming</title>
@@ -516,7 +516,7 @@
 <section id="numerical-differentiation" class="slide level2 smaller center">
 <h2>Numerical Differentiation</h2>
 <div id="def-fd" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1 </strong></span>If <span class="math inline">\(f\)</span> is a differentiable function, then <span class="math display">\[f'(x)=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}\]</span></p>
+<p><span class="theorem-title"><strong>Definition 1</strong></span> If <span class="math inline">\(f\)</span> is a differentiable function, then <span class="math display">\[f'(x)=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}\]</span></p>
 </div>
 <p>Using Taylor expansions, and the definition of the derivative, we can obtain finite-difference, <span style="color: magenta">numerical approximations</span>to the derivatives of <span class="math inline">\(f,\)</span> such as <span class="math display">\[f'(x)=\frac{f(x+h)-f(x)}{h}+\mathcal{O}(h),\]</span> <span class="math display">\[f'(x)=\frac{f(x+h)-f(x-h)}{2h}+\mathcal{O}(h^{2})\]</span></p>
 <ul>
@@ -710,7 +710,7 @@
 <p>usually some <span style="color: magenta">error norm</span>, and then (usually) compute its average</p>
 <p>The best/fastest way to solve this optimization problem, is to use <span style="color: magenta">gradients</span> and gradient-based methods.</p>
 <div id="def-backprop" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2 </strong></span><strong>Backpropagation</strong> is an algorithm for computing <span style="color: magenta">gradients</span>.</p>
+<p><span class="theorem-title"><strong>Definition 2</strong></span> <strong>Backpropagation</strong> is an algorithm for computing <span style="color: magenta">gradients</span>.</p>
 <p>Backpropagation is an instance of <span style="color: magenta">reverse-mode automatic differentiation</span></p>
 <ul>
 <li><p>very broadly applicable to machine learning, <span style="color: magenta">data assimilation</span> and inverse problems in general</p></li>
@@ -759,7 +759,7 @@
 <h2></h2>
 <p>and this can be easily generalized to the <span style="color: magenta">multivariate</span> case, such as <span class="math display">\[\frac{\mathrm{d}}{\mathrm{d}t}f(x(t),y(t))=\frac{\mathrm{d}f}{\mathrm{d}x}\frac{\mathrm{d}x}{\mathrm{d}t}+\frac{\mathrm{d}f}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}t}\]</span></p>
 <div id="exm-simple" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1 </strong></span>Consider <span class="math display">\[f(x,y,z)=(x+y)z\]</span></p>
+<p><span class="theorem-title"><strong>Example 1</strong></span> Consider <span class="math display">\[f(x,y,z)=(x+y)z\]</span></p>
 <p>Decompose <span class="math inline">\(f\)</span> into <span style="color: magenta">simple differentiable elements</span> <span class="math display">\[q(x,y)=x+y,\]</span> then <span class="math display">\[f=qz\]</span></p>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -1103,14 +1103,14 @@ Rackauckas, Christopher, and Qing Nie. 2017. <span>“Differentialequations.jl�
 </div>
 </div>
 
-
-</section>
-    <div class="quarto-auto-generated-content">
+<div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
 </div>
-</div></div>
+</div>
+</section>
+    </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
