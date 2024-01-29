@@ -30,6 +30,19 @@ bibliography: ../../references.bib
 \DeclareMathOperator*{\argmin}{arg\,min}
 :::
 
+## Data Assimilation{.smaller}
+
+::: {#def-DA}
+**Data assimilation (DA)** *is the approximation of the true state of some physical system at a given time, by combining time-distributed observations with a dynamic model in an optimal way.*
+:::
+
+DA is an approach for solving a specific class of inverse, or parameter estimation problems, where the parameter we seek is the initial condition. 
+
+DA can be classically approached in two ways: 
+
+- variational DA 
+- statistical DA
+
 ## Outline {.smaller}
 
 [Adjoint methods and variational data assimilation
@@ -61,7 +74,7 @@ Nonlinear extensions and ensemble filters.
 :::
 :::
 
-## Reference Tet Books
+## Reference Text Books
 
 ::: center
 ![](../images/FA11_Asch-Boucquet_cover10-24-16.png){width="40%"}

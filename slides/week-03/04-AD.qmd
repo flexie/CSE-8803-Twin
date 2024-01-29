@@ -434,7 +434,7 @@ dqdx = 1.0
 dqdy = 1.0
 
 # now backprop through q = x + y
-# dfdx = dfdq * dqdx  # The * here is the chain rule!
+dfdx = dfdq * dqdx  # The * here is the chain rule!
 dfdy = dfdq * dqdy
 ```
 We obtain the [gradient]{style="color: magenta"} in the variables
