@@ -30,6 +30,13 @@
     ]
   },
   {
+    "objectID": "slides/week-04/05-variational.html#data-assimilation",
+    "href": "slides/week-04/05-variational.html#data-assimilation",
+    "title": "Variational Data Assimilation",
+    "section": "Data Assimilation",
+    "text": "Data Assimilation\n\nDefinition 1 Data assimilation (DA) is the approximation of the true state of some physical system at a given time, by combining time-distributed observations with a dynamic model in an optimal way.\n\nDA is an approach for solving a specific class of inverse, or parameter estimation problems, where the parameter we seek is the initial condition.\nDA can be classically approached in two ways:\n\nvariational DA\nstatistical DA"
+  },
+  {
     "objectID": "slides/week-04/05-variational.html#outline",
     "href": "slides/week-04/05-variational.html#outline",
     "title": "Variational Data Assimilation",
@@ -37,11 +44,11 @@
     "text": "Outline\nAdjoint methods and variational data assimilation (4h)\n\nIntroduction to data assimilation: setting, history, overview, definitions.\nAdjoint method.\nVariational data assimilation methods:\n\n3D-Var,\n4D-Var.\n\n\nStatistical estimation, Kalman filters and sequential data assimilation (4h)\n\n\nIntroduction to statistical DA.\nStatistical estimation.\nThe Kalman filter.\nNonlinear extensions and ensemble filters."
   },
   {
-    "objectID": "slides/week-04/05-variational.html#reference-tet-books",
-    "href": "slides/week-04/05-variational.html#reference-tet-books",
+    "objectID": "slides/week-04/05-variational.html#reference-text-books",
+    "href": "slides/week-04/05-variational.html#reference-text-books",
     "title": "Variational Data Assimilation",
-    "section": "Reference Tet Books",
-    "text": "Reference Tet Books"
+    "section": "Reference Text Books",
+    "text": "Reference Text Books"
   },
   {
     "objectID": "slides/week-04/05-variational.html#overview",
@@ -2568,7 +2575,7 @@
     "href": "slides/week-03/04-AD.html#section-14",
     "title": "Differential Programming",
     "section": "",
-    "text": "# set some inputs\nx = -2; y = 5; z = -4\n# perform the forward pass\nq = x + y # q becomes 3\nf = q * z # f becomes -12\n# perform the backward pass (backpropagation)\n# in reverse order:\n# first backprop through f = q * z \ndfdz = q  # df/dz = q, so gradient on z becomes 3 \ndfdq = z  # df/dq = z, so gradient on q becomes -4 \ndqdx = 1.0\ndqdy = 1.0\n\n# now backprop through q = x + y\n# dfdx = dfdq * dqdx  # The * here is the chain rule!\ndfdy = dfdq * dqdy\n\nWe obtain the gradient in the variables [``dfdx, dfdy, dfdz``] that give us the sensitivity of the function f to the variables x, y and z.\nIt’s all done with graphs... DAGs, in fact"
+    "text": "# set some inputs\nx = -2; y = 5; z = -4\n# perform the forward pass\nq = x + y # q becomes 3\nf = q * z # f becomes -12\n# perform the backward pass (backpropagation)\n# in reverse order:\n# first backprop through f = q * z \ndfdz = q  # df/dz = q, so gradient on z becomes 3 \ndfdq = z  # df/dq = z, so gradient on q becomes -4 \ndqdx = 1.0\ndqdy = 1.0\n\n# now backprop through q = x + y\ndfdx = dfdq * dqdx  # The * here is the chain rule!\ndfdy = dfdq * dqdy\n\nWe obtain the gradient in the variables [``dfdx, dfdy, dfdz``] that give us the sensitivity of the function f to the variables x, y and z.\nIt’s all done with graphs... DAGs, in fact"
   },
   {
     "objectID": "slides/week-03/04-AD.html#section-15",

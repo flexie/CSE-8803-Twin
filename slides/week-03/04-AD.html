@@ -790,7 +790,7 @@
 </section>
 <section id="section-14" class="slide level2 smaller center">
 <h2></h2>
-<div id="862b4f32" class="cell" data-execution_count="1">
+<div id="99310f4f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># set some inputs</span></span>
 <span id="cb2-2"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">;</span> y <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> z <span class="op">=</span> <span class="op">-</span><span class="dv">4</span></span>
 <span id="cb2-3"><a></a><span class="co"># perform the forward pass</span></span>
@@ -805,7 +805,7 @@
 <span id="cb2-12"><a></a>dqdy <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb2-13"><a></a></span>
 <span id="cb2-14"><a></a><span class="co"># now backprop through q = x + y</span></span>
-<span id="cb2-15"><a></a><span class="co"># dfdx = dfdq * dqdx  # The * here is the chain rule!</span></span>
+<span id="cb2-15"><a></a>dfdx <span class="op">=</span> dfdq <span class="op">*</span> dqdx  <span class="co"># The * here is the chain rule!</span></span>
 <span id="cb2-16"><a></a>dfdy <span class="op">=</span> dfdq <span class="op">*</span> dqdy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We obtain the <span style="color: magenta">gradient</span> in the variables <span style="color: teal"><code>[``dfdx, dfdy, dfdz``]</code></span> that give us the <span style="color: magenta">sensitivity</span> of the function <span style="color: teal"><code>f</code></span> to the variables <span style="color: teal"><code>x, y</code></span> and <span style="color: teal"><code>z</code></span>.</p>
