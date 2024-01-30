@@ -29,15 +29,14 @@
     "items": [
       "/slides/week-04/05-variational.html",
       "/slides/week-04/06-Bayes-Inference.html",
-      "/slides/week-04/07-DA-stat.html",
       "/labs/w4-lab02-3DVar.html"
     ]
   },
   {
     "listing": "/weeks/week-05.html",
     "items": [
+      "/slides/week-05/07-DA-stat.html",
       "/slides/week-05/08-DA-Bayes.html",
-      "/slides/week-05/09-UQ.html",
       "/labs/w4-lab02-3DVar.html"
     ]
   },
