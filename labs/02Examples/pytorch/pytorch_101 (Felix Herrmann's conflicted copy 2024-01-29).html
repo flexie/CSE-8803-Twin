@@ -1,150 +1,62 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.528">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.528">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Digital Twins for Physical Systems - Introduction to PyTorch</title>
-    <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      div.columns{display: flex; gap: min(4vw, 1.5em);}
-      div.column{flex: auto; overflow-x: auto;}
-      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-      ul.task-list{list-style: none;}
-      ul.task-list li input[type="checkbox"] {
-        width: 0.8em;
-        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-        vertical-align: middle;
-      }
-      /* CSS for syntax highlighting */
-      pre > code.sourceCode { white-space: pre; position: relative; }
-      pre > code.sourceCode > span { line-height: 1.25; }
-      pre > code.sourceCode > span:empty { height: 1.2em; }
-      .sourceCode { overflow: visible; }
-      code.sourceCode > span { color: inherit; text-decoration: inherit; }
-      div.sourceCode { margin: 1em 0; }
-      pre.sourceCode { margin: 0; }
-      @media screen {
-      div.sourceCode { overflow: auto; }
-      }
-      @media print {
-      pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-      }
-      pre.numberSource code
-        { counter-reset: source-line 0; }
-      pre.numberSource code > span
-        { position: relative; left: -4em; counter-increment: source-line; }
-      pre.numberSource code > span > a:first-child::before
-        { content: counter(source-line);
-          position: relative; left: -1em; text-align: right; vertical-align: baseline;
-          border: none; display: inline-block;
-          -webkit-touch-callout: none; -webkit-user-select: none;
-          -khtml-user-select: none; -moz-user-select: none;
-          -ms-user-select: none; user-select: none;
-          padding: 0 4px; width: 4em;
-        }
-      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-      div.sourceCode
-        {   }
-      @media screen {
-      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-      }
-    </style>
+<title>Digital Twins for Physical Systems - Introduction to PyTorch</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
 
-    <style>
-      body.hypothesis-enabled #quarto-embed-header {
-        padding-right: 36px;
-      }
 
-      #quarto-embed-header {
-        height: 3em;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: solid 1px;
-      }
-
-      #quarto-embed-header h6 {
-        font-size: 1.1em;
-        padding-top: 0.6em;
-        margin-left: 1em;
-        margin-right: 1em;
-        font-weight: 400;
-      }
-
-      #quarto-embed-header a.quarto-back-link,
-      #quarto-embed-header a.quarto-download-embed {
-        font-size: 0.8em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        margin-left: 1em;
-        margin-right: 1em;
-      }
-
-      .quarto-back-container {
-        padding-left: 0.5em;
-        display: flex;
-      }
-
-      .headroom {
-          will-change: transform;
-          transition: transform 200ms linear;
-      }
-
-      .headroom--pinned {
-          transform: translateY(0%);
-      }
-
-      .headroom--unpinned {
-          transform: translateY(-100%);
-      }      
-    </style>
-
-    <script>
-    window.document.addEventListener("DOMContentLoaded", function () {
-
-      var header = window.document.querySelector("#quarto-embed-header");
-      const titleBannerEl = window.document.querySelector("body > #title-block-header");
-      if (titleBannerEl) {
-        titleBannerEl.style.paddingTop = header.clientHeight + "px";
-      }
-      const contentEl = window.document.getElementById('quarto-content');
-      for (const child of contentEl.children) {
-        child.style.paddingTop = header.clientHeight + "px";
-        child.style.marginTop = "1em";
-      }
-
-      // Use the article root if the `back` call doesn't work. This isn't perfect
-      // but should typically work
-      window.quartoBackToArticle = () => {
-        var currentUrl = window.location.href;
-        window.history.back();
-        setTimeout(() => {
-            // if location was not changed in 100 ms, then there is no history back
-            if(currentUrl === window.location.href){              
-                // redirect to site root
-                window.location.href = '/';
-            }
-        }, 100);
-      }
-
-      const headroom = new window.Headroom(header, {
-        tolerance: 5,
-        onPin: function () {
-        },
-        onUnpin: function () {
-        },
-      });
-      headroom.init();
-    });
-    </script>
-
-    
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -160,7 +72,7 @@
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-     <script id="quarto-search-options" type="application/json">{
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -186,19 +98,43 @@
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
-      </head>
+}</script>
 
-  <body class="nav-sidebar docked quarto-notebook">
-    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
-      
-      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link"><i class="bi bi-caret-left"></i> Back to Article</a>
-      <h6><i class="bi bi-journal-code"></i> Basics</h6>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-            <a href="../../../labs/02Examples/pytorch/pytorch_101.ipynb" class="btn btn-primary quarto-download-embed" download="pytorch_101.ipynb">Download Notebook</a>
-          </div>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-     <div id="quarto-search-results"></div>
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
@@ -271,35 +207,43 @@
 </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#introduction-to-pytorch" id="toc-introduction-to-pytorch" class="nav-link active" data-scroll-target="#introduction-to-pytorch">Introduction to PyTorch</a>
   <ul class="collapse">
   <li><a href="#tensors-are-everywhere" id="toc-tensors-are-everywhere" class="nav-link" data-scroll-target="#tensors-are-everywhere">1. Tensors are everywhere</a></li>
-  </ul></li>
   <li><a href="#random-valued-tensors" id="toc-random-valued-tensors" class="nav-link" data-scroll-target="#random-valued-tensors">Random-valued Tensors</a></li>
-  <li><a href="#other-special-tensors" id="toc-other-special-tensors" class="nav-link" data-scroll-target="#other-special-tensors">Other special tensors</a></li>
+  <li><a href="#other-special-tensors" id="toc-other-special-tensors" class="nav-link" data-scroll-target="#other-special-tensors">Other special tensors</a>
+  <ul class="collapse">
   <li><a href="#tensor-datatypes" id="toc-tensor-datatypes" class="nav-link" data-scroll-target="#tensor-datatypes">Tensor datatypes</a></li>
   <li><a href="#get-info-from-tensors" id="toc-get-info-from-tensors" class="nav-link" data-scroll-target="#get-info-from-tensors">Get info from tensors</a></li>
   <li><a href="#tensor-operations" id="toc-tensor-operations" class="nav-link" data-scroll-target="#tensor-operations">Tensor operations</a></li>
+  </ul></li>
   <li><a href="#tensor-multiplication-example-of-linear-regression" id="toc-tensor-multiplication-example-of-linear-regression" class="nav-link" data-scroll-target="#tensor-multiplication-example-of-linear-regression">Tensor multiplication: example of linear regression</a></li>
-  <li><a href="#aggregation-functions" id="toc-aggregation-functions" class="nav-link" data-scroll-target="#aggregation-functions">Aggregation Functions</a></li>
+  <li><a href="#aggregation-functions" id="toc-aggregation-functions" class="nav-link" data-scroll-target="#aggregation-functions">Aggregation Functions</a>
+  <ul class="collapse">
   <li><a href="#reshaping-stacking-squeezing-of-tensors" id="toc-reshaping-stacking-squeezing-of-tensors" class="nav-link" data-scroll-target="#reshaping-stacking-squeezing-of-tensors">Reshaping, stacking, squeezing of tensors</a></li>
-  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing">Slicing</a></li>
+  </ul></li>
+  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing">Slicing</a>
+  <ul class="collapse">
   <li><a href="#pytorch-tensors-and-numpy" id="toc-pytorch-tensors-and-numpy" class="nav-link" data-scroll-target="#pytorch-tensors-and-numpy">PyTorch tensors and NumPy</a></li>
+  </ul></li>
   <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">2. Reproducibility</a></li>
   <li><a href="#running-computations-on-the-gpu" id="toc-running-computations-on-the-gpu" class="nav-link" data-scroll-target="#running-computations-on-the-gpu">3. Running computations on the GPU</a></li>
+  </ul></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Introduction to PyTorch</h1>
 </div>
@@ -315,24 +259,22 @@
   
 
 
-</header>     <div id="8f2c09d7-d3d2-46ca-98ed-fedb2d8c4c5d" class="cell markdown">
+</header>
+
+
 <section id="introduction-to-pytorch" class="level1">
 <h1>Introduction to PyTorch</h1>
 <p>Based on Bourkes’s https://www.learnpytorch.io/</p>
 <section id="tensors-are-everywhere" class="level2">
 <h2 class="anchored" data-anchor-id="tensors-are-everywhere">1. Tensors are everywhere</h2>
 <p>Tensors are the fundamental building blocks of machine learning.</p>
-</section>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="398dc2b2-a6a1-43e3-b803-d97b9b1489fd" class="cell" data-execution_count="2">
+<div id="398dc2b2-a6a1-43e3-b803-d97b9b1489fd" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>torch.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'1.13.1'</code></pre>
 </div>
-</div></div>
-<div id="cd290d5f" class="cell markdown">
+</div>
 <p>Start by creating basic tensors</p>
 <ul>
 <li>scalar</li>
@@ -341,57 +283,52 @@
 <li>tensor</li>
 </ul>
 <p>Please see official doc at https://pytorch.org/docs/stable/tensors.html</p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="ae4d3b3a" class="cell" data-execution_count="2">
+<div id="ae4d3b3a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scalar</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scalar <span class="op">=</span> torch.tensor(<span class="dv">7</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>scalar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>tensor(7)</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="7b01e540" class="cell" data-execution_count="3">
+</div>
+<div id="7b01e540" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>scalar.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>0</code></pre>
 </div>
-</div></div>
-<div id="de2c9568" class="cell markdown">
-<p>To retrieve the value, use the <code>item</code> method</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="b8086924" class="cell" data-execution_count="5">
+<p>To retrieve the value, use the <code>item</code> method</p>
+<div id="b8086924" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scalar.item()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>7</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="9eacf829" class="cell" data-execution_count="7">
+</div>
+<div id="9eacf829" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>vector <span class="op">=</span> torch.tensor([<span class="dv">7</span>, <span class="dv">7</span>])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>tensor([7, 7])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="36e7a505" class="cell" data-execution_count="8">
+</div>
+<div id="36e7a505" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vector.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>1</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="9e1f9357" class="cell" data-execution_count="9">
+</div>
+<div id="9e1f9357" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vector.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>torch.Size([2])</code></pre>
 </div>
-</div></div>
-<div id="353933f1" class="cell markdown">
+</div>
 <ul>
 <li><code>ndim</code> gives the number of external square brackets</li>
 <li><code>shape</code> gives the actual dimension = length</li>
 </ul>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="7bc4d5aa" class="cell" data-execution_count="11">
+<div id="7bc4d5aa" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>MAT <span class="op">=</span> torch.tensor([[<span class="dv">7</span>, <span class="dv">8</span>], [<span class="dv">9</span>, <span class="dv">10</span>]])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>MAT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -399,20 +336,20 @@
 <pre><code>tensor([[ 7,  8],
         [ 9, 10]])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="b210caaf" class="cell" data-execution_count="12">
+</div>
+<div id="b210caaf" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>MAT.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>2</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="e5711b71" class="cell" data-execution_count="13">
+</div>
+<div id="e5711b71" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>MAT.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>torch.Size([2, 2])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="fb9296ae" class="cell" data-execution_count="19">
+</div>
+<div id="fb9296ae" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>TEN <span class="op">=</span> torch.tensor([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>         [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>],</span>
@@ -423,30 +360,26 @@
          [3, 6, 9],
          [2, 4, 5]]])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="b32b79bb" class="cell" data-execution_count="20">
+</div>
+<div id="b32b79bb" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>TEN.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>torch.Size([1, 3, 3])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="073bc1a9" class="cell" data-execution_count="21">
+</div>
+<div id="073bc1a9" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>TEN.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>3</code></pre>
 </div>
-</div></div>
-<div id="b4a0eea2" class="cell markdown">
+</div>
 <p>The dimensions of a tensor go from outer to inner. That means there’s 1 dimension of 3 by 3.</p>
 <p><img src="./00-pytorch-different-tensor-dimensions.png" class="img-fluid"></p>
-</div>
-<div id="83d12952" class="cell markdown">
+</section>
 <section id="random-valued-tensors" class="level2">
 <h2 class="anchored" data-anchor-id="random-valued-tensors">Random-valued Tensors</h2>
 <p>Tensors of <em>random numbers</em> are very common in ML. They are used evrywhere.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="723b98f7" class="cell" data-execution_count="22">
+<div id="723b98f7" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rand_tensor <span class="op">=</span> torch.rand(size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rand_tensor, rand_tensor.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -455,13 +388,11 @@
          [0.5769, 0.7505, 0.1360, 0.8363]]),
  torch.float32)</code></pre>
 </div>
-</div></div>
-<div id="170d04ba" class="cell markdown">
+</div>
+</section>
 <section id="other-special-tensors" class="level2">
 <h2 class="anchored" data-anchor-id="other-special-tensors">Other special tensors</h2>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="391204bd" class="cell" data-execution_count="3">
+<div id="391204bd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>zeros <span class="op">=</span> torch.zeros(size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>zeros, zeros.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -470,8 +401,8 @@
          [0., 0., 0., 0.]]),
  torch.float32)</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [25]:</pre></div><div id="f312a1a0" class="cell" data-execution_count="25">
+</div>
+<div id="f312a1a0" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ones <span class="op">=</span> torch.ones(size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ones, ones.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -480,38 +411,31 @@
          [1., 1., 1., 1.]]),
  torch.float32)</code></pre>
 </div>
-</div></div>
-<div id="d315253e" class="cell markdown">
+</div>
 <p>Create a range of numbers in a tensor.</p>
 <p><code>torch.arange(start, end, step)</code></p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [26]:</pre></div><div id="b91331a3" class="cell" data-execution_count="26">
+<div id="b91331a3" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>zero_to_ten <span class="op">=</span> torch.arange(<span class="dv">0</span>,<span class="dv">10</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>zero_to_ten</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
-</div></div>
-<div id="d00f9f0e" class="cell markdown">
+</div>
 <p>To get a tensor of the same shape as another.</p>
 <p><code>torch.zeros_like(input)</code></p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [27]:</pre></div><div id="6dc0c1a6" class="cell" data-execution_count="27">
+<div id="6dc0c1a6" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ten_zeros <span class="op">=</span> torch.zeros_like(zero_to_ten)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>ten_zeros</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</code></pre>
 </div>
-</div></div>
-<div id="c4333287" class="cell markdown">
+</div>
 <section id="tensor-datatypes" class="level3">
 <h3 class="anchored" data-anchor-id="tensor-datatypes">Tensor datatypes</h3>
 <p>Many datatypes are available, some specific for CPUs, others better for GPUs.</p>
 <p>Default datatype is a <code>float32</code>, defined by <code>torch.float32()</code> or just <code>torch.float()</code>.</p>
 <p>Lower precision values are faster to compute with, but less acccurate…</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="9f2b039b" class="cell" data-execution_count="4">
+<div id="9f2b039b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Default datatype for tensors is float32</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>float_32_tensor <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">9.0</span>],</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                               dtype<span class="op">=</span><span class="va">None</span>, <span class="co"># defaults to None, which is torch.float32 or whatever datatype is passed</span></span>
@@ -522,11 +446,9 @@
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(torch.Size([3]), torch.float32, device(type='cpu'))</code></pre>
 </div>
-</div></div>
-<div id="47492998" class="cell markdown">
-<p>Let us place a tensor on the GPU (usually “cuda”, bit here it is “mps” for a Mac)</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="07ac9f87" class="cell" data-execution_count="5">
+<p>Let us place a tensor on the GPU (usually “cuda”, bit here it is “mps” for a Mac)</p>
+<div id="07ac9f87" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Default datatype for tensors is float32</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>float_32_tensor <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">9.0</span>],</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                               dtype<span class="op">=</span><span class="va">None</span>, <span class="co"># defaults to None, which is torch.float32 or whatever datatype is passed</span></span>
@@ -537,16 +459,14 @@
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>(torch.Size([3]), torch.float32, device(type='mps', index=0))</code></pre>
 </div>
-</div></div>
-<div id="90d5533b" class="cell markdown">
+</div>
 <p>Most common issues for mismatch are:</p>
 <ul>
 <li>shape differences</li>
 <li>datatype</li>
 <li>device issues</li>
 </ul>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="c1cc7c7c" class="cell" data-execution_count="30">
+<div id="c1cc7c7c" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>float_16_tensor <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">9.0</span>],</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                               dtype<span class="op">=</span>torch.float16) <span class="co"># torch.half would also work</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -554,14 +474,12 @@
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>torch.float16</code></pre>
 </div>
-</div></div>
-<div id="1132a5ff" class="cell markdown">
+</div>
+</section>
 <section id="get-info-from-tensors" class="level3">
 <h3 class="anchored" data-anchor-id="get-info-from-tensors">Get info from tensors</h3>
 <p>This is often necessary to ensure compatibility and to avoid pesky bugs.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [31]:</pre></div><div id="11edb2e1" class="cell" data-execution_count="31">
+<div id="11edb2e1" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>some_tensor <span class="op">=</span> torch.rand(<span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -578,8 +496,8 @@ Shape of tensor: torch.Size([3, 4])
 Datatype of tensor: torch.float32
 Device tensor is stored on: cpu</code></pre>
 </div>
-</div></div>
-<div id="a075efea" class="cell markdown">
+</div>
+</section>
 <section id="tensor-operations" class="level3">
 <h3 class="anchored" data-anchor-id="tensor-operations">Tensor operations</h3>
 <ul>
@@ -588,24 +506,22 @@ Device tensor is stored on: cpu</code></pre>
 <li>Aggregation (min, max, mean, etc.)</li>
 <li>Reshaping, squeezing</li>
 </ul>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [32]:</pre></div><div id="46b22cf7" class="cell" data-execution_count="32">
+<div id="46b22cf7" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor of values and add a number to it</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">+</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>tensor([11, 12, 13])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [33]:</pre></div><div id="d65be04b" class="cell" data-execution_count="33">
+</div>
+<div id="d65be04b" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply it by 10</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">*</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>tensor([10, 20, 30])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [35]:</pre></div><div id="cf89f37b" class="cell" data-execution_count="35">
+</div>
+<div id="cf89f37b" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Can also use torch functions</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>tm <span class="op">=</span> torch.mul(tensor, <span class="dv">10</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ta <span class="op">=</span> torch.add(tensor, <span class="dv">10</span>)</span>
@@ -616,8 +532,8 @@ Device tensor is stored on: cpu</code></pre>
 <pre><code>tm =  tensor([10, 20, 30])
 ta =  tensor([11, 12, 13])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [36]:</pre></div><div id="9764ad09" class="cell" data-execution_count="36">
+</div>
+<div id="9764ad09" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication </span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (each element multiplies its equivalent, index 0-&gt;0, 1-&gt;1, 2-&gt;2)</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tensor, <span class="st">"*"</span>, tensor)</span>
@@ -626,26 +542,24 @@ ta =  tensor([11, 12, 13])</code></pre>
 <pre><code>tensor([1, 2, 3]) * tensor([1, 2, 3])
 Equals: tensor([1, 4, 9])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [37]:</pre></div><div id="1075e5bd" class="cell" data-execution_count="37">
+</div>
+<div id="1075e5bd" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise matrix multiplication</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">*</span> tensor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>tensor([1, 4, 9])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [38]:</pre></div><div id="5863d9cb" class="cell" data-execution_count="38">
+</div>
+<div id="5863d9cb" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>torch.matmul(tensor, tensor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>tensor(14)</code></pre>
 </div>
-</div></div>
-<div id="ef9ce63b" class="cell markdown">
-<p>Built-in <code>torch.matmul()</code> is much faster and should always be used.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [39]:</pre></div><div id="768f3908" class="cell" data-execution_count="39">
+<p>Built-in <code>torch.matmul()</code> is much faster and should always be used.</p>
+<div id="768f3908" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication by hand </span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (avoid doing operations with for loops at all cost, they are computationally expensive)</span></span>
@@ -660,8 +574,8 @@ Wall time: 1.31 ms</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>tensor(14)</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="ce679889" class="cell" data-execution_count="40">
+</div>
+<div id="ce679889" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>torch.matmul(tensor, tensor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -671,11 +585,9 @@ Wall time: 368 µs</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>tensor(14)</code></pre>
 </div>
-</div></div>
-<div id="8f2f9701" class="cell markdown">
-<p>Of course, shapes must be compatible for matrix multiplication…</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="b0d45333" class="cell" data-execution_count="7">
+<p>Of course, shapes must be compatible for matrix multiplication…</p>
+<div id="b0d45333" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapes need to be in the right way  </span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>tensor_A <span class="op">=</span> torch.tensor([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>                         [<span class="dv">3</span>, <span class="dv">4</span>],</span>
@@ -689,8 +601,8 @@ Wall time: 368 µs</code></pre>
 <div class="cell-output cell-output-error">
 <pre><code>RuntimeError: mat1 and mat2 shapes cannot be multiplied (3x2 and 3x2)</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [42]:</pre></div><div id="4a810eaa" class="cell" data-execution_count="42">
+</div>
+<div id="4a810eaa" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View tensor_A and tensor_B.T</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tensor_A)</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tensor_B.T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -701,8 +613,8 @@ Wall time: 368 µs</code></pre>
 tensor([[ 7.,  8.,  9.],
         [10., 11., 12.]])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [43]:</pre></div><div id="3384149c" class="cell" data-execution_count="43">
+</div>
+<div id="3384149c" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The operation works when tensor_B is transposed</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original shapes: tensor_A = </span><span class="sc">{</span>tensor_A<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, tensor_B = </span><span class="sc">{</span>tensor_B<span class="sc">.</span>shape<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"New shapes: tensor_A = </span><span class="sc">{</span>tensor_A<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (same as above), tensor_B.T = </span><span class="sc">{</span>tensor_B<span class="sc">.</span>T<span class="sc">.</span>shape<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
@@ -726,8 +638,8 @@ tensor([[ 27.,  30.,  33.],
 
 Output shape: torch.Size([3, 3])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [44]:</pre></div><div id="3961f209" class="cell" data-execution_count="44">
+</div>
+<div id="3961f209" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># torch.mm is a shortcut for matmul</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>torch.mm(tensor_A, tensor_B.T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
@@ -735,8 +647,9 @@ Output shape: torch.Size([3, 3])</code></pre>
         [ 61.,  68.,  75.],
         [ 95., 106., 117.]])</code></pre>
 </div>
-</div></div>
-<div id="eccd4d08" class="cell markdown">
+</div>
+</section>
+</section>
 <section id="tensor-multiplication-example-of-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="tensor-multiplication-example-of-linear-regression">Tensor multiplication: example of linear regression</h2>
 <p>Neural networks are full of matrix multiplications and dot products.</p>
@@ -750,9 +663,7 @@ Output shape: torch.Size([3, 3])</code></pre>
 <li><span class="math inline">\(y\)</span> is the output (a manipulation of the input in the hope to discover patterns in it).</li>
 </ul>
 <p>This is just a linear function, of type <span class="math inline">\(y = ax+b,\)</span> that can be used to draw a straight line.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="e0cd9703" class="cell" data-execution_count="8">
+<div id="e0cd9703" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since the linear layer starts with a random weights matrix, we make it reproducible (more on this later)</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This uses matrix multiplication</span></span>
@@ -773,22 +684,20 @@ tensor([[2.2368, 1.2292, 0.4714, 0.3864, 0.1309, 0.9838],
 
 Output shape: torch.Size([3, 6])</code></pre>
 </div>
-</div></div>
-<div id="1d8727a1" class="cell markdown">
+</div>
+</section>
 <section id="aggregation-functions" class="level2">
 <h2 class="anchored" data-anchor-id="aggregation-functions">Aggregation Functions</h2>
 <p>Now for some aggregation functions.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="f5896e22" class="cell" data-execution_count="10">
+<div id="f5896e22" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>tensor([ 0, 10, 20, 30, 40, 50, 60, 70, 80, 90])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="b40af284" class="cell" data-execution_count="11">
+</div>
+<div id="b40af284" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Minimum: </span><span class="sc">{</span>x<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Maximum: </span><span class="sc">{</span>x<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"Mean: {x.mean()}") # this will error</span></span>
@@ -800,22 +709,20 @@ Maximum: 90
 Mean: 45.0
 Sum: 450</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="b28b5318" class="cell" data-execution_count="12">
+</div>
+<div id="b28b5318" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative: use torch methods</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>torch.<span class="bu">max</span>(x), torch.<span class="bu">min</span>(x), torch.mean(x.<span class="bu">type</span>(torch.float32)), torch.<span class="bu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(tensor(90), tensor(0), tensor(45.), tensor(450))</code></pre>
 </div>
-</div></div>
-<div id="05ad44ec" class="cell markdown">
+</div>
 <p>Positional min/max functions are</p>
 <ul>
 <li><code>torch.argmin()</code></li>
 <li><code>torch.argmax()</code></li>
 </ul>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [50]:</pre></div><div id="2f9548a5" class="cell" data-execution_count="50">
+<div id="2f9548a5" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.arange(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tensor: </span><span class="sc">{</span>tensor<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -828,35 +735,32 @@ Sum: 450</code></pre>
 Index where max value occurs: 8
 Index where min value occurs: 0</code></pre>
 </div>
-</div></div>
-<div id="df4fedb3" class="cell markdown">
-<p>Changing datatype is possible (recasting)</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [51]:</pre></div><div id="e49633fb" class="cell" data-execution_count="51">
+<p>Changing datatype is possible (recasting)</p>
+<div id="e49633fb" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor and check its datatype</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.arange(<span class="fl">10.</span>, <span class="fl">100.</span>, <span class="fl">10.</span>)</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>tensor.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>torch.float32</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [52]:</pre></div><div id="1db05834" class="cell" data-execution_count="52">
+</div>
+<div id="1db05834" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a float16 tensor</span></span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>tensor_float16 <span class="op">=</span> tensor.<span class="bu">type</span>(torch.float16)</span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>tensor_float16</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>tensor([10., 20., 30., 40., 50., 60., 70., 80., 90.], dtype=torch.float16)</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [53]:</pre></div><div id="ba16e2a9" class="cell" data-execution_count="53">
+</div>
+<div id="ba16e2a9" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a int8 tensor</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>tensor_int8 <span class="op">=</span> tensor.<span class="bu">type</span>(torch.int8)</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>tensor_int8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>tensor([10, 20, 30, 40, 50, 60, 70, 80, 90], dtype=torch.int8)</code></pre>
 </div>
-</div></div>
-<div id="4381a16b" class="cell markdown">
+</div>
 <section id="reshaping-stacking-squeezing-of-tensors" class="level3">
 <h3 class="anchored" data-anchor-id="reshaping-stacking-squeezing-of-tensors">Reshaping, stacking, squeezing of tensors</h3>
 <ul>
@@ -867,9 +771,7 @@ Index where min value occurs: 0</code></pre>
 <li><code>torch.unsqueeze(input, dim)</code> to add a dimension of value <code>1</code> at <code>dim</code></li>
 <li><code>torch.permute(input, dims)</code> to permute to <code>dims</code></li>
 </ul>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [54]:</pre></div><div id="12499e76" class="cell" data-execution_count="54">
+<div id="12499e76" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="fl">1.</span>, <span class="fl">8.</span>)</span>
@@ -877,32 +779,32 @@ Index where min value occurs: 0</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>(tensor([1., 2., 3., 4., 5., 6., 7.]), torch.Size([7]))</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [55]:</pre></div><div id="68385f8e" class="cell" data-execution_count="55">
+</div>
+<div id="68385f8e" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an extra dimension</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>x_reshaped <span class="op">=</span> x.reshape(<span class="dv">1</span>, <span class="dv">7</span>)</span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>x_reshaped, x_reshaped.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>(tensor([[1., 2., 3., 4., 5., 6., 7.]]), torch.Size([1, 7]))</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [56]:</pre></div><div id="a70b25fe" class="cell" data-execution_count="56">
+</div>
+<div id="a70b25fe" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change view (keeps same data as original but changes view)</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x.view(<span class="dv">1</span>, <span class="dv">7</span>)</span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>z, z.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>(tensor([[1., 2., 3., 4., 5., 6., 7.]]), torch.Size([1, 7]))</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [57]:</pre></div><div id="a32217a1" class="cell" data-execution_count="57">
+</div>
+<div id="a32217a1" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Changing z changes x</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>z[:, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>z, x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>(tensor([[5., 2., 3., 4., 5., 6., 7.]]), tensor([5., 2., 3., 4., 5., 6., 7.]))</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [58]:</pre></div><div id="cac79e7f" class="cell" data-execution_count="58">
+</div>
+<div id="cac79e7f" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack tensors on top of each other</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>x_stacked <span class="op">=</span> torch.stack([x, x, x, x], dim<span class="op">=</span><span class="dv">0</span>) <span class="co"># try changing dim to dim=1 and see what happens</span></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>x_stacked</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -912,8 +814,8 @@ Index where min value occurs: 0</code></pre>
         [5., 2., 3., 4., 5., 6., 7.],
         [5., 2., 3., 4., 5., 6., 7.]])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [59]:</pre></div><div id="e6211be3" class="cell" data-execution_count="59">
+</div>
+<div id="e6211be3" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack tensors on top of each other</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>x_stacked <span class="op">=</span> torch.stack([x, x, x, x], dim<span class="op">=</span><span class="dv">1</span>) <span class="co"># try changing dim to dim=1 and see what happens</span></span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>x_stacked</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -926,8 +828,8 @@ Index where min value occurs: 0</code></pre>
         [6., 6., 6., 6.],
         [7., 7., 7., 7.]])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [60]:</pre></div><div id="5d603371" class="cell" data-execution_count="60">
+</div>
+<div id="5d603371" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Previous tensor: </span><span class="sc">{</span>x_reshaped<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Previous shape: </span><span class="sc">{</span>x_reshaped<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -942,8 +844,8 @@ Previous shape: torch.Size([1, 7])
 New tensor: tensor([5., 2., 3., 4., 5., 6., 7.])
 New shape: torch.Size([7])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [61]:</pre></div><div id="6cebe46d" class="cell" data-execution_count="61">
+</div>
+<div id="6cebe46d" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create tensor with specific shape</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>x_original <span class="op">=</span> torch.rand(size<span class="op">=</span>(<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>))</span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -956,15 +858,14 @@ New shape: torch.Size([7])</code></pre>
 <pre><code>Previous shape: torch.Size([224, 224, 3])
 New shape: torch.Size([3, 224, 224])</code></pre>
 </div>
-</div></div>
-<div id="516466ee" class="cell markdown">
+</div>
+</section>
+</section>
 <section id="slicing" class="level2">
 <h2 class="anchored" data-anchor-id="slicing">Slicing</h2>
 <p>Often we need to extract subsets of data from tensors, usually, some rows or columns.</p>
 <p>Let’s look at indexing.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [62]:</pre></div><div id="cd6d552a" class="cell" data-execution_count="62">
+<div id="cd6d552a" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor </span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">1</span>, <span class="dv">10</span>).reshape(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
@@ -975,8 +876,8 @@ New shape: torch.Size([3, 224, 224])</code></pre>
           [7, 8, 9]]]),
  torch.Size([1, 3, 3]))</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [63]:</pre></div><div id="bfbf64b5" class="cell" data-execution_count="63">
+</div>
+<div id="bfbf64b5" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's index bracket by bracket</span></span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"First square bracket:</span><span class="ch">\n</span><span class="sc">{</span>x[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>) </span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Second square bracket: </span><span class="sc">{</span>x[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>) </span>
@@ -989,15 +890,14 @@ tensor([[1, 2, 3],
 Second square bracket: tensor([1, 2, 3])
 Third square bracket: 1</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [64]:</pre></div><div id="b032aeb4" class="cell" data-execution_count="64">
+</div>
+<div id="b032aeb4" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all values of 0th &amp; 1st dimensions but only index 1 of 2nd dimension</span></span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>x[:, :, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>tensor([[2, 5, 8]])</code></pre>
 </div>
-</div></div>
-<div id="aac55066" class="cell markdown">
+</div>
 <section id="pytorch-tensors-and-numpy" class="level3">
 <h3 class="anchored" data-anchor-id="pytorch-tensors-and-numpy">PyTorch tensors and NumPy</h3>
 <p>We often need to interact with <code>numpy</code>, especially for numerical computations.</p>
@@ -1006,9 +906,7 @@ Third square bracket: 1</code></pre>
 <li><code>torch.from_numpy(ndarray)</code></li>
 <li><code>torch.Tensor.numpy()</code></li>
 </ul>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [65]:</pre></div><div id="6715c45d" class="cell" data-execution_count="65">
+<div id="6715c45d" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NumPy array to tensor</span></span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1019,16 +917,16 @@ Third square bracket: 1</code></pre>
 <pre><code>(array([1., 2., 3., 4., 5., 6., 7.]),
  tensor([1., 2., 3., 4., 5., 6., 7.], dtype=torch.float64))</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [67]:</pre></div><div id="4ac43fba" class="cell" data-execution_count="67">
+</div>
+<div id="4ac43fba" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># many pytorch calculations require 'float32'</span></span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>tensor32 <span class="op">=</span> torch.from_numpy(array).<span class="bu">type</span>(torch.float32)</span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>tensor32, tensor32.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>(tensor([1., 2., 3., 4., 5., 6., 7.]), torch.float32)</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [68]:</pre></div><div id="e40b4196" class="cell" data-execution_count="68">
+</div>
+<div id="e40b4196" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tensor to NumPy array</span></span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.ones(<span class="dv">7</span>) <span class="co"># create a tensor of ones with dtype=float32</span></span>
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>numpy_tensor <span class="op">=</span> tensor.numpy() <span class="co"># will be dtype=float32 unless changed</span></span>
@@ -1037,14 +935,13 @@ Third square bracket: 1</code></pre>
 <pre><code>(tensor([1., 1., 1., 1., 1., 1., 1.]),
  array([1., 1., 1., 1., 1., 1., 1.], dtype=float32))</code></pre>
 </div>
-</div></div>
-<div id="b8029c55" class="cell markdown">
+</div>
+</section>
+</section>
 <section id="reproducibility" class="level2">
 <h2 class="anchored" data-anchor-id="reproducibility">2. Reproducibility</h2>
 <p>To ensure reproducibility of computations, especially ML training, we need to set the random seed.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [69]:</pre></div><div id="a63cf1a3" class="cell" data-execution_count="69">
+<div id="a63cf1a3" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="co">#import random</span></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1080,8 +977,8 @@ Does Tensor C equal Tensor D? (anywhere)</code></pre>
         [True, True, True, True],
         [True, True, True, True]])</code></pre>
 </div>
-</div></div>
-<div id="4cbc1143" class="cell markdown">
+</div>
+</section>
 <section id="running-computations-on-the-gpu" class="level2">
 <h2 class="anchored" data-anchor-id="running-computations-on-the-gpu">3. Running computations on the GPU</h2>
 <p>See also the code in <code>pytorch_M2.ipynb</code>.</p>
@@ -1092,24 +989,20 @@ Does Tensor C equal Tensor D? (anywhere)</code></pre>
 <span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set device type</span></span>
 <span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
 <span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a>device</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="13878d2d" class="cell" data-execution_count="14">
+<div id="13878d2d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check for gpu on mac</span></span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">'mps'</span> <span class="cf">if</span> torch.backends.mps.is_available() <span class="cf">else</span> <span class="st">'cpu'</span></span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>device</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>'mps'</code></pre>
 </div>
-</div></div>
-<div id="7ecb3729" class="cell markdown">
+</div>
 <p>To put tensors on the GPU, just use the method <code>tensor.to(device)</code>, or put the device option directly into the tensor initialization as seen above:</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>float_32_tensor <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">9.0</span>],</span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>                               dtype<span class="op">=</span><span class="va">None</span>,  </span>
 <span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>                               device<span class="op">=</span><span class="st">"mps"</span>,  </span>
 <span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>                               requires_grad<span class="op">=</span><span class="va">False</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="487916bd" class="cell" data-execution_count="15">
+<div id="487916bd" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create tensor (default on CPU)</span></span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1125,35 +1018,37 @@ Does Tensor C equal Tensor D? (anywhere)</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>tensor([1, 2, 3], device='mps:0')</code></pre>
 </div>
-</div></div>
-<div id="93987f93" class="cell markdown">
-<p>If you need to interact with your tensors (numpy, matplotlib, etc.), then need to get them back to the CPU. Here we use the method <code>Tensor.cpu()</code></p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [72]:</pre></div><div id="f21b1d05" class="cell" data-execution_count="72">
+<p>If you need to interact with your tensors (numpy, matplotlib, etc.), then need to get them back to the CPU. Here we use the method <code>Tensor.cpu()</code></p>
+<div id="f21b1d05" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If tensor is on GPU, can't transform it to NumPy (this will error)</span></span>
 <span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>tensor_on_gpu.numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: can't convert mps:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [73]:</pre></div><div id="85eec088" class="cell" data-execution_count="73">
+</div>
+<div id="85eec088" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead, copy the tensor back to cpu</span></span>
 <span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>tensor_back_on_cpu <span class="op">=</span> tensor_on_gpu.cpu().numpy()</span>
 <span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>tensor_back_on_cpu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>array([1, 2, 3])</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [74]:</pre></div><div id="859bec50" class="cell" data-execution_count="74">
+</div>
+<div id="859bec50" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># original is still on the GPU</span></span>
 <span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>tensor_on_gpu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>tensor([1, 2, 3], device='mps:0')</code></pre>
 </div>
-</div></div>
+</div>
 
 
-     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1534,6 +1429,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content --> 
-  
+</script>
+</div> <!-- /content -->
+
+
+
+
 </body></html>

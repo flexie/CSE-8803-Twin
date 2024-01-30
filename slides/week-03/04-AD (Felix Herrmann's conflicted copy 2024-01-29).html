@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.528">
+
+  <meta name="dcterms.date" content="2024-01-22">
+  <title>Digital Twins for Physical Systems - Differential Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Differential Programming</h1>
+  <p class="subtitle">Automatic Differentiation</p>
+
+<div class="quarto-title-authors">
+</div>
+
+  <p class="date">2024-01-22</p>
+</section>
+<section id="outline" class="slide level2 smaller center">
+<h2>Outline</h2>
+<ol type="1">
+<li><p>Automatic differentiation for scientific machine learning:</p>
+<ol type="a">
+<li><p><span style="color: red">Differentiable programming with autograd and PyTorch and <a href="https://fluxml.ai/Zygote.jl/stable/">Zygote.jl</a> in <a href="http://fluxml.ai/Flux.jl/stable/">Flux.jl</a>.</span></p></li>
+<li><p><span style="color: red">Gradients, adjoints, backpropagation and inverse problems.</span></p></li>
+<li><p>Neural networks for scientific machine learning.</p></li>
+<li><p>Physics-informed neural networks.</p></li>
+<li><p>The use of automatic differentiation in scientific machine learning.</p></li>
+<li><p>The challenges of applying automatic differentiation to scientific applications.</p></li>
+</ol></li>
+</ol>
+<p>Differential programming is a technique for <span style="color: magenta">automatically computing the derivatives</span> of functions.</p>
+<p>This can be done using a variety of techniques, including:</p>
+</section>
+<section id="section" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li><p><strong>Symbolic differentiation</strong>: This involves using symbolic mathematics to represent the function and its derivatives. This can be a powerful technique, but it can be difficult to use for complex functions.</p></li>
+<li><p><strong>Numerical differentiation</strong>: This involves using numerical methods to approximate the derivatives of the function. This is a simpler technique than symbolic differentiation, but it is less accurate.</p></li>
+<li><p><span style="color: magenta"><strong>Automatic differentiation</strong></span>: This is a technique that combines symbolic and numerical differentiation to automatically compute the derivatives of functions. This is the most powerful technique for differential programming, and it is the most commonly used technique in scientific machine learning.</p></li>
+</ul>
+<p>The mathematical theory of differential programming is based on the concept of <span style="color: magenta">gradients</span>.</p>
+<ul>
+<li>The gradient of a function is a vector that tells you how the function changes as its input changes. In other words, the gradient of a function tells you the direction of <span style="color: magenta">steepest</span> ascent or descent.</li>
+</ul>
+</section>
+<section id="section-1" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li><p>The gradient of a function can be calculated using the <span style="color: magenta">gradient descent algorithm</span>. The gradient descent algorithm works by starting at a point and then moving in the direction of the gradient until it reaches a minimum or maximum.</p></li>
+<li><p>In ML, we use <span style="color: magenta">stochastic gradient</span>optimization methods</p></li>
+</ul>
+<p>Differential programming can be used to solve a variety of problems in scientific machine learning, including:</p>
+<ul>
+<li><p>Calculating the <span style="color: magenta">gradients of loss functions</span> for machine learning models—this is important for training machine learning models.</p></li>
+<li><p>Solving <span style="color: magenta">differential equations</span>—this can be used to model the behavior of physical systems.</p></li>
+<li><p>Performing <span style="color: magenta">optimization</span>—this can be used to find the optimal solution to a problem.</p></li>
+<li><p>Solving <span style="color: magenta"><strong>inverse and data assimilation problems</strong></span>—this is none other than a special case of optimization.</p></li>
+</ul>
+</section>
+<section id="section-2" class="slide level2 center">
+<h2></h2>
+<div class="center">
+<p><span style="color: blue"><strong>OPTIMIZATION</strong></span></p>
+</div>
+</section>
+<section id="optimization" class="slide level2 smaller center">
+<h2>Optimization</h2>
+<div class="center">
+<p><img data-src="../images/am205_lec16-NL-opt-cnvx.png" style="width:30.0%" alt="image"> <img data-src="../images/am205_lec16-NL-opt-multi.png" style="width:30.0%" alt="image"></p>
+</div>
+<p>Optimization routines typically use <span style="color: magenta">local information</span> about a function to iteratively approach a <span style="color: magenta">local minimum.</span></p>
+<p>In this (rare) case, where we have a <span style="color: magenta">convex</span> function, we easily find a global minimum.</p>
+<p>But in general, global optimization can be very difficult</p>
+<p><span style="color: red">We usually get stuck in local minima!</span></p>
+<p>Things get MUCH harder in <span style="color: magenta">higher spatial dimensions</span>…</p>
+</section>
+<section id="section-3" class="slide level2 center">
+<h2></h2>
+<div class="center">
+<p><span style="color: blue"><strong>DIFFERENTIAL PROGRAMMING</strong></span></p>
+</div>
+</section>
+<section id="differential-programming" class="slide level2 smaller center">
+<h2>Differential Programming</h2>
+<p>There are 3 ways to compute derivatives of functions:</p>
+<ol type="1">
+<li><p><span style="color: magenta">Symbolic</span> differentiation.</p></li>
+<li><p><span style="color: magenta">Numerical</span> differentiation.</p></li>
+<li><p><span style="color: magenta">Automatic</span> differentiation.</p></li>
+</ol>
+<p>See Notebooks for <a href="../../labs/w2-lab01-PyTorch.html">Intro Pytorch</a> and <a href="../../labs/w3-lab02-Diff-Prog.html">Differential Programming</a>.</p>
+</section>
+<section id="symbolic-differentiation" class="slide level2 smaller center">
+<h2>Symbolic Differentiation</h2>
+<p>Computes exact, <span style="color: magenta">analytical</span> derivatives, in the form of a mathematical expression.</p>
+<ul>
+<li><p>There is no approximation error.</p></li>
+<li><p>Operates recursively by applying simple rules to symbols.</p></li>
+<li><p><label><input type="checkbox">There may be no analytical expression for gradients of some functions.</label></p></li>
+<li><p><label><input type="checkbox">Can lead to redundant and overly complex expressions.</label></p></li>
+</ul>
+<p>Based on the <a href="https://www.sympy.org/en/index.html"><code>sympy</code></a> package of Python.</p>
+<ul>
+<li>Other software: Mathematica, Maple, Sage, etc.</li>
+</ul>
+</section>
+<section id="numerical-differentiation" class="slide level2 smaller center">
+<h2>Numerical Differentiation</h2>
+<div id="def-fd" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 </strong></span>If <span class="math inline">\(f\)</span> is a differentiable function, then <span class="math display">\[f'(x)=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}\]</span></p>
+</div>
+<p>Using Taylor expansions, and the definition of the derivative, we can obtain finite-difference, <span style="color: magenta">numerical approximations</span>to the derivatives of <span class="math inline">\(f,\)</span> such as <span class="math display">\[f'(x)=\frac{f(x+h)-f(x)}{h}+\mathcal{O}(h),\]</span> <span class="math display">\[f'(x)=\frac{f(x+h)-f(x-h)}{2h}+\mathcal{O}(h^{2})\]</span></p>
+<ul>
+<li><p>conceptually simple and very easy to code</p></li>
+<li><p>compute gradients of <span class="math inline">\(f\colon\mathbb{R}^{m}\rightarrow\mathbb{R},\)</span> requires at least <span class="math inline">\(\mathcal{O}(m)\)</span> function evaluations</p></li>
+<li><p>big numerical errors due to truncation and roundoff.</p></li>
+</ul>
+</section>
+<section id="section-4" class="slide level2 center">
+<h2></h2>
+<div class="center">
+<p><span style="color: blue"><strong>AUTOMATIC DIFFERENTIATION</strong></span></p>
+</div>
+</section>
+<section id="automatic-differentiation" class="slide level2 smaller center">
+<h2>Automatic Differentiation</h2>
+<p>Automatic differentiation is an <span style="color: magenta">umbrella term</span> for a variety of techniques for efficiently computing accurate derivatives of more or less general programs.</p>
+<ul>
+<li><p>It is employed by all major neural network frameworks, where a single reverse-mode AD backpass (also known as <span style="color: magenta">“backpropagation”</span>) can compute a full gradient.</p></li>
+<li><p>Numerical differentiation would either require many forward passes or symbolic differentiation that is simply untenable due to expression explosion.</p></li>
+<li><p>The survey paper <span class="citation" data-cites="Baydin2018">(<a href="#/references" role="doc-biblioref" onclick="">Baydin et al. 2018</a>)</span> provides an excellent review of all the methods and tools available.</p></li>
+</ul>
+<p>Many algorithms in machine learning, computer vision, physical simulation, and other fields require the calculation of gradients and other derivatives.</p>
+<ul>
+<li><p><span style="color: magenta">Manual</span> derivation of gradients can be both time-consuming and error-prone.</p></li>
+<li><p><span style="color: magenta">Automatic</span> differentiation comprises a set of techniques to calculate the derivative of a numerical computation expressed as a <span style="color: magenta">computer code.</span></p></li>
+</ul>
+</section>
+<section id="section-5" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li><p>These techniques of AD, commonly used for <span style="color: magenta">data assimilation</span> in atmospheric sciences and optimal design in computational fluid dynamics, have more recently also been adopted by machine learning researchers.</p></li>
+<li><p>The <span style="color: magenta">backpropagation</span> algorithm, used for optimally computing the weights of a neural network, is just a special case of general AD.</p></li>
+<li><p>AD can be found in all the major software libraries for ML/DL, such as TensorFlow, <span style="color: magenta">PyTorch</span>, JaX, and Julia’s <a href="http://fluxml.ai/Flux.jl/stable/">Flux.jl</a>/<a href="http://fluxml.ai/Zygote.jl/stable/">Zygote.jl</a>.</p></li>
+</ul>
+<!-- -   It is also found in the most recent implementations of MCMC that are based on Hamiltonian Monte Carlo (HMC), such as Stan, PyMC3, Pyro and others---see lecture on [Probabilistic Programming]{style="color: magenta"}. -->
+<p>Practitioners across many fields have built a wide set of <span style="color: magenta">automatic differentiation tools</span>, using different programming languages, computational primitives, and intermediate compiler representations.</p>
+<ul>
+<li>Each of these choices comes with positive and negative trade-offs, in terms of their usability, flexibility, and performance in specific domains.</li>
+</ul>
+</section>
+<section id="section-6" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li><p>Nevertheless, the availability of such tools should not be neglected, since the potential gain from their use is very large.</p></li>
+<li><p>Moreover, the fact that they are already built-in to a large number of ML methods, makes their use quite straightforward.</p></li>
+</ul>
+<p>AD can be readily and extensively used and is thus applicable to many industrial and practical <span style="color: magenta">Digital Twin</span> contexts <span class="citation" data-cites="asch2022toolbox">(<a href="#/references" role="doc-biblioref" onclick="">Asch 2022</a>)</span>.</p>
+<p>However Digital Twins that require large-scale ML remain challenging.</p>
+<p>While substantial efforts are made within the ML communities of PyTorch/Tensorflow, these approaches struggle for large-scale problems that need to</p>
+<ul>
+<li>be frugal with memory use</li>
+<li>exploit parallelism across multiple nodes/GPUs</li>
+<li>integrate with existing (parallel) CSE applications</li>
+</ul>
+<p>Worthwhile to explore Julia’s more integrated approach to HPC Differential Programming <span class="citation" data-cites="innes2019differentiable">(<a href="#/references" role="doc-biblioref" onclick="">Innes et al. 2019</a>)</span> and <a href="https://sciml.ai">SciML</a> <span class="citation" data-cites="rackauckas2017differentialequations">(<a href="#/references" role="doc-biblioref" onclick="">Rackauckas and Nie 2017</a>)</span>.</p>
+</section>
+<section id="ad-for-sciml" class="slide level2 smaller center">
+<h2>AD for SciML</h2>
+<p>Recent progress in machine learning (ML) technology has been spectacular.</p>
+<p>At the heart of these advances is the ability to obtain high-quality solutions to <span style="color: magenta">non-convex optimization problems</span> for functions with billions—or even hundreds of billions—of parameters.</p>
+<p>Incredible <span style="color: magenta">opportunity</span> for progress in classical applied mathematics problems.</p>
+<ul>
+<li><p>In particular, the increased proficiency for systematically handling large, non-convex optimization scenarios may help solve some classical problems that have long been a challenge.</p></li>
+<li><p>We now have the chance to make substantial headway on questions that have not yet been formulated or studied because we lacked the <span style="color: magenta">tools</span> to solve them.</p></li>
+</ul>
+</section>
+<section id="section-7" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li><p>To be clear, we do not wish to oversell the state of the art, however:</p>
+<ul>
+<li><p>Algorithms that identify the <span style="color: magenta">global optimum</span> for non-convex optimization problems do not yet exist.</p></li>
+<li><p>The ML community has instead developed efficient, open source software tools that find <span style="color: magenta">candidate</span> solutions.</p></li>
+<li><p>They have created <span style="color: magenta">benchmarks</span> to measure solution quality.</p></li>
+<li><p>They have cultivated a culture of <span style="color: magenta">competition</span> against these benchmarks.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="automatic-differentiationbackprop-autograd-zygote.jl-etc." class="slide level2 smaller center">
+<h2>Automatic Differentiation—backprop, autograd, Zygote.jl, etc.</h2>
+<ul>
+<li><p><span style="color: magenta">Backprop</span> is a special case of Algorithmic Differentiation (AD).</p></li>
+<li><p><span style="color: magenta">Autograd</span> is a particular AD package that us supported w/i Python (as part of Pytorch).</p></li>
+<li><p>Most exercises of this course use <span style="color: magenta">PyTorch</span>’s AD.</p></li>
+<li><p>Having said that we strongly encourage students to do the exercises in Julia using its extensive AD capabilities (see <a href="https://juliadiff.org">JuliaDiff</a>), integration in the Julia language, and use of abstractions that allow for</p></li>
+<li><p>mixing of hand-derived (adjoint-state) gradients and AD via <a href="https://github.com/JuliaDiff/ChainRules.jl">ChainRules.jl</a></p></li>
+<li><p>a single AD interface irrespective of the AD backend through the use of <a href="https://github.com/JuliaDiff/AbstractDifferentiation.jl">AbstractDifferentiation.jl</a>.</p></li>
+</ul>
+</section>
+<section id="section-8" class="slide level2 smaller center">
+<h2></h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>AD is <span style="color: magenta">NOT</span> finite differences, nor symbolic differentiation. Finite differences are too <span style="color: magenta">expensive</span> (one forward pass for each discrete point). They induce huge <span style="color: magenta">numerical errors</span> (truncation/approximation and roundoff) and are very unstable in the presence of noise.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>AD is both <span style="color: magenta">efficient</span>—linear in the cost of computing the value—and numerically <span style="color: magenta">stable</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The goal of AD is not a formula, but a <span style="color: magenta">procedure</span> for computing derivatives.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tools-for-ad" class="slide level2 smaller center">
+<h2>Tools for AD</h2>
+<p>New opportunities that exist because of the widespread, open-source deployment of effective <span style="color: magenta">software tools for automatic differentiation</span>.</p>
+<p>While the <span style="color: magenta">mathematical framework</span> for automatic differentiation was established long ago—dating back at least to the evolution of adjoint-based optimization in optimal control <span class="citation" data-cites="asch2016data asch2022toolbox">(<a href="#/references" role="doc-biblioref" onclick="">Asch, Bocquet, and Nodet 2016</a>; <a href="#/references" role="doc-biblioref" onclick="">Asch 2022</a>)</span>—ML researchers have recently designed efficient software frameworks that natively run on <span style="color: magenta">hardware accelerators</span> (GPUs).</p>
+<ul>
+<li><p>These frameworks have served as a core technology for the ML revolution over the last decade and inspired <span style="color: magenta">high-quality software</span> libraries such as</p>
+<ul>
+<li><p>JAX,</p></li>
+<li><p><span style="color: magenta">PyTorch</span> and TensorFlow</p></li>
+<li><p>Julia’s ML with Flux.jl and AD with Zygote.jl and abstractions with ChainRules.jl and AbstractDifferentiation.jl</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="statements" class="slide level2 smaller center">
+<h2>Statements</h2>
+<p>The technology’s key feature is: <strong>the computational cost of computing derivatives of a target loss function is independent of the number of parameters;</strong></p>
+<ul>
+<li>this trait makes it possible for users to implement <span style="color: magenta">gradient-based optimization</span> algorithms for functions with staggering numbers of parameters.</li>
+</ul>
+<blockquote>
+<p><span style="color: orange">“Gradient descent can write code better than you, I’m sorry.”</span></p>
+<p><span style="color: orange">“Yes, you should understand backprop.”</span></p>
+<p><span style="color: orange">“I’ve been using PyTorch a few months now and I’ve never felt better. I have more energy. My skin is clearer. My eye sight has improved.”</span></p>
+</blockquote>
+<ul>
+<li>Andrej Karpathy [~2017] (Tesla AI, OpenAI)</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Tools such as PyTorch and TensorFlow may not scale to 3D problems and are challenging to integrate with physics-based simulations and gradients (via adjoint state).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-9" class="slide level2 center">
+<h2></h2>
+<div class="center">
+<p><strong><span style="color: blue">BACKPROPAGATION</span></strong></p>
+</div>
+</section>
+<section id="backpropagationoptimization-problem" class="slide level2 smaller center">
+<h2>Backpropagation—optimization problem</h2>
+<p>We want to solve a (nonlinear, non-convex) <span style="color: magenta">optimization problem</span>, either</p>
+<ul>
+<li><p>for a <span style="color: magenta">dynamic system</span>, <span class="math display">\[\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=f(\mathbf{x};\mathbf{\theta}),\]</span> where <span class="math inline">\(\mathbf{x}\in\mathbb{R}^{n}\)</span> and <span class="math inline">\(\mathbf{\theta}\in\mathbb{R}^{p}\)</span> with <span class="math inline">\(n,p\gg1.\)</span></p></li>
+<li><p>or for a <span style="color: magenta">machine learning</span> model <span class="math display">\[\mathbf{y}=f(\mathbf{x};\mathbf{w}),\]</span> where <span class="math inline">\(\mathbf{x}\in\mathbb{R}^{n}\)</span> and <span class="math inline">\(\mathbf{w}\in\mathbb{R}^{p}\)</span> with <span class="math inline">\(n,p\gg1.\)</span></p></li>
+</ul>
+<p>To find the <span style="color: magenta">minimum/optimum</span>, we want to minimize an appropriate <span style="color: magenta">cost/loss function</span> <span class="math display">\[J(\mathbf{x},\mathbf{\theta}),\quad\mathcal{L}(\mathbf{w},\mathbf{\theta})\]</span></p>
+</section>
+<section id="section-10" class="slide level2 smaller center">
+<h2></h2>
+<p>usually some<span style="color: magenta">error norm</span>, and then (usually) compute its average</p>
+<p>The best/fastest way to solve this optimization problem, is to use <span style="color: magenta">gradients</span> and gradient-based methods.</p>
+<div id="def-backprop" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2 </strong></span><strong>Backpropagation</strong> is an algorithm for computing <span style="color: magenta">gradients</span>.</p>
+<p>Backpropagation is an instance of <span style="color: magenta">reverse-mode automatic differentiation</span></p>
+<ul>
+<li><p>very broadly applicable to machine learning, <span style="color: magenta">data assimilation</span> and inverse problems in general</p></li>
+<li><p>it is “just” a clever and efficient use of the <span style="color: magenta">Chain Rule</span> for derivatives</p></li>
+</ul>
+</div>
+</section>
+<section id="section-11" class="slide level2 smaller center">
+<h2></h2>
+<p>We can prove <span style="color: magenta">mathematically</span> the following equivalences:</p>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a></a>flowchart TD</span>
+<span id="cb1-2"><a></a>  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Recall: the adjoint-state method is the theoretical basis for <span style="color: magenta">Data Assimilation</span>, as well as many other inverse problems—see Basic Course, Lecture on Adjoint Methods).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="chain-rule" class="slide level2 smaller center">
+<h2>Chain Rule</h2>
+<p>We want to compute the cost/loss function gradient, which is usually the average over the training samples of the <span style="color: magenta">loss gradient</span>, <span class="math display">\[\nabla_{w}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial w},\quad\nabla_{\theta}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial\theta},\]</span> or, in general <span class="math display">\[\nabla_{z}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial z},\]</span> where <span class="math inline">\(z=w\)</span> or <span class="math inline">\(z=\theta,\)</span> etc.</p>
+<p>Recall: if <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(x(t)\)</span> are <span style="color: magenta">univariate</span> (differentiable) functions, then <span class="math display">\[\frac{\mathrm{d}}{\mathrm{d}t}f(x(t))=\frac{\mathrm{d}f}{\mathrm{d}x}\frac{\mathrm{d}x}{\mathrm{d}t}\]</span></p>
+</section>
+<section id="section-12" class="slide level2 smaller center">
+<h2></h2>
+<p>and this can be easily generalized to the <span style="color: magenta">multivariate</span> case, such as <span class="math display">\[\frac{\mathrm{d}}{\mathrm{d}t}f(x(t),y(t))=\frac{\mathrm{d}f}{\mathrm{d}x}\frac{\mathrm{d}x}{\mathrm{d}t}+\frac{\mathrm{d}f}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}t}\]</span></p>
+<div id="exm-simple" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 </strong></span>Consider <span class="math display">\[f(x,y,z)=(x+y)z\]</span></p>
+<p>Decompose <span class="math inline">\(f\)</span> into <span style="color: magenta">simple differentiable elements</span> <span class="math display">\[q(x,y)=x+y,\]</span> then <span class="math display">\[f=qz\]</span></p>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Each element has an <span style="color: magenta">analytical</span> (exact/known) derivative—eg. sums, products, sines, cosines, min, max, exp, log, etc.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-13" class="slide level2 smaller center">
+<h2></h2>
+<p>Compute the gradient of <span class="math inline">\(f\)</span> with respect to its three variables, using the <span style="color: magenta">chain rule</span></p>
+<ul>
+<li><p>we begin with <span class="math display">\[\frac{\partial f}{\partial q}=z,\quad\frac{\partial f}{\partial z}=q\]</span> and <span class="math display">\[\frac{\partial q}{\partial x}=1,\quad\frac{\partial q}{\partial y}=1\]</span></p></li>
+<li><p>then the <span style="color: magenta">chain rule</span> gives the terms of the <span style="color: magenta">gradient</span>, <span class="math display">\[\begin{aligned}
+    \frac{\partial f}{\partial x} &amp; =\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=z\cdot1\\
+    \frac{\partial f}{\partial y} &amp; =\frac{\partial f}{\partial q}\frac{\partial q}{\partial y}=z\cdot1\\
+    \frac{\partial f}{\partial z} &amp; =q
+    \end{aligned}\]</span></p></li>
+</ul>
+</section>
+<section id="section-14" class="slide level2 smaller center">
+<h2></h2>
+<div id="399a78f8" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># set some inputs</span></span>
+<span id="cb2-2"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">;</span> y <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> z <span class="op">=</span> <span class="op">-</span><span class="dv">4</span></span>
+<span id="cb2-3"><a></a><span class="co"># perform the forward pass</span></span>
+<span id="cb2-4"><a></a>q <span class="op">=</span> x <span class="op">+</span> y <span class="co"># q becomes 3</span></span>
+<span id="cb2-5"><a></a>f <span class="op">=</span> q <span class="op">*</span> z <span class="co"># f becomes -12</span></span>
+<span id="cb2-6"><a></a><span class="co"># perform the backward pass (backpropagation)</span></span>
+<span id="cb2-7"><a></a><span class="co"># in reverse order:</span></span>
+<span id="cb2-8"><a></a><span class="co"># first backprop through f = q * z&nbsp;</span></span>
+<span id="cb2-9"><a></a>dfdz <span class="op">=</span> q  <span class="co">#&nbsp;df/dz&nbsp;=&nbsp;q, so gradient on z becomes 3&nbsp;</span></span>
+<span id="cb2-10"><a></a>dfdq <span class="op">=</span> z  <span class="co"># df/dq = z, so gradient on q becomes -4&nbsp;</span></span>
+<span id="cb2-11"><a></a>dqdx <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-12"><a></a>dqdy <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-13"><a></a></span>
+<span id="cb2-14"><a></a><span class="co"># now backprop through q = x + y</span></span>
+<span id="cb2-15"><a></a><span class="co"># dfdx = dfdq * dqdx  # The * here is the chain rule!</span></span>
+<span id="cb2-16"><a></a>dfdy <span class="op">=</span> dfdq <span class="op">*</span> dqdy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We obtain the <span style="color: magenta">gradient</span> in the variables <span style="color: teal"><code>[``dfdx, dfdy, dfdz``]</code></span> that give us the <span style="color: magenta">sensitivity</span> of the function <span style="color: teal"><code>f</code></span> to the variables <span style="color: teal"><code>x, y</code></span> and <span style="color: teal"><code>z</code></span>.</p>
+<p>It’s all done with <span style="color: magenta">graphs</span>... DAGs, in fact</p>
+</section>
+<section id="section-15" class="slide level2 smaller center">
+<h2></h2>
+<p>The above computation can be visualized with a circuit diagram:</p>
+<div class="center">
+<p><img data-src="../images/comp_graph_simple.png" style="width:50.0%"></p>
+</div>
+<p>the <span style="color: green">forward pass</span>, computes values from inputs to outputs</p>
+<p>the <span style="color: red">backward pass</span> then performs backpropagation, starting at the end and recursively applying the chain rule to compute the gradients all the way to the inputs of the circuit.</p>
+<ul>
+<li>The gradients can be thought of as <span style="color: magenta">flowing backwards</span> through the circuit.</li>
+</ul>
+</section>
+<section id="forward-vs-reverse-mode" class="slide level2 smaller center">
+<h2>Forward vs Reverse Mode</h2>
+<p><span style="color: magenta">Forward</span> mode is used for</p>
+<ul>
+<li><p>solving nonlinear equations</p></li>
+<li><p>sensitivity analysis</p></li>
+<li><p>uncertainty propagation/quantification <span class="math display">\[f(x+\Delta x)\approx f(x)+f'(x)\Delta x\]</span></p></li>
+</ul>
+<p><span style="color: magenta">Reverse</span> mode is used for</p>
+<ul>
+<li><p>machine/deep learning</p></li>
+<li><p>optimization</p></li>
+</ul>
+</section>
+<section id="backprop---ml-example" class="slide level2 smaller center">
+<h2>Backprop - ML example</h2>
+<p>For a univariate, logistic least-squares problem, we have:</p>
+<ul>
+<li><p><span style="color: magenta">linear model</span>/function of <span class="math inline">\(x\)</span>: <span class="math inline">\(z=wx+b\)</span></p></li>
+<li><p><span style="color: magenta">nonlinear activation</span>: <span class="math inline">\(y=\sigma(x)\)</span></p></li>
+<li><p><span style="color: magenta">quadratic loss</span>: <span class="math inline">\(\mathcal{L}=(1/2)(y-t)^{2},\)</span> where <span class="math inline">\(t\)</span> is the target/observed value</p></li>
+</ul>
+<p><strong>Objective</strong>: find the values of the parameters/weights, <span class="math inline">\(w\)</span> and <span class="math inline">\(b,\)</span> that <span style="color: magenta">minimize</span> the loss <span class="math inline">\(\mathcal{L}\)</span></p>
+<ul>
+<li>to do this, we will use the <span style="color: magenta">gradient</span> of <span class="math inline">\(\mathcal{L}\)</span> with respect to the parameters/weights, <span class="math inline">\(w\)</span> and <span class="math inline">\(b,\)</span> <span class="math display">\[\nabla_{w}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial w},\quad\nabla_{b}\mathcal{L}=\frac{\partial\mathcal{L}}{\partial b}\]</span></li>
+</ul>
+</section>
+<section id="brute-force" class="slide level2 smaller center">
+<h2>Brute force</h2>
+<p><span style="color: magenta">Calculus</span> approach:</p>
+<div class="center">
+<p><img data-src="../images/univariate_chain.png"></p>
+</div>
+<p><span style="color: magenta">It’s a mess</span>... too many computations, too complex to program!</p>
+</section>
+<section id="section-16" class="slide level2 smaller center">
+<h2></h2>
+<p><span style="color: magenta">Structured</span> approach: <span class="math display">\[\begin{aligned}
+     &amp; \mathrm{compute\ loss} &amp;  &amp; \mathrm{compute\ derivatives}\\
+     &amp; \mathrm{{\color{blue}forwards}} &amp;  &amp; \mathrm{{\color{red}backwards}}\\
+    z &amp; =wx+b &amp; \frac{\partial\mathcal{L}}{\partial y} &amp; =y-t\\
+    y &amp; =\sigma(z) &amp; \frac{\partial\mathcal{L}}{\partial z} &amp; =\frac{\partial\mathcal{L}}{\partial y}\frac{\partial y}{\partial z}=\frac{\partial\mathcal{L}}{\partial y}\sigma'(z)\\
+    \mathcal{L} &amp; =\frac{1}{2}(y-t)^{2} &amp; \frac{\partial\mathcal{L}}{\partial w} &amp; =\frac{\partial\mathcal{L}}{\partial z}\frac{\partial z}{\partial w}=\frac{\partial\mathcal{L}}{\partial z}x\\
+     &amp;  &amp; \frac{\partial\mathcal{L}}{\partial b} &amp; =\frac{\partial\mathcal{L}}{\partial z}\frac{\partial z}{\partial b}=\frac{\partial\mathcal{L}}{\partial z}\cdot1
+    \end{aligned}\]</span></p>
+<ul>
+<li><p>can easily be written as a <span style="color: magenta">computational graph</span>with</p></li>
+<li><p>nodes = inputs and computed quantities</p></li>
+<li><p>edges = nodes computed directly as functions of other nodes</p></li>
+</ul>
+</section>
+<section id="section-17" class="slide level2 smaller center">
+<h2></h2>
+<div class="center">
+<p><img data-src="../images/comp_graph.png" style="width:30.0%"></p>
+</div>
+<p><span style="color: magenta">Loss</span>is computed in the <span style="color: magenta">forward</span> pass</p>
+<p><span style="color: magenta">Gradient</span> is computed in the <span style="color: magenta">backward</span> pass</p>
+<ul>
+<li><p>the derivatives of <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> are <span style="color: magenta">exact/known</span></p></li>
+<li><p>the derivatives of <span class="math inline">\(\mathcal{L}\)</span> are <span style="color: magenta">computed</span>, starting from the end</p></li>
+<li><p>the gradients wrt to the parameters are readily obtained by <span style="color: magenta">backpropagation</span> using the <span style="color: magenta">chain rule</span>!</p></li>
+</ul>
+<!-- ## {.smaller}
+-   Consider the function
+    $$f(x,y)=\frac{x+\sigma(y)}{\sigma(x)+(x+y)^{2}},\quad\sigma(x)=\frac{1}{1+e^{-x}}$$
+
+-   TBC\... (exercise) -->
+</section>
+<section id="full-backprop-algorithm" class="slide level2 smaller center">
+<h2>Full Backprop Algorithm</h2>
+<div class="center">
+<p><img data-src="../images/backprop_algo.png" style="width:70.0%"></p>
+</div>
+<p>where <span class="math inline">\(\bar{v}_{i}\)</span> denotes the derivatives of the loss function with respect to <span class="math inline">\(v_{i},\)</span> <span class="math display">\[\frac{\partial\mathcal{L}}{\partial v_{i}}\]</span></p>
+</section>
+<section id="section-18" class="slide level2 smaller center">
+<h2></h2>
+<p><span style="color: magenta">Computational cost</span> of backprop: approximately two forward passes, and hence <span style="color: magenta">linear</span> in the number of unknowns</p>
+<ul>
+<li><p>Backprop is used to train the overwhelming majority of <span style="color: magenta">neural nets</span> today.</p></li>
+<li><p><span style="color: magenta">Optimization</span> algorithms, in addition to gradient descent (e.g.&nbsp;second-order methods) use backprop to compute the gradients.</p></li>
+<li><p>Backprop can thus be used in <span style="color: magenta">SciML</span>, and in particular for Digital Twins (direct and inverse problems), wherever derivatives and/or gradients need to be computed.</p></li>
+</ul>
+</section>
+<section id="section-19" class="slide level2 center">
+<h2></h2>
+<div class="center">
+<p><strong><span style="color: blue">AUTOGRAD</span></strong></p>
+</div>
+</section>
+<section id="autograd" class="slide level2 smaller center">
+<h2>Autograd</h2>
+<p><span style="color: blue"><code>Autograd</code></span> can automatically differentiate native Python and Numpy code.</p>
+<ul>
+<li><p>It can handle a <span style="color: magenta">large subset</span> of Python’s features, including loops, ifs, recursion and closures.</p></li>
+<li><p>It can even take <span style="color: magenta">derivatives</span> of <span style="color: magenta">derivatives</span> of <span style="color: magenta">derivatives</span>, etc.</p></li>
+<li><p>It supports <span style="color: magenta">reverse-mode differentiation</span> (a.k.a. <span style="color: magenta">backpropagation</span>), which means it can efficiently take gradients of scalar-valued functions with respect to array-valued arguments, as well as <span style="color: magenta">forward-mode differentiation</span> (to compute sensitivities), and the two can be composed arbitrarily.</p></li>
+<li><p>The main intended application of Autograd is <span style="color: red">gradient-based optimization</span>.</p></li>
+</ul>
+<p>After a function is evaluated, <span style="color: blue"><code>Autograd</code></span> has a <span style="color: magenta">graph</span> specifying all operations that were performed on the inputs with respect to which we want to differentiate.</p>
+<ul>
+<li>This is the <span style="color: magenta">computational graph</span> of the function evaluation.</li>
+</ul>
+</section>
+<section id="section-20" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li>To compute the derivative, we simply apply the basic rules of (analytical) differentiation to each <span style="color: magenta">node</span> in the graph.</li>
+</ul>
+<p><span style="color: magenta">Reverse mode differentiation</span></p>
+<ul>
+<li><p>Given a function made up of several nested function calls, there are several ways to compute its derivative.</p></li>
+<li><p>For example, given <span class="math display">\[L(x)=F(G(H(x))),\]</span> the chain rule says that its gradient is <span class="math display">\[\mathrm{d}L/\mathrm{d}x=\mathrm{d}F/\mathrm{d}G*\mathrm{d}G/\mathrm{d}H*\mathrm{d}H/\mathrm{d}x.\]</span></p></li>
+</ul>
+</section>
+<section id="section-21" class="slide level2 smaller center">
+<h2></h2>
+<ul>
+<li><p>If we evaluate this product from right-to-left: <span class="math display">\[(\mathrm{d}F/\mathrm{d}G*(\mathrm{d}G/\mathrm{d}H*\mathrm{d}H/\mathrm{d}x)),\]</span> the same order as the computations themselves were performed, this is called <span style="color: magenta">forward-mode differentiation</span>.</p></li>
+<li><p>If we evaluate this product from left-to-right: <span class="math display">\[((\mathrm{d}F/\mathrm{d}G*\mathrm{d}G/\mathrm{d}H)*\mathrm{d}H/\mathrm{d}x),\]</span> the reverse order as the computations themselves were performed, this is called <span style="color: magenta">reverse-mode differentiation</span>.</p></li>
+</ul>
+<p>Compared to finite differences or forward-mode, reverse-mode differentiation is by far the more practical method for differentiating functions that take in a (very)<span style="color: magenta">large vector</span>and output a single number.</p>
+<p>In the machine learning community, reverse-mode differentiation is known as <span style="color: magenta">‘backpropagation’,</span> since the gradients propagate backwards through the function (as seen above).</p>
+</section>
+<section id="section-22" class="slide level2 smaller center">
+<h2></h2>
+<p>It’s particularly nice since you don’t need to instantiate the intermediate Jacobian matrices explicitly, and instead only rely on applying a sequence of matrix-free <span style="color: magenta">vector-Jacobian product</span>functions (VJPs).</p>
+<p>Because Autograd supports <span style="color: magenta">higher derivatives</span> as well, <span style="color: magenta">Hessian</span>-vector products (a form of second-derivative) are also available and efficient to compute.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Autograd is now being superseded by <span style="color: blue"><code>JAX</code></span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="pytorch-versus-julia" class="slide level2 smaller center">
+<h2>PyTorch versus Julia</h2>
+<p>While extremely easy to use and featured, PyTorch &amp; Jax are walled gardens</p>
+<ul>
+<li>making it difficult integrate w/ CSE software</li>
+<li>go off the beaten path</li>
+</ul>
+<p>In response to the prompt “Can you list in Markdown table form pros and cons of PyTorch and Julia AD systems” ChatGTP4.0 generated the following adapted table</p>
+<div id="tab-procon_a">
+<table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>PyTorch</th>
+<th>Julia AD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Language</strong></td>
+<td>Python-based, widely used in ML community</td>
+<td>Julia, known for high performance and mathematical syntax</td>
+</tr>
+<tr class="even">
+<td><strong>Performance</strong></td>
+<td>Fast, but can be limited by Python’s speed</td>
+<td>Generally faster, benefits from Julia’s performance</td>
+</tr>
+<tr class="odd">
+<td><strong>Ease of Use</strong></td>
+<td>User-friendly, extensive documentation and community support</td>
+<td>Steeper learning curve, but elegant for mathematical operations</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="section-23" class="slide level2 smaller center">
+<h2></h2>
+<div id="tab-procon_b">
+<table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>PyTorch</th>
+<th>Julia AD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Dynamic Computation Graph</strong></td>
+<td>Yes, allows flexibility</td>
+<td>Yes, with support for advanced features</td>
+</tr>
+<tr class="even">
+<td><strong>Ecosystem</strong></td>
+<td>Extensive, with many libraries and tools</td>
+<td>Growing, with packages for scientific computing</td>
+</tr>
+<tr class="odd">
+<td><strong>Community Support</strong></td>
+<td>Large community, well-established in industry and academia</td>
+<td>Smaller but growing community, strong in scientific computing</td>
+</tr>
+<tr class="even">
+<td><strong>Integration</strong></td>
+<td>Easy integration with Python libraries and tools</td>
+<td>Good integration w/i Julia ecosystem</td>
+</tr>
+<tr class="odd">
+<td><strong>Debugging</strong></td>
+<td>Good debugging tools, but can be tricky due to dynamic nature</td>
+<td>Good, with benefits from Julia’s compiler &amp; type system</td>
+</tr>
+<tr class="even">
+<td><strong>Parallel &amp; GPU </strong></td>
+<td>Excellent support</td>
+<td>Excellent, potentially faster due to Julia’s design</td>
+</tr>
+<tr class="odd">
+<td><strong>Maturity</strong></td>
+<td>Mature, widely adopted</td>
+<td>Less but rapidly evolving</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="section-24" class="slide level2 smaller center">
+<h2></h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>This table highlights key aspects but may not cover all nuances. Both systems are continuously evolving, so it’s always good to check the latest developments and community feedback when making a choice.</p>
+</div>
+</div>
+</div>
+<div style="text-align: margin-top: 1em">
+<p>For those of you interested in Julia checkout the lecture <a href="https://adrianhill.de/julia-ml-course/L6_Automatic_Differentiation/" data-preview-link="true" style="text-align: center">Forward- &amp; Reverse-Mode AD by Adrian Hill</a></p>
+</div>
+</section>
+<section id="references" class="title-slide slide level1 unnumbered smaller scrollable">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
+Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
+</div>
+<div id="ref-asch2016data" class="csl-entry" role="listitem">
+Asch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. <em>Data Assimilation: Methods, Algorithms, and Applications</em>. SIAM.
+</div>
+<div id="ref-Baydin2018" class="csl-entry" role="listitem">
+Baydin, Atilim Gunes, Barak A Pearlmutter, Alexey Andreyevich Radul, and Jeffrey Mark Siskind. 2018. <span>“Automatic Differentiation in Machine Learning: A Survey.”</span> <em>Journal of Marchine Learning Research</em> 18: 1–43.
+</div>
+<div id="ref-innes2019differentiable" class="csl-entry" role="listitem">
+Innes, Mike, Alan Edelman, Keno Fischer, Chris Rackauckas, Elliot Saba, Viral B Shah, and Will Tebbutt. 2019. <span>“A Differentiable Programming System to Bridge Machine Learning and Scientific Computing.”</span> <em>arXiv Preprint arXiv:1907.07587</em>.
+</div>
+<div id="ref-rackauckas2017differentialequations" class="csl-entry" role="listitem">
+Rackauckas, Christopher, and Qing Nie. 2017. <span>“Differentialequations.jl–a Performant and Feature-Rich Ecosystem for Solving Differential Equations in Julia.”</span> <em>Journal of Open Research Software</em> 5 (1): 15.
+</div>
+</div>
+
+
+</section>
+    <div class="quarto-auto-generated-content">
+<p><img src="images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
+</div>
+</div></div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

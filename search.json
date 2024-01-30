@@ -788,329 +788,329 @@
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#bayesian-filters",
     "href": "slides/week-05/08-DA-Bayes.html#bayesian-filters",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Bayesian filters",
     "text": "Bayesian filters\nWe begin by defining a probabilistic state-space, or nonlinear filtering model, of the form \\[\\begin{aligned}\n    \\mathbf{x}_{k} & \\sim p(\\mathbf{x}_{k}\\mid\\mathbf{x}_{k-1}),\\label{eq:filter1}\\\\\n    \\mathbf{y}_{k} & \\sim p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k}),\\quad k=0,1,2,\\ldots,\\label{eq:filter2}\n    \\end{aligned} \\tag{1}\\] where\n\n\\(\\mathbf{x}_{k}\\in\\mathbb{R}^{n}\\) is the state vector at time \\(k,\\)\n\\(\\mathbf{y}_{k}\\in\\mathbb{R}^{m}\\) is the observation vector at time \\(k,\\)\nthe conditional probability, \\(p(\\mathbf{x}_{k}\\mid\\mathbf{x}_{k-1}),\\) represents the stochasticdynamics model, and can be a probability density or a discrete probability function, or a mixture of both,\nthe conditional probability, \\(p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k}),\\) represents themeasurement model and its inherent noise."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section",
     "href": "slides/week-05/08-DA-Bayes.html#section",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "In addition, we assume that the model is Markovian, such that \\[p(\\mathbf{x}_{k}\\mid\\mathbf{x}_{1:k-1},\\mathbf{y}_{1:k-1})=p(\\mathbf{x}_{k}\\mid\\mathbf{x}_{k-1}),\\] and that the observations are conditionally independent of state and measurement histories, \\[p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{1:k},\\mathbf{y}_{1:k-1})=p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k}).\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#example-of-gaussian-random-walk",
     "href": "slides/week-05/08-DA-Bayes.html#example-of-gaussian-random-walk",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Example of Gaussian Random Walk",
     "text": "Example of Gaussian Random Walk\nTo fix ideas and notation, we begin with a very simple, scalar case, the Gaussian random walk model. This model can then easily be generalized.\nConsider the scalar system \\[\\begin{aligned}\n    x_{k} & =x_{k-1}+w_{k-1},\\quad w_{k-1}\\sim\\mathcal{N}(0,Q),\\label{eq:GRW-x}\\\\\n    y_{k} & =x_{k}+v_{k},\\quad v_{k}\\sim\\mathcal{N}(0,R),\\label{eq:GRW-y}\n    \\end{aligned} \\tag{2}\\] where \\(x_{k}\\) is the (hidden) state and \\(y_{k}\\) is the (known) measurement.\nNoting that \\(x_{k}-x_{k-1}=w_{k-1}\\) and that \\(y_{k}-x_{k}=v_{k},\\) we can immediately rewrite this system in terms of the conditional probability densities, \\[\\begin{aligned}\n    p(x_{k}\\mid x_{k-1}) & =\\mathcal{N}\\left(x_{k}\\mid x_{k-1},Q\\right)\\\\\n     & =\\dfrac{1}{\\sqrt{2\\pi Q}}\\exp\\left[-\\frac{1}{2Q}\\left(x_{k}-x_{k-1}\\right)^{2}\\right]\n    \\end{aligned}\\] and"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-1",
     "href": "slides/week-05/08-DA-Bayes.html#section-1",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[\\begin{aligned}\n    p(y_{k}\\mid x_{k}) & =\\mathcal{N}\\left(y_{k}\\mid x_{k},R\\right)\\\\\n     & =\\dfrac{1}{\\sqrt{2\\pi R}}\\exp\\left[-\\frac{1}{2R}\\left(y_{k}-x_{k}\\right)^{2}\\right].\n    \\end{aligned}\\]\nA realization of the model is shown in Figure 1.\n\n\nFigure 1: Gaussian random walk state space model equations 2. State, \\(x_k\\) is solid blue curve, measurements, \\(y_k\\), are red circles. Fixed values of noise variance are \\(Q=1\\) and \\(R=1\\)"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#code",
     "href": "slides/week-05/08-DA-Bayes.html#code",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Code",
     "text": "Code\n% Simulate a Gaussian random walk.\n% initialize\nrandn('state',123)\nR=1; Q=1; K=100;\n% simulate\nX_init = sqrt(Q)\\*randn(K,1);\nX = cumsum(X_init);\nW = sqrt(R)\\*randn(K,1);\nY = X + W;\n% plot\nplot(1:K,X,1:K,Y(1:K,1),'ro')\nxlabel('k'), ylabel('x_k')"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#nonlinear-filter-model",
     "href": "slides/week-05/08-DA-Bayes.html#nonlinear-filter-model",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Nonlinear Filter Model",
     "text": "Nonlinear Filter Model\nUsing the nonlinear filtering model 1 and the Markov property, we can express thejoint prior of the states, \\(\\mathbf{x}_{0:T}=\\{\\mathbf{x}_{0},\\ldots,\\mathbf{x}_{T}\\},\\) and the joint likelihood of the measurements, \\(\\mathbf{y}_{1:T}=\\{\\mathbf{y}_{1},\\ldots,\\mathbf{y}_{T}\\},\\) as the products \\[p(\\mathbf{x}_{0:T})=p(\\mathbf{x}_{0})\\prod_{k=1}^{T}p(\\mathbf{x}_{k}\\mid\\mathbf{x}_{k-1})\\] and \\[p(\\mathbf{y}_{1:T}\\mid\\mathbf{x}_{0:T})=\\prod_{k=1}^{T}p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k})\\] respectively."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-2",
     "href": "slides/week-05/08-DA-Bayes.html#section-2",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Then, applying Bayes’ law, we can compute the complete posterior distribution of the states as \\[p(\\mathbf{x}_{0:T}\\mid\\mathbf{y}_{1:T})=\\frac{p(\\mathbf{y}_{1:T}\\mid\\mathbf{x}_{0:T})p(\\mathbf{x}_{0:T})}{p(\\mathbf{y}_{1:T})}.\\label{eq:Bayes-post-state-eq}\\]\nBut this type of complete characterization is not feasible to compute in real-time, or near real-time, since the number of computations per time-step increases as measurements arrive.\nWhat we need is afixed number of computations per time-step.\n\nThis can be achieved by a recursive estimation that, step by step, produces the filtering distribution defined above.\nIn this light, we can now define the general Bayesian filtering problem, of which Kalman filters will be a special case."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-3",
     "href": "slides/week-05/08-DA-Bayes.html#section-3",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Bayesian filtering is the recursive computation of the marginal posterior distribution, \\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k})\\] known as the filtering distribution, of the state \\(\\mathbf{x}_{k}\\) at each time step \\(k,\\) given the measurements up to time \\(k.\\)\n\nNow, based on Bayes’ rule, we can formulate the Bayesian filtering theorem (Särkkä and Svensson 2023) .\n\nTheorem 1 (Bayesian Filter). The recursive equations, known as the Bayesian filter, for computing the filtering distribution \\(p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k})\\) and the predicted distribution \\(p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k-1})\\) at the time step \\(k,\\) are given by the three-stage process:\nInitialization: Define the prior distribution \\(p(\\mathbf{x}_{0}).\\)\nPrediction: Compute the predictive distribution \\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k-1})=\\int p(\\mathbf{x}_{k}\\mid\\mathbf{x}_{k-1})p(\\mathbf{x}_{k-1}\\mid\\mathbf{y}_{1:k-1})\\,\\mathrm{d}\\mathbf{x}_{k-1}.\\]\nCorrection: Compute the posterior distribution by Bayes’ rule,*"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-4",
     "href": "slides/week-05/08-DA-Bayes.html#section-4",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k})=\\frac{p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k})p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k-1})}{\\int p(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k})p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k-1})}\\,\\mathrm{d}\\mathbf{x}_{k}.\\]\nNow, if we assume that the dynamic and measurement models are linear, with i.i.d. Gaussian noise, then we obtain the closed-form solution for the Kalman filter, already derived in the Basic Course. We recall the linear, Gaussian state-space model, \\[\\begin{aligned}\n\\mathbf{x}_{k} & =\\mathbf{M}_{k-1}\\mathbf{x}_{k-1}+\\mathbf{w}_{k-1},\\label{eq:kf-1}\\\\\n\\mathbf{y}_{k} & =\\mathbf{H}_{k}\\mathbf{x}_{k}+\\mathbf{v}_{k},\\label{eq:kf-2}\n\\end{aligned} \\tag{3}\\] for the Kalman filter, where\n\n\\(\\mathbf{x}_{k}\\in\\mathbb{R}^{n}\\) is the state,\n\\(\\mathbf{y}_{k}\\in\\mathbb{R}^{m}\\) is the measurement,\n\\(\\mathbf{w}_{k-1}\\sim\\mathcal{N}(0,\\mathbf{Q}_{k-1})\\) is the process noise,\n\\(\\mathbf{v}_{k}\\sim\\mathcal{N}(0,\\mathbf{R}_{k})\\) is the measurement noise,\n\\(\\mathbf{x}_{0}\\sim\\mathcal{N}(\\mathbf{m}_{0},\\mathbf{P}_{0})\\) is the Gaussian distributed initial state, with mean \\(\\mathbf{m}_{0}\\) and covariance \\(\\mathbf{P}_{0},\\)\n\\(\\mathbf{M}_{k-1}\\) is the time-dependent transition matrix of the dynamic model at time \\(k-1,\\) and\n\\(\\mathbf{H}_{k}\\) is the time-dependent measurement model matrix."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-5",
     "href": "slides/week-05/08-DA-Bayes.html#section-5",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "This model can be very elegantly rewritten in terms of conditional probabilities as \\[\\begin{aligned}\np(\\mathbf{x}_{k}\\mid\\mathbf{x}_{k-1}) & =\\mathcal{N}\\left(\\mathbf{x}_{k}\\mid\\mathbf{M}_{k-1}\\mathbf{x}_{k-1},\\mathbf{Q}_{k-1}\\right),\\\\\np(\\mathbf{y}_{k}\\mid\\mathbf{x}_{k}) & =\\mathcal{N}\\left(\\mathbf{y}_{k}\\mid\\mathbf{H}_{k}\\mathbf{x}_{k},\\mathbf{R}_{k}\\right).\n\\end{aligned}\\]\n\nTheorem 2 (Kalman Filter). The Bayesian filtering equations for the linear, Gaussian model Equation 3 can be explicitly computed and the resulting conditional probability distributions are Gaussian. The prediction distribution is \\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k-1})=\\mathcal{N}\\left(\\mathbf{x}_{k}\\mid\\hat{\\mathbf{m}}_{k},\\hat{\\mathbf{P}}_{k}\\right),\\] the filtering distribution is \\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k})=\\mathcal{N}\\left(\\mathbf{x}_{k}\\mid\\mathbf{m}_{k},\\mathbf{P}_{k}\\right)\\] and the smoothing distribution is \\[p(\\mathbf{y}_{k}\\mid\\mathbf{y}_{1:k-1})=\\mathcal{N}\\left(\\mathbf{y}_{k}\\mid\\mathbf{H}_{k}\\mathbf{\\hat{m}}_{k},\\mathbf{S}_{k}\\right).\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-6",
     "href": "slides/week-05/08-DA-Bayes.html#section-6",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "The parameters of these distributions can be computed by the three-stage Kalman filter loop:\nInitialization: Define the prior mean \\(\\mathbf{m}_{0}\\) and prior covariance \\(\\mathbf{P}_{0}.\\)*\nPrediction: Compute the predictive distribution mean and covariance,* \\[\\begin{aligned}\n\\mathbf{\\hat{m}}_{k} & =\\mathbf{M}_{k-1}\\mathbf{m}_{k-1},\\\\\n\\hat{\\mathbf{P}}_{k} & =\\mathbf{M}_{k-1}\\mathbf{P}_{k-1}\\mathbf{M}_{k-1}^{\\mathrm{T}}+\\mathbf{Q}_{k-1}.\n\\end{aligned}\\]\nCorrection: Compute the filtering distribution mean and covariance by first defining* \\[\\begin{aligned}\n\\mathbf{d}_{k} & =\\mathbf{y}_{k}-\\mathbf{H}_{k}\\mathbf{\\hat{m}}_{k},\\quad\\textrm{the innovation},\\\\\n\\mathbf{S}_{k} & =\\mathbf{H}_{k}\\hat{\\mathbf{P}}_{k}\\mathbf{H}_{k}^{\\mathrm{T}}+\\mathbf{R}_{k},\\quad\\textrm{the measurement covariance},\\\\\n\\mathbf{K}_{k} & =\\hat{\\mathbf{P}}_{k}\\mathbf{H}_{k}^{\\mathrm{T}}\\mathbf{S}_{k}^{-1},\\quad\\textrm{the Kalman gain,}\n\\end{aligned}\\] then finally updating the filter mean and covariance,"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-7",
     "href": "slides/week-05/08-DA-Bayes.html#section-7",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[\\begin{aligned}\n\\mathbf{m}_{k} & =\\mathbf{\\hat{m}}_{k}+\\mathbf{K}_{k}\\mathbf{d}_{k},\\\\\n\\mathbf{P}_{k} & =\\hat{\\mathbf{P}}_{k}-\\mathbf{K}_{k}\\mathbf{S}_{k}\\mathbf{K}_{k}^{\\mathrm{T}}.\n\\end{aligned}\\]\n\nProof. The proof see Särkkä and Svensson (2023) is a direct application of classical results for the joint, marginal, and conditional distributions of two Gaussian random variables, \\(\\mathbf{x}_{k}\\in\\mathbb{R}^{n}\\) and \\(\\mathbf{y}_{k}\\in\\mathbb{R}^{m}.\\)"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#kf-for-gaussian-random-walk",
     "href": "slides/week-05/08-DA-Bayes.html#kf-for-gaussian-random-walk",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "KF for Gaussian Random Walk",
     "text": "KF for Gaussian Random Walk\nWe now return to the Gaussian random walk model seen above in the Example, and formulate a Kalman filter for estimating its state from noisy measurements.\n\nExample 1 Kalman Filter for Gaussian Random Walk. Suppose that we have measurements of the scalar \\(y_{k}\\) from the Gaussian random walk model \\[\\begin{aligned}\nx_{k} & =x_{k-1}+w_{k-1},\\quad w_{k-1}\\sim\\mathcal{N}(0,Q),\\label{eq:GRW-x2}\\\\\ny_{k} & =x_{k}+v_{k},\\quad v_{k}\\sim\\mathcal{N}(0,R).\\label{eq:GRW-y2}\n\\end{aligned} \\tag{4}\\] This very basic system is found in many applications where\n\n\\(x_{k}\\) represents a slowly varying quantity that we measure directly.\nprocess noise, \\(w_{k},\\) takes into account fluctuations in the state \\(x_{k}.\\)\nmeasurement noise, \\(v_{k},\\) accounts for measurement instrument errors.\n\n\nWe want to estimate the state \\(x_{k}\\) over time, taking into account the measurements \\(y_{k}.\\) That is, we would like to compute the filtering density,"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-8",
     "href": "slides/week-05/08-DA-Bayes.html#section-8",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[p({x}_{k}\\mid{y}_{1:k})=\\mathcal{N}\\left({x}_{k}\\mid{m}_{k},{P}_{k}\\right).\\] We proceed by simply writing down the three stages of the Kalman filter, noting that \\(M_{k}=1\\) and \\(H_{k}=1\\) for this model. We obtain:\nInitialization: Define the prior mean \\({m}_{0}\\) and prior covariance \\({P}_{0}.\\)\nPrediction: \\[\\begin{aligned}\n{\\hat{m}}_{k} & ={m}_{k-1},\\\\\n\\hat{{P}}_{k} & ={P}_{k-1}+{Q}.\n\\end{aligned}\\]\nCorrection: Define \\[\\begin{aligned}\n{d}_{k} & ={y}_{k}-{\\hat{m}}_{k},\\quad\\textrm{the innovation},\\\\\n{S}_{k} & =\\hat{{P}}_{k}+{R},\\quad\\textrm{the measurement covariance},\\\\\n{K}_{k} & =\\hat{{P}}_{k}{S}_{k}^{-1},\\quad\\textrm{the Kalman gain,}\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-9",
     "href": "slides/week-05/08-DA-Bayes.html#section-9",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "then update, \\[\\begin{aligned}\n{m}_{k} & ={\\hat{m}}_{k}+K_{k}{d}_{k},\\\\\nP_{k} & =\\hat{P}_{k}-\\frac{\\hat{P}_{k}^{2}}{S_{k}}.\n\\end{aligned}\\]\nIn Figure 2, we show simulations with system noise standard deviation of \\(1\\) and measurement noise standard deviation of \\(0.5.\\) We observe that the KF tracks the random walk very efficiently.\n\n\nFigure 2: Kalman filter for tracking a Gaussian random walk state space model 4“. State, \\(x_k\\), is solid blue curve; measurements, \\(y_k\\), are red circles; Kalman filter estimate is green curve and 95% quantiles are shown. Fixed values of noise variances are \\(Q=1\\) and \\(R=0.5^2\\). Results computed by kf_gauss_state.m."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#code-1",
     "href": "slides/week-05/08-DA-Bayes.html#code-1",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Code",
     "text": "Code\n\n\n% Kalman Filter for scalar Gaussian random walk\n% Set parameters\nsig_w = 1; sig_v = 0.5;\nM = 1;\nQ = sig_w\\^2;\nH = 1;\nR = sig_v\\^2;\n% Initialize\nm0 = 0;\nP0 = 1;\n% Simulate data\nrandn('state',1234);\nsteps = 100; T = \\[1:steps\\];\nX = zeros(1,steps);\nY = zeros(1,steps);\nx = m0;\nfor k=1:steps\n  w = Q'\\*randn(1);\n  x = M\\*x + w;\n  y = H\\*x + sig_v\\*randn(1);\n  X(k) = x;\n  Y(k) = y;\nend\nplot(T,X,'-',T,Y,'.');\nlegend('Signal','Measurements');\nxlabel('{k}'); ylabel('{x}\\_k');\n% Kalman filter\nm = m0;\nP = P0;\nfor k=1:steps\n  m = M\\*m;\n  P = M\\*P\\*M' + Q;\n  d = Y(:,k) - H\\*m;\n  S = H\\*P\\*H' + R;\n  K = P\\*H'/S;\n  m = m + K\\*d;\n  P = P - K\\*S\\*K';\n  kf_m(k) = m;\n  kf_P(k) = P;\nend\n% Plot   \nclf; hold on\nfill(\\[T fliplr(T)\\],\\[kf_m+1.96\\*sqrt(kf_P) \\...\n  fliplr(kf_m-1.96\\*sqrt(kf_P))\\],1, \\...\n  'FaceColor',\\[.9 .9 .9\\],'EdgeColor',\\[.9 .9 .9\\])\nplot(T,X,'-b',T,Y,'or',T, kf_m(1,:),'-g')\nplot(T,kf_m+1.96\\*sqrt(kf_P),':r',T,kf_m-1.96\\*sqrt(kf_P),':r');\nhold off\n\n\n\n\n\n\n\nNote\n\n\n\nLine 3: by modifying these noise amplitudes, one can better understand how the KF operates.\nLines 31-32 and 34-38: the complete filter is coded in only 7 lines, exactly as prescribed by Theorem 5. This is the reason for the excellent performance of the KF, in particular in real-time systems. In higher dimensions, when the matrices become large, more attention must be paid to the numerical linear algebra routines used. The inversion of the measurement covariance matrix, \\(S,\\) in line 36, is particularly challenging and requires highly tuned decomposition methods."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-10",
     "href": "slides/week-05/08-DA-Bayes.html#section-10",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "EXTENDED KALMAN FILTERS"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#extended-kalman-filters",
     "href": "slides/week-05/08-DA-Bayes.html#extended-kalman-filters",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Extended Kalman filters",
     "text": "Extended Kalman filters\nIn real applications, we are usually confronted with nonlinearity in the model and in the measurements.\n\nMoreover, the noise is not necessarily additive.\n\nTo deal with these nonlinearities, one possible approach is to linearize about the current mean and covariance, which produces the extended Kalman filter (EKF).\nThis filter is widely accepted as the standard for navigation and GPS systems, among others.\nRecall the nonlinear problem, \\[\\begin{aligned}\n\\mathbf{x}_{k} & = & \\mathcal{M}_{k-1}(\\mathbf{x}_{k-1})+\\mathbf{w}_{k-1},\\label{eq:state_nl}\\\\\n\\mathbf{y}_{k} & = & \\mathcal{H}_{k}(\\mathbf{x}_{k})+\\mathbf{v}_{k},\\label{eq:obs_nl}\n\\end{aligned} \\tag{5}\\] where"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-11",
     "href": "slides/week-05/08-DA-Bayes.html#section-11",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\(\\mathbf{x}_{k}\\in\\mathbb{R}^{n},\\) \\(\\mathbf{y}_{k}\\in\\mathbb{R}^{m},\\) \\(\\mathbf{w}_{k-1}\\sim\\mathcal{N}(0,\\mathbf{Q}_{k-1}),\\) \\(\\mathbf{v}_{k}\\sim\\mathcal{N}(0,\\mathbf{R}_{k}),\\)\nand now \\(\\mathcal{M}_{k-1}\\) and \\(\\mathcal{H}_{k}\\) are nonlinear functions of \\(\\mathbf{x}_{k-1}\\) and \\(\\mathbf{x}_{k}\\) respectively.\n\nThe EKF is then based on Gaussian approximationsof the filtering densities, \\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k})\\approx\\mathcal{N}\\left(\\mathbf{x}_{k}\\mid\\mathbf{m}_{k},\\mathbf{P}_{k}\\right),\\] where these approximations are derived from the first-order truncation of the corresponding Taylor series in terms of the statistical moments of the underlying random variables.\nLinearization in the Taylor series expansions will require evaluation of the Jacobian matrices, defined as \\[\\mathbf{M}_{\\mathbf{x}}=\\left[\\frac{\\partial\\mathcal{M}}{\\partial\\mathbf{x}}\\right]_{\\mathbf{x}=\\mathbf{m}}\\] and"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-12",
     "href": "slides/week-05/08-DA-Bayes.html#section-12",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[\\mathbf{H}_{\\mathbf{x}}=\\left[\\frac{\\partial\\mathcal{H}}{\\partial\\mathbf{x}}\\right]_{\\mathbf{x}=\\mathbf{m}}.\\]\n\nTheorem 3 The first-order extended Kalman filter with additive noise for the nonlinear system 5 can be computed by the three-stage process:\nInitialization: Define the prior mean \\(\\mathbf{m}_{0}\\) and prior covariance \\(\\mathbf{P}_{0}.\\)\nPrediction: Compute the predictive distribution mean and covariance,* \\[\\begin{aligned}\n\\mathbf{\\hat{m}}_{k} & =\\mathcal{M}_{k-1}(\\mathbf{m}_{k-1}),\\\\\n\\hat{\\mathbf{P}}_{k} & =\\mathbf{M}_{\\mathbf{x}}(\\mathbf{m}_{k-1})\\mathbf{P}_{k-1}\\mathbf{M}_{\\mathbf{x}}^{\\mathrm{T}}(\\mathbf{m}_{k-1})+\\mathbf{Q}_{k-1}.\n\\end{aligned}\\]\nCorrection: Compute the filtering distribution mean and covariance by first defining* \\[\\begin{aligned}\n\\mathbf{d}_{k} & =\\mathbf{y}_{k}-\\mathcal{H}_{k}(\\mathbf{\\hat{m}}_{k}),\\quad\\textrm{the innovation},\\\\\n\\mathbf{S}_{k} & =\\mathbf{H}_{\\mathbf{x}}(\\mathbf{\\hat{m}}_{k})\\hat{\\mathbf{P}}_{k}\\mathbf{H}_{\\mathbf{x}}^{\\mathrm{T}}(\\mathbf{\\hat{m}}_{k})+\\mathbf{R}_{k},\\thinspace\\textrm{the measurement covariance},\\\\\n\\mathbf{K}_{k} & =\\hat{\\mathbf{P}}_{k}\\mathbf{H}_{\\mathbf{x}}^{\\mathrm{T}}(\\mathbf{\\hat{m}}_{k})\\mathbf{S}_{k}^{-1},\\quad\\textrm{the Kalman gain,}\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-13",
     "href": "slides/week-05/08-DA-Bayes.html#section-13",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "then finally updating the filter mean and covariance, \\[\\begin{aligned}\n\\mathbf{m}_{k} & =\\mathbf{\\hat{m}}_{k}+\\mathbf{K}_{k}\\mathbf{d}_{k},\\\\\n\\mathbf{P}_{k} & =\\hat{\\mathbf{P}}_{k}-\\mathbf{K}_{k}\\mathbf{S}_{k}\\mathbf{K}_{k}^{\\mathrm{T}}.\n\\end{aligned}\\]\n\nProof. The proof see Särkkä and Svensson (2023) is once again a direct application of classical results for the joint, marginal and conditional distributions of two Gaussian random variables, \\(\\mathbf{x}_{k}\\in\\mathbb{R}^{n}\\) and \\(\\mathbf{y}_{k}\\in\\mathbb{R}^{m}.\\) In addition, use is made of the Taylor series approximations to compute the Jacobian matrices \\(\\mathbf{M}_{\\mathbf{x}}\\) and \\(\\mathbf{H}_{\\mathbf{x}}\\) evaluated at \\(\\mathbf{x}=\\mathbf{\\hat{m}}_{k-1}\\) and \\(\\mathbf{x}=\\mathbf{\\hat{m}}_{k}\\) respectively."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#extended-kalman-filter-non-additive-noise",
     "href": "slides/week-05/08-DA-Bayes.html#extended-kalman-filter-non-additive-noise",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Extended Kalman filter — non-additive noise",
     "text": "Extended Kalman filter — non-additive noise\nFor non-additive noise, the model is now \\[\\begin{aligned}\n\\mathbf{x}_{k} & =\\mathcal{M}_{k-1}(\\mathbf{x}_{k-1},\\mathbf{w}_{k-1}),\\label{eq:state_nl_na}\\\\\n\\mathbf{y}_{k} & =\\mathcal{H}_{k}(\\mathbf{x}_{k},\\mathbf{v}_{k}),\\label{eq:obs_nl_na}\n\\end{aligned} \\tag{6}\\] where \\(\\mathbf{w}_{k-1}\\sim\\mathcal{N}(0,\\mathbf{Q}_{k-1}),\\) and \\(\\mathbf{v}_{k}\\sim\\mathcal{N}(0,\\mathbf{R}_{k})\\) are system and measurement Gaussian noises.\nIn this case the overall three-stage scheme is the same, with necessary modifications to take into account the additional functional dependence on \\(\\mathbf{w}\\) and \\(\\mathbf{v}.\\)\n\nInitialization:\n\nDefine the prior mean \\(\\mathbf{m}_{0}\\) and prior covariance \\(\\mathbf{P}_{0}.\\)\n\nPrediction:\n\nCompute the predictive distribution mean and covariance,"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-14",
     "href": "slides/week-05/08-DA-Bayes.html#section-14",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[\\begin{aligned}\n    \\mathbf{\\hat{m}}_{k} & =\\mathcal{M}_{k-1}(\\mathbf{m}_{k-1},\\mathbf{0}),\\\\\n    \\hat{\\mathbf{P}}_{k} & =\\mathbf{M}_{\\mathbf{x}}(\\mathbf{m}_{k-1})\\mathbf{P}_{k-1}\\mathbf{M}_{\\mathbf{x}}^{\\mathrm{T}}(\\mathbf{m}_{k-1})\\\\\n     & +\\mathbf{M}_{\\mathbf{w}}(\\mathbf{m}_{k-1})\\mathbf{Q}_{k-1}\\mathbf{M}_{\\mathbf{w}}^{\\mathrm{T}}(\\mathbf{m}_{k-1})+\\mathbf{Q}_{k-1}.\n    \\end{aligned}\\]\n\nCorrection:\n\nCompute the filtering distribution mean and covariance by first defining \\[\\begin{aligned}\n\\mathbf{d}_{k} & =\\mathbf{y}_{k}-\\mathcal{H}_{k}(\\mathbf{\\hat{m}}_{k},\\mathbf{0}),\\,\\textrm{the}\\,\\textrm{innovation},\\\\\n\\mathbf{S}_{k} & =\\mathbf{H}_{\\mathbf{x}}(\\mathbf{\\hat{m}}_{k})\\hat{\\mathbf{P}}_{k}\\mathbf{H}_{\\mathbf{x}}^{\\mathrm{T}}(\\mathbf{\\hat{m}}_{k})\\\\\n& +\\mathbf{H}_{\\mathbf{v}}(\\mathbf{\\hat{m}}_{k})\\mathbf{R}_{k}\\mathbf{H}_{\\mathbf{v}}^{\\mathrm{T}}(\\mathbf{\\hat{m}}_{k}),\\,\\textrm{the}\\,\\textrm{measurement\\,covariance},\\\\\n\\mathbf{K}_{k} & =\\hat{\\mathbf{P}}_{k}\\mathbf{H}_{\\mathbf{x}}^{\\mathrm{T}}(\\mathbf{\\hat{m}}_{k})\\mathbf{S}_{k}^{-1},\\,\\textrm{the}\\,\\textrm{Kalman\\,gain,}\n\\end{aligned}\\] then finally updating the filter mean and covariance, \\[\\begin{aligned}\n\\mathbf{m}_{k} & =\\mathbf{\\hat{m}}_{k}+\\mathbf{K}_{k}\\mathbf{d}_{k},\\\\\n\\mathbf{P}_{k} & =\\hat{\\mathbf{P}}_{k}-\\mathbf{K}_{k}\\mathbf{S}_{k}\\mathbf{K}_{k}^{\\mathrm{T}}.\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#ekf-pros-and-cons",
     "href": "slides/week-05/08-DA-Bayes.html#ekf-pros-and-cons",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "EKF — pros and cons",
     "text": "EKF — pros and cons\nPros:\n\nRelative simplicity, based on well-known linearization methods.\nMaintains the simple, elegant, and computationally efficient KF update equations.\nGood performance for such a simple method.\nAbility to treat nonlinear process and observation models.\nAbility to treat both additive and more general nonlinear Gaussian noise.\n\nCons:\n\nPerformance can suffer in presence of strong nonlinearity because of the local validity of the linear approximation (valid for small perturbations around the linear term).\nCannot deal with non-Gaussian noise, such as discrete-valued random variables."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-15",
     "href": "slides/week-05/08-DA-Bayes.html#section-15",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Requires differentiable process and measurement operators and evaluation of Jacobian matrices, which might be problematic in very high dimensions.\n\nIn spite of this, the EKF remains a solid filter and, as mentioned earlier, remains the basis of most GPS and navigation systems."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#ekf-example-nonlinear-oscillator",
     "href": "slides/week-05/08-DA-Bayes.html#ekf-example-nonlinear-oscillator",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "EKF Example — nonlinear oscillator",
     "text": "EKF Example — nonlinear oscillator\nConsider the nonlinear ODE model for the oscillations of a noisy pendulum with unit mass and length \\(L,\\) \\[\\frac{\\mathrm{d}^{2}\\theta}{\\mathrm{d}t^{2}}+\\frac{g}{L}\\sin\\theta+w(t)=0\\] where\n\n\\(\\theta\\) is the angular displacement of the pendulum,\n\\(g\\) is the gravitational constant,\n\\(L\\) is the pendulum’s length, and\n\\(w(t)\\) is a white noise process.\n\nThis is rewritten in state space form, \\[\\dot{\\mathbf{x}}+\\mathcal{M}(\\mathbf{x})+\\mathbf{w}=0,\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-16",
     "href": "slides/week-05/08-DA-Bayes.html#section-16",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "where\n\\[\\begin{aligned}\n    \\mathbf{x} & =\\left[\\begin{array}{c}\n    x_{1}\\\\\n    x_{2}\n    \\end{array}\\right]=\\left[\\begin{array}{c}\n    \\theta\\\\\n    \\dot{\\theta}\n    \\end{array}\\right],\\quad\\mathcal{M}(\\mathbf{x})=\\left[\\begin{array}{c}\n    x_{2}\\\\\n    -\\dfrac{g}{L}\\sin x_{1}\n    \\end{array}\\right],\\\\\n    \\mathbf{w} & =\\left[\\begin{array}{c}\n    0\\\\\n    w(t)\n    \\end{array}\\right].\n    \\end{aligned}\\]\nSuppose that we have discrete, noisy measurements of the horizontal component of the position, \\(\\sin(\\theta).\\)\n\nThen the measurement equation is scalar, \\[y_{k}=\\sin\\theta_{k}+v_{k},\\] where \\(v_{k}\\) is a zero-mean Gaussian random variable with variance \\(R.\\)\n\nThe system is thus nonlinear in both state and measurement and the state-space system is of the general form 5."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-17",
     "href": "slides/week-05/08-DA-Bayes.html#section-17",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "A simple discretization, based on the simplest Euler’s method, produces \\[\\begin{aligned}\n    \\mathbf{x}_{k} & =\\mathcal{M}(\\mathbf{x}_{k-1})+\\mathbf{w}_{k-1}\\\\\n    {y}_{k} & =\\mathcal{H}_{k}(\\mathbf{x}_{k})+{v}_{k},\n    \\end{aligned}\\] where \\[\\begin{aligned}\n    \\mathbf{x}_{k} & =\\left[\\begin{array}{c}\n    x_{1}\\\\\n    x_{2}\n    \\end{array}\\right]_{k},\\\\\n    \\mathcal{M}(\\mathbf{x}_{k-1}) & =\\left[\\begin{array}{c}\n    x_{1}+\\Delta tx_{2}\\\\\n    x_{2}-\\Delta t\\dfrac{g}{L}\\sin x_{1}\n    \\end{array}\\right]_{k-1},\\\\\n    \\mathcal{H}(\\mathbf{x}_{k}) & =[\\sin x_{1}]_{k}.\n    \\end{aligned}\\]\nThe noise terms have distributions \\[\\mathbf{w}_{k-1}\\sim\\mathcal{N}(\\mathbf{0},Q),\\quad v_{k}\\sim\\mathcal{N}(0,R),\\] where the process covariance matrix is"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-18",
     "href": "slides/week-05/08-DA-Bayes.html#section-18",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[Q=\\left[\\begin{array}{cc}\n    q_{11} & q_{12}\\\\\n    q_{21} & q_{22}\n    \\end{array}\\right],\\] with components (see remark below the example), \\[q_{11}=q_{c}\\frac{\\Delta t^{3}}{3},\\quad q_{12}=q_{21}=q_{c}\\frac{\\Delta t^{2}}{2},\\quad q_{22}=q_{c}\\Delta t,\\] and \\(q_{c}\\) is the continuous process noise spectral density.\nFor the first-order EKFhigher orders are possiblewe will need the Jacobian matrices of \\(\\mathcal{M}(\\mathbf{x})\\) and \\(\\mathcal{H}(\\mathbf{x})\\) evaluated at \\(\\mathbf{x}=\\mathbf{\\hat{m}}_{k-1}\\) and \\(\\mathbf{x}=\\mathbf{\\hat{m}}_{k}\\) . These are easily obtained here, in an explicit form, \\[\\mathbf{M}_{\\mathbf{x}}=\\left[\\frac{\\partial\\mathcal{M}}{\\partial\\mathbf{x}}\\right]_{\\mathbf{x}=\\mathbf{m}}=\\left[\\begin{array}{cc}\n    1 & \\Delta t\\\\\n    -\\Delta t\\dfrac{g}{L}\\cos x_{1} & 1\n    \\end{array}\\right]_{k-1},\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-19",
     "href": "slides/week-05/08-DA-Bayes.html#section-19",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[\\mathbf{H}_{\\mathbf{x}}=\\left[\\frac{\\partial\\mathcal{H}}{\\partial\\mathbf{x}}\\right]_{\\mathbf{x}=\\mathbf{m}}=\\left[\\begin{array}{cc}\n\\cos x_{1} & 0\\end{array}\\right]_{k}.\\]\nFor the simulations, we take:\n\n500 time steps with \\(\\Delta t=0.01.\\)\nNoise levels \\(q_{c}=0.01\\) and \\(R=0.1.\\)\nInitial angle \\(x_{1}=1.8\\) and initial angular velocity \\(x_{2}=0.\\)\nInitial diagonal state covariance of \\(0.1.\\)\n\nResults are plotted in Figure Figure 3.\n\nWe notice that despite the very noisy, nonlinear measurements, the EKF rapidly approaches the true state and then tracks it extremely well."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-20",
     "href": "slides/week-05/08-DA-Bayes.html#section-20",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Figure 3: Extended Kalman filter for tracking a noisy pendulum model, where horizontal position is measured. State, \\(x_k\\), $is solid blue curve; measurements, \\(y_k\\), are red circles; extended Kalman filter estimate is green curve. Results computed by EKfPendulum.m\n\n\n\n\n\n\n\n\n\nNote\n\n\nIn the above example, we have used a rather special form for the process noise covariance, \\(Q.\\) It cannot be computed exactly for nonlinear systems and some kind of approximations are needed.1 One way is to use an Euler-Maruyama method from SDEs, but this leads to singular dynamics where the particle smoothers will not work. Another approach, which was used here, is to first construct an approximate model and then compute the covariance using that model. In this case the approximate model was taken as \\[\\ddot{x}=w(t),\\] which is maybe overly simple, but works. Then the matrix \\(Q\\) is propagated through this simplified dynamics using an integration factor (exponential) solution and the corresponding power series expression of the transition matrix. Details of this can be found in [Grewal; Andrews].\n\n\n\nThanks to Simo Särkkä (private communication) for suggesting this explanation."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#unscented-kalman-filters",
     "href": "slides/week-05/08-DA-Bayes.html#unscented-kalman-filters",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Unscented Kalman filters",
     "text": "Unscented Kalman filters\nThe unscented Kalman filter (UKF) was developed to overcome two shortcomings of the EKF:\n\nits difficulty to treat strong nonlinearities and\nits reliance on the computation of Jacobians.\n\nThe UKF is based on the unscented transform (UT), a method for approximating the distribution of a transformed variable, \\[\\mathbf{y}=g(\\mathbf{x}),\\] where \\(\\mathbf{x}\\sim\\mathcal{N}(\\mathbf{m},\\mathbf{P}),\\) without linearizing the function \\(g.\\)\nThe UT is computed as follows:"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-21",
     "href": "slides/week-05/08-DA-Bayes.html#section-21",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Choose a collection of so-called\\(\\sigma\\)-pointsthat reproduce the mean and covariance of the distribution of \\(\\mathbf{x}\\).\nApply the nonlinearfunction to the \\(\\sigma\\)-points.\nEstimate themean and variance of the transformed random variable.\n\nThis is a deterministic sampling approach, as opposed to Monte Carlo, particle filters, and ensemble filters that all use randomly sampled points. Note that the first two usually require orders of magnitude more points than the UKF.\nSuppose that the random variable \\(\\mathbf{x}\\in\\mathbb{R}^{n}\\) with mean \\(\\mathbf{m}\\) and covariance \\(\\mathbf{P}.\\) Compute \\(N=2n+1\\) \\(\\sigma\\)-points and their corresponding weights \\[\\{\\mathbf{x}^{(\\pm i),},w^{(\\pm i)}\\},\\quad i=0,1,\\ldots,N\\] by the formulas"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-22",
     "href": "slides/week-05/08-DA-Bayes.html#section-22",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "\\[\\begin{aligned}\n\\mathbf{x}^{(0)} & =\\mathbf{m},\\\\\n\\mathbf{x}^{(\\pm i)} & =\\mathbf{m}\\pm\\sqrt{n+\\lambda}\\,\\mathbf{p}^{(i)},\\quad i=1,2,\\ldots,n,\\\\\nw^{(0)} & =\\frac{\\lambda}{n+\\lambda},\\\\\nw^{(\\pm i)} & =\\frac{\\lambda}{2\\left(n+\\lambda\\right)},\\quad i=1,2,\\ldots,n,\n\\end{aligned}\\] where\n\n\\(\\mathbf{p}_{i}\\) is the \\(i\\)-th column of the square root of \\(\\mathbf{P},\\) which is the matrix \\(S\\) such that \\(SS^{\\mathrm{T}}=\\mathbf{P},\\) sometimes denoted as \\(\\mathbf{P}^{1/2},\\)\n\\(\\lambda\\) is a scaling parameter, defined as \\[\\lambda=\\alpha^{2}(n+\\kappa)-n,\\quad0&lt;\\alpha&lt;1,\\]\n\\(\\alpha\\) and \\(\\kappa\\) describe the spread of the \\(\\sigma\\)-points around the mean, with \\(\\kappa=3-n\\) usually,\n\\(\\beta\\) is used to include prior information on non-Gaussian distributions of \\(\\mathbf{x}.\\)"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-23",
     "href": "slides/week-05/08-DA-Bayes.html#section-23",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "For the covariance matrix, the weight \\(w^{(0)}\\) is modified to \\[w^{(0)}=\\frac{\\lambda}{n+\\lambda}+\\left(1-\\alpha^{2}+\\beta\\right).\\] These points and weights ensure that the means and covariances are consistently captured by the UT."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#ukf-algorithm",
     "href": "slides/week-05/08-DA-Bayes.html#ukf-algorithm",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "UKF — algorithm",
     "text": "UKF — algorithm\n\nTheorem 4 The UKF for the nonlinear system 5 computes a Gaussian approximation of the filtering distribution \\[p(\\mathbf{x}_{k}\\mid\\mathbf{y}_{1:k})\\approx\\mathcal{N}\\left(\\mathbf{x}_{k}\\mid\\mathbf{m}_{k},\\mathbf{P}_{k}\\right),\\] based on the UT, following the three-stage process:\nInitialization: Define the prior mean \\(\\mathbf{m}_{0},\\) prior covariance \\(\\mathbf{P}_{0}\\) and the parameters \\(\\alpha,\\) \\(\\beta,\\) \\(\\kappa.\\)\nPrediction:\nCompute the \\(\\sigma\\)-points and weights, \\[\\begin{aligned}\n\\mathbf{x}_{k-1}^{(0)} & =\\mathbf{m}_{k-1},\\\\\n\\mathbf{x}_{k-1}^{(\\pm i)} & =\\mathbf{m}_{k-1}\\pm\\sqrt{n+\\lambda}\\,\\mathbf{p}_{k-1}^{(i)},\\quad i=1,2,\\ldots,n,\\\\\nw^{(0)} & =\\frac{\\lambda}{n+\\lambda},\\quad w^{(\\pm i)}  =\\frac{\\lambda}{2\\left(n+\\lambda\\right)},\\quad i=1,2,\\ldots,n.\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-24",
     "href": "slides/week-05/08-DA-Bayes.html#section-24",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Propagate the \\(\\sigma\\)-points through the dynamic model \\[\\tilde{\\mathbf{x}}_{k}^{(i)}=\\mathcal{M}_{k-1}\\left(\\mathbf{x}_{k-1}^{(i)}\\right).\\]\nCompute the predictive distribution mean and covariance, \\[\\begin{aligned}\n\\mathbf{m}_{k}^{-} & =\\sum_{i=0}^{\\pm n}w^{(i)}\\tilde{\\mathbf{x}}_{k}^{(i)}\\\\\n\\mathbf{P}_{k}^{-} & =\\sum_{i=0}^{\\pm n}w^{(i)}\\left(\\tilde{\\mathbf{x}}_{k}^{(i)}-\\mathbf{m}_{k}^{-}\\right)\\left(\\tilde{\\mathbf{x}}_{k}^{(i)}-\\mathbf{m}_{k}^{-}\\right)^{\\mathrm{T}}+\\mathbf{Q}_{k-1}.\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-25",
     "href": "slides/week-05/08-DA-Bayes.html#section-25",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Correction:\nCompute the updated \\(\\sigma\\)-points and weights, \\[\\begin{aligned}\n\\mathbf{x}_{k}^{(0)} & =\\mathbf{m}_{k}^{-},\\\\\n\\mathbf{x}_{k}^{(\\pm i)} & =\\mathbf{m}_{k}^{-}\\pm\\sqrt{n+\\lambda}\\,\\mathbf{p}_{k}^{(i)-},\\quad i=1,2,\\ldots,n,\\\\\nw^{(0)} & =\\frac{\\lambda}{n+\\lambda}+\\left(1-\\alpha^{2}+\\beta\\right),\\\\\nw^{(\\pm i)} & =\\frac{\\lambda}{2\\left(n+\\lambda\\right)},\\quad i=1,2,\\ldots,n.\n\\end{aligned}\\]\nPropagate the updated \\(\\sigma\\)-points through the measurement model \\[\\tilde{\\mathbf{y}}_{k}^{(i)}=\\mathcal{H}_{k}\\left(\\mathbf{x}_{k}^{(i)}\\right).\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-26",
     "href": "slides/week-05/08-DA-Bayes.html#section-26",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Compute the predicted mean and innovation, predicted measurement covariance, state-measurement cross-covariance, and filter gain, \\[\\begin{aligned}\n\\boldsymbol{\\mu}_{k} & =\\sum_{i=0}^{\\pm n}w^{(i)}\\tilde{\\mathbf{y}}_{k}^{(i)},\\quad\\textrm{the mean,}\\\\\n\\mathbf{d}_{k} & =\\mathbf{y}_{k}-\\boldsymbol{\\mu}_{k},\\quad\\textrm{the innovation,}\\\\\n\\mathbf{S}_{k} & =\\sum_{i=0}^{\\pm n}w^{(i)}\\left(\\tilde{\\mathbf{y}}_{k}^{(i)}-\\boldsymbol{\\mu}_{k}\\right)\\left(\\tilde{\\mathbf{y}}_{k}^{(i)}-\\boldsymbol{\\mu}_{k}\\right)^{\\mathrm{T}}+\\mathbf{R}_{k},\\textrm{ measur cov}\\\\\n\\mathbf{C}_{k} & =\\sum_{i=0}^{\\pm n}w^{(i)}\\left({\\mathbf{x}}_{k}^{(i)}-\\mathbf{m}_{k}^{-}\\right)\\left(\\tilde{\\mathbf{y}}_{k}^{(i)}-\\boldsymbol{\\mu}_{k}\\right)^{\\mathrm{T}},\\textrm{ s-m cross-cov},\\\\\n\\mathbf{K}_{k} & =\\mathbf{C}_{k}\\mathbf{S}_{k}^{-1},\\quad\\textrm{the Kalman gain.}\n\\end{aligned}\\]\nFinally, update the filter mean and covariance, \\[\\begin{aligned}\n\\mathbf{m}_{k} & =\\mathbf{\\hat{m}}_{k}+\\mathbf{K}_{k}\\mathbf{d}_{k},\\\\\n\\mathbf{P}_{k} & =\\hat{\\mathbf{P}}_{k}-\\mathbf{K}_{k}\\mathbf{S}_{k}\\mathbf{K}_{k}^{\\mathrm{T}}.\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-27",
     "href": "slides/week-05/08-DA-Bayes.html#section-27",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Just as was the case with the EKF, the UKF can also be applied to the non-additive noise model 6.\n\nThis is achieved by applying a non-additive version of the UT. Details can be found in (Särkkä and Svensson 2023)."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#particle-filters",
     "href": "slides/week-05/08-DA-Bayes.html#particle-filters",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Particle filters",
     "text": "Particle filters\nWhat happens if both the models are nonlinear and the pdfs are non Gaussian?\nThe Kalman filter and its extensions are no longer optimal and, more importantly, can easily fail the estimation process. Another approach must be used.\nA promising candidate is the particle filter (PF)\nThe particle filter (Doucet, Johansen, et al. 2009) (and references therein) works sequentially in the spirit of the Kalman filter, but unlike the latter, it handles an ensemble of states (the particles) whose distribution approximates the pdf of the true state.\nBayes’ rule and the marginalization formula, \\[p(x)=\\int p(x\\mid y)p(y)\\,\\mathrm{d}y,\\] are explicitly used in the estimation process.\nThe linear and Gaussian hypotheses can then be ruled out, in theory."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-28",
     "href": "slides/week-05/08-DA-Bayes.html#section-28",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "In practice though, the particle filter cannot yet be applied to very high dimensional systems (this is often referred to as “the curse of dimensionality”). Though recent work by [Friedemann, Raffin2023] has improved this by sophisticated parallel computing.\nParticle filters are methods for obtaining Monte Carlo approximationsof the solutions of the Bayesian filtering equations.\nRather than trying to compute the exact solution of the Bayesian filtering equations, the transformations of such filtering (Bayes’ rule for the analysis, model propagation for the forecast) are applied to the members of the sample.\n\nThe statistical moments are meant to be those of the targeted pdf.\nObviously this sampling strategy can only be exact in the asymptotic limit; that is, in the limit where the number of members (or particles) goes to infinity.\n\nThe most popular and simple algorithm of Monte Carlo type that solves the Bayesian filtering equations is called the bootstrap particle filter. It is computed by a three-stage process."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-29",
     "href": "slides/week-05/08-DA-Bayes.html#section-29",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Sampling\n\nWe consider a sample of particles \\(\\left\\{ \\mathbf{x}_{1},\\mathbf{x}_{2},\\ldots,\\mathbf{x}_{M}\\right\\}\\). The related probability density function at time \\(t_{k}\\) is \\(p_{k}(\\mathbf{x}),\\) where \\[p_{k}(\\mathbf{x})\\simeq\\sum_{i=1}^{M}\\omega_{i}^{k}\\delta(\\mathbf{x}-\\mathbf{x}_{k}^{i})\\] and \\(\\delta\\) is the Dirac mass and the sum is meant to be an approximation of the exact density that the samples emulate. A positive scalar, \\(\\omega_{k}^{i},\\) weights the importance of particle \\(i\\) within the ensemble. At this stage, we assume that the weights \\(\\omega_{i}^{k}\\) are uniform and \\(\\omega_{i}^{k}=1/M\\)"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-30",
     "href": "slides/week-05/08-DA-Bayes.html#section-30",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Forecast\n\nAt the forecast step, the particles are propagated by the model without approximation, \\[p_{k+1}(\\mathbf{x})\\simeq\\sum_{i=1}^{M}\\omega_{k}^{i}\\delta(\\mathbf{x}-\\mathbf{x}_{k+1}^{i}),\\] with \\(\\mathbf{x}_{k+1}^{i}=\\mathcal{M}_{k+1}(\\mathbf{x}_{k}).\\) A stochastic noise can optionally be added to the dynamics of each particle."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-31",
     "href": "slides/week-05/08-DA-Bayes.html#section-31",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "Analysis\n\nThe analysis step of the particle filter is extremely simple and elegant. The rigorous implementation of Bayes’ rule ascribes to each particle a statistical weight that corresponds to the likelihood of the particle given the data. The weight of each particle is updated according to \\[\\omega_{k+1}^{\\mathrm{a},i}\\propto\\omega_{k+1}^{\\mathrm{f},i}p(\\mathbf{y}_{k+1}|\\mathbf{x}_{k+1}^{i})\\,.\\] It is remarkable that the analysis is carried out with only a few multiplications. It does not involve inverting any system or matrix, as opposed for instance to the Kalman filter.\n\n\nOne usually has to choose between\n\nlinear Kalman filters\nensemble Kalman filters\nnonlinear filters\nhybrid variational-filter methods."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#section-32",
     "href": "slides/week-05/08-DA-Bayes.html#section-32",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "",
     "text": "These questions are resumed in the following Table:\n\n\n\nTable 1: Decision matrix for choice of Kalman filters.\n\n\n\n\n\nEstimator\nModel type\npdf\nCPU-time\n\n\n\n\nKF\nlinear\nGaussian\nlow\n\n\nEKF\nlocally linear\nGaussian\nlow-medium\n\n\nUKF\nnonlinear\nGaussian\nmedium\n\n\nEnKF\nnonlinear\nGaussian\nmedium-high\n\n\nPF\nnonlinear\nnon-Gaussian\nhigh"
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#codes",
     "href": "slides/week-05/08-DA-Bayes.html#codes",
-    "title": "Data Assimilation",
+    "title": "Bayesian Data Assimilation",
     "section": "Codes",
     "text": "Codes\nVarious open-source repositories and codes are available for both academic and operational data assimilation.\n\nDARC: https://research.reading.ac.uk/met-darc/ from Reading, UK.\nDAPPER: https://github.com/nansencenter/DAPPER from Nansen, Norway.\nDART: https://dart.ucar.edu/ from NCAR, US, specialized in ensemble DA.\nOpenDA: https://www.openda.org/.\nVerdandi: http://verdandi.sourceforge.net/ from INRIA, France.\nPyDA: https://github.com/Shady-Ahmed/PyDA, a Python implementation for academic use.\nFilterpy: https://github.com/rlabbe/filterpy, dedicated to KF variants.\nEnKF; https://enkf.nersc.no/, the original Ensemble KF from Geir Evensen."
   },
@@ -1865,7 +1865,7 @@
     "href": "weeks/week-05.html",
     "title": "Week 05",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nMon, Jan 29\n\n\n\n\nStatistical Inverse Problems\n\n\nBayesian Inference\n\n\nMon, Jan 29\n\n\n\n\nData Assimilation\n\n\nstatistical data assimilation\n\n\nWed, Jan 31\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 8 — A toolbox for digital twins section 8.8\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nBayesian Data Assimilation\n\n\nData Assimilation\n\n\nSat, Dec 23\n\n\n\n\nUncertainty Quantification\n\n\nBayesian Data Assimilation\n\n\nSat, Dec 23\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 8 — A toolbox for digital twins section 8.8\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "weeks/week-03.html",

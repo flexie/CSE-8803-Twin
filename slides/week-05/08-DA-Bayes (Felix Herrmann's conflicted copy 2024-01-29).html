@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.528">
 
   <meta name="dcterms.date" content="2023-12-23">
-  <title>Digital Twins for Physical Systems - Bayesian Data Assimilation</title>
+  <title>Digital Twins for Physical Systems - Data Assimilation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -413,8 +413,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../images/3DVAR.png" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Bayesian Data Assimilation</h1>
-  <p class="subtitle">Data Assimilation</p>
+  <h1 class="title">Data Assimilation</h1>
+  <p class="subtitle">Bayesian Data Assimilation</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -497,7 +497,7 @@ Figure&nbsp;1: Gaussian random walk state space model equations <a href="#/examp
 </div>
 <p>Now, based on Bayes’ rule, we can formulate the <span style="color: magenta">Bayesian filtering theorem</span> <span class="citation" data-cites="sarkka2013">(<a href="#/references" role="doc-biblioref" onclick="">Särkkä and Svensson 2023</a>)</span> .</p>
 <div id="thm-BayesFilter" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1</strong></span> (Bayesian Filter). <em>The recursive equations, known as the <span style="color: magenta">Bayesian filter</span>, for computing the filtering distribution <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\)</span> and the predicted distribution <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})\)</span> at the time step <span class="math inline">\(k,\)</span> are given by the three-stage process:</em></p>
+<p><span class="theorem-title"><strong>Theorem 1 </strong></span>(Bayesian Filter). <em>The recursive equations, known as the <span style="color: magenta">Bayesian filter</span>, for computing the filtering distribution <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\)</span> and the predicted distribution <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})\)</span> at the time step <span class="math inline">\(k,\)</span> are given by the three-stage process:</em></p>
 <p><em><strong>Initialization</strong>: Define the prior distribution <span class="math inline">\(p(\mathbf{x}_{0}).\)</span></em></p>
 <p><em><strong>Prediction:</strong> Compute the predictive distribution <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})=\int p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1})p(\mathbf{x}_{k-1}\mid\mathbf{y}_{1:k-1})\,\mathrm{d}\mathbf{x}_{k-1}.\]</span></em></p>
 <p><em><strong>Correction</strong>: </em>Compute the posterior distribution by Bayes’ rule,*</p>
@@ -529,7 +529,7 @@ p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1}) &amp; =\mathcal{N}\left(\mathbf{x}_{k}\mid
 p(\mathbf{y}_{k}\mid\mathbf{x}_{k}) &amp; =\mathcal{N}\left(\mathbf{y}_{k}\mid\mathbf{H}_{k}\mathbf{x}_{k},\mathbf{R}_{k}\right).
 \end{aligned}\]</span></p>
 <div id="thm-KF" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2</strong></span> (Kalman Filter). <em>The Bayesian filtering equations for the linear, Gaussian model <a href="#/section-4" class="quarto-xref">Equation&nbsp;3</a> can be explicitly computed and the resulting conditional probability distributions are Gaussian. The prediction distribution is</em> <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})=\mathcal{N}\left(\mathbf{x}_{k}\mid\hat{\mathbf{m}}_{k},\hat{\mathbf{P}}_{k}\right),\]</span> <em>the filtering distribution is</em> <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\mathcal{N}\left(\mathbf{x}_{k}\mid\mathbf{m}_{k},\mathbf{P}_{k}\right)\]</span> <em>and the smoothing distribution is</em> <span class="math display">\[p(\mathbf{y}_{k}\mid\mathbf{y}_{1:k-1})=\mathcal{N}\left(\mathbf{y}_{k}\mid\mathbf{H}_{k}\mathbf{\hat{m}}_{k},\mathbf{S}_{k}\right).\]</span></p>
+<p><span class="theorem-title"><strong>Theorem 2 </strong></span>(Kalman Filter). <em>The Bayesian filtering equations for the linear, Gaussian model <a href="#/section-4" class="quarto-xref">Equation&nbsp;3</a> can be explicitly computed and the resulting conditional probability distributions are Gaussian. The prediction distribution is</em> <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})=\mathcal{N}\left(\mathbf{x}_{k}\mid\hat{\mathbf{m}}_{k},\hat{\mathbf{P}}_{k}\right),\]</span> <em>the filtering distribution is</em> <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\mathcal{N}\left(\mathbf{x}_{k}\mid\mathbf{m}_{k},\mathbf{P}_{k}\right)\]</span> <em>and the smoothing distribution is</em> <span class="math display">\[p(\mathbf{y}_{k}\mid\mathbf{y}_{1:k-1})=\mathcal{N}\left(\mathbf{y}_{k}\mid\mathbf{H}_{k}\mathbf{\hat{m}}_{k},\mathbf{S}_{k}\right).\]</span></p>
 </div>
 </section>
 <section id="section-6" class="slide level2 center">
@@ -560,7 +560,7 @@ p(\mathbf{y}_{k}\mid\mathbf{x}_{k}) &amp; =\mathcal{N}\left(\mathbf{y}_{k}\mid\m
 <h2>KF for Gaussian Random Walk</h2>
 <p>We now return to the <span style="color: magenta">Gaussian random walk</span> model seen above in the Example, and formulate a <span style="color: magenta">Kalman filter</span> for estimating its state from noisy measurements.</p>
 <div id="exm-KFRW" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1</strong></span> <span style="color: blue">Kalman Filter for Gaussian Random Walk</span>. Suppose that we have measurements of the scalar <span class="math inline">\(y_{k}\)</span> from the Gaussian random walk model <span id="eq-GRW-2"><span class="math display">\[\begin{aligned}
+<p><span class="theorem-title"><strong>Example 1 </strong></span><span style="color: blue">Kalman Filter for Gaussian Random Walk</span>. Suppose that we have measurements of the scalar <span class="math inline">\(y_{k}\)</span> from the Gaussian random walk model <span id="eq-GRW-2"><span class="math display">\[\begin{aligned}
 x_{k} &amp; =x_{k-1}+w_{k-1},\quad w_{k-1}\sim\mathcal{N}(0,Q),\label{eq:GRW-x2}\\
 y_{k} &amp; =x_{k}+v_{k},\quad v_{k}\sim\mathcal{N}(0,R).\label{eq:GRW-y2}
 \end{aligned} \tag{4}\]</span></span> This very basic system is found in many applications where</p>
@@ -701,7 +701,7 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 <h2></h2>
 <p><span class="math display">\[\mathbf{H}_{\mathbf{x}}=\left[\frac{\partial\mathcal{H}}{\partial\mathbf{x}}\right]_{\mathbf{x}=\mathbf{m}}.\]</span></p>
 <div id="thm-EKF" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3</strong></span> <em>The first-order <span style="color: magenta">extended Kalman filter</span> with <span style="color: magenta">additive noise</span> for the nonlinear system <a href="#/extended-kalman-filters" class="quarto-xref">5</a> can be computed by the three-stage process:</em></p>
+<p><span class="theorem-title"><strong>Theorem 3 </strong></span><em>The first-order <span style="color: magenta">extended Kalman filter</span> with <span style="color: magenta">additive noise</span> for the nonlinear system <a href="#/extended-kalman-filters" class="quarto-xref">5</a> can be computed by the three-stage process:</em></p>
 <p><em><strong>Initialization</strong>: Define the <span style="color: magenta">prior</span> mean <span class="math inline">\(\mathbf{m}_{0}\)</span> and prior covariance <span class="math inline">\(\mathbf{P}_{0}.\)</span></em></p>
 <p><em><strong>Prediction:</strong> </em>Compute the <span style="color: magenta">predictive</span> distribution mean and covariance,* <span class="math display">\[\begin{aligned}
 \mathbf{\hat{m}}_{k} &amp; =\mathcal{M}_{k-1}(\mathbf{m}_{k-1}),\\
@@ -870,7 +870,7 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 </section>
 <section id="section-20" class="slide level2 center">
 <h2></h2>
-<div id="fig-EKF_pendulum" class="quarto-figure quarto-figure-center quarto-float">
+<div id="fig-EKF_pendulum" class="quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-EKF_pendulum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="../images/fig-EKF_pendulum.png">
@@ -936,7 +936,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n,
 <section id="ukf-algorithm" class="slide level2 center">
 <h2>UKF — algorithm</h2>
 <div id="thm-UKS" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4</strong></span> <em>The UKF for the nonlinear system <a href="#/extended-kalman-filters" class="quarto-xref">5</a> computes a Gaussian approximation of the filtering distribution <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\approx\mathcal{N}\left(\mathbf{x}_{k}\mid\mathbf{m}_{k},\mathbf{P}_{k}\right),\]</span> based on the UT, following the three-stage process:</em></p>
+<p><span class="theorem-title"><strong>Theorem 4 </strong></span><em>The UKF for the nonlinear system <a href="#/extended-kalman-filters" class="quarto-xref">5</a> computes a Gaussian approximation of the filtering distribution <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\approx\mathcal{N}\left(\mathbf{x}_{k}\mid\mathbf{m}_{k},\mathbf{P}_{k}\right),\]</span> based on the UT, following the three-stage process:</em></p>
 <p><em><strong>Initialization</strong>: Define the prior mean <span class="math inline">\(\mathbf{m}_{0},\)</span> prior covariance <span class="math inline">\(\mathbf{P}_{0}\)</span> and the parameters <span class="math inline">\(\alpha,\)</span> <span class="math inline">\(\beta,\)</span> <span class="math inline">\(\kappa.\)</span></em></p>
 <p><em><strong>Prediction</strong>:</em></p>
 <p><em>Compute the <span class="math inline">\(\sigma\)</span>-points and weights, <span class="math display">\[\begin{aligned}
@@ -1043,7 +1043,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 <section id="section-32" class="slide level2 center">
 <h2></h2>
 <p>These questions are resumed in the following Table:</p>
-<div id="tbl-KFcomp" class="quarto-float">
+<div id="tbl-KFcomp">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-KFcomp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Decision matrix for choice of Kalman filters.
@@ -1120,16 +1120,16 @@ Särkkä, Simo, and Lennart Svensson. 2023. <em>Bayesian Filtering and Smoothing
 </div>
 </div>
 
-<div class="quarto-auto-generated-content">
+
+</section>
+
+
+    <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
 </div>
-</div>
-</section>
-
-
-    </div>
+</div></div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>

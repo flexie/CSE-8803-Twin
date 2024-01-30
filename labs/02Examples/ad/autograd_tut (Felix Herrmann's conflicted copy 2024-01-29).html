@@ -1,150 +1,62 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.528">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.528">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Digital Twins for Physical Systems - Autograd Tutorial</title>
-    <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      div.columns{display: flex; gap: min(4vw, 1.5em);}
-      div.column{flex: auto; overflow-x: auto;}
-      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-      ul.task-list{list-style: none;}
-      ul.task-list li input[type="checkbox"] {
-        width: 0.8em;
-        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-        vertical-align: middle;
-      }
-      /* CSS for syntax highlighting */
-      pre > code.sourceCode { white-space: pre; position: relative; }
-      pre > code.sourceCode > span { line-height: 1.25; }
-      pre > code.sourceCode > span:empty { height: 1.2em; }
-      .sourceCode { overflow: visible; }
-      code.sourceCode > span { color: inherit; text-decoration: inherit; }
-      div.sourceCode { margin: 1em 0; }
-      pre.sourceCode { margin: 0; }
-      @media screen {
-      div.sourceCode { overflow: auto; }
-      }
-      @media print {
-      pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-      }
-      pre.numberSource code
-        { counter-reset: source-line 0; }
-      pre.numberSource code > span
-        { position: relative; left: -4em; counter-increment: source-line; }
-      pre.numberSource code > span > a:first-child::before
-        { content: counter(source-line);
-          position: relative; left: -1em; text-align: right; vertical-align: baseline;
-          border: none; display: inline-block;
-          -webkit-touch-callout: none; -webkit-user-select: none;
-          -khtml-user-select: none; -moz-user-select: none;
-          -ms-user-select: none; user-select: none;
-          padding: 0 4px; width: 4em;
-        }
-      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-      div.sourceCode
-        {   }
-      @media screen {
-      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-      }
-    </style>
+<title>Digital Twins for Physical Systems - Autograd Tutorial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
 
-    <style>
-      body.hypothesis-enabled #quarto-embed-header {
-        padding-right: 36px;
-      }
 
-      #quarto-embed-header {
-        height: 3em;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: solid 1px;
-      }
-
-      #quarto-embed-header h6 {
-        font-size: 1.1em;
-        padding-top: 0.6em;
-        margin-left: 1em;
-        margin-right: 1em;
-        font-weight: 400;
-      }
-
-      #quarto-embed-header a.quarto-back-link,
-      #quarto-embed-header a.quarto-download-embed {
-        font-size: 0.8em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        margin-left: 1em;
-        margin-right: 1em;
-      }
-
-      .quarto-back-container {
-        padding-left: 0.5em;
-        display: flex;
-      }
-
-      .headroom {
-          will-change: transform;
-          transition: transform 200ms linear;
-      }
-
-      .headroom--pinned {
-          transform: translateY(0%);
-      }
-
-      .headroom--unpinned {
-          transform: translateY(-100%);
-      }      
-    </style>
-
-    <script>
-    window.document.addEventListener("DOMContentLoaded", function () {
-
-      var header = window.document.querySelector("#quarto-embed-header");
-      const titleBannerEl = window.document.querySelector("body > #title-block-header");
-      if (titleBannerEl) {
-        titleBannerEl.style.paddingTop = header.clientHeight + "px";
-      }
-      const contentEl = window.document.getElementById('quarto-content');
-      for (const child of contentEl.children) {
-        child.style.paddingTop = header.clientHeight + "px";
-        child.style.marginTop = "1em";
-      }
-
-      // Use the article root if the `back` call doesn't work. This isn't perfect
-      // but should typically work
-      window.quartoBackToArticle = () => {
-        var currentUrl = window.location.href;
-        window.history.back();
-        setTimeout(() => {
-            // if location was not changed in 100 ms, then there is no history back
-            if(currentUrl === window.location.href){              
-                // redirect to site root
-                window.location.href = '/';
-            }
-        }, 100);
-      }
-
-      const headroom = new window.Headroom(header, {
-        tolerance: 5,
-        onPin: function () {
-        },
-        onUnpin: function () {
-        },
-      });
-      headroom.init();
-    });
-    </script>
-
-    
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -160,7 +72,7 @@
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-     <script id="quarto-search-options" type="application/json">{
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -186,19 +98,43 @@
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
-      </head>
+}</script>
 
-  <body class="nav-sidebar docked quarto-notebook">
-    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
-      
-      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link"><i class="bi bi-caret-left"></i> Back to Article</a>
-      <h6><i class="bi bi-journal-code"></i> <code>Autograd</code> tutorial</h6>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-            <a href="../../../labs/02Examples/ad/autograd_tut.ipynb" class="btn btn-primary quarto-download-embed" download="autograd_tut.ipynb">Download Notebook</a>
-          </div>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-     <div id="quarto-search-results"></div>
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
@@ -271,7 +207,11 @@
 </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -282,7 +222,6 @@
   <ul class="collapse">
   <li><a href="#general-idea-for-implementation" id="toc-general-idea-for-implementation" class="nav-link" data-scroll-target="#general-idea-for-implementation">General Idea for Implementation</a></li>
   </ul></li>
-  </ul></li>
   <li><a href="#autograd" id="toc-autograd" class="nav-link" data-scroll-target="#autograd">Autograd</a>
   <ul class="collapse">
   <li><a href="#what-can-autograd-do" id="toc-what-can-autograd-do" class="nav-link" data-scroll-target="#what-can-autograd-do">What can Autograd do?</a></li>
@@ -291,22 +230,27 @@
   <li><a href="#autograd-vs-manual-gradients-via-staged-computation" id="toc-autograd-vs-manual-gradients-via-staged-computation" class="nav-link" data-scroll-target="#autograd-vs-manual-gradients-via-staged-computation">Autograd vs Manual Gradients via Staged Computation</a></li>
   <li><a href="#gradient-functions" id="toc-gradient-functions" class="nav-link" data-scroll-target="#gradient-functions">Gradient Functions</a></li>
   <li><a href="#modularity-implementing-custom-gradients" id="toc-modularity-implementing-custom-gradients" class="nav-link" data-scroll-target="#modularity-implementing-custom-gradients">Modularity: Implementing Custom Gradients</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a></li>
+  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
+  <ul class="collapse">
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a>
+  <ul class="collapse">
   <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  </ul></li>
   <li><a href="#generate-synthetic-data" id="toc-generate-synthetic-data" class="nav-link" data-scroll-target="#generate-synthetic-data">Generate Synthetic Data</a></li>
   <li><a href="#linear-regression-with-a-feature-mapping" id="toc-linear-regression-with-a-feature-mapping" class="nav-link" data-scroll-target="#linear-regression-with-a-feature-mapping">Linear Regression with a Feature Mapping</a></li>
-  <li><a href="#neural-net-regression" id="toc-neural-net-regression" class="nav-link" data-scroll-target="#neural-net-regression">Neural Net Regression</a></li>
+  <li><a href="#neural-net-regression" id="toc-neural-net-regression" class="nav-link" data-scroll-target="#neural-net-regression">Neural Net Regression</a>
+  <ul class="collapse">
   <li><a href="#autograd-implementation-of-stochastic-gradient-descent-with-momentum" id="toc-autograd-implementation-of-stochastic-gradient-descent-with-momentum" class="nav-link" data-scroll-target="#autograd-implementation-of-stochastic-gradient-descent-with-momentum">Autograd Implementation of Stochastic Gradient Descent (with momentum)</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Autograd Tutorial</h1>
 </div>
@@ -322,7 +266,9 @@
   
 
 
-</header>     <div id="cell-0" class="cell markdown">
+</header>
+
+
 <section id="autograd-tutorial" class="level1">
 <h1>Autograd Tutorial</h1>
 <p>References:</p>
@@ -368,9 +314,6 @@
 </ul>
 </section>
 </section>
-</section>
-</div>
-<div id="cell-1" class="cell markdown">
 <section id="autograd" class="level2">
 <h2 class="anchored" data-anchor-id="autograd">Autograd</h2>
 <ul>
@@ -389,17 +332,13 @@
 </ul>
 </section>
 </section>
-</div>
-<div id="cell-2" class="cell markdown">
 <section id="autograd-basic-usage" class="level2">
 <h2 class="anchored" data-anchor-id="autograd-basic-usage">Autograd Basic Usage</h2>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np <span class="co"># Import thinly-wrapped numpy</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd <span class="im">import</span> grad   <span class="co"># Basicallly the only function you need</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-4" class="cell" data-execution_count="3">
+</div>
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function as usual, using Python and Numpy</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tanh(x):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.exp(<span class="op">-</span>x)</span>
@@ -417,8 +356,8 @@
 <pre><code>0.39322386648296376
 0.39322386636453377</code></pre>
 </div>
-</div></div>
-<div id="cell-5" class="cell markdown">
+</div>
+</section>
 <section id="autograd-vs-manual-gradients-via-staged-computation" class="level2">
 <h2 class="anchored" data-anchor-id="autograd-vs-manual-gradients-via-staged-computation">Autograd vs Manual Gradients via Staged Computation</h2>
 <p>In this example, we will see how a complicated computation can be written as a composition of simpler functions, and how this provides a scalable strategy for computing gradients using the chain rule.</p>
@@ -442,9 +381,7 @@ s(c) = \frac{1}{c}.
 <blockquote class="blockquote">
 <p>Given a vector-to-scalar function, <span class="math inline">\(\mathbb{R}^D \to \mathbb{R}\)</span>, composed of a set of primitive functions <span class="math inline">\(\mathbb{R}^M \to \mathbb{R}^N\)</span> (for various <span class="math inline">\(M\)</span>, <span class="math inline">\(N\)</span>), the gradient of the composition is given by the product of the gradients of the primitive functions, according to the chain rule. But the chain rule doesn’t prescribe the order in which to multiply the gradients. From the perspective of computational complexity, the order makes all the difference.</p>
 </blockquote>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-6" class="cell" data-execution_count="4">
+<div id="cell-6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> grad_sigmoid_manual(x):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Implements the gradient of the logistic sigmoid function </span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    $\sigma(x) = 1 / (1 + e^{-x})$ using staged computation</span></span>
@@ -480,8 +417,8 @@ s(c) = \frac{1}{c}.
 <pre><code>0.1049935854035065
 0.1049935854035065</code></pre>
 </div>
-</div></div>
-<div id="cell-7" class="cell markdown">
+</div>
+</section>
 <section id="gradient-functions" class="level2">
 <h2 class="anchored" data-anchor-id="gradient-functions">Gradient Functions</h2>
 <p>There are several functions that compute gradients, which have different signatures</p>
@@ -504,8 +441,6 @@ s(c) = \frac{1}{c}.
 </ul></li>
 </ul>
 </section>
-</div>
-<div id="cell-8" class="cell markdown">
 <section id="modularity-implementing-custom-gradients" class="level2">
 <h2 class="anchored" data-anchor-id="modularity-implementing-custom-gradients">Modularity: Implementing Custom Gradients</h2>
 <p>The implementation of Autograd is simple, readable, and extensible!</p>
@@ -516,9 +451,7 @@ s(c) = \frac{1}{c}.
 <li>When your code depends on <strong>external library calls</strong></li>
 </ol>
 <p>The <code>@primitive</code> decorator wraps a function so that its gradient can be specified manually and its invocation can be recorded.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-9" class="cell" data-execution_count="6">
+<div id="cell-9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy.random <span class="im">as</span> npr</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd <span class="im">import</span> grad</span>
@@ -543,8 +476,8 @@ s(c) = \frac{1}{c}.
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we tell autograd that logsumexmp has a gradient-making function.</span></span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>defvjp(logsumexp, make_grad_logsumexp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-10" class="cell" data-execution_count="7">
+</div>
+<div id="cell-10" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can use logsumexp() inside a larger function that we want to differentiate.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example_func(y):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> y<span class="op">**</span><span class="dv">2</span></span>
@@ -562,8 +495,9 @@ s(c) = \frac{1}{c}.
 <pre><code>Gradient:  [ 0.00445388 -0.06760237 -0.0030408  -0.00398812  0.13980291 -0.65753857
  -0.57149671 -0.0969613  -0.27697817  1.59207253]</code></pre>
 </div>
-</div></div>
-<div id="cell-11" class="cell markdown">
+</div>
+</section>
+</section>
 <section id="examples" class="level1">
 <h1>Examples</h1>
 <p>The next three sections of the notebook show examples of using Autograd in the context of three problems:</p>
@@ -572,14 +506,8 @@ s(c) = \frac{1}{c}.
 <li><strong>Linear regression using a polynomial feature map</strong>, to fit a function of the form <span class="math inline">\(y = w_0 + w_1 x + w_2 x^2 + \dots + w_M x^M\)</span></li>
 <li><strong>Nonlinear regression using a neural network</strong></li>
 </ol>
-</section>
-</div>
-<div id="cell-12" class="cell markdown">
 <section id="linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
-</section>
-</div>
-<div id="cell-13" class="cell markdown">
 <section id="review" class="level3">
 <h3 class="anchored" data-anchor-id="review">Review</h3>
 <p>We are given a set of data points <span class="math inline">\(\{ (x_1, t_1), (x_2, t_2), \dots, (x_N, t_N) \}\)</span>, where each point <span class="math inline">\((x_i, t_i)\)</span> consists of an <em>input value</em> <span class="math inline">\(x_i\)</span> and a <em>target value</em> <span class="math inline">\(t_i\)</span>.</p>
@@ -592,9 +520,7 @@ y_i = wx_i + b
 <p>The <strong>cost function</strong> is the loss averaged over all the training examples: <span class="math display">\[
 \mathcal{E}(w,b) = \frac{1}{N} \sum_{i=1}^N \mathcal{L}(y_i, t_i) = \frac{1}{N} \sum_{i=1}^N \frac{1}{2} \left(wx_i + b - t_i \right)^2
 \]</span></p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-14" class="cell" data-execution_count="8">
+<div id="cell-14" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np <span class="co"># Import wrapped NumPy from Autograd</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy.random <span class="im">as</span> npr <span class="co"># For convenient access to numpy.random</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd <span class="im">import</span> grad <span class="co"># To compute gradients</span></span>
@@ -602,33 +528,30 @@ y_i = wx_i + b
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># For plotting</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div id="cell-15" class="cell markdown">
+</div>
+</section>
+</section>
 <section id="generate-synthetic-data" class="level2">
 <h2 class="anchored" data-anchor-id="generate-synthetic-data">Generate Synthetic Data</h2>
-</section>
-</div>
-<div id="cell-16" class="cell markdown">
 <p>We generate a synthetic dataset <span class="math inline">\(\{ (x_i, t_i) \}\)</span> by first taking the <span class="math inline">\(x_i\)</span> to be linearly spaced in the range <span class="math inline">\([0, 10]\)</span> and generating the corresponding value of <span class="math inline">\(t_i\)</span> using the following equation (where <span class="math inline">\(w = 4\)</span> and <span class="math inline">\(b=10\)</span>): <span class="math display">\[
 t_i = 4 x_i + 10 + \epsilon
 \]</span></p>
 <p>Here, <span class="math inline">\(\epsilon \sim \mathcal{N}(0, 2),\)</span> that is, <span class="math inline">\(\epsilon\)</span> is drawn from a Gaussian distribution with mean 0 and variance 2. This introduces some random fluctuation in the data, to mimic real data that has an underlying regularity, but for which individual observations are corrupted by random noise.</p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-17" class="cell" data-execution_count="9">
+<div id="cell-17" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In our synthetic data, we have w = 4 and b = 10</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># Number of training data points</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, N)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">10</span> <span class="op">+</span> npr.normal(<span class="dv">0</span>, <span class="dv">2</span>, x.shape[<span class="dv">0</span>])</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-18" class="cell" data-execution_count="10">
+</div>
+<div id="cell-18" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize random parameters</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> npr.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> npr.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
@@ -656,27 +579,24 @@ t_i = 4 x_i + 10 + \epsilon
 <div class="cell-output cell-output-stdout">
 <pre><code>{'w': 4.084961144270687, 'b': 9.264915086528749}</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-19" class="cell" data-execution_count="11">
+</div>
+<div id="cell-19" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the training data, together with the line defined by y = wx + b,</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># where w and b are our final learned parameters</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">10</span>], [params[<span class="st">'b'</span>], params[<span class="st">'w'</span>] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> params[<span class="st">'b'</span>]], <span class="st">'b-'</span>)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div id="cell-20" class="cell markdown">
+</div>
+</section>
 <section id="linear-regression-with-a-feature-mapping" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression-with-a-feature-mapping">Linear Regression with a Feature Mapping</h2>
-</section>
-</div>
-<div id="cell-21" class="cell markdown">
 <p>In this example we will fit a polynomial using linear regression with a polynomial feature mapping. The target function is</p>
 <p><span class="math display">\[
 t = x^4 - 10 x^2 + 10 x + \epsilon,
@@ -686,22 +606,21 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 <p>In this case, we have <span class="math inline">\(x \in \mathbb{R}\)</span>, and we define the feature mapping: <span class="math display">\[
 \mathbf{\phi}(x) = \begin{pmatrix}\phi_1(x) \\ \phi_2(x) \\ \phi_3(x) \\ \phi_4(x) \end{pmatrix} = \begin{pmatrix}1\\x\\x^2\\x^3\end{pmatrix}
 \]</span></p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="cell-22" class="cell" data-execution_count="12">
+<div id="cell-22" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># Number of data points</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, N) <span class="co"># Generate N values linearly-spaced between -3 and 3</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> x <span class="op">**</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">10</span> <span class="op">*</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">10</span> <span class="op">*</span> x <span class="op">+</span> npr.normal(<span class="dv">0</span>, <span class="dv">4</span>, x.shape[<span class="dv">0</span>]) <span class="co"># Generate corresponding targets</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>) <span class="co"># Plot data points</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-23" class="cell" data-execution_count="13">
+</div>
+<div id="cell-23" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> <span class="dv">4</span> <span class="co"># Degree of polynomial to fit to the data (this is a hyperparameter)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>feature_matrix <span class="op">=</span> np.array([[item <span class="op">**</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(M<span class="op">+</span><span class="dv">1</span>)] <span class="cf">for</span> item <span class="kw">in</span> x]) <span class="co"># Construct a feature matrix </span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> npr.randn(feature_matrix.shape[<span class="op">-</span><span class="dv">1</span>])</span>
@@ -725,30 +644,26 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 <div class="cell-output cell-output-stdout">
 <pre><code>[  0.0545782   10.42891793 -10.10707337  -0.03126282   1.02186303]</code></pre>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="cell-24" class="cell" data-execution_count="15">
+</div>
+<div id="cell-24" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original training data again, together with the polynomial we fit</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x, np.dot(feature_matrix, W), <span class="st">'b-'</span>)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div id="cell-25" class="cell markdown">
+</div>
+</section>
 <section id="neural-net-regression" class="level2">
 <h2 class="anchored" data-anchor-id="neural-net-regression">Neural Net Regression</h2>
-</section>
-</div>
-<div id="cell-26" class="cell markdown">
 <p>In this example we will implement a (nonlinear) regression model using a neural network.</p>
 <p>To implement and train a neural net using Autograd, you only have to define the forward pass of the network and the loss function you wish to use; you do <em>not</em> need to implement the <em>backward pass</em> of the network. When you take the gradient of the loss function using <code>grad</code>, Autograd automatically computes the backward pass. It essentially executes the backpropagation algorithm implicitly.</p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="cell-27" class="cell" data-execution_count="16">
+<div id="cell-27" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> autograd.numpy <span class="im">as</span> np</span>
@@ -759,8 +674,7 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> autograd.misc.optimizers <span class="im">import</span> sgd</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div id="cell-28" class="cell markdown">
+</div>
 <section id="autograd-implementation-of-stochastic-gradient-descent-with-momentum" class="level3">
 <h3 class="anchored" data-anchor-id="autograd-implementation-of-stochastic-gradient-descent-with-momentum">Autograd Implementation of Stochastic Gradient Descent (with momentum)</h3>
 <pre><code>def sgd(grad, init_params, callback=None, num_iters=200, step_size=0.1, mass=0.9):
@@ -777,22 +691,20 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
         x = x + step_size * velocity
     return unflatten(x)</code></pre>
 <p>The next example shows how to use the <code>sgd</code> function.</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="cell-29" class="cell" data-execution_count="17">
+<div id="cell-29" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> x <span class="op">**</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">20</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">10</span> <span class="op">+</span> npr.normal(<span class="dv">0</span>, <span class="dv">4</span>, x.shape[<span class="dv">0</span>])</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x, t, <span class="st">'r.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="cell-30" class="cell" data-execution_count="23">
+</div>
+<div id="cell-30" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> x.reshape(x.shape[<span class="op">-</span><span class="dv">1</span>],<span class="dv">1</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>W1 <span class="op">=</span> npr.randn(<span class="dv">1</span>,<span class="dv">4</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> npr.randn(<span class="dv">4</span>)</span>
@@ -845,40 +757,45 @@ t = x^4 - 10 x^2 + 10 x + \epsilon,
 8.641052001438881</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="cell-31" class="cell" data-scrolled="true" data-execution_count="19">
+</div>
+<div id="cell-31" class="cell" data-scrolled="true" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A plot of the result of this model using tanh activations</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, final_y, <span class="st">'b-'</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="cell-32" class="cell" data-scrolled="false" data-execution_count="24">
+</div>
+<div id="cell-32" class="cell" data-scrolled="false" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A plot of the result of this model using ReLU activations</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, final_y, <span class="st">'b-'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="">
+<div>
 <figure class="figure">
-<p class=""><img src="autograd_tut_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="autograd_tut_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div></div>
+</div>
 
 
-     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1259,6 +1176,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content --> 
-  
+</script>
+</div> <!-- /content -->
+
+
+
+
 </body></html>
