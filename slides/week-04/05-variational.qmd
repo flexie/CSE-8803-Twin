@@ -503,7 +503,7 @@ The computation of the analyzed state will be described next this
 
 There is of course the inverse of $\mathbf{B}$ or
     $\mathbf{P}^{\mathrm{b}}$ to compute, but we remark that there
-    appear only[ matrix-vector products]{style="color: magenta"} of
+    appear only [matrix-vector products]{style="color: magenta"} of
     $\mathbf{B}^{-1}$ and $\left(\mathbf{P}^{\mathrm{b}}\right)^{-1}$
     and we can thus define operators (or routines) that compute these
     efficiently without the need for large storage capacities.
