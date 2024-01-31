@@ -1,6 +1,6 @@
 ---
-title: "Data Assimilation"
-subtitle: "statistical data assimilation"
+title: "Statistical Data Assimilation"
+subtitle: "Data Assimilation"
 date: "January 31, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
@@ -72,7 +72,7 @@ Suppose we have:
 
 -   and a measured value, $x^{\mathrm{obs}}$ ([observation]{style="color: blue"}).
 
-The simplest possible approach is to try a [linear combination]{style="color: magenta"} of the two, $$x^{\mathrm{a}}=x^{\mathrm{b}}+w(x^{\mathrm{obs}}-x^{\mathrm{b}}),$$ where $x^{\mathrm{a}}$ denotes the [analysis]{style="color: red"}that we seek and $0\le w\le1$ is a [weight]{style="color: magenta"} factor. We subtract the (always unknown) true state $x^{\mathrm{t}}$ from both sides, $$x^{\mathrm{a}}-x^{\mathrm{t}}=x^{\mathrm{b}}-x^{\mathrm{t}}+w(x^{\mathrm{obs}}-x^{\mathrm{t}}-x^{\mathrm{b}}+x^{\mathrm{t}})$$
+The simplest possible approach is to try a [linear combination]{style="color: magenta"} of the two, $$x^{\mathrm{a}}=x^{\mathrm{b}}+w(x^{\mathrm{obs}}-x^{\mathrm{b}}),$$ where $x^{\mathrm{a}}$ denotes the [analysis]{style="color: red"} that we seek and $0\le w\le1$ is a [weight]{style="color: magenta"} factor. We subtract the (always unknown) true state $x^{\mathrm{t}}$ from both sides, $$x^{\mathrm{a}}-x^{\mathrm{t}}=x^{\mathrm{b}}-x^{\mathrm{t}}+w(x^{\mathrm{obs}}-x^{\mathrm{t}}-x^{\mathrm{b}}+x^{\mathrm{t}})$$
 
 ## 
 
@@ -493,7 +493,7 @@ To sum up, here are the important remarks:
 
 3.  **Analysis:** correct the prediction in light of the observations.
 
-Please see the Algorithm @alg-EnKF below for details of each step.
+Please see the Algorithm [-@sec-alg-EnKG] below for details of each step.
 
 :::{.callout-note}
 
@@ -678,7 +678,7 @@ A forecast can be computed from the mean of the[ forecast
 -   This difference should particularly matter in a significantly
         [nonlinear]{style="color: magenta"} regime.
 
--   However, as we shall see in the Advanced Course Lectures, in
+-   However, as we shall see later, in
         strongly nonlinear regimes, the EnKF is largely dominated by
         schemes known as the iterative EnKF and the iterative ensemble
         Kalman smoother
@@ -714,7 +714,7 @@ In [EnKF]{style="color: magenta"}s, the initial system state and its
         uncertainty]{style="color: magenta"} (red square and ellipsoid).
 
 -   A [new forecast ]{style="color: magenta"}is issued from the
-        analyszd state and this procedure is repeated until the end of
+        analyzed state and this procedure is repeated until the end of
         the assimilation window at $t=T_{f}.$
 
 -   The model state should get closer to the truth and with lower
@@ -722,7 +722,7 @@ In [EnKF]{style="color: magenta"}s, the initial system state and its
 
 Time-dependent variational methods
     ([4D-Var]{style="color: magenta"}) iterate over the assimilation
-    window to find the trajectory that minimises the misfit ($J_{0}$)
+    window to find the trajectory that minimizes the misfit ($J_{0}$)
     between the model and all observations available from $t_{0}$ to
     $T_{f}$ (violet curve).
 
@@ -730,13 +730,13 @@ For [linear dynamics, Gaussian errors and infinite ensemble
     sizes]{style="color: magenta"}, the states produced at the end of
     the assimilation window by the two methods should be equivalent [@li2001optimality].
 
-## EnKF --- the Algorithm
+## EnKF --- the Algorithm{#sec-alg-EnKG}
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-::: {.list style="font-size: 75%;"}
+::: {.list style="font-size: 75%;" }
 
 **Given**: For $k=0,\ldots,K,$ observation error cov. matrices
 
@@ -1146,8 +1146,7 @@ Some well-known examples of toy models are:
 
 Machine Learning (ML) is becoming more and more present in our daily
 lives, and in scientific research. The use of ML in DA and Inverse
-modeling will be dealt with in the [Advanced
-Course]{style="color: magenta"}, where we will consider:
+modeling will be dealt with later, where we will consider:
 
 -   ML-based Surrogate Models.
 
@@ -1161,8 +1160,7 @@ Course]{style="color: magenta"}, where we will consider:
 There are many variants, extensions and
     [generalizations]{style="color: magenta"} of the Kalman Filter.
 
-In the [Advanced]{style="color: magenta"} Course, we will study in
-    more detail:
+Later, we will study in more detail:
 
 ensemble Kalman Filters
 
