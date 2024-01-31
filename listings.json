@@ -21,6 +21,7 @@
     "listing": "/weeks/week-02.html",
     "items": [
       "/slides/week-02/02-basics.html",
+      "/labs/w2-lab01.html",
       "/labs/w2-lab01-PyTorch.html"
     ]
   },
@@ -29,6 +30,7 @@
     "items": [
       "/slides/week-04/05-variational.html",
       "/slides/week-04/06-Bayes-Inference.html",
+      "/labs/w4-lab02-Diff-Prog.html",
       "/labs/w4-lab02-3DVar.html"
     ]
   },
@@ -37,6 +39,7 @@
     "items": [
       "/slides/week-05/07-DA-stat.html",
       "/slides/week-05/08-DA-Bayes.html",
+      "/labs/w4-lab02-Diff-Prog.html",
       "/labs/w4-lab02-3DVar.html"
     ]
   },
@@ -45,6 +48,7 @@
     "items": [
       "/slides/week-03/03-adjoint.html",
       "/slides/week-03/04-AD.html",
+      "/labs/w3-lab02.html",
       "/labs/w3-lab02-Diff-Prog.html"
     ]
   }

@@ -221,7 +221,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
   </ul></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" id="toc-plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" class="nav-link" data-scroll-target="#plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem">Plot the ground truth and the observations. Note what you observe. Why might this be a difficult problem?</a></li>
+  <li><a href="#plot-results-and-write-some-conclusions" id="toc-plot-results-and-write-some-conclusions" class="nav-link" data-scroll-target="#plot-results-and-write-some-conclusions">Plot results and write some conclusions</a>
+  <ul class="collapse">
+  <li><a href="#redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them." id="toc-redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them." class="nav-link" data-scroll-target="#redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them.">Redo experiment with less observations (up to t=1 instead of t=2). Note the changes on the results and give an explanation on them.</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -284,41 +288,61 @@ window.Quarto = {
 <div id="9f2ac8cd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> examples <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time_integrators <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Lin3dvar(ub,w,H,R,B,opt):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The solution of the 3DVAR problem in the linear case requires </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the solution of a linear system of equations.</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here we utilize the built-in numpy function to do this.</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Other schemes can be used, instead.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> opt <span class="op">==</span> <span class="dv">1</span>: <span class="co">#model-space approach</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        Bi <span class="op">=</span> np.linalg.inv(B)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        Ri <span class="op">=</span> np.linalg.inv(R)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> Bi <span class="op">+</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>H</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> Bi<span class="op">@</span>ub <span class="op">+</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>w</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        ua <span class="op">=</span> np.linalg.solve(A,b) <span class="co">#solve a linear system </span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> opt <span class="op">==</span> <span class="dv">2</span>: <span class="co">#model-space incremental approach</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        Bi <span class="op">=</span> np.linalg.inv(B)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        Ri <span class="op">=</span> np.linalg.inv(R)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> Bi <span class="op">+</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>H</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>(w<span class="op">-</span>H<span class="op">@</span>ub)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        ua <span class="op">=</span> ub <span class="op">+</span> np.linalg.solve(A,b) <span class="co">#solve a linear system </span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> opt <span class="op">==</span> <span class="dv">3</span>: <span class="co">#observation-space incremental approach</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> R <span class="op">+</span> H<span class="op">@</span>B<span class="op">@</span>(H.T)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> (w<span class="op">-</span>H<span class="op">@</span>ub)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        ua <span class="op">=</span> ub <span class="op">+</span> B<span class="op">@</span>(H.T)<span class="op">@</span>np.linalg.solve(A,b) <span class="co">#solve a linear system</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ua</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#from examples import *</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#from time_integrators import *</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Lorenz63(state,<span class="op">*</span>args): <span class="co">#Lorenz 63 model</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    sigma <span class="op">=</span> args[<span class="dv">0</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    beta <span class="op">=</span> args[<span class="dv">1</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    rho <span class="op">=</span> args[<span class="dv">2</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    x, y, z <span class="op">=</span> state <span class="co">#Unpack the state vector</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> np.zeros(<span class="dv">3</span>) <span class="co">#Derivatives</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    f[<span class="dv">0</span>] <span class="op">=</span> sigma <span class="op">*</span> (y <span class="op">-</span> x)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    f[<span class="dv">1</span>] <span class="op">=</span> x <span class="op">*</span> (rho <span class="op">-</span> z) <span class="op">-</span> y</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    f[<span class="dv">2</span>] <span class="op">=</span> x <span class="op">*</span> y <span class="op">-</span> beta <span class="op">*</span> z</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> RK4(rhs,state,dt,<span class="op">*</span>args):</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    k1 <span class="op">=</span> rhs(state,<span class="op">*</span>args)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    k2 <span class="op">=</span> rhs(state<span class="op">+</span>k1<span class="op">*</span>dt<span class="op">/</span><span class="dv">2</span>,<span class="op">*</span>args)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    k3 <span class="op">=</span> rhs(state<span class="op">+</span>k2<span class="op">*</span>dt<span class="op">/</span><span class="dv">2</span>,<span class="op">*</span>args)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    k4 <span class="op">=</span> rhs(state<span class="op">+</span>k3<span class="op">*</span>dt,<span class="op">*</span>args)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    new_state <span class="op">=</span> state <span class="op">+</span> (dt<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>(k1<span class="op">+</span><span class="dv">2</span><span class="op">*</span>k2<span class="op">+</span><span class="dv">2</span><span class="op">*</span>k3<span class="op">+</span>k4)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_state</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Lin3dvar(ub,w,H,R,B,opt):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The solution of the 3DVAR problem in the linear case requires </span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the solution of a linear system of equations.</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here we utilize the built-in numpy function to do this.</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Other schemes can be used, instead.</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> opt <span class="op">==</span> <span class="dv">1</span>: <span class="co">#model-space approach</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        Bi <span class="op">=</span> np.linalg.inv(B)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        Ri <span class="op">=</span> np.linalg.inv(R)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> Bi <span class="op">+</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>H</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> Bi<span class="op">@</span>ub <span class="op">+</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>w</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        ua <span class="op">=</span> np.linalg.solve(A,b) <span class="co">#solve a linear system </span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> opt <span class="op">==</span> <span class="dv">2</span>: <span class="co">#model-space incremental approach</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        Bi <span class="op">=</span> np.linalg.inv(B)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        Ri <span class="op">=</span> np.linalg.inv(R)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> Bi <span class="op">+</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>H</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> (H.T)<span class="op">@</span>Ri<span class="op">@</span>(w<span class="op">-</span>H<span class="op">@</span>ub)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        ua <span class="op">=</span> ub <span class="op">+</span> np.linalg.solve(A,b) <span class="co">#solve a linear system </span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> opt <span class="op">==</span> <span class="dv">3</span>: <span class="co">#observation-space incremental approach</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> R <span class="op">+</span> H<span class="op">@</span>B<span class="op">@</span>(H.T)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> (w<span class="op">-</span>H<span class="op">@</span>ub)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        ua <span class="op">=</span> ub <span class="op">+</span> B<span class="op">@</span>(H.T)<span class="op">@</span>np.linalg.solve(A,b) <span class="co">#solve a linear system</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ua</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="21b90ee3" class="cell" data-execution_count="5">
+<div id="21b90ee3" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Application: Lorenz 63</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">10.0</span>     </span>
@@ -355,74 +379,79 @@ window.Quarto = {
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (km<span class="op">&lt;</span>nt_m) <span class="kw">and</span> (k<span class="op">+</span><span class="dv">1</span><span class="op">==</span>ind_m[km]):</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        w[:,km] <span class="op">=</span> H<span class="op">@</span>uTrue[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">+</span> np.random.normal(<span class="dv">0</span>,sig_m,[<span class="dv">3</span>,])</span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        km <span class="op">=</span> km<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">########################### Data Assimilation #################################</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>u0b <span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">3.0</span>,<span class="fl">4.0</span>])</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>sig_b<span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> sig_b<span class="op">**</span><span class="dv">2</span><span class="op">*</span>np.eye(<span class="dv">3</span>)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#time integration</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>ub <span class="op">=</span> np.zeros([<span class="dv">3</span>,nt<span class="op">+</span><span class="dv">1</span>])</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>ub[:,<span class="dv">0</span>] <span class="op">=</span> u0b</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>ua <span class="op">=</span> np.zeros([<span class="dv">3</span>,nt<span class="op">+</span><span class="dv">1</span>])</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>ua[:,<span class="dv">0</span>] <span class="op">=</span> u0b</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>km <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(nt):</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    ub[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> RK4(Lorenz63,ub[:,k],dt,sigma,beta,rho)</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    ua[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> RK4(Lorenz63,ua[:,k],dt,sigma,beta,rho)</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (km<span class="op">&lt;</span>nt_m) <span class="kw">and</span> (k<span class="op">+</span><span class="dv">1</span><span class="op">==</span>ind_m[km]):</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        ua[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Lin3dvar(ua[:,k<span class="op">+</span><span class="dv">1</span>],w[:,km],H,R,B,<span class="dv">3</span>)  </span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        km <span class="op">=</span> km<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">############################### Plotting ######################################</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#font = {'family' : 'normal',</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#        'weight' : 'bold',</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#        'size'   : 20}</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#mpl.rc('font', **font)</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">3</span>,ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> ax.flat</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t,uTrue[k,:], label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{True}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t,ub[k,:], <span class="st">':'</span>, label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Background}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t[ind_m],w[k,:], <span class="st">'o'</span>, fillstyle<span class="op">=</span><span class="st">'none'</span>, <span class="op">\</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Observation}</span><span class="vs">'</span>, markersize <span class="op">=</span> <span class="dv">8</span>, markeredgewidth <span class="op">=</span> <span class="dv">2</span>)</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t,ua[k,:], <span class="st">'--'</span>, label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Analysis}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    ax[k].set_xlabel(<span class="vs">r'$t$'</span>,fontsize<span class="op">=</span><span class="dv">22</span>)</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    ax[k].axvspan(<span class="dv">0</span>, tm_m, color<span class="op">=</span><span class="st">'y'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, lw<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend(loc<span class="op">=</span><span class="st">"center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>,<span class="fl">1.25</span>),ncol <span class="op">=</span><span class="dv">4</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="vs">r'$x(t)$'</span>, labelpad<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="vs">r'$y(t)$'</span>, labelpad<span class="op">=-</span><span class="dv">12</span>)</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="vs">r'$z(t)$'</span>)</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('L63_3DVAR.png', dpi = 500, bbox_inches = 'tight')</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="threeDVar_l63_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
-<p>The 3D-Var does a reasonably good job. The forecast is quite accurate up to time <span class="math inline">\(t=10.\)</span></p>
+<section id="plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" class="level2">
+<h2 class="anchored" data-anchor-id="plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem">Plot the ground truth and the observations. Note what you observe. Why might this be a difficult problem?</h2>
+<div id="b629dbd6" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax.plot(t,uTrue[<span class="dv">1</span>,:], label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{True}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ax.plot(t[ind_m],w[<span class="dv">1</span>,:], <span class="st">'o'</span>, fillstyle<span class="op">=</span><span class="st">'none'</span>, <span class="op">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Observation}</span><span class="vs">'</span>, markersize <span class="op">=</span> <span class="dv">8</span>, markeredgewidth <span class="op">=</span> <span class="dv">2</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$t$'</span>,fontsize<span class="op">=</span><span class="dv">22</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ax.axvspan(<span class="dv">0</span>, tm_m, color<span class="op">=</span><span class="st">'y'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, lw<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">"center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>,<span class="fl">1.25</span>),ncol <span class="op">=</span><span class="dv">4</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$x(t)$'</span>, labelpad<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$y(t)$'</span>, labelpad<span class="op">=-</span><span class="dv">12</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$z(t)$'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ea30a664" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">########################### Data Assimilation ################################</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>u0b <span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">3.0</span>,<span class="fl">4.0</span>])</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sig_b<span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> sig_b<span class="op">**</span><span class="dv">2</span><span class="op">*</span>np.eye(<span class="dv">3</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#time integration</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ub <span class="op">=</span> np.zeros([<span class="dv">3</span>,nt<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ub[:,<span class="dv">0</span>] <span class="op">=</span> u0b</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ua <span class="op">=</span> np.zeros([<span class="dv">3</span>,nt<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ua[:,<span class="dv">0</span>] <span class="op">=</span> u0b</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>km <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(nt):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    ub[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> RK4(Lorenz63,ub[:,k],dt,sigma,beta,rho)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    ua[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> RK4(Lorenz63,ua[:,k],dt,sigma,beta,rho)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (km<span class="op">&lt;</span>nt_m) <span class="kw">and</span> (k<span class="op">+</span><span class="dv">1</span><span class="op">==</span>ind_m[km]):</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        ua[:,k<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> Lin3dvar(ua[:,k<span class="op">+</span><span class="dv">1</span>],w[:,km],H,R,B,<span class="dv">3</span>)  </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        km <span class="op">=</span> km<span class="op">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-results-and-write-some-conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="plot-results-and-write-some-conclusions">Plot results and write some conclusions</h2>
+<div id="3f48588e" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">############################### Plotting ######################################</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">3</span>,ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> ax.flat</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t,uTrue[k,:], label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{True}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t,ub[k,:], <span class="st">':'</span>, label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Background}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t[ind_m],w[k,:], <span class="st">'o'</span>, fillstyle<span class="op">=</span><span class="st">'none'</span>, <span class="op">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>               label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Observation}</span><span class="vs">'</span>, markersize <span class="op">=</span> <span class="dv">8</span>, markeredgewidth <span class="op">=</span> <span class="dv">2</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    ax[k].plot(t,ua[k,:], <span class="st">'--'</span>, label<span class="op">=</span><span class="vs">r'\bf</span><span class="sc">{Analysis}</span><span class="vs">'</span>, linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    ax[k].set_xlabel(<span class="vs">r'$t$'</span>,fontsize<span class="op">=</span><span class="dv">22</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    ax[k].axvspan(<span class="dv">0</span>, tm_m, color<span class="op">=</span><span class="st">'y'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, lw<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend(loc<span class="op">=</span><span class="st">"center"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>,<span class="fl">1.25</span>),ncol <span class="op">=</span><span class="dv">4</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="vs">r'$x(t)$'</span>, labelpad<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="vs">r'$y(t)$'</span>, labelpad<span class="op">=-</span><span class="dv">12</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="vs">r'$z(t)$'</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them." class="level3">
+<h3 class="anchored" data-anchor-id="redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them.">Redo experiment with less observations (up to t=1 instead of t=2). Note the changes on the results and give an explanation on them.</h3>
 
 
+</section>
 </section>
 </section>
 
