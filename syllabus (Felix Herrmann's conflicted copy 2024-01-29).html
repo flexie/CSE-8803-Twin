@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.528">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Digital Twins for Physical Systems - Syllabus</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./syllabus.html">Syllabus</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://flexie.github.io/CSE-8803-Twin/" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Goals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-learning-objectives" id="toc-course-learning-objectives" class="nav-link active" data-scroll-target="#course-learning-objectives">Course Learning Objectives</a></li>
+  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
+  <li><a href="#journal-papers" id="toc-journal-papers" class="nav-link" data-scroll-target="#journal-papers">Journal Papers</a></li>
+  <li><a href="#lectures-computational-labs" id="toc-lectures-computational-labs" class="nav-link" data-scroll-target="#lectures-computational-labs">Lectures &amp; computational labs</a></li>
+  <li><a href="#course-community" id="toc-course-community" class="nav-link" data-scroll-target="#course-community">Course community</a>
+  <ul class="collapse">
+  <li><a href="#inclusive-community" id="toc-inclusive-community" class="nav-link" data-scroll-target="#inclusive-community">Inclusive community</a></li>
+  <li><a href="#discrimination-harassment-and-sexual-misconduct" id="toc-discrimination-harassment-and-sexual-misconduct" class="nav-link" data-scroll-target="#discrimination-harassment-and-sexual-misconduct">Discrimination, Harassment, and Sexual Misconduct</a></li>
+  <li><a href="#accessibility" id="toc-accessibility" class="nav-link" data-scroll-target="#accessibility">Accessibility</a></li>
+  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
+  </ul></li>
+  <li><a href="#activities-assessment" id="toc-activities-assessment" class="nav-link" data-scroll-target="#activities-assessment">Activities &amp; Assessment</a>
+  <ul class="collapse">
+  <li><a href="#computational-labs" id="toc-computational-labs" class="nav-link" data-scroll-target="#computational-labs">Computational labs</a></li>
+  <li><a href="#exams" id="toc-exams" class="nav-link" data-scroll-target="#exams">Exams</a></li>
+  <li><a href="#final-project" id="toc-final-project" class="nav-link" data-scroll-target="#final-project">Final Project</a></li>
+  </ul></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#important-dates" id="toc-important-dates" class="nav-link" data-scroll-target="#important-dates">Important dates</a></li>
+  <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course policies</a>
+  <ul class="collapse">
+  <li><a href="#academic-honesty" id="toc-academic-honesty" class="nav-link" data-scroll-target="#academic-honesty">Academic honesty</a></li>
+  <li><a href="#guidance-on-the-use-of-generative-ai" id="toc-guidance-on-the-use-of-generative-ai" class="nav-link" data-scroll-target="#guidance-on-the-use-of-generative-ai">Guidance on the use of Generative AI</a></li>
+  <li><a href="#late-work-extensions" id="toc-late-work-extensions" class="nav-link" data-scroll-target="#late-work-extensions">Late work &amp; extensions</a></li>
+  <li><a href="#campus-resources-for-students" id="toc-campus-resources-for-students" class="nav-link" data-scroll-target="#campus-resources-for-students">Campus Resources for Students</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Syllabus</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Spring 2024 syllabus: Digital Twins for Physical Systems — 33655 - CSE 8803 - DTP</strong></p>
+<hr>
+<p><strong>Syllabus updates</strong>:This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.</p>
+<section id="course-learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="course-learning-objectives">Course Learning Objectives</h2>
+<p>By the end of the semester, you will be made familiar with …</p>
+<ul>
+<li>the concept of Digital Twins and how they interact with their environment</li>
+<li>Statistical Inverse Problems and Bayesian Inference</li>
+<li>techniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]</li>
+</ul>
+<p>For more on the Course outline, Topics, and Learning goals, see <a href="./goals.html">Goals</a>.</p>
+<p>For a motivational article see <a href="https://slim.gatech.edu/Publications/Public/Journals/TheLeadingEdge/2023/herrmann2023dte/PresidentsPage.pdf">Digital Twins in the era of generative AI</a></p>
+</section>
+<section id="textbooks" class="level2">
+<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&amp;context=L&amp;vid=01GALI_GIT:GT&amp;vid=01GALI_GIT&amp;docid=alma9914381076402947&amp;tab=default_tab&amp;lang=en">Data assimilation: methods, algorithms, and applications</a></td>
+<td><span class="citation" data-cites="asch2016data">Asch, Bocquet, and Nodet (<a href="#ref-asch2016data" role="doc-biblioref">2016</a>)</span>, Mark</td>
+<td>SIAM, 2016</td>
+</tr>
+<tr class="even">
+<td><a href="https://epubs.siam.org/doi/book/10.1137/1.9781611976977">A toolbox for digital twins: from model-based to data-driven</a></td>
+<td><span class="citation" data-cites="asch2022toolbox">Asch (<a href="#ref-asch2022toolbox" role="doc-biblioref">2022</a>)</span>, Mark</td>
+<td>SIAM, 2022</td>
+</tr>
+</tbody>
+</table>
+<!-- | [A toolbox for digital twins: from model-based to data-driven](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 | -->
+<p><strong>These electronic books are only available when online at Georgia Tech!</strong></p>
+</section>
+<section id="journal-papers" class="level2">
+<h2 class="anchored" data-anchor-id="journal-papers">Journal Papers</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="https://openintro-ims.netlify.app/">A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies</a></td>
+<td><span class="citation" data-cites="thelen2022comprehensivea">Thelen et al. (<a href="#ref-thelen2022comprehensivea" role="doc-biblioref">2022</a>)</span></td>
+<td>Springer, 2022</td>
+</tr>
+<tr class="even">
+<td><a href="https://link.springer.com/article/10.1007/00158-022-03410-x">A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives</a></td>
+<td><span class="citation" data-cites="thelen2023comprehensiveb">Thelen et al. (<a href="#ref-thelen2023comprehensiveb" role="doc-biblioref">2023</a>)</span></td>
+<td>Springer, 2022</td>
+</tr>
+<tr class="odd">
+<td><a href="https://arxiv.org/abs/2201.08180">Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial</a></td>
+<td><span class="citation" data-cites="tatsis2022sequential">Tatsis, Dertimanis, and Chatzi (<a href="#ref-tatsis2022sequential" role="doc-biblioref">2022</a>)</span></td>
+<td>Arxiv, 2022</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lectures-computational-labs" class="level2">
+<h2 class="anchored" data-anchor-id="lectures-computational-labs">Lectures &amp; computational labs</h2>
+<p>In part the course is an adaptation of open-source Basic and Advanced courses (<a href="https://github.com/markasch/CSU-IMU-2023">CSU-IMU-2023</a>) developed by <a href="https://markasch.github.io/DT-tbx-v1/">Mark Asch</a>. <a href="https://markasch.github.io/DT-tbx-v1/codes/">Codes</a> will be drawn from the course and from the book. During the second half of the course, we will draw from the current literature.</p>
+</section>
+<section id="course-community" class="level2">
+<h2 class="anchored" data-anchor-id="course-community">Course community</h2>
+<section id="inclusive-community" class="level3">
+<h3 class="anchored" data-anchor-id="inclusive-community">Inclusive community</h3>
+<p>It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with <a href="https://catalog.gatech.edu/policies/diversity/">Georgia Tech’s Commitment to Diversity and Inclusion</a>. Your suggestions are encouraged and appreciated.</p>
+</section>
+<section id="discrimination-harassment-and-sexual-misconduct" class="level3">
+<h3 class="anchored" data-anchor-id="discrimination-harassment-and-sexual-misconduct">Discrimination, Harassment, and Sexual Misconduct</h3>
+<p>To maintain a safe learning environment that fosters the dignity, respect, and success of students, faculty, and staff, Tech prohibits discriminatory harassment, which is unwelcome verbal, nonverbal, or physical conduct directed at any person or group based upon race, color, religion, sex, national origin, age, disability, sexual orientation, gender identity, or veteran status that has the purpose or effect of creating an objectively hostile working or academic environment.</p>
+</section>
+<section id="accessibility" class="level3">
+<h3 class="anchored" data-anchor-id="accessibility">Accessibility</h3>
+<p>If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.</p>
+<p><a href="https://disabilityservices.gatech.edu/about/accommodations">Disability Services</a> are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.</p>
+</section>
+<section id="communication" class="level3">
+<h3 class="anchored" data-anchor-id="communication">Communication</h3>
+<p>All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website.</p>
+<p>Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.</p>
+</section>
+</section>
+<section id="activities-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="activities-assessment">Activities &amp; Assessment</h2>
+<section id="computational-labs" class="level3">
+<h3 class="anchored" data-anchor-id="computational-labs">Computational labs</h3>
+<p>In labs, you will apply the concepts discussed during lectures, with a focus on the computation.</p>
+</section>
+<section id="exams" class="level3">
+<h3 class="anchored" data-anchor-id="exams">Exams</h3>
+<p>There will be no exams.</p>
+</section>
+<section id="final-project" class="level3">
+<h3 class="anchored" data-anchor-id="final-project">Final Project</h3>
+<p>The purpose of the <a href="./project.html">Final Project</a> is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.</p>
+</section>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<p>The final course grade will be calculated as follows:</p>
+<center>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Comp. Lab assignments</td>
+<td>30%</td>
+</tr>
+<tr class="even">
+<td>Presentation Journal Paper</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td>Final Project &amp; Presentation</td>
+<td>50%</td>
+</tr>
+</tbody>
+</table>
+</center></section>
+<section id="important-dates" class="level2">
+<h2 class="anchored" data-anchor-id="important-dates">Important dates</h2>
+<ul>
+<li><p><strong>Jan 4:</strong> Phase II Registration</p></li>
+<li><p><strong>Jan 8:</strong> Classes begin</p></li>
+<li><p><strong>Jan 12:</strong> Deadline for Registration/Schedule Changes</p></li>
+<li><p><strong>March 13</strong>: Last day to withdraw</p></li>
+<li><p><strong>March 18-22:</strong> Spring break</p></li>
+<li><p><strong>April 24:</strong> Final Instructional Class</p></li>
+</ul>
+</section>
+<section id="course-policies" class="level2">
+<h2 class="anchored" data-anchor-id="course-policies">Course policies</h2>
+<section id="academic-honesty" class="level3">
+<h3 class="anchored" data-anchor-id="academic-honesty">Academic honesty</h3>
+<p>Please abide by the following as you work on assignments in this course:</p>
+<ul>
+<li>You may discuss individual lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.</li>
+<li><strong>Reusing code</strong>: Unless explicitly stated otherwise, you may make use of online resources (e.g.&nbsp;StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.</li>
+</ul>
+</section>
+<section id="guidance-on-the-use-of-generative-ai" class="level3">
+<h3 class="anchored" data-anchor-id="guidance-on-the-use-of-generative-ai">Guidance on the use of Generative AI</h3>
+<p>AI-based assistance, such as ChatGPT and Copilot, can be used in the same way as collaboration with other people for the following activities: For lab assignments in understanding the lecture and textbook materials, and in developing your ideals for the project proposals. In these activities you are welcome to talk about your ideas and work with other people, both inside and outside the class, as well as with AI- based assistants. In the course, we will discuss how you can use these tools as a study tool, or as an assistant in helping to draft code or summaries.</p>
+<section id="generating-research-ideas-or-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="generating-research-ideas-or-approaches">Generating Research Ideas or Approaches:</h4>
+<ul>
+<li><p>Brainstorming: You can use the AI tool as a brainstorming partner, where you exchange ideas whether the AI prompts you or you prompt the AI for ideas. Brainstorming is an iterative process that can be made more effective with the way that the queries are posted. For more samples or information, post this query: “How can I use AI to help me to brainstorm an idea?”</p></li>
+<li><p>Surveying Existing Approaches: Large Language Models, if trained broadly in a topic, can give a good initial overview of existing approaches or existing literature on a topic. Current research sources such as library or professional society databases are more reliable in terms of accuracy of peer-reviewed content.</p></li>
+<li><p>Prompt engineering is important: Practice the prompts used for Generative AI. The value of the response depends on the value of the prompt. If you provide a low quality or vague prompt, you will get vague results. Varying skill levels among users might exacerbate existing inequalities among students. For example, students for whom English is the second language might be at a disadvantage.</p></li>
+</ul>
+</section>
+<section id="advice-on-usage" class="level4">
+<h4 class="anchored" data-anchor-id="advice-on-usage">Advice on Usage:</h4>
+<ul>
+<li><p>Be very skeptical of the results. Do not trust any outputs that you cannot evaluate yourself or trace back to original credible sources. There are many stories of generative AI giving citations of articles that do not exist (see the article in the Chronicles of Higher Education referenced below).</p></li>
+<li><p>Be scientific with your prompts (or queries): Prompting is not deterministic, so the same prompt at a different time may result in a different response. Small changes in the wording of the prompt may yield very different responses. Keep records, make small changes and see how it affects the outcome, etc.</p></li>
+<li><p>Don’t share any data or information that is confidential, proprietary, or have IP implications. Your uploaded data or ideas might be incorporated into the learning model to be available for others in your research area, prior to you having a chance to publish it. If you intend to pursue commercialization or other Intellectual Property avenues for your work, putting the information into an open AI platform may be considered as disclosure.</p></li>
+</ul>
+</section>
+</section>
+<section id="late-work-extensions" class="level3">
+<h3 class="anchored" data-anchor-id="late-work-extensions">Late work &amp; extensions</h3>
+<p>The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest lab assignments will be dropped to accommodate such circumstances.</p>
+</section>
+<section id="campus-resources-for-students" class="level3">
+<h3 class="anchored" data-anchor-id="campus-resources-for-students">Campus Resources for Students</h3>
+<p>Links to Campus Resources for Students — e.g.&nbsp;Center for Academic Success, Communication Center, Office of Disability Services, OMED, Division of Student Life, etc. available at: <a href="https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf" class="uri">https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf</a></p>
+<section id="quick-guide-on-student-mental-health-and-wellness-resources" class="level4">
+<h4 class="anchored" data-anchor-id="quick-guide-on-student-mental-health-and-wellness-resources">Quick Guide on Student Mental Health and Wellness Resources:</h4>
+<p>The <a href="https://mentalhealth.gatech.edu">Center for Mental Health Care &amp; Resources</a> is here to offer confidential support and services to students in need of mental health care. During regular business hours, students who are not actively in counseling <strong>may call 404-894-2575 or walk-in to the office , 353 Ferst DR NW Atlanta GA 30313</strong> (Flag building next to the Student Center). Any time outside of business hours, students may call <strong>404-894-2575</strong> and select the option to speak to the after-hours counselor.</p>
+</section>
+<section id="additional-on-campus-options" class="level4">
+<h4 class="anchored" data-anchor-id="additional-on-campus-options">Additional On Campus Options</h4>
+<p>Students who are experiencing an immediate life-threatening emergency on campus, can call the Georgia Tech Campus Police at <strong>404-894-2500</strong></p>
+</section>
+<section id="local-and-national-crisis-resources-available-247" class="level4">
+<h4 class="anchored" data-anchor-id="local-and-national-crisis-resources-available-247">Local and National crisis resources available 24/7:</h4>
+<ul>
+<li>Crisis Text Line: Text HOME to 741741 <a href="https://www.crisistextline.org/" class="uri">https://www.crisistextline.org/</a></li>
+<li>Georgia Crisis &amp; Access Line: Call 1-800-715-4225</li>
+<li>National Suicide Prevention Lifeline: Call 988 or 1-800-273-8255, or access text chat here <a href="https://suicidepreventionlifeline.org/chat/" class="uri">https://suicidepreventionlifeline.org/chat/</a></li>
+</ul>
+</section>
+<section id="additional-services-offered-by-satellite-counselors-walk-in-consultation-hours" class="level4">
+<h4 class="anchored" data-anchor-id="additional-services-offered-by-satellite-counselors-walk-in-consultation-hours">Additional services offered by Satellite counselors’ (walk-in consultation hours):</h4>
+<p>Each Satellite counselor provides weekly consultation appointments at varying times based on their schedules (see highlighted section below for my Fall ’23 hours). Anyone can access a Satellite counselor during these times, to set up a consultation email is preferable, once a message is received the Satellite counselor will reply with available dates/times and a link. Some Satellite counselors will accommodate in-person walk-ins at these times as well.</p>
+<section id="what-it-is" class="level5">
+<h5 class="anchored" data-anchor-id="what-it-is">What it is</h5>
+<ul>
+<li>Consulting about a brief, non-emergency concern during the counselor’s posted walk-in consultation hours (similar to Let’s Talk). Consultations are approximately 15 minutes.</li>
+<li>Providing information to students about mental health resources on campus and how to get connected</li>
+<li>Consulting with faculty/staff about a student of concern</li>
+</ul>
+</section>
+<section id="what-it-isnt" class="level5">
+<h5 class="anchored" data-anchor-id="what-it-isnt">What it isn’t</h5>
+<ul>
+<li>Not for a walk-in counseling appointment or initial assessment</li>
+<li>Not for students who are seeking support in their counselor’s absence. Students who need additional/urgent support when their counselor is unavailable should visit the Center for Mental Health Care &amp; Resources</li>
+<li>Not for crisis</li>
+<li>Not for case management</li>
+</ul>
+<p>Tara Holdampf, MS, LPC, (she/her), Satellite Counselor’s Consultation Hours for the College of Sciences: Please email <a href="mailto:tara.holdampf@studentlife.gatech.edu">tara.holdampf@studentlife.gatech.edu</a> for an appointment, or stop by my Office Location: MoSE 1120B. Monday-Friday 3:00 PM - 4:00 PM</p>
+</section>
+<section id="other-useful-web-pages-to-explore" class="level5">
+<h5 class="anchored" data-anchor-id="other-useful-web-pages-to-explore">Other useful web pages to explore:</h5>
+<p>GT Wellness Hub: <a href="https://gtwellnesshub.com" class="uri">https://gtwellnesshub.com</a> (self-paced online resources for students)</p>
+<ul>
+<li>Free Headspace (for Students Only): <a href="https://gtwellnesshub.com/personal-guide-to-health-%20happiness/">https://gtwellnesshub.com/personal-guide-to-health- happiness/</a></li>
+<li>Togetherall (for Students Only): <a href="https://gtwellnesshub.com/one-on-one-personal-assistance/" class="uri">https://gtwellnesshub.com/one-on-one-personal-assistance/</a></li>
+<li>Silver cloud (for Students Only): <a href="https://gtwellnesshub.com/helpful-resources-right-at-your-%20fingertips/">https://gtwellnesshub.com/helpful-resources-right-at-your- fingertips/</a></li>
+</ul>
+<p><strong>Division of Student Engagement and Wellbeing:</strong> <a href="https://students.gatech.edu/" class="uri">https://students.gatech.edu/</a><br>
+<strong>Health, Wellness &amp; Recreation:</strong> <a href="https://students.gatech.edu/health-wellness-recreation" class="uri">https://students.gatech.edu/health-wellness-recreation</a><br>
+<strong>Tech Ends Suicide:</strong> <a href="https://mentalhealth.gatech.edu/end-suicide-initiative" class="uri">https://mentalhealth.gatech.edu/end-suicide-initiative</a><br>
+<strong>Mental Health Services:</strong> <a href="https://mentalhealth.gatech.edu/about/services" class="uri">https://mentalhealth.gatech.edu/about/services</a></p>
+
+
+
+</section>
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
+Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
+</div>
+<div id="ref-asch2016data" class="csl-entry" role="listitem">
+Asch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. <em>Data Assimilation: Methods, Algorithms, and Applications</em>. SIAM.
+</div>
+<div id="ref-tatsis2022sequential" class="csl-entry" role="listitem">
+Tatsis, Konstantinos E, Vasilis K Dertimanis, and Eleni N Chatzi. 2022. <span>“Sequential Bayesian Inference for Uncertain Nonlinear Dynamic Systems: A Tutorial.”</span> <em>arXiv Preprint arXiv:2201.08180</em>.
+</div>
+<div id="ref-thelen2022comprehensivea" class="csl-entry" role="listitem">
+Thelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michael D Todd, Sankaran Mahadevan, Chao Hu, and Zhen Hu. 2022. <span>“A Comprehensive Review of Digital Twin—Part 1: Modeling and Twinning Enabling Technologies.”</span> <em>Structural and Multidisciplinary Optimization</em> 65 (12): 354.
+</div>
+<div id="ref-thelen2023comprehensiveb" class="csl-entry" role="listitem">
+———. 2023. <span>“A Comprehensive Review of Digital Twin—Part 2: Roles of Uncertainty Quantification and Optimization, a Battery Digital Twin, and Perspectives.”</span> <em>Structural and Multidisciplinary Optimization</em> 66 (1): 1.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
