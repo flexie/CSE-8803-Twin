@@ -374,6 +374,49 @@
 
 </div>
 </section>
+<section id="uncertainty-quantification" class="slide level2 smaller center">
+<h2>Uncertainty Quantification</h2>
+<p><strong>Definition 11.1 (UQ).</strong> <em>UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).</em></p>
+<p><strong>Definition 11.2 (QoI).</strong> <em>In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.</em></p>
+<p>We can decompose UQ into a number of subtasks:</p>
+<ol type="1">
+<li>Quantify uncertainties in model inputs by specifying probability distributions.</li>
+<li>Propagate input uncertainties through the model and quantify effects on the QoI.</li>
+<li>Quantify variability in the true physical QoI</li>
+<li>Aggregate uncertainties arising from different sources to appraise overall uncertainty (input, model, numerical errors, inherent variability)</li>
+<li>Compute sensitivities of output variables with respect to input variables (forward UQ)</li>
+</ol>
+</section>
+<section id="account-for-uncertainty" class="slide level2 smaller center">
+<h2>Account for uncertainty</h2>
+<ol type="1">
+<li>Solve the deterministic model, with random perturbations of parameters/initial conditions/forcing;</li>
+<li>Formulate and solve an inverse problem to seek the model parameters that minimize the difference between measurements and simulated observations. This can be achieved by variational and by statistical approaches;</li>
+<li>Starting from some prior knowledge (probabilities), use Bayesian analysis to compute a posterior distribution;</li>
+</ol>
+<p>For UQ, we seek not just point estimates of the optimal, best-fit parameters but a complete statistical description of all parameter values that are consistent with the data;</p>
+<p>The Bayesian approach does this by</p>
+<ul>
+<li>reformulating the inverse problem as a problem in statistical inference,</li>
+<li>incorporating uncertainties in the measurements, the forward model, and any prior information about the parameters.</li>
+</ul>
+</section>
+<section id="section" class="slide level2 smaller center">
+<h2></h2>
+<p>The solution of this inverse problem is the set of so-called posterior probability densities of the parameters, describing updated uncertainty in the model parameters.</p>
+<p>Resulting uncertainty in the model parameters can be quantified, taking into account uncertainties</p>
+<ul>
+<li>in the data</li>
+<li>in the model,</li>
+<li>and prior information.</li>
+</ul>
+<p>A major challenge is uncertainty quantification for the large-scale design and inverse problems that underlie digital twins.</p>
+<p>In fact Bayes’ Law provides not only the solution to an inverse problem,</p>
+<ul>
+<li>but also a complete quantification of the solution’s uncertainty.</li>
+<li>however, this can have a high computational cost because it most often relies on some kind of Monte Carlo simulation.</li>
+</ul>
+</section>
 <section id="bayesian-approach" class="slide level2 smaller center">
 <h2>Bayesian approach</h2>
 <p>Bayesian analysis provides approach for models to learn from data</p>
@@ -389,8 +432,26 @@
 <li>Tests of hypotheses.</li>
 <li>Decision making.</li>
 </ul>
+<!-- ## Estimation problems {.smaller .hidden}
+
+Given data, $\mathcal{D}$, we want to do three things:
+
+1. Estimate the parameters $\theta$ of a model $\mathcal{M}$, not as point or optimal values, but inferring
+their probability distribution. This is known as *parameter estimation.*
+
+2. Select the best model by comparing different parametrizations using the model posterior distribution. This is known as *model selection*.
+   
+3. Predict from the chosen model the data for some new input values. This is known as *posterior prediction*.
+
+Bayesian parameter estimation  is a universal approach to fitting models to data
+
+- define a generative model for the data, a likelihood function, 
+ 
+- and a prior distribution over the parameters. 
+
+- the posterior rarely has closed form, so we characterize it by sampling, from which we can find the best model parameters together with their uncertainties. -->
 </section>
-<section id="bayesian-inference" class="slide level2 center">
+<section id="bayesian-inference" class="slide level2 smaller center">
 <h2>Bayesian Inference</h2>
 <p>In the most general case, where we want to perform <span style="color: magenta">Bayesian inference</span> for the <span style="color: magenta">estimation of parameters</span> (an inverse problem!), we simply replace the probabilities by the corresponding <span style="color: magenta">density functions</span>.</p>
 <p>Then Bayesian inference is performed in <span style="color: magenta">three steps</span>:</p>
@@ -401,7 +462,7 @@
 </ol>
 <p>Let us look more closely at the three components of Bayes’ Law.</p>
 </section>
-<section id="section" class="slide level2 center">
+<section id="section-1" class="slide level2 center">
 <h2></h2>
 <div id="def-prior" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1</strong></span> <strong>Prior Distribution</strong>. For a given statistical model that depends on a parameter <span class="math inline">\(\theta,\)</span> considered as random, the distribution assigned to <span class="math inline">\(\theta\)</span> before observing the other random variables of interest is called the <span style="color: magenta"><em>prior distribution</em></span>. This is just the marginal distribution of the parameter.</p>
@@ -413,20 +474,20 @@
 <p><span class="theorem-title"><strong>Definition 3</strong></span> <strong>Likelihood Function</strong>. Suppose that <span class="math inline">\(X_{1},X_{2},\ldots,X_{n}\)</span> have a joint density <span class="math display">\[f(X_{1},X_{2},\ldots,X_{n}\mid\theta).\]</span> Given observations <span class="math inline">\(X_{1}=x_{1},\)</span> <span class="math inline">\(X_{2}=x_{2},\)</span> <span class="math inline">\(\ldots,\)</span> <span class="math inline">\(X_{n}=x_{n},\)</span> the <span style="color: magenta">likelihood function</span> of <span class="math inline">\(\theta\)</span> is <span class="math display">\[L(\theta)=L(\theta\mid x_{1},x_{2},\ldots,x_{n})=f(x_{1},x_{2},\ldots,x_{n}\mid\theta).\]</span></p>
 </div>
 </section>
-<section id="section-1" class="slide level2 center">
+<section id="section-2" class="slide level2 center">
 <h2></h2>
 <p>If the <span class="math inline">\(X_{i}\)</span> are i.i.d. with density <span class="math inline">\(f(X_{i}\mid\theta),\)</span> then the joint density is a product and <span class="math display">\[L(\theta\mid x_{1},x_{2},\ldots,x_{n})=\prod_{i=1}^{n}f(x_{i}\mid\theta).\]</span></p>
 <p>We point out the following <span style="color: magenta">properties of the likelihood</span>:</p>
 <ul>
 <li><p>The likelihood is <span style="color: magenta">not</span> a probability density function and can take values outside the interval <span class="math inline">\([0,1].\)</span></p></li>
 <li><p>Likelihood is an important concept in both frequentist and Bayesian statistics.</p></li>
-<li><p>Likelihood is a measure of the extent to which a sample provides <span style="color: magenta">support</span> for particular values of a parameter in a parametric modelthis will be very important when we will deal with parameter estimation, and <span style="color: magenta">inverse problems</span> in general.</p></li>
+<li><p>Likelihood is a measure of the extent to which a sample provides <span style="color: magenta">support</span> for particular values of a parameter in a parametric model. This will be very important when we will deal with parameter estimation, and <span style="color: magenta">inverse problems</span> in general.</p></li>
 <li><p>The likelihood measures the support (<span style="color: magenta">evidence</span>) provided by the data for each possible value of the parameter. This means that if we compute the likelihood function at two points, <span class="math inline">\(\theta=\theta_{1},\)</span> <span class="math inline">\(\theta=\theta_{2},\)</span> and find that <span class="math inline">\(L(\theta_{1}\mid x)&gt;L(\theta_{2}\mid x)\)</span>, then the sample observed is more likely to have occurred if <span class="math inline">\(\theta=\theta_{1}.\)</span> We say that <span class="math inline">\(\theta_{1}\)</span> is a more plausible value for <span class="math inline">\(\theta\)</span> than <span class="math inline">\(\theta_{2}.\)</span></p></li>
 </ul>
 </section>
-<section id="section-2" class="slide level2 center">
+<section id="section-3" class="slide level2 center">
 <h2></h2>
-<p>For i.i.d. random variables, the<span style="color: magenta">log-likelihood</span> is usually used, since it reduces the product to a sum.</p>
+<p>For i.i.d. random variables, the <span style="color: magenta">log-likelihood</span> is usually used, since it reduces the product to a sum.</p>
 <p>We now formulate the general version of <strong>Bayes’ Theorem</strong>.</p>
 <div id="th-Bayes">
 <p><em>Suppose that <span class="math inline">\(n\)</span> random variables, <span class="math inline">\(X_{1},\ldots,X_{n},\)</span> form a random sample from a distribution with density, or probability function in the case of a discrete distribution, <span class="math inline">\(f(x\mid\theta).\)</span> Suppose also that the unknown parameter, <span class="math inline">\(\theta,\)</span> has a prior pdf <span class="math inline">\(f(\theta).\)</span> Then the posterior pdf of <span class="math inline">\(\theta\)</span> is <span class="math display">\[f(\theta\mid x)=\frac{f(x_{1}\mid\theta)\cdots f(x_{n}\mid\theta)f(\theta)}{f_{n}(x)},\label{eq:bayes}\]</span> where <span class="math inline">\(f_{n}(x)\)</span> is the marginal joint pdf of <span class="math inline">\(X_{1},\ldots,X_{n}.\)</span></em></p>
@@ -437,11 +498,11 @@
 <li><p>the <span style="color: magenta"><em>posterior</em></span>, <span class="math inline">\(f(\theta\mid x),\)</span> is the credibility of the parameters with the data taken into account;</p></li>
 </ul>
 </section>
-<section id="section-3" class="slide level2 center">
+<section id="section-4" class="slide level2 center">
 <h2></h2>
 <ul>
-<li><p><span class="math inline">\(f(x\mid\theta),\)</span> considered as a function of <span class="math inline">\(\theta,\)</span> is the <span style="color: magenta"><em>likelihood</em></span><span style="color: magenta"></span>function, which is the probability that the data/observation could be generated by the model with a given value of the parameter;</p></li>
-<li><p>the denominator, called the <span style="color: magenta"><em>evidence</em></span>, <span class="math inline">\(f_{n}(x),\)</span> is the<span style="color: magenta">total probability</span> of the data taken over all the possible parameter values, also called the <em>marginal likelihood</em>, or the marginal, and can be considered as a normalization factor;</p></li>
+<li><p><span class="math inline">\(f(x\mid\theta),\)</span> considered as a function of <span class="math inline">\(\theta\)</span>, is the <span style="color: magenta"><em>likelihood</em></span><span style="color: magenta"></span> function, which is the probability that the data/observation could be generated by the model with a given value of the parameter;</p></li>
+<li><p>the denominator, called the<span style="color: magenta"><em>evidence</em></span>, <span class="math inline">\(f_{n}(x),\)</span> is the <span style="color: magenta">total probability</span> of the data taken over all the possible parameter values, also called the <em>marginal likelihood</em>, or the marginal, and can be considered as a normalization factor;</p></li>
 <li><p>the posterior distribution is thus proportional to the product of the likelihood and the prior distribution, or, in applied terms, <span class="math display">\[f(\mathrm{parameter}\mid\mathrm{data})\propto f(\mathrm{data}\mid\mathrm{parameter})\,f(\mathrm{parameter}).\]</span></p></li>
 </ul>
 <p>What can one do with the posterior distribution thus obtained? The answer is a lot of things, in fact a <span style="color: red">complete quantification of the incertitude</span> of the parameter’s estimation is possible. We can compute:</p>
@@ -449,10 +510,10 @@
 <li><span style="color: magenta">Point estimates</span> by summarizing the center of the posterior. Typically, these are the posterior mean or the posterior mode.</li>
 </ul>
 </section>
-<section id="section-4" class="slide level2 center">
+<section id="section-5" class="slide level2 center">
 <h2></h2>
 <ul>
-<li><p><span style="color: magenta">Interval estimates</span> for a given level <span class="math inline">\(\alpha\)</span> see below.</p></li>
+<li><p><span style="color: magenta">Interval estimates</span> for a given level <span class="math inline">\(\alpha\)</span>.</p></li>
 <li><p>Estimates of the <span style="color: magenta">probability of an event</span>, such as <span class="math inline">\(\mathrm{P}(a&lt;\theta&lt;b)\)</span> or <span class="math inline">\(P(\theta&gt;b).\)</span></p></li>
 <li><p>Posterior <span style="color: magenta">quantiles</span>.</p></li>
 </ul>
@@ -475,7 +536,7 @@
 </div>
 </div>
 </section>
-<section id="section-5" class="slide level2 smaller center">
+<section id="section-6" class="slide level2 smaller center">
 <h2></h2>
 <p>Given data, <span class="math inline">\(\mathcal{D}\)</span>, we want to do three things:</p>
 <ol type="1">
@@ -513,7 +574,7 @@
 </div>
 </div>
 </section>
-<section id="section-6" class="slide level2 smaller center">
+<section id="section-7" class="slide level2 smaller center">
 <h2></h2>
 <p>Likelihood is a measure of the extent to which a sample provides support for particular values of a parameter in a parametric model—this will be very important in all the chapters where we will deal with parameter estimation.</p>
 <p>Bayes’ theorem can be extended to include a model, <span class="math inline">\(\mathcal{M}\)</span>, for the parameters yielding</p>
@@ -528,7 +589,7 @@
 <p>Priors can be classified in three broad categories:</p>
 <ol type="1">
 <li>Uninformative priors, which are flat/diffuse and have smallest impact on posterior.</li>
-<li>Weakly informative priors, use some knowledge,e.g.&nbsp;positivity.</li>
+<li>Weakly informative priors, use some knowledge, e.g.&nbsp;positivity.</li>
 <li>Informative priors, convey maximal information</li>
 </ol>
 <div class="columns">
@@ -564,7 +625,7 @@
 <li><span class="math inline">\(y\)</span> is the measurement/dependent variable</li>
 </ul>
 </section>
-<section id="section-7" class="slide level2 smaller center">
+<section id="section-8" class="slide level2 smaller center">
 <h2></h2>
 <p>We have <span class="math display">\[\mathcal{D}=\left\{(\mathbf{x}_i,y_1),\,i=1,\dots n\right\}\]</span></p>
 <p>that can be solved by</p>
@@ -574,6 +635,31 @@
 <li>Bayesian regression, where we use Bayes’ formula to compute a posterior distribution of the parameters.</li>
 </ol>
 <p>Methods 1 and 2 yield point estimates while 3 provides full posterior.</p>
+</section>
+<section id="bayesian-parameter-estimation-in-state-space-models" class="slide level2 smaller center">
+<h2>Bayesian Parameter Estimation in State Space Models</h2>
+<p><span class="math display">\[
+\begin{aligned}
+\boldsymbol{\theta} &amp; \sim p(\boldsymbol{\theta}) \\
+\mathbf{x}_0 &amp; \sim p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \\
+\mathbf{x}_k &amp; \sim p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right) \\
+\mathbf{y}_k &amp; \sim p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right), \quad k=0,1,2, \ldots
+\end{aligned}
+\]</span></p>
+<p>Applying Bayes’ Law of Theorem 2.61, we can compute the complete posterior distribution of the state plus parameters as <span class="math display">\[
+p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\frac{p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right) p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right) p(\boldsymbol{\theta})}{p\left(\mathbf{y}_{1: T}\right)},
+\]</span> where the joint prior of the states, <span class="math inline">\(\mathbf{x}_{0: T}=\left\{\mathbf{x}_0, \ldots, \mathbf{x}_T\right\}\)</span>, and the joint likelihood of the measurements, <span class="math inline">\(\mathbf{y}_{1: T}=\left\{\mathbf{y}_1, \ldots, \mathbf{y}_T\right\}\)</span>, conditioned on the parameters, are</p>
+</section>
+<section id="section-9" class="slide level2 smaller center">
+<h2></h2>
+<p><span class="math display">\[
+p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right)=p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \prod_{k=1}^T p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right)
+\]</span> and <span class="math display">\[
+p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right)=\prod_{k=1}^T p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right)
+\]</span> respectively. Finally, we need to marginalize over the state to obtain the predictive posterior for the parameter <span class="math inline">\(\boldsymbol{\theta}\)</span>, <span class="math display">\[
+p\left(\boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\int p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right) \mathrm{d} \mathbf{x}_{0: T}
+\]</span></p>
+<p>Integrals are difficult to compute — will seek iterative (learned) methods to capture statistics</p>
 </section>
 <section id="references" class="title-slide slide level1 unnumbered smaller scrollable">
 <h1>References</h1>

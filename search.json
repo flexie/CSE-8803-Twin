@@ -1829,7 +1829,7 @@
     "href": "weeks/week-04.html",
     "title": "Week 04",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nMon, Jan 29\n\n\n\n\nStatistical Inverse Problems\n\n\nBayesian Inference\n\n\nMon, Jan 29\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins section until 9.4\n\n\nChapter 8 — A toolbox for digital twins section 8.8\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nVariational Data Assimilation\n\n\nData Assimilation\n\n\nMon, Jan 29\n\n\n\n\nStatistical Inverse Problems\n\n\nBayesian Inference\n\n\nMon, Jan 29\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins section until 9.4\n\n\nChapter 8 — A toolbox for digital twins section 8.8\n\n\nChapter 2 — A toolbox for digital twins section 2.5\n\n\nChapter 11 — A toolbox for digital twins until section 11.4, and 11.5\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "weeks/week-02.html",
@@ -2718,6 +2718,27 @@
     "text": "Motivation\nSo, far we dealt with deterministic problems\n\nproduce single answer\nassume there was no noise\nno uncertainties in forward model\n\nReality is different\n\nneed to handle uncertainty\nBayesian inference provides a framework for principled handling of uncertainty\nproduces estimate for the posterior distribution—i.e, offers complete statistical description of all parameter values that are consistent with the data."
   },
   {
+    "objectID": "slides/week-04/06-Bayes-Inference.html#uncertainty-quantification",
+    "href": "slides/week-04/06-Bayes-Inference.html#uncertainty-quantification",
+    "title": "Statistical Inverse Problems",
+    "section": "Uncertainty Quantification",
+    "text": "Uncertainty Quantification\nDefinition 11.1 (UQ). UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).\nDefinition 11.2 (QoI). In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.\nWe can decompose UQ into a number of subtasks:\n\nQuantify uncertainties in model inputs by specifying probability distributions.\nPropagate input uncertainties through the model and quantify effects on the QoI.\nQuantify variability in the true physical QoI\nAggregate uncertainties arising from different sources to appraise overall uncertainty (input, model, numerical errors, inherent variability)\nCompute sensitivities of output variables with respect to input variables (forward UQ)"
+  },
+  {
+    "objectID": "slides/week-04/06-Bayes-Inference.html#account-for-uncertainty",
+    "href": "slides/week-04/06-Bayes-Inference.html#account-for-uncertainty",
+    "title": "Statistical Inverse Problems",
+    "section": "Account for uncertainty",
+    "text": "Account for uncertainty\n\nSolve the deterministic model, with random perturbations of parameters/initial conditions/forcing;\nFormulate and solve an inverse problem to seek the model parameters that minimize the difference between measurements and simulated observations. This can be achieved by variational and by statistical approaches;\nStarting from some prior knowledge (probabilities), use Bayesian analysis to compute a posterior distribution;\n\nFor UQ, we seek not just point estimates of the optimal, best-fit parameters but a complete statistical description of all parameter values that are consistent with the data;\nThe Bayesian approach does this by\n\nreformulating the inverse problem as a problem in statistical inference,\nincorporating uncertainties in the measurements, the forward model, and any prior information about the parameters."
+  },
+  {
+    "objectID": "slides/week-04/06-Bayes-Inference.html#section",
+    "href": "slides/week-04/06-Bayes-Inference.html#section",
+    "title": "Statistical Inverse Problems",
+    "section": "",
+    "text": "The solution of this inverse problem is the set of so-called posterior probability densities of the parameters, describing updated uncertainty in the model parameters.\nResulting uncertainty in the model parameters can be quantified, taking into account uncertainties\n\nin the data\nin the model,\nand prior information.\n\nA major challenge is uncertainty quantification for the large-scale design and inverse problems that underlie digital twins.\nIn fact Bayes’ Law provides not only the solution to an inverse problem,\n\nbut also a complete quantification of the solution’s uncertainty.\nhowever, this can have a high computational cost because it most often relies on some kind of Monte Carlo simulation."
+  },
+  {
     "objectID": "slides/week-04/06-Bayes-Inference.html#bayesian-approach",
     "href": "slides/week-04/06-Bayes-Inference.html#bayesian-approach",
     "title": "Statistical Inverse Problems",
@@ -2732,43 +2753,43 @@
     "text": "Bayesian Inference\nIn the most general case, where we want to perform Bayesian inference for the estimation of parameters (an inverse problem!), we simply replace the probabilities by the corresponding density functions.\nThen Bayesian inference is performed in three steps:\n\nChoose a probability density \\(f(\\theta),\\) called the prior distribution, that expresses our beliefs, or prior experimental or historical knowledge, about a parameter \\(\\theta\\) before we see any data.\nChoose a statistical model \\(f(x\\mid\\theta)\\) that reflects our beliefs about \\(x\\) given \\(\\theta.\\) Notice that this is expressed as a conditional probability, called the likelihood function, and not as a joint probability function.\nAfter observing data \\(x_{1},\\ldots,x_{n},\\) update our beliefs and calculate the posterior distribution \\(f(\\theta\\mid x_{1},\\ldots,x_{n}).\\)\n\nLet us look more closely at the three components of Bayes’ Law."
   },
   {
-    "objectID": "slides/week-04/06-Bayes-Inference.html#section",
-    "href": "slides/week-04/06-Bayes-Inference.html#section",
-    "title": "Statistical Inverse Problems",
-    "section": "",
-    "text": "Definition 1 Prior Distribution. For a given statistical model that depends on a parameter \\(\\theta,\\) considered as random, the distribution assigned to \\(\\theta\\) before observing the other random variables of interest is called the prior distribution. This is just the marginal distribution of the parameter.\n\n\nDefinition 2 Posterior Distribution. For a statistical inference problem, with parameter \\(\\theta\\) and random sample \\(X_{1},\\ldots,X_{n},\\) the conditional distribution of \\(\\theta\\) given \\(X_{1}=x_{1},\\) \\(\\ldots,\\) \\(X_{n}=x_{n}\\) is called the posterior distribution of \\(\\theta.\\)\n\n\nDefinition 3 Likelihood Function. Suppose that \\(X_{1},X_{2},\\ldots,X_{n}\\) have a joint density \\[f(X_{1},X_{2},\\ldots,X_{n}\\mid\\theta).\\] Given observations \\(X_{1}=x_{1},\\) \\(X_{2}=x_{2},\\) \\(\\ldots,\\) \\(X_{n}=x_{n},\\) the likelihood function of \\(\\theta\\) is \\[L(\\theta)=L(\\theta\\mid x_{1},x_{2},\\ldots,x_{n})=f(x_{1},x_{2},\\ldots,x_{n}\\mid\\theta).\\]"
-  },
-  {
     "objectID": "slides/week-04/06-Bayes-Inference.html#section-1",
     "href": "slides/week-04/06-Bayes-Inference.html#section-1",
     "title": "Statistical Inverse Problems",
     "section": "",
-    "text": "If the \\(X_{i}\\) are i.i.d. with density \\(f(X_{i}\\mid\\theta),\\) then the joint density is a product and \\[L(\\theta\\mid x_{1},x_{2},\\ldots,x_{n})=\\prod_{i=1}^{n}f(x_{i}\\mid\\theta).\\]\nWe point out the following properties of the likelihood:\n\nThe likelihood is not a probability density function and can take values outside the interval \\([0,1].\\)\nLikelihood is an important concept in both frequentist and Bayesian statistics.\nLikelihood is a measure of the extent to which a sample provides support for particular values of a parameter in a parametric modelthis will be very important when we will deal with parameter estimation, and inverse problems in general.\nThe likelihood measures the support (evidence) provided by the data for each possible value of the parameter. This means that if we compute the likelihood function at two points, \\(\\theta=\\theta_{1},\\) \\(\\theta=\\theta_{2},\\) and find that \\(L(\\theta_{1}\\mid x)&gt;L(\\theta_{2}\\mid x)\\), then the sample observed is more likely to have occurred if \\(\\theta=\\theta_{1}.\\) We say that \\(\\theta_{1}\\) is a more plausible value for \\(\\theta\\) than \\(\\theta_{2}.\\)"
+    "text": "Definition 1 Prior Distribution. For a given statistical model that depends on a parameter \\(\\theta,\\) considered as random, the distribution assigned to \\(\\theta\\) before observing the other random variables of interest is called the prior distribution. This is just the marginal distribution of the parameter.\n\n\nDefinition 2 Posterior Distribution. For a statistical inference problem, with parameter \\(\\theta\\) and random sample \\(X_{1},\\ldots,X_{n},\\) the conditional distribution of \\(\\theta\\) given \\(X_{1}=x_{1},\\) \\(\\ldots,\\) \\(X_{n}=x_{n}\\) is called the posterior distribution of \\(\\theta.\\)\n\n\nDefinition 3 Likelihood Function. Suppose that \\(X_{1},X_{2},\\ldots,X_{n}\\) have a joint density \\[f(X_{1},X_{2},\\ldots,X_{n}\\mid\\theta).\\] Given observations \\(X_{1}=x_{1},\\) \\(X_{2}=x_{2},\\) \\(\\ldots,\\) \\(X_{n}=x_{n},\\) the likelihood function of \\(\\theta\\) is \\[L(\\theta)=L(\\theta\\mid x_{1},x_{2},\\ldots,x_{n})=f(x_{1},x_{2},\\ldots,x_{n}\\mid\\theta).\\]"
   },
   {
     "objectID": "slides/week-04/06-Bayes-Inference.html#section-2",
     "href": "slides/week-04/06-Bayes-Inference.html#section-2",
     "title": "Statistical Inverse Problems",
     "section": "",
-    "text": "For i.i.d. random variables, thelog-likelihood is usually used, since it reduces the product to a sum.\nWe now formulate the general version of Bayes’ Theorem.\n\nSuppose that \\(n\\) random variables, \\(X_{1},\\ldots,X_{n},\\) form a random sample from a distribution with density, or probability function in the case of a discrete distribution, \\(f(x\\mid\\theta).\\) Suppose also that the unknown parameter, \\(\\theta,\\) has a prior pdf \\(f(\\theta).\\) Then the posterior pdf of \\(\\theta\\) is \\[f(\\theta\\mid x)=\\frac{f(x_{1}\\mid\\theta)\\cdots f(x_{n}\\mid\\theta)f(\\theta)}{f_{n}(x)},\\label{eq:bayes}\\] where \\(f_{n}(x)\\) is the marginal joint pdf of \\(X_{1},\\ldots,X_{n}.\\)\n\nIn this theorem,\n\nthe prior, \\(f(\\theta),\\) represents the credibility of, or belief in the values of the parameters we seek, without any consideration of the data/observations;\nthe posterior, \\(f(\\theta\\mid x),\\) is the credibility of the parameters with the data taken into account;"
+    "text": "If the \\(X_{i}\\) are i.i.d. with density \\(f(X_{i}\\mid\\theta),\\) then the joint density is a product and \\[L(\\theta\\mid x_{1},x_{2},\\ldots,x_{n})=\\prod_{i=1}^{n}f(x_{i}\\mid\\theta).\\]\nWe point out the following properties of the likelihood:\n\nThe likelihood is not a probability density function and can take values outside the interval \\([0,1].\\)\nLikelihood is an important concept in both frequentist and Bayesian statistics.\nLikelihood is a measure of the extent to which a sample provides support for particular values of a parameter in a parametric model. This will be very important when we will deal with parameter estimation, and inverse problems in general.\nThe likelihood measures the support (evidence) provided by the data for each possible value of the parameter. This means that if we compute the likelihood function at two points, \\(\\theta=\\theta_{1},\\) \\(\\theta=\\theta_{2},\\) and find that \\(L(\\theta_{1}\\mid x)&gt;L(\\theta_{2}\\mid x)\\), then the sample observed is more likely to have occurred if \\(\\theta=\\theta_{1}.\\) We say that \\(\\theta_{1}\\) is a more plausible value for \\(\\theta\\) than \\(\\theta_{2}.\\)"
   },
   {
     "objectID": "slides/week-04/06-Bayes-Inference.html#section-3",
     "href": "slides/week-04/06-Bayes-Inference.html#section-3",
     "title": "Statistical Inverse Problems",
     "section": "",
-    "text": "\\(f(x\\mid\\theta),\\) considered as a function of \\(\\theta,\\) is the likelihoodfunction, which is the probability that the data/observation could be generated by the model with a given value of the parameter;\nthe denominator, called the evidence, \\(f_{n}(x),\\) is thetotal probability of the data taken over all the possible parameter values, also called the marginal likelihood, or the marginal, and can be considered as a normalization factor;\nthe posterior distribution is thus proportional to the product of the likelihood and the prior distribution, or, in applied terms, \\[f(\\mathrm{parameter}\\mid\\mathrm{data})\\propto f(\\mathrm{data}\\mid\\mathrm{parameter})\\,f(\\mathrm{parameter}).\\]\n\nWhat can one do with the posterior distribution thus obtained? The answer is a lot of things, in fact a complete quantification of the incertitude of the parameter’s estimation is possible. We can compute:\n\nPoint estimates by summarizing the center of the posterior. Typically, these are the posterior mean or the posterior mode."
+    "text": "For i.i.d. random variables, the log-likelihood is usually used, since it reduces the product to a sum.\nWe now formulate the general version of Bayes’ Theorem.\n\nSuppose that \\(n\\) random variables, \\(X_{1},\\ldots,X_{n},\\) form a random sample from a distribution with density, or probability function in the case of a discrete distribution, \\(f(x\\mid\\theta).\\) Suppose also that the unknown parameter, \\(\\theta,\\) has a prior pdf \\(f(\\theta).\\) Then the posterior pdf of \\(\\theta\\) is \\[f(\\theta\\mid x)=\\frac{f(x_{1}\\mid\\theta)\\cdots f(x_{n}\\mid\\theta)f(\\theta)}{f_{n}(x)},\\label{eq:bayes}\\] where \\(f_{n}(x)\\) is the marginal joint pdf of \\(X_{1},\\ldots,X_{n}.\\)\n\nIn this theorem,\n\nthe prior, \\(f(\\theta),\\) represents the credibility of, or belief in the values of the parameters we seek, without any consideration of the data/observations;\nthe posterior, \\(f(\\theta\\mid x),\\) is the credibility of the parameters with the data taken into account;"
   },
   {
     "objectID": "slides/week-04/06-Bayes-Inference.html#section-4",
     "href": "slides/week-04/06-Bayes-Inference.html#section-4",
     "title": "Statistical Inverse Problems",
     "section": "",
-    "text": "Interval estimates for a given level \\(\\alpha\\) see below.\nEstimates of the probability of an event, such as \\(\\mathrm{P}(a&lt;\\theta&lt;b)\\) or \\(P(\\theta&gt;b).\\)\nPosterior quantiles.\n\n\n\n\n\n\n\nNote\n\n\nBayesian Inference is a general framework that plays a crucial rule in solving inverse and data-assimilation problems. It also plays a major role in uncertainty quantification. These will be discussed\n\nwhen we introduce Bayesian filtering\nextensions of Kalman filtering\nsimulation-based inference that leverages the ability of deep neural networks to capture the posterior from simulations"
+    "text": "\\(f(x\\mid\\theta),\\) considered as a function of \\(\\theta\\), is the likelihood function, which is the probability that the data/observation could be generated by the model with a given value of the parameter;\nthe denominator, called theevidence, \\(f_{n}(x),\\) is the total probability of the data taken over all the possible parameter values, also called the marginal likelihood, or the marginal, and can be considered as a normalization factor;\nthe posterior distribution is thus proportional to the product of the likelihood and the prior distribution, or, in applied terms, \\[f(\\mathrm{parameter}\\mid\\mathrm{data})\\propto f(\\mathrm{data}\\mid\\mathrm{parameter})\\,f(\\mathrm{parameter}).\\]\n\nWhat can one do with the posterior distribution thus obtained? The answer is a lot of things, in fact a complete quantification of the incertitude of the parameter’s estimation is possible. We can compute:\n\nPoint estimates by summarizing the center of the posterior. Typically, these are the posterior mean or the posterior mode."
   },
   {
     "objectID": "slides/week-04/06-Bayes-Inference.html#section-5",
     "href": "slides/week-04/06-Bayes-Inference.html#section-5",
+    "title": "Statistical Inverse Problems",
+    "section": "",
+    "text": "Interval estimates for a given level \\(\\alpha\\).\nEstimates of the probability of an event, such as \\(\\mathrm{P}(a&lt;\\theta&lt;b)\\) or \\(P(\\theta&gt;b).\\)\nPosterior quantiles.\n\n\n\n\n\n\n\nNote\n\n\nBayesian Inference is a general framework that plays a crucial rule in solving inverse and data-assimilation problems. It also plays a major role in uncertainty quantification. These will be discussed\n\nwhen we introduce Bayesian filtering\nextensions of Kalman filtering\nsimulation-based inference that leverages the ability of deep neural networks to capture the posterior from simulations"
+  },
+  {
+    "objectID": "slides/week-04/06-Bayes-Inference.html#section-6",
+    "href": "slides/week-04/06-Bayes-Inference.html#section-6",
     "title": "Statistical Inverse Problems",
     "section": "",
     "text": "Given data, \\(\\mathcal{D}\\), we want to do three things:\n\nEstimate the parameters \\(\\boldsymbol{\\theta}\\) of a model \\(\\mathcal{M}\\), not as point or optimal values, but inferring their probability distribution. This is known as parameter estimation.\nSelect the best model by comparing different parametrizations using the model posterior distribution. This is known as model selection.\nPredict from the chosen model the data for some new input values. This is known as posterior prediction.\n\nBayesian parameter estimation (BPE) is a universal approach to fitting models to data\n\ndefine a generative model for the data,\na likelihood function, and\na prior distribution over the parameters.\n\nThe posterior rarely has closed form, so we characterize it by sampling, from which we can find the best model parameters together with their uncertainties."
@@ -2781,8 +2802,8 @@
     "text": "Bayes’ theorem\n\n\nAccording to Theorem 2.61, Bayes’ rule take the form\n\\[p(\\boldsymbol{\\theta}\\mid \\mathcal{D})=\\frac{p(\\mathcal{D}\\mid\\boldsymbol{\\theta})p(\\boldsymbol{\\theta})}{p(\\mathcal{D})}=\\frac{p(\\mathcal{D}\\mid\\boldsymbol{\\theta})p(\\boldsymbol{\\theta})}{\\int_{\\boldsymbol{\\theta}}p(\\mathcal{D}\\mid\\boldsymbol{\\theta})p(\\boldsymbol{\\theta})}\\]\nwhere\n\n\\(p(\\mathcal{D}\\mid\\boldsymbol{\\theta})\\) is the conditional probability known as likelihood—.i.e, physical model generating data\n\\(p(\\boldsymbol{\\theta})\\) is the prior distribution\n\\(p(\\boldsymbol{\\theta}\\mid \\mathcal{D})\\) is the posterior probability distribution.\n\n\n\n\n\nfrom Asch (2022)"
   },
   {
-    "objectID": "slides/week-04/06-Bayes-Inference.html#section-6",
-    "href": "slides/week-04/06-Bayes-Inference.html#section-6",
+    "objectID": "slides/week-04/06-Bayes-Inference.html#section-7",
+    "href": "slides/week-04/06-Bayes-Inference.html#section-7",
     "title": "Statistical Inverse Problems",
     "section": "",
     "text": "Likelihood is a measure of the extent to which a sample provides support for particular values of a parameter in a parametric model—this will be very important in all the chapters where we will deal with parameter estimation.\nBayes’ theorem can be extended to include a model, \\(\\mathcal{M}\\), for the parameters yielding\n\\[p(\\boldsymbol{\\theta}\\mid \\mathcal{D},\\mathcal{M})=\\frac{p(\\mathcal{D}\\mid\\boldsymbol{\\theta},\\mathcal{M})p(\\boldsymbol{\\theta}\\mid\\mathcal{M})}{p(\\mathcal{D}\\mid \\mathcal{M})}\\]\nor in practical terms\n\\[p(\\text{parameter}\\mid\\text{data})\\propto p(\\text{data}\\mid \\text{parameter})p(\\text{parameter})\\]\nMost probable estimator is called the maximum a posteriori (MAP) estimator — the \\(\\boldsymbol{\\theta}\\) that maximizes the posterior—i.e.,\n\\[\\boldsymbol{\\theta}_\\ast=\\mathop{\\mathrm{arg\\,max}}_{\\boldsymbol{\\theta}}p(\\boldsymbol{\\theta}\\mid \\mathcal{D})\\]"
@@ -2792,7 +2813,7 @@
     "href": "slides/week-04/06-Bayes-Inference.html#bayesian-priors",
     "title": "Statistical Inverse Problems",
     "section": "Bayesian priors",
-    "text": "Bayesian priors\nPriors can be classified in three broad categories:\n\nUninformative priors, which are flat/diffuse and have smallest impact on posterior.\nWeakly informative priors, use some knowledge,e.g. positivity.\nInformative priors, convey maximal information\n\n\n\nPriors can be sequential. Suppose we observe \\(y_1,\\dots, y_n\\) sequentially, then we can write\n\\[p(\\theta\\mid y_1,\\dots, y_m)\\propto p(\\theta\\mid y_1,\\dots, y_{m-1})p(y_m\\mid \\theta),\\]\n\\(m=2,3.\\dots,n\\) where the posterior distribution of the parameter \\(\\theta\\) after \\(m − 1\\) measurements acts as a prior with \\(p(y_m\\mid \\theta)\\) the likelihood.\n\ncan be applied recursively\nholds when \\(\\theta\\) does not vary with time\n\n\n\n\n\nfrom Asch (2022)"
+    "text": "Bayesian priors\nPriors can be classified in three broad categories:\n\nUninformative priors, which are flat/diffuse and have smallest impact on posterior.\nWeakly informative priors, use some knowledge, e.g. positivity.\nInformative priors, convey maximal information\n\n\n\nPriors can be sequential. Suppose we observe \\(y_1,\\dots, y_n\\) sequentially, then we can write\n\\[p(\\theta\\mid y_1,\\dots, y_m)\\propto p(\\theta\\mid y_1,\\dots, y_{m-1})p(y_m\\mid \\theta),\\]\n\\(m=2,3.\\dots,n\\) where the posterior distribution of the parameter \\(\\theta\\) after \\(m − 1\\) measurements acts as a prior with \\(p(y_m\\mid \\theta)\\) the likelihood.\n\ncan be applied recursively\nholds when \\(\\theta\\) does not vary with time\n\n\n\n\n\nfrom Asch (2022)"
   },
   {
     "objectID": "slides/week-04/06-Bayes-Inference.html#bayesian-regression",
@@ -2802,11 +2823,25 @@
     "text": "Bayesian regression\nModel relation between a dependent variable, \\(y\\), and observed independent variables, \\(x_1,x_2,\\dots x_p\\) that represent properties of a process.\n\\[y=f(x;\\theta)\\]\nForward/direct problem: compute \\(y\\) given \\(\\theta\\) (easy)\nInverse/indirect problem: compute \\(\\theta\\) given \\(y\\) (difficult)\nwhere\n\n\\(f\\) is an operator/equation/system\n\\(x\\) is the independent variable\n\\(\\theta\\) is the parameter/feature\n\\(y\\) is the measurement/dependent variable"
   },
   {
-    "objectID": "slides/week-04/06-Bayes-Inference.html#section-7",
-    "href": "slides/week-04/06-Bayes-Inference.html#section-7",
+    "objectID": "slides/week-04/06-Bayes-Inference.html#section-8",
+    "href": "slides/week-04/06-Bayes-Inference.html#section-8",
     "title": "Statistical Inverse Problems",
     "section": "",
     "text": "We have \\[\\mathcal{D}=\\left\\{(\\mathbf{x}_i,y_1),\\,i=1,\\dots n\\right\\}\\]\nthat can be solved by\n\nclassical least squares—i.e., find parameters \\(\\theta\\) that minimize the squared error.\nmaximum likelihood where we choose the parameters that maximize the likelihood of the parameters.\nBayesian regression, where we use Bayes’ formula to compute a posterior distribution of the parameters.\n\nMethods 1 and 2 yield point estimates while 3 provides full posterior."
+  },
+  {
+    "objectID": "slides/week-04/06-Bayes-Inference.html#bayesian-parameter-estimation-in-state-space-models",
+    "href": "slides/week-04/06-Bayes-Inference.html#bayesian-parameter-estimation-in-state-space-models",
+    "title": "Statistical Inverse Problems",
+    "section": "Bayesian Parameter Estimation in State Space Models",
+    "text": "Bayesian Parameter Estimation in State Space Models\n\\[\n\\begin{aligned}\n\\boldsymbol{\\theta} & \\sim p(\\boldsymbol{\\theta}) \\\\\n\\mathbf{x}_0 & \\sim p\\left(\\mathbf{x}_0 \\mid \\boldsymbol{\\theta}\\right) \\\\\n\\mathbf{x}_k & \\sim p\\left(\\mathbf{x}_k \\mid \\mathbf{x}_{k-1}, \\boldsymbol{\\theta}\\right) \\\\\n\\mathbf{y}_k & \\sim p\\left(\\mathbf{y}_k \\mid \\mathbf{x}_k, \\boldsymbol{\\theta}\\right), \\quad k=0,1,2, \\ldots\n\\end{aligned}\n\\]\nApplying Bayes’ Law of Theorem 2.61, we can compute the complete posterior distribution of the state plus parameters as \\[\np\\left(\\mathbf{x}_{0: T}, \\boldsymbol{\\theta} \\mid \\mathbf{y}_{1: T}\\right)=\\frac{p\\left(\\mathbf{y}_{1: T} \\mid \\mathbf{x}_{0: T}, \\boldsymbol{\\theta}\\right) p\\left(\\mathbf{x}_{0: T} \\mid \\boldsymbol{\\theta}\\right) p(\\boldsymbol{\\theta})}{p\\left(\\mathbf{y}_{1: T}\\right)},\n\\] where the joint prior of the states, \\(\\mathbf{x}_{0: T}=\\left\\{\\mathbf{x}_0, \\ldots, \\mathbf{x}_T\\right\\}\\), and the joint likelihood of the measurements, \\(\\mathbf{y}_{1: T}=\\left\\{\\mathbf{y}_1, \\ldots, \\mathbf{y}_T\\right\\}\\), conditioned on the parameters, are"
+  },
+  {
+    "objectID": "slides/week-04/06-Bayes-Inference.html#section-9",
+    "href": "slides/week-04/06-Bayes-Inference.html#section-9",
+    "title": "Statistical Inverse Problems",
+    "section": "",
+    "text": "\\[\np\\left(\\mathbf{x}_{0: T} \\mid \\boldsymbol{\\theta}\\right)=p\\left(\\mathbf{x}_0 \\mid \\boldsymbol{\\theta}\\right) \\prod_{k=1}^T p\\left(\\mathbf{x}_k \\mid \\mathbf{x}_{k-1}, \\boldsymbol{\\theta}\\right)\n\\] and \\[\np\\left(\\mathbf{y}_{1: T} \\mid \\mathbf{x}_{0: T}, \\boldsymbol{\\theta}\\right)=\\prod_{k=1}^T p\\left(\\mathbf{y}_k \\mid \\mathbf{x}_k, \\boldsymbol{\\theta}\\right)\n\\] respectively. Finally, we need to marginalize over the state to obtain the predictive posterior for the parameter \\(\\boldsymbol{\\theta}\\), \\[\np\\left(\\boldsymbol{\\theta} \\mid \\mathbf{y}_{1: T}\\right)=\\int p\\left(\\mathbf{x}_{0: T}, \\boldsymbol{\\theta} \\mid \\mathbf{y}_{1: T}\\right) \\mathrm{d} \\mathbf{x}_{0: T}\n\\]\nIntegrals are difficult to compute — will seek iterative (learned) methods to capture statistics"
   },
   {
     "objectID": "syllabus.html",
