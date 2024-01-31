@@ -7,4 +7,4 @@ notebook-view:
     title: "3D-Var for Lorenz63 System"
 ---
 
-Add instructions for assignment. 
+Please follow instructions in the notebook [threeDVar_l63.ipynb](https://www.dropbox.com/scl/fi/ylojoa4p4boeptvhnbfej/threeDVar_l63.ipynb?rlkey=uew5zr20rgrznqlgsgyitt86i&dl=0) and please send results to TA in .pdf format.
