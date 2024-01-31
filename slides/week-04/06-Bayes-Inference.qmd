@@ -47,6 +47,50 @@ Reality is different
 ```
 :::
 
+## Uncertainty Quantification {.smaller}
+
+**Definition 11.1 (UQ).** *UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).*
+
+**Definition 11.2 (QoI).** *In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.*
+
+We can decompose UQ into a number of subtasks:
+
+1.  Quantify uncertainties in model inputs by specifying probability distributions.
+2.  Propagate input uncertainties through the model and quantify effects on the QoI.
+3.  Quantify variability in the true physical QoI
+4.  Aggregate uncertainties arising from different sources to appraise overall uncertainty (input, model, numerical errors, inherent variability)
+5.  Compute sensitivities of output variables with respect to input variables (forward UQ)
+
+## Account for uncertainty{.smaller}
+
+1. Solve the deterministic model, with random perturbations of parameters/initial conditions/forcing;
+2. Formulate and solve an inverse problem to seek the model parameters that minimize the difference between measurements and simulated observations. This can be achieved by variational and by statistical approaches;
+3. Starting from some prior knowledge (probabilities), use Bayesian analysis to compute a posterior distribution; 
+
+For UQ, we seek not just point estimates of the optimal, best-fit parameters but a complete statistical description of all parameter values that are consistent with the data;
+
+The Bayesian approach does this by 
+
+- reformulating the inverse problem as a problem in statistical inference, 
+- incorporating uncertainties in the measurements, the forward model, and any prior information about the parameters.
+
+## {.smaller}
+
+The solution of this inverse problem is the set of so-called posterior probability densities of the parameters, describing updated uncertainty in the model parameters. 
+
+Resulting uncertainty in the model parameters can be quantified, taking into account uncertainties 
+
+- in the data
+- in the model, 
+- and prior information.
+
+A major challenge is uncertainty quantification for the large-scale design and inverse problems that underlie digital twins.
+
+In fact Bayes’ Law provides not only the solution to an inverse problem, 
+
+- but also a complete quantification of the solution’s uncertainty. 
+- however, this can have a high computational cost because it most often relies on some kind of Monte Carlo simulation. 
+
 ## Bayesian approach {.smaller}
 
 Bayesian analysis provides approach for models to learn from data
@@ -62,7 +106,26 @@ Relevant for system identification, or parameter estimation, where the inverse p
 -   Tests of hypotheses.
 -   Decision making.
 
-## Bayesian Inference
+<!-- ## Estimation problems {.smaller .hidden}
+
+Given data, $\mathcal{D}$, we want to do three things:
+
+1. Estimate the parameters $\theta$ of a model $\mathcal{M}$, not as point or optimal values, but inferring
+their probability distribution. This is known as *parameter estimation.*
+
+2. Select the best model by comparing different parametrizations using the model posterior distribution. This is known as *model selection*.
+   
+3. Predict from the chosen model the data for some new input values. This is known as *posterior prediction*.
+
+Bayesian parameter estimation  is a universal approach to fitting models to data
+
+- define a generative model for the data, a likelihood function, 
+ 
+- and a prior distribution over the parameters. 
+
+- the posterior rarely has closed form, so we characterize it by sampling, from which we can find the best model parameters together with their uncertainties. -->
+
+## Bayesian Inference {.smaller}
 
 In the most general case, where we want to perform [Bayesian
 inference]{style="color: magenta"} for the [estimation of
@@ -139,7 +202,7 @@ We point out the following [properties of the
 
 -   Likelihood is a measure of the extent to which a sample provides
         [support]{style="color: magenta"} for particular values of a
-        parameter in a parametric modelthis will be very important when
+        parameter in a parametric model. This will be very important when
         we will deal with parameter estimation, and [inverse
         problems]{style="color: magenta"} in general.
 
@@ -155,8 +218,7 @@ We point out the following [properties of the
 
 ##
 
-For i.i.d. random variables, the[
-        log-likelihood]{style="color: magenta"} is usually used, since
+For i.i.d. random variables, the [log-likelihood]{style="color: magenta"} is usually used, since
         it reduces the product to a sum.
 
 We now formulate the general version of **Bayes' Theorem**.
@@ -183,14 +245,12 @@ In this theorem,
 
 ##
 
--   $f(x\mid\theta),$ considered as a function of $\theta,$ is the
-        [*likelihood*]{style="color: magenta"}[
-        ]{style="color: magenta"}function, which is the probability that
+-   $f(x\mid\theta),$ considered as a function of $\theta$, is the [*likelihood*]{style="color: magenta"}[
+        ]{style="color: magenta"} function, which is the probability that
         the data/observation could be generated by the model with a
         given value of the parameter;
 
--   the denominator, called the
-        [*evidence*]{style="color: magenta"}, $f_{n}(x),$ is the[ total
+-   the denominator, called the[*evidence*]{style="color: magenta"}, $f_{n}(x),$ is the [total
         probability]{style="color: magenta"} of the data taken over all
         the possible parameter values, also called the *marginal
         likelihood*, or the marginal, and can be considered as a
@@ -213,7 +273,7 @@ What can one do with the posterior distribution thus obtained? The
 ##
 
 -   [Interval estimates]{style="color: magenta"} for a given level
-        $\alpha$ see below.
+        $\alpha$.
 
 -   Estimates of the [probability of an
         event]{style="color: magenta"}, such as $\mathrm{P}(a<\theta<b)$
@@ -288,7 +348,7 @@ $$\boldsymbol{\theta}_\ast=\mathop{\mathrm{arg\,max}}_{\boldsymbol{\theta}}p(\bo
 Priors can be classified in three broad categories:
 
 1.  Uninformative priors, which are flat/diffuse and have smallest impact on posterior.
-2.  Weakly informative priors, use some knowledge,e.g. positivity.
+2.  Weakly informative priors, use some knowledge, e.g. positivity.
 3.  Informative priors, convey maximal information
 
 ::: columns
@@ -337,6 +397,33 @@ that can be solved by
 Methods 1 and 2 yield point estimates while 3 provides full posterior.
 
 
+
+## Bayesian Parameter Estimation in State Space Models {.smaller}
+
+$$
+\begin{aligned}
+\boldsymbol{\theta} & \sim p(\boldsymbol{\theta}) \\
+\mathbf{x}_0 & \sim p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \\
+\mathbf{x}_k & \sim p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right) \\
+\mathbf{y}_k & \sim p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right), \quad k=0,1,2, \ldots
+\end{aligned}
+$$
+
+Applying Bayes' Law of Theorem 2.61, we can compute the complete posterior distribution of the state plus parameters as $$
+p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\frac{p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right) p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right) p(\boldsymbol{\theta})}{p\left(\mathbf{y}_{1: T}\right)},
+$$ where the joint prior of the states, $\mathbf{x}_{0: T}=\left\{\mathbf{x}_0, \ldots, \mathbf{x}_T\right\}$, and the joint likelihood of the measurements, $\mathbf{y}_{1: T}=\left\{\mathbf{y}_1, \ldots, \mathbf{y}_T\right\}$, conditioned on the parameters, are
+
+##  {.smaller}
+
+$$
+p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right)=p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \prod_{k=1}^T p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right)
+$$ and $$
+p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right)=\prod_{k=1}^T p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right)
+$$ respectively. Finally, we need to marginalize over the state to obtain the predictive posterior for the parameter $\boldsymbol{\theta}$, $$
+p\left(\boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\int p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right) \mathrm{d} \mathbf{x}_{0: T}
+$$
+
+Integrals are difficult to compute --- will seek iterative (learned) methods to capture statistics
 
 # References {.unnumbered .smaller}
 

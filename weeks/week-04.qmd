@@ -50,3 +50,5 @@ tbl-colwidths: [10,50,40]
 |-----------------------------------------------------------------------------------------------------------|
 | [Chapter 9 --- A toolbox for digital twins section until 9.4](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 | 
 | [Chapter 8 --- A toolbox for digital twins section 8.8](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 | 
+| [Chapter 2 --- A toolbox for digital twins section 2.5](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)       
+| [Chapter 11 --- A toolbox for digital twins until section 11.4, and 11.5](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 | 
