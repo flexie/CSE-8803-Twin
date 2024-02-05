@@ -165,7 +165,7 @@ In [summary]{style="color: magenta"}, if it involves a sensor and/or time-series
 
 ## Kalman Filters --- formulation
 
-Consider a dynamical system that evolves in time and we would like to[estimate]{style="color: magenta"}a series of *true* states, $\mathbf{x}^{\mathrm{t}}_{k}$ (a sequence of random vectors) where discrete time is indexed by the letter $k.$
+Consider a dynamical system that evolves in time and we would like to [estimate]{style="color: magenta"} a series of *true* states, $\mathbf{x}^{\mathrm{t}}_{k}$ (a sequence of random vectors) where discrete time is indexed by the letter $k.$
 
 These times are those when the [observations]{style="color: magenta"} or measurements are taken, as shown in the Figure.
 
@@ -177,7 +177,7 @@ Sequential assimilation: a computed model trajectory, observations, and their er
 
 ## 
 
-The assimilation starts with an [unconstrained model trajectory]{style="color: magenta"} from $t_{0},t_{1},\ldots,t_{k-1},t_{k},\ldots,t_{n}$ and aims to provide an[optimal fit]{style="color: magenta"}to the available [observations/measurements]{style="color: magenta"} given their [uncertainties]{style="color: magenta"} (error bars).
+The assimilation starts with an [unconstrained model trajectory]{style="color: magenta"} from $t_{0},t_{1},\ldots,t_{k-1},t_{k},\ldots,t_{n}$ and aims to provide an [optimal fit]{style="color: magenta"} to the available [observations/measurements]{style="color: magenta"} given their [uncertainties]{style="color: magenta"} (error bars).
 
 -   For example, in current, synoptic scale weather forecasts, $t_{k}-t_{k-1}=6$ hours and is less for the convective scale.
 
@@ -277,7 +277,7 @@ Respective error covariance matrices are $$\begin{aligned}
 
 The [*Kalman gain*matrix]{style="color: magenta"}, $\mathbf{K},$ is chosen to minimize the *a posteriori* error covariance @eq-apecov.
 
-The resulting $\mathbf{K}$ that minimizes @eq-apecov is given by $$\mathbf{K}_{k}=\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}\left(\mathbf{H}_{k}\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}\right)^{-1}$${#eq-KFoptgain} where we remark that $\mathbf{H}\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}=\mathrm{E}\left[\mathbf{d}_{k}\mathbf{d}_{k}^{\mathrm{T}}\right]$ is the covariance of the innovation.
+The resulting $\mathbf{K}$ that minimizes @eq-apecov is given by $$\mathbf{K}_{k}=\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}\left(\mathbf{H}_{k}\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}\right)^{-1}$${#eq-KFoptgain} where we remark that $\mathbf{H}_k\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}=\mathrm{E}\left[\mathbf{d}_{k}\mathbf{d}_{k}^{\mathrm{T}}\right]$ is the covariance of the innovation.
 
 Looking at this expression for $\mathbf{K}_{k},$ we see:
 
@@ -663,7 +663,7 @@ In the forecast step, the updated ensemble obtained at the analysis
     time step,
     $$\mbox{for}\quad i=1,\ldots,m\quad\mathbf{x}_{i,k+1}^{{\rm f}}=\mathcal{M}_{k+1}(\mathbf{x}^{\mathrm{a}}_{i,k}).$$
 
-A forecast can be computed from the mean of the[ forecast
+A forecast can be computed from the mean of the [forecast
     ensemble]{style="color: magenta"}, while the forecast error
     covariances can be estimated from the forecast perturbations.
 
@@ -672,7 +672,7 @@ A forecast can be computed from the mean of the[ forecast
         not required in the cycling of the EnKF.
 
 -   It is important to observe that using the [tangent linear model
-        ]{style="color: magenta"}(TLM) operator, or any linearization
+        ]{style="color: magenta"} (TLM) operator, or any linearization
         thereof, was [avoided]{style="color: red"}.
 
 -   This difference should particularly matter in a significantly
@@ -763,7 +763,7 @@ for $k=0$ to $K$ do        #Loop over time
 
 ::: {.list style="font-size: 75%;"}
 
-#Compute the ensemble means
+## Compute the ensemble means
 
   $\overline{\mathbf{x}}_{k}^{\mathrm{f}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{x}^{\mathrm{f}}_{i,k}\,,\overline{\mathbf{u}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{u}_{i}$ 
 
@@ -796,14 +796,14 @@ But this comes with significant [drawbacks]{style="color: red"}.
 
 -   Fundamentally, one cannot hope to represent the full error
         covariance matrix of a complex high-dimensional system with only
-        a f[ew modes]{style="color: magenta"} $m\ll n$, usually from a
+        a [few modes]{style="color: magenta"} $m\ll n$, usually from a
         few dozens to a few hundreds.
 
 -   This implies large [*sampling errors*]{style="color: magenta"},
         meaning that the error covariance matrix is only sampled by a
         limited number of modes.
 
--   This [rank-deficiency ]{style="color: magenta"}is accompanied by
+-   This [rank-deficiency]{style="color: magenta"} is accompanied by
         [spurious correlations]{style="color: magenta"} at long
         distances that strongly affect the filter performance.
 

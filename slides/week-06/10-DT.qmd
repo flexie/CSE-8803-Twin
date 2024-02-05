@@ -1,5 +1,5 @@
 ---
-title: "Bayesian Data Assimilation"
+title: "Digital Twins"
 subtitle: "Data Assimilation"
 date: "December 23, 2023"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
@@ -33,10 +33,3 @@ execute:
 bibliography: ../../references.bib
 ---
 
-This is a test.
-
-![](https://www.dropbox.com/scl/fi/ug90cppt7rnsn8vcnvgvj/control.png?rlkey=if49wdmjj6p8fn0xygkyzr4ib&raw=1)
-
-![](https://www.dropbox.com/scl/fi/51o77ezg7oqpfwek3oi2k/data-driven-models.png?rlkey=zdzveiob3ztdlrkkpslhmk4bk&raw=1)
-
-![](https://www.dropbox.com/scl/fi/51o77ezg7oqpfwek3oi2k/data-driven-models.png?rlkey=zdzveiob3ztdlrkkpslhmk4bk&raw=1)
