@@ -460,7 +460,7 @@
 </section>
 <section id="kalman-filters-formulation" class="slide level2 center">
 <h2>Kalman Filters — formulation</h2>
-<p>Consider a dynamical system that evolves in time and we would like to<span style="color: magenta">estimate</span>a series of <em>true</em> states, <span class="math inline">\(\mathbf{x}^{\mathrm{t}}_{k}\)</span> (a sequence of random vectors) where discrete time is indexed by the letter <span class="math inline">\(k.\)</span></p>
+<p>Consider a dynamical system that evolves in time and we would like to <span style="color: magenta">estimate</span> a series of <em>true</em> states, <span class="math inline">\(\mathbf{x}^{\mathrm{t}}_{k}\)</span> (a sequence of random vectors) where discrete time is indexed by the letter <span class="math inline">\(k.\)</span></p>
 <p>These times are those when the <span style="color: magenta">observations</span> or measurements are taken, as shown in the Figure.</p>
 
 <img data-src="../../slides/images/mod_traject.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">
@@ -468,7 +468,7 @@ Figure&nbsp;1: Sequential assimilation: a computed model trajectory, observation
 </p></section>
 <section id="section-7" class="slide level2 center">
 <h2></h2>
-<p>The assimilation starts with an <span style="color: magenta">unconstrained model trajectory</span> from <span class="math inline">\(t_{0},t_{1},\ldots,t_{k-1},t_{k},\ldots,t_{n}\)</span> and aims to provide an<span style="color: magenta">optimal fit</span>to the available <span style="color: magenta">observations/measurements</span> given their <span style="color: magenta">uncertainties</span> (error bars).</p>
+<p>The assimilation starts with an <span style="color: magenta">unconstrained model trajectory</span> from <span class="math inline">\(t_{0},t_{1},\ldots,t_{k-1},t_{k},\ldots,t_{n}\)</span> and aims to provide an <span style="color: magenta">optimal fit</span> to the available <span style="color: magenta">observations/measurements</span> given their <span style="color: magenta">uncertainties</span> (error bars).</p>
 <ul>
 <li><p>For example, in current, synoptic scale weather forecasts, <span class="math inline">\(t_{k}-t_{k-1}=6\)</span> hours and is less for the convective scale.</p></li>
 <li><p>In robotics, or autonomous vehicles, the time intervals are of the order of the instrumental frequency, which can be a few milliseconds.</p></li>
@@ -571,7 +571,7 @@ Figure&nbsp;2: Sequential assimilation scheme for the Kalman filter. The <span c
 <section id="kalman-filters-optimal-gain" class="slide level2 center">
 <h2>Kalman Filters — optimal gain</h2>
 <p>The <span style="color: magenta"><em>Kalman gain</em>matrix</span>, <span class="math inline">\(\mathbf{K},\)</span> is chosen to minimize the <em>a posteriori</em> error covariance <a href="#/section-10" class="quarto-xref">Equation&nbsp;4</a>.</p>
-<p>The resulting <span class="math inline">\(\mathbf{K}\)</span> that minimizes <a href="#/section-10" class="quarto-xref">Equation&nbsp;4</a> is given by <span id="eq-KFoptgain"><span class="math display">\[\mathbf{K}_{k}=\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}\left(\mathbf{H}_{k}\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}\right)^{-1} \tag{5}\]</span></span> where we remark that <span class="math inline">\(\mathbf{H}\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}=\mathrm{E}\left[\mathbf{d}_{k}\mathbf{d}_{k}^{\mathrm{T}}\right]\)</span> is the covariance of the innovation.</p>
+<p>The resulting <span class="math inline">\(\mathbf{K}\)</span> that minimizes <a href="#/section-10" class="quarto-xref">Equation&nbsp;4</a> is given by <span id="eq-KFoptgain"><span class="math display">\[\mathbf{K}_{k}=\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}\left(\mathbf{H}_{k}\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}\right)^{-1} \tag{5}\]</span></span> where we remark that <span class="math inline">\(\mathbf{H}_k\mathbf{P}_{k}^{\mathrm{f}}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k}=\mathrm{E}\left[\mathbf{d}_{k}\mathbf{d}_{k}^{\mathrm{T}}\right]\)</span> is the covariance of the innovation.</p>
 <p>Looking at this expression for <span class="math inline">\(\mathbf{K}_{k},\)</span> we see:</p>
 <ul>
 <li><p>when the measurement error covariance<span style="color: magenta"><span class="math inline">\(\mathbf{R}_{k}\)</span> approaches zero</span>, the gain <span class="math inline">\(\mathbf{K}_{k}\)</span> weights the innovation more heavily, since <span class="math display">\[\lim_{\mathbf{R}\rightarrow0}\mathbf{K}_{k}=\mathbf{H}_{k}^{-1}.\]</span></p></li>
@@ -795,7 +795,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <section id="enkf-forecast-step" class="slide level2 center">
 <h2>EnKF — Forecast Step</h2>
 <p>In the forecast step, the updated ensemble obtained at the analysis step is <span style="color: magenta">propagated</span> by the model over a time step, <span class="math display">\[\mbox{for}\quad i=1,\ldots,m\quad\mathbf{x}_{i,k+1}^{{\rm f}}=\mathcal{M}_{k+1}(\mathbf{x}^{\mathrm{a}}_{i,k}).\]</span></p>
-<p>A forecast can be computed from the mean of the<span style="color: magenta">forecast ensemble</span>, while the forecast error covariances can be estimated from the forecast perturbations.</p>
+<p>A forecast can be computed from the mean of the <span style="color: magenta">forecast ensemble</span>, while the forecast error covariances can be estimated from the forecast perturbations.</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -807,7 +807,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <div class="callout-content">
 <ul>
 <li><p>These are only optional diagnostics in the scheme and they are not required in the cycling of the EnKF.</p></li>
-<li><p>It is important to observe that using the <span style="color: magenta">tangent linear model</span>(TLM) operator, or any linearization thereof, was <span style="color: red">avoided</span>.</p></li>
+<li><p>It is important to observe that using the <span style="color: magenta">tangent linear model</span> (TLM) operator, or any linearization thereof, was <span style="color: red">avoided</span>.</p></li>
 <li><p>This difference should particularly matter in a significantly <span style="color: magenta">nonlinear</span> regime.</p></li>
 <li><p>However, as we shall see later, in strongly nonlinear regimes, the EnKF is largely dominated by schemes known as the iterative EnKF and the iterative ensemble Kalman smoother</p></li>
 </ul>
@@ -850,8 +850,8 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <p>&nbsp;&nbsp;end&nbsp;for</p>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="list" style="font-size: 75%;">
-<p>#Compute&nbsp;the&nbsp;ensemble&nbsp;means</p>
+<section id="compute-the-ensemble-means" class="slide level2 list center" style="font-size: 75%;">
+<h2>Compute&nbsp;the&nbsp;ensemble&nbsp;means</h2>
 <p>&nbsp;&nbsp;<span class="math inline">\(\overline{\mathbf{x}}_{k}^{\mathrm{f}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{x}^{\mathrm{f}}_{i,k}\,,\overline{\mathbf{u}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{u}_{i}\)</span>&nbsp;</p>
 <p>&nbsp;&nbsp;<span class="math inline">\(\left[\mathbf{X}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{x}_{i,k}^{\mathrm{f}}-\overline{\mathbf{x}}_{k}^{\mathrm{f}}}{\sqrt{m-1}},\)</span>&nbsp;&nbsp;&nbsp;#Compute&nbsp;the&nbsp;normalized&nbsp;anomalies</p>
 <p>&nbsp;&nbsp;<span class="math inline">\(\left[\mathbf{Y}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{H}_{k}\mathbf{x}_{i,k}^{\mathrm{f}}-\mathbf{u}_{i}-\mathbf{H}_{k}\overline{\mathbf{x}}_{k}^{\mathrm{f}}+\overline{\mathbf{u}}}{\sqrt{m-1}}\)</span></p>
@@ -861,7 +861,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\({\displaystyle \mathbf{x}_{i,k+1}^{\mathrm{f}}=\mathcal{M}_{k+1}\left(\mathbf{x}^{\mathrm{a}}_{i,k}\right)}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Compute&nbsp;the&nbsp;ensemble&nbsp;forecast</p>
 <p>&nbsp;&nbsp;end&nbsp;for</p>
 <p>end&nbsp;for</p>
-</div>
+</section>
 </div>
 </div>
 </section>
@@ -870,9 +870,9 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <p>We have traded the extended Kalman filter for a seemingly considerably cheaper filter meant to achieve similar performances.</p>
 <p>But this comes with significant <span style="color: red">drawbacks</span>.</p>
 <ul>
-<li><p>Fundamentally, one cannot hope to represent the full error covariance matrix of a complex high-dimensional system with only a f<span style="color: magenta">ew modes</span> <span class="math inline">\(m\ll n\)</span>, usually from a few dozens to a few hundreds.</p></li>
+<li><p>Fundamentally, one cannot hope to represent the full error covariance matrix of a complex high-dimensional system with only a <span style="color: magenta">few modes</span> <span class="math inline">\(m\ll n\)</span>, usually from a few dozens to a few hundreds.</p></li>
 <li><p>This implies large <span style="color: magenta"><em>sampling errors</em></span>, meaning that the error covariance matrix is only sampled by a limited number of modes.</p></li>
-<li><p>This <span style="color: magenta">rank-deficiency</span>is accompanied by <span style="color: magenta">spurious correlations</span> at long distances that strongly affect the filter performance.</p></li>
+<li><p>This <span style="color: magenta">rank-deficiency</span> is accompanied by <span style="color: magenta">spurious correlations</span> at long distances that strongly affect the filter performance.</p></li>
 <li><p>Even though the unstable degrees of freedom of dynamical systems that we wish to control with a filter are usually far fewer than the dimension of the system, they often still represent a substantial fraction of the total degrees of freedom. Forecasting an ensemble of such size is usually not affordable.</p></li>
 </ul>
 </section>
