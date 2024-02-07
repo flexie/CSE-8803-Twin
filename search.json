@@ -1045,6 +1045,13 @@
     "text": "KF — Relation Between Bayes and BLUE\nIf we know that the a priori and the observation data are both Gaussian, Bayes’ rule can be readily applied to compute the a posteriori pdf.\n\nThe a posteriori pdf is then Gaussian, and its parameters are given by the BLUE equations.\n\nHence with Gaussian pdfs and a linear observation operator, there is no need to use Bayes’ rule.\n\nThe BLUE equations can be used instead to compute the parameters of the resulting pdf.\nSince the BLUE provides the same result as Bayes’ rule, it is the best estimator of all.\n\nIn addition one can recognize the 3D-Var cost function.\n\nBy optimizing this cost function, 3D-Var finds the MAP (maximum a posteriori) estimate of the Gaussian pdf, which is equivalent to the MV (minimum variance) estimate found by the BLUE."
   },
   {
+    "objectID": "slides/week-05/07-DA-stat.html#kalman-filter-extensions",
+    "href": "slides/week-05/07-DA-stat.html#kalman-filter-extensions",
+    "title": "Statistical Data Assimilation",
+    "section": "Kalman Filter — extensions",
+    "text": "Kalman Filter — extensions\nThere are many variants, extensions and generalizations of the Kalman Filter.\nLater, we will study in more detail:\n\nensemble Kalman Filters\nBayesian and nonlinear Kalman Filters: extended, unscented\nParticle filters\n\nOne usually has to choose between\n\nlinear Kalman filters\nensemble Kalman filters\nnonlinear filters\nhybrid variational-filter methods.\n\nThese questions will be addressed later."
+  },
+  {
     "objectID": "slides/week-05/07-DA-stat.html#section-12",
     "href": "slides/week-05/07-DA-stat.html#section-12",
     "title": "Statistical Data Assimilation",
@@ -1063,14 +1070,14 @@
     "href": "slides/week-05/07-DA-stat.html#section-13",
     "title": "Statistical Data Assimilation",
     "section": "",
-    "text": "But it has spread out to other geoscience disciplines and beyond. For instance, to name a few domains, it has been applied in greenhouse gas inverse modeling, air quality forecasting, extra-terrestrial atmosphere forecasting , detection and attribution in climate sciences, geomagnetism re-analysis , and ice-sheet parameter estimation and forecasting. It has also been used in petroleum reservoir estimation, in adaptive optics for extra large telescopes, and highway traffic estimation.\nMore recently, the idea was proposed to exploit the EnKF as a universal approach for all inverse problems. The term EKI, Ensemble Kalman Inversion, is used to describe this approach."
+    "text": "But it has spread out to other geoscience disciplines and beyond. For instance, to name a few domains, it has been applied\n\nin greenhouse gas inverse modeling,\nair quality forecasting,\nextra-terrestrial atmosphere forecasting ,\ndetection and attributionin climate sciences,\ngeomagnetism re-analysis , and\nice-sheet parameter estimation and forecasting. It has also been used in petroleum reservoir estimation,\nin adaptive optics for extra large telescopes, and highway traffic estimation.\n\nMore recently, the idea was proposed to exploit the EnKF as a universal approach for all inverse problems. The term EKI, Ensemble Kalman Inversion, is used to describe this approach."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#principle-of-the-enkf",
     "href": "slides/week-05/07-DA-stat.html#principle-of-the-enkf",
     "title": "Statistical Data Assimilation",
     "section": "Principle of the EnKF",
-    "text": "Principle of the EnKF\nThe EnKF was originally proposed by G. Evensen in 1994 and amended in Evensen et al. (2009).\n\nDefinition 1 The ensemble Kalman filter (EnKF) is a Kalman filter that uses an ensemble of realizations to compute estimates of the population mean and covariance.\n\nSince it is based on Gaussian statistics (mean and covariance) it does not solve the Bayesian filtering problem in the limit of a large number of particles, as opposed to the more general particle filterseeAdvanced Course. Nonetheless, it turns out to be an excellent approximate algorithm for the filtering problem.\nAs in the particle filter, the EnKF is based on the concept of particles, a collection of state vectors, which are called the members of the ensemble.\n\nRather than propagating huge covariance matrices, the errors are emulated by scattered particles, a collection of state vectors whose variability is meant to be representative of the uncertainty of the system’s state resulting from the forecaster’s ignorance."
+    "text": "Principle of the EnKF\nThe EnKF was originally proposed by G. Evensen in 1994 and amended in Evensen et al. (2009).\n\nDefinition 1 The ensemble Kalman filter (EnKF) is a Kalman filter that uses an ensemble of realizations to compute estimates of the population mean and covariance.\n\nSince it is based on Gaussian statistics (mean and covariance) it does not solve the Bayesian filtering problem in the limit of a large number of particles, as opposed to the more general particle filter, which will be discussed later. Nonetheless, it turns out to be an excellent approximate algorithm for the filtering problem.\nAs in the particle filter, the EnKF is based on the concept of particles, a collection of state vectors, which are called the members of the ensemble.\n\nRather than propagating huge covariance matrices, the errors are emulated by scattered particles, a collection of state vectors whose variability is meant to be representative of the uncertainty of the system’s state resulting from the forecaster’s ignorance."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#section-14",
@@ -1084,7 +1091,7 @@
     "href": "slides/week-05/07-DA-stat.html#enkf-the-three-steps",
     "title": "Statistical Data Assimilation",
     "section": "EnKF — the Three Steps",
-    "text": "EnKF — the Three Steps\n\nInitialization: generate an ensemble of \\(m\\) random states \\(\\left\\{ \\mathbf{x}_{i,0}^{\\mathrm{f}}\\right\\} _{i=1,\\ldots,m}\\) at time \\(t=0.\\)\nForecast: compute the prediction for each member of the ensemble.\nAnalysis: correct the prediction in light of the observations.\n\nPlease see the Algorithm 0.42 below for details of each step.\n\n\n\n\n\n\nNote\n\n\n\nPropagation can equivalently be performed either at the end of the analysis step or at the beginning of the forecast step.\nThe Kalman gain is not computed directly, but estimated from the ensemble statistics.\nWith the important exception of the Kalman gain computation, all operations on the ensemble members are independent. As a result, parallelization is straightforward.\nThis is one of the main reasons for the success/popularity of the EnKF."
+    "text": "EnKF — the Three Steps\n\nInitialization: generate an ensemble of \\(m\\) random states \\(\\left\\{ \\mathbf{x}_{i,0}^{\\mathrm{f}}\\right\\} _{i=1,\\ldots,m}\\) at time \\(t=0.\\)\nForecast: compute the prediction for each member of the ensemble.\nAnalysis: correct the prediction in light of the observations.\n\nPlease see the Algorithm 0.43 below for details of each step.\n\n\n\n\n\n\nNote\n\n\n\nPropagation can equivalently be performed either at the end of the analysis step or at the beginning of the forecast step.\nThe Kalman gain is not computed directly, but estimated from the ensemble statistics.\nWith the important exception of the Kalman gain computation, all operations on the ensemble members are independent. As a result, parallelization is straightforward.\nThis is one of the main reasons for the success/popularity of the EnKF."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#enkf-analysis-step",
@@ -1154,21 +1161,14 @@
     "href": "slides/week-05/07-DA-stat.html#section-21",
     "title": "Statistical Data Assimilation",
     "section": "",
-    "text": "The members are propagated forward in time during \\(n_{1}\\) model time steps \\(dt\\) to \\(t=T_{1}\\) where observations are available (forecast phase, orange dashed lines).\nAt \\(t=T_{1}\\) the analysis uses the observations and their uncertainty (blue triangle and ellipsoid) to produce a new system state that is closer to the observations and with a lower uncertainty (red square and ellipsoid).\nA new forecastis issued from the analyzed state and this procedure is repeated until the end of the assimilation window at \\(t=T_{f}.\\)\nThe model state should get closer to the truth and with lower uncertainty as more observations are assimilated.\n\nTime-dependent variational methods (4D-Var) iterate over the assimilation window to find the trajectory that minimizes the misfit (\\(J_{0}\\)) between the model and all observations available from \\(t_{0}\\) to \\(T_{f}\\) (violet curve).\nFor linear dynamics, Gaussian errors and infinite ensemble sizes, the states produced at the end of the assimilation window by the two methods should be equivalent (Li and Navon 2001)."
+    "text": "The members are propagated forward in time during \\(n_{1}\\) model time steps \\(dt\\) to \\(t=T_{1}\\) where observations are available (forecast phase, orange dashed lines).\nAt \\(t=T_{1}\\) the analysis uses the observations and their uncertainty (blue triangle and ellipsoid) to produce a new system state that is closer to the observations and with a lower uncertainty (red square and ellipsoid).\nA new forecast is issued from the analyzed state and this procedure is repeated until the end of the assimilation window at \\(t=T_{f}.\\)\nThe model state should get closer to the truth and with lower uncertainty as more observations are assimilated.\n\nTime-dependent variational methods (4D-Var) iterate over the assimilation window to find the trajectory that minimizes the misfit (\\(J_{0}\\)) between the model and all observations available from \\(t_{0}\\) to \\(T_{f}\\) (violet curve).\nFor linear dynamics, Gaussian errors and infinite ensemble sizes, the states produced at the end of the assimilation window by the two methods should be equivalent (Li and Navon 2001)."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#sec-alg-EnKG",
     "href": "slides/week-05/07-DA-stat.html#sec-alg-EnKG",
     "title": "Statistical Data Assimilation",
     "section": "EnKF — the Algorithm",
-    "text": "EnKF — the Algorithm\n\n\n\nGiven: For \\(k=0,\\ldots,K,\\) observation error cov. matrices\n            \\(\\mathbf{R}_{k}\\), observation models \\(\\mathcal{H}_{k}\\), forward models \\(\\mathcal{M}_{k}.\\)  \nCompute: the ensemble forecast \\(\\left\\{ \\mathbf{x}_{i,k}^{\\mathrm{f}}\\right\\} _{i=1,\\ldots,m,\\,k=1,\\ldots,K}\\) \n\\(\\left(\\mathbf{x}_{i,0}^{\\mathrm{f}}\\right)_{i=1,\\ldots,m}\\)            #Initialize the ensemble\nfor \\(k=0\\) to \\(K\\) do        #Loop over time\n  for  \\(i=1\\) to \\(m\\) do #Draw a stat. consistent obs. set\n    \\(\\mathbf{u}_{i}\\sim{\\cal N}(0,\\mathbf{R}_{k})\\)\n    \\(\\mathbf{y}_{i,k}=\\mathbf{y}_{k}+\\mathbf{u}_{i}\\)\n  end for\n\n\n\nCompute the ensemble means\n  \\(\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}=\\frac{1}{m}\\sum_{i=1}^{m}\\mathbf{x}^{\\mathrm{f}}_{i,k}\\,,\\overline{\\mathbf{u}}=\\frac{1}{m}\\sum_{i=1}^{m}\\mathbf{u}_{i}\\) \n  \\(\\left[\\mathbf{X}_{\\mathrm{f}}\\right]_{i,k}=\\frac{\\mathbf{x}_{i,k}^{\\mathrm{f}}-\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}}{\\sqrt{m-1}},\\)   #Compute the normalized anomalies\n  \\(\\left[\\mathbf{Y}_{\\mathrm{f}}\\right]_{i,k}=\\frac{\\mathbf{H}_{k}\\mathbf{x}_{i,k}^{\\mathrm{f}}-\\mathbf{u}_{i}-\\mathbf{H}_{k}\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}+\\overline{\\mathbf{u}}}{\\sqrt{m-1}}\\)\n   \\(K_{k}=\\mathbf{X}_{k}^{\\mathrm{f}}\\left({\\mathbf{Y}_{k}^{\\mathrm{f}}}\\right)^{\\mathrm{T}}\\left(\\mathbf{Y}_{k}^{\\mathrm{f}}\\left({\\mathbf{Y}_{k}^{\\mathrm{f}}}\\right)^{\\mathrm{T}}\\right)^{-1}\\)    #Compute the gain\n  for \\(i=1\\) to \\(m\\) do              #Update the ensemble\n    \\(\\mathbf{x}_{i,k}^{{\\rm a}}=\\mathbf{x}_{i,k}^{\\mathrm{f}}+K_{k}\\left({\\mathbf{y}_{i,k}-\\mathcal{H}_{k}\\left(\\mathbf{x}^{\\mathrm{f}}_{i,k}\\right)}\\right)\\) \n    \\({\\displaystyle \\mathbf{x}_{i,k+1}^{\\mathrm{f}}=\\mathcal{M}_{k+1}\\left(\\mathbf{x}^{\\mathrm{a}}_{i,k}\\right)}\\)          #Compute the ensemble forecast\n  end for\nend for"
-  },
-  {
-    "objectID": "slides/week-05/07-DA-stat.html#compute-the-ensemble-means",
-    "href": "slides/week-05/07-DA-stat.html#compute-the-ensemble-means",
-    "title": "Statistical Data Assimilation",
-    "section": "Compute the ensemble means",
-    "text": "Compute the ensemble means\n  \\(\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}=\\frac{1}{m}\\sum_{i=1}^{m}\\mathbf{x}^{\\mathrm{f}}_{i,k}\\,,\\overline{\\mathbf{u}}=\\frac{1}{m}\\sum_{i=1}^{m}\\mathbf{u}_{i}\\) \n  \\(\\left[\\mathbf{X}_{\\mathrm{f}}\\right]_{i,k}=\\frac{\\mathbf{x}_{i,k}^{\\mathrm{f}}-\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}}{\\sqrt{m-1}},\\)   #Compute the normalized anomalies\n  \\(\\left[\\mathbf{Y}_{\\mathrm{f}}\\right]_{i,k}=\\frac{\\mathbf{H}_{k}\\mathbf{x}_{i,k}^{\\mathrm{f}}-\\mathbf{u}_{i}-\\mathbf{H}_{k}\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}+\\overline{\\mathbf{u}}}{\\sqrt{m-1}}\\)\n   \\(K_{k}=\\mathbf{X}_{k}^{\\mathrm{f}}\\left({\\mathbf{Y}_{k}^{\\mathrm{f}}}\\right)^{\\mathrm{T}}\\left(\\mathbf{Y}_{k}^{\\mathrm{f}}\\left({\\mathbf{Y}_{k}^{\\mathrm{f}}}\\right)^{\\mathrm{T}}\\right)^{-1}\\)    #Compute the gain\n  for \\(i=1\\) to \\(m\\) do              #Update the ensemble\n    \\(\\mathbf{x}_{i,k}^{{\\rm a}}=\\mathbf{x}_{i,k}^{\\mathrm{f}}+K_{k}\\left({\\mathbf{y}_{i,k}-\\mathcal{H}_{k}\\left(\\mathbf{x}^{\\mathrm{f}}_{i,k}\\right)}\\right)\\) \n    \\({\\displaystyle \\mathbf{x}_{i,k+1}^{\\mathrm{f}}=\\mathcal{M}_{k+1}\\left(\\mathbf{x}^{\\mathrm{a}}_{i,k}\\right)}\\)          #Compute the ensemble forecast\n  end for\nend for"
+    "text": "EnKF — the Algorithm\n\n\n\nGiven: For \\(k=0,\\ldots,K,\\) observation error cov. matrices\n            \\(\\mathbf{R}_{k}\\), observation models \\(\\mathcal{H}_{k}\\), forward models \\(\\mathcal{M}_{k}.\\)  \nCompute: the ensemble forecast \\(\\left\\{ \\mathbf{x}_{i,k}^{\\mathrm{f}}\\right\\} _{i=1,\\ldots,m,\\,k=1,\\ldots,K}\\) \n\\(\\left(\\mathbf{x}_{i,0}^{\\mathrm{f}}\\right)_{i=1,\\ldots,m}\\)            %Initialize the ensemble\nfor \\(k=0\\) to \\(K\\) do        %Loop over time\n  for  \\(i=1\\) to \\(m\\) do #Draw a stat. consistent obs. set\n    \\(\\mathbf{u}_{i}\\sim{\\cal N}(0,\\mathbf{R}_{k})\\)\n    \\(\\mathbf{y}_{i,k}=\\mathbf{y}_{k}+\\mathbf{u}_{i}\\)\n  end for\n\n\n\n% Compute the ensemble means\n  \\(\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}=\\frac{1}{m}\\sum_{i=1}^{m}\\mathbf{x}^{\\mathrm{f}}_{i,k}\\,,\\overline{\\mathbf{u}}=\\frac{1}{m}\\sum_{i=1}^{m}\\mathbf{u}_{i}\\) \n  \\(\\left[\\mathbf{X}_{\\mathrm{f}}\\right]_{i,k}=\\frac{\\mathbf{x}_{i,k}^{\\mathrm{f}}-\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}}{\\sqrt{m-1}},\\)   %Compute the normalized anomalies\n  \\(\\left[\\mathbf{Y}_{\\mathrm{f}}\\right]_{i,k}=\\frac{\\mathbf{H}_{k}\\mathbf{x}_{i,k}^{\\mathrm{f}}-\\mathbf{u}_{i}-\\mathbf{H}_{k}\\overline{\\mathbf{x}}_{k}^{\\mathrm{f}}+\\overline{\\mathbf{u}}}{\\sqrt{m-1}}\\)\n   \\(K_{k}=\\mathbf{X}_{k}^{\\mathrm{f}}\\left({\\mathbf{Y}_{k}^{\\mathrm{f}}}\\right)^{\\mathrm{T}}\\left(\\mathbf{Y}_{k}^{\\mathrm{f}}\\left({\\mathbf{Y}_{k}^{\\mathrm{f}}}\\right)^{\\mathrm{T}}\\right)^{-1}\\) % gain\n  for \\(i=1\\) to \\(m\\) do              % Update the ensemble\n    \\(\\mathbf{x}_{i,k}^{{\\rm a}}=\\mathbf{x}_{i,k}^{\\mathrm{f}}+K_{k}\\left({\\mathbf{y}_{i,k}-\\mathcal{H}_{k}\\left(\\mathbf{x}^{\\mathrm{f}}_{i,k}\\right)}\\right)\\) \n    \\({\\displaystyle \\mathbf{x}_{i,k+1}^{\\mathrm{f}}=\\mathcal{M}_{k+1}\\left(\\mathbf{x}^{\\mathrm{a}}_{i,k}\\right)}\\)          % Ensemble forecast\n  end for\nend for"
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#localization-and-inflation",
@@ -1189,7 +1189,7 @@
     "href": "slides/week-05/07-DA-stat.html#localization",
     "title": "Statistical Data Assimilation",
     "section": "Localization",
-    "text": "Localization\nFor many systems with geographic spread, distant observables are weakly correlated.\nIn other words, two distant parts of the system are almost independent at least for short time scales.\nIt is possible to exploit this relative independence and spatially localizethe analysis. This has been naturally termed localization.\nThere are two types of localization:\n\nDomain localization, where instead of performing a global analysis valid at any location in the domain, we perform a local analysis to update the local state variables using local observations.\nCovariance localization focuses on the forecast error covariance matrix. It is based on the remark that the forecast error covariance matrix \\(\\mathbf{P}_{{\\rm f}}\\) is of low rank, at most \\(m-1,\\) and that this rank-deficiency could be cured by filtering these empirical covariances.\n\nFor implementation details, please consult (Asch, Bocquet, and Nodet 2016)."
+    "text": "Localization\nFor many systems with geographic spread, distant observables are weakly correlated.\nIn other words, two distant parts of the system are almost independent at least for short time scales.\nIt is possible to exploit this relative independence and spatially localize the analysis. This has been naturally termed localization.\nThere are two types of localization:\n\nDomain localization, where instead of performing a global analysis valid at any location in the domain, we perform a local analysis to update the local state variables using local observations.\nCovariance localization focuses on the forecast error covariance matrix. It is based on the remark that the forecast error covariance matrix \\(\\mathbf{P}_{{\\rm f}}\\) is of low rank, at most \\(m-1,\\) and that this rank-deficiency could be cured by filtering these empirical covariances.\n\nFor implementation details, please consult (Asch, Bocquet, and Nodet 2016)."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#inflation",
@@ -1287,14 +1287,7 @@
     "href": "slides/week-05/07-DA-stat.html#section-34",
     "title": "Statistical Data Assimilation",
     "section": "",
-    "text": "Some well-known examples of toy models are:\n\nLorenz models that are used as an avatar for weather simulations.\nVarious harmonic oscillators that are used to simulate dynamic systems.\nOther well-known models are the Ising model in physics, the Lotka-Volterra model in life sciences, and the Schelling model in social sciences.\n\nMachine Learning (ML) is becoming more and more present in our daily lives, and in scientific research. The use of ML in DA and Inverse modeling will be dealt with later, where we will consider:\n\nML-based Surrogate Models.\nML-based Surrogate Models.\nScientific ML."
-  },
-  {
-    "objectID": "slides/week-05/07-DA-stat.html#kalman-filter-extensions",
-    "href": "slides/week-05/07-DA-stat.html#kalman-filter-extensions",
-    "title": "Statistical Data Assimilation",
-    "section": "Kalman Filter — extensions",
-    "text": "Kalman Filter — extensions\nThere are many variants, extensions and generalizations of the Kalman Filter.\nLater, we will study in more detail:\nensemble Kalman Filters\n\nBayesian and nonlinear Kalman Filters: extended, unscented\nparticle filters\n\nOne usually has to choose between\n\nlinear Kalman filters\nensemble Kalman filters\nnonlinear filters\nhybrid variational-filter methods.\n\nThese questions will be addressed later."
+    "text": "Some well-known examples of toy models are:\n\nLorenz models that are used as an avatar for weather simulations.\nVarious harmonic oscillators that are used to simulate dynamic systems.\nOther well-known models are the Ising model in physics, the Lotka-Volterra model in life sciences, and the Schelling model in social sciences.\n\nMachine Learning (ML) is becoming more and more present in our daily lives, and in scientific research. The use of ML in DA and Inverse modeling will be dealt with later, where we will consider:\n\nML-based Surrogate Models with Fourier Neural Operators for the dynamics.\nML-based Surrogate Models with Conditional Normalizing flows for the posterior.\nScientific ML."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#where-are-we-in-the-inference-cycle",
@@ -1309,6 +1302,90 @@
     "title": "Statistical Data Assimilation",
     "section": "Open-source software",
     "text": "Open-source software\nVarious open-source repositories and codes are available for both academic and operational data assimilation.\n\nDARC: https://research.reading.ac.uk/met-darc/ from Reading, UK.\nDAPPER: https://github.com/nansencenter/DAPPER from Nansen, Norway.\nDART: https://dart.ucar.edu/ from NCAR, US, specialized in ensemble DA.\nOpenDA: https://www.openda.org/.\nVerdandi: http://verdandi.sourceforge.net/ from INRIA, France.\nPyDA: https://github.com/Shady-Ahmed/PyDA, a Python implementation for academic use.\nFilterpy: https://github.com/rlabbe/filterpy, dedicated to KF variants.\nEnKF; https://enkf.nersc.no/, the original Ensemble KF from Geir Evensen."
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#five-dimensional-digital-twin",
+    "href": "slides/week-06/10-DT.html#five-dimensional-digital-twin",
+    "title": "Digital Twins",
+    "section": "Five dimensional Digital Twin",
+    "text": "Five dimensional Digital Twin\n\n\n\\[\\mathrm{DT} = \\mathbb{F} (\\mathrm{PS, DS, P2V, V2P, OPT})\\]\nfive- dimensional digital twin model consists of\n\na physical system (PS),\na digital system (DS),\nan updating engine (P2V),\na prediction engine (V2P),\nand an optimization dimension (OPT).\n\n\\(\\mathbb{F}(⋅)\\) integrates all five dimensions together to define a Digital Twin.\n\n\n\n\nfrom (Thelen et al. 2022)"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#five-dimensions",
+    "href": "slides/week-06/10-DT.html#five-dimensions",
+    "title": "Digital Twins",
+    "section": "Five dimensions",
+    "text": "Five dimensions\n\\[\\mathrm{DT} = \\mathbb{F} (\\mathrm{PS, DS, P2V, V2P, OPT})\\]\n\nfrom (Thelen et al. 2022)"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#physics-based-modeling",
+    "href": "slides/week-06/10-DT.html#physics-based-modeling",
+    "title": "Digital Twins",
+    "section": "Physics-based modeling",
+    "text": "Physics-based modeling\nIt is well-known that partial differential equations (PDEs) can mathematically describe certain physical laws. Well-known examples of PDEs are\n\nNavier–Stokes equations describing fluid motion\nheat equation describing heat diffusion\nwave-equation describing how waves propagate in some spatially varying medium\nmultiphase flow-fluid equations (Darby equation, conservation law, etc.) describing how multiphase fluids flow in porous media (e.g. rocks)\n\nSome common types of physics\n\nSolid body structural analysis of stress and strain\nThermal and fluid flow analyses\nMulti-body dynamics\nMultiphysics simulations"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#two-phase-flow-equations-highly-nonlinear",
+    "href": "slides/week-06/10-DT.html#two-phase-flow-equations-highly-nonlinear",
+    "title": "Digital Twins",
+    "section": "Two-phase flow equations (highly nonlinear)",
+    "text": "Two-phase flow equations (highly nonlinear)\nTwo fluids: brine and supercritical CO2.\n\nFor fluid \\(i = 1,2\\):\n\n\n\n\n\n\n\n\nMass conservation:\n\\(\\frac{\\partial(\\color{red}{\\phi}\\rho_i \\color{teal}{S_i})}{\\partial t} = \\nabla \\cdot (\\rho_i v_i) + \\rho_i q_i\\)\n\n\nDarcy flow law:\n\\(v_i = - \\frac{k_{ri}}{\\mu_i} \\color{red}{K} \\nabla (\\color{teal}{P_i} - \\rho_i g Z)\\)\n\n\nModified Brooks-Corey:\n\\(k_{ri} = \\text{clamp}(1.25^2(\\color{teal}{S_i} - 0.1)^2, 0, 1)\\)\n\n\n\nDefinitions:\n\n\n\n\n\n\n\n\n\nSaturation:\n\\(\\color{teal}{S_i}\\), \\(\\, \\color{teal}{S_1}+\\color{teal}{S_2} = 1\\)\n\n\nPressure:\n\\(\\color{teal}{P_i}\\), \\(\\, \\color{teal}{P_1}-\\color{teal}{P_2} = P_c\\)\n\n\n\n\n\n\n\nPorosity:\n\\(\\color{red}{\\phi}\\)\n\n\nPermeability:\n\\(\\color{red}{K}\\)\n\n\n\n\n\n\n\nDensity:\n\\(\\rho_i\\)\n\n\nViscosity:\n\\(\\mu_i\\)\n\n\nInjection:\n\\(q_2\\)\n\n\nDepth:\n\\(Z\\)\n\n\nGravity:\n\\(g\\)\n\n\nCapillary pressure:\n\\(P_c\\)"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#seismic-wave-equations-highly-nonlinear",
+    "href": "slides/week-06/10-DT.html#seismic-wave-equations-highly-nonlinear",
+    "title": "Digital Twins",
+    "section": "Seismic wave equations (highly nonlinear)",
+    "text": "Seismic wave equations (highly nonlinear)\n\nThe presence of CO2 modifies the squared slowness \\(m\\).\n\n\n\n\n\n\n\n\nWave equation:\n\\(m \\frac{\\partial^2 \\color{#d95f02}{p}}{\\partial t^2} - \\nabla \\cdot \\nabla \\color{#d95f02}{p} + \\eta \\frac{\\partial \\color{#d95f02}{p}}{\\partial t} = q\\)\n\n\nPatchy-saturation model:\n\\(m = (\\rho_0 + \\color{teal}{S_2} \\phi (\\rho_2 - \\rho_1))\\left(\\lambda_{s1}^{-1} + \\color{teal}{S_2}(\\lambda_{s2}^{-1}-\\lambda_{s1}^{-1}) \\right)\\)\n\n\n\n\nDefinitions:\n\n\n\n\n\n\n\n\n\nSaturation:\n\\(\\color{teal}{S_i}\\), \\(\\, \\color{teal}{S_1}+\\color{teal}{S_2} = 1\\)\n\n\nPressure change:\n\\(\\color{#d95f02}{p}\\)\n\n\n\n\n\n\n\nSquared slowness:\n\\(m\\)\n\n\nSeismic source:\n\\(q\\)\n\n\nBrine rock density:\n\\(\\rho_0\\)\n\n\nFluid density:\n\\(\\rho_1\\), \\(\\rho_2\\)\n\n\nP-wave modulus:\n\\(\\lambda_{s1}\\), \\(\\lambda_{s2}\\)\n\n\nPML parameter:\n\\(\\eta\\)\n\n\n\n\n\n\nThis PDE is also quadratic in the saturation."
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#our-co2-system",
+    "href": "slides/week-06/10-DT.html#our-co2-system",
+    "title": "Digital Twins",
+    "section": "Our CO2 system",
+    "text": "Our CO2 system\n\n\n\n\n\n\nCO2 saturation \\(x_k\\)\n\n\n\n\n\n\n\nSeismic image \\(y_k\\)\n\n\n\n\n \n\n\n\n\n\n Notation for data assimilation: \n\n\ntimestep \\(k\\)\nFluid flow physics: \\(x_k = g(x_{k-1}) + \\epsilon_g\\)\nSeismic observation: \\(y_k = h(x_k) + \\epsilon_h\\)"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#data-driven-modeling",
+    "href": "slides/week-06/10-DT.html#data-driven-modeling",
+    "title": "Digital Twins",
+    "section": "Data-driven modeling",
+    "text": "Data-driven modeling\nData-driven models are needed for modeling physics in a digital twin under either of two main scenarios:\n\nThe underlying physics is too complicated or is not fully understood, and as a result, building an accurate physics- based model is impossible; or\nThe physics is well understood and can be modeled using available software, but the simulation is too computationally expensive or time consuming to be useful in a digital twin, especially when many model runs are required (such as with UQ tasks)."
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#section",
+    "href": "slides/week-06/10-DT.html#section",
+    "title": "Digital Twins",
+    "section": "",
+    "text": "from (Thelen et al. 2022)"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#add-slides-ad-multiphysics-abstractions-cse-talk",
+    "href": "slides/week-06/10-DT.html#add-slides-ad-multiphysics-abstractions-cse-talk",
+    "title": "Digital Twins",
+    "section": "Add slides AD multiphysics abstractions (CSE talk)",
+    "text": "Add slides AD multiphysics abstractions (CSE talk)"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#add-slides-fno",
+    "href": "slides/week-06/10-DT.html#add-slides-fno",
+    "title": "Digital Twins",
+    "section": "Add slides FNO",
+    "text": "Add slides FNO"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#section-4",
+    "href": "slides/week-06/10-DT.html#section-4",
+    "title": "Digital Twins",
+    "section": "",
+    "text": "Bayes Assimilation"
+  },
+  {
+    "objectID": "slides/week-06/10-DT.html#section-5",
+    "href": "slides/week-06/10-DT.html#section-5",
+    "title": "Digital Twins",
+    "section": "",
+    "text": "Sequential Bayes Assimilation"
   },
   {
     "objectID": "slides/week-01/01-intro.html#course-outline",
@@ -1486,7 +1563,7 @@
     "href": "weeks/week-05.html",
     "title": "Week 05",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nStatistical Data Assimilation\n\n\nData Assimilation\n\n\nWed, Jan 31\n\n\n\n\nBayesian Data Assimilation\n\n\nData Assimilation\n\n\nSat, Dec 23\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins section 9.4.1—9.4.7\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nStatistical Data Assimilation\n\n\nData Assimilation\n\n\nWed, Feb 07\n\n\n\n\nBayesian Data Assimilation\n\n\nData Assimilation\n\n\nSat, Dec 23\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins section 9.4.1—9.4.7\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "labs/w2-lab01-PyTorch.html",

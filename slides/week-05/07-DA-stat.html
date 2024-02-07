@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.549">
 
-  <meta name="dcterms.date" content="2024-01-31">
+  <meta name="dcterms.date" content="2024-02-07">
   <title>Digital Twins for Physical Systems - Statistical Data Assimilation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -354,7 +354,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2024-01-31</p>
+  <p class="date">2024-02-07</p>
 </section>
 <section id="statistical-da-introduction" class="slide level2 center">
 <h2>Statistical DA: introduction</h2>
@@ -646,6 +646,24 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <li>By optimizing this cost function, 3D-Var finds the MAP (maximum a posteriori) estimate of the Gaussian pdf, which is equivalent to the MV (minimum variance) estimate found by the BLUE.</li>
 </ul>
 </section>
+<section id="kalman-filter-extensions" class="slide level2 center">
+<h2>Kalman Filter — extensions</h2>
+<p>There are many variants, extensions and <span style="color: magenta">generalizations</span> of the Kalman Filter.</p>
+<p>Later, we will study in more detail:</p>
+<ul>
+<li><p>ensemble Kalman Filters</p></li>
+<li><p>Bayesian and nonlinear Kalman Filters: extended, unscented</p></li>
+<li><p>Particle filters</p></li>
+</ul>
+<p>One usually has to choose between</p>
+<ul>
+<li><p>linear Kalman filters</p></li>
+<li><p>ensemble Kalman filters</p></li>
+<li><p>nonlinear filters</p></li>
+<li><p>hybrid variational-filter methods.</p></li>
+</ul>
+<p>These questions will be addressed later.</p>
+</section>
 <section id="section-12" class="slide level2 center">
 <h2></h2>
 <div class="center">
@@ -664,7 +682,16 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 </section>
 <section id="section-13" class="slide level2 center">
 <h2></h2>
-<p>But it has spread out to other geoscience disciplines and beyond. For instance, to name a few domains, it has been applied in greenhouse gas inverse modeling, air quality forecasting, extra-terrestrial atmosphere forecasting , detection and attribution in climate sciences, geomagnetism re-analysis , and ice-sheet parameter estimation and forecasting. It has also been used in petroleum reservoir estimation, in adaptive optics for extra large telescopes, and highway traffic estimation.</p>
+<p>But it has spread out to other geoscience disciplines and beyond. For instance, to name a few domains, it has been applied</p>
+<ul>
+<li>in greenhouse gas inverse modeling,</li>
+<li>air quality forecasting,</li>
+<li>extra-terrestrial atmosphere forecasting ,</li>
+<li>detection and attributionin climate sciences,</li>
+<li>geomagnetism re-analysis , and</li>
+<li>ice-sheet parameter estimation and forecasting. It has also been used in petroleum reservoir estimation,</li>
+<li>in adaptive optics for extra large telescopes, and highway traffic estimation.</li>
+</ul>
 <p>More recently, the idea was proposed to exploit the EnKF as a universal approach for all inverse problems. The term EKI, Ensemble Kalman Inversion, is used to describe this approach.</p>
 </section>
 <section id="principle-of-the-enkf" class="slide level2 center">
@@ -673,10 +700,10 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <div id="def-EnKF" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1</strong></span> The ensemble Kalman filter (EnKF) is a Kalman filter that uses an ensemble of realizations to compute estimates of the population mean and covariance.</p>
 </div>
-<p>Since it is based on <span style="color: magenta">Gaussian</span> statistics (mean and covariance) it does not solve the Bayesian filtering problem in the limit of a large number of particles, as opposed to the more general <em>particle filter</em>seeAdvanced Course. Nonetheless, it turns out to be an excellent <span style="color: magenta">approximate</span> algorithm for the filtering problem.</p>
+<p>Since it is based on <span style="color: magenta">Gaussian</span> statistics (mean and covariance) it does not solve the Bayesian filtering problem in the limit of a large number of particles, as opposed to the more general <em>particle filter</em>, which will be discussed later. Nonetheless, it turns out to be an excellent <span style="color: magenta">approximate</span> algorithm for the filtering problem.</p>
 <p>As in the particle filter, the EnKF is based on the concept of particles, a collection of state vectors, which are called the members of the <span style="color: magenta">ensemble</span>.</p>
 <ul>
-<li>Rather than propagating huge covariance matrices, the errors are emulated by scattered particles, a collection of state vectors whose variability is meant to be representative of the uncertainty of the system’s state resulting from the forecaster’s ignorance.</li>
+<li>Rather than propagating huge covariance matrices, the errors are emulated by scattered particles, a collection of <em>state</em> vectors whose variability is meant to be representative of the uncertainty of the system’s state resulting from the forecaster’s ignorance.</li>
 </ul>
 </section>
 <section id="section-14" class="slide level2 center">
@@ -700,7 +727,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <li><p><strong>Forecast:</strong> compute the prediction for each member of the ensemble.</p></li>
 <li><p><strong>Analysis:</strong> correct the prediction in light of the observations.</p></li>
 </ol>
-<p>Please see the Algorithm <a href="#/sec-alg-EnKG" class="quarto-xref">0.42</a> below for details of each step.</p>
+<p>Please see the Algorithm <a href="#/sec-alg-EnKG" class="quarto-xref">0.43</a> below for details of each step.</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -821,14 +848,14 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <p><img data-src="../images/enKF_4DVar.png" style="width:50.0%"></p>
 </div>
 <p><span style="color: magenta">Principle</span> of data assimilation: Having a physical model able to forecast the evolution of a system from time <span class="math inline">\(t=t_{0}\)</span> to time<span class="math inline">\(t=T_{f}\)</span> (cyan curve), the aim of DA is to use available observations (blue triangles) to correct the model projections and get closer to the (unknown) truth (dotted line).</p>
-<p>In <span style="color: magenta">EnKF</span>s, the initial system state and its uncertainty (green square and ellipsoid) are represented by <span class="math inline">\(m\)</span> members.</p>
+<p>In <span style="color: magenta">EnKFs</span>, the initial system state and its uncertainty (green square and ellipsoid) are represented by <span class="math inline">\(m\)</span> members.</p>
 </section>
 <section id="section-21" class="slide level2 center">
 <h2></h2>
 <ul>
 <li><p>The <span style="color: magenta">members are propagated</span> forward in time during <span class="math inline">\(n_{1}\)</span> model time steps <span class="math inline">\(dt\)</span> to <span class="math inline">\(t=T_{1}\)</span> where observations are available (forecast phase, orange dashed lines).</p></li>
 <li><p>At <span class="math inline">\(t=T_{1}\)</span> the analysis uses the observations and their uncertainty (blue triangle and ellipsoid) to produce a new system state that is <span style="color: magenta">closer to the observations</span> and with a <span style="color: magenta">lower uncertainty</span> (red square and ellipsoid).</p></li>
-<li><p>A <span style="color: magenta">new forecast</span>is issued from the analyzed state and this procedure is repeated until the end of the assimilation window at <span class="math inline">\(t=T_{f}.\)</span></p></li>
+<li><p>A <span style="color: magenta">new forecast</span> is issued from the analyzed state and this procedure is repeated until the end of the assimilation window at <span class="math inline">\(t=T_{f}.\)</span></p></li>
 <li><p>The model state should get closer to the truth and with lower uncertainty as more observations are assimilated.</p></li>
 </ul>
 <p>Time-dependent variational methods (<span style="color: magenta">4D-Var</span>) iterate over the assimilation window to find the trajectory that minimizes the misfit (<span class="math inline">\(J_{0}\)</span>) between the model and all observations available from <span class="math inline">\(t_{0}\)</span> to <span class="math inline">\(T_{f}\)</span> (violet curve).</p>
@@ -842,26 +869,26 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <p><strong>Given</strong>:&nbsp;For&nbsp;<span class="math inline">\(k=0,\ldots,K,\)</span>&nbsp;observation&nbsp;error&nbsp;cov.&nbsp;matrices</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\mathbf{R}_{k}\)</span>,&nbsp;observation&nbsp;models&nbsp;<span class="math inline">\(\mathcal{H}_{k}\)</span>,&nbsp;forward&nbsp;models&nbsp;<span class="math inline">\(\mathcal{M}_{k}.\)</span>&nbsp;&nbsp;<br>
 <strong>Compute</strong>:&nbsp;the&nbsp;ensemble&nbsp;forecast&nbsp;<span class="math inline">\(\left\{ \mathbf{x}_{i,k}^{\mathrm{f}}\right\} _{i=1,\ldots,m,\,k=1,\ldots,K}\)</span>&nbsp;</p>
-<p><span class="math inline">\(\left(\mathbf{x}_{i,0}^{\mathrm{f}}\right)_{i=1,\ldots,m}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Initialize&nbsp;the&nbsp;ensemble</p>
-<p>for&nbsp;<span class="math inline">\(k=0\)</span>&nbsp;to&nbsp;<span class="math inline">\(K\)</span>&nbsp;do&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Loop&nbsp;over&nbsp;time</p>
+<p><span class="math inline">\(\left(\mathbf{x}_{i,0}^{\mathrm{f}}\right)_{i=1,\ldots,m}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%Initialize&nbsp;the&nbsp;ensemble</p>
+<p>for&nbsp;<span class="math inline">\(k=0\)</span>&nbsp;to&nbsp;<span class="math inline">\(K\)</span>&nbsp;do&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%Loop&nbsp;over&nbsp;time</p>
 <p>&nbsp;&nbsp;for&nbsp;&nbsp;<span class="math inline">\(i=1\)</span>&nbsp;to&nbsp;<span class="math inline">\(m\)</span>&nbsp;do&nbsp;#Draw&nbsp;a&nbsp;stat.&nbsp;consistent&nbsp;obs.&nbsp;set</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\mathbf{u}_{i}\sim{\cal N}(0,\mathbf{R}_{k})\)</span></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\mathbf{y}_{i,k}=\mathbf{y}_{k}+\mathbf{u}_{i}\)</span></p>
 <p>&nbsp;&nbsp;end&nbsp;for</p>
 </div>
 </div><div class="column" style="width:50%;">
-<section id="compute-the-ensemble-means" class="slide level2 list center" style="font-size: 75%;">
-<h2>Compute&nbsp;the&nbsp;ensemble&nbsp;means</h2>
+<div class="list" style="font-size: 75%;">
+<p>% Compute&nbsp;the&nbsp;ensemble&nbsp;means</p>
 <p>&nbsp;&nbsp;<span class="math inline">\(\overline{\mathbf{x}}_{k}^{\mathrm{f}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{x}^{\mathrm{f}}_{i,k}\,,\overline{\mathbf{u}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{u}_{i}\)</span>&nbsp;</p>
-<p>&nbsp;&nbsp;<span class="math inline">\(\left[\mathbf{X}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{x}_{i,k}^{\mathrm{f}}-\overline{\mathbf{x}}_{k}^{\mathrm{f}}}{\sqrt{m-1}},\)</span>&nbsp;&nbsp;&nbsp;#Compute&nbsp;the&nbsp;normalized&nbsp;anomalies</p>
+<p>&nbsp;&nbsp;<span class="math inline">\(\left[\mathbf{X}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{x}_{i,k}^{\mathrm{f}}-\overline{\mathbf{x}}_{k}^{\mathrm{f}}}{\sqrt{m-1}},\)</span>&nbsp;&nbsp;&nbsp;%Compute&nbsp;the&nbsp;normalized&nbsp;anomalies</p>
 <p>&nbsp;&nbsp;<span class="math inline">\(\left[\mathbf{Y}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{H}_{k}\mathbf{x}_{i,k}^{\mathrm{f}}-\mathbf{u}_{i}-\mathbf{H}_{k}\overline{\mathbf{x}}_{k}^{\mathrm{f}}+\overline{\mathbf{u}}}{\sqrt{m-1}}\)</span></p>
-<p>&nbsp;&nbsp;&nbsp;<span class="math inline">\(K_{k}=\mathbf{X}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\left(\mathbf{Y}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\right)^{-1}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;#Compute&nbsp;the&nbsp;gain</p>
-<p>&nbsp;&nbsp;for&nbsp;<span class="math inline">\(i=1\)</span>&nbsp;to&nbsp;<span class="math inline">\(m\)</span>&nbsp;do&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Update&nbsp;the&nbsp;ensemble</p>
+<p>&nbsp;&nbsp;&nbsp;<span class="math inline">\(K_{k}=\mathbf{X}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\left(\mathbf{Y}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\right)^{-1}\)</span>&nbsp;% gain</p>
+<p>&nbsp;&nbsp;for&nbsp;<span class="math inline">\(i=1\)</span>&nbsp;to&nbsp;<span class="math inline">\(m\)</span>&nbsp;do&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Update&nbsp;the&nbsp;ensemble</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\mathbf{x}_{i,k}^{{\rm a}}=\mathbf{x}_{i,k}^{\mathrm{f}}+K_{k}\left({\mathbf{y}_{i,k}-\mathcal{H}_{k}\left(\mathbf{x}^{\mathrm{f}}_{i,k}\right)}\right)\)</span>&nbsp;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\({\displaystyle \mathbf{x}_{i,k+1}^{\mathrm{f}}=\mathcal{M}_{k+1}\left(\mathbf{x}^{\mathrm{a}}_{i,k}\right)}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Compute&nbsp;the&nbsp;ensemble&nbsp;forecast</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\({\displaystyle \mathbf{x}_{i,k+1}^{\mathrm{f}}=\mathcal{M}_{k+1}\left(\mathbf{x}^{\mathrm{a}}_{i,k}\right)}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Ensemble&nbsp;forecast</p>
 <p>&nbsp;&nbsp;end&nbsp;for</p>
 <p>end&nbsp;for</p>
-</section>
+</div>
 </div>
 </div>
 </section>
@@ -889,7 +916,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <h2>Localization</h2>
 <p>For many systems with <span style="color: magenta">geographic spread</span>, distant observables are weakly correlated.</p>
 <p>In other words, two distant parts of the system are almost <span style="color: magenta">independent</span> at least for short time scales.</p>
-<p>It is possible to exploit this relative independence and <span style="color: magenta">spatially localize</span>the analysis. This has been naturally termed <span style="color: magenta"><em>localization</em></span>.</p>
+<p>It is possible to exploit this relative independence and <span style="color: magenta">spatially localize</span> the analysis. This has been naturally termed <span style="color: magenta"><em>localization</em></span>.</p>
 <p>There are two types of localization:</p>
 <ul>
 <li><p><span style="color: magenta">Domain</span> localization, where instead of performing a global analysis valid at any location in the domain, we perform a local analysis to update the local state variables using local observations.</p></li>
@@ -1075,28 +1102,34 @@ P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
 </ul>
 <p>Machine Learning (ML) is becoming more and more present in our daily lives, and in scientific research. The use of ML in DA and Inverse modeling will be dealt with later, where we will consider:</p>
 <ul>
-<li><p>ML-based Surrogate Models.</p></li>
-<li><p>ML-based Surrogate Models.</p></li>
+<li><p>ML-based Surrogate Models with Fourier Neural Operators for the dynamics.</p></li>
+<li><p>ML-based Surrogate Models with Conditional Normalizing flows for the posterior.</p></li>
 <li><p>Scientific ML.</p></li>
 </ul>
-</section>
-<section id="kalman-filter-extensions" class="slide level2 center">
-<h2>Kalman Filter — extensions</h2>
-<p>There are many variants, extensions and <span style="color: magenta">generalizations</span> of the Kalman Filter.</p>
-<p>Later, we will study in more detail:</p>
-<p>ensemble Kalman Filters</p>
-<ul>
-<li><p>Bayesian and nonlinear Kalman Filters: extended, unscented</p></li>
-<li><p>particle filters</p></li>
-</ul>
-<p>One usually has to choose between</p>
-<ul>
-<li><p>linear Kalman filters</p></li>
-<li><p>ensemble Kalman filters</p></li>
-<li><p>nonlinear filters</p></li>
-<li><p>hybrid variational-filter methods.</p></li>
-</ul>
-<p>These questions will be addressed later.</p>
+<!-- ## Kalman Filter --- extensions
+
+There are many variants, extensions and
+    [generalizations]{style="color: magenta"} of the Kalman Filter.
+
+Later, we will study in more detail:
+
+- ensemble Kalman Filters
+
+- Bayesian and nonlinear Kalman Filters: extended, unscented
+
+- Particle filters
+
+One usually has to choose between
+
+-   linear Kalman filters
+
+-   ensemble Kalman filters
+
+-   nonlinear filters
+
+-   hybrid variational-filter methods.
+
+These questions will be addressed later. -->
 </section>
 <section id="where-are-we-in-the-inference-cycle" class="slide level2 center">
 <h2>Where are we in the Inference cycle</h2>
