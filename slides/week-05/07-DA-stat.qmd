@@ -1,7 +1,7 @@
 ---
 title: "Statistical Data Assimilation"
 subtitle: "Data Assimilation"
-date: "January 31, 2024"
+date: "February 7, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 
@@ -386,6 +386,31 @@ In addition one can recognize the 3D-Var cost function.
         a posteriori) estimate of the Gaussian pdf, which is equivalent
         to the MV (minimum variance) estimate found by the BLUE.
 
+## Kalman Filter --- extensions
+
+There are many variants, extensions and
+    [generalizations]{style="color: magenta"} of the Kalman Filter.
+
+Later, we will study in more detail:
+
+- ensemble Kalman Filters
+
+- Bayesian and nonlinear Kalman Filters: extended, unscented
+
+- Particle filters
+
+One usually has to choose between
+
+-   linear Kalman filters
+
+-   ensemble Kalman filters
+
+-   nonlinear filters
+
+-   hybrid variational-filter methods.
+
+These questions will be addressed later.
+
 ##
 ::: center
 **[ENSEMBLE KALMAN FILTERS]{style="color: blue"}**
@@ -417,13 +442,15 @@ The EnKF and its variants have been successfully developed and
 ##
 
 But it has spread out to other geoscience disciplines and beyond.
-    For instance, to name a few domains, it has been applied in
-    greenhouse gas inverse modeling, air quality forecasting,
-    extra-terrestrial atmosphere forecasting , detection and attribution
-    in climate sciences, geomagnetism re-analysis , and ice-sheet
-    parameter estimation and forecasting. It has also been used in
-    petroleum reservoir estimation, in adaptive optics for extra large
-    telescopes, and highway traffic estimation.
+For instance, to name a few domains, it has been applied 
+    
+- in greenhouse gas inverse modeling, 
+- air quality forecasting,
+- extra-terrestrial atmosphere forecasting , 
+- detection and attributionin climate sciences, 
+- geomagnetism re-analysis , and 
+- ice-sheet parameter estimation and forecasting. It has also been used in petroleum reservoir estimation, 
+- in adaptive optics for extra large telescopes, and highway traffic estimation.
 
 More recently, the idea was proposed to exploit the EnKF as a
     universal approach for all inverse problems. The term EKI, Ensemble
@@ -443,9 +470,8 @@ and covariance.
 Since it is based on [Gaussian]{style="color: magenta"} statistics
     (mean and covariance) it does not solve the Bayesian filtering
     problem in the limit of a large number of particles, as opposed to
-    the more general *particle filter*seeAdvanced Course. Nonetheless,
-    it turns out to be an excellent
-    [approximate]{style="color: magenta"} algorithm for the filtering
+    the more general *particle filter*, which will be discussed later. Nonetheless,
+    it turns out to be an excellent [approximate]{style="color: magenta"} algorithm for the filtering
     problem.
 
 As in the particle filter, the EnKF is based on the concept of
@@ -453,7 +479,7 @@ As in the particle filter, the EnKF is based on the concept of
     members of the [ensemble]{style="color: magenta"}.
 
 -   Rather than propagating huge covariance matrices, the errors are
-        emulated by scattered particles, a collection of state vectors
+        emulated by scattered particles, a collection of *state* vectors
         whose variability is meant to be representative of the
         uncertainty of the system's state resulting from the
         forecaster's ignorance.
@@ -696,7 +722,7 @@ A forecast can be computed from the mean of the [forecast
     available observations (blue triangles) to correct the model
     projections and get closer to the (unknown) truth (dotted line).
 
-In [EnKF]{style="color: magenta"}s, the initial system state and its
+In [EnKFs]{style="color: magenta"}, the initial system state and its
     uncertainty (green square and ellipsoid) are represented by $m$
     members.
 
@@ -713,7 +739,7 @@ In [EnKF]{style="color: magenta"}s, the initial system state and its
         observations]{style="color: magenta"} and with a [lower
         uncertainty]{style="color: magenta"} (red square and ellipsoid).
 
--   A [new forecast ]{style="color: magenta"}is issued from the
+-   A [new forecast]{style="color: magenta"} is issued from the
         analyzed state and this procedure is repeated until the end of
         the assimilation window at $t=T_{f}.$
 
@@ -730,7 +756,7 @@ For [linear dynamics, Gaussian errors and infinite ensemble
     sizes]{style="color: magenta"}, the states produced at the end of
     the assimilation window by the two methods should be equivalent [@li2001optimality].
 
-## EnKF --- the Algorithm{#sec-alg-EnKG}
+## EnKF --- the Algorithm {#sec-alg-EnKG}
 
 :::{.columns}
 
@@ -743,9 +769,9 @@ For [linear dynamics, Gaussian errors and infinite ensemble
             $\mathbf{R}_{k}$, observation models $\mathcal{H}_{k}$, forward models $\mathcal{M}_{k}.$  \
 **Compute**: the ensemble forecast $\left\{ \mathbf{x}_{i,k}^{\mathrm{f}}\right\} _{i=1,\ldots,m,\,k=1,\ldots,K}$ 
 
-$\left(\mathbf{x}_{i,0}^{\mathrm{f}}\right)_{i=1,\ldots,m}$            #Initialize the ensemble
+$\left(\mathbf{x}_{i,0}^{\mathrm{f}}\right)_{i=1,\ldots,m}$            %Initialize the ensemble
 
-for $k=0$ to $K$ do        #Loop over time
+for $k=0$ to $K$ do        %Loop over time
 
   for  $i=1$ to $m$ do #Draw a stat. consistent obs. set
 
@@ -763,21 +789,22 @@ for $k=0$ to $K$ do        #Loop over time
 
 ::: {.list style="font-size: 75%;"}
 
-## Compute the ensemble means
+
+% Compute the ensemble means
 
   $\overline{\mathbf{x}}_{k}^{\mathrm{f}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{x}^{\mathrm{f}}_{i,k}\,,\overline{\mathbf{u}}=\frac{1}{m}\sum_{i=1}^{m}\mathbf{u}_{i}$ 
 
-  $\left[\mathbf{X}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{x}_{i,k}^{\mathrm{f}}-\overline{\mathbf{x}}_{k}^{\mathrm{f}}}{\sqrt{m-1}},$   #Compute the normalized anomalies
+  $\left[\mathbf{X}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{x}_{i,k}^{\mathrm{f}}-\overline{\mathbf{x}}_{k}^{\mathrm{f}}}{\sqrt{m-1}},$   %Compute the normalized anomalies
 
   $\left[\mathbf{Y}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{H}_{k}\mathbf{x}_{i,k}^{\mathrm{f}}-\mathbf{u}_{i}-\mathbf{H}_{k}\overline{\mathbf{x}}_{k}^{\mathrm{f}}+\overline{\mathbf{u}}}{\sqrt{m-1}}$
 
-   $K_{k}=\mathbf{X}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\left(\mathbf{Y}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\right)^{-1}$    #Compute the gain
+   $K_{k}=\mathbf{X}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\left(\mathbf{Y}_{k}^{\mathrm{f}}\left({\mathbf{Y}_{k}^{\mathrm{f}}}\right)^{\mathrm{T}}\right)^{-1}$ % gain
 
-  for $i=1$ to $m$ do              #Update the ensemble
+  for $i=1$ to $m$ do              % Update the ensemble
 
     $\mathbf{x}_{i,k}^{{\rm a}}=\mathbf{x}_{i,k}^{\mathrm{f}}+K_{k}\left({\mathbf{y}_{i,k}-\mathcal{H}_{k}\left(\mathbf{x}^{\mathrm{f}}_{i,k}\right)}\right)$ 
 
-    ${\displaystyle \mathbf{x}_{i,k+1}^{\mathrm{f}}=\mathcal{M}_{k+1}\left(\mathbf{x}^{\mathrm{a}}_{i,k}\right)}$          #Compute the ensemble forecast
+    ${\displaystyle \mathbf{x}_{i,k+1}^{\mathrm{f}}=\mathcal{M}_{k+1}\left(\mathbf{x}^{\mathrm{a}}_{i,k}\right)}$          % Ensemble forecast
 
   end for
 
@@ -842,7 +869,7 @@ In other words, two distant parts of the system are almost
     scales.
 
 It is possible to exploit this relative independence and [spatially
-    localize ]{style="color: magenta"}the analysis. This has been
+    localize]{style="color: magenta"} the analysis. This has been
     naturally termed [*localization*]{style="color: magenta"}.
 
 There are two types of localization:
@@ -1148,25 +1175,24 @@ Machine Learning (ML) is becoming more and more present in our daily
 lives, and in scientific research. The use of ML in DA and Inverse
 modeling will be dealt with later, where we will consider:
 
--   ML-based Surrogate Models.
+-   ML-based Surrogate Models with Fourier Neural Operators for the dynamics.
 
--   ML-based Surrogate Models.
+-   ML-based Surrogate Models with Conditional Normalizing flows for the posterior.
 
 -   Scientific ML.
 
-
-## Kalman Filter --- extensions
+<!-- ## Kalman Filter --- extensions
 
 There are many variants, extensions and
     [generalizations]{style="color: magenta"} of the Kalman Filter.
 
 Later, we will study in more detail:
 
-ensemble Kalman Filters
+- ensemble Kalman Filters
 
--   Bayesian and nonlinear Kalman Filters: extended, unscented
+- Bayesian and nonlinear Kalman Filters: extended, unscented
 
--   particle filters
+- Particle filters
 
 One usually has to choose between
 
@@ -1178,7 +1204,7 @@ One usually has to choose between
 
 -   hybrid variational-filter methods.
 
-These questions will be addressed later.
+These questions will be addressed later. -->
 
 ## Where are we in the Inference cycle
 
