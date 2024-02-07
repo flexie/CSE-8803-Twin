@@ -19,8 +19,7 @@ listing:
     filter-ui: false
   - id: assignments
     contents:
-      # - ../hw/w3-*.qmd
-      - ../labs/w4-*.qmd
+      - ../labs/w5-*.qmd
     type: table
     fields: [categories, title, date]
     date-format: "ddd, MMM DD"
