@@ -55,6 +55,8 @@
     "listing": "/weeks/week-06.html",
     "items": [
       "/slides/week-06/08-DA-Bayes.html",
+      "/slides/week-06/09-UQ.html",
+      "/slides/week-06/10-DT.html",
       "/labs/w6-lab-enf.html"
     ]
   },

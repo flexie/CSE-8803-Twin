@@ -833,7 +833,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <p>In practice <span class="math inline">\(\mathbf{YY}^T\)</span> is not invertible since it is a low-rank approximation of <span class="math inline">\(\mathbf{HBH}^T + \mathbf{R}\)</span>.</p>
 <p>To make the inversion feasible, we define <span class="math inline">\(\mathbf{YY}^T\)</span> to <em>not</em> include the noise samples <span class="math inline">\(\mathbf{u}_i\)</span> and add a full-rank <span class="math inline">\(\mathbf{R}\)</span> to the covariance estimate <span class="math inline">\(\mathbf{YY}^T\)</span> in the inversion yielding</p>
 <p><span class="math display">\[\begin{equation}
-    \mathbf{XY}^T (\mathbf{YY}^T + \mathbf{R})^{-1}(\mathbf{y} - Y)
+    \mathbf{XY}^T (\mathbf{YY}^T + \mathbf{R})^{-1}
 \end{equation}\]</span></p>
 </div>
 </div>
