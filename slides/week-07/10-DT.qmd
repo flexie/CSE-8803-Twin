@@ -1,0 +1,235 @@
+---
+title: "Digital Twins"
+subtitle: "Types"
+date: "December 23, 2023"
+footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
+logo: "images/logo.png"
+format: 
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    center: true
+    html-math-method: mathjax
+    smaller: true
+title-slide-attributes:
+  data-background-image: ../images/3DVAR.png
+  data-background-size: contain
+  data-background-opacity: "0.5"
+# include-in-header:
+#       - text: |
+#           <script>
+#           window.MathJax = {
+#             tex: {
+#               tags: 'ams'
+#             }
+#           };
+#           </script>
+execute:
+  freeze: auto
+  echo: true
+bibliography: ../../references.bib
+---
+
+## Five dimensional Digital Twin {.smaller}
+
+::: columns
+::: {.column width="60%"}
+$$\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})$$
+
+five- dimensional digital twin model consists of
+
+-   a physical system (PS),
+
+-   a digital system (DS),
+
+-   an updating engine (P2V),
+
+-   a prediction engine (V2P),
+
+-   and an optimization dimension (OPT).
+
+$\mathbb{F}(⋅)$ integrates all five dimensions together to define a **Digital Twin**.
+:::
+
+::: {.column width="40%"}
+![from [@thelen2022comprehensivea]](../images/five_dim.png)
+:::
+:::
+
+## Five dimensions
+
+$$\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})$$
+
+![from [@thelen2022comprehensivea]](../images/p2v.png)
+
+## Physics-based modeling
+
+It is well-known that partial differential equations (PDEs) can mathematically describe certain physical laws. Well-known examples of PDEs are
+
+-   Navier–Stokes equations describing fluid motion
+-   heat equation describing heat diffusion
+-   wave-equation describing how waves propagate in some spatially varying medium
+-   multiphase flow-fluid equations (Darby equation, conservation law, etc.) describing how multiphase fluids flow in porous media (e.g. rocks)
+
+Some common types of physics
+
+-   Solid body structural analysis of stress and strain
+-   Thermal and fluid flow analyses
+-   Multi-body dynamics
+-   Multiphysics simulations
+
+## Two-phase flow equations (highly nonlinear)
+
+ Two fluids: brine and supercritical CO~2~. 
+
+- For fluid $i = 1,2$:
+
+ | 
+--:|:---
+Mass conservation:|$\frac{\partial(\color{red}{\phi}\rho_i \color{teal}{S_i})}{\partial t} = \nabla \cdot (\rho_i v_i) + \rho_i q_i$
+Darcy flow law:| $v_i = - \frac{k_{ri}}{\mu_i} \color{red}{K} \nabla (\color{teal}{P_i} - \rho_i g Z)$
+Modified Brooks-Corey:| $k_{ri} = \text{clamp}(1.25^2(\color{teal}{S_i} - 0.1)^2, 0, 1)$
+
+Definitions:
+
+::: {.columns}
+
+::: {.column width=35%}
+ | 
+----:|:------
+Saturation: | $\color{teal}{S_i}$, $\, \color{teal}{S_1}+\color{teal}{S_2} = 1$
+Pressure: | $\color{teal}{P_i}$, $\, \color{teal}{P_1}-\color{teal}{P_2} = P_c$
+:::
+
+
+::: {.column width=25%}
+ | 
+----------:|:-----------
+Porosity:| $\color{red}{\phi}$
+Permeability:| $\color{red}{K}$
+:::
+
+::: {.column width=40%}
+ | 
+-----------:|:---
+Density:| $\rho_i$
+Viscosity:| $\mu_i$
+Injection:| $q_2$
+Depth:| $Z$
+Gravity:| $g$
+Capillary pressure:| $P_c$
+:::
+
+
+:::
+
+## Seismic wave equations (highly nonlinear)
+
+- The presence of CO~2~ modifies the squared slowness $m$.
+
+ | 
+--------:|:----------------
+Wave equation: |  $m \frac{\partial^2 \color{#d95f02}{p}}{\partial t^2} - \nabla \cdot \nabla \color{#d95f02}{p} + \eta \frac{\partial \color{#d95f02}{p}}{\partial t} = q$
+Patchy-saturation model: | $m = (\rho_0 + \color{teal}{S_2} \phi (\rho_2 - \rho_1))\left(\lambda_{s1}^{-1} + \color{teal}{S_2}(\lambda_{s2}^{-1}-\lambda_{s1}^{-1}) \right)$
+
+<br>
+
+Definitions:
+
+::: {.columns}
+
+::: {.column width=35%}
+ | 
+----:|:----
+Saturation: | $\color{teal}{S_i}$, $\, \color{teal}{S_1}+\color{teal}{S_2} = 1$
+Pressure change: | $\color{#d95f02}{p}$
+:::
+
+
+::: {.column width=45%}
+ | 
+-----------:|:---
+Squared slowness:| $m$
+Seismic source:| $q$
+Brine rock density: | $\rho_0$
+Fluid density:| $\rho_1$, $\rho_2$
+P-wave modulus:| $\lambda_{s1}$, $\lambda_{s2}$
+PML parameter:| $\eta$
+:::
+
+:::
+
+::: {.notes}
+
+This PDE is also quadratic in the saturation.
+
+:::
+
+## Our CO~2~ system
+
+::: {layout="[100, 106, -60]" style="position: relative; top: -40px; z-index: -2;" layout-valign="top"}
+![CO~2~ saturation $x_k$](images/ground_truth_plume.gif){fig-alt="GIF representing fluid flow"}
+
+![Seismic image $y_k$](images/ground_truth_rtm.gif){fig-alt="GIF representing seismic observation"}
+:::
+
+::: {.columns style="position: relative; top: -100px; left:80px;"}
+
+::: {.column width=35%}
+<br>
+Notation for data assimilation:
+<br>
+:::
+
+::: {.column width=65%}
+- timestep $k$
+- Fluid flow physics: $x_k = g(x_{k-1}) + \epsilon_g$
+- Seismic observation: $y_k = h(x_k) + \epsilon_h$
+:::
+
+:::
+
+
+## Data-driven modeling
+
+Data-driven models are needed for modeling physics in a digital twin under either of two main scenarios:
+
+1.  The underlying physics is too complicated or is not fully understood, and as a result, building an accurate physics- based model is impossible; or
+
+2.  The physics is well understood and can be modeled using available software, but the simulation is too computationally expensive or time consuming to be useful in a digital twin, especially when many model runs are required (such as with UQ tasks).
+
+
+##
+
+![from [@thelen2022comprehensivea]](images/data-driven-models.png)
+
+## Add slides AD multiphysics abstractions (CSE talk)
+
+## Add slides FNO
+
+
+## 
+
+#  {background-image="images/paste-1.png" background-size="100% 100%"}
+
+#  {background-image="images/paste-2.png" background-size="100% 100%"}
+
+##
+
+::: {style="text-align: margin-top: 1em"}
+[Bayes Assimilation](https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/bruer2023ML4SEISMICcrm/#/title-slide){preview-link="true" style="text-align: center"}
+:::
+
+##
+
+::: {style="text-align: margin-top: 1em"}
+[Sequential Bayes Assimilation](https://slim.gatech.edu/Publications/Public/Conferences/ML4SEISMIC/2023/herrmann2023ML4SEISMICmsc/#0){preview-link="true" style="text-align: center"}
+:::
+
+# References {.unnumbered .smaller}
+
+::: {#refs}
+:::

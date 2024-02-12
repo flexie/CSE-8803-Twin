@@ -447,7 +447,7 @@ For instance, to name a few domains, it has been applied
 - in greenhouse gas inverse modeling, 
 - air quality forecasting,
 - extra-terrestrial atmosphere forecasting , 
-- detection and attributionin climate sciences, 
+- detection and attribution in climate sciences, 
 - geomagnetism re-analysis , and 
 - ice-sheet parameter estimation and forecasting. It has also been used in petroleum reservoir estimation, 
 - in adaptive optics for extra large telescopes, and highway traffic estimation.
@@ -681,6 +681,20 @@ In this form, it is striking that the updated perturbations are
 
 Similarly, the state analysis is sought within the affine space
     $\overline{\mathbf{x}}^{{\rm f}}+\mathrm{vec}\left(\mathbf{X}_{1}^{{\rm f}},\mathbf{X}_{2}^{{\rm f}},\ldots,\mathbf{X}_{m}^{{\rm f}}\right).$
+
+## 
+
+:::{.callout-note}
+
+In practice $\mathbf{YY}^T$ is not invertible since it is a low-rank approximation of $\mathbf{HBH}^T + \mathbf{R}$.
+
+To make the inversion feasible, we define $\mathbf{YY}^T$ to *not* include the noise samples $\mathbf{u}_i$ and add a full-rank $\mathbf{R}$ to the covariance estimate $\mathbf{YY}^T$ in the inversion yielding
+
+\begin{equation}
+    \mathbf{XY}^T (\mathbf{YY}^T + \mathbf{R})^{-1}(\mathbf{y} - Y)
+\end{equation}
+
+:::
 
 ## EnKF --- Forecast Step
 
