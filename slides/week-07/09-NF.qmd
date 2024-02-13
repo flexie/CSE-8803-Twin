@@ -1,5 +1,5 @@
 ---
-title: "Conditional Normalizing Flows II"
+title: "Conditional Normalizing Flows I"
 subtitle: "Neural Density Estimation"
 date: "February 14, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
@@ -19,11 +19,11 @@ title-slide-attributes:
   data-background-image: ../images/3DVAR.png
   data-background-size: contain
   data-background-opacity: "0.5"
-resources: 12-NF-iframe
+resources: 09-NF-iframe
 execute:
   freeze: auto
   echo: true
 bibliography: ../../references.bib
 ---
 
-#  {background-iframe="12-NF-iframe/index.html"}
+#  {background-iframe="09-NF-iframe/index.html"}
