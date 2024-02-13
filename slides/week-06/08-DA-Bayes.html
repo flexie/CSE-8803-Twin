@@ -1032,6 +1032,9 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 <p>The analysis step of the particle filter is extremely simple and elegant. The rigorous implementation of Bayes’ rule ascribes to each particle a statistical weight that corresponds to the likelihood of the particle given the data. The weight of each particle is updated according to <span class="math display">\[\omega_{k+1}^{\mathrm{a},i}\propto\omega_{k+1}^{\mathrm{f},i}p(\mathbf{y}_{k+1}|\mathbf{x}_{k+1}^{i})\,.\]</span> It is remarkable that the analysis is carried out with only a few multiplications. It does not involve inverting any system or matrix, as opposed for instance to the Kalman filter.</p>
 </dd>
 </dl>
+</section>
+<section id="choosing-a-filter" class="slide level2 center">
+<h2>Choosing a Filter</h2>
 <p>One usually has to choose between</p>
 <ul>
 <li><p>linear Kalman filters</p></li>
