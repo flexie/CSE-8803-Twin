@@ -691,7 +691,7 @@ In practice $\mathbf{YY}^T$ is not invertible since it is a low-rank approximati
 To make the inversion feasible, we define $\mathbf{YY}^T$ to *not* include the noise samples $\mathbf{u}_i$ and add a full-rank $\mathbf{R}$ to the covariance estimate $\mathbf{YY}^T$ in the inversion yielding
 
 \begin{equation}
-    \mathbf{XY}^T (\mathbf{YY}^T + \mathbf{R})^{-1}(\mathbf{y} - Y)
+    \mathbf{XY}^T (\mathbf{YY}^T + \mathbf{R})^{-1}
 \end{equation}
 
 :::
