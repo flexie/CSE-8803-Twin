@@ -430,8 +430,8 @@
 <ul>
 <li><p><span class="math inline">\(\mathbf{x}_{k}\in\mathbb{R}^{n}\)</span> is the <span style="color: magenta">state vector</span> at time <span class="math inline">\(k,\)</span></p></li>
 <li><p><span class="math inline">\(\mathbf{y}_{k}\in\mathbb{R}^{m}\)</span> is the <span style="color: magenta">observation vector</span> at time <span class="math inline">\(k,\)</span></p></li>
-<li><p>the <span style="color: magenta">conditional probability, <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1}),\)</span></span> represents the stochastic<span style="color: magenta">dynamics model</span>, and can be a probability density or a discrete probability function, or a mixture of both,</p></li>
-<li><p>the <span style="color: magenta">conditional probability, <span class="math inline">\(p(\mathbf{y}_{k}\mid\mathbf{x}_{k}),\)</span></span> represents the<span style="color: magenta">measurement model</span> and its inherent <span style="color: magenta">noise</span>.</p></li>
+<li><p>the <span style="color: magenta">conditional probability, <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1}),\)</span></span> represents the stochastic <span style="color: magenta">dynamics model</span>, and can be a probability density or a discrete probability function, or a mixture of both,</p></li>
+<li><p>the <span style="color: magenta">conditional probability, <span class="math inline">\(p(\mathbf{y}_{k}\mid\mathbf{x}_{k}),\)</span></span> represents the <span style="color: magenta">measurement model</span> and its inherent <span style="color: magenta">noise</span>.</p></li>
 </ul>
 </section>
 <section id="section" class="slide level2 center">
@@ -478,13 +478,13 @@ Figure&nbsp;1: Gaussian random walk state space model equations <a href="#/examp
 </section>
 <section id="nonlinear-filter-model" class="slide level2 center">
 <h2>Nonlinear Filter Model</h2>
-<p>Using the nonlinear filtering model <a href="#/bayesian-filters" class="quarto-xref">1</a> and the Markov property, we can express the<span style="color: magenta">joint prior</span> of the states, <span class="math inline">\(\mathbf{x}_{0:T}=\{\mathbf{x}_{0},\ldots,\mathbf{x}_{T}\},\)</span> and the <span style="color: magenta">joint likelihood</span> of the measurements, <span class="math inline">\(\mathbf{y}_{1:T}=\{\mathbf{y}_{1},\ldots,\mathbf{y}_{T}\},\)</span> as the products <span class="math display">\[p(\mathbf{x}_{0:T})=p(\mathbf{x}_{0})\prod_{k=1}^{T}p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1})\]</span> and <span class="math display">\[p(\mathbf{y}_{1:T}\mid\mathbf{x}_{0:T})=\prod_{k=1}^{T}p(\mathbf{y}_{k}\mid\mathbf{x}_{k})\]</span> respectively.</p>
+<p>Using the nonlinear filtering model <a href="#/bayesian-filters" class="quarto-xref">1</a> and the Markov property, we can express the <span style="color: magenta">joint prior</span> of the states, <span class="math inline">\(\mathbf{x}_{0:T}=\{\mathbf{x}_{0},\ldots,\mathbf{x}_{T}\},\)</span> and the <span style="color: magenta">joint likelihood</span> of the measurements, <span class="math inline">\(\mathbf{y}_{1:T}=\{\mathbf{y}_{1},\ldots,\mathbf{y}_{T}\},\)</span> as the products <span class="math display">\[p(\mathbf{x}_{0:T})=p(\mathbf{x}_{0})\prod_{k=1}^{T}p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1})\]</span> and <span class="math display">\[p(\mathbf{y}_{1:T}\mid\mathbf{x}_{0:T})=\prod_{k=1}^{T}p(\mathbf{y}_{k}\mid\mathbf{x}_{k})\]</span> respectively.</p>
 </section>
 <section id="section-2" class="slide level2 center">
 <h2></h2>
 <p>Then, applying <span style="color: magenta">Bayes’ law</span>, we can compute the complete <span style="color: magenta">posterior distribution</span> of the states as <span class="math display">\[p(\mathbf{x}_{0:T}\mid\mathbf{y}_{1:T})=\frac{p(\mathbf{y}_{1:T}\mid\mathbf{x}_{0:T})p(\mathbf{x}_{0:T})}{p(\mathbf{y}_{1:T})}.\label{eq:Bayes-post-state-eq}\]</span></p>
 <p>But this type of <span style="color: magenta">complete characterization</span> is not feasible to compute in real-time, or near real-time, since the number of computations per time-step increases as measurements arrive.</p>
-<p>What we need is a<span style="color: magenta">fixed number of computations per time-step</span>.</p>
+<p>What we need is a <span style="color: magenta">fixed number of computations per time-step</span>.</p>
 <ul>
 <li><p>This can be achieved by a <span style="color: magenta">recursive estimation</span> that, step by step, produces the filtering distribution defined above.</p></li>
 <li><p>In this light, we can now define the general <span style="color: magenta">Bayesian filtering problem</span>, of which Kalman filters will be a special case.</p></li>
@@ -492,19 +492,19 @@ Figure&nbsp;1: Gaussian random walk state space model equations <a href="#/examp
 </section>
 <section id="section-3" class="slide level2 center">
 <h2></h2>
-<div class="{def-BayesFilter}">
-<p><span style="color: magenta">Bayesian filtering</span> is the recursive computation of the marginal posterior distribution, <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\]</span> known as the filtering distribution, of the state <span class="math inline">\(\mathbf{x}_{k}\)</span> at each time step <span class="math inline">\(k,\)</span> given the measurements up to time <span class="math inline">\(k.\)</span></p>
+<div id="def-BayesFilter" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1</strong></span> <em><span style="color: magenta">Bayesian filtering</span> is the recursive computation of the marginal posterior distribution, <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\]</span> known as the filtering distribution, of the state <span class="math inline">\(\mathbf{x}_{k}\)</span> at each time step <span class="math inline">\(k,\)</span> given the measurements up to time <span class="math inline">\(k.\)</span></em></p>
 </div>
 <p>Now, based on Bayes’ rule, we can formulate the <span style="color: magenta">Bayesian filtering theorem</span> <span class="citation" data-cites="sarkka2013">(<a href="#/references" role="doc-biblioref" onclick="">Särkkä and Svensson 2023</a>)</span> .</p>
 <div id="thm-BayesFilter" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 1</strong></span> (Bayesian Filter). <em>The recursive equations, known as the <span style="color: magenta">Bayesian filter</span>, for computing the filtering distribution <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\)</span> and the predicted distribution <span class="math inline">\(p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})\)</span> at the time step <span class="math inline">\(k,\)</span> are given by the three-stage process:</em></p>
 <p><em><strong>Initialization</strong>: Define the prior distribution <span class="math inline">\(p(\mathbf{x}_{0}).\)</span></em></p>
 <p><em><strong>Prediction:</strong> Compute the predictive distribution <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})=\int p(\mathbf{x}_{k}\mid\mathbf{x}_{k-1})p(\mathbf{x}_{k-1}\mid\mathbf{y}_{1:k-1})\,\mathrm{d}\mathbf{x}_{k-1}.\]</span></em></p>
-<p><em><strong>Correction</strong>: </em>Compute the posterior distribution by Bayes’ rule,*</p>
 </div>
 </section>
 <section id="section-4" class="slide level2 center">
 <h2></h2>
+<p><strong>Correction</strong>: <em>Compute the posterior distribution by Bayes’ rule,</em></p>
 <div class="r-fit-text">
 <p><span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\frac{p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}{\int p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}\,\mathrm{d}\mathbf{x}_{k}.\]</span></p>
 <p>Now, if we assume that the <span style="color: magenta">dynamic and measurement models are linear</span>, with i.i.d. <span style="color: magenta">Gaussian noise</span>, then we obtain the closed-form solution for the <span style="color: magenta">Kalman filter</span>, already derived in the Basic Course. We recall the linear, Gaussian state-space model, <span id="eq-kf"><span class="math display">\[\begin{aligned}
@@ -535,16 +535,17 @@ p(\mathbf{y}_{k}\mid\mathbf{x}_{k}) &amp; =\mathcal{N}\left(\mathbf{y}_{k}\mid\m
 <section id="section-6" class="slide level2 center">
 <h2></h2>
 <p><em>The parameters of these distributions can be computed by the three-stage <span style="color: magenta">Kalman filter</span> loop:</em></p>
-<p><em><strong>Initialization</strong>: </em>Define the prior mean <span class="math inline">\(\mathbf{m}_{0}\)</span> and prior covariance <span class="math inline">\(\mathbf{P}_{0}.\)</span>*</p>
-<p><em><strong>Prediction</strong>: </em>Compute the predictive distribution mean and covariance,* <span class="math display">\[\begin{aligned}
+<p><strong>Initialization</strong>: <em>Define the prior mean <span class="math inline">\(\mathbf{m}_{0}\)</span> and prior covariance <span class="math inline">\(\mathbf{P}_{0}.\)</span></em></p>
+<p><strong>Prediction</strong>: <em>Compute the predictive distribution mean and covariance,</em> <span class="math display">\[\begin{aligned}
 \mathbf{\hat{m}}_{k} &amp; =\mathbf{M}_{k-1}\mathbf{m}_{k-1},\\
 \hat{\mathbf{P}}_{k} &amp; =\mathbf{M}_{k-1}\mathbf{P}_{k-1}\mathbf{M}_{k-1}^{\mathrm{T}}+\mathbf{Q}_{k-1}.
 \end{aligned}\]</span></p>
-<p><em><strong>Correction</strong>: </em>Compute the filtering distribution mean and covariance by first defining* <span class="math display">\[\begin{aligned}
+<p><strong>Correction</strong>: <em>Compute the filtering distribution mean and covariance by first defining</em> <span class="math display">\[\begin{aligned}
 \mathbf{d}_{k} &amp; =\mathbf{y}_{k}-\mathbf{H}_{k}\mathbf{\hat{m}}_{k},\quad\textrm{the innovation},\\
 \mathbf{S}_{k} &amp; =\mathbf{H}_{k}\hat{\mathbf{P}}_{k}\mathbf{H}_{k}^{\mathrm{T}}+\mathbf{R}_{k},\quad\textrm{the measurement covariance},\\
 \mathbf{K}_{k} &amp; =\hat{\mathbf{P}}_{k}\mathbf{H}_{k}^{\mathrm{T}}\mathbf{S}_{k}^{-1},\quad\textrm{the Kalman gain,}
-\end{aligned}\]</span> then finally updating the filter mean and covariance,</p>
+\end{aligned}\]</span></p>
+<p><em>then finally updating the filter mean and covariance,</em></p>
 </section>
 <section id="section-7" class="slide level2 center">
 <h2></h2>
@@ -694,7 +695,7 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 <li><p><span class="math inline">\(\mathbf{x}_{k}\in\mathbb{R}^{n},\)</span> <span class="math inline">\(\mathbf{y}_{k}\in\mathbb{R}^{m},\)</span> <span class="math inline">\(\mathbf{w}_{k-1}\sim\mathcal{N}(0,\mathbf{Q}_{k-1}),\)</span> <span class="math inline">\(\mathbf{v}_{k}\sim\mathcal{N}(0,\mathbf{R}_{k}),\)</span></p></li>
 <li><p>and now <span class="math inline">\(\mathcal{M}_{k-1}\)</span> and <span class="math inline">\(\mathcal{H}_{k}\)</span> are <span style="color: magenta">nonlinear functions</span> of <span class="math inline">\(\mathbf{x}_{k-1}\)</span> and <span class="math inline">\(\mathbf{x}_{k}\)</span> respectively.</p></li>
 </ul>
-<p>The EKF is then based on <span style="color: magenta">Gaussian approximations</span>of the filtering densities, <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\approx\mathcal{N}\left(\mathbf{x}_{k}\mid\mathbf{m}_{k},\mathbf{P}_{k}\right),\]</span> where these approximations are derived from the <span style="color: magenta">first-order truncation</span> of the corresponding Taylor series in terms of the statistical moments of the underlying random variables.</p>
+<p>The EKF is then based on <span style="color: magenta">Gaussian approximations</span> of the filtering densities, <span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})\approx\mathcal{N}\left(\mathbf{x}_{k}\mid\mathbf{m}_{k},\mathbf{P}_{k}\right),\]</span> where these approximations are derived from the <span style="color: magenta">first-order truncation</span> of the corresponding Taylor series in terms of the statistical moments of the underlying random variables.</p>
 <p>Linearization in the Taylor series expansions will require evaluation of the <span style="color: magenta">Jacobian matrices</span>, defined as <span class="math display">\[\mathbf{M}_{\mathbf{x}}=\left[\frac{\partial\mathcal{M}}{\partial\mathbf{x}}\right]_{\mathbf{x}=\mathbf{m}}\]</span> and</p>
 </section>
 <section id="section-12" class="slide level2 center">
@@ -702,12 +703,12 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 <p><span class="math display">\[\mathbf{H}_{\mathbf{x}}=\left[\frac{\partial\mathcal{H}}{\partial\mathbf{x}}\right]_{\mathbf{x}=\mathbf{m}}.\]</span></p>
 <div id="thm-EKF" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 3</strong></span> <em>The first-order <span style="color: magenta">extended Kalman filter</span> with <span style="color: magenta">additive noise</span> for the nonlinear system <a href="#/extended-kalman-filters" class="quarto-xref">5</a> can be computed by the three-stage process:</em></p>
-<p><em><strong>Initialization</strong>: Define the <span style="color: magenta">prior</span> mean <span class="math inline">\(\mathbf{m}_{0}\)</span> and prior covariance <span class="math inline">\(\mathbf{P}_{0}.\)</span></em></p>
-<p><em><strong>Prediction:</strong> </em>Compute the <span style="color: magenta">predictive</span> distribution mean and covariance,* <span class="math display">\[\begin{aligned}
+<p><strong>Initialization</strong>: Define the <span style="color: magenta">prior</span> mean <span class="math inline">\(\mathbf{m}_{0}\)</span> and prior covariance <span class="math inline">\(\mathbf{P}_{0}.\)</span>*</p>
+<p><strong>Prediction:</strong> <em>Compute the <span style="color: magenta">predictive</span> distribution mean and covariance,</em> <span class="math display">\[\begin{aligned}
 \mathbf{\hat{m}}_{k} &amp; =\mathcal{M}_{k-1}(\mathbf{m}_{k-1}),\\
 \hat{\mathbf{P}}_{k} &amp; =\mathbf{M}_{\mathbf{x}}(\mathbf{m}_{k-1})\mathbf{P}_{k-1}\mathbf{M}_{\mathbf{x}}^{\mathrm{T}}(\mathbf{m}_{k-1})+\mathbf{Q}_{k-1}.
 \end{aligned}\]</span></p>
-<p><em><strong>Correction</strong>: </em>Compute the <span style="color: magenta">filtering</span> distribution mean and covariance by first defining* <span class="math display">\[\begin{aligned}
+<p><strong>Correction</strong>: <em>Compute the <span style="color: magenta">filtering</span> distribution mean and covariance by first defining</em> <span class="math display">\[\begin{aligned}
 \mathbf{d}_{k} &amp; =\mathbf{y}_{k}-\mathcal{H}_{k}(\mathbf{\hat{m}}_{k}),\quad\textrm{the innovation},\\
 \mathbf{S}_{k} &amp; =\mathbf{H}_{\mathbf{x}}(\mathbf{\hat{m}}_{k})\hat{\mathbf{P}}_{k}\mathbf{H}_{\mathbf{x}}^{\mathrm{T}}(\mathbf{\hat{m}}_{k})+\mathbf{R}_{k},\thinspace\textrm{the measurement covariance},\\
 \mathbf{K}_{k} &amp; =\hat{\mathbf{P}}_{k}\mathbf{H}_{\mathbf{x}}^{\mathrm{T}}(\mathbf{\hat{m}}_{k})\mathbf{S}_{k}^{-1},\quad\textrm{the Kalman gain,}
@@ -766,7 +767,7 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 </section>
 <section id="ekf-pros-and-cons" class="slide level2 center">
 <h2>EKF — pros and cons</h2>
-<p>Pros:</p>
+<p><strong>Pros:</strong></p>
 <ul>
 <li><p>Relative <span style="color: magenta">simplicity</span>, based on well-known linearization methods.</p></li>
 <li><p>Maintains the simple, elegant, and computationally <span style="color: magenta">efficient</span> KF update equations.</p></li>
@@ -774,7 +775,7 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 <li><p>Ability to treat <span style="color: magenta">nonlinear</span> process and observation models.</p></li>
 <li><p>Ability to treat both <span style="color: magenta">additive</span> <span style="color: magenta">and more general nonlinear Gaussian noise</span>.</p></li>
 </ul>
-<p>Cons:</p>
+<p><strong>Cons:</strong></p>
 <ul>
 <li><p>Performance can suffer in presence of strong nonlinearity because of the <span style="color: magenta">local validity</span> of the linear approximation (valid for small perturbations around the linear term).</p></li>
 <li><p>Cannot deal with <span style="color: magenta">non-Gaussian noise</span>, such as discrete-valued random variables.</p></li>
@@ -847,7 +848,7 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
     q_{11} &amp; q_{12}\\
     q_{21} &amp; q_{22}
     \end{array}\right],\]</span> with components (see remark below the example), <span class="math display">\[q_{11}=q_{c}\frac{\Delta t^{3}}{3},\quad q_{12}=q_{21}=q_{c}\frac{\Delta t^{2}}{2},\quad q_{22}=q_{c}\Delta t,\]</span> and <span class="math inline">\(q_{c}\)</span> is the continuous process noise spectral density.</p>
-<p>For the <span style="color: magenta">first-order EKF</span>higher orders are possiblewe will need the <span style="color: magenta">Jacobian matrices</span> of <span class="math inline">\(\mathcal{M}(\mathbf{x})\)</span> and <span class="math inline">\(\mathcal{H}(\mathbf{x})\)</span> evaluated at <span class="math inline">\(\mathbf{x}=\mathbf{\hat{m}}_{k-1}\)</span> and <span class="math inline">\(\mathbf{x}=\mathbf{\hat{m}}_{k}\)</span> . These are easily obtained here, in an explicit form, <span class="math display">\[\mathbf{M}_{\mathbf{x}}=\left[\frac{\partial\mathcal{M}}{\partial\mathbf{x}}\right]_{\mathbf{x}=\mathbf{m}}=\left[\begin{array}{cc}
+<p>For the <span style="color: magenta">first-order EKF</span> higher orders are possiblewe will need the <span style="color: magenta">Jacobian matrices</span> of <span class="math inline">\(\mathcal{M}(\mathbf{x})\)</span> and <span class="math inline">\(\mathcal{H}(\mathbf{x})\)</span> evaluated at <span class="math inline">\(\mathbf{x}=\mathbf{\hat{m}}_{k-1}\)</span> and <span class="math inline">\(\mathbf{x}=\mathbf{\hat{m}}_{k}\)</span> . These are easily obtained here, in an explicit form, <span class="math display">\[\mathbf{M}_{\mathbf{x}}=\left[\frac{\partial\mathcal{M}}{\partial\mathbf{x}}\right]_{\mathbf{x}=\mathbf{m}}=\left[\begin{array}{cc}
     1 &amp; \Delta t\\
     -\Delta t\dfrac{g}{L}\cos x_{1} &amp; 1
     \end{array}\right]_{k-1},\]</span></p>
@@ -863,23 +864,19 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 <li><p>Initial angle <span class="math inline">\(x_{1}=1.8\)</span> and initial angular velocity <span class="math inline">\(x_{2}=0.\)</span></p></li>
 <li><p>Initial diagonal state covariance of <span class="math inline">\(0.1.\)</span></p></li>
 </ul>
-<p>Results are plotted in Figure <a href="#/section-20" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<p>Results are plotted in Figure <a href="#/fig-EKF_pendulum" class="quarto-xref">Figure&nbsp;3</a>.</p>
 <ul>
 <li>We notice that despite the very noisy, nonlinear measurements, the EKF rapidly approaches the true state and then tracks it extremely well.</li>
 </ul>
 </section>
 <section id="section-20" class="slide level2 center">
 <h2></h2>
-<div id="fig-EKF_pendulum" class="quarto-figure quarto-figure-center quarto-float">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-EKF_pendulum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../images/fig-EKF_pendulum.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-EKF_pendulum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+
+<img data-src="../images/fig-EKF_pendulum.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">
 Figure&nbsp;3: Extended Kalman filter for tracking a noisy pendulum model, where horizontal position is measured. State, <span class="math inline">\(x_k\)</span>, $is solid blue curve; measurements, <span class="math inline">\(y_k\)</span>, are red circles; extended Kalman filter estimate is green curve. Results computed by <code>EKfPendulum.m</code>
-</figcaption>
-</figure>
-</div>
+</p></section>
+<section id="section-21" class="slide level2 center">
+<h2></h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -904,7 +901,7 @@ Figure&nbsp;3: Extended Kalman filter for tracking a noisy pendulum model, where
 <p>The UKF is based on the <span style="color: magenta">unscented transform</span> (UT), a method for approximating the distribution of a transformed variable, <span class="math display">\[\mathbf{y}=g(\mathbf{x}),\]</span> where <span class="math inline">\(\mathbf{x}\sim\mathcal{N}(\mathbf{m},\mathbf{P}),\)</span> without linearizing the function <span class="math inline">\(g.\)</span></p>
 <p>The UT is computed as follows:</p>
 </section>
-<section id="section-21" class="slide level2 center">
+<section id="section-22" class="slide level2 center">
 <h2></h2>
 <ol type="1">
 <li><p>Choose a collection of so-called<span style="color: magenta"><span class="math inline">\(\sigma\)</span>-points</span>that reproduce the mean and covariance of the distribution of <span class="math inline">\(\mathbf{x}\)</span>.</p></li>
@@ -914,7 +911,7 @@ Figure&nbsp;3: Extended Kalman filter for tracking a noisy pendulum model, where
 <p>This is a <span style="color: magenta">deterministic sampling</span> approach, as opposed to Monte Carlo, particle filters, and ensemble filters that all use randomly sampled points. Note that the first two usually require orders of magnitude more points than the UKF.</p>
 <p>Suppose that the random variable <span class="math inline">\(\mathbf{x}\in\mathbb{R}^{n}\)</span> with mean <span class="math inline">\(\mathbf{m}\)</span> and covariance <span class="math inline">\(\mathbf{P}.\)</span> Compute <span class="math inline">\(N=2n+1\)</span> <span class="math inline">\(\sigma\)</span>-points and their corresponding weights <span class="math display">\[\{\mathbf{x}^{(\pm i),},w^{(\pm i)}\},\quad i=0,1,\ldots,N\]</span> by the formulas</p>
 </section>
-<section id="section-22" class="slide level2 center">
+<section id="section-23" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 \mathbf{x}^{(0)} &amp; =\mathbf{m},\\
@@ -929,7 +926,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n,
 <li><p><span class="math inline">\(\beta\)</span> is used to include prior information on non-Gaussian distributions of <span class="math inline">\(\mathbf{x}.\)</span></p></li>
 </ul>
 </section>
-<section id="section-23" class="slide level2 center">
+<section id="section-24" class="slide level2 center">
 <h2></h2>
 <p>For the covariance matrix, the weight <span class="math inline">\(w^{(0)}\)</span> is modified to <span class="math display">\[w^{(0)}=\frac{\lambda}{n+\lambda}+\left(1-\alpha^{2}+\beta\right).\]</span> These points and weights ensure that the means and covariances are consistently captured by the UT.</p>
 </section>
@@ -946,7 +943,7 @@ w^{(0)} &amp; =\frac{\lambda}{n+\lambda},\quad w^{(\pm i)}  =\frac{\lambda}{2\le
 \end{aligned}\]</span></em></p>
 </div>
 </section>
-<section id="section-24" class="slide level2 center">
+<section id="section-25" class="slide level2 center">
 <h2></h2>
 <p><em>Propagate the <span class="math inline">\(\sigma\)</span>-points through the dynamic model</em> <span class="math display">\[\tilde{\mathbf{x}}_{k}^{(i)}=\mathcal{M}_{k-1}\left(\mathbf{x}_{k-1}^{(i)}\right).\]</span></p>
 <p><em>Compute the predictive distribution mean and covariance,</em> <span class="math display">\[\begin{aligned}
@@ -954,7 +951,7 @@ w^{(0)} &amp; =\frac{\lambda}{n+\lambda},\quad w^{(\pm i)}  =\frac{\lambda}{2\le
 \mathbf{P}_{k}^{-} &amp; =\sum_{i=0}^{\pm n}w^{(i)}\left(\tilde{\mathbf{x}}_{k}^{(i)}-\mathbf{m}_{k}^{-}\right)\left(\tilde{\mathbf{x}}_{k}^{(i)}-\mathbf{m}_{k}^{-}\right)^{\mathrm{T}}+\mathbf{Q}_{k-1}.
 \end{aligned}\]</span></p>
 </section>
-<section id="section-25" class="slide level2 center">
+<section id="section-26" class="slide level2 center">
 <h2></h2>
 <p><em><strong>Correction</strong>:</em></p>
 <p><em>Compute the updated <span class="math inline">\(\sigma\)</span>-points and weights,</em> <span class="math display">\[\begin{aligned}
@@ -965,7 +962,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 \end{aligned}\]</span></p>
 <p><em>Propagate the updated <span class="math inline">\(\sigma\)</span>-points through the measurement model</em> <span class="math display">\[\tilde{\mathbf{y}}_{k}^{(i)}=\mathcal{H}_{k}\left(\mathbf{x}_{k}^{(i)}\right).\]</span></p>
 </section>
-<section id="section-26" class="slide level2 center">
+<section id="section-27" class="slide level2 center">
 <h2></h2>
 <p><em>Compute the predicted mean and innovation, predicted measurement covariance, state-measurement cross-covariance, and filter gain,</em> <span class="math display">\[\begin{aligned}
 \boldsymbol{\mu}_{k} &amp; =\sum_{i=0}^{\pm n}w^{(i)}\tilde{\mathbf{y}}_{k}^{(i)},\quad\textrm{the mean,}\\
@@ -979,7 +976,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 \mathbf{P}_{k} &amp; =\hat{\mathbf{P}}_{k}-\mathbf{K}_{k}\mathbf{S}_{k}\mathbf{K}_{k}^{\mathrm{T}}.
 \end{aligned}\]</span></em></p>
 </section>
-<section id="section-27" class="slide level2 center">
+<section id="section-28" class="slide level2 center">
 <h2></h2>
 <p>Just as was the case with the EKF, the UKF can also be applied to the non-additive noise model <a href="#/extended-kalman-filter-non-additive-noise" class="quarto-xref">6</a>.</p>
 <ul>
@@ -995,7 +992,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 <p>Bayes’ rule and the marginalization formula, <span class="math display">\[p(x)=\int p(x\mid y)p(y)\,\mathrm{d}y,\]</span> are explicitly used in the estimation process.</p>
 <p>The linear and Gaussian hypotheses can then be ruled out, in theory.</p>
 </section>
-<section id="section-28" class="slide level2 center">
+<section id="section-29" class="slide level2 center">
 <h2></h2>
 <p>In practice though, the particle filter cannot yet be applied to very high dimensional systems (this is often referred to as “the curse of dimensionality”). Though recent work by [Friedemann, Raffin2023] has improved this by sophisticated parallel computing.</p>
 <p>Particle filters are methods for obtaining <span style="color: magenta"><em>Monte Carlo approximations</em></span>of the solutions of the Bayesian filtering equations.</p>
@@ -1006,7 +1003,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 </ul>
 <p>The most popular and simple algorithm of Monte Carlo type that solves the Bayesian filtering equations is called the <span style="color: magenta"><em>bootstrap particle filter</em></span>. It is computed by a three-stage process.</p>
 </section>
-<section id="section-29" class="slide level2 center">
+<section id="section-30" class="slide level2 center">
 <h2></h2>
 <dl>
 <dt>Sampling</dt>
@@ -1015,7 +1012,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 </dd>
 </dl>
 </section>
-<section id="section-30" class="slide level2 center">
+<section id="section-31" class="slide level2 center">
 <h2></h2>
 <dl>
 <dt>Forecast</dt>
@@ -1024,7 +1021,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 </dd>
 </dl>
 </section>
-<section id="section-31" class="slide level2 center">
+<section id="section-32" class="slide level2 center">
 <h2></h2>
 <dl>
 <dt>Analysis</dt>
@@ -1043,7 +1040,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 <li><p>hybrid variational-filter methods.</p></li>
 </ul>
 </section>
-<section id="section-32" class="slide level2 center">
+<section id="section-33" class="slide level2 center">
 <h2></h2>
 <p>These questions are resumed in the following Table:</p>
 <div id="tbl-KFcomp" class="quarto-float">
