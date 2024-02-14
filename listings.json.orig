@@ -6,11 +6,7 @@
       "/weeks/week-02.html",
       "/weeks/week-03.html",
       "/weeks/week-04.html",
-      "/weeks/week-05.html",
-      "/weeks/week-06.html",
-      "/weeks/week-07.html",
-      "/weeks/week-08.html",
-      "/weeks/week-09.html"
+      "/weeks/week-05.html"
     ]
   },
   {
@@ -23,32 +19,11 @@
     ]
   },
   {
-    "listing": "/weeks/week-06.html",
-    "items": [
-      "/slides/week-06/08-DA-Bayes.html",
-      "/labs/w6-lab-ensemble.html",
-      "/labs/w6-lab-enf.html"
-    ]
-  },
-  {
     "listing": "/weeks/week-05.html",
     "items": [
       "/slides/week-05/07-DA-stat.html",
+      "/slides/week-05/08-DA-Bayes.html",
       "/labs/w5-lab-1dkalman.html"
-    ]
-  },
-  {
-    "listing": "/weeks/week-09.html",
-    "items": [
-      "/slides/week-08/11.html",
-      "/labs/w4-lab02-3DVar.html"
-    ]
-  },
-  {
-    "listing": "/weeks/week-08.html",
-    "items": [
-      "/slides/week-08/11.html",
-      "/labs/w4-lab02-3DVar.html"
     ]
   },
   {
@@ -56,15 +31,6 @@
     "items": [
       "/slides/week-04/05-variational.html",
       "/slides/week-04/06-Bayes-Inference.html",
-      "/labs/w4-lab02-3DVar.html"
-    ]
-  },
-  {
-    "listing": "/weeks/week-07.html",
-    "items": [
-      "/slides/week-07/09-NF.html",
-      "/slides/week-07/09a-DL-uncertainty.html",
-      "/slides/week-07/10-NF.html",
       "/labs/w4-lab02-3DVar.html"
     ]
   },
