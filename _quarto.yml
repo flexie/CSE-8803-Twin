@@ -25,6 +25,8 @@ website:
         text: Goals        
       - href: schedule.qmd
         text: Schedule
+      - href: seminar.qmd
+        text: Seminar        
       - href: project.qmd
         text: Final Project 
       - href: references.qmd  
@@ -36,5 +38,6 @@ format:
 
 bibliography: references.bib
 license: CC BY
+
 
 
