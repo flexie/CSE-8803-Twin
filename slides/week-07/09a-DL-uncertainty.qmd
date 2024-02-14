@@ -1,0 +1,282 @@
+---
+title: "Uncertainty Quantification"
+subtitle: "Deep Learning"
+date: "February 14, 2024"
+footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
+logo: "images/logo.png"
+data-footer: "CC BY-SA"
+
+format: 
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+    center: true
+    html-math-method: mathjax
+    smaller: true
+    preload-iframes: true
+title-slide-attributes:
+  # data-background-image: ../images/3DVAR.png
+  # data-background-size: contain
+  # data-background-opacity: "0.5"
+  data-footer: "CC BY-SA"
+
+execute:
+  freeze: auto
+  echo: true
+bibliography: ../../references.bib
+---
+
+## Today
+
+How to model *uncertainty* in deep learning?
+
+-   Uncertainty
+-   Aleatoric uncertainty
+-   Epistemic uncertainty
+
+## 
+
+![](images/carl.jpg)
+
+*"Every time a scientific paper presents a bit of data, it's accompanied by an* **error bar** *--- a quiet but insistent reminder that no knowledge is complete or perfect.* It's a **calibration of how much we trust what we think we know."**
+
+Carl Sagan
+
+## Uncertainty
+
+Uncertainty[^1] refers to epistemic situations involving imperfect or unknown information. It applies to predictions of future events, to physical measurements that are already made, or to the unknown.
+
+[^1]: \[Credits: [Wikipedia](https://en.wikipedia.org/wiki/Uncertainty), 2023.\]
+
+Uncertainty arises in partially observable or stochastic environments, as well as due to ignorance, indolence, or both.
+
+Why is uncertainty important?
+
+Accounting for uncertainty leads to optimal decisions. Not accounting for uncertainty leads to suboptimal, wrong, or even catastrophic decisions.
+
+## Aleatoric uncertainty
+
+**Aleatoric** uncertainty captures noise inherent in the observations. For example, sensor noise or motion noise result in uncertainty.
+
+This uncertainty *cannot be reduced* with more data. However, aleatoric uncertainty could be reduced with better measurements.
+
+Aleatoric uncertainty can further be categorized into:
+
+-   Homoscedastic uncertainty, which relates to the uncertainty that a particular task might cause. It stays constant for different inputs.
+
+-   Heteroscedastic uncertainty, which depends on the inputs to the model, with some inputs potentially having more noisy outputs than others.
+
+## 
+
+![](images/homo-vs-hetero-3.png)
+
+## Neural density estimation
+
+Consider training data $(\mathbf{x}, y) \sim p(\mathbf{x}, y)$, with - $\mathbf{x} \in \mathbb{R}^p$, - $y \in \mathbb{R}$.
+
+We do not wish to learn a function $\hat{y} = f(\mathbf{x})$, which would only produce point estimates.
+
+Instead we want to learn the full conditional density $$p(y|\mathbf{x}).$$
+
+## NN with Gaussian output layer
+
+We can model aleatoric uncertainty in the output by modelling the conditional distribution as a Gaussian distribution, $$p(y|\mathbf{x}) = \mathcal{N}(y; \mu(\mathbf{x}), \sigma^2(\mathbf{x})),$$ where $\mu(x)$ and $\sigma^2(\mathbf{x})$ are parametric functions to be learned, such as neural networks.
+
+::: callout-note
+The Gaussian distribution is a modelling choice. Other parametric distributions can be used.
+:::
+
+## 
+
+:::{#fig-homoscedastic}
+![](images/homoscedastic.svg)
+
+Case 1: Homoscedastic aleatoric uncertainty
+:::
+
+## 
+
+We have,
+
+$$\begin{aligned}
+&\arg \max\_{\theta,\sigma^2} p(\mathbf{d}|\theta,\sigma^2) \\\\
+&= \arg \max\_{\theta,\sigma^2} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} p(y\_i|\mathbf{x}\_i, \theta,\sigma^2) \\\\
+&= \arg \max\_{\theta,\sigma^2} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma} \exp\left(-\frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2}\right) \\\\
+&= \arg \min\_{\theta,\sigma^2} \sum\_{\mathbf{x}\_i, y\_i \in \mathbf{d}}  \frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2} + \log(\sigma) + C
+\end{aligned}$$
+
+What if $\sigma^2$ was fixed?
+
+## 
+
+:::{#fig-heteroscedastic}
+![](images/heteroscedastic.svg)
+
+Case 2: heteroscedastic aleatoric uncertainty
+:::
+
+##
+
+Same as for the homoscedastic case, except that that $\sigma^2$ is now a function of $\mathbf{x}\_i$:
+$$\begin{aligned}
+&\arg \max\_{\theta} p(\mathbf{d}|\theta) \\\\
+&= \arg \max\_{\theta} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} p(y\_i|\mathbf{x}\_i, \theta) \\\\
+&= \arg \max\_{\theta} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma(\mathbf{x}\_i)} \exp\left(-\frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2(\mathbf{x}\_i)}\right) \\\\
+&= \arg \min\_{\theta} \sum\_{\mathbf{x}\_i, y\_i \in \mathbf{d}}  \frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2(\mathbf{x}\_i)} + \log(\sigma(\mathbf{x}\_i)) + C
+\end{aligned}$$
+
+
+## Gaussian mixture model
+
+Modelling $p(y|\mathbf{x})$ as a unimodal (Gaussian) distribution can be inadequate since the conditional distribution may be **multimodal**.
+
+A **Gaussian mixture model** (GMM) defines instead $p(y|\mathbf{x})$ as a mixture of $K$ Gaussian components,
+$$p(y|\mathbf{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(y;\mu_k, \sigma_k^2),$$
+where $0 \leq \pi_k \leq 1$ for all $k$ and $\sum_{k=1}^K \pi_k = 1$.
+
+:::{#fig-mixture}
+
+![](images/gmm.jpg)
+
+:::
+
+## Mixture Network
+
+A **mixture density network** (MDN) is a neural network implementation of the Gaussian mixture model.
+
+:::{#fig-mixnet}
+![](images/mdn.svg)
+
+:::
+
+## Example
+
+Let us consider training data generated randomly as
+$$y_i = \mathbf{x}_i + 0.3\sin(4\pi \mathbf{x}_i) + \epsilon_i$$
+with $\epsilon_i \sim \mathcal{N}$.
+
+## Mixture Density Networks[^2]
+
+:::{#fig-illus1}
+![](images/illus1.png){width=50%}
+
+:::
+
+The data can be fit with a 2-layer network producing point estimates for $y$
+([demo](http://otoro.net/ml/mixture/index.html)).
+
+
+[^2]:Credits: David Ha, [Mixture Density Networks](http://blog.otoro.net/2015/06/14/mixture-density-networks/), 2015.
+
+## Multi modality issue
+
+:::{#fig-illus2}
+![](images/illus2.png){width=50%}
+
+If we flip $\mathbf{x}_i$ and $y_i$, the network faces issues since for each input, there are multiple outputs that can work. It produces an average of the correct values ([demo](http://otoro.net/ml/mixture/inverse.html)).
+
+:::
+
+## Mixture Density Network
+
+:::{#fig-illus3}
+![](images/illus3.png){width=50%}
+
+A mixture density network models the data correctly, as it predicts for each input a distribution for the output, rather than a point estimate ([demo](http://otoro.net/ml/mixture/mixture.html)).
+
+:::
+
+## Normalizing flows
+
+![](images/cubes.png){width=50%}
+
+Assume $p(\mathbf{z})$ is a uniformly distributed unit cube in $\mathbb{R}^3$ and $\mathbf{x} = f(\mathbf{z}) = 2\mathbf{z}$.
+
+Since the total probability mass must be conserved, 
+$$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\frac{V_\mathbf{z}}{V_\mathbf{x}}=p(\mathbf{z}) \frac{1}{8},\quad\text{where}\frac{1}{8} = \left| \det \left( \begin{matrix}
+2 & 0 & 0 \\\\ 
+0 & 2 & 0 \\\\
+0 & 0 & 2
+\end{matrix} \right)\right|^{-1}$$ represents the inverse determinant of the linear transformation $f$.
+
+## 
+
+What if $f$ is non-linear?
+
+![Image credits: Simon J.D. Prince, [Understanding Deep Learning](https://udlbook.github.io/udlbook/), 2023.](images/cov.png){width=50%}
+
+
+## Change of variables theorem
+
+If $f$ is non-linear,
+- the Jacobian $J_f(\mathbf{z})$ of $\mathbf{x} = f(\mathbf{z})$ represents the infinitesimal linear transformation in the neighborhood of $\mathbf{z}$;
+- if the function is a bijective map, then the mass must be conserved locally.
+
+Therefore, the local change of density yields
+$$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\left| \det J_f(\mathbf{z}) \right|^{-1}.$$
+
+Similarly, for $g = f^{-1}$, we have $$p(\mathbf{x})=p(\mathbf{z}=g(\mathbf{x}))\left| \det J_g(\mathbf{x}) \right|.$$
+
+## Normalizing flows
+
+A normalizing flow is a change of variable $f$ that transforms a base distribution $p(\mathbf{z})$ into $p(\mathbf{x})$ by a series of invertible transformations.
+
+![Image credits: [Lilian Weng](https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models), 2018](images/normalizing-flow.png)
+
+## 
+
+Formally, 
+
+- $f$ is a composition $f=f_K \circ ... \circ f_1$, where each $f_k$ is an invertible neural transformation;
+
+- $g_k = f^{-1}_k$;
+
+- $\mathbf{z}_k = f_k(\mathbf{z}_{k-1})$, with $\mathbf{z}_0 = \mathbf{z}$ and $\mathbf{z}_K = \mathbf{x}$;
+  
+- $p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J\_{g_k}(\mathbf{z}_k) \right|$.
+
+## Example: coupling layers 
+
+Assume $\mathbf{z} = (\mathbf{z}_a, \mathbf{z}_b)$ and $\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)$. Then,
+
+- Forward mapping $\mathbf{x} = f(\mathbf{z})$: 
+$$\mathbf{x}_a = \mathbf{z}_a, \quad \mathbf{x}_b = \mathbf{z}_b \odot \exp(s(\mathbf{z}_a)) + t(\mathbf{z}_a),$$
+
+- Inverse mapping $\mathbf{z} = g(\mathbf{x})$:
+$$\mathbf{z}_a = \mathbf{x}_a, \quad \mathbf{z}_b = (\mathbf{x}_b - t(\mathbf{x}\_a)) \odot \exp(-s(\mathbf{x}_a)),$$
+
+where $s$ and $t$ are arbitrary neural networks.
+
+##
+For $\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)$, the log-likelihood is
+$$\begin{aligned}\log p(\mathbf{x}) &= \log p(\mathbf{z} = g(\mathbf{x})) \left| \det J_g(\mathbf{x}) \right|\end{aligned}$$
+where the Jacobian $J_g(\mathbf{x}) = \frac{\partial \mathbf{z}}{\partial \mathbf{x}}$ is a lower triangular matrix $$\left( \begin{matrix}
+\mathbf{I} & 0 \\\\
+\frac{\partial \mathbf{z}_b}{\partial \mathbf{x}_a} & \text{diag}(\exp(-s(\mathbf{x}_a))) \end{matrix} \right),$$
+such that $\left| \det J_g(\mathbf{x}) \right| = \prod_i \exp(-s(\mathbf{x}_a))_i = \exp(-\sum_i s(\mathbf{x}_a)_i)$.
+
+Therefore, the log-likelihood is $$\log p(\mathbf{x}) = \log p(\mathbf{z} = g(\mathbf{x})) -\sum_i s(\mathbf{x}_a)_i.$$
+
+##
+
+:::{#fig-nf-densities}
+![Image credits: [Wehenkel and Louppe](https://arxiv.org/abs/1908.05164), 2019.](images/nf-densities.png)
+
+Normalizing flows can fit complex multimodal discontinuous densities.
+
+:::
+
+# Epistemic uncertainty
+
+## 
+
+**Epistemic** uncertainty accounts for uncertainty in the model or in its parameters.
+It captures our *ignorance* about which model can best explain the collected data.
+
+It can be explained away given enough data[^3].
+
+[^3]:Credits: Kendall and Gal, [What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?](https://papers.nips.cc/paper/7141-what-uncertainties-do-we-need-in-bayesian-deep-learning-for-computer-vision.pdf), 2017.
+
