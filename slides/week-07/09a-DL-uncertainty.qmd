@@ -1,6 +1,6 @@
 ---
-title: "Uncertainty Quantification"
-subtitle: "Deep Learning"
+title: "Deep Learning"
+subtitle: "Uncertainty Quantification"
 date: "February 14, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
@@ -91,112 +91,103 @@ The Gaussian distribution is a modelling choice. Other parametric distributions 
 
 ## 
 
-:::{#fig-homoscedastic}
-![](images/homoscedastic.svg)
+<div>
 
-Case 1: Homoscedastic aleatoric uncertainty
-:::
+![Case 1: Homoscedastic aleatoric uncertainty](images/homoscedastic.svg)
+
+</div>
 
 ## 
 
 We have,
 
 $$\begin{aligned}
-&\arg \max\_{\theta,\sigma^2} p(\mathbf{d}|\theta,\sigma^2) \\\\
-&= \arg \max\_{\theta,\sigma^2} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} p(y\_i|\mathbf{x}\_i, \theta,\sigma^2) \\\\
-&= \arg \max\_{\theta,\sigma^2} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma} \exp\left(-\frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2}\right) \\\\
-&= \arg \min\_{\theta,\sigma^2} \sum\_{\mathbf{x}\_i, y\_i \in \mathbf{d}}  \frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2} + \log(\sigma) + C
+&\arg \max_{\theta,\sigma^2} p(\mathbf{d}|\theta,\sigma^2) \\\\
+&= \arg \max_{\theta,\sigma^2} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} p(y_i|\mathbf{x}_i, \theta,\sigma^2) \\\\
+&= \arg \max_{\theta,\sigma^2} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma} \exp\left(-\frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2}\right) \\\\
+&= \arg \min_{\theta,\sigma^2} \sum_{\mathbf{x}_i, y_i \in \mathbf{d}}  \frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2} + \log(\sigma) + C
 \end{aligned}$$
 
 What if $\sigma^2$ was fixed?
 
 ## 
 
-:::{#fig-heteroscedastic}
-![](images/heteroscedastic.svg)
+<div>
 
-Case 2: heteroscedastic aleatoric uncertainty
-:::
+![Case 2: heteroscedastic aleatoric uncertainty](images/heteroscedastic.svg)
 
-##
+</div>
 
-Same as for the homoscedastic case, except that that $\sigma^2$ is now a function of $\mathbf{x}\_i$:
-$$\begin{aligned}
-&\arg \max\_{\theta} p(\mathbf{d}|\theta) \\\\
-&= \arg \max\_{\theta} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} p(y\_i|\mathbf{x}\_i, \theta) \\\\
-&= \arg \max\_{\theta} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma(\mathbf{x}\_i)} \exp\left(-\frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2(\mathbf{x}\_i)}\right) \\\\
-&= \arg \min\_{\theta} \sum\_{\mathbf{x}\_i, y\_i \in \mathbf{d}}  \frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2(\mathbf{x}\_i)} + \log(\sigma(\mathbf{x}\_i)) + C
+## 
+
+Same as for the homoscedastic case, except that that $\sigma^2$ is now a function of $\mathbf{x}_i$: $$\begin{aligned}
+&\arg \max_{\theta} p(\mathbf{d}|\theta) \\\\
+&= \arg \max_{\theta} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} p(y_i|\mathbf{x}_i, \theta) \\\\
+&= \arg \max_{\theta} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma(\mathbf{x}_i)} \exp\left(-\frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2(\mathbf{x}_i)}\right) \\\\
+&= \arg \min_{\theta} \sum_{\mathbf{x}_i, y_i \in \mathbf{d}}  \frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2(\mathbf{x}_i)} + \log(\sigma(\mathbf{x}_i)) + C
 \end{aligned}$$
-
 
 ## Gaussian mixture model
 
 Modelling $p(y|\mathbf{x})$ as a unimodal (Gaussian) distribution can be inadequate since the conditional distribution may be **multimodal**.
 
-A **Gaussian mixture model** (GMM) defines instead $p(y|\mathbf{x})$ as a mixture of $K$ Gaussian components,
-$$p(y|\mathbf{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(y;\mu_k, \sigma_k^2),$$
-where $0 \leq \pi_k \leq 1$ for all $k$ and $\sum_{k=1}^K \pi_k = 1$.
+A **Gaussian mixture model** (GMM) defines instead $p(y|\mathbf{x})$ as a mixture of $K$ Gaussian components, $$p(y|\mathbf{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(y;\mu_k, \sigma_k^2),$$ where $0 \leq \pi_k \leq 1$ for all $k$ and $\sum_{k=1}^K \pi_k = 1$.
 
-:::{#fig-mixture}
-
+::: {#fig-mixture}
 ![](images/gmm.jpg)
-
 :::
 
 ## Mixture Network
 
 A **mixture density network** (MDN) is a neural network implementation of the Gaussian mixture model.
 
-:::{#fig-mixnet}
-![](images/mdn.svg)
+<div>
 
-:::
+![MDN](images/mdn.svg)
+
+</div>
 
 ## Example
 
-Let us consider training data generated randomly as
-$$y_i = \mathbf{x}_i + 0.3\sin(4\pi \mathbf{x}_i) + \epsilon_i$$
-with $\epsilon_i \sim \mathcal{N}$.
+Let us consider training data generated randomly as $$y_i = \mathbf{x}_i + 0.3\sin(4\pi \mathbf{x}_i) + \epsilon_i$$ with $\epsilon_i \sim \mathcal{N}$.
 
-## Mixture Density Networks[^2]
+## Mixture Density Networks
 
-:::{#fig-illus1}
-![](images/illus1.png){width=50%}
+<div>
 
-:::
+![Credits: David Ha, [Mixture Density Networks](http://blog.otoro.net/2015/06/14/mixture-density-networks/), 2015.](images/illus1.png){width="40%"}
 
-The data can be fit with a 2-layer network producing point estimates for $y$
-([demo](http://otoro.net/ml/mixture/index.html)).
+</div>
 
-
-[^2]:Credits: David Ha, [Mixture Density Networks](http://blog.otoro.net/2015/06/14/mixture-density-networks/), 2015.
+The data can be fit with a 2-layer network producing point estimates for $y$ ([demo](http://otoro.net/ml/mixture/index.html)).
 
 ## Multi modality issue
 
-:::{#fig-illus2}
-![](images/illus2.png){width=50%}
+<div>
+
+![Credits: David Ha, [Mixture Density Networks](http://blog.otoro.net/2015/06/14/mixture-density-networks/), 2015.](images/illus2.png){width="40%"}
 
 If we flip $\mathbf{x}_i$ and $y_i$, the network faces issues since for each input, there are multiple outputs that can work. It produces an average of the correct values ([demo](http://otoro.net/ml/mixture/inverse.html)).
 
-:::
+</div>
 
 ## Mixture Density Network
 
-:::{#fig-illus3}
-![](images/illus3.png){width=50%}
+<div>
+
+![Credits: David Ha, [Mixture Density Networks](http://blog.otoro.net/2015/06/14/mixture-density-networks/), 2015.](images/illus3.png){width="40%"}
 
 A mixture density network models the data correctly, as it predicts for each input a distribution for the output, rather than a point estimate ([demo](http://otoro.net/ml/mixture/mixture.html)).
 
-:::
+</div>
 
 ## Normalizing flows
 
-![](images/cubes.png){width=50%}
+![](images/cubes.png){width="50%"}
 
 Assume $p(\mathbf{z})$ is a uniformly distributed unit cube in $\mathbb{R}^3$ and $\mathbf{x} = f(\mathbf{z}) = 2\mathbf{z}$.
 
-Since the total probability mass must be conserved, 
-$$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\frac{V_\mathbf{z}}{V_\mathbf{x}}=p(\mathbf{z}) \frac{1}{8},\quad\text{where}\frac{1}{8} = \left| \det \left( \begin{matrix}
+Since the total probability mass must be conserved, $$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\frac{V_\mathbf{z}}{V_\mathbf{x}}=p(\mathbf{z}) \frac{1}{8},\quad\text{where}\frac{1}{8} = \left| \det \left( \begin{matrix}
 2 & 0 & 0 \\\\ 
 0 & 2 & 0 \\\\
 0 & 0 & 2
@@ -206,17 +197,13 @@ $$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\frac{V_\mathbf{z}}{V_\mathbf{x}}=p
 
 What if $f$ is non-linear?
 
-![Image credits: Simon J.D. Prince, [Understanding Deep Learning](https://udlbook.github.io/udlbook/), 2023.](images/cov.png){width=50%}
-
+![Image credits: Simon J.D. Prince, [Understanding Deep Learning](https://udlbook.github.io/udlbook/), 2023.](images/cov.png){width="50%"}
 
 ## Change of variables theorem
 
-If $f$ is non-linear,
-- the Jacobian $J_f(\mathbf{z})$ of $\mathbf{x} = f(\mathbf{z})$ represents the infinitesimal linear transformation in the neighborhood of $\mathbf{z}$;
-- if the function is a bijective map, then the mass must be conserved locally.
+If $f$ is non-linear, - the Jacobian $J_f(\mathbf{z})$ of $\mathbf{x} = f(\mathbf{z})$ represents the infinitesimal linear transformation in the neighborhood of $\mathbf{z}$; - if the function is a bijective map, then the mass must be conserved locally.
 
-Therefore, the local change of density yields
-$$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\left| \det J_f(\mathbf{z}) \right|^{-1}.$$
+Therefore, the local change of density yields $$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\left| \det J_f(\mathbf{z}) \right|^{-1}.$$
 
 Similarly, for $g = f^{-1}$, we have $$p(\mathbf{x})=p(\mathbf{z}=g(\mathbf{x}))\left| \det J_g(\mathbf{x}) \right|.$$
 
@@ -228,55 +215,221 @@ A normalizing flow is a change of variable $f$ that transforms a base distributi
 
 ## 
 
-Formally, 
+Formally,
 
-- $f$ is a composition $f=f_K \circ ... \circ f_1$, where each $f_k$ is an invertible neural transformation;
+-   $f$ is a composition $f=f_K \circ ... \circ f_1$, where each $f_k$ is an invertible neural transformation;
 
-- $g_k = f^{-1}_k$;
+-   $g_k = f^{-1}_k$;
 
-- $\mathbf{z}_k = f_k(\mathbf{z}_{k-1})$, with $\mathbf{z}_0 = \mathbf{z}$ and $\mathbf{z}_K = \mathbf{x}$;
-  
-- $p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J\_{g_k}(\mathbf{z}_k) \right|$.
+-   $\mathbf{z}_k = f_k(\mathbf{z}_{k-1})$, with $\mathbf{z}_0 = \mathbf{z}$ and $\mathbf{z}_K = \mathbf{x}$;
 
-## Example: coupling layers 
+-   $p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J_{g_k}(\mathbf{z}_k) \right|$.
+
+## Example: coupling layers
 
 Assume $\mathbf{z} = (\mathbf{z}_a, \mathbf{z}_b)$ and $\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)$. Then,
 
-- Forward mapping $\mathbf{x} = f(\mathbf{z})$: 
-$$\mathbf{x}_a = \mathbf{z}_a, \quad \mathbf{x}_b = \mathbf{z}_b \odot \exp(s(\mathbf{z}_a)) + t(\mathbf{z}_a),$$
+-   Forward mapping $\mathbf{x} = f(\mathbf{z})$: $$\mathbf{x}_a = \mathbf{z}_a, \quad \mathbf{x}_b = \mathbf{z}_b \odot \exp(s(\mathbf{z}_a)) + t(\mathbf{z}_a),$$
 
-- Inverse mapping $\mathbf{z} = g(\mathbf{x})$:
-$$\mathbf{z}_a = \mathbf{x}_a, \quad \mathbf{z}_b = (\mathbf{x}_b - t(\mathbf{x}\_a)) \odot \exp(-s(\mathbf{x}_a)),$$
+-   Inverse mapping $\mathbf{z} = g(\mathbf{x})$: $$\mathbf{z}_a = \mathbf{x}_a, \quad \mathbf{z}_b = (\mathbf{x}_b - t(\mathbf{x}_a)) \odot \exp(-s(\mathbf{x}_a)),$$
 
 where $s$ and $t$ are arbitrary neural networks.
 
-##
-For $\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)$, the log-likelihood is
-$$\begin{aligned}\log p(\mathbf{x}) &= \log p(\mathbf{z} = g(\mathbf{x})) \left| \det J_g(\mathbf{x}) \right|\end{aligned}$$
-where the Jacobian $J_g(\mathbf{x}) = \frac{\partial \mathbf{z}}{\partial \mathbf{x}}$ is a lower triangular matrix $$\left( \begin{matrix}
+## 
+
+For $\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)$, the log-likelihood is $$\begin{aligned}\log p(\mathbf{x}) &= \log p(\mathbf{z} = g(\mathbf{x})) \left| \det J_g(\mathbf{x}) \right|\end{aligned}$$ where the Jacobian $J_g(\mathbf{x}) = \frac{\partial \mathbf{z}}{\partial \mathbf{x}}$ is a lower triangular matrix $$\left( \begin{matrix}
 \mathbf{I} & 0 \\\\
-\frac{\partial \mathbf{z}_b}{\partial \mathbf{x}_a} & \text{diag}(\exp(-s(\mathbf{x}_a))) \end{matrix} \right),$$
-such that $\left| \det J_g(\mathbf{x}) \right| = \prod_i \exp(-s(\mathbf{x}_a))_i = \exp(-\sum_i s(\mathbf{x}_a)_i)$.
+\frac{\partial \mathbf{z}_b}{\partial \mathbf{x}_a} & \text{diag}(\exp(-s(\mathbf{x}_a))) \end{matrix} \right),$$ such that $\left| \det J_g(\mathbf{x}) \right| = \prod_i \exp(-s(\mathbf{x}_a))_i = \exp(-\sum_i s(\mathbf{x}_a)_i)$.
 
 Therefore, the log-likelihood is $$\log p(\mathbf{x}) = \log p(\mathbf{z} = g(\mathbf{x})) -\sum_i s(\mathbf{x}_a)_i.$$
 
-##
+## 
 
-:::{#fig-nf-densities}
+::: {#fig-nf-densities}
 ![Image credits: [Wehenkel and Louppe](https://arxiv.org/abs/1908.05164), 2019.](images/nf-densities.png)
 
 Normalizing flows can fit complex multimodal discontinuous densities.
-
 :::
 
 # Epistemic uncertainty
 
 ## 
 
-**Epistemic** uncertainty accounts for uncertainty in the model or in its parameters.
-It captures our *ignorance* about which model can best explain the collected data.
+**Epistemic** uncertainty accounts for uncertainty in the model or in its parameters. It captures our *ignorance* about which model can best explain the collected data.
 
-It can be explained away given enough data[^3].
+It can be explained away given enough data[^2].
 
-[^3]:Credits: Kendall and Gal, [What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?](https://papers.nips.cc/paper/7141-what-uncertainties-do-we-need-in-bayesian-deep-learning-for-computer-vision.pdf), 2017.
+[^2]: Credits: Kendall and Gal, [What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?](https://papers.nips.cc/paper/7141-what-uncertainties-do-we-need-in-bayesian-deep-learning-for-computer-vision.pdf), 2017.
 
+## Bayesian neural networks
+
+To capture epistemic uncertainty in a neural network, we model our ignorance with a prior distribution $p(\mathbf{\omega})$ over its weights.
+
+Then we invoke Bayes for making predictions.
+
+::: {layout-ncol="2" layout-valign="bottom"}
+![](images/bnn.png){width="80%"}
+
+![](images/thomas.png){width="50%"}
+:::
+
+## 
+
+The prior predictive distribution at $\mathbf{x}$ is given by integrating over all possible weight configurations, $$p(y|\mathbf{x}) = \int p(y|\mathbf{x}, \mathbf{\omega}) p(\mathbf{\omega}) d\mathbf{\omega}.$$
+
+Given training data $\mathbf{d}=\\{(\mathbf{x}_1, y_1), ..., (\mathbf{x}_N, y_N)\\}$ a Bayesian update results in the posterior $$p(\mathbf{\omega}|\mathbf{d}) = \frac{p(\mathbf{d}|\mathbf{\omega})p(\mathbf{\omega})}{p(\mathbf{d})}$$ where the likelihood $p(\mathbf{d}|\omega) = \prod_i p(y_i | \mathbf{x}_i, \omega).$
+
+The posterior predictive distribution is then given by $$p(y|\mathbf{x},\mathbf{d}) = \int p(y|\mathbf{x}, \mathbf{\omega}) p(\mathbf{\omega}|\mathbf{d}) d\mathbf{\omega}.$$
+
+## 
+
+Bayesian neural networks are *easy to formulate*, but notoriously **difficult** to perform inference in.
+
+$p(\mathbf{d})$ is intractable to evaluate, which results in the posterior $p(\mathbf{\omega}|\mathbf{d})$ not being tractable either.
+
+Therefore, we must rely on approximations.
+
+## Variational inference
+
+Variational inference can be used for building an approximation $q(\mathbf{\omega};\nu)$ of the posterior $p(\mathbf{\omega}|\mathbf{d})$.
+
+We can show that minimizing $$\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))$$ with respect to the variational parameters $\nu$, is identical to maximizing the evidence lower bound objective (ELBO) $$\text{ELBO}(\nu) = \mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right] - \text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega})).$$
+
+## 
+
+The integral in the ELBO is not tractable for almost all $q$, but it can be maximized with stochastic gradient ascent:
+
+1.  Sample $\hat{\omega} \sim q(\mathbf{\omega};\nu)$.
+2.  Do one step of maximization with respect to $\nu$ on $$\hat{L}(\nu) = \log p(\mathbf{d}|\hat{\omega}) - \log\frac{q(\hat{\omega};\nu)}{p(\hat{\omega})} $$
+
+In the context of Bayesian neural networks, this procedure is also known as **Bayes by backprop** (Blundell et al, 2015).
+
+## 
+
+![](images/pitcher.png)
+
+## 
+
+![](./images/prior_posterior.png)
+
+# Simulation-based inference
+
+## Scientific simulators
+
+![](./images/simulators.png)
+
+## 
+
+![](./images/unconditioned-program.png)
+
+$$\theta, z, x \sim p(\theta, z, x)$$
+
+## 
+
+![](./images/conditioned-program.png)
+
+$$\theta, z \sim p(\theta, z | x)$$
+
+## 
+
+![](./images/galton.mp4)
+
+##
+
+![Credit: [Brehmer](https://github.com/johannbrehmer/slides/blob/master/2020/simulation_based_inference_bremen_2020.pdf)](./images/galton_trajectory.png)
+
+## Conditional simulators
+
+A conditional simulator prescribes a way to sample from the likelihood $p(\mathbf{x}|\vartheta)$, where $\vartheta$ is a set of conditioning variables or parameters.
+
+![Credits: [Siddharth Mishra-Sharma](https://smsharma.io/iaifi-summer-school-2023/), 2023.](./images/simulators-conditional.png)
+
+##
+
+![](./images/process1.png)
+
+## 
+
+![](./images/process2.png)
+
+## 
+
+![](./images/process3.png)
+
+## 
+
+![](./images/process4.png)
+
+## 
+
+$$p(x|\theta) = \underbrace{\iiint}_{\text{yikes!}} p(z_p|\theta) p(z_s|z_p) p(z_d|z_s) p(x|z_d) dz_p dz_s dz_d$$
+
+That's bad!
+
+## Bayesian inference
+
+Start with
+
+-   a simulator that can generate $N$ samples $x_i \sim p(x_i|\theta_i)$,
+-   a prior model $p(\theta)$,
+-   observed data $x_\text{obs} \sim p(x_\text{obs} | \theta_\text{true})$.
+
+Then, estimate the posterior
+
+$$p(\theta|x_\text{obs}) = \frac{p(x_\text{obs} | \theta)p(\theta)}{p(x_\text{obs})}.$$
+
+## 
+
+![](./images//sbi.png)
+
+# Algorithms
+
+## 
+
+![Credits: [Cranmer, Brehmer and Louppe](https://doi.org/10.1073/pnas.1912789117), 2020.](./images/frontiers-sbi0.png)
+
+## Approximate Bayesian Computation (ABC)
+
+![Credits: Johann Brehmer.](./images/abc.png)
+
+**Issues:**
+
+-   How to choose $x'$? $\epsilon$? $||\cdot||$?
+
+-   No tractable posterior.
+
+-   Need to run new simulations for new data or new prior.
+
+## 
+
+![Credits: [Cranmer, Brehmer and Louppe](https://doi.org/10.1073/pnas.1912789117), 2020.](./images/frontiers-sbi2.png)
+
+## 
+
+![Credits: [Cranmer, Brehmer and Louppe](https://doi.org/10.1073/pnas.1912789117), 2020.](./images/frontiers-sbi.png)
+
+## 
+
+::: columns
+::: {.column width="33%"}
+Produce samples $$\mathbf{x} \sim p(\mathbf{x} | \vartheta)$$
+:::
+
+::: {.column width="33%"}
+Evaluate densities $$p(\mathbf{x}|\vartheta)$$ $$p(\vartheta | \mathbf{x}) = \frac{p(\mathbf{x} | \vartheta) p(\vartheta)}{p(\mathbf{x})}$$
+:::
+
+::: {.column width="33%"}
+Encode complex priors $$p(\mathbf{x})$$
+:::
+:::
+
+::: {layout-ncol="3"}
+![Credits: [Siddharth Mishra-Sharma](https://smsharma.io/iaifi-summer-school-2023/), 2023.](./images/uses1.png)
+
+![](./images/uses2.png)
+
+![](./images/uses3.png)
+:::
+
+##
