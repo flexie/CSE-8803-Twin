@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="dcterms.date" content="2024-02-14">
-  <title>Digital Twins for Physical Systems - Uncertainty Quantification</title>
+  <title>Digital Twins for Physical Systems - Deep Learning</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -328,13 +328,21 @@
     <div class="slides">
 
 <section id="title-slide" data-footer="CC BY-SA" class="quarto-title-block center">
-  <h1 class="title">Uncertainty Quantification</h1>
-  <p class="subtitle">Deep Learning</p>
+  <h1 class="title">Deep Learning</h1>
+  <p class="subtitle">Uncertainty Quantification</p>
 
 <div class="quarto-title-authors">
 </div>
 
   <p class="date">2024-02-14</p>
+</section>
+<section id="credits" class="slide level2 center">
+<h2>Credits</h2>
+<p>Slides are adapted from lectured developed by <a href="mailto:g.louppe@uliege.be">Gilles Louppe</a> at University of Liege, Belgium under the <a href="LICENSE">BSD 3-Clause License</a></p>
+<ul>
+<li>lectures 10, 11, and 12 of <a href="https://github.com/glouppe/info8010-deep-learning">INFO8010 - Deep Learning</a></li>
+<li>and of lecture materials of <a href="https://github.com/glouppe/ssi2023?tab=readme-ov-file">SSI 2023</a></li>
+</ul>
 </section>
 <section id="today" class="slide level2 center">
 <h2>Today</h2>
@@ -397,34 +405,44 @@
 </section>
 <section id="section-2" class="slide level2 center">
 <h2></h2>
-
-<img data-src="images/homoscedastic.svg" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;1: Case 1: Homoscedastic aleatoric uncertainty
-</p></section>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/homoscedastic.svg"></p>
+<figcaption>Case 1: Homoscedastic aleatoric uncertainty</figcaption>
+</figure>
+</div>
+</div>
+</section>
 <section id="section-3" class="slide level2 center">
 <h2></h2>
 <p>We have,</p>
 <p><span class="math display">\[\begin{aligned}
-&amp;\arg \max\_{\theta,\sigma^2} p(\mathbf{d}|\theta,\sigma^2) \\\\
-&amp;= \arg \max\_{\theta,\sigma^2} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} p(y\_i|\mathbf{x}\_i, \theta,\sigma^2) \\\\
-&amp;= \arg \max\_{\theta,\sigma^2} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma} \exp\left(-\frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2}\right) \\\\
-&amp;= \arg \min\_{\theta,\sigma^2} \sum\_{\mathbf{x}\_i, y\_i \in \mathbf{d}}  \frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2} + \log(\sigma) + C
+&amp;\arg \max_{\theta,\sigma^2} p(\mathbf{d}|\theta,\sigma^2) \\\\
+&amp;= \arg \max_{\theta,\sigma^2} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} p(y_i|\mathbf{x}_i, \theta,\sigma^2) \\\\
+&amp;= \arg \max_{\theta,\sigma^2} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma} \exp\left(-\frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2}\right) \\\\
+&amp;= \arg \min_{\theta,\sigma^2} \sum_{\mathbf{x}_i, y_i \in \mathbf{d}}  \frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2} + \log(\sigma) + C
 \end{aligned}\]</span></p>
 <p>What if <span class="math inline">\(\sigma^2\)</span> was fixed?</p>
 </section>
 <section id="section-4" class="slide level2 center">
 <h2></h2>
-
-<img data-src="images/heteroscedastic.svg" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;2: Case 2: heteroscedastic aleatoric uncertainty
-</p></section>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/heteroscedastic.svg"></p>
+<figcaption>Case 2: heteroscedastic aleatoric uncertainty</figcaption>
+</figure>
+</div>
+</div>
+</section>
 <section id="section-5" class="slide level2 center">
 <h2></h2>
-<p>Same as for the homoscedastic case, except that that <span class="math inline">\(\sigma^2\)</span> is now a function of <span class="math inline">\(\mathbf{x}\_i\)</span>: <span class="math display">\[\begin{aligned}
-&amp;\arg \max\_{\theta} p(\mathbf{d}|\theta) \\\\
-&amp;= \arg \max\_{\theta} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} p(y\_i|\mathbf{x}\_i, \theta) \\\\
-&amp;= \arg \max\_{\theta} \prod\_{\mathbf{x}\_i, y\_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma(\mathbf{x}\_i)} \exp\left(-\frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2(\mathbf{x}\_i)}\right) \\\\
-&amp;= \arg \min\_{\theta} \sum\_{\mathbf{x}\_i, y\_i \in \mathbf{d}}  \frac{(y\_i-\mu(\mathbf{x}\_i))^2}{2\sigma^2(\mathbf{x}\_i)} + \log(\sigma(\mathbf{x}\_i)) + C
+<p>Same as for the homoscedastic case, except that that <span class="math inline">\(\sigma^2\)</span> is now a function of <span class="math inline">\(\mathbf{x}_i\)</span>: <span class="math display">\[\begin{aligned}
+&amp;\arg \max_{\theta} p(\mathbf{d}|\theta) \\\\
+&amp;= \arg \max_{\theta} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} p(y_i|\mathbf{x}_i, \theta) \\\\
+&amp;= \arg \max_{\theta} \prod_{\mathbf{x}_i, y_i \in \mathbf{d}} \frac{1}{\sqrt{2\pi} \sigma(\mathbf{x}_i)} \exp\left(-\frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2(\mathbf{x}_i)}\right) \\\\
+&amp;= \arg \min_{\theta} \sum_{\mathbf{x}_i, y_i \in \mathbf{d}}  \frac{(y_i-\mu(\mathbf{x}_i))^2}{2\sigma^2(\mathbf{x}_i)} + \log(\sigma(\mathbf{x}_i)) + C
 \end{aligned}\]</span></p>
 </section>
 <section id="gaussian-mixture-model" class="slide level2 center">
@@ -433,45 +451,60 @@ Figure&nbsp;2: Case 2: heteroscedastic aleatoric uncertainty
 <p>A <strong>Gaussian mixture model</strong> (GMM) defines instead <span class="math inline">\(p(y|\mathbf{x})\)</span> as a mixture of <span class="math inline">\(K\)</span> Gaussian components, <span class="math display">\[p(y|\mathbf{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(y;\mu_k, \sigma_k^2),\]</span> where <span class="math inline">\(0 \leq \pi_k \leq 1\)</span> for all <span class="math inline">\(k\)</span> and <span class="math inline">\(\sum_{k=1}^K \pi_k = 1\)</span>.</p>
 
 <img data-src="images/gmm.jpg" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;3
+Figure&nbsp;1
 </p></section>
 <section id="mixture-network" class="slide level2 center">
 <h2>Mixture Network</h2>
 <p>A <strong>mixture density network</strong> (MDN) is a neural network implementation of the Gaussian mixture model.</p>
-
-<img data-src="images/mdn.svg" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;4
-</p></section>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mdn.svg"></p>
+<figcaption>MDN</figcaption>
+</figure>
+</div>
+</div>
+</section>
 <section id="example" class="slide level2 center">
 <h2>Example</h2>
 <p>Let us consider training data generated randomly as <span class="math display">\[y_i = \mathbf{x}_i + 0.3\sin(4\pi \mathbf{x}_i) + \epsilon_i\]</span> with <span class="math inline">\(\epsilon_i \sim \mathcal{N}\)</span>.</p>
 </section>
-<section id="mixture-density-networks2" class="slide level2 center">
-<h2>Mixture Density Networks<sup>1</sup></h2>
-<div id="fig-illus1" class="quarto-figure quarto-figure-center quarto-float">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-illus1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="images/illus1.png" style="width:50.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-illus1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5
-</figcaption>
+<section id="mixture-density-networks" class="slide level2 center">
+<h2>Mixture Density Networks</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/illus1.png" style="width:40.0%"></p>
+<figcaption>Credits: David Ha, <a href="http://blog.otoro.net/2015/06/14/mixture-density-networks/">Mixture Density Networks</a>, 2015.</figcaption>
 </figure>
 </div>
+</div>
 <p>The data can be fit with a 2-layer network producing point estimates for <span class="math inline">\(y\)</span> (<a href="http://otoro.net/ml/mixture/index.html">demo</a>).</p>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Credits: David Ha, <a href="http://blog.otoro.net/2015/06/14/mixture-density-networks/">Mixture Density Networks</a>, 2015.</p></li></ol></aside></section>
+</section>
 <section id="multi-modality-issue" class="slide level2 center">
 <h2>Multi modality issue</h2>
-
-<img data-src="images/illus2.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;6: If we flip <span class="math inline">\(\mathbf{x}_i\)</span> and <span class="math inline">\(y_i\)</span>, the network faces issues since for each input, there are multiple outputs that can work. It produces an average of the correct values (<a href="http://otoro.net/ml/mixture/inverse.html">demo</a>).
-</p></section>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/illus2.png" style="width:40.0%"></p>
+<figcaption>Credits: David Ha, <a href="http://blog.otoro.net/2015/06/14/mixture-density-networks/">Mixture Density Networks</a>, 2015.</figcaption>
+</figure>
+</div>
+<p>If we flip <span class="math inline">\(\mathbf{x}_i\)</span> and <span class="math inline">\(y_i\)</span>, the network faces issues since for each input, there are multiple outputs that can work. It produces an average of the correct values (<a href="http://otoro.net/ml/mixture/inverse.html">demo</a>).</p>
+</div>
+</section>
 <section id="mixture-density-network" class="slide level2 center">
 <h2>Mixture Density Network</h2>
-
-<img data-src="images/illus3.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;7: A mixture density network models the data correctly, as it predicts for each input a distribution for the output, rather than a point estimate (<a href="http://otoro.net/ml/mixture/mixture.html">demo</a>).
-</p></section>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/illus3.png" style="width:40.0%"></p>
+<figcaption>Credits: David Ha, <a href="http://blog.otoro.net/2015/06/14/mixture-density-networks/">Mixture Density Networks</a>, 2015.</figcaption>
+</figure>
+</div>
+<p>A mixture density network models the data correctly, as it predicts for each input a distribution for the output, rather than a point estimate (<a href="http://otoro.net/ml/mixture/mixture.html">demo</a>).</p>
+</div>
+</section>
 <section id="normalizing-flows" class="slide level2 center">
 <h2>Normalizing flows</h2>
 
@@ -505,7 +538,7 @@ Figure&nbsp;7: A mixture density network models the data correctly, as it predic
 <li><p><span class="math inline">\(f\)</span> is a composition <span class="math inline">\(f=f_K \circ ... \circ f_1\)</span>, where each <span class="math inline">\(f_k\)</span> is an invertible neural transformation;</p></li>
 <li><p><span class="math inline">\(g_k = f^{-1}_k\)</span>;</p></li>
 <li><p><span class="math inline">\(\mathbf{z}_k = f_k(\mathbf{z}_{k-1})\)</span>, with <span class="math inline">\(\mathbf{z}_0 = \mathbf{z}\)</span> and <span class="math inline">\(\mathbf{z}_K = \mathbf{x}\)</span>;</p></li>
-<li><p><span class="math inline">\(p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J\_{g_k}(\mathbf{z}_k) \right|\)</span>.</p></li>
+<li><p><span class="math inline">\(p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J_{g_k}(\mathbf{z}_k) \right|\)</span>.</p></li>
 </ul>
 </section>
 <section id="example-coupling-layers" class="slide level2 center">
@@ -513,7 +546,7 @@ Figure&nbsp;7: A mixture density network models the data correctly, as it predic
 <p>Assume <span class="math inline">\(\mathbf{z} = (\mathbf{z}_a, \mathbf{z}_b)\)</span> and <span class="math inline">\(\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)\)</span>. Then,</p>
 <ul>
 <li><p>Forward mapping <span class="math inline">\(\mathbf{x} = f(\mathbf{z})\)</span>: <span class="math display">\[\mathbf{x}_a = \mathbf{z}_a, \quad \mathbf{x}_b = \mathbf{z}_b \odot \exp(s(\mathbf{z}_a)) + t(\mathbf{z}_a),\]</span></p></li>
-<li><p>Inverse mapping <span class="math inline">\(\mathbf{z} = g(\mathbf{x})\)</span>: <span class="math display">\[\mathbf{z}_a = \mathbf{x}_a, \quad \mathbf{z}_b = (\mathbf{x}_b - t(\mathbf{x}\_a)) \odot \exp(-s(\mathbf{x}_a)),\]</span></p></li>
+<li><p>Inverse mapping <span class="math inline">\(\mathbf{z} = g(\mathbf{x})\)</span>: <span class="math display">\[\mathbf{z}_a = \mathbf{x}_a, \quad \mathbf{z}_b = (\mathbf{x}_b - t(\mathbf{x}_a)) \odot \exp(-s(\mathbf{x}_a)),\]</span></p></li>
 </ul>
 <p>where <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are arbitrary neural networks.</p>
 </section>
@@ -537,6 +570,183 @@ Figure&nbsp;7: A mixture density network models the data correctly, as it predic
 <h2></h2>
 <p><strong>Epistemic</strong> uncertainty accounts for uncertainty in the model or in its parameters. It captures our <em>ignorance</em> about which model can best explain the collected data.</p>
 <p>It can be explained away given enough data<sup>1</sup>.</p>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Credits: Kendall and Gal, <a href="https://papers.nips.cc/paper/7141-what-uncertainties-do-we-need-in-bayesian-deep-learning-for-computer-vision.pdf">What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?</a>, 2017.</p></li></ol></aside></section>
+<section id="bayesian-neural-networks" class="slide level2 center">
+<h2>Bayesian neural networks</h2>
+<p>To capture epistemic uncertainty in a neural network, we model our ignorance with a prior distribution <span class="math inline">\(p(\mathbf{\omega})\)</span> over its weights.</p>
+<p>Then we invoke Bayes for making predictions.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/bnn.png" style="width:80.0%"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/thomas.png" style="width:50.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-11" class="slide level2 center">
+<h2></h2>
+<p>The prior predictive distribution at <span class="math inline">\(\mathbf{x}\)</span> is given by integrating over all possible weight configurations, <span class="math display">\[p(y|\mathbf{x}) = \int p(y|\mathbf{x}, \mathbf{\omega}) p(\mathbf{\omega}) d\mathbf{\omega}.\]</span></p>
+<p>Given training data <span class="math inline">\(\mathbf{d}=\\{(\mathbf{x}_1, y_1), ..., (\mathbf{x}_N, y_N)\\}\)</span> a Bayesian update results in the posterior <span class="math display">\[p(\mathbf{\omega}|\mathbf{d}) = \frac{p(\mathbf{d}|\mathbf{\omega})p(\mathbf{\omega})}{p(\mathbf{d})}\]</span> where the likelihood <span class="math inline">\(p(\mathbf{d}|\omega) = \prod_i p(y_i | \mathbf{x}_i, \omega).\)</span></p>
+<p>The posterior predictive distribution is then given by <span class="math display">\[p(y|\mathbf{x},\mathbf{d}) = \int p(y|\mathbf{x}, \mathbf{\omega}) p(\mathbf{\omega}|\mathbf{d}) d\mathbf{\omega}.\]</span></p>
+</section>
+<section id="section-12" class="slide level2 center">
+<h2></h2>
+<p>Bayesian neural networks are <em>easy to formulate</em>, but notoriously <strong>difficult</strong> to perform inference in.</p>
+<p><span class="math inline">\(p(\mathbf{d})\)</span> is intractable to evaluate, which results in the posterior <span class="math inline">\(p(\mathbf{\omega}|\mathbf{d})\)</span> not being tractable either.</p>
+<p>Therefore, we must rely on approximations.</p>
+</section>
+<section id="variational-inference" class="slide level2 center">
+<h2>Variational inference</h2>
+<p>Variational inference can be used for building an approximation <span class="math inline">\(q(\mathbf{\omega};\nu)\)</span> of the posterior <span class="math inline">\(p(\mathbf{\omega}|\mathbf{d})\)</span>.</p>
+<p>We can show that minimizing <span class="math display">\[\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))\]</span> with respect to the variational parameters <span class="math inline">\(\nu\)</span>, is identical to maximizing the evidence lower bound objective (ELBO) <span class="math display">\[\text{ELBO}(\nu) = \mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right] - \text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega})).\]</span></p>
+</section>
+<section id="section-13" class="slide level2 center">
+<h2></h2>
+<p>The integral in the ELBO is not tractable for almost all <span class="math inline">\(q\)</span>, but it can be maximized with stochastic gradient ascent:</p>
+<ol type="1">
+<li>Sample <span class="math inline">\(\hat{\omega} \sim q(\mathbf{\omega};\nu)\)</span>.</li>
+<li>Do one step of maximization with respect to <span class="math inline">\(\nu\)</span> on <span class="math display">\[\hat{L}(\nu) = \log p(\mathbf{d}|\hat{\omega}) - \log\frac{q(\hat{\omega};\nu)}{p(\hat{\omega})} \]</span></li>
+</ol>
+<p>In the context of Bayesian neural networks, this procedure is also known as <strong>Bayes by backprop</strong> (Blundell et al, 2015).</p>
+</section>
+<section id="section-14" class="slide level2 center">
+<h2></h2>
+
+<img data-src="images/pitcher.png" class="r-stretch"></section>
+<section id="section-15" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/prior_posterior.png" class="r-stretch"></section></section>
+<section>
+<section id="simulation-based-inference" class="title-slide slide level1 center">
+<h1>Simulation-based inference</h1>
+
+</section>
+<section id="scientific-simulators" class="slide level2 center">
+<h2>Scientific simulators</h2>
+
+<img data-src="./images/simulators.png" class="r-stretch"></section>
+<section id="section-16" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/unconditioned-program.png" class="r-stretch"><p><span class="math display">\[\theta, z, x \sim p(\theta, z, x)\]</span></p>
+</section>
+<section id="section-17" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/conditioned-program.png" class="r-stretch"><p><span class="math display">\[\theta, z \sim p(\theta, z | x)\]</span></p>
+</section>
+<section id="section-18" class="slide level2 center">
+<h2></h2>
+<p><video data-src="./images/galton.mp4" controls=""><a href="./images/galton.mp4">Video</a></video></p>
+</section>
+<section id="section-19" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/galton_trajectory.png" class="r-stretch quarto-figure-center"><p class="caption">Credit: <a href="https://github.com/johannbrehmer/slides/blob/master/2020/simulation_based_inference_bremen_2020.pdf">Brehmer</a></p></section>
+<section id="conditional-simulators" class="slide level2 center">
+<h2>Conditional simulators</h2>
+<p>A conditional simulator prescribes a way to sample from the likelihood <span class="math inline">\(p(\mathbf{x}|\vartheta)\)</span>, where <span class="math inline">\(\vartheta\)</span> is a set of conditioning variables or parameters.</p>
+
+<img data-src="./images/simulators-conditional.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://smsharma.io/iaifi-summer-school-2023/">Siddharth Mishra-Sharma</a>, 2023.</p></section>
+<section id="section-20" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/process1.png" class="r-stretch"></section>
+<section id="section-21" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/process2.png" class="r-stretch"></section>
+<section id="section-22" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/process3.png" class="r-stretch"></section>
+<section id="section-23" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/process4.png" class="r-stretch"></section>
+<section id="section-24" class="slide level2 center">
+<h2></h2>
+<p><span class="math display">\[p(x|\theta) = \underbrace{\iiint}_{\text{yikes!}} p(z_p|\theta) p(z_s|z_p) p(z_d|z_s) p(x|z_d) dz_p dz_s dz_d\]</span></p>
+<p>That’s bad!</p>
+</section>
+<section id="bayesian-inference" class="slide level2 center">
+<h2>Bayesian inference</h2>
+<p>Start with</p>
+<ul>
+<li>a simulator that can generate <span class="math inline">\(N\)</span> samples <span class="math inline">\(x_i \sim p(x_i|\theta_i)\)</span>,</li>
+<li>a prior model <span class="math inline">\(p(\theta)\)</span>,</li>
+<li>observed data <span class="math inline">\(x_\text{obs} \sim p(x_\text{obs} | \theta_\text{true})\)</span>.</li>
+</ul>
+<p>Then, estimate the posterior</p>
+<p><span class="math display">\[p(\theta|x_\text{obs}) = \frac{p(x_\text{obs} | \theta)p(\theta)}{p(x_\text{obs})}.\]</span></p>
+</section>
+<section id="section-25" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images//sbi.png" class="r-stretch"></section></section>
+<section>
+<section id="algorithms" class="title-slide slide level1 center">
+<h1>Algorithms</h1>
+
+</section>
+<section id="section-26" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/frontiers-sbi0.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
+<section id="approximate-bayesian-computation-abc" class="slide level2 center">
+<h2>Approximate Bayesian Computation (ABC)</h2>
+
+<img data-src="./images/abc.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: Johann Brehmer.</p><p><strong>Issues:</strong></p>
+<ul>
+<li><p>How to choose <span class="math inline">\(x'\)</span>? <span class="math inline">\(\epsilon\)</span>? <span class="math inline">\(||\cdot||\)</span>?</p></li>
+<li><p>No tractable posterior.</p></li>
+<li><p>Need to run new simulations for new data or new prior.</p></li>
+</ul>
+</section>
+<section id="section-27" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/frontiers-sbi2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
+<section id="section-28" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/frontiers-sbi.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
+<section id="section-29" class="slide level2 center">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Produce samples <span class="math display">\[\mathbf{x} \sim p(\mathbf{x} | \vartheta)\]</span></p>
+</div><div class="column" style="width:33%;">
+<p>Evaluate densities <span class="math display">\[p(\mathbf{x}|\vartheta)\]</span> <span class="math display">\[p(\vartheta | \mathbf{x}) = \frac{p(\mathbf{x} | \vartheta) p(\vartheta)}{p(\mathbf{x})}\]</span></p>
+</div><div class="column" style="width:33%;">
+<p>Encode complex priors <span class="math display">\[p(\mathbf{x})\]</span></p>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/uses1.png"></p>
+<figcaption>Credits: <a href="https://smsharma.io/iaifi-summer-school-2023/">Siddharth Mishra-Sharma</a>, 2023.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="./images/uses2.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="./images/uses3.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-30" class="slide level2 center">
+<h2></h2>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
@@ -544,7 +754,7 @@ Figure&nbsp;7: A mixture density network models the data correctly, as it predic
 <p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>Credits: Kendall and Gal, <a href="https://papers.nips.cc/paper/7141-what-uncertainties-do-we-need-in-bayesian-deep-learning-for-computer-vision.pdf">What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?</a>, 2017.</p></li></ol></aside></section></section>
+</section></section>
 
     </div>
   </div>
