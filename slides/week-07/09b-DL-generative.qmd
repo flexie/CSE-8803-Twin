@@ -1,6 +1,6 @@
 ---
 title: "Deep Learning"
-subtitle: "diffusion models"
+subtitle: "Diffusion models"
 date: "February 14, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
@@ -22,15 +22,22 @@ title-slide-attributes:
   # data-background-size: contain
   # data-background-opacity: "0.5"
   data-footer: "CC BY-SA"
-
+resources: LICENSE
 execute:
   freeze: auto
   echo: true
 bibliography: ../../references.bib
 ---
 
+## Credits
+
+Slides are adapted from lectured developed by [Gilles Louppe](mailto:g.louppe@uliege.be) at University of Liege, Belgium under the [BSD 3-Clause License](LICENSE)
+
+- lectures 10, 11, and 12 of [INFO8010 - Deep Learning](https://github.com/glouppe/info8010-deep-learning)
+- and of lecture materials of [SSI 2023](https://github.com/glouppe/ssi2023?tab=readme-ov-file) 
 
 # Deep generative models
+
 
 
 ## Generative models
