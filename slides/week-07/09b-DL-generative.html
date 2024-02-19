@@ -358,7 +358,7 @@
 </section>
 <section id="credits" class="slide level2 center">
 <h2>Credits</h2>
-<p>Slides are adapted from lectured developed by <a href="mailto:g.louppe@uliege.be">Gilles Louppe</a> at University of Liege, Belgium under the <a href="LICENSE">BSD 3-Clause License</a></p>
+<p>Slides are adapted from lectures developed by <a href="mailto:g.louppe@uliege.be">Gilles Louppe</a> at University of Liege, Belgium under the <a href="LICENSE">BSD 3-Clause License</a></p>
 <ul>
 <li>lectures 10, 11, and 12 of <a href="https://github.com/glouppe/info8010-deep-learning">INFO8010 - Deep Learning</a></li>
 <li>and of lecture materials of <a href="https://github.com/glouppe/ssi2023?tab=readme-ov-file">SSI 2023</a></li>
@@ -383,7 +383,7 @@
 <section id="generative-models-1" class="title-slide slide level1 center">
 <h1>Generative models</h1>
 <blockquote>
-<p>What makes a good generative model <span class="citation" data-cites="prince2023understanding">(<a href="#/section-18" role="doc-biblioref" onclick="">Prince 2023</a>)</span>?</p>
+<p>What makes a good generative model <span class="citation" data-cites="prince2023understanding">(<a href="#/section-19" role="doc-biblioref" onclick="">Prince 2023</a>)</span>?</p>
 </blockquote>
 <p>Generative models based on latent variables should have the following properties:</p>
 <ul>
@@ -435,6 +435,10 @@
 </section>
 <section id="section-3" class="slide level2 center">
 <h2></h2>
+
+<img data-src="./images/vi.png" class="r-stretch"></section>
+<section id="section-4" class="slide level2 center">
+<h2></h2>
 <div>
 <p><img data-src="./images/diagram-vae.svg" style="width:50.0%"></p>
 </div>
@@ -444,8 +448,8 @@
 <section id="variational-auto-encoders" class="slide level2 center">
 <h2>Variational auto-encoders</h2>
 
-<img data-src="./images/vae-architecture.png" class="r-stretch"></section>
-<section id="section-4" class="slide level2 center">
+<img data-src="./images/vae-architecture-mnist.png" class="r-stretch"></section>
+<section id="section-5" class="slide level2 center">
 <h2></h2>
 <p>A variational auto-encoder is a deep latent variable model where:</p>
 <ul>
@@ -460,7 +464,7 @@ q_\phi(\mathbf{z}|\mathbf{x}) &amp;= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathb
 \end{aligned}\]</span></p></li>
 </ul>
 </section>
-<section id="section-5" class="slide level2 center">
+<section id="section-6" class="slide level2 center">
 <h2></h2>
 <p>We can use variational inference to jointly optimize the generative and the inference networks parameters <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\phi\)</span>:</p>
 <p><span class="math display">\[\begin{aligned}
@@ -478,11 +482,11 @@ q_\phi(\mathbf{z}|\mathbf{x}) &amp;= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathb
 <h1>Diffusion models</h1>
 
 </section>
-<section id="section-6" class="slide level2 center">
+<section id="section-7" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/vdm.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</p></section>
-<section id="section-7" class="slide level2 center">
+<section id="section-8" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/vdm-forward.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</p><p>With <span class="math inline">\(\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})\)</span>, we have <span class="math display">\[\begin{aligned}
@@ -492,12 +496,12 @@ q(\mathbf{x}_{1:T} | \mathbf{x}_{0}) &amp;=  \prod_{t=1}^T q(\mathbf{x}_t | \mat
 \end{aligned}\]</span></p>
 <p>sampling from <span class="math inline">\(p_\theta(\mathbf{x}|\mathbf{z})\)</span> can be interpreted as <strong>a stochastic generating process</strong> from <span class="math inline">\(\mathcal{Z}\)</span> to <span class="math inline">\(\mathcal{X}\)</span>.</p>
 </section>
-<section id="section-8" class="slide level2 center">
+<section id="section-9" class="slide level2 center">
 <h2></h2>
 
 <!-- ## Reverse denoising process -->
 <img data-src="./images/vdm-forward2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://udlbook.github.io/udlbook/">Simon J.D. Prince</a>, 2023.</p></section>
-<section id="section-9" class="slide level2 center">
+<section id="section-10" class="slide level2 center">
 <h2></h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -518,13 +522,13 @@ p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) &amp;= \mathcal{N}(\mathbf{x}_{t-1}; \
 <h2>Markovian Hierarchical VAEs</h2>
 
 <img data-src="./images/diagram-hvae.svg" class="r-stretch"></section>
-<section id="section-10" class="slide level2 center">
+<section id="section-11" class="slide level2 center">
 <h2></h2>
 <p>Similarly to VAEs, training is done by maximizing the ELBO, using a variational distribution <span class="math inline">\(q_\phi(\mathbf{z}_{1:T} | \mathbf{x})\)</span> over all levels of latent variables: <span class="math display">\[\begin{aligned}
 \log p_\theta(\mathbf{x}) &amp;\geq \mathbb{E}_{q_\phi(\mathbf{z}_{1:T} | \mathbf{x})}\left[ \log \frac{p(\mathbf{x},\mathbf{z}_{1:T})}{q_\phi(\mathbf{z}_{1:T}|\mathbf{x})} \right]
 \end{aligned}\]</span></p>
 </section>
-<section id="section-11" class="slide level2 center">
+<section id="section-12" class="slide level2 center">
 <h2></h2>
 <p>Diffusion models are Markovian HVAEs with the following constraints:</p>
 <ul>
@@ -542,7 +546,7 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 &amp;= \mathbb{E}_{q(\mathbf{x}_0)} \left[L_0 - \sum_{t&gt;1} L_{t-1} - L_T\right]
 \end{aligned}\]</span> where</p>
 </section>
-<section id="section-12" class="slide level2 center">
+<section id="section-13" class="slide level2 center">
 <h2></h2>
 <ul>
 <li><p><span class="math inline">\(L_0 = \mathbb{E}_{q(\mathbf{x}_1 | \mathbf{x}_0)}[\log p_\theta(\mathbf{x}_0 | \mathbf{x}_1)]\)</span> can be interpreted as a reconstruction term. It can be approximated and optimized using a Monte Carlo estimate.</p></li>
@@ -555,7 +559,7 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 <h1>(Some calculations later…)</h1>
 
 </section>
-<section id="section-13" class="slide level2 center">
+<section id="section-14" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 &amp;\arg \min_\theta L_{t-1} \\\\
@@ -575,7 +579,7 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 </div>
 </div>
 </section>
-<section id="section-14" class="slide level2 center">
+<section id="section-15" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 &amp;\arg \min_\theta L_{t-1} \\\\
@@ -596,7 +600,7 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 </div>
 </div>
 </section>
-<section id="section-15" class="slide level2 center">
+<section id="section-16" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 &amp;\arg \min_\theta L_{t-1} \\\\
@@ -637,7 +641,7 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 &amp;= \sqrt{1 - {\beta}(t)\Delta_t} \mathbf{x}_{t-1} + \sqrt{ {\beta}(t)\Delta_t} \mathcal{N}(\mathbf{0}, \mathbf{I})
 \end{aligned}\]</span></p>
 </section>
-<section id="section-16" class="slide level2 center">
+<section id="section-17" class="slide level2 center">
 <h2></h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -652,7 +656,7 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 .\]</span></p>
 <p>This last update rule corresponds to the Euler-Maruyama discretization of the stochastic differential equation (SDE) <span class="math display">\[\text{d}\mathbf{x}_t = -\frac{1}{2}\beta(t)\mathbf{x}_t \text{d}t + \sqrt{\beta(t)} \text{d}\mathbf{w}_t\]</span> describing the diffusion in the infinitesimal limit.</p>
 </section>
-<section id="section-17" class="slide level2 center">
+<section id="section-18" class="slide level2 center">
 <h2></h2>
 <p>The reverse process satisfies a reverse-time SDE that can be derived analytically from the forward-time SDE and the score of the marginal distribution <span class="math inline">\(q(\mathbf{x}_t)\)</span>, as <span class="math display">\[\text{d}\mathbf{x}_t = \left[ -\frac{1}{2}\beta(t)\mathbf{x}_t - \beta(t)\nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t) \right] \text{d}t + \sqrt{\beta(t)} \text{d}\mathbf{w}_t.\]</span></p>
 <div>
@@ -664,6 +668,10 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 </div>
 </div>
 </section>
+<section id="training-sampling-diffusion-models" class="slide level2 center">
+<h2>Training &amp; sampling diffusion models</h2>
+
+<img data-src="./images/pseudo_diffusion.png" class="r-stretch"></section>
 <section id="continuous-time-normalizing-flows" class="slide level2 center">
 <h2>Continuous-time normalizing flows</h2>
 <div class="columns">
@@ -690,7 +698,7 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 <p>Therefore, when <span class="math inline">\(\nabla_{\mathbf{x}_t} \log p(\mathbf{x}_t)\)</span> is replaced by its approximation <span class="math inline">\(s_\theta(\mathbf{x}_t, t)\)</span>, the probability flow ODE becomes a special case of a neural ODE. In particular, it is an example of continuous-time normalizing flows!</p>
 
 <img data-src="./images/flow-ode.jpg" data-with="40%" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://yang-song.net/blog/2021/score/">Song</a>, 2021.</p></section>
-<section id="section-18" class="slide level2 smaller scrollable">
+<section id="section-19" class="slide level2 smaller scrollable">
 <h2></h2>
 
 <div class="quarto-auto-generated-content">

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="dcterms.date" content="2024-02-14">
-  <title>Digital Twins for Physical Systems - Deep Learning</title>
+  <title>Digital Twins for Physical Systems - Simulation-based Inference</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -328,7 +328,7 @@
     <div class="slides">
 
 <section id="title-slide" data-footer="CC BY-SA" class="quarto-title-block center">
-  <h1 class="title">Deep Learning</h1>
+  <h1 class="title">Simulation-based Inference</h1>
   <p class="subtitle">Uncertainty Quantification</p>
 
 <div class="quarto-title-authors">
@@ -338,7 +338,7 @@
 </section>
 <section id="credits" class="slide level2 center">
 <h2>Credits</h2>
-<p>Slides are adapted from lectured developed by <a href="mailto:g.louppe@uliege.be">Gilles Louppe</a> at University of Liege, Belgium under the <a href="LICENSE">BSD 3-Clause License</a></p>
+<p>Slides are adapted from lectures developed by <a href="mailto:g.louppe@uliege.be">Gilles Louppe</a> at University of Liege, Belgium under the <a href="LICENSE">BSD 3-Clause License</a></p>
 <ul>
 <li>lectures 10, 11, and 12 of <a href="https://github.com/glouppe/info8010-deep-learning">INFO8010 - Deep Learning</a></li>
 <li>and of lecture materials of <a href="https://github.com/glouppe/ssi2023?tab=readme-ov-file">SSI 2023</a></li>
@@ -382,13 +382,17 @@
 <img data-src="images/homo-vs-hetero-3.png" class="r-stretch"></section>
 <section id="neural-density-estimation" class="slide level2 center">
 <h2>Neural density estimation</h2>
-<p>Consider training data <span class="math inline">\((\mathbf{x}, y) \sim p(\mathbf{x}, y)\)</span>, with - <span class="math inline">\(\mathbf{x} \in \mathbb{R}^p\)</span>, - <span class="math inline">\(y \in \mathbb{R}\)</span>.</p>
+<p>Consider training data <span class="math inline">\((\mathbf{x}, y) \sim p(\mathbf{x}, y)\)</span>, with</p>
+<ul>
+<li><p><span class="math inline">\(\mathbf{x} \in \mathbb{R}^p\)</span>,</p></li>
+<li><p><span class="math inline">\(y \in \mathbb{R}\)</span>.</p></li>
+</ul>
 <p>We do not wish to learn a function <span class="math inline">\(\hat{y} = f(\mathbf{x})\)</span>, which would only produce point estimates.</p>
 <p>Instead we want to learn the full conditional density <span class="math display">\[p(y|\mathbf{x}).\]</span></p>
 </section>
 <section id="nn-with-gaussian-output-layer" class="slide level2 center">
 <h2>NN with Gaussian output layer</h2>
-<p>We can model aleatoric uncertainty in the output by modelling the conditional distribution as a Gaussian distribution, <span class="math display">\[p(y|\mathbf{x}) = \mathcal{N}(y; \mu(\mathbf{x}), \sigma^2(\mathbf{x})),\]</span> where <span class="math inline">\(\mu(x)\)</span> and <span class="math inline">\(\sigma^2(\mathbf{x})\)</span> are parametric functions to be learned, such as neural networks.</p>
+<p>We can model aleatoric uncertainty in the output by modeling the conditional distribution as a Gaussian distribution, <span class="math display">\[p(y|\mathbf{x}) = \mathcal{N}(y; \mu(\mathbf{x}), \sigma^2(\mathbf{x})),\]</span> where <span class="math inline">\(\mu(\mathbf{x})\)</span> and <span class="math inline">\(\sigma^2(\mathbf{x})\)</span> are parametric functions to be learned, such as neural networks.</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -398,7 +402,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>The Gaussian distribution is a modelling choice. Other parametric distributions can be used.</p>
+<p>The Gaussian distribution is a modeling choice. Other parametric distributions can be used.</p>
 </div>
 </div>
 </div>
@@ -427,15 +431,8 @@
 </section>
 <section id="section-4" class="slide level2 center">
 <h2></h2>
-<div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/heteroscedastic.svg"></p>
-<figcaption>Case 2: heteroscedastic aleatoric uncertainty</figcaption>
-</figure>
-</div>
-</div>
-</section>
+
+<img data-src="images/heteroscedastic.svg" class="r-stretch quarto-figure-center"><p class="caption">Case 2: heteroscedastic aleatoric uncertainty</p></section>
 <section id="section-5" class="slide level2 center">
 <h2></h2>
 <p>Same as for the homoscedastic case, except that that <span class="math inline">\(\sigma^2\)</span> is now a function of <span class="math inline">\(\mathbf{x}_i\)</span>: <span class="math display">\[\begin{aligned}
@@ -450,9 +447,7 @@
 <p>Modelling <span class="math inline">\(p(y|\mathbf{x})\)</span> as a unimodal (Gaussian) distribution can be inadequate since the conditional distribution may be <strong>multimodal</strong>.</p>
 <p>A <strong>Gaussian mixture model</strong> (GMM) defines instead <span class="math inline">\(p(y|\mathbf{x})\)</span> as a mixture of <span class="math inline">\(K\)</span> Gaussian components, <span class="math display">\[p(y|\mathbf{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(y;\mu_k, \sigma_k^2),\]</span> where <span class="math inline">\(0 \leq \pi_k \leq 1\)</span> for all <span class="math inline">\(k\)</span> and <span class="math inline">\(\sum_{k=1}^K \pi_k = 1\)</span>.</p>
 
-<img data-src="images/gmm.jpg" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;1
-</p></section>
+<img data-src="images/gmm.jpg" class="r-stretch quarto-figure-center"><p class="caption">Gaussian mixture</p></section>
 <section id="mixture-network" class="slide level2 center">
 <h2>Mixture Network</h2>
 <p>A <strong>mixture density network</strong> (MDN) is a neural network implementation of the Gaussian mixture model.</p>
@@ -522,7 +517,11 @@ Figure&nbsp;1
 <img data-src="images/cov.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Image credits: Simon J.D. Prince, <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a>, 2023.</p></section>
 <section id="change-of-variables-theorem" class="slide level2 center">
 <h2>Change of variables theorem</h2>
-<p>If <span class="math inline">\(f\)</span> is non-linear, - the Jacobian <span class="math inline">\(J_f(\mathbf{z})\)</span> of <span class="math inline">\(\mathbf{x} = f(\mathbf{z})\)</span> represents the infinitesimal linear transformation in the neighborhood of <span class="math inline">\(\mathbf{z}\)</span>; - if the function is a bijective map, then the mass must be conserved locally.</p>
+<p>If <span class="math inline">\(f\)</span> is non-linear,</p>
+<ul>
+<li><p>the Jacobian <span class="math inline">\(J_f(\mathbf{z})\)</span> of <span class="math inline">\(\mathbf{x} = f(\mathbf{z})\)</span> represents the infinitesimal linear transformation in the neighborhood of <span class="math inline">\(\mathbf{z}\)</span>;</p></li>
+<li><p>if the function is a bijective map, then the mass must be conserved locally.</p></li>
+</ul>
 <p>Therefore, the local change of density yields <span class="math display">\[p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\left| \det J_f(\mathbf{z}) \right|^{-1}.\]</span></p>
 <p>Similarly, for <span class="math inline">\(g = f^{-1}\)</span>, we have <span class="math display">\[p(\mathbf{x})=p(\mathbf{z}=g(\mathbf{x}))\left| \det J_g(\mathbf{x}) \right|.\]</span></p>
 </section>
@@ -578,10 +577,10 @@ Figure&nbsp;1
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="images/bnn.png" style="width:80.0%"></p>
+<p><img data-src="./images/bnn.png" style="width:80.0%"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="images/thomas.png" style="width:50.0%"></p>
+<p><img data-src="./images/thomas.png" style="width:50.0%"></p>
 </div>
 </div>
 </div>
@@ -612,6 +611,15 @@ Figure&nbsp;1
 </ol>
 <p>In the context of Bayesian neural networks, this procedure is also known as <strong>Bayes by backprop</strong> (Blundell et al, 2015).</p>
 </section>
+<section id="training-and-sampling-vae" class="slide level2 center">
+<h2>Training and sampling VAE</h2>
+
+<img data-src="./images/pseudo_vae.png" class="r-stretch"></section></section>
+<section>
+<section id="simulation-based-inference" class="title-slide slide level1 center">
+<h1>Simulation-based inference</h1>
+
+</section>
 <section id="section-14" class="slide level2 center">
 <h2></h2>
 
@@ -619,12 +627,7 @@ Figure&nbsp;1
 <section id="section-15" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/prior_posterior.png" class="r-stretch"></section></section>
-<section>
-<section id="simulation-based-inference" class="title-slide slide level1 center">
-<h1>Simulation-based inference</h1>
-
-</section>
+<img data-src="./images/prior_posterior.png" class="r-stretch"></section>
 <section id="scientific-simulators" class="slide level2 center">
 <h2>Scientific simulators</h2>
 
@@ -632,16 +635,21 @@ Figure&nbsp;1
 <section id="section-16" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/unconditioned-program.png" class="r-stretch"><p><span class="math display">\[\theta, z, x \sim p(\theta, z, x)\]</span></p>
+<img data-src="./images/unconditioned-program.png" class="r-stretch quarto-figure-center"><p class="caption">unconditioned</p><p><span class="math display">\[\theta, z, x \sim p(\theta, z, x)\]</span></p>
 </section>
 <section id="section-17" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/conditioned-program.png" class="r-stretch"><p><span class="math display">\[\theta, z \sim p(\theta, z | x)\]</span></p>
+<img data-src="./images/conditioned-program.png" class="r-stretch quarto-figure-center"><p class="caption">conditioned</p><p><span class="math display">\[\theta, z \sim p(\theta, z | x)\]</span></p>
 </section>
 <section id="section-18" class="slide level2 center">
 <h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><video data-src="./images/galton.mp4" controls=""><a href="./images/galton.mp4">Video</a></video></p>
+<figcaption>Galton</figcaption>
+</figure>
+</div>
 </section>
 <section id="section-19" class="slide level2 center">
 <h2></h2>

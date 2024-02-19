@@ -904,9 +904,9 @@ Figure&nbsp;3: Extended Kalman filter for tracking a noisy pendulum model, where
 <section id="section-22" class="slide level2 center">
 <h2></h2>
 <ol type="1">
-<li><p>Choose a collection of so-called<span style="color: magenta"><span class="math inline">\(\sigma\)</span>-points</span>that reproduce the mean and covariance of the distribution of <span class="math inline">\(\mathbf{x}\)</span>.</p></li>
-<li><p>Apply the <span style="color: magenta">nonlinear</span>function to the <span class="math inline">\(\sigma\)</span>-points.</p></li>
-<li><p>Estimate the<span style="color: magenta">mean and variance</span> of the transformed random variable.</p></li>
+<li><p>Choose a collection of so-called <span style="color: magenta"><span class="math inline">\(\sigma\)</span>-points</span>that reproduce the mean and covariance of the distribution of <span class="math inline">\(\mathbf{x}\)</span>.</p></li>
+<li><p>Apply the <span style="color: magenta">nonlinear</span> function to the <span class="math inline">\(\sigma\)</span>-points.</p></li>
+<li><p>Estimate the <span style="color: magenta">mean and variance</span> of the transformed random variable.</p></li>
 </ol>
 <p>This is a <span style="color: magenta">deterministic sampling</span> approach, as opposed to Monte Carlo, particle filters, and ensemble filters that all use randomly sampled points. Note that the first two usually require orders of magnitude more points than the UKF.</p>
 <p>Suppose that the random variable <span class="math inline">\(\mathbf{x}\in\mathbb{R}^{n}\)</span> with mean <span class="math inline">\(\mathbf{m}\)</span> and covariance <span class="math inline">\(\mathbf{P}.\)</span> Compute <span class="math inline">\(N=2n+1\)</span> <span class="math inline">\(\sigma\)</span>-points and their corresponding weights <span class="math display">\[\{\mathbf{x}^{(\pm i),},w^{(\pm i)}\},\quad i=0,1,\ldots,N\]</span> by the formulas</p>
@@ -995,7 +995,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 <section id="section-29" class="slide level2 center">
 <h2></h2>
 <p>In practice though, the particle filter cannot yet be applied to very high dimensional systems (this is often referred to as “the curse of dimensionality”). Though recent work by [Friedemann, Raffin2023] has improved this by sophisticated parallel computing.</p>
-<p>Particle filters are methods for obtaining <span style="color: magenta"><em>Monte Carlo approximations</em></span>of the solutions of the Bayesian filtering equations.</p>
+<p>Particle filters are methods for obtaining <span style="color: magenta"><em>Monte Carlo approximations</em></span> of the solutions of the Bayesian filtering equations.</p>
 <p>Rather than trying to compute the exact solution of the Bayesian filtering equations, the transformations of such filtering (Bayes’ rule for the analysis, model propagation for the forecast) are applied to the members of the sample.</p>
 <ul>
 <li><p>The statistical moments are meant to be those of the targeted pdf.</p></li>
@@ -1008,7 +1008,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 <dl>
 <dt>Sampling</dt>
 <dd>
-<p>We consider a sample of particles <span class="math inline">\(\left\{ \mathbf{x}_{1},\mathbf{x}_{2},\ldots,\mathbf{x}_{M}\right\}\)</span>. The related probability density function at time <span class="math inline">\(t_{k}\)</span> is <span class="math inline">\(p_{k}(\mathbf{x}),\)</span> where <span class="math display">\[p_{k}(\mathbf{x})\simeq\sum_{i=1}^{M}\omega_{i}^{k}\delta(\mathbf{x}-\mathbf{x}_{k}^{i})\]</span> and <span class="math inline">\(\delta\)</span> is the Dirac mass and the sum is meant to be an approximation of the exact density that the samples emulate. A positive scalar, <span class="math inline">\(\omega_{k}^{i},\)</span> weights the importance of particle <span class="math inline">\(i\)</span> within the ensemble. At this stage, we assume that the weights <span class="math inline">\(\omega_{i}^{k}\)</span> are uniform and <span class="math inline">\(\omega_{i}^{k}=1/M\)</span></p>
+<p>We consider a sample of particles <span class="math inline">\(\left\{ \mathbf{x}_{1},\mathbf{x}_{2},\ldots,\mathbf{x}_{M}\right\}\)</span>. The related probability density function at time <span class="math inline">\(t_{k}\)</span> is <span class="math inline">\(p_{k}(\mathbf{x}),\)</span> where <span class="math display">\[p_{k}(\mathbf{x})\simeq\sum_{i=1}^{M}\omega_{i}^{k}\delta(\mathbf{x}-\mathbf{x}_{k}^{i})\]</span> and <span class="math inline">\(\delta\)</span> is the Dirac mass and the sum is meant to be an approximation of the exact density that the samples emulate. A positive scalar, <span class="math inline">\(\omega_{k}^{i},\)</span> weights the importance of particle <span class="math inline">\(i\)</span> within the ensemble. At this stage, we assume that the weights <span class="math inline">\(\omega_{i}^{k}\)</span> are uniform and <span class="math inline">\(\omega_{i}^{k}=1/M\)</span>.</p>
 </dd>
 </dl>
 </section>
