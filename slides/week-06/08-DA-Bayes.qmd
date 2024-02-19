@@ -781,14 +781,14 @@ The UT is computed as follows:
 
 ##
 
-1.  Choose a collection of so-called[ $\sigma$-points
+1.  Choose a collection of so-called [$\sigma$-points
         ]{style="color: magenta"}that reproduce the mean and covariance
         of the distribution of $\mathbf{x}$.
 
-2.  Apply the [nonlinear ]{style="color: magenta"}function to the
+2.  Apply the [nonlinear ]{style="color: magenta"} function to the
         $\sigma$-points.
 
-3.  Estimate the[ mean and variance]{style="color: magenta"} of the
+3.  Estimate the [mean and variance]{style="color: magenta"} of the
         transformed random variable.
 
 This is a [deterministic sampling]{style="color: magenta"} approach,
@@ -935,7 +935,7 @@ In practice though, the particle filter cannot yet be applied to
     Raffin2023\] has improved this by sophisticated parallel computing.
 
 Particle filters are methods for obtaining [*Monte Carlo
-    approximations* ]{style="color: magenta"}of the solutions of the
+    approximations*]{style="color: magenta"} of the solutions of the
     Bayesian filtering equations.
 
 Rather than trying to compute the exact solution of the Bayesian
@@ -968,7 +968,7 @@ Sampling
     approximation of the exact density that the samples emulate. A
     positive scalar, $\omega_{k}^{i},$ weights the importance of
     particle $i$ within the ensemble. At this stage, we assume that the
-    weights $\omega_{i}^{k}$ are uniform and $\omega_{i}^{k}=1/M$
+    weights $\omega_{i}^{k}$ are uniform and $\omega_{i}^{k}=1/M$.
 
 ##
 

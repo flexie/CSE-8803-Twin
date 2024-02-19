@@ -31,7 +31,7 @@ bibliography: ../../references.bib
 
 ## Credits
 
-Slides are adapted from lectured developed by [Gilles Louppe](mailto:g.louppe@uliege.be) at University of Liege, Belgium under the [BSD 3-Clause License](LICENSE)
+Slides are adapted from lectures developed by [Gilles Louppe](mailto:g.louppe@uliege.be) at University of Liege, Belgium under the [BSD 3-Clause License](LICENSE)
 
 - lectures 10, 11, and 12 of [INFO8010 - Deep Learning](https://github.com/glouppe/info8010-deep-learning)
 - and of lecture materials of [SSI 2023](https://github.com/glouppe/ssi2023?tab=readme-ov-file) 
@@ -101,6 +101,10 @@ The curse of dimensionality will lead to poor estimates of the expectation.
 :::
 
 ##
+
+![](./images/vi.png)
+
+##
 :::{}
 ![](./images/diagram-vae.svg){width=50%}
 :::
@@ -111,7 +115,7 @@ We will also amortize the inference process by learning a second neural network 
 
 ## Variational auto-encoders
 
-![](./images/vae-architecture.png)
+![](./images/vae-architecture-mnist.png)
 
 ## 
 
@@ -318,6 +322,10 @@ $$\text{d}\mathbf{x}_t = \left[ -\frac{1}{2}\beta(t)\mathbf{x}_t - \beta(t)\nabl
 :::{}
 ![Credits: [Song](https://yang-song.net/blog/2021/score/), 2021.](./images/denoise_vp.gif)
 :::
+
+## Training & sampling diffusion models
+
+![](./images/pseudo_diffusion.png)
 
 ## Continuous-time normalizing flows
 

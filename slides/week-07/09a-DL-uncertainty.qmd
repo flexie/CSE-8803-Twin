@@ -1,5 +1,5 @@
 ---
-title: "Deep Learning"
+title: "Simulation-based Inference"
 subtitle: "Uncertainty Quantification"
 date: "February 14, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
@@ -31,7 +31,7 @@ bibliography: ../../references.bib
 
 ## Credits
 
-Slides are adapted from lectured developed by [Gilles Louppe](mailto:g.louppe@uliege.be) at University of Liege, Belgium under the [BSD 3-Clause License](LICENSE)
+Slides are adapted from lectures developed by [Gilles Louppe](mailto:g.louppe@uliege.be) at University of Liege, Belgium under the [BSD 3-Clause License](LICENSE)
 
 - lectures 10, 11, and 12 of [INFO8010 - Deep Learning](https://github.com/glouppe/info8010-deep-learning)
 - and of lecture materials of [SSI 2023](https://github.com/glouppe/ssi2023?tab=readme-ov-file) 
@@ -82,7 +82,11 @@ Aleatoric uncertainty can further be categorized into:
 
 ## Neural density estimation
 
-Consider training data $(\mathbf{x}, y) \sim p(\mathbf{x}, y)$, with - $\mathbf{x} \in \mathbb{R}^p$, - $y \in \mathbb{R}$.
+Consider training data $(\mathbf{x}, y) \sim p(\mathbf{x}, y)$, with 
+
+- $\mathbf{x} \in \mathbb{R}^p$, 
+ 
+- $y \in \mathbb{R}$.
 
 We do not wish to learn a function $\hat{y} = f(\mathbf{x})$, which would only produce point estimates.
 
@@ -90,10 +94,10 @@ Instead we want to learn the full conditional density $$p(y|\mathbf{x}).$$
 
 ## NN with Gaussian output layer
 
-We can model aleatoric uncertainty in the output by modelling the conditional distribution as a Gaussian distribution, $$p(y|\mathbf{x}) = \mathcal{N}(y; \mu(\mathbf{x}), \sigma^2(\mathbf{x})),$$ where $\mu(x)$ and $\sigma^2(\mathbf{x})$ are parametric functions to be learned, such as neural networks.
+We can model aleatoric uncertainty in the output by modeling the conditional distribution as a Gaussian distribution, $$p(y|\mathbf{x}) = \mathcal{N}(y; \mu(\mathbf{x}), \sigma^2(\mathbf{x})),$$ where $\mu(\mathbf{x})$ and $\sigma^2(\mathbf{x})$ are parametric functions to be learned, such as neural networks.
 
 ::: callout-note
-The Gaussian distribution is a modelling choice. Other parametric distributions can be used.
+The Gaussian distribution is a modeling choice. Other parametric distributions can be used.
 :::
 
 ## 
@@ -119,11 +123,8 @@ What if $\sigma^2$ was fixed?
 
 ## 
 
-<div>
-
 ![Case 2: heteroscedastic aleatoric uncertainty](images/heteroscedastic.svg)
 
-</div>
 
 ## 
 
@@ -140,8 +141,8 @@ Modelling $p(y|\mathbf{x})$ as a unimodal (Gaussian) distribution can be inadequ
 
 A **Gaussian mixture model** (GMM) defines instead $p(y|\mathbf{x})$ as a mixture of $K$ Gaussian components, $$p(y|\mathbf{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(y;\mu_k, \sigma_k^2),$$ where $0 \leq \pi_k \leq 1$ for all $k$ and $\sum_{k=1}^K \pi_k = 1$.
 
-::: {#fig-mixture}
-![](images/gmm.jpg)
+:::{#fig-mixture}
+![Gaussian mixture](images/gmm.jpg)
 :::
 
 ## Mixture Network
@@ -208,7 +209,11 @@ What if $f$ is non-linear?
 
 ## Change of variables theorem
 
-If $f$ is non-linear, - the Jacobian $J_f(\mathbf{z})$ of $\mathbf{x} = f(\mathbf{z})$ represents the infinitesimal linear transformation in the neighborhood of $\mathbf{z}$; - if the function is a bijective map, then the mass must be conserved locally.
+If $f$ is non-linear, 
+
+- the Jacobian $J_f(\mathbf{z})$ of $\mathbf{x} = f(\mathbf{z})$ represents the infinitesimal linear transformation in the neighborhood of $\mathbf{z}$; 
+
+- if the function is a bijective map, then the mass must be conserved locally.
 
 Therefore, the local change of density yields $$p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\left| \det J_f(\mathbf{z}) \right|^{-1}.$$
 
@@ -275,9 +280,9 @@ To capture epistemic uncertainty in a neural network, we model our ignorance wit
 Then we invoke Bayes for making predictions.
 
 ::: {layout-ncol="2" layout-valign="bottom"}
-![](images/bnn.png){width="80%"}
+![](./images/bnn.png){width="80%"}
 
-![](images/thomas.png){width="50%"}
+![](./images/thomas.png){width="50%"}
 :::
 
 ## 
@@ -311,6 +316,12 @@ The integral in the ELBO is not tractable for almost all $q$, but it can be maxi
 
 In the context of Bayesian neural networks, this procedure is also known as **Bayes by backprop** (Blundell et al, 2015).
 
+## Training and sampling VAE
+
+![](./images/pseudo_vae.png)
+
+# Simulation-based inference
+
 ## 
 
 ![](images/pitcher.png)
@@ -319,27 +330,33 @@ In the context of Bayesian neural networks, this procedure is also known as **Ba
 
 ![](./images/prior_posterior.png)
 
-# Simulation-based inference
-
 ## Scientific simulators
 
 ![](./images/simulators.png)
 
 ## 
 
-![](./images/unconditioned-program.png)
+:::{#fig-unconditioned}
+
+![unconditioned](./images/unconditioned-program.png)
+
+:::
 
 $$\theta, z, x \sim p(\theta, z, x)$$
 
 ## 
 
-![](./images/conditioned-program.png)
+:::{#fig-conditioned}
+![conditioned](./images/conditioned-program.png)
+
+:::
 
 $$\theta, z \sim p(\theta, z | x)$$
 
 ## 
 
-![](./images/galton.mp4)
+
+![Galton](./images/galton.mp4)
 
 ##
 
