@@ -113,10 +113,6 @@ We will directly learn a stochastic generating process $p_\theta(\mathbf{x}|\mat
 
 We will also amortize the inference process by learning a second neural network $q_\phi(\mathbf{z}|\mathbf{x})$ approximating the posterior, conditionally on the observed data $\mathbf{x}$.
 
-## Variational auto-encoders
-
-![](./images/vae-architecture-mnist.png)
-
 ## 
 
 A variational auto-encoder is a deep latent variable model where:
@@ -134,6 +130,14 @@ $$\begin{aligned}
 \mu, \sigma^2 &= \text{NN}_\phi(\mathbf{x}) \\\\
 q_\phi(\mathbf{z}|\mathbf{x}) &= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathbf{I})
 \end{aligned}$$
+
+## Variational auto-encoders
+
+![](./images/vae-architecture-mnist.png)
+
+## Pseudo code
+
+![](./images/pseudo_train_v.png)
 
 ## 
 

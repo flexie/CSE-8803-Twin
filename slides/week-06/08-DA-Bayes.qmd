@@ -782,7 +782,7 @@ The UT is computed as follows:
 ##
 
 1.  Choose a collection of so-called [$\sigma$-points
-        ]{style="color: magenta"}that reproduce the mean and covariance
+        ]{style="color: magenta"} that reproduce the mean and covariance
         of the distribution of $\mathbf{x}$.
 
 2.  Apply the [nonlinear ]{style="color: magenta"} function to the
