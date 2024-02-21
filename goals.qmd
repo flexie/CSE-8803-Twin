@@ -1,0 +1,45 @@
+# Goal
+
+The overall goal of this course is to bring you to where the current literature is regarding the use of Digital Twins to
+
+- monitor physical systems from indirect measurements
+- assess uncertainty
+- control the system
+
+The course will start with introducing topics from traditional Data Assimilation (DA) and Bayesian inference and will make it through to the latest developments in Differential Programming (DP), Simulation-Based Inference (SBI), recursive Bayesian Inference (RBI), and learned RBI through the use of Generative AI.
+
+# Course outline {#sec-outline}
+
+- Introduction
+  - welcome
+  - overview Digital Twins
+- Inverse Problems
+  - ill-posedness
+  - Tikhonov regularization
+  - General Formulation
+  - Discrepancy principle
+  - Cross-validation
+- Basic Data Assimilation
+  - introduction
+  - adjoint state method
+  - variational data assimilation
+- Statistical Inverse Problems
+  -
+- differential programming
+  - reverse-mode = adjoint state
+- Advanced Data Assimilation
+- Neural Density Estimation
+  - generative Networks
+  - Normalizing Flows
+  - conditional Normalizing Flows
+- Simulation-based inference
+  - introduction scientific ML
+  - Bayesian inference
+- Surrogate Modeling
+  - Fourier Neural Operators FNOs
+- Learned Data Assimilation
+  - 
+
+# Topics {#sec-topics}
+
+# Learning goals {#sec-goals}

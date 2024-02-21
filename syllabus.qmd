@@ -1,0 +1,194 @@
+---
+title: "Syllabus"
+---
+
+**Spring 2024 syllabus: Digital Twins for Physical Systems --- 33655 - CSE 8803 - DTP**
+
+<hr>
+
+**Syllabus updates**:This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.
+
+## Course Learning Objectives
+
+By the end of the semester, you will be made familiar with ...
+
+-   the concept of Digital Twins and how they interact with their environment
+-   Statistical Inverse Problems and Bayesian Inference
+-   techniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]
+
+For more on the Course outline, Topics, and Learning goals, see [Goals](goals.qmd).
+
+For a motivational article see [Digital Twins in the era of generative AI](https://slim.gatech.edu/Publications/Public/Journals/TheLeadingEdge/2023/herrmann2023dte/PresidentsPage.pdf)
+
+## Textbooks
+
+|                                                                                                                                                                                                                                          |                        |            |
+|---------------------------------------------------|-----------|-----------|
+| [Data assimilation: methods, algorithms, and applications](https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&context=L&vid=01GALI_GIT:GT&vid=01GALI_GIT&docid=alma9914381076402947&tab=default_tab&lang=en) | @asch2016data, Mark    | SIAM, 2016 |
+| [A toolbox for digital twins: from model-based to data-driven](https://epubs.siam.org/doi/book/10.1137/1.9781611976977)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 |
+| [Notebook: Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python)                                                                          | Roger R. Labbe | Private, 2020 |
+
+<!-- | [A toolbox for digital twins: from model-based to data-driven](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                                                                          | @asch2022toolbox, Mark | SIAM, 2022 | -->
+  
+
+- **These electronic books are only available when online at Georgia Tech!**  
+- **The [Python notebook](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) is hands on, very practical, and contains very useful exercises with answers. You are encouraged to explore and we will incorporate material from this [notebook](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) in this course.**
+
+
+## Journal Papers
+
+|                                                                                                                                                                                                              |                           |                |
+|-----------------------------------------------|---------|---------|
+| [A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies](https://openintro-ims.netlify.app/)                                                                             | @thelen2022comprehensivea | Springer, 2022 |
+| [A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives](https://link.springer.com/article/10.1007/00158-022-03410-x) | @thelen2023comprehensiveb | Springer, 2022 |
+| [Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial](https://arxiv.org/abs/2201.08180)                                                                                        | @tatsis2022sequential     | Arxiv, 2022      |
+
+
+## Lectures & computational labs
+
+In part the course is an adaptation of open-source Basic and Advanced courses ([CSU-IMU-2023](https://github.com/markasch/CSU-IMU-2023)) developed by [Mark Asch](https://markasch.github.io/DT-tbx-v1/). [Codes](https://markasch.github.io/DT-tbx-v1/codes/) will be drawn from the course and from the book. During the second half of the course, we will draw from the current literature.
+
+## Course community
+
+### Inclusive community
+
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with [Georgia Tech's Commitment to Diversity and Inclusion](https://catalog.gatech.edu/policies/diversity/). Your suggestions are encouraged and appreciated.
+
+### Discrimination, Harassment, and Sexual Misconduct
+
+To maintain a safe learning environment that fosters the dignity, respect, and success of students, faculty, and staff, Tech prohibits discriminatory harassment, which is unwelcome verbal, nonverbal, or physical conduct directed at any person or group based upon race, color, religion, sex, national origin, age, disability, sexual orientation, gender identity, or veteran status that has the purpose or effect of creating an objectively hostile working or academic environment.
+
+### Accessibility
+
+If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.
+
+[Disability Services](https://disabilityservices.gatech.edu/about/accommodations) are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.
+
+### Communication
+
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website.
+
+Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.
+
+## Activities & Assessment
+
+### Computational labs
+
+In labs, you will apply the concepts discussed during lectures, with a focus on the computation.
+
+### Exams
+
+There will be no exams.
+
+### Final Project
+
+The purpose of the [Final Project](project.qmd) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question.
+
+## Grading
+
+The final course grade will be calculated as follows:
+
+<center>
+
+| Category                     | Percentage |
+|------------------------------|------------|
+| Comp. Lab assignments        | 30%        |
+| Presentation Journal Paper   | 20%        |
+| Final Project & Presentation | 50%        |
+
+## Important dates
+
+-   **Jan 4:** Phase II Registration
+
+-   **Jan 8:** Classes begin
+
+-   **Jan 12:** Deadline for Registration/Schedule Changes
+
+-   **March 13**: Last day to withdraw
+
+-   **March 18-22:** Spring break
+
+-   **April 24:** Final Instructional Class
+
+## Course policies
+
+### Academic honesty
+
+Please abide by the following as you work on assignments in this course:
+
+-   You may discuss individual lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.
+-   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+
+### Guidance on the use of Generative AI
+
+AI-based assistance, such as ChatGPT and Copilot, can be used in the same way as collaboration with other people for the following activities: For lab assignments in understanding the lecture and textbook materials, and in developing your ideals for the project proposals. In these activities you are welcome to talk about your ideas and work with other people, both inside and outside the class, as well as with AI- based assistants. In the course, we will discuss how you can use these tools as a study tool, or as an assistant in helping to draft code or summaries.
+
+#### Generating Research Ideas or Approaches:
+
+-   Brainstorming: You can use the AI tool as a brainstorming partner, where you exchange ideas whether the AI prompts you or you prompt the AI for ideas. Brainstorming is an iterative process that can be made more effective with the way that the queries are posted. For more samples or information, post this query: “How can I use AI to help me to brainstorm an idea?”
+
+-   Surveying Existing Approaches: Large Language Models, if trained broadly in a topic, can give a good initial overview of existing approaches or existing literature on a topic. Current research sources such as library or professional society databases are more reliable in terms of accuracy of peer-reviewed content.
+
+-   Prompt engineering is important: Practice the prompts used for Generative AI. The value of the response depends on the value of the prompt. If you provide a low quality or vague prompt, you will get vague results. Varying skill levels among users might exacerbate existing inequalities among students. For example, students for whom English is the second language might be at a disadvantage.
+
+#### Advice on Usage:
+
+-   Be very skeptical of the results. Do not trust any outputs that you cannot evaluate yourself or trace back to original credible sources. There are many stories of generative AI giving citations of articles that do not exist (see the article in the Chronicles of Higher Education referenced below).
+
+-   Be scientific with your prompts (or queries): Prompting is not deterministic, so the same prompt at a different time may result in a different response. Small changes in the wording of the prompt may yield very different responses. Keep records, make small changes and see how it affects the outcome, etc.
+
+-   Don’t share any data or information that is confidential, proprietary, or have IP implications. Your uploaded data or ideas might be incorporated into the learning model to be available for others in your research area, prior to you having a chance to publish it. If you intend to pursue commercialization or other Intellectual Property avenues for your work, putting the information into an open AI platform may be considered as disclosure.
+
+### Late work & extensions
+
+The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest lab assignments will be dropped to accommodate such circumstances.
+
+### Campus Resources for Students
+
+Links to Campus Resources for Students --- e.g. Center for Academic Success, Communication Center, Office of Disability Services, OMED, Division of Student Life, etc. available at: <https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf>
+
+#### Quick Guide on Student Mental Health and Wellness Resources:
+
+The [Center for Mental Health Care & Resources](https://mentalhealth.gatech.edu) is here to offer confidential support and services to students in need of mental health care. During regular business hours, students who are not actively in counseling **may call 404-894-2575 or walk-in to the office , 353 Ferst DR NW Atlanta GA 30313** (Flag building next to the Student Center). Any time outside of business hours, students may call **404-894-2575** and select the option to speak to the after-hours counselor.
+
+#### Additional On Campus Options
+
+Students who are experiencing an immediate life-threatening emergency on campus, can call the Georgia Tech Campus Police at **404-894-2500**
+
+#### Local and National crisis resources available 24/7:
+
+-   Crisis Text Line: Text HOME to 741741 <https://www.crisistextline.org/>
+-   Georgia Crisis & Access Line: Call 1-800-715-4225
+-   National Suicide Prevention Lifeline: Call 988 or 1-800-273-8255, or access text chat here <https://suicidepreventionlifeline.org/chat/>
+
+#### Additional services offered by Satellite counselors' (walk-in consultation hours):
+
+Each Satellite counselor provides weekly consultation appointments at varying times based on their schedules (see highlighted section below for my Fall '23 hours). Anyone can access a Satellite counselor during these times, to set up a consultation email is preferable, once a message is received the Satellite counselor will reply with available dates/times and a link. Some Satellite counselors will accommodate in-person walk-ins at these times as well.
+
+##### What it is
+
+-   Consulting about a brief, non-emergency concern during the counselor's posted walk-in consultation hours (similar to Let's Talk). Consultations are approximately 15 minutes.
+-   Providing information to students about mental health resources on campus and how to get connected
+-   Consulting with faculty/staff about a student of concern
+
+##### What it isn't
+
+-   Not for a walk-in counseling appointment or initial assessment
+-   Not for students who are seeking support in their counselor's absence. Students who need additional/urgent support when their counselor is unavailable should visit the Center for Mental Health Care & Resources
+-   Not for crisis
+-   Not for case management
+
+Tara Holdampf, MS, LPC, (she/her), Satellite Counselor's Consultation Hours for the College of Sciences: Please email [tara.holdampf\@studentlife.gatech.edu](mailto:tara.holdampf@studentlife.gatech.edu) for an appointment, or stop by my Office Location: MoSE 1120B. Monday-Friday 3:00 PM - 4:00 PM
+
+##### Other useful web pages to explore:
+
+GT Wellness Hub: <https://gtwellnesshub.com> (self-paced online resources for students)
+
+-   Free Headspace (for Students Only): [https://gtwellnesshub.com/personal-guide-to-health- happiness/](https://gtwellnesshub.com/personal-guide-to-health-%20happiness/)
+-   Togetherall (for Students Only): <https://gtwellnesshub.com/one-on-one-personal-assistance/>
+-   Silver cloud (for Students Only): [https://gtwellnesshub.com/helpful-resources-right-at-your- fingertips/](https://gtwellnesshub.com/helpful-resources-right-at-your-%20fingertips/)
+
+**Division of Student Engagement and Wellbeing:** <https://students.gatech.edu/>\
+**Health, Wellness & Recreation:** <https://students.gatech.edu/health-wellness-recreation>\
+**Tech Ends Suicide:** <https://mentalhealth.gatech.edu/end-suicide-initiative>\
+**Mental Health Services:** <https://mentalhealth.gatech.edu/about/services>
