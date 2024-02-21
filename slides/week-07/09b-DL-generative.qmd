@@ -73,7 +73,10 @@ to be able to calculate the probability of new examples
 
 ## Latent variable model
 
-![](./images/latent-model.png)
+:::{}
+![](./images/latent-model.png){width=10% fig-align="center"}
+
+:::
 
 Consider for now a **prescribed latent variable model** that relates a set of observable variables $\mathbf{x} \in \mathcal{X}$ to a set of unobserved variables $\mathbf{z} \in \mathcal{Z}$.
 
@@ -82,7 +85,7 @@ $$p_\theta(\mathbf{x}, \mathbf{z}) = p_\theta(\mathbf{x}|\mathbf{z}) p(\mathbf{z
 
 ## 
 
-![](./images/galton.mp4){width=20%}
+![](./images/galton.mp4){width=25% fig-align="center"}
 
 
 If we interpret $\mathbf{z}$ as causal factors for the high-dimension representations $\mathbf{x}$, then sampling from $p_\theta(\mathbf{x}|\mathbf{z})$ can be interpreted as **a stochastic generating process** from $\mathcal{Z}$ to $\mathcal{X}$.
@@ -102,11 +105,13 @@ The curse of dimensionality will lead to poor estimates of the expectation.
 
 ##
 
-![](./images/vi.png)
+:::{}
+![](./images/vi.png){width=70% fig-align="center"}
+:::
 
 ##
 :::{}
-![](./images/diagram-vae.svg){width=50%}
+![](./images/diagram-vae.svg){width=40% fig-align="center"}
 :::
 
 We will directly learn a stochastic generating process $p_\theta(\mathbf{x}|\mathbf{z})$ with a neural network.
@@ -135,10 +140,6 @@ q_\phi(\mathbf{z}|\mathbf{x}) &= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathbf{I}
 
 ![](./images/vae-architecture-mnist.png)
 
-## Pseudo code
-
-![](./images/pseudo_train_v.png)
-
 ## 
 
 We can use variational inference to jointly optimize the generative and the inference networks parameters $\theta$ and $\phi$:
@@ -152,6 +153,9 @@ $$\begin{aligned}
 - Given some generative network $\theta$, we want to put the mass of the latent variables, by adjusting $\phi$, such that they explain the observed data, while remaining close to the prior.
 - Given some inference network $\phi$, we want to put the mass of the observed variables, by adjusting $\theta$, such that they are well explained by the latent variables.
 
+## Pseudo code
+
+![](./images/pseudo_train_v.png)
 
 # Diffusion models
 
@@ -329,7 +333,7 @@ $$\text{d}\mathbf{x}_t = \left[ -\frac{1}{2}\beta(t)\mathbf{x}_t - \beta(t)\nabl
 
 ## Training & sampling diffusion models
 
-![](./images/pseudo_diffusion.png)
+![Credit: [Ho et. al., 2020](https://arxiv.org/abs/2006.11239)](./images/pseudo_diffusion.png)
 
 ## Continuous-time normalizing flows
 

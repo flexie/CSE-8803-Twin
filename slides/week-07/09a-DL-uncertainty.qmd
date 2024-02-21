@@ -314,11 +314,13 @@ Therefore, we must rely on approximations.
 
 Variational inference can be used for building an approximation $q(\mathbf{\omega};\nu)$ of the posterior $p(\mathbf{\omega}|\mathbf{d})$.
 
-We can show that minimizing $$\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))$$ with respect to the variational parameters $\nu$, is identical to maximizing the evidence lower bound objective (ELBO) $$\text{ELBO}(\nu) = \mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right] - \text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega})).$$
+We can show that minimizing $$\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))$$ with respect to the variational parameters $\nu$, is identical to maximizing the evidence lower bound objective (ELBO) 
+
+$$\text{ELBO}(\nu) = \overbrace{\mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right]}^{\text{reconstruction error}} - \overbrace{\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}))}^{\text{regularization}}.$$
 
 :::{.callout-note collapse="true"}
 
-The most common measure of distance between probability distributions $p(x)$ and $q(x)* is the *Kullback-Leibler* or KL divergence and is defined as:
+The most common measure of distance between probability distributions $p(x)$ and $q(x)$ is the *Kullback-Leibler* or KL divergence and is defined as:
 
 $$
 D_{KL}[p(x)\Vert q(x)]=\int p(x)\log \begin{bmatrix}\frac{p(x)}{q(x)}\end{bmatrix}\mathrm{d}x.
@@ -335,9 +337,9 @@ The integral in the ELBO is not tractable for almost all $q$, but it can be maxi
 
 In the context of Bayesian neural networks, this procedure is also known as **Bayes by backprop** (Blundell et al, 2015).
 
-## Training and sampling VAE
+## Training VAE
 
-![](./images/pseudo_vae.png)
+![](./images/pseudo_train_v.png)
 
 # Simulation-based inference
 
