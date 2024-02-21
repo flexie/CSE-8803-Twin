@@ -402,13 +402,23 @@
 </section>
 <section id="latent-variable-model" class="slide level2 center">
 <h2>Latent variable model</h2>
-
-<img data-src="./images/latent-model.png" class="r-stretch"><p>Consider for now a <strong>prescribed latent variable model</strong> that relates a set of observable variables <span class="math inline">\(\mathbf{x} \in \mathcal{X}\)</span> to a set of unobserved variables <span class="math inline">\(\mathbf{z} \in \mathcal{Z}\)</span>.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/latent-model.png" class="quarto-figure quarto-figure-center" style="width:10.0%"></p>
+</figure>
+</div>
+</div>
+<p>Consider for now a <strong>prescribed latent variable model</strong> that relates a set of observable variables <span class="math inline">\(\mathbf{x} \in \mathcal{X}\)</span> to a set of unobserved variables <span class="math inline">\(\mathbf{z} \in \mathcal{Z}\)</span>.</p>
 <p>The probabilistic model defines a joint probability distribution <span class="math inline">\(p_\theta(\mathbf{x}, \mathbf{z})\)</span>, which decomposes as <span class="math display">\[p_\theta(\mathbf{x}, \mathbf{z}) = p_\theta(\mathbf{x}|\mathbf{z}) p(\mathbf{z}).\]</span></p>
 </section>
 <section id="section-2" class="slide level2 center">
 <h2></h2>
-<p><video data-src="./images/galton.mp4" style="width:20.0%" controls=""><a href="./images/galton.mp4">Video</a></video></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><video data-src="./images/galton.mp4" class="quarto-figure quarto-figure-center" style="width:25.0%" controls=""><a href="./images/galton.mp4">Video</a></video></p>
+</figure>
+</div>
 <p>If we interpret <span class="math inline">\(\mathbf{z}\)</span> as causal factors for the high-dimension representations <span class="math inline">\(\mathbf{x}\)</span>, then sampling from <span class="math inline">\(p_\theta(\mathbf{x}|\mathbf{z})\)</span> can be interpreted as <strong>a stochastic generating process</strong> from <span class="math inline">\(\mathcal{Z}\)</span> to <span class="math inline">\(\mathcal{X}\)</span>.</p>
 </section>
 <section id="hot-to-fit" class="slide level2 center">
@@ -435,12 +445,22 @@
 </section>
 <section id="section-3" class="slide level2 center">
 <h2></h2>
-
-<img data-src="./images/vi.png" class="r-stretch"></section>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/vi.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</section>
 <section id="section-4" class="slide level2 center">
 <h2></h2>
 <div>
-<p><img data-src="./images/diagram-vae.svg" style="width:50.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/diagram-vae.svg" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
 </div>
 <p>We will directly learn a stochastic generating process <span class="math inline">\(p_\theta(\mathbf{x}|\mathbf{z})\)</span> with a neural network.</p>
 <p>We will also amortize the inference process by learning a second neural network <span class="math inline">\(q_\phi(\mathbf{z}|\mathbf{x})\)</span> approximating the posterior, conditionally on the observed data <span class="math inline">\(\mathbf{x}\)</span>.</p>
@@ -464,10 +484,6 @@ q_\phi(\mathbf{z}|\mathbf{x}) &amp;= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathb
 <h2>Variational auto-encoders</h2>
 
 <img data-src="./images/vae-architecture-mnist.png" class="r-stretch"></section>
-<section id="pseudo-code" class="slide level2 center">
-<h2>Pseudo code</h2>
-
-<img data-src="./images/pseudo_train_v.png" class="r-stretch"></section>
 <section id="section-6" class="slide level2 center">
 <h2></h2>
 <p>We can use variational inference to jointly optimize the generative and the inference networks parameters <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\phi\)</span>:</p>
@@ -480,7 +496,11 @@ q_\phi(\mathbf{z}|\mathbf{x}) &amp;= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathb
 <li>Given some generative network <span class="math inline">\(\theta\)</span>, we want to put the mass of the latent variables, by adjusting <span class="math inline">\(\phi\)</span>, such that they explain the observed data, while remaining close to the prior.</li>
 <li>Given some inference network <span class="math inline">\(\phi\)</span>, we want to put the mass of the observed variables, by adjusting <span class="math inline">\(\theta\)</span>, such that they are well explained by the latent variables.</li>
 </ul>
-</section></section>
+</section>
+<section id="pseudo-code" class="slide level2 center">
+<h2>Pseudo code</h2>
+
+<img data-src="./images/pseudo_train_v.png" class="r-stretch"></section></section>
 <section>
 <section id="diffusion-models" class="title-slide slide level1 center">
 <h1>Diffusion models</h1>
@@ -675,7 +695,7 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 <section id="training-sampling-diffusion-models" class="slide level2 center">
 <h2>Training &amp; sampling diffusion models</h2>
 
-<img data-src="./images/pseudo_diffusion.png" class="r-stretch"></section>
+<img data-src="./images/pseudo_diffusion.png" class="r-stretch quarto-figure-center"><p class="caption">Credit: <a href="https://arxiv.org/abs/2006.11239">Ho et. al., 2020</a></p></section>
 <section id="continuous-time-normalizing-flows" class="slide level2 center">
 <h2>Continuous-time normalizing flows</h2>
 <div class="columns">

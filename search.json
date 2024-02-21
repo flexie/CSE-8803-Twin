@@ -1091,7 +1091,7 @@
     "href": "slides/week-07/09a-DL-uncertainty.html#variational-inference",
     "title": "Simulation-based Inference",
     "section": "Variational inference",
-    "text": "Variational inference\nVariational inference can be used for building an approximation \\(q(\\mathbf{\\omega};\\nu)\\) of the posterior \\(p(\\mathbf{\\omega}|\\mathbf{d})\\).\nWe can show that minimizing \\[\\text{KL}(q(\\mathbf{\\omega};\\nu) || p(\\mathbf{\\omega}|\\mathbf{d}))\\] with respect to the variational parameters \\(\\nu\\), is identical to maximizing the evidence lower bound objective (ELBO) \\[\\text{ELBO}(\\nu) = \\mathbb{E}_{q(\\mathbf{\\omega};\\nu)} \\left[\\log p(\\mathbf{d}| \\mathbf{\\omega})\\right] - \\text{KL}(q(\\mathbf{\\omega};\\nu) || p(\\mathbf{\\omega})).\\]\n\n\n\n\n\n\nNote\n\n\nThe most common measure of distance between probability distributions \\(p(x)\\) and $q(x)* is the Kullback-Leibler or KL divergence and is defined as:\n\\[\nD_{KL}[p(x)\\Vert q(x)]=\\int p(x)\\log \\begin{bmatrix}\\frac{p(x)}{q(x)}\\end{bmatrix}\\mathrm{d}x.\n\\]"
+    "text": "Variational inference\nVariational inference can be used for building an approximation \\(q(\\mathbf{\\omega};\\nu)\\) of the posterior \\(p(\\mathbf{\\omega}|\\mathbf{d})\\).\nWe can show that minimizing \\[\\text{KL}(q(\\mathbf{\\omega};\\nu) || p(\\mathbf{\\omega}|\\mathbf{d}))\\] with respect to the variational parameters \\(\\nu\\), is identical to maximizing the evidence lower bound objective (ELBO)\n\\[\\text{ELBO}(\\nu) = \\overbrace{\\mathbb{E}_{q(\\mathbf{\\omega};\\nu)} \\left[\\log p(\\mathbf{d}| \\mathbf{\\omega})\\right]}^{\\text{reconstruction error}} - \\overbrace{\\text{KL}(q(\\mathbf{\\omega};\\nu) || p(\\mathbf{\\omega}))}^{\\text{regularization}}.\\]\n\n\n\n\n\n\nNote\n\n\nThe most common measure of distance between probability distributions \\(p(x)\\) and \\(q(x)\\) is the Kullback-Leibler or KL divergence and is defined as:\n\\[\nD_{KL}[p(x)\\Vert q(x)]=\\int p(x)\\log \\begin{bmatrix}\\frac{p(x)}{q(x)}\\end{bmatrix}\\mathrm{d}x.\n\\]"
   },
   {
     "objectID": "slides/week-07/09a-DL-uncertainty.html#section-14",
@@ -1101,11 +1101,11 @@
     "text": "The integral in the ELBO is not tractable for almost all \\(q\\), but it can be maximized with stochastic gradient ascent:\n\nSample \\(\\hat{\\omega} \\sim q(\\mathbf{\\omega};\\nu)\\).\nDo one step of maximization with respect to \\(\\nu\\) on \\[\\hat{L}(\\nu) = \\log p(\\mathbf{d}|\\hat{\\omega}) - \\log\\frac{q(\\hat{\\omega};\\nu)}{p(\\hat{\\omega})} \\]\n\nIn the context of Bayesian neural networks, this procedure is also known as Bayes by backprop (Blundell et al, 2015)."
   },
   {
-    "objectID": "slides/week-07/09a-DL-uncertainty.html#training-and-sampling-vae",
-    "href": "slides/week-07/09a-DL-uncertainty.html#training-and-sampling-vae",
+    "objectID": "slides/week-07/09a-DL-uncertainty.html#training-vae",
+    "href": "slides/week-07/09a-DL-uncertainty.html#training-vae",
     "title": "Simulation-based Inference",
-    "section": "Training and sampling VAE",
-    "text": "Training and sampling VAE"
+    "section": "Training VAE",
+    "text": "Training VAE"
   },
   {
     "objectID": "slides/week-07/09a-DL-uncertainty.html#scientific-simulators",
@@ -2774,14 +2774,14 @@
     "href": "slides/week-07/09b-DL-generative.html#latent-variable-model",
     "title": "Deep Learning",
     "section": "Latent variable model",
-    "text": "Latent variable model\n\nConsider for now a prescribed latent variable model that relates a set of observable variables \\(\\mathbf{x} \\in \\mathcal{X}\\) to a set of unobserved variables \\(\\mathbf{z} \\in \\mathcal{Z}\\).\nThe probabilistic model defines a joint probability distribution \\(p_\\theta(\\mathbf{x}, \\mathbf{z})\\), which decomposes as \\[p_\\theta(\\mathbf{x}, \\mathbf{z}) = p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z}).\\]"
+    "text": "Latent variable model\n\n\n\n\n\n\n\nConsider for now a prescribed latent variable model that relates a set of observable variables \\(\\mathbf{x} \\in \\mathcal{X}\\) to a set of unobserved variables \\(\\mathbf{z} \\in \\mathcal{Z}\\).\nThe probabilistic model defines a joint probability distribution \\(p_\\theta(\\mathbf{x}, \\mathbf{z})\\), which decomposes as \\[p_\\theta(\\mathbf{x}, \\mathbf{z}) = p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z}).\\]"
   },
   {
     "objectID": "slides/week-07/09b-DL-generative.html#section-2",
     "href": "slides/week-07/09b-DL-generative.html#section-2",
     "title": "Deep Learning",
     "section": "",
-    "text": "Video\nIf we interpret \\(\\mathbf{z}\\) as causal factors for the high-dimension representations \\(\\mathbf{x}\\), then sampling from \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) can be interpreted as a stochastic generating process from \\(\\mathcal{Z}\\) to \\(\\mathcal{X}\\)."
+    "text": "Video\n\n\nIf we interpret \\(\\mathbf{z}\\) as causal factors for the high-dimension representations \\(\\mathbf{x}\\), then sampling from \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) can be interpreted as a stochastic generating process from \\(\\mathcal{Z}\\) to \\(\\mathcal{X}\\)."
   },
   {
     "objectID": "slides/week-07/09b-DL-generative.html#hot-to-fit",
@@ -2812,18 +2812,18 @@
     "text": "Variational auto-encoders"
   },
   {
-    "objectID": "slides/week-07/09b-DL-generative.html#pseudo-code",
-    "href": "slides/week-07/09b-DL-generative.html#pseudo-code",
-    "title": "Deep Learning",
-    "section": "Pseudo code",
-    "text": "Pseudo code"
-  },
-  {
     "objectID": "slides/week-07/09b-DL-generative.html#section-6",
     "href": "slides/week-07/09b-DL-generative.html#section-6",
     "title": "Deep Learning",
     "section": "",
     "text": "We can use variational inference to jointly optimize the generative and the inference networks parameters \\(\\theta\\) and \\(\\phi\\):\n\\[\\begin{aligned}\n\\theta^{*}, \\phi^{*} &= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})} \\left[ \\text{ELBO}(\\mathbf{x};\\theta,\\phi) \\right] \\\\\\\\\n&= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})}\\left[ \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})} [ \\log \\frac{p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z})}{q_\\phi(\\mathbf{z}|\\mathbf{x})} ] \\right] \\\\\\\\\n&= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})}\\left[ \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})}\\left[ \\log p_\\theta(\\mathbf{x}|\\mathbf{z})\\right] - \\text{KL}(q_\\phi(\\mathbf{z}|\\mathbf{x}) || p(\\mathbf{z})) \\right].\n\\end{aligned}\\]\n\nGiven some generative network \\(\\theta\\), we want to put the mass of the latent variables, by adjusting \\(\\phi\\), such that they explain the observed data, while remaining close to the prior.\nGiven some inference network \\(\\phi\\), we want to put the mass of the observed variables, by adjusting \\(\\theta\\), such that they are well explained by the latent variables."
+  },
+  {
+    "objectID": "slides/week-07/09b-DL-generative.html#pseudo-code",
+    "href": "slides/week-07/09b-DL-generative.html#pseudo-code",
+    "title": "Deep Learning",
+    "section": "Pseudo code",
+    "text": "Pseudo code"
   },
   {
     "objectID": "slides/week-07/09b-DL-generative.html#section-7",
@@ -2942,7 +2942,7 @@
     "href": "slides/week-07/09b-DL-generative.html#training-sampling-diffusion-models",
     "title": "Deep Learning",
     "section": "Training & sampling diffusion models",
-    "text": "Training & sampling diffusion models"
+    "text": "Training & sampling diffusion models\n\nCredit: Ho et. al., 2020"
   },
   {
     "objectID": "slides/week-07/09b-DL-generative.html#continuous-time-normalizing-flows",

@@ -606,7 +606,8 @@
 <section id="variational-inference" class="slide level2 center">
 <h2>Variational inference</h2>
 <p>Variational inference can be used for building an approximation <span class="math inline">\(q(\mathbf{\omega};\nu)\)</span> of the posterior <span class="math inline">\(p(\mathbf{\omega}|\mathbf{d})\)</span>.</p>
-<p>We can show that minimizing <span class="math display">\[\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))\]</span> with respect to the variational parameters <span class="math inline">\(\nu\)</span>, is identical to maximizing the evidence lower bound objective (ELBO) <span class="math display">\[\text{ELBO}(\nu) = \mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right] - \text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega})).\]</span></p>
+<p>We can show that minimizing <span class="math display">\[\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))\]</span> with respect to the variational parameters <span class="math inline">\(\nu\)</span>, is identical to maximizing the evidence lower bound objective (ELBO)</p>
+<p><span class="math display">\[\text{ELBO}(\nu) = \overbrace{\mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right]}^{\text{reconstruction error}} - \overbrace{\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}))}^{\text{regularization}}.\]</span></p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -616,7 +617,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>The most common measure of distance between probability distributions <span class="math inline">\(p(x)\)</span> and $q(x)* is the <em>Kullback-Leibler</em> or KL divergence and is defined as:</p>
+<p>The most common measure of distance between probability distributions <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> is the <em>Kullback-Leibler</em> or KL divergence and is defined as:</p>
 <p><span class="math display">\[
 D_{KL}[p(x)\Vert q(x)]=\int p(x)\log \begin{bmatrix}\frac{p(x)}{q(x)}\end{bmatrix}\mathrm{d}x.
 \]</span></p>
@@ -633,10 +634,10 @@ D_{KL}[p(x)\Vert q(x)]=\int p(x)\log \begin{bmatrix}\frac{p(x)}{q(x)}\end{bmatri
 </ol>
 <p>In the context of Bayesian neural networks, this procedure is also known as <strong>Bayes by backprop</strong> (Blundell et al, 2015).</p>
 </section>
-<section id="training-and-sampling-vae" class="slide level2 center">
-<h2>Training and sampling VAE</h2>
+<section id="training-vae" class="slide level2 center">
+<h2>Training VAE</h2>
 
-<img data-src="./images/pseudo_vae.png" class="r-stretch"></section></section>
+<img data-src="./images/pseudo_train_v.png" class="r-stretch"></section></section>
 <section>
 <section id="simulation-based-inference" class="title-slide slide level1 center">
 <h1>Simulation-based inference</h1>
