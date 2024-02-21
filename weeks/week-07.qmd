@@ -20,7 +20,7 @@ listing:
   - id: assignments
     contents:
       # - ../hw/w3-*.qmd
-      - ../labs/w4-*.qmd
+      - ../labs/w7-*.qmd
     type: table
     fields: [categories, title, date]
     date-format: "ddd, MMM DD"
