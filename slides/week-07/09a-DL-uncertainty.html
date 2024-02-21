@@ -525,12 +525,17 @@
 <p>Therefore, the local change of density yields <span class="math display">\[p(\mathbf{x}=f(\mathbf{z})) = p(\mathbf{z})\left| \det J_f(\mathbf{z}) \right|^{-1}.\]</span></p>
 <p>Similarly, for <span class="math inline">\(g = f^{-1}\)</span>, we have <span class="math display">\[p(\mathbf{x})=p(\mathbf{z}=g(\mathbf{x}))\left| \det J_g(\mathbf{x}) \right|.\]</span></p>
 </section>
+<section id="section-7" class="slide level2 center">
+<h2></h2>
+<p>What about the inverse <span class="math inline">\(f^{-1}\)</span>?</p>
+
+<img data-src="images/FlowIntroInverse.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Image credits: Simon J.D. Prince, <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a>, 2023.</p></section>
 <section id="normalizing-flows-1" class="slide level2 center">
 <h2>Normalizing flows</h2>
 <p>A normalizing flow is a change of variable <span class="math inline">\(f\)</span> that transforms a base distribution <span class="math inline">\(p(\mathbf{z})\)</span> into <span class="math inline">\(p(\mathbf{x})\)</span> by a series of invertible transformations.</p>
 
 <img data-src="images/normalizing-flow.png" class="r-stretch quarto-figure-center"><p class="caption">Image credits: <a href="https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models">Lilian Weng</a>, 2018</p></section>
-<section id="section-7" class="slide level2 center">
+<section id="section-8" class="slide level2 center">
 <h2></h2>
 <p>Formally,</p>
 <ul>
@@ -539,7 +544,8 @@
 <li><p><span class="math inline">\(\mathbf{z}_k = f_k(\mathbf{z}_{k-1})\)</span>, with <span class="math inline">\(\mathbf{z}_0 = \mathbf{z}\)</span> and <span class="math inline">\(\mathbf{z}_K = \mathbf{x}\)</span>;</p></li>
 <li><p><span class="math inline">\(p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J_{g_k}(\mathbf{z}_k) \right|\)</span>.</p></li>
 </ul>
-</section>
+
+<img data-src="images/FlowTransformLayers.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Image credits: Simon J.D. Prince, <a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning</a>, 2023.</p></section>
 <section id="example-coupling-layers" class="slide level2 center">
 <h2>Example: coupling layers</h2>
 <p>Assume <span class="math inline">\(\mathbf{z} = (\mathbf{z}_a, \mathbf{z}_b)\)</span> and <span class="math inline">\(\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)\)</span>. Then,</p>
@@ -549,14 +555,14 @@
 </ul>
 <p>where <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are arbitrary neural networks.</p>
 </section>
-<section id="section-8" class="slide level2 center">
+<section id="section-9" class="slide level2 center">
 <h2></h2>
 <p>For <span class="math inline">\(\mathbf{x} = (\mathbf{x}_a, \mathbf{x}_b)\)</span>, the log-likelihood is <span class="math display">\[\begin{aligned}\log p(\mathbf{x}) &amp;= \log p(\mathbf{z} = g(\mathbf{x})) \left| \det J_g(\mathbf{x}) \right|\end{aligned}\]</span> where the Jacobian <span class="math inline">\(J_g(\mathbf{x}) = \frac{\partial \mathbf{z}}{\partial \mathbf{x}}\)</span> is a lower triangular matrix <span class="math display">\[\left( \begin{matrix}
 \mathbf{I} &amp; 0 \\\\
 \frac{\partial \mathbf{z}_b}{\partial \mathbf{x}_a} &amp; \text{diag}(\exp(-s(\mathbf{x}_a))) \end{matrix} \right),\]</span> such that <span class="math inline">\(\left| \det J_g(\mathbf{x}) \right| = \prod_i \exp(-s(\mathbf{x}_a))_i = \exp(-\sum_i s(\mathbf{x}_a)_i)\)</span>.</p>
 <p>Therefore, the log-likelihood is <span class="math display">\[\log p(\mathbf{x}) = \log p(\mathbf{z} = g(\mathbf{x})) -\sum_i s(\mathbf{x}_a)_i.\]</span></p>
 </section>
-<section id="section-9" class="slide level2 center">
+<section id="section-10" class="slide level2 center">
 <h2></h2>
 
 <img data-src="images/nf-densities.png" class="r-stretch quarto-figure-center"><p class="caption">Image credits: <a href="https://arxiv.org/abs/1908.05164">Wehenkel and Louppe</a>, 2019.</p></section>
@@ -565,7 +571,7 @@
 <h1>Epistemic uncertainty</h1>
 
 </section>
-<section id="section-10" class="slide level2 center">
+<section id="section-11" class="slide level2 center">
 <h2></h2>
 <p><strong>Epistemic</strong> uncertainty accounts for uncertainty in the model or in its parameters. It captures our <em>ignorance</em> about which model can best explain the collected data.</p>
 <p>It can be explained away given enough data<sup>1</sup>.</p>
@@ -585,13 +591,13 @@
 </div>
 </div>
 </section>
-<section id="section-11" class="slide level2 center">
+<section id="section-12" class="slide level2 center">
 <h2></h2>
 <p>The prior predictive distribution at <span class="math inline">\(\mathbf{x}\)</span> is given by integrating over all possible weight configurations, <span class="math display">\[p(y|\mathbf{x}) = \int p(y|\mathbf{x}, \mathbf{\omega}) p(\mathbf{\omega}) d\mathbf{\omega}.\]</span></p>
 <p>Given training data <span class="math inline">\(\mathbf{d}=\\{(\mathbf{x}_1, y_1), ..., (\mathbf{x}_N, y_N)\\}\)</span> a Bayesian update results in the posterior <span class="math display">\[p(\mathbf{\omega}|\mathbf{d}) = \frac{p(\mathbf{d}|\mathbf{\omega})p(\mathbf{\omega})}{p(\mathbf{d})}\]</span> where the likelihood <span class="math inline">\(p(\mathbf{d}|\omega) = \prod_i p(y_i | \mathbf{x}_i, \omega).\)</span></p>
 <p>The posterior predictive distribution is then given by <span class="math display">\[p(y|\mathbf{x},\mathbf{d}) = \int p(y|\mathbf{x}, \mathbf{\omega}) p(\mathbf{\omega}|\mathbf{d}) d\mathbf{\omega}.\]</span></p>
 </section>
-<section id="section-12" class="slide level2 center">
+<section id="section-13" class="slide level2 center">
 <h2></h2>
 <p>Bayesian neural networks are <em>easy to formulate</em>, but notoriously <strong>difficult</strong> to perform inference in.</p>
 <p><span class="math inline">\(p(\mathbf{d})\)</span> is intractable to evaluate, which results in the posterior <span class="math inline">\(p(\mathbf{\omega}|\mathbf{d})\)</span> not being tractable either.</p>
@@ -601,8 +607,24 @@
 <h2>Variational inference</h2>
 <p>Variational inference can be used for building an approximation <span class="math inline">\(q(\mathbf{\omega};\nu)\)</span> of the posterior <span class="math inline">\(p(\mathbf{\omega}|\mathbf{d})\)</span>.</p>
 <p>We can show that minimizing <span class="math display">\[\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))\]</span> with respect to the variational parameters <span class="math inline">\(\nu\)</span>, is identical to maximizing the evidence lower bound objective (ELBO) <span class="math display">\[\text{ELBO}(\nu) = \mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right] - \text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega})).\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The most common measure of distance between probability distributions <span class="math inline">\(p(x)\)</span> and $q(x)* is the <em>Kullback-Leibler</em> or KL divergence and is defined as:</p>
+<p><span class="math display">\[
+D_{KL}[p(x)\Vert q(x)]=\int p(x)\log \begin{bmatrix}\frac{p(x)}{q(x)}\end{bmatrix}\mathrm{d}x.
+\]</span></p>
+</div>
+</div>
+</div>
 </section>
-<section id="section-13" class="slide level2 center">
+<section id="section-14" class="slide level2 center">
 <h2></h2>
 <p>The integral in the ELBO is not tractable for almost all <span class="math inline">\(q\)</span>, but it can be maximized with stochastic gradient ascent:</p>
 <ol type="1">
@@ -620,11 +642,11 @@
 <h1>Simulation-based inference</h1>
 
 </section>
-<section id="section-14" class="slide level2 center">
+<section id="section-15" class="slide level2 center">
 <h2></h2>
 
 <img data-src="images/pitcher.png" class="r-stretch"></section>
-<section id="section-15" class="slide level2 center">
+<section id="section-16" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/prior_posterior.png" class="r-stretch"></section>
@@ -632,17 +654,17 @@
 <h2>Scientific simulators</h2>
 
 <img data-src="./images/simulators.png" class="r-stretch"></section>
-<section id="section-16" class="slide level2 center">
+<section id="section-17" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/unconditioned-program.png" class="r-stretch quarto-figure-center"><p class="caption">unconditioned</p><p><span class="math display">\[\theta, z, x \sim p(\theta, z, x)\]</span></p>
 </section>
-<section id="section-17" class="slide level2 center">
+<section id="section-18" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/conditioned-program.png" class="r-stretch quarto-figure-center"><p class="caption">conditioned</p><p><span class="math display">\[\theta, z \sim p(\theta, z | x)\]</span></p>
 </section>
-<section id="section-18" class="slide level2 center">
+<section id="section-19" class="slide level2 center">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -651,7 +673,7 @@
 </figure>
 </div>
 </section>
-<section id="section-19" class="slide level2 center">
+<section id="section-20" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/galton_trajectory.png" class="r-stretch quarto-figure-center"><p class="caption">Credit: <a href="https://github.com/johannbrehmer/slides/blob/master/2020/simulation_based_inference_bremen_2020.pdf">Brehmer</a></p></section>
@@ -660,23 +682,23 @@
 <p>A conditional simulator prescribes a way to sample from the likelihood <span class="math inline">\(p(\mathbf{x}|\vartheta)\)</span>, where <span class="math inline">\(\vartheta\)</span> is a set of conditioning variables or parameters.</p>
 
 <img data-src="./images/simulators-conditional.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://smsharma.io/iaifi-summer-school-2023/">Siddharth Mishra-Sharma</a>, 2023.</p></section>
-<section id="section-20" class="slide level2 center">
-<h2></h2>
-
-<img data-src="./images/process1.png" class="r-stretch"></section>
 <section id="section-21" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/process2.png" class="r-stretch"></section>
+<img data-src="./images/process1.png" class="r-stretch"></section>
 <section id="section-22" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/process3.png" class="r-stretch"></section>
+<img data-src="./images/process2.png" class="r-stretch"></section>
 <section id="section-23" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/process4.png" class="r-stretch"></section>
+<img data-src="./images/process3.png" class="r-stretch"></section>
 <section id="section-24" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/process4.png" class="r-stretch"></section>
+<section id="section-25" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[p(x|\theta) = \underbrace{\iiint}_{\text{yikes!}} p(z_p|\theta) p(z_s|z_p) p(z_d|z_s) p(x|z_d) dz_p dz_s dz_d\]</span></p>
 <p>That’s bad!</p>
@@ -692,7 +714,7 @@
 <p>Then, estimate the posterior</p>
 <p><span class="math display">\[p(\theta|x_\text{obs}) = \frac{p(x_\text{obs} | \theta)p(\theta)}{p(x_\text{obs})}.\]</span></p>
 </section>
-<section id="section-25" class="slide level2 center">
+<section id="section-26" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images//sbi.png" class="r-stretch"></section></section>
@@ -701,7 +723,7 @@
 <h1>Algorithms</h1>
 
 </section>
-<section id="section-26" class="slide level2 center">
+<section id="section-27" class="slide level2 center">
 <h2></h2>
 
 <img data-src="./images/frontiers-sbi0.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
@@ -715,15 +737,15 @@
 <li><p>Need to run new simulations for new data or new prior.</p></li>
 </ul>
 </section>
-<section id="section-27" class="slide level2 center">
-<h2></h2>
-
-<img data-src="./images/frontiers-sbi2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
 <section id="section-28" class="slide level2 center">
 <h2></h2>
 
-<img data-src="./images/frontiers-sbi.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
+<img data-src="./images/frontiers-sbi2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
 <section id="section-29" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/frontiers-sbi.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://doi.org/10.1073/pnas.1912789117">Cranmer, Brehmer and Louppe</a>, 2020.</p></section>
+<section id="section-30" class="slide level2 center">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:33%;">
@@ -753,7 +775,7 @@
 </div>
 </div>
 </section>
-<section id="section-30" class="slide level2 center">
+<section id="section-31" class="slide level2 center">
 <h2></h2>
 
 <div class="quarto-auto-generated-content">
