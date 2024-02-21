@@ -219,6 +219,13 @@ Therefore, the local change of density yields $$p(\mathbf{x}=f(\mathbf{z})) = p(
 
 Similarly, for $g = f^{-1}$, we have $$p(\mathbf{x})=p(\mathbf{z}=g(\mathbf{x}))\left| \det J_g(\mathbf{x}) \right|.$$
 
+## 
+
+What about the inverse $f^{-1}$?
+
+![Image credits: Simon J.D. Prince, [Understanding Deep Learning](https://udlbook.github.io/udlbook/), 2023.](images/FlowIntroInverse.png){width="50%"}
+
+
 ## Normalizing flows
 
 A normalizing flow is a change of variable $f$ that transforms a base distribution $p(\mathbf{z})$ into $p(\mathbf{x})$ by a series of invertible transformations.
@@ -236,6 +243,8 @@ Formally,
 -   $\mathbf{z}_k = f_k(\mathbf{z}_{k-1})$, with $\mathbf{z}_0 = \mathbf{z}$ and $\mathbf{z}_K = \mathbf{x}$;
 
 -   $p(\mathbf{z}_k) = p(\mathbf{z}_{k-1} = g_k(\mathbf{z}_k)) \left| \det J_{g_k}(\mathbf{z}_k) \right|$.
+
+![Image credits: Simon J.D. Prince, [Understanding Deep Learning](https://udlbook.github.io/udlbook/), 2023.](images/FlowTransformLayers.png){width="50%"}
 
 ## Example: coupling layers
 
@@ -306,6 +315,16 @@ Therefore, we must rely on approximations.
 Variational inference can be used for building an approximation $q(\mathbf{\omega};\nu)$ of the posterior $p(\mathbf{\omega}|\mathbf{d})$.
 
 We can show that minimizing $$\text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega}|\mathbf{d}))$$ with respect to the variational parameters $\nu$, is identical to maximizing the evidence lower bound objective (ELBO) $$\text{ELBO}(\nu) = \mathbb{E}_{q(\mathbf{\omega};\nu)} \left[\log p(\mathbf{d}| \mathbf{\omega})\right] - \text{KL}(q(\mathbf{\omega};\nu) || p(\mathbf{\omega})).$$
+
+:::{.callout-note collapse="true"}
+
+The most common measure of distance between probability distributions $p(x)$ and $q(x)* is the *Kullback-Leibler* or KL divergence and is defined as:
+
+$$
+D_{KL}[p(x)\Vert q(x)]=\int p(x)\log \begin{bmatrix}\frac{p(x)}{q(x)}\end{bmatrix}\mathrm{d}x.
+$$
+
+:::
 
 ## 
 
