@@ -10,8 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.549">
 
-  <meta name="dcterms.date" content="2023-12-23">
-  <title>Digital Twins for Physical Systems - Uncertainty Quantification</title>
+  <meta name="dcterms.date" content="2024-02-14">
+  <title>Digital Twins for Physical Systems - Bayesian Data Assimilation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -328,51 +328,22 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../images/3DVAR.png" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Uncertainty Quantification</h1>
-  <p class="subtitle">Bayesian Data Assimilation</p>
+  <h1 class="title">Bayesian Data Assimilation</h1>
+  <p class="subtitle">Data Assimilation</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2023-12-23</p>
+  <p class="date">2024-02-14</p>
 </section>
-<section id="uncertainty-quantification" class="slide level2 smaller center">
-<h2>Uncertainty Quantification</h2>
-<p><strong>Definition 11.1 (UQ).</strong> <em>UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).</em></p>
-<p><strong>Definition 11.2 (QoI).</strong> <em>In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.</em></p>
-<p>We can decompose UQ into a number of subtasks:</p>
-<ol type="1">
-<li>Quantify uncertainties in model inputs by specifying probability distributions.</li>
-<li>Propagate input uncertainties through the model and quantify effects on the QoI.</li>
-<li>Quantify variability in the true physical QoI</li>
-<li>Aggregate uncertainties arising from different sources to appraise overall uncertainty (input, model, numerical errors, inherent variability)</li>
-<li>Compute sensitivities of output variables with respect to input variables (forward UQ)</li>
-</ol>
-</section>
-<section id="bayesian-parameter-estimation-in-state-space-models" class="slide level2 smaller center">
-<h2>Bayesian Parameter Estimation in State Space Models</h2>
-<p><span class="math display">\[
-\begin{aligned}
-\boldsymbol{\theta} &amp; \sim p(\boldsymbol{\theta}) \\
-\mathbf{x}_0 &amp; \sim p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \\
-\mathbf{x}_k &amp; \sim p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right) \\
-\mathbf{y}_k &amp; \sim p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right), \quad k=0,1,2, \ldots
-\end{aligned}
-\]</span></p>
-<p>Applying Bayes’ Law of Theorem 2.61, we can compute the complete posterior distribution of the state plus parameters as <span class="math display">\[
-p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\frac{p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right) p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right) p(\boldsymbol{\theta})}{p\left(\mathbf{y}_{1: T}\right)},
-\]</span> where the joint prior of the states, <span class="math inline">\(\mathbf{x}_{0: T}=\left\{\mathbf{x}_0, \ldots, \mathbf{x}_T\right\}\)</span>, and the joint likelihood of the measurements, <span class="math inline">\(\mathbf{y}_{1: T}=\left\{\mathbf{y}_1, \ldots, \mathbf{y}_T\right\}\)</span>, conditioned on the parameters, are</p>
-</section>
-<section id="section" class="slide level2 smaller center">
-<h2></h2>
-<p><span class="math display">\[
-p\left(\mathbf{x}_{0: T} \mid \boldsymbol{\theta}\right)=p\left(\mathbf{x}_0 \mid \boldsymbol{\theta}\right) \prod_{k=1}^T p\left(\mathbf{x}_k \mid \mathbf{x}_{k-1}, \boldsymbol{\theta}\right)
-\]</span> and <span class="math display">\[
-p\left(\mathbf{y}_{1: T} \mid \mathbf{x}_{0: T}, \boldsymbol{\theta}\right)=\prod_{k=1}^T p\left(\mathbf{y}_k \mid \mathbf{x}_k, \boldsymbol{\theta}\right)
-\]</span> respectively. Finally, we need to marginalize over the state to obtain the predictive posterior for the parameter <span class="math inline">\(\boldsymbol{\theta}\)</span>, <span class="math display">\[
-p\left(\boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right)=\int p\left(\mathbf{x}_{0: T}, \boldsymbol{\theta} \mid \mathbf{y}_{1: T}\right) \mathrm{d} \mathbf{x}_{0: T}
-\]</span></p>
-<p>Integrals are difficult to compute — will seek iterative (learned) methods to capture statistics</p>
+<section class="slide level2 center">
+
+<!-- 
+
+
+
+<iframe src="https://www.icloud.com/keynote/0b5xJATLv1_34XEctcxOOWPTA#Haliburton2024" width="640" height="500" frameborder="0" allowfullscreen="1" referrer="no-referrer"></iframe>
+``` -->
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
