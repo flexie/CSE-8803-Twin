@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -157,7 +157,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -366,7 +366,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 </section>
 <section id="probability-distributions-via-monte-carlo" class="level2">
 <h2 class="anchored" data-anchor-id="probability-distributions-via-monte-carlo">Probability distributions via Monte Carlo</h2>
-<p>Suppose we want to know the area under the curve <span class="math inline">\(y= \mathrm{e}^{\sin(x)}\)</span> in the interval [0, <span class="math inline">\(\pi\)</span>]. The area is computed with the definite integral <span class="math inline">\(\int_0^\pi  \mathrm{e}^{\sin(x)}\, \mathrm{d}x\)</span>. As an exercise, go ahead and find the answer; I’ll wait.</p>
+<p>Suppose we want to know the area under the curve <span class="math inline">\(y= \mathrm{e}^{\sin(x)}\)</span> in the interval [0, <span class="math inline">\(\pi\)</span>]. The area is computed with the definite integral <span class="math inline">\(\int_0^\pi \mathrm{e}^{\sin(x)}\, \mathrm{d}x\)</span>. As an exercise, go ahead and find the answer; I’ll wait.</p>
 <p>If you are wise you did not take that challenge; <span class="math inline">\(\mathrm{e}^{\sin(x)}\)</span> cannot be integrated analytically. The world is filled with equations which we cannot integrate. For example, consider calculating the luminosity of an object. An object reflects some of the light that strike it. Some of the reflected light bounces off of other objects and restrikes the original object, increasing the luminosity. This creates a <em>recursive integral</em>. Good luck with that one.</p>
 <p>However, integrals are trivial to compute using a Monte Carlo technique. To find the area under a curve create a bounding box that contains the curve in the desired interval. Generate randomly positioned point within the box, and compute the ratio of points that fall under the curve vs the total number of points. For example, if 40% of the points are under the curve and the area of the bounding box is 1, then the area under the curve is approximately 0.4. As you tend towards infinite points you can achieve any arbitrary precision. In practice, a few thousand points will give you a fairly accurate result.</p>
 <p>You can use this technique to numerically integrate a function of any arbitrary difficulty. this includes non-integrable and noncontinuous functions. This technique was invented by Stanley Ulam at Los Alamos National Laboratory to allow him to perform computations for nuclear reactions which were unsolvable on paper.</p>
@@ -880,12 +880,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

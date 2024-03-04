@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-title','listing-subtitle','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-author"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -181,7 +181,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -300,9 +300,20 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1707845433303" data-listing-filename-sort="11.qmd">
+<tr data-index="0" data-listing-date-sort="1707865200000" data-listing-file-modified-sort="1708543052000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1443" data-listing-title-sort="Deep Learning" data-listing-filename-sort="09b-DL-generative.qmd">
 <td>
-<a href="../slides/week-08/11.html" class="title listing-title">&nbsp;</a>
+<a href="../slides/week-09/09b-DL-generative.html" class="title listing-title">Deep Learning</a>
+</td>
+<td>
+<span class="listing-subtitle">Diffusion models</span>
+</td>
+<td>
+<span class="listing-date">Wed, Feb 14</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1707845447000" data-listing-filename-sort="12.qmd">
+<td>
+<a href="../slides/week-09/12.html" class="title listing-title">&nbsp;</a>
 </td>
 <td>
 <span class="listing-subtitle">&nbsp;</span>
@@ -336,7 +347,7 @@ Due
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="Lab" data-listing-date-sort="1706850000000" data-listing-file-modified-sort="1706724213000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="3DVar" data-listing-filename-sort="w4-lab02-3DVar.qmd">
+<tr data-index="0" data-categories="Lab" data-listing-date-sort="1706828400000" data-listing-file-modified-sort="1706724213000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="3DVar" data-listing-filename-sort="w4-lab02-3DVar.qmd">
 <td>
 <span class="listing-categories">Lab</span>
 </td>
@@ -533,12 +544,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

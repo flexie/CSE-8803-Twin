@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -158,7 +158,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -877,25 +877,9 @@ in the measurement</code></pre>
 <p>You will be hard pressed to find a Bayesian filter algorithm that does not fit into this form. Some filters will not include some aspects, such as error in the prediction, and others will have very complicated methods of computation, but this is what they all do.</p>
 <p>The equations for the univariate Kalman filter are:</p>
 <p><u>Predict</u></p>
-<p><span class="math inline">\(\begin{array}{|l|l|l|}
-\hline
-\text{Equation} &amp; \text{Implementation} &amp; \text{Kalman Form}\\
-\hline
-\bar x = x + f_x &amp; \bar\mu = \mu + \mu_{f_x} &amp; \bar x = x + dx\\
-&amp; \bar\sigma^2 = \sigma^2 + \sigma_{f_x}^2 &amp; \bar P = P + Q\\
-\hline
-\end{array}\)</span></p>
+<p><span class="math inline">\(\begin{array}{|l|l|l|} \hline \text{Equation} &amp; \text{Implementation} &amp; \text{Kalman Form}\\ \hline  \bar x = x + f_x &amp; \bar\mu = \mu + \mu_{f_x} &amp; \bar x = x + dx\\ &amp; \bar\sigma^2 = \sigma^2 + \sigma_{f_x}^2 &amp; \bar P = P + Q\\ \hline \end{array}\)</span></p>
 <p><u>Update</u></p>
-<p><span class="math inline">\(\begin{array}{|l|l|l|}
-\hline
-\text{Equation} &amp; \text{Implementation}&amp; \text{Kalman Form}\\
-\hline
-x = \| \mathcal L\bar x\| &amp; y = z - \bar\mu &amp; y = z - \bar x\\
-&amp; K = \frac {\bar\sigma^2} {\bar\sigma^2 + \sigma_z^2} &amp; K = \frac {\bar P}{\bar P+R}\\
-&amp; \mu = \bar \mu + Ky &amp; x = \bar x + Ky\\
-&amp; \sigma^2 = \frac {\bar\sigma^2 \sigma_z^2} {\bar\sigma^2 + \sigma_z^2} &amp; P = (1-K)\bar P\\
-\hline
-\end{array}\)</span></p>
+<p><span class="math inline">\(\begin{array}{|l|l|l|} \hline \text{Equation} &amp; \text{Implementation}&amp; \text{Kalman Form}\\ \hline  x = \| \mathcal L\bar x\| &amp; y = z - \bar\mu &amp; y = z - \bar x\\  &amp; K = \frac {\bar\sigma^2} {\bar\sigma^2 + \sigma_z^2} &amp; K = \frac {\bar P}{\bar P+R}\\  &amp; \mu = \bar \mu + Ky &amp; x = \bar x + Ky\\  &amp; \sigma^2 = \frac {\bar\sigma^2 \sigma_z^2} {\bar\sigma^2 + \sigma_z^2} &amp; P = (1-K)\bar P\\ \hline \end{array}\)</span></p>
 </section>
 <section id="comparison-with-g-h-and-discrete-bayes-filters" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-with-g-h-and-discrete-bayes-filters">Comparison with g-h and discrete Bayes Filters</h2>
@@ -1365,12 +1349,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

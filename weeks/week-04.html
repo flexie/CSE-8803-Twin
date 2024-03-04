@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -181,7 +181,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -300,7 +300,7 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1706504400000" data-listing-file-modified-sort="1706723335000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3494" data-listing-title-sort="Variational Data Assimilation" data-listing-filename-sort="05-variational.qmd">
+<tr data-index="0" data-listing-date-sort="1706482800000" data-listing-file-modified-sort="1706723335000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3494" data-listing-title-sort="Variational Data Assimilation" data-listing-filename-sort="05-variational.qmd">
 <td>
 <a href="../slides/week-04/05-variational.html" class="title listing-title">Variational Data Assimilation</a>
 </td>
@@ -311,7 +311,7 @@ Date
 <span class="listing-date">Mon, Jan 29</span>
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1706677200000" data-listing-file-modified-sort="1707153889000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2484" data-listing-title-sort="Statistical Inverse Problems" data-listing-filename-sort="06-Bayes-Inference.qmd">
+<tr data-index="1" data-listing-date-sort="1706655600000" data-listing-file-modified-sort="1707153889000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2484" data-listing-title-sort="Statistical Inverse Problems" data-listing-filename-sort="06-Bayes-Inference.qmd">
 <td>
 <a href="../slides/week-04/06-Bayes-Inference.html" class="title listing-title">Statistical Inverse Problems</a>
 </td>
@@ -347,7 +347,7 @@ Due
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="Lab" data-listing-date-sort="1706850000000" data-listing-file-modified-sort="1706724213000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="3DVar" data-listing-filename-sort="w4-lab02-3DVar.qmd">
+<tr data-index="0" data-categories="Lab" data-listing-date-sort="1706828400000" data-listing-file-modified-sort="1706724213000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="3DVar" data-listing-filename-sort="w4-lab02-3DVar.qmd">
 <td>
 <span class="listing-categories">Lab</span>
 </td>
@@ -553,12 +553,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

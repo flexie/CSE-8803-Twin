@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-title','listing-subtitle','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-author"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -181,7 +181,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -303,7 +303,29 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1707845433303" data-listing-filename-sort="11.qmd">
+<tr data-index="0" data-listing-date-sort="1709506800000" data-listing-file-modified-sort="1709569245878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Conditional Normalizing Flows I" data-listing-filename-sort="09-NF.qmd">
+<td>
+<a href="../slides/week-08/09-NF.html" class="title listing-title">Conditional Normalizing Flows I</a>
+</td>
+<td>
+<span class="listing-subtitle">Neural Density Estimation</span>
+</td>
+<td>
+<span class="listing-date">Mon, Mar 04</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1709679600000" data-listing-file-modified-sort="1709570400559" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Conditional Normalizing Flows II" data-listing-filename-sort="10-NF.qmd">
+<td>
+<a href="../slides/week-08/10-NF.html" class="title listing-title">Conditional Normalizing Flows II</a>
+</td>
+<td>
+<span class="listing-subtitle">Neural Density Estimation</span>
+</td>
+<td>
+<span class="listing-date">Wed, Mar 06</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1707845433000" data-listing-filename-sort="11.qmd">
 <td>
 <a href="../slides/week-08/11.html" class="title listing-title">&nbsp;</a>
 </td>
@@ -339,7 +361,7 @@ Due
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="Lab" data-listing-date-sort="1709269200000" data-listing-file-modified-sort="1708570392058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="15" data-listing-title-sort="Normalizing flow" data-listing-filename-sort="w8-lab-normalizing-flow.qmd">
+<tr data-index="0" data-categories="Lab" data-listing-date-sort="1709247600000" data-listing-file-modified-sort="1708570392000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="15" data-listing-title-sort="Normalizing flow" data-listing-filename-sort="w8-lab-normalizing-flow.qmd">
 <td>
 <span class="listing-categories">Lab</span>
 </td>
@@ -543,12 +565,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

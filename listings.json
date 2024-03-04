@@ -41,13 +41,16 @@
   {
     "listing": "/weeks/week-09.html",
     "items": [
-      "/slides/week-08/11.html",
+      "/slides/week-09/09b-DL-generative.html",
+      "/slides/week-09/12.html",
       "/labs/w4-lab02-3DVar.html"
     ]
   },
   {
     "listing": "/weeks/week-08.html",
     "items": [
+      "/slides/week-08/09-NF.html",
+      "/slides/week-08/10-NF.html",
       "/slides/week-08/11.html",
       "/labs/w8-lab-normalizing-flow.html"
     ]
@@ -63,10 +66,7 @@
   {
     "listing": "/weeks/week-07.html",
     "items": [
-      "/slides/week-07/09-NF.html",
       "/slides/week-07/09a-DL-uncertainty.html",
-      "/slides/week-07/09b-DL-generative.html",
-      "/slides/week-07/10-NF.html",
       "/labs/w7-lab-particle.html"
     ]
   },

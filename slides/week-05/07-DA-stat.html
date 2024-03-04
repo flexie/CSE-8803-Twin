@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.528">
 
   <meta name="dcterms.date" content="2024-02-07">
   <title>Digital Twins for Physical Systems - Statistical Data Assimilation</title>
@@ -698,7 +698,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <h2>Principle of the EnKF</h2>
 <p>The EnKF was originally proposed by G. Evensen in 1994 and amended in <span class="citation" data-cites="evensen2009data">Evensen et al. (<a href="#/references" role="doc-biblioref" onclick="">2009</a>)</span>.</p>
 <div id="def-EnKF" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> The ensemble Kalman filter (EnKF) is a Kalman filter that uses an ensemble of realizations to compute estimates of the population mean and covariance.</p>
+<p><span class="theorem-title"><strong>Definition 1 </strong></span>The ensemble Kalman filter (EnKF) is a Kalman filter that uses an ensemble of realizations to compute estimates of the population mean and covariance.</p>
 </div>
 <p>Since it is based on <span style="color: magenta">Gaussian</span> statistics (mean and covariance) it does not solve the Bayesian filtering problem in the limit of a large number of particles, as opposed to the more general <em>particle filter</em>, which will be discussed later. Nonetheless, it turns out to be an excellent <span style="color: magenta">approximate</span> algorithm for the filtering problem.</p>
 <p>As in the particle filter, the EnKF is based on the concept of particles, a collection of state vectors, which are called the members of the <span style="color: magenta">ensemble</span>.</p>
@@ -1227,16 +1227,16 @@ Särkkä, Simo, and Lennart Svensson. 2023. <em>Bayesian Filtering and Smoothing
 </div>
 </div>
 
-<div class="quarto-auto-generated-content">
+
+</section>
+
+
+    <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
 </div>
-</div>
-</section>
-
-
-    </div>
+</div></div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>

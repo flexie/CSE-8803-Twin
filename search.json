@@ -867,7 +867,7 @@
     "href": "slides/week-02/02-basics.html#references",
     "title": "Basics",
     "section": "References",
-    "text": "References\n\nK. Law, A. Stuart, K. Zygalakis. Data Assimilation. A Mathematical Introduction. Springer, 2015.\nG. Evensen. Data assimilation, The Ensemble Kalman Filter, 2nd ed., Springer, 2009.\nA. Tarantola. Inverse problem theory and methods for model parameter estimation. SIAM. 2005.\nO. Talagrand. Assimilation of observations, an introduction. J. Meteorological Soc. Japan, 75, 191, 1997.\nF.X. Le Dimet, O. Talagrand. Variational algorithms for analysis and assimilation of meteorological observations: theoretical aspects. Tellus, 38(2), 97, 1986.\nJ.-L. Lions. Exact controllability, stabilization and perturbations for distributed systems. SIAM Rev., 30(1):1, 1988.\nJ. Nocedal, S.J. Wright. Numerical Optimization. Springer, 2006.\nF. Tröltzsch. Optimal Control of Partial Differential Equations. AMS, 2010.\n\n\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM.\n\n\n\n\n\n\n🔗 https://flexie.github.io/CSE-8803-Twin/"
+    "text": "References\n\nK. Law, A. Stuart, K. Zygalakis. Data Assimilation. A Mathematical Introduction. Springer, 2015.\nG. Evensen. Data assimilation, The Ensemble Kalman Filter, 2nd ed., Springer, 2009.\nA. Tarantola. Inverse problem theory and methods for model parameter estimation. SIAM. 2005.\nO. Talagrand. Assimilation of observations, an introduction. J. Meteorological Soc. Japan, 75, 191, 1997.\nF.X. Le Dimet, O. Talagrand. Variational algorithms for analysis and assimilation of meteorological observations: theoretical aspects. Tellus, 38(2), 97, 1986.\nJ.-L. Lions. Exact controllability, stabilization and perturbations for distributed systems. SIAM Rev., 30(1):1, 1988.\nJ. Nocedal, S.J. Wright. Numerical Optimization. Springer, 2006.\nF. Tröltzsch. Optimal Control of Partial Differential Equations. AMS, 2010.\n\n\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM."
   },
   {
     "objectID": "slides/week-05/07-DA-stat.html#statistical-da-introduction",
@@ -1311,228 +1311,11 @@
     "text": "Open-source software\nVarious open-source repositories and codes are available for both academic and operational data assimilation.\n\nDARC: https://research.reading.ac.uk/met-darc/ from Reading, UK.\nDAPPER: https://github.com/nansencenter/DAPPER from Nansen, Norway.\nDART: https://dart.ucar.edu/ from NCAR, US, specialized in ensemble DA.\nOpenDA: https://www.openda.org/.\nVerdandi: http://verdandi.sourceforge.net/ from INRIA, France.\nPyDA: https://github.com/Shady-Ahmed/PyDA, a Python implementation for academic use.\nFilterpy: https://github.com/rlabbe/filterpy, dedicated to KF variants.\nEnKF; https://enkf.nersc.no/, the original Ensemble KF from Geir Evensen."
   },
   {
-    "objectID": "slides/week-07/09b-DL-generative.html#credits",
-    "href": "slides/week-07/09b-DL-generative.html#credits",
-    "title": "Deep Learning",
-    "section": "Credits",
-    "text": "Credits\nSlides are adapted from lectures developed by Gilles Louppe at University of Liege, Belgium under the BSD 3-Clause License\n\nlectures 10, 11, and 12 of INFO8010 - Deep Learning\nand of lecture materials of SSI 2023"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#generative-models",
-    "href": "slides/week-07/09b-DL-generative.html#generative-models",
-    "title": "Deep Learning",
-    "section": "Generative models",
-    "text": "Generative models\nA (deep) generative model is a probabilistic model \\(p_\\theta\\) that can be used as a simulator of the data.\nFormally, a generative model defines a probability distribution \\(p_\\theta(\\mathbf{x})\\) over the data \\(\\mathbf{x} \\in \\mathcal{X}\\), parameterized by \\(\\theta\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section",
-    "href": "slides/week-07/09b-DL-generative.html#section",
-    "title": "Deep Learning",
+    "objectID": "slides/week-09/12.html",
+    "href": "slides/week-09/12.html",
+    "title": "Digital Twins for Physical Systems",
     "section": "",
-    "text": "Credits: Karsten et al, 2022; Siddharth Mishra-Sharma, 2023."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-1",
-    "href": "slides/week-07/09b-DL-generative.html#section-1",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Disentangled latent space: Manipulating each dimension of \\(z\\) should correspond to changing an interpretable property of the data. For example, in a model of language, it might change the topic, tense, or verbosity.\nEfficient likelihood computation: If the model is probabilistic, we would like to be able to calculate the probability of new examples"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#latent-variable-model",
-    "href": "slides/week-07/09b-DL-generative.html#latent-variable-model",
-    "title": "Deep Learning",
-    "section": "Latent variable model",
-    "text": "Latent variable model\n\n\n\n\n\n\n\nConsider for now a prescribed latent variable model that relates a set of observable variables \\(\\mathbf{x} \\in \\mathcal{X}\\) to a set of unobserved variables \\(\\mathbf{z} \\in \\mathcal{Z}\\).\nThe probabilistic model defines a joint probability distribution \\(p_\\theta(\\mathbf{x}, \\mathbf{z})\\), which decomposes as \\[p_\\theta(\\mathbf{x}, \\mathbf{z}) = p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z}).\\]"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-2",
-    "href": "slides/week-07/09b-DL-generative.html#section-2",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Video\n\n\nIf we interpret \\(\\mathbf{z}\\) as causal factors for the high-dimension representations \\(\\mathbf{x}\\), then sampling from \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) can be interpreted as a stochastic generating process from \\(\\mathcal{Z}\\) to \\(\\mathcal{X}\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#hot-to-fit",
-    "href": "slides/week-07/09b-DL-generative.html#hot-to-fit",
-    "title": "Deep Learning",
-    "section": "Hot to fit?",
-    "text": "Hot to fit?\n\\[\\begin{aligned}\n\\theta^{*} &= \\arg \\max_\\theta p_\\theta(\\mathbf{x}) \\\\\\\\\n&= \\arg \\max_\\theta \\int p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z}) d\\mathbf{z}\\\\\\\\\n&= \\arg \\max_\\theta \\mathbb{E}_{p(\\mathbf{z})}\\left[ p_\\theta(\\mathbf{x}|\\mathbf{z}) \\right] d\\mathbf{z}\\\\\\\\\n&\\approx \\arg \\max_\\theta \\frac{1}{N} \\sum_{i=1}^N p_\\theta(\\mathbf{x}|\\mathbf{z}_i)\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nThe curse of dimensionality will lead to poor estimates of the expectation."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-4",
-    "href": "slides/week-07/09b-DL-generative.html#section-4",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "We will directly learn a stochastic generating process \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) with a neural network.\nWe will also amortize the inference process by learning a second neural network \\(q_\\phi(\\mathbf{z}|\\mathbf{x})\\) approximating the posterior, conditionally on the observed data \\(\\mathbf{x}\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-5",
-    "href": "slides/week-07/09b-DL-generative.html#section-5",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "A variational auto-encoder is a deep latent variable model where:\n\nThe prior \\(p(\\mathbf{z})\\) is prescribed, and usually chosen to be Gaussian.\nThe density \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) is parameterized with a generative network \\(\\text{NN}_\\theta\\) (or decoder) that takes as input \\(\\mathbf{z}\\) and outputs parameters to the data distribution. E.g., \\[\\begin{aligned}\n\\mu, \\sigma^2 &= \\text{NN}_\\theta(\\mathbf{z}) \\\\\\\\\np_\\theta(\\mathbf{x}|\\mathbf{z}) &= \\mathcal{N}(\\mathbf{x}; \\mu, \\sigma^2\\mathbf{I})\n\\end{aligned}\\]\nThe approximate posterior \\(q_\\phi(\\mathbf{z}|\\mathbf{x})\\) is parameterized with an inference network \\(\\text{NN}_\\phi\\) (or encoder) that takes as input \\(\\mathbf{x}\\) and outputs parameters to the approximate posterior. E.g., \\[\\begin{aligned}\n\\mu, \\sigma^2 &= \\text{NN}_\\phi(\\mathbf{x}) \\\\\\\\\nq_\\phi(\\mathbf{z}|\\mathbf{x}) &= \\mathcal{N}(\\mathbf{z}; \\mu, \\sigma^2\\mathbf{I})\n\\end{aligned}\\]"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#variational-auto-encoders",
-    "href": "slides/week-07/09b-DL-generative.html#variational-auto-encoders",
-    "title": "Deep Learning",
-    "section": "Variational auto-encoders",
-    "text": "Variational auto-encoders"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-6",
-    "href": "slides/week-07/09b-DL-generative.html#section-6",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "We can use variational inference to jointly optimize the generative and the inference networks parameters \\(\\theta\\) and \\(\\phi\\):\n\\[\\begin{aligned}\n\\theta^{*}, \\phi^{*} &= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})} \\left[ \\text{ELBO}(\\mathbf{x};\\theta,\\phi) \\right] \\\\\\\\\n&= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})}\\left[ \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})} [ \\log \\frac{p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z})}{q_\\phi(\\mathbf{z}|\\mathbf{x})} ] \\right] \\\\\\\\\n&= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})}\\left[ \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})}\\left[ \\log p_\\theta(\\mathbf{x}|\\mathbf{z})\\right] - \\text{KL}(q_\\phi(\\mathbf{z}|\\mathbf{x}) || p(\\mathbf{z})) \\right].\n\\end{aligned}\\]\n\nGiven some generative network \\(\\theta\\), we want to put the mass of the latent variables, by adjusting \\(\\phi\\), such that they explain the observed data, while remaining close to the prior.\nGiven some inference network \\(\\phi\\), we want to put the mass of the observed variables, by adjusting \\(\\theta\\), such that they are well explained by the latent variables."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#pseudo-code",
-    "href": "slides/week-07/09b-DL-generative.html#pseudo-code",
-    "title": "Deep Learning",
-    "section": "Pseudo code",
-    "text": "Pseudo code"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-7",
-    "href": "slides/week-07/09b-DL-generative.html#section-7",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Credits: Kreis et al, 2022."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-8",
-    "href": "slides/week-07/09b-DL-generative.html#section-8",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Credits: Kreis et al, 2022.With \\(\\epsilon \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\\), we have \\[\\begin{aligned}\n\\mathbf{x}_t &= \\sqrt{ {\\alpha}_t} \\mathbf{x}_{t-1} + \\sqrt{1-{\\alpha}_t} \\epsilon \\\\\\\\\nq(\\mathbf{x}_t | \\mathbf{x}_{t-1}) &= \\mathcal{N}(\\mathbf{x}_t ; \\sqrt{\\alpha_t} \\mathbf{x}_{t-1}, (1-\\alpha_t)\\mathbf{I}) \\\\\\\\\nq(\\mathbf{x}_{1:T} | \\mathbf{x}_{0}) &=  \\prod_{t=1}^T q(\\mathbf{x}_t | \\mathbf{x}_{t-1})\n\\end{aligned}\\]\nsampling from \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) can be interpreted as a stochastic generating process from \\(\\mathcal{Z}\\) to \\(\\mathcal{X}\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-9",
-    "href": "slides/week-07/09b-DL-generative.html#section-9",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Credits: Simon J.D. Prince, 2023."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-10",
-    "href": "slides/week-07/09b-DL-generative.html#section-10",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Credits: Kreis et al, 2022.\n\n\n\n\\[\\begin{aligned}\np(\\mathbf{x}_{0:T}) &= p(\\mathbf{x}_T) \\prod_{t=1}^T p_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t)\\\\\\\\\np(\\mathbf{x}_T) &= \\mathcal{N}(\\mathbf{x}_T; \\mathbf{0}, I) \\\\\\\\\np_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t) &= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_\\theta(\\mathbf{x}_t, t), \\sigma^2_\\theta(\\mathbf{x}_t, t)\\mathbf{I}) \\\\\\\\\n\\mathbf{x}_{t-1} &= \\mu_\\theta(\\mathbf{x}_t, t) + \\sigma_\\theta(\\mathbf{x}_t, t) \\mathbf{z}\n\\end{aligned}\\] with \\(\\mathbf{z} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#markovian-hierarchical-vaes",
-    "href": "slides/week-07/09b-DL-generative.html#markovian-hierarchical-vaes",
-    "title": "Deep Learning",
-    "section": "Markovian Hierarchical VAEs",
-    "text": "Markovian Hierarchical VAEs"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-11",
-    "href": "slides/week-07/09b-DL-generative.html#section-11",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Similarly to VAEs, training is done by maximizing the ELBO, using a variational distribution \\(q_\\phi(\\mathbf{z}_{1:T} | \\mathbf{x})\\) over all levels of latent variables: \\[\\begin{aligned}\n\\log p_\\theta(\\mathbf{x}) &\\geq \\mathbb{E}_{q_\\phi(\\mathbf{z}_{1:T} | \\mathbf{x})}\\left[ \\log \\frac{p(\\mathbf{x},\\mathbf{z}_{1:T})}{q_\\phi(\\mathbf{z}_{1:T}|\\mathbf{x})} \\right]\n\\end{aligned}\\]"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-12",
-    "href": "slides/week-07/09b-DL-generative.html#section-12",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Diffusion models are Markovian HVAEs with the following constraints:\n\nThe latent dimension is the same as the data dimension.\nThe encoder is fixed to linear Gaussian transitions \\(q(\\mathbf{x}_t | \\mathbf{x}_{t-1})\\).\nThe hyper-parameters are set such that \\(q(\\mathbf{x}_T | \\mathbf{x}_0)\\) is a standard Gaussian."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#training",
-    "href": "slides/week-07/09b-DL-generative.html#training",
-    "title": "Deep Learning",
-    "section": "Training",
-    "text": "Training\nFor learning the parameters \\(\\theta\\) of the reverse process, we can form a variational lower bound on the log-likelihood of the data as\n\\[\\mathbb{E}_{q(\\mathbf{x}_0)}\\left[ \\log p_\\theta(\\mathbf{x}_0) \\right] \\geq \\mathbb{E}_{q(\\mathbf{x}_0)q(\\mathbf{x}_{1:T}|\\mathbf{x}_0)}\\left[ \\log \\frac{p_\\theta(\\mathbf{x}_{0:T})}{q(\\mathbf{x}_{1:T} | \\mathbf{x}_0)} \\right] := L\\]\nThis objective can be rewritten as \\[\\begin{aligned}\nL &= \\mathbb{E}_{q(\\mathbf{x}_0)q(\\mathbf{x}_{1:T}|\\mathbf{x}_0)}\\left[ \\log \\frac{p_\\theta(\\mathbf{x}_{0:T})}{q(\\mathbf{x}_{1:T} | \\mathbf{x}_0)} \\right] \\\\\\\\\n&= \\mathbb{E}_{q(\\mathbf{x}_0)} \\left[L_0 - \\sum_{t&gt;1} L_{t-1} - L_T\\right]\n\\end{aligned}\\] where"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-13",
-    "href": "slides/week-07/09b-DL-generative.html#section-13",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "\\(L_0 = \\mathbb{E}_{q(\\mathbf{x}_1 | \\mathbf{x}_0)}[\\log p_\\theta(\\mathbf{x}_0 | \\mathbf{x}_1)]\\) can be interpreted as a reconstruction term. It can be approximated and optimized using a Monte Carlo estimate.\n\\(L_{t-1} = \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)}\\text{KL}(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0) || p_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t) )\\) is a denoising matching term. The transition \\(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0)\\) provides a learning signal for the reverse process, since it defines how to denoise the noisified input \\(\\mathbf{x}_t\\) with access to the original input \\(\\mathbf{x}_0\\).\n\\(L_T = \\text{KL}(q(\\mathbf{x}_T | \\mathbf{x}_0) || p_\\theta(\\mathbf{x}_T))\\) represents how close the distribution of the final noisified input is to the standard Gaussian. It has no trainable parameters."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-14",
-    "href": "slides/week-07/09b-DL-generative.html#section-14",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\frac{1}{2\\sigma^2_t} \\frac{\\bar{\\alpha}_{t-1}(1-\\alpha_t)^2}{(1-\\bar{\\alpha}_t)^2} || \\hat{\\mathbf{x}}_\\theta(\\mathbf{x}_t, t) - \\mathbf{x}_0 ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 1: Denoising. Training a diffusion model amounts to learning a neural network that predicts the original ground truth \\(\\mathbf{x}_0\\) from a noisy input \\(\\mathbf{x}_t\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-15",
-    "href": "slides/week-07/09b-DL-generative.html#section-15",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{\\mathcal{N}(\\epsilon;\\mathbf{0}, I)} \\frac{1}{2\\sigma^2_t} \\frac{(1-\\alpha_t)^2}{(1-\\bar{\\alpha}_t) \\alpha_t} || {\\epsilon}_\\theta(\\underbrace{\\sqrt{\\bar{\\alpha}_t} \\mathbf{x}_{0} + \\sqrt{1-\\bar{\\alpha}_t} \\epsilon}_{\\mathbf{x}_t}, t) - \\epsilon ||_2^2 \\\\\\\\\n\\approx& \\arg \\min_\\theta \\mathbb{E}_{\\mathcal{N}(\\epsilon;\\mathbf{0}, I)} || {\\epsilon}_\\theta(\\underbrace{\\sqrt{\\bar{\\alpha}_t} \\mathbf{x}_{0} + \\sqrt{1-\\bar{\\alpha}_t} \\epsilon}_{\\mathbf{x}_t}, t) - \\epsilon ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 2: Noise prediction. Training a diffusion model amounts to learning a neural network that predicts the noise \\(\\epsilon\\) that was added to the original ground truth \\(\\mathbf{x}_0\\) to obtain the noisy \\(\\mathbf{x}_t\\)."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-16",
-    "href": "slides/week-07/09b-DL-generative.html#section-16",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\frac{1}{2\\sigma^2_t} \\frac{(1-\\alpha_t)^2}{\\alpha_t} || s_\\theta(\\mathbf{x}_t, t) - \\nabla_{\\mathbf{x}_t}  \\log q(\\mathbf{x}_t | \\mathbf{x}_0) ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 3: Denoising score matching. Training a diffusion model amounts to learning a neural network that predicts the score \\(\\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t | \\mathbf{x}_0)\\) of the tractable posterior.\nThe distribution \\(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0)\\) is the tractable posterior distribution \\[\\begin{aligned}\nq(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0) &= \\frac{q(\\mathbf{x}_t | \\mathbf{x}_{t-1}, \\mathbf{x}_0) q(\\mathbf{x}_{t-1} | \\mathbf{x}_0)}{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\\\\\\\\n&= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t), \\sigma^2_t I)\n\\end{aligned}\\] where \\[\n\\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t) = \\frac{\\sqrt{\\alpha_t}(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\\mathbf{x}_t + \\frac{\\sqrt{\\bar{\\alpha}_{t-1}}(1-\\alpha_t)}{1-\\bar{\\alpha}_t}\\mathbf{x}_0  \\qquad\\text{and} \\qquad\n\\sigma^2_t = \\frac{(1-\\alpha_t)(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\n\\]"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#network-architectures",
-    "href": "slides/week-07/09b-DL-generative.html#network-architectures",
-    "title": "Deep Learning",
-    "section": "Network architectures",
-    "text": "Network architectures\nDiffusion models often use U-Net architectures with ResNet blocks and self-attention layers to represent \\(\\hat{\\mathbf{x}}_\\theta(\\mathbf{x}_t, t)\\), \\(\\epsilon_\\theta(\\mathbf{x}_t, t)\\) or \\(s_\\theta(\\mathbf{x}_t, t)\\).\n\nCredits: Kreis et al, 2022."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#continuous-time-diffusion-models",
-    "href": "slides/week-07/09b-DL-generative.html#continuous-time-diffusion-models",
-    "title": "Deep Learning",
-    "section": "Continuous-time diffusion models",
-    "text": "Continuous-time diffusion models\n\nCredits: Kreis et al, 2022.With \\(\\beta_t = 1 - \\alpha_t\\), we can rewrite the forward process as \\[\\begin{aligned}\n\\mathbf{x}_t &= \\sqrt{ {\\alpha}_t} \\mathbf{x}_{t-1} + \\sqrt{1-{\\alpha}_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I}) \\\\\\\\\n&= \\sqrt{1 - {\\beta}_t} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I}) \\\\\\\\\n&= \\sqrt{1 - {\\beta}(t)\\Delta_t} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}(t)\\Delta_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\n\\end{aligned}\\]"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-17",
-    "href": "slides/week-07/09b-DL-generative.html#section-17",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Credits: Song, 2021.\n\n\n\nWhen \\(\\Delta_t \\rightarrow 0\\), we can further rewrite the forward process as \\[\n\\mathbf{x}_t = \\sqrt{1 - {\\beta}(t)\\Delta_t} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}(t)\\Delta_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\\approx \\mathbf{x}_{t-1} - \\frac{\\beta(t)\\Delta_t}{2} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}(t)\\Delta_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\n.\\]\nThis last update rule corresponds to the Euler-Maruyama discretization of the stochastic differential equation (SDE) \\[\\text{d}\\mathbf{x}_t = -\\frac{1}{2}\\beta(t)\\mathbf{x}_t \\text{d}t + \\sqrt{\\beta(t)} \\text{d}\\mathbf{w}_t\\] describing the diffusion in the infinitesimal limit."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-18",
-    "href": "slides/week-07/09b-DL-generative.html#section-18",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "The reverse process satisfies a reverse-time SDE that can be derived analytically from the forward-time SDE and the score of the marginal distribution \\(q(\\mathbf{x}_t)\\), as \\[\\text{d}\\mathbf{x}_t = \\left[ -\\frac{1}{2}\\beta(t)\\mathbf{x}_t - \\beta(t)\\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t) \\right] \\text{d}t + \\sqrt{\\beta(t)} \\text{d}\\mathbf{w}_t.\\]\n\n\n\n\nCredits: Song, 2021."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#training-sampling-diffusion-models",
-    "href": "slides/week-07/09b-DL-generative.html#training-sampling-diffusion-models",
-    "title": "Deep Learning",
-    "section": "Training & sampling diffusion models",
-    "text": "Training & sampling diffusion models\n\nCredit: Ho et. al., 2020"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#continuous-time-normalizing-flows",
-    "href": "slides/week-07/09b-DL-generative.html#continuous-time-normalizing-flows",
-    "title": "Deep Learning",
-    "section": "Continuous-time normalizing flows",
-    "text": "Continuous-time normalizing flows\n\n\nReplace the discrete sequence of transformations with a neural ODE with reversible dynamics such that \\[\\begin{aligned}\n&\\mathbf{z}_0 \\sim p(\\mathbf{z})\\\\\\\\\n&\\frac{d\\mathbf{z}(t)}{dt} = f(\\mathbf{z}(t), t, \\theta)\\\\\\\\\n&\\mathbf{x} = \\mathbf{z}(1) = \\mathbf{z}_0 + \\int_0^1 f(\\mathbf{z}(t), t) dt.\n\\end{aligned}\\]\n\n\n\nVideo\nImage credits: Grathwohl et al, 2018\n\n\n\n\nThe instantaneous change of variable yields \\[\\log p(\\mathbf{x}) = \\log p(\\mathbf{z}(0)) - \\int_0^1 \\text{Tr} \\left( \\frac{\\partial f(\\mathbf{z}(t), t, \\theta)}{\\partial \\mathbf{z}(t)} \\right) dt.\\]"
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#probability-flow-ode",
-    "href": "slides/week-07/09b-DL-generative.html#probability-flow-ode",
-    "title": "Deep Learning",
-    "section": "Probability flow ODE",
-    "text": "Probability flow ODE\nBack to diffusion: For any diffusion process, there exists a corresponding deterministic process \\[\\text{d}\\mathbf{x}_t = \\left[ \\mathbf{f}(t, \\mathbf{x}_t) - \\frac{1}{2} g^2(t) \\nabla_{\\mathbf{x}_t} \\log p(\\mathbf{x}_t) \\right] \\text{d}t\\] whose trajectories share the same marginal densities \\(p(\\mathbf{x}_t)\\).\nTherefore, when \\(\\nabla_{\\mathbf{x}_t} \\log p(\\mathbf{x}_t)\\) is replaced by its approximation \\(s_\\theta(\\mathbf{x}_t, t)\\), the probability flow ODE becomes a special case of a neural ODE. In particular, it is an example of continuous-time normalizing flows!\n\nCredits: Song, 2021."
-  },
-  {
-    "objectID": "slides/week-07/09b-DL-generative.html#section-19",
-    "href": "slides/week-07/09b-DL-generative.html#section-19",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "🔗 https://flexie.github.io/CSE-8803-Twin/\n\n\n\n\nPrince, Simon J. D. 2023. Understanding Deep Learning. MIT Press. http://udlbook.com."
+    "text": "ReuseCC BY 4.0"
   },
   {
     "objectID": "slides/week-06/08-DA-Bayes.html#bayesian-filters",
@@ -2022,7 +1805,7 @@
     "href": "slides/week-01/01-intro.html#references",
     "title": "Welcome to Digital Twins for Physical Systems",
     "section": "References",
-    "text": "References\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM.\n\n\nAsch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. Data Assimilation: Methods, Algorithms, and Applications. SIAM.\n\n\nNational Academies of Sciences, Engineering, Medicine, et al. 2023. “Foundational Research Gaps and Future Directions for Digital Twins.”\n\n\nTatsis, Konstantinos E, Vasilis K Dertimanis, and Eleni N Chatzi. 2022. “Sequential Bayesian Inference for Uncertain Nonlinear Dynamic Systems: A Tutorial.” arXiv Preprint arXiv:2201.08180.\n\n\nThelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michael D Todd, Sankaran Mahadevan, Chao Hu, and Zhen Hu. 2022. “A Comprehensive Review of Digital Twin—Part 1: Modeling and Twinning Enabling Technologies.” Structural and Multidisciplinary Optimization 65 (12): 354.\n\n\n———. 2023. “A Comprehensive Review of Digital Twin—Part 2: Roles of Uncertainty Quantification and Optimization, a Battery Digital Twin, and Perspectives.” Structural and Multidisciplinary Optimization 66 (1): 1.\n\n\n\n\n\n\n🔗 https://flexie.github.io/CSE-8803-Twin/"
+    "text": "References\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM.\n\n\nAsch, Mark, Marc Bocquet, and Maëlle Nodet. 2016. Data Assimilation: Methods, Algorithms, and Applications. SIAM.\n\n\nNational Academies of Sciences, Engineering, Medicine, et al. 2023. “Foundational Research Gaps and Future Directions for Digital Twins.”\n\n\nTatsis, Konstantinos E, Vasilis K Dertimanis, and Eleni N Chatzi. 2022. “Sequential Bayesian Inference for Uncertain Nonlinear Dynamic Systems: A Tutorial.” arXiv Preprint arXiv:2201.08180.\n\n\nThelen, Adam, Xiaoge Zhang, Olga Fink, Yan Lu, Sayan Ghosh, Byeng D Youn, Michael D Todd, Sankaran Mahadevan, Chao Hu, and Zhen Hu. 2022. “A Comprehensive Review of Digital Twin—Part 1: Modeling and Twinning Enabling Technologies.” Structural and Multidisciplinary Optimization 65 (12): 354.\n\n\n———. 2023. “A Comprehensive Review of Digital Twin—Part 2: Roles of Uncertainty Quantification and Optimization, a Battery Digital Twin, and Perspectives.” Structural and Multidisciplinary Optimization 66 (1): 1."
   },
   {
     "objectID": "index.html",
@@ -2127,7 +1910,7 @@
     "href": "weeks/week-09.html",
     "title": "Week 09",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins section 9.4.1—9.4.7\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nDeep Learning\n\n\nDiffusion models\n\n\nWed, Feb 14\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\n3DVar\n\n\nFri, Feb 02\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 9 — A toolbox for digital twins section 9.4.1—9.4.7\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "labs/w2-lab01-PyTorch.html",
@@ -2218,7 +2001,7 @@
     "href": "labs/05Examples/One-Dimensional-Kalman-Filters.html#full-description-of-the-algorithm",
     "title": "One Dimensional Kalman Filters",
     "section": "Full Description of the Algorithm",
-    "text": "Full Description of the Algorithm\nRecall the diagram we used for the g-h filter: \nWe’ve been doing the same thing in this chapter. The Kalman filter makes a prediction, takes a measurement, and then forms a new estimate somewhere between the two.\nThis is extremely important to understand: Every filter in this book implements the same algorithm, just with different mathematical details. The math can become challenging in later chapters, but the idea is easy to understand.\nIt is important to see past the details of the equations of a specific filter and understand what the equations are calculating and why. There are a tremendous number of filters. They all use different math to implement the same algorithm. The choice of math affects the quality of results and what problems can be represented, but not the underlying ideas.\nHere is the generic algorithm:\nInitialization\n1. Initialize the state of the filter\n2. Initialize our belief in the state\nPredict\n1. Use system behavior to predict state at the next time step\n2. Adjust belief to account for the uncertainty in prediction\nUpdate\n1. Get a measurement and associated belief about its accuracy\n2. Compute residual between estimated state and measurement\n3. Compute scaling factor based on whether the measurement\nor prediction is more accurate\n4. set state between the prediction and measurement based \non scaling factor\n5. update belief in the state based on how certain we are \nin the measurement\nYou will be hard pressed to find a Bayesian filter algorithm that does not fit into this form. Some filters will not include some aspects, such as error in the prediction, and others will have very complicated methods of computation, but this is what they all do.\nThe equations for the univariate Kalman filter are:\nPredict\n\\(\\begin{array}{|l|l|l|}\n\\hline\n\\text{Equation} & \\text{Implementation} & \\text{Kalman Form}\\\\\n\\hline\n\\bar x = x + f_x & \\bar\\mu = \\mu + \\mu_{f_x} & \\bar x = x + dx\\\\\n& \\bar\\sigma^2 = \\sigma^2 + \\sigma_{f_x}^2 & \\bar P = P + Q\\\\\n\\hline\n\\end{array}\\)\nUpdate\n\\(\\begin{array}{|l|l|l|}\n\\hline\n\\text{Equation} & \\text{Implementation}& \\text{Kalman Form}\\\\\n\\hline\nx = \\| \\mathcal L\\bar x\\| & y = z - \\bar\\mu & y = z - \\bar x\\\\\n& K = \\frac {\\bar\\sigma^2} {\\bar\\sigma^2 + \\sigma_z^2} & K = \\frac {\\bar P}{\\bar P+R}\\\\\n& \\mu = \\bar \\mu + Ky & x = \\bar x + Ky\\\\\n& \\sigma^2 = \\frac {\\bar\\sigma^2 \\sigma_z^2} {\\bar\\sigma^2 + \\sigma_z^2} & P = (1-K)\\bar P\\\\\n\\hline\n\\end{array}\\)"
+    "text": "Full Description of the Algorithm\nRecall the diagram we used for the g-h filter: \nWe’ve been doing the same thing in this chapter. The Kalman filter makes a prediction, takes a measurement, and then forms a new estimate somewhere between the two.\nThis is extremely important to understand: Every filter in this book implements the same algorithm, just with different mathematical details. The math can become challenging in later chapters, but the idea is easy to understand.\nIt is important to see past the details of the equations of a specific filter and understand what the equations are calculating and why. There are a tremendous number of filters. They all use different math to implement the same algorithm. The choice of math affects the quality of results and what problems can be represented, but not the underlying ideas.\nHere is the generic algorithm:\nInitialization\n1. Initialize the state of the filter\n2. Initialize our belief in the state\nPredict\n1. Use system behavior to predict state at the next time step\n2. Adjust belief to account for the uncertainty in prediction\nUpdate\n1. Get a measurement and associated belief about its accuracy\n2. Compute residual between estimated state and measurement\n3. Compute scaling factor based on whether the measurement\nor prediction is more accurate\n4. set state between the prediction and measurement based \non scaling factor\n5. update belief in the state based on how certain we are \nin the measurement\nYou will be hard pressed to find a Bayesian filter algorithm that does not fit into this form. Some filters will not include some aspects, such as error in the prediction, and others will have very complicated methods of computation, but this is what they all do.\nThe equations for the univariate Kalman filter are:\nPredict\n\\(\\begin{array}{|l|l|l|} \\hline \\text{Equation} & \\text{Implementation} & \\text{Kalman Form}\\\\ \\hline  \\bar x = x + f_x & \\bar\\mu = \\mu + \\mu_{f_x} & \\bar x = x + dx\\\\ & \\bar\\sigma^2 = \\sigma^2 + \\sigma_{f_x}^2 & \\bar P = P + Q\\\\ \\hline \\end{array}\\)\nUpdate\n\\(\\begin{array}{|l|l|l|} \\hline \\text{Equation} & \\text{Implementation}& \\text{Kalman Form}\\\\ \\hline  x = \\| \\mathcal L\\bar x\\| & y = z - \\bar\\mu & y = z - \\bar x\\\\  & K = \\frac {\\bar\\sigma^2} {\\bar\\sigma^2 + \\sigma_z^2} & K = \\frac {\\bar P}{\\bar P+R}\\\\  & \\mu = \\bar \\mu + Ky & x = \\bar x + Ky\\\\  & \\sigma^2 = \\frac {\\bar\\sigma^2 \\sigma_z^2} {\\bar\\sigma^2 + \\sigma_z^2} & P = (1-K)\\bar P\\\\ \\hline \\end{array}\\)"
   },
   {
     "objectID": "labs/05Examples/One-Dimensional-Kalman-Filters.html#comparison-with-g-h-and-discrete-bayes-filters",
@@ -2323,7 +2106,7 @@
     "href": "labs/07Examples/Particle-Filters.html#probability-distributions-via-monte-carlo",
     "title": "Particle Filters",
     "section": "Probability distributions via Monte Carlo",
-    "text": "Probability distributions via Monte Carlo\nSuppose we want to know the area under the curve \\(y= \\mathrm{e}^{\\sin(x)}\\) in the interval [0, \\(\\pi\\)]. The area is computed with the definite integral \\(\\int_0^\\pi  \\mathrm{e}^{\\sin(x)}\\, \\mathrm{d}x\\). As an exercise, go ahead and find the answer; I’ll wait.\nIf you are wise you did not take that challenge; \\(\\mathrm{e}^{\\sin(x)}\\) cannot be integrated analytically. The world is filled with equations which we cannot integrate. For example, consider calculating the luminosity of an object. An object reflects some of the light that strike it. Some of the reflected light bounces off of other objects and restrikes the original object, increasing the luminosity. This creates a recursive integral. Good luck with that one.\nHowever, integrals are trivial to compute using a Monte Carlo technique. To find the area under a curve create a bounding box that contains the curve in the desired interval. Generate randomly positioned point within the box, and compute the ratio of points that fall under the curve vs the total number of points. For example, if 40% of the points are under the curve and the area of the bounding box is 1, then the area under the curve is approximately 0.4. As you tend towards infinite points you can achieve any arbitrary precision. In practice, a few thousand points will give you a fairly accurate result.\nYou can use this technique to numerically integrate a function of any arbitrary difficulty. this includes non-integrable and noncontinuous functions. This technique was invented by Stanley Ulam at Los Alamos National Laboratory to allow him to perform computations for nuclear reactions which were unsolvable on paper.\nLet’s compute \\(\\pi\\) by finding the area of a circle. We will define a circle with a radius of 1, and bound it in a square. The side of the square has length 2, so the area is 4. We generate a set of uniformly distributed random points within the box, and count how many fall inside the circle. The area of the circle is computed as the area of the box times the ratio of points inside the circle vs. the total number of points. Finally, we know that \\(A = \\pi r^2\\), so we compute \\(\\pi = A / r^2\\).\nWe start by creating the points.\nN = 20000\npts = uniform(-1, 1, (N, 2))\nA point is inside a circle if its distance from the center of the circle is less than or equal to the radius. We compute the distance with numpy.linalg.norm, which computes the magnitude of a vector. Since vectors start at (0, 0) calling norm will compute the point’s distance from the origin.\ndist = np.linalg.norm(pts, axis=1)\nNext we compute which of this distances fit the criteria. This code returns a bool array that contains True if it meets the condition dist &lt;= 1:\nin_circle = dist &lt;= 1\nAll that is left is to count the points inside the circle, compute pi, and plot the results. I’ve put it all in one cell so you can experiment with alternative values for N, the number of points.\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom numpy.random import uniform\n\nN = 20000  # number of points\nradius = 1.\narea = (2*radius)**2\n\npts = uniform(-1, 1, (N, 2))\n\n# distance from (0,0)\ndist = np.linalg.norm(pts, axis=1)\nin_circle = dist &lt;= 1\n\npts_in_circle = np.count_nonzero(in_circle)\npi = 4 * (pts_in_circle / N)\n\n# plot results\nplt.scatter(pts[in_circle,0], pts[in_circle,1],\n            marker=',', edgecolor='k', s=1)\nplt.scatter(pts[~in_circle,0], pts[~in_circle,1],\n            marker=',', edgecolor='r', s=1)\nplt.axis('equal')\n\nprint(f'mean pi(N={N})= {pi:.4f}')\nprint(f'err  pi(N={N})= {np.pi-pi:.4f}')\n\nThis insight leads us to the realization that we can use Monte Carlo to compute the probability density of any probability distribution. For example, suppose we have this Gaussian:\n\nfrom filterpy.stats import plot_gaussian_pdf\nplot_gaussian_pdf(mean=2, variance=3);\n\nThe probability density function (PDF) gives the probability that the random value falls between 2 values. For example, we may want to know the probability of x being between 0 and 2 in the graph above. This is a continuous function, so we need to take the integral to find the area under the curve, as the area is equal to the probability for that range of values to occur.\n\\[P[a \\le X \\le b] = \\int_a^b f_X(x) \\, dx\\]\nIt is easy to compute this integral for a Gaussian. But real life is not so easy. For example, the plot below shows a probability distribution. There is no way to analytically describe an arbitrary curve, let alone integrate it.\n\npf_internal.plot_random_pd()\n\nWe can use Monte Carlo methods to compute any integral. The PDF is computed with an integral, hence we can compute the PDF of this curve using Monte Carlo."
+    "text": "Probability distributions via Monte Carlo\nSuppose we want to know the area under the curve \\(y= \\mathrm{e}^{\\sin(x)}\\) in the interval [0, \\(\\pi\\)]. The area is computed with the definite integral \\(\\int_0^\\pi \\mathrm{e}^{\\sin(x)}\\, \\mathrm{d}x\\). As an exercise, go ahead and find the answer; I’ll wait.\nIf you are wise you did not take that challenge; \\(\\mathrm{e}^{\\sin(x)}\\) cannot be integrated analytically. The world is filled with equations which we cannot integrate. For example, consider calculating the luminosity of an object. An object reflects some of the light that strike it. Some of the reflected light bounces off of other objects and restrikes the original object, increasing the luminosity. This creates a recursive integral. Good luck with that one.\nHowever, integrals are trivial to compute using a Monte Carlo technique. To find the area under a curve create a bounding box that contains the curve in the desired interval. Generate randomly positioned point within the box, and compute the ratio of points that fall under the curve vs the total number of points. For example, if 40% of the points are under the curve and the area of the bounding box is 1, then the area under the curve is approximately 0.4. As you tend towards infinite points you can achieve any arbitrary precision. In practice, a few thousand points will give you a fairly accurate result.\nYou can use this technique to numerically integrate a function of any arbitrary difficulty. this includes non-integrable and noncontinuous functions. This technique was invented by Stanley Ulam at Los Alamos National Laboratory to allow him to perform computations for nuclear reactions which were unsolvable on paper.\nLet’s compute \\(\\pi\\) by finding the area of a circle. We will define a circle with a radius of 1, and bound it in a square. The side of the square has length 2, so the area is 4. We generate a set of uniformly distributed random points within the box, and count how many fall inside the circle. The area of the circle is computed as the area of the box times the ratio of points inside the circle vs. the total number of points. Finally, we know that \\(A = \\pi r^2\\), so we compute \\(\\pi = A / r^2\\).\nWe start by creating the points.\nN = 20000\npts = uniform(-1, 1, (N, 2))\nA point is inside a circle if its distance from the center of the circle is less than or equal to the radius. We compute the distance with numpy.linalg.norm, which computes the magnitude of a vector. Since vectors start at (0, 0) calling norm will compute the point’s distance from the origin.\ndist = np.linalg.norm(pts, axis=1)\nNext we compute which of this distances fit the criteria. This code returns a bool array that contains True if it meets the condition dist &lt;= 1:\nin_circle = dist &lt;= 1\nAll that is left is to count the points inside the circle, compute pi, and plot the results. I’ve put it all in one cell so you can experiment with alternative values for N, the number of points.\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom numpy.random import uniform\n\nN = 20000  # number of points\nradius = 1.\narea = (2*radius)**2\n\npts = uniform(-1, 1, (N, 2))\n\n# distance from (0,0)\ndist = np.linalg.norm(pts, axis=1)\nin_circle = dist &lt;= 1\n\npts_in_circle = np.count_nonzero(in_circle)\npi = 4 * (pts_in_circle / N)\n\n# plot results\nplt.scatter(pts[in_circle,0], pts[in_circle,1],\n            marker=',', edgecolor='k', s=1)\nplt.scatter(pts[~in_circle,0], pts[~in_circle,1],\n            marker=',', edgecolor='r', s=1)\nplt.axis('equal')\n\nprint(f'mean pi(N={N})= {pi:.4f}')\nprint(f'err  pi(N={N})= {np.pi-pi:.4f}')\n\nThis insight leads us to the realization that we can use Monte Carlo to compute the probability density of any probability distribution. For example, suppose we have this Gaussian:\n\nfrom filterpy.stats import plot_gaussian_pdf\nplot_gaussian_pdf(mean=2, variance=3);\n\nThe probability density function (PDF) gives the probability that the random value falls between 2 values. For example, we may want to know the probability of x being between 0 and 2 in the graph above. This is a continuous function, so we need to take the integral to find the area under the curve, as the area is equal to the probability for that range of values to occur.\n\\[P[a \\le X \\le b] = \\int_a^b f_X(x) \\, dx\\]\nIt is easy to compute this integral for a Gaussian. But real life is not so easy. For example, the plot below shows a probability distribution. There is no way to analytically describe an arbitrary curve, let alone integrate it.\n\npf_internal.plot_random_pd()\n\nWe can use Monte Carlo methods to compute any integral. The PDF is computed with an integral, hence we can compute the PDF of this curve using Monte Carlo."
   },
   {
     "objectID": "labs/07Examples/Particle-Filters.html#the-particle-filter",
@@ -2834,7 +2617,7 @@
     "href": "weeks/week-08.html",
     "title": "Week 08",
     "section": "",
-    "text": "Topic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
+    "text": "Topic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nConditional Normalizing Flows I\n\n\nNeural Density Estimation\n\n\nMon, Mar 04\n\n\n\n\nConditional Normalizing Flows II\n\n\nNeural Density Estimation\n\n\nWed, Mar 06\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "weeks/week-08.html#remote-classes",
@@ -2855,7 +2638,7 @@
     "href": "weeks/week-07.html",
     "title": "Week 07",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nConditional Normalizing Flows I\n\n\nNeural Density Estimation\n\n\nWed, Feb 14\n\n\n\n\nSimulation-based Inference\n\n\nUncertainty Quantification\n\n\nWed, Feb 14\n\n\n\n\nDeep Learning\n\n\nDiffusion models\n\n\nWed, Feb 14\n\n\n\n\nConditional Normalizing Flows II\n\n\nNeural Density Estimation\n\n\nWed, Feb 14\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nParticle Filter\n\n\nThu, Feb 22\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 16 — Understanding Deep Learning\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nSimulation-based Inference\n\n\nUncertainty Quantification\n\n\nThu, Feb 22\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nParticle Filter\n\n\nThu, Feb 22\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 16 — Understanding Deep Learning\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "weeks/week-02.html",
@@ -3229,7 +3012,7 @@
     "href": "slides/week-01/02-basics.html#references",
     "title": "Basics",
     "section": "References",
-    "text": "References\n\nK. Law, A. Stuart, K. Zygalakis. Data Assimilation. A Mathematical Introduction. Springer, 2015.\nG. Evensen. Data assimilation, The Ensemble Kalman Filter, 2nd ed., Springer, 2009.\nA. Tarantola. Inverse problem theory and methods for model parameter estimation. SIAM. 2005.\nO. Talagrand. Assimilation of observations, an introduction. J. Meteorological Soc. Japan, 75, 191, 1997.\nF.X. Le Dimet, O. Talagrand. Variational algorithms for analysis and assimilation of meteorological observations: theoretical aspects. Tellus, 38(2), 97, 1986.\nJ.-L. Lions. Exact controllability, stabilization and perturbations for distributed systems. SIAM Rev., 30(1):1, 1988.\nJ. Nocedal, S.J. Wright. Numerical Optimization. Springer, 2006.\nF. Tröltzsch. Optimal Control of Partial Differential Equations. AMS, 2010.\n\n\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM.\n\n\n\n\n\n\n🔗 https://flexie.github.io/CSE-8803-Twin/"
+    "text": "References\n\nK. Law, A. Stuart, K. Zygalakis. Data Assimilation. A Mathematical Introduction. Springer, 2015.\nG. Evensen. Data assimilation, The Ensemble Kalman Filter, 2nd ed., Springer, 2009.\nA. Tarantola. Inverse problem theory and methods for model parameter estimation. SIAM. 2005.\nO. Talagrand. Assimilation of observations, an introduction. J. Meteorological Soc. Japan, 75, 191, 1997.\nF.X. Le Dimet, O. Talagrand. Variational algorithms for analysis and assimilation of meteorological observations: theoretical aspects. Tellus, 38(2), 97, 1986.\nJ.-L. Lions. Exact controllability, stabilization and perturbations for distributed systems. SIAM Rev., 30(1):1, 1988.\nJ. Nocedal, S.J. Wright. Numerical Optimization. Springer, 2006.\nF. Tröltzsch. Optimal Control of Partial Differential Equations. AMS, 2010.\n\n\n\n\nAsch, Mark. 2022. A Toolbox for Digital Twins: From Model-Based to Data-Driven. SIAM."
   },
   {
     "objectID": "slides/week-07/09a-DL-uncertainty.html#credits",
@@ -3554,18 +3337,228 @@
     "text": "Produce samples \\[\\mathbf{x} \\sim p(\\mathbf{x} | \\vartheta)\\]\n\nEvaluate densities \\[p(\\mathbf{x}|\\vartheta)\\] \\[p(\\vartheta | \\mathbf{x}) = \\frac{p(\\mathbf{x} | \\vartheta) p(\\vartheta)}{p(\\mathbf{x})}\\]\n\nEncode complex priors \\[p(\\mathbf{x})\\]\n\n\n\n\n\n\n\n\nCredits: Siddharth Mishra-Sharma, 2023."
   },
   {
-    "objectID": "slides/week-07/09a-DL-uncertainty.html#section-31",
-    "href": "slides/week-07/09a-DL-uncertainty.html#section-31",
-    "title": "Simulation-based Inference",
-    "section": "",
-    "text": "🔗 https://flexie.github.io/CSE-8803-Twin/"
+    "objectID": "slides/week-09/09b-DL-generative.html#credits",
+    "href": "slides/week-09/09b-DL-generative.html#credits",
+    "title": "Deep Learning",
+    "section": "Credits",
+    "text": "Credits\nSlides are adapted from lectures developed by Gilles Louppe at University of Liege, Belgium under the BSD 3-Clause License\n\nlectures 10, 11, and 12 of INFO8010 - Deep Learning\nand of lecture materials of SSI 2023"
   },
   {
-    "objectID": "slides/week-09/12.html",
-    "href": "slides/week-09/12.html",
-    "title": "Digital Twins for Physical Systems",
+    "objectID": "slides/week-09/09b-DL-generative.html#generative-models",
+    "href": "slides/week-09/09b-DL-generative.html#generative-models",
+    "title": "Deep Learning",
+    "section": "Generative models",
+    "text": "Generative models\nA (deep) generative model is a probabilistic model \\(p_\\theta\\) that can be used as a simulator of the data.\nFormally, a generative model defines a probability distribution \\(p_\\theta(\\mathbf{x})\\) over the data \\(\\mathbf{x} \\in \\mathcal{X}\\), parameterized by \\(\\theta\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section",
+    "href": "slides/week-09/09b-DL-generative.html#section",
+    "title": "Deep Learning",
     "section": "",
-    "text": "ReuseCC BY 4.0"
+    "text": "Credits: Karsten et al, 2022; Siddharth Mishra-Sharma, 2023."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-1",
+    "href": "slides/week-09/09b-DL-generative.html#section-1",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Disentangled latent space: Manipulating each dimension of \\(z\\) should correspond to changing an interpretable property of the data. For example, in a model of language, it might change the topic, tense, or verbosity.\nEfficient likelihood computation: If the model is probabilistic, we would like to be able to calculate the probability of new examples"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#latent-variable-model",
+    "href": "slides/week-09/09b-DL-generative.html#latent-variable-model",
+    "title": "Deep Learning",
+    "section": "Latent variable model",
+    "text": "Latent variable model\n\n\n\n\n\n\n\nConsider for now a prescribed latent variable model that relates a set of observable variables \\(\\mathbf{x} \\in \\mathcal{X}\\) to a set of unobserved variables \\(\\mathbf{z} \\in \\mathcal{Z}\\).\nThe probabilistic model defines a joint probability distribution \\(p_\\theta(\\mathbf{x}, \\mathbf{z})\\), which decomposes as \\[p_\\theta(\\mathbf{x}, \\mathbf{z}) = p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z}).\\]"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-2",
+    "href": "slides/week-09/09b-DL-generative.html#section-2",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Video\n\n\nIf we interpret \\(\\mathbf{z}\\) as causal factors for the high-dimension representations \\(\\mathbf{x}\\), then sampling from \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) can be interpreted as a stochastic generating process from \\(\\mathcal{Z}\\) to \\(\\mathcal{X}\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#hot-to-fit",
+    "href": "slides/week-09/09b-DL-generative.html#hot-to-fit",
+    "title": "Deep Learning",
+    "section": "Hot to fit?",
+    "text": "Hot to fit?\n\\[\\begin{aligned}\n\\theta^{*} &= \\arg \\max_\\theta p_\\theta(\\mathbf{x}) \\\\\\\\\n&= \\arg \\max_\\theta \\int p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z}) d\\mathbf{z}\\\\\\\\\n&= \\arg \\max_\\theta \\mathbb{E}_{p(\\mathbf{z})}\\left[ p_\\theta(\\mathbf{x}|\\mathbf{z}) \\right] d\\mathbf{z}\\\\\\\\\n&\\approx \\arg \\max_\\theta \\frac{1}{N} \\sum_{i=1}^N p_\\theta(\\mathbf{x}|\\mathbf{z}_i)\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nThe curse of dimensionality will lead to poor estimates of the expectation."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-4",
+    "href": "slides/week-09/09b-DL-generative.html#section-4",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "We will directly learn a stochastic generating process \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) with a neural network.\nWe will also amortize the inference process by learning a second neural network \\(q_\\phi(\\mathbf{z}|\\mathbf{x})\\) approximating the posterior, conditionally on the observed data \\(\\mathbf{x}\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-5",
+    "href": "slides/week-09/09b-DL-generative.html#section-5",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "A variational auto-encoder is a deep latent variable model where:\n\nThe prior \\(p(\\mathbf{z})\\) is prescribed, and usually chosen to be Gaussian.\nThe density \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) is parameterized with a generative network \\(\\text{NN}_\\theta\\) (or decoder) that takes as input \\(\\mathbf{z}\\) and outputs parameters to the data distribution. E.g., \\[\\begin{aligned}\n\\mu, \\sigma^2 &= \\text{NN}_\\theta(\\mathbf{z}) \\\\\\\\\np_\\theta(\\mathbf{x}|\\mathbf{z}) &= \\mathcal{N}(\\mathbf{x}; \\mu, \\sigma^2\\mathbf{I})\n\\end{aligned}\\]\nThe approximate posterior \\(q_\\phi(\\mathbf{z}|\\mathbf{x})\\) is parameterized with an inference network \\(\\text{NN}_\\phi\\) (or encoder) that takes as input \\(\\mathbf{x}\\) and outputs parameters to the approximate posterior. E.g., \\[\\begin{aligned}\n\\mu, \\sigma^2 &= \\text{NN}_\\phi(\\mathbf{x}) \\\\\\\\\nq_\\phi(\\mathbf{z}|\\mathbf{x}) &= \\mathcal{N}(\\mathbf{z}; \\mu, \\sigma^2\\mathbf{I})\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#variational-auto-encoders",
+    "href": "slides/week-09/09b-DL-generative.html#variational-auto-encoders",
+    "title": "Deep Learning",
+    "section": "Variational auto-encoders",
+    "text": "Variational auto-encoders"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-6",
+    "href": "slides/week-09/09b-DL-generative.html#section-6",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "We can use variational inference to jointly optimize the generative and the inference networks parameters \\(\\theta\\) and \\(\\phi\\):\n\\[\\begin{aligned}\n\\theta^{*}, \\phi^{*} &= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})} \\left[ \\text{ELBO}(\\mathbf{x};\\theta,\\phi) \\right] \\\\\\\\\n&= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})}\\left[ \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})} [ \\log \\frac{p_\\theta(\\mathbf{x}|\\mathbf{z}) p(\\mathbf{z})}{q_\\phi(\\mathbf{z}|\\mathbf{x})} ] \\right] \\\\\\\\\n&= \\arg \\max_{\\theta,\\phi} \\mathbb{E}_{p(\\mathbf{x})}\\left[ \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})}\\left[ \\log p_\\theta(\\mathbf{x}|\\mathbf{z})\\right] - \\text{KL}(q_\\phi(\\mathbf{z}|\\mathbf{x}) || p(\\mathbf{z})) \\right].\n\\end{aligned}\\]\n\nGiven some generative network \\(\\theta\\), we want to put the mass of the latent variables, by adjusting \\(\\phi\\), such that they explain the observed data, while remaining close to the prior.\nGiven some inference network \\(\\phi\\), we want to put the mass of the observed variables, by adjusting \\(\\theta\\), such that they are well explained by the latent variables."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#pseudo-code",
+    "href": "slides/week-09/09b-DL-generative.html#pseudo-code",
+    "title": "Deep Learning",
+    "section": "Pseudo code",
+    "text": "Pseudo code"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-7",
+    "href": "slides/week-09/09b-DL-generative.html#section-7",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Credits: Kreis et al, 2022."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-8",
+    "href": "slides/week-09/09b-DL-generative.html#section-8",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Credits: Kreis et al, 2022.With \\(\\epsilon \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\\), we have \\[\\begin{aligned}\n\\mathbf{x}_t &= \\sqrt{ {\\alpha}_t} \\mathbf{x}_{t-1} + \\sqrt{1-{\\alpha}_t} \\epsilon \\\\\\\\\nq(\\mathbf{x}_t | \\mathbf{x}_{t-1}) &= \\mathcal{N}(\\mathbf{x}_t ; \\sqrt{\\alpha_t} \\mathbf{x}_{t-1}, (1-\\alpha_t)\\mathbf{I}) \\\\\\\\\nq(\\mathbf{x}_{1:T} | \\mathbf{x}_{0}) &=  \\prod_{t=1}^T q(\\mathbf{x}_t | \\mathbf{x}_{t-1})\n\\end{aligned}\\]\nsampling from \\(p_\\theta(\\mathbf{x}|\\mathbf{z})\\) can be interpreted as a stochastic generating process from \\(\\mathcal{Z}\\) to \\(\\mathcal{X}\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-9",
+    "href": "slides/week-09/09b-DL-generative.html#section-9",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Credits: Simon J.D. Prince, 2023."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-10",
+    "href": "slides/week-09/09b-DL-generative.html#section-10",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Credits: Kreis et al, 2022.\n\n\n\n\\[\\begin{aligned}\np(\\mathbf{x}_{0:T}) &= p(\\mathbf{x}_T) \\prod_{t=1}^T p_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t)\\\\\\\\\np(\\mathbf{x}_T) &= \\mathcal{N}(\\mathbf{x}_T; \\mathbf{0}, I) \\\\\\\\\np_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t) &= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_\\theta(\\mathbf{x}_t, t), \\sigma^2_\\theta(\\mathbf{x}_t, t)\\mathbf{I}) \\\\\\\\\n\\mathbf{x}_{t-1} &= \\mu_\\theta(\\mathbf{x}_t, t) + \\sigma_\\theta(\\mathbf{x}_t, t) \\mathbf{z}\n\\end{aligned}\\] with \\(\\mathbf{z} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#markovian-hierarchical-vaes",
+    "href": "slides/week-09/09b-DL-generative.html#markovian-hierarchical-vaes",
+    "title": "Deep Learning",
+    "section": "Markovian Hierarchical VAEs",
+    "text": "Markovian Hierarchical VAEs"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-11",
+    "href": "slides/week-09/09b-DL-generative.html#section-11",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Similarly to VAEs, training is done by maximizing the ELBO, using a variational distribution \\(q_\\phi(\\mathbf{z}_{1:T} | \\mathbf{x})\\) over all levels of latent variables: \\[\\begin{aligned}\n\\log p_\\theta(\\mathbf{x}) &\\geq \\mathbb{E}_{q_\\phi(\\mathbf{z}_{1:T} | \\mathbf{x})}\\left[ \\log \\frac{p(\\mathbf{x},\\mathbf{z}_{1:T})}{q_\\phi(\\mathbf{z}_{1:T}|\\mathbf{x})} \\right]\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-12",
+    "href": "slides/week-09/09b-DL-generative.html#section-12",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Diffusion models are Markovian HVAEs with the following constraints:\n\nThe latent dimension is the same as the data dimension.\nThe encoder is fixed to linear Gaussian transitions \\(q(\\mathbf{x}_t | \\mathbf{x}_{t-1})\\).\nThe hyper-parameters are set such that \\(q(\\mathbf{x}_T | \\mathbf{x}_0)\\) is a standard Gaussian."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#training",
+    "href": "slides/week-09/09b-DL-generative.html#training",
+    "title": "Deep Learning",
+    "section": "Training",
+    "text": "Training\nFor learning the parameters \\(\\theta\\) of the reverse process, we can form a variational lower bound on the log-likelihood of the data as\n\\[\\mathbb{E}_{q(\\mathbf{x}_0)}\\left[ \\log p_\\theta(\\mathbf{x}_0) \\right] \\geq \\mathbb{E}_{q(\\mathbf{x}_0)q(\\mathbf{x}_{1:T}|\\mathbf{x}_0)}\\left[ \\log \\frac{p_\\theta(\\mathbf{x}_{0:T})}{q(\\mathbf{x}_{1:T} | \\mathbf{x}_0)} \\right] := L\\]\nThis objective can be rewritten as \\[\\begin{aligned}\nL &= \\mathbb{E}_{q(\\mathbf{x}_0)q(\\mathbf{x}_{1:T}|\\mathbf{x}_0)}\\left[ \\log \\frac{p_\\theta(\\mathbf{x}_{0:T})}{q(\\mathbf{x}_{1:T} | \\mathbf{x}_0)} \\right] \\\\\\\\\n&= \\mathbb{E}_{q(\\mathbf{x}_0)} \\left[L_0 - \\sum_{t&gt;1} L_{t-1} - L_T\\right]\n\\end{aligned}\\] where"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-13",
+    "href": "slides/week-09/09b-DL-generative.html#section-13",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "\\(L_0 = \\mathbb{E}_{q(\\mathbf{x}_1 | \\mathbf{x}_0)}[\\log p_\\theta(\\mathbf{x}_0 | \\mathbf{x}_1)]\\) can be interpreted as a reconstruction term. It can be approximated and optimized using a Monte Carlo estimate.\n\\(L_{t-1} = \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)}\\text{KL}(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0) || p_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t) )\\) is a denoising matching term. The transition \\(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0)\\) provides a learning signal for the reverse process, since it defines how to denoise the noisified input \\(\\mathbf{x}_t\\) with access to the original input \\(\\mathbf{x}_0\\).\n\\(L_T = \\text{KL}(q(\\mathbf{x}_T | \\mathbf{x}_0) || p_\\theta(\\mathbf{x}_T))\\) represents how close the distribution of the final noisified input is to the standard Gaussian. It has no trainable parameters."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-14",
+    "href": "slides/week-09/09b-DL-generative.html#section-14",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\frac{1}{2\\sigma^2_t} \\frac{\\bar{\\alpha}_{t-1}(1-\\alpha_t)^2}{(1-\\bar{\\alpha}_t)^2} || \\hat{\\mathbf{x}}_\\theta(\\mathbf{x}_t, t) - \\mathbf{x}_0 ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 1: Denoising. Training a diffusion model amounts to learning a neural network that predicts the original ground truth \\(\\mathbf{x}_0\\) from a noisy input \\(\\mathbf{x}_t\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-15",
+    "href": "slides/week-09/09b-DL-generative.html#section-15",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{\\mathcal{N}(\\epsilon;\\mathbf{0}, I)} \\frac{1}{2\\sigma^2_t} \\frac{(1-\\alpha_t)^2}{(1-\\bar{\\alpha}_t) \\alpha_t} || {\\epsilon}_\\theta(\\underbrace{\\sqrt{\\bar{\\alpha}_t} \\mathbf{x}_{0} + \\sqrt{1-\\bar{\\alpha}_t} \\epsilon}_{\\mathbf{x}_t}, t) - \\epsilon ||_2^2 \\\\\\\\\n\\approx& \\arg \\min_\\theta \\mathbb{E}_{\\mathcal{N}(\\epsilon;\\mathbf{0}, I)} || {\\epsilon}_\\theta(\\underbrace{\\sqrt{\\bar{\\alpha}_t} \\mathbf{x}_{0} + \\sqrt{1-\\bar{\\alpha}_t} \\epsilon}_{\\mathbf{x}_t}, t) - \\epsilon ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 2: Noise prediction. Training a diffusion model amounts to learning a neural network that predicts the noise \\(\\epsilon\\) that was added to the original ground truth \\(\\mathbf{x}_0\\) to obtain the noisy \\(\\mathbf{x}_t\\)."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-16",
+    "href": "slides/week-09/09b-DL-generative.html#section-16",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\frac{1}{2\\sigma^2_t} \\frac{(1-\\alpha_t)^2}{\\alpha_t} || s_\\theta(\\mathbf{x}_t, t) - \\nabla_{\\mathbf{x}_t}  \\log q(\\mathbf{x}_t | \\mathbf{x}_0) ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 3: Denoising score matching. Training a diffusion model amounts to learning a neural network that predicts the score \\(\\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t | \\mathbf{x}_0)\\) of the tractable posterior.\nThe distribution \\(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0)\\) is the tractable posterior distribution \\[\\begin{aligned}\nq(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0) &= \\frac{q(\\mathbf{x}_t | \\mathbf{x}_{t-1}, \\mathbf{x}_0) q(\\mathbf{x}_{t-1} | \\mathbf{x}_0)}{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\\\\\\\\n&= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t), \\sigma^2_t I)\n\\end{aligned}\\] where \\[\n\\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t) = \\frac{\\sqrt{\\alpha_t}(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\\mathbf{x}_t + \\frac{\\sqrt{\\bar{\\alpha}_{t-1}}(1-\\alpha_t)}{1-\\bar{\\alpha}_t}\\mathbf{x}_0  \\qquad\\text{and} \\qquad\n\\sigma^2_t = \\frac{(1-\\alpha_t)(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\n\\]"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#network-architectures",
+    "href": "slides/week-09/09b-DL-generative.html#network-architectures",
+    "title": "Deep Learning",
+    "section": "Network architectures",
+    "text": "Network architectures\nDiffusion models often use U-Net architectures with ResNet blocks and self-attention layers to represent \\(\\hat{\\mathbf{x}}_\\theta(\\mathbf{x}_t, t)\\), \\(\\epsilon_\\theta(\\mathbf{x}_t, t)\\) or \\(s_\\theta(\\mathbf{x}_t, t)\\).\n\nCredits: Kreis et al, 2022."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#continuous-time-diffusion-models",
+    "href": "slides/week-09/09b-DL-generative.html#continuous-time-diffusion-models",
+    "title": "Deep Learning",
+    "section": "Continuous-time diffusion models",
+    "text": "Continuous-time diffusion models\n\nCredits: Kreis et al, 2022.With \\(\\beta_t = 1 - \\alpha_t\\), we can rewrite the forward process as \\[\\begin{aligned}\n\\mathbf{x}_t &= \\sqrt{ {\\alpha}_t} \\mathbf{x}_{t-1} + \\sqrt{1-{\\alpha}_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I}) \\\\\\\\\n&= \\sqrt{1 - {\\beta}_t} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I}) \\\\\\\\\n&= \\sqrt{1 - {\\beta}(t)\\Delta_t} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}(t)\\Delta_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-17",
+    "href": "slides/week-09/09b-DL-generative.html#section-17",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Credits: Song, 2021.\n\n\n\nWhen \\(\\Delta_t \\rightarrow 0\\), we can further rewrite the forward process as \\[\n\\mathbf{x}_t = \\sqrt{1 - {\\beta}(t)\\Delta_t} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}(t)\\Delta_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\\approx \\mathbf{x}_{t-1} - \\frac{\\beta(t)\\Delta_t}{2} \\mathbf{x}_{t-1} + \\sqrt{ {\\beta}(t)\\Delta_t} \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\n.\\]\nThis last update rule corresponds to the Euler-Maruyama discretization of the stochastic differential equation (SDE) \\[\\text{d}\\mathbf{x}_t = -\\frac{1}{2}\\beta(t)\\mathbf{x}_t \\text{d}t + \\sqrt{\\beta(t)} \\text{d}\\mathbf{w}_t\\] describing the diffusion in the infinitesimal limit."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-18",
+    "href": "slides/week-09/09b-DL-generative.html#section-18",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "The reverse process satisfies a reverse-time SDE that can be derived analytically from the forward-time SDE and the score of the marginal distribution \\(q(\\mathbf{x}_t)\\), as \\[\\text{d}\\mathbf{x}_t = \\left[ -\\frac{1}{2}\\beta(t)\\mathbf{x}_t - \\beta(t)\\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t) \\right] \\text{d}t + \\sqrt{\\beta(t)} \\text{d}\\mathbf{w}_t.\\]\n\n\n\n\nCredits: Song, 2021."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#training-sampling-diffusion-models",
+    "href": "slides/week-09/09b-DL-generative.html#training-sampling-diffusion-models",
+    "title": "Deep Learning",
+    "section": "Training & sampling diffusion models",
+    "text": "Training & sampling diffusion models\n\nCredit: Ho et. al., 2020"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#continuous-time-normalizing-flows",
+    "href": "slides/week-09/09b-DL-generative.html#continuous-time-normalizing-flows",
+    "title": "Deep Learning",
+    "section": "Continuous-time normalizing flows",
+    "text": "Continuous-time normalizing flows\n\n\nReplace the discrete sequence of transformations with a neural ODE with reversible dynamics such that \\[\\begin{aligned}\n&\\mathbf{z}_0 \\sim p(\\mathbf{z})\\\\\\\\\n&\\frac{d\\mathbf{z}(t)}{dt} = f(\\mathbf{z}(t), t, \\theta)\\\\\\\\\n&\\mathbf{x} = \\mathbf{z}(1) = \\mathbf{z}_0 + \\int_0^1 f(\\mathbf{z}(t), t) dt.\n\\end{aligned}\\]\n\n\n\nVideo\nImage credits: Grathwohl et al, 2018\n\n\n\n\nThe instantaneous change of variable yields \\[\\log p(\\mathbf{x}) = \\log p(\\mathbf{z}(0)) - \\int_0^1 \\text{Tr} \\left( \\frac{\\partial f(\\mathbf{z}(t), t, \\theta)}{\\partial \\mathbf{z}(t)} \\right) dt.\\]"
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#probability-flow-ode",
+    "href": "slides/week-09/09b-DL-generative.html#probability-flow-ode",
+    "title": "Deep Learning",
+    "section": "Probability flow ODE",
+    "text": "Probability flow ODE\nBack to diffusion: For any diffusion process, there exists a corresponding deterministic process \\[\\text{d}\\mathbf{x}_t = \\left[ \\mathbf{f}(t, \\mathbf{x}_t) - \\frac{1}{2} g^2(t) \\nabla_{\\mathbf{x}_t} \\log p(\\mathbf{x}_t) \\right] \\text{d}t\\] whose trajectories share the same marginal densities \\(p(\\mathbf{x}_t)\\).\nTherefore, when \\(\\nabla_{\\mathbf{x}_t} \\log p(\\mathbf{x}_t)\\) is replaced by its approximation \\(s_\\theta(\\mathbf{x}_t, t)\\), the probability flow ODE becomes a special case of a neural ODE. In particular, it is an example of continuous-time normalizing flows!\n\nCredits: Song, 2021."
+  },
+  {
+    "objectID": "slides/week-09/09b-DL-generative.html#section-19",
+    "href": "slides/week-09/09b-DL-generative.html#section-19",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Prince, Simon J. D. 2023. Understanding Deep Learning. MIT Press. http://udlbook.com."
   },
   {
     "objectID": "slides/week-05/08-DA-Bayes.html#bayesian-filters",
