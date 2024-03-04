@@ -1,7 +1,7 @@
 ---
 title: "Simulation-based Inference"
 subtitle: "Uncertainty Quantification"
-date: "February 14, 2024"
+date: "February 22, 2024"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 data-footer: "CC BY-SA"
