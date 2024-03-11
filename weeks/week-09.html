@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.528">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -181,7 +181,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -300,7 +300,7 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1710111600000" data-listing-file-modified-sort="1709571790544" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1443" data-listing-title-sort="Deep Learning" data-listing-filename-sort="09b-DL-generative.qmd">
+<tr data-index="0" data-listing-date-sort="1710129600000" data-listing-file-modified-sort="1710126689050" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1648" data-listing-title-sort="Deep Learning" data-listing-filename-sort="09b-DL-generative.qmd">
 <td>
 <a href="../slides/week-09/09b-DL-generative.html" class="title listing-title">Deep Learning</a>
 </td>
@@ -311,7 +311,7 @@ Date
 <span class="listing-date">Mon, Mar 11</span>
 </td>
 </tr>
-<tr data-index="1" data-listing-file-modified-sort="1707845447000" data-listing-filename-sort="12.qmd">
+<tr data-index="1" data-listing-file-modified-sort="1707845447263" data-listing-filename-sort="12.qmd">
 <td>
 <a href="../slides/week-09/12.html" class="title listing-title">&nbsp;</a>
 </td>
@@ -347,7 +347,7 @@ Due
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="Lab" data-listing-date-sort="1709247600000" data-listing-file-modified-sort="1708570392000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="15" data-listing-title-sort="Normalizing flow" data-listing-filename-sort="w8-lab-normalizing-flow.qmd">
+<tr data-index="0" data-categories="Lab" data-listing-date-sort="1709269200000" data-listing-file-modified-sort="1708570392058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="15" data-listing-title-sort="Normalizing flow" data-listing-filename-sort="w8-lab-normalizing-flow.qmd">
 <td>
 <span class="listing-categories">Lab</span>
 </td>
@@ -544,7 +544,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

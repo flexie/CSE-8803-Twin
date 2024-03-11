@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.528">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="dcterms.date" content="2024-03-11">
   <title>Digital Twins for Physical Systems - Deep Learning</title>
@@ -383,7 +383,7 @@
 <section id="generative-models-1" class="title-slide slide level1 center">
 <h1>Generative models</h1>
 <blockquote>
-<p>What makes a good generative model <span class="citation" data-cites="prince2023understanding">(<a href="#/section-19" role="doc-biblioref" onclick="">Prince 2023</a>)</span>?</p>
+<p>What makes a good generative model <span class="citation" data-cites="prince2023understanding">(<a href="#/section-18" role="doc-biblioref" onclick="">Prince 2023</a>)</span>?</p>
 </blockquote>
 <p>Generative models based on latent variables should have the following properties:</p>
 <ul>
@@ -510,27 +510,51 @@ q_\phi(\mathbf{z}|\mathbf{x}) &amp;= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathb
 <h2></h2>
 
 <img data-src="./images/vdm.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</p></section>
-<section id="section-8" class="slide level2 center">
-<h2></h2>
+<section id="forward-diffusion-process" class="slide level2 center">
+<h2>Forward diffusion process</h2>
 
 <img data-src="./images/vdm-forward.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</p><p>With <span class="math inline">\(\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})\)</span>, we have <span class="math display">\[\begin{aligned}
 \mathbf{x}_t &amp;= \sqrt{ {\alpha}_t} \mathbf{x}_{t-1} + \sqrt{1-{\alpha}_t} \epsilon \\\\
 q(\mathbf{x}_t | \mathbf{x}_{t-1}) &amp;= \mathcal{N}(\mathbf{x}_t ; \sqrt{\alpha_t} \mathbf{x}_{t-1}, (1-\alpha_t)\mathbf{I}) \\\\
 q(\mathbf{x}_{1:T} | \mathbf{x}_{0}) &amp;=  \prod_{t=1}^T q(\mathbf{x}_t | \mathbf{x}_{t-1})
 \end{aligned}\]</span></p>
-<p>sampling from <span class="math inline">\(p_\theta(\mathbf{x}|\mathbf{z})\)</span> can be interpreted as <strong>a stochastic generating process</strong> from <span class="math inline">\(\mathcal{Z}\)</span> to <span class="math inline">\(\mathcal{X}\)</span>.</p>
+<!-- sampling from $p_\theta(\mathbf{x}|\mathbf{z})$ can be interpreted as **a stochastic generating process** from $\mathcal{Z}$ to $\mathcal{X}$. -->
 </section>
-<section id="section-9" class="slide level2 center">
+<section id="section-8" class="slide level2 center">
 <h2></h2>
 
 <!-- ## Reverse denoising process -->
 <img data-src="./images/vdm-forward2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://udlbook.github.io/udlbook/">Simon J.D. Prince</a>, 2023.</p></section>
-<section id="section-10" class="slide level2 center">
-<h2></h2>
+<section id="diffusion-kernel" class="slide level2 center">
+<h2>Diffusion kernel</h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="./images/vdm-reverse.png" style="width:50.0%"></p>
+<p><img data-src="./images/vdm-kernel.png" style="width:50.0%"></p>
+<figcaption>Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</figcaption>
+</figure>
+</div>
+</div>
+<p>With <span class="math inline">\(\bar{\alpha}_t = \prod_{i=1}^t \alpha_i\)</span> and <span class="math inline">\(\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})\)</span>, we have</p>
+<p><span class="math display">\[\begin{aligned}
+\mathbf{x}_t &amp;= \sqrt{\bar{\alpha}_t} \mathbf{x}_{0} + \sqrt{1-\bar{\alpha}_t} \epsilon \\\\
+q(\mathbf{x}_t | \mathbf{x}_{0}) &amp;= \mathcal{N}(\mathbf{x}_t ; \sqrt{\bar{\alpha}_t} \mathbf{x}_{0}, (1-\bar{\alpha}_t)\mathbf{I})
+\end{aligned}\]</span></p>
+</section>
+<section id="section-9" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/diffusion-kernel-1.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://udlbook.github.io/udlbook/">Simon J.D. Prince</a>, 2023.</p></section>
+<section id="section-10" class="slide level2 center">
+<h2></h2>
+
+<img data-src="./images/diffusion-kernel-2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://udlbook.github.io/udlbook/">Simon J.D. Prince</a>, 2023.</p></section>
+<section id="reverse-denoising-procees" class="slide level2 center">
+<h2>Reverse denoising procees</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/vdm-reverse.png" style="width:70.0%"></p>
 <figcaption>Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</figcaption>
 </figure>
 </div>
@@ -539,21 +563,18 @@ q(\mathbf{x}_{1:T} | \mathbf{x}_{0}) &amp;=  \prod_{t=1}^T q(\mathbf{x}_t | \mat
 p(\mathbf{x}_{0:T}) &amp;= p(\mathbf{x}_T) \prod_{t=1}^T p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t)\\\\
 p(\mathbf{x}_T) &amp;= \mathcal{N}(\mathbf{x}_T; \mathbf{0}, I) \\\\
 p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) &amp;= \mathcal{N}(\mathbf{x}_{t-1}; \mu_\theta(\mathbf{x}_t, t), \sigma^2_\theta(\mathbf{x}_t, t)\mathbf{I}) \\\\
-\mathbf{x}_{t-1} &amp;= \mu_\theta(\mathbf{x}_t, t) + \sigma_\theta(\mathbf{x}_t, t) \mathbf{z}
-\end{aligned}\]</span> with <span class="math inline">\(\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})\)</span>.</p>
+\mathbf{x}_{t-1} &amp;= \mu_\theta(\mathbf{x}_t, t) + \sigma_\theta(\mathbf{x}_t, t) \mathbf{z} \quad\text{with}\quad \mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})
+\end{aligned}\]</span> <!-- with $\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$. --></p>
 </section>
 <section id="markovian-hierarchical-vaes" class="slide level2 center">
 <h2>Markovian Hierarchical VAEs</h2>
 
 <img data-src="./images/diagram-hvae.svg" class="r-stretch"></section>
-<section id="section-11" class="slide level2 center">
-<h2></h2>
+<section id="hvaes" class="slide level2 center">
+<h2>HVAES</h2>
 <p>Similarly to VAEs, training is done by maximizing the ELBO, using a variational distribution <span class="math inline">\(q_\phi(\mathbf{z}_{1:T} | \mathbf{x})\)</span> over all levels of latent variables: <span class="math display">\[\begin{aligned}
 \log p_\theta(\mathbf{x}) &amp;\geq \mathbb{E}_{q_\phi(\mathbf{z}_{1:T} | \mathbf{x})}\left[ \log \frac{p(\mathbf{x},\mathbf{z}_{1:T})}{q_\phi(\mathbf{z}_{1:T}|\mathbf{x})} \right]
 \end{aligned}\]</span></p>
-</section>
-<section id="section-12" class="slide level2 center">
-<h2></h2>
 <p>Diffusion models are Markovian HVAEs with the following constraints:</p>
 <ul>
 <li><p>The latent dimension is the same as the data dimension.</p></li>
@@ -570,20 +591,39 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 &amp;= \mathbb{E}_{q(\mathbf{x}_0)} \left[L_0 - \sum_{t&gt;1} L_{t-1} - L_T\right]
 \end{aligned}\]</span> where</p>
 </section>
-<section id="section-13" class="slide level2 center">
+<section id="section-11" class="slide level2 center">
 <h2></h2>
 <ul>
 <li><p><span class="math inline">\(L_0 = \mathbb{E}_{q(\mathbf{x}_1 | \mathbf{x}_0)}[\log p_\theta(\mathbf{x}_0 | \mathbf{x}_1)]\)</span> can be interpreted as a reconstruction term. It can be approximated and optimized using a Monte Carlo estimate.</p></li>
 <li><p><span class="math inline">\(L_{t-1} = \mathbb{E}_{q(\mathbf{x}_t | \mathbf{x}_0)}\text{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) || p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) )\)</span> is a denoising matching term. The transition <span class="math inline">\(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)\)</span> provides a learning signal for the reverse process, since it defines how to denoise the noisified input <span class="math inline">\(\mathbf{x}_t\)</span> with access to the original input <span class="math inline">\(\mathbf{x}_0\)</span>.</p></li>
 <li><p><span class="math inline">\(L_T = \text{KL}(q(\mathbf{x}_T | \mathbf{x}_0) || p_\theta(\mathbf{x}_T))\)</span> represents how close the distribution of the final noisified input is to the standard Gaussian. It has no trainable parameters.</p></li>
 </ul>
+<!-- ## 
+
+:::{}
+![](./images/tractable-posterior.svg){width=60%}
+:::
+
+The distribution $q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)$ is the tractable posterior distribution
+$$\begin{aligned}
+q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &= \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)} \\\\
+&= \mathcal{N}(\mathbf{x}_{t-1}; \mu_q(\mathbf{x}_t, \mathbf{x}_0, t), \sigma^2_t I)
+\end{aligned}$$
+where
+
+## 
+
+$$\begin{aligned}
+\mu_q(\mathbf{x}_t, \mathbf{x}_0, t) &= \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t + \frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}\mathbf{x}_0 \\\\
+\sigma^2_t &= \frac{(1-\alpha_t)(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}
+\end{aligned}$$ -->
 </section></section>
 <section>
 <section id="some-calculations-later" class="title-slide slide level1 center">
 <h1>(Some calculations later…)</h1>
 
 </section>
-<section id="section-14" class="slide level2 center">
+<section id="section-12" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 &amp;\arg \min_\theta L_{t-1} \\\\
@@ -602,8 +642,9 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 </div>
 </div>
 </div>
+<p>Minimizing the summation of the <span class="math inline">\(L_{t-1}\)</span> terms across all noise levels <span class="math inline">\(t\)</span> can be approximated by minimizing the expectation over all timesteps as <span class="math display">\[\arg \min_\theta \mathbb{E}_{t \sim U\\{2,T\\}} \mathbb{E}_{q(\mathbf{x}_t | \mathbf{x}_0)}\text{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) || p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) ).\]</span></p>
 </section>
-<section id="section-15" class="slide level2 center">
+<section id="section-13" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 &amp;\arg \min_\theta L_{t-1} \\\\
@@ -624,7 +665,7 @@ L &amp;= \mathbb{E}_{q(\mathbf{x}_0)q(\mathbf{x}_{1:T}|\mathbf{x}_0)}\left[ \log
 </div>
 </div>
 </section>
-<section id="section-16" class="slide level2 center">
+<section id="section-14" class="slide level2 center">
 <h2></h2>
 <p><span class="math display">\[\begin{aligned}
 &amp;\arg \min_\theta L_{t-1} \\\\
@@ -651,6 +692,20 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 </div>
 </div>
 </section>
+<section id="section-15" class="slide level2 center">
+<h2></h2>
+<p>The score function <span class="math inline">\(\nabla_{\mathbf{x}_0} \log q(\mathbf{x}_0)\)</span> is a vector field that points in the direction of the highest density of the data distribution <span class="math inline">\(q(\mathbf{x}_0)\)</span>.</p>
+<p>It can be used to find modes of the data distribution or to generate samples by Langevin dynamics.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/langevin.gif" style="width:25.0%"></p>
+<figcaption>Credits: <a href="https://yang-song.net/blog/2021/score/">Song</a>, 2021.</figcaption>
+</figure>
+</div>
+</div>
+<p>Since <span class="math inline">\(s_\theta(\mathbf{x}_t, t)\)</span> is learned in expectation over the data distribution <span class="math inline">\(q(\mathbf{x}_0)\)</span>, the score network will eventually approximate the score of the marginal distribution <span class="math inline">\(q(\mathbf{x}_t\)</span>), for each noise level <span class="math inline">\(t\)</span>, that is <span class="math display">\[s_\theta(\mathbf{x}_t, t) \approx \nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t).\]</span></p>
+</section>
 <section id="network-architectures" class="slide level2 center">
 <h2>Network architectures</h2>
 <p>Diffusion models often use U-Net architectures with ResNet blocks and self-attention layers to represent <span class="math inline">\(\hat{\mathbf{x}}_\theta(\mathbf{x}_t, t)\)</span>, <span class="math inline">\(\epsilon_\theta(\mathbf{x}_t, t)\)</span> or <span class="math inline">\(s_\theta(\mathbf{x}_t, t)\)</span>.</p>
@@ -665,7 +720,7 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 &amp;= \sqrt{1 - {\beta}(t)\Delta_t} \mathbf{x}_{t-1} + \sqrt{ {\beta}(t)\Delta_t} \mathcal{N}(\mathbf{0}, \mathbf{I})
 \end{aligned}\]</span></p>
 </section>
-<section id="section-17" class="slide level2 center">
+<section id="section-16" class="slide level2 center">
 <h2></h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -680,7 +735,7 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 .\]</span></p>
 <p>This last update rule corresponds to the Euler-Maruyama discretization of the stochastic differential equation (SDE) <span class="math display">\[\text{d}\mathbf{x}_t = -\frac{1}{2}\beta(t)\mathbf{x}_t \text{d}t + \sqrt{\beta(t)} \text{d}\mathbf{w}_t\]</span> describing the diffusion in the infinitesimal limit.</p>
 </section>
-<section id="section-18" class="slide level2 center">
+<section id="section-17" class="slide level2 center">
 <h2></h2>
 <p>The reverse process satisfies a reverse-time SDE that can be derived analytically from the forward-time SDE and the score of the marginal distribution <span class="math inline">\(q(\mathbf{x}_t)\)</span>, as <span class="math display">\[\text{d}\mathbf{x}_t = \left[ -\frac{1}{2}\beta(t)\mathbf{x}_t - \beta(t)\nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t) \right] \text{d}t + \sqrt{\beta(t)} \text{d}\mathbf{w}_t.\]</span></p>
 <div>
@@ -722,21 +777,21 @@ q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \ma
 <p>Therefore, when <span class="math inline">\(\nabla_{\mathbf{x}_t} \log p(\mathbf{x}_t)\)</span> is replaced by its approximation <span class="math inline">\(s_\theta(\mathbf{x}_t, t)\)</span>, the probability flow ODE becomes a special case of a neural ODE. In particular, it is an example of continuous-time normalizing flows!</p>
 
 <img data-src="./images/flow-ode.jpg" data-with="40%" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://yang-song.net/blog/2021/score/">Song</a>, 2021.</p></section>
-<section id="section-19" class="slide level2 smaller scrollable">
+<section id="section-18" class="slide level2 smaller scrollable">
 <h2></h2>
 
-
+<div class="quarto-auto-generated-content">
+<p><img src="images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
+</div>
+</div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-prince2023understanding" class="csl-entry" role="listitem">
 Prince, Simon J. D. 2023. <em>Understanding Deep Learning</em>. MIT Press. <a href="http://udlbook.com">http://udlbook.com</a>.
 </div>
 </div>
-</section><div class="quarto-auto-generated-content">
-<p><img src="images/logo.png" class="slide-logo"></p>
-<div class="footer footer-default">
-<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
-</div>
-</div></section>
+</section></section>
     </div>
   </div>
 
