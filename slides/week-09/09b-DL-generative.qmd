@@ -163,7 +163,8 @@ $$\begin{aligned}
 ![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm.png)
 
 
-## 
+## Forward diffusion process
+
 
 ![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm-forward.png)
 
@@ -174,7 +175,7 @@ q(\mathbf{x}_t | \mathbf{x}_{t-1}) &= \mathcal{N}(\mathbf{x}_t ; \sqrt{\alpha_t}
 q(\mathbf{x}_{1:T} | \mathbf{x}_{0}) &=  \prod_{t=1}^T q(\mathbf{x}_t | \mathbf{x}_{t-1}) 
 \end{aligned}$$
 
-sampling from $p_\theta(\mathbf{x}|\mathbf{z})$ can be interpreted as **a stochastic generating process** from $\mathcal{Z}$ to $\mathcal{X}$.
+<!-- sampling from $p_\theta(\mathbf{x}|\mathbf{z})$ can be interpreted as **a stochastic generating process** from $\mathcal{Z}$ to $\mathcal{X}$. -->
 
 ## 
 
@@ -182,32 +183,52 @@ sampling from $p_\theta(\mathbf{x}|\mathbf{z})$ can be interpreted as **a stocha
 
 <!-- ## Reverse denoising process -->
 
-##
+## Diffusion kernel
 
 :::{}
-![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm-reverse.png){width=50%}
+![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm-kernel.png){width=50%}
+:::
+
+With $\bar{\alpha}_t = \prod_{i=1}^t \alpha_i$ and $\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$, we have
+
+$$\begin{aligned}
+\mathbf{x}_t &= \sqrt{\bar{\alpha}_t} \mathbf{x}_{0} + \sqrt{1-\bar{\alpha}_t} \epsilon \\\\
+q(\mathbf{x}_t | \mathbf{x}_{0}) &= \mathcal{N}(\mathbf{x}_t ; \sqrt{\bar{\alpha}_t} \mathbf{x}_{0}, (1-\bar{\alpha}_t)\mathbf{I})
+\end{aligned}$$
+
+##
+
+![Credits: [Simon J.D. Prince](https://udlbook.github.io/udlbook/), 2023.](./images/diffusion-kernel-1.png)
+
+##
+
+![Credits: [Simon J.D. Prince](https://udlbook.github.io/udlbook/), 2023.](./images/diffusion-kernel-2.png)
+
+
+## Reverse denoising procees
+
+:::{}
+![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm-reverse.png){width=70%}
 :::
 
 $$\begin{aligned}
 p(\mathbf{x}_{0:T}) &= p(\mathbf{x}_T) \prod_{t=1}^T p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t)\\\\
 p(\mathbf{x}_T) &= \mathcal{N}(\mathbf{x}_T; \mathbf{0}, I) \\\\
 p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) &= \mathcal{N}(\mathbf{x}_{t-1}; \mu_\theta(\mathbf{x}_t, t), \sigma^2_\theta(\mathbf{x}_t, t)\mathbf{I}) \\\\
-\mathbf{x}_{t-1} &= \mu_\theta(\mathbf{x}_t, t) + \sigma_\theta(\mathbf{x}_t, t) \mathbf{z} 
+\mathbf{x}_{t-1} &= \mu_\theta(\mathbf{x}_t, t) + \sigma_\theta(\mathbf{x}_t, t) \mathbf{z} \quad\text{with}\quad \mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})
 \end{aligned}$$
-with $\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$.
+<!-- with $\mathbf{z} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$. -->
 
 ## Markovian Hierarchical VAEs
 
 ![](./images/diagram-hvae.svg)
 
-## 
+## HVAES
 
 Similarly to VAEs, training is done by maximizing the ELBO, using a variational distribution $q_\phi(\mathbf{z}_{1:T} | \mathbf{x})$ over all levels of latent variables:
 $$\begin{aligned}
 \log p_\theta(\mathbf{x}) &\geq \mathbb{E}_{q_\phi(\mathbf{z}_{1:T} | \mathbf{x})}\left[ \log \frac{p(\mathbf{x},\mathbf{z}_{1:T})}{q_\phi(\mathbf{z}_{1:T}|\mathbf{x})} \right] 
 \end{aligned}$$
-
-## 
 
 
 Diffusion models are Markovian HVAEs with the following constraints:
@@ -240,6 +261,26 @@ where
 
 - $L_T = \text{KL}(q(\mathbf{x}_T | \mathbf{x}_0) || p_\theta(\mathbf{x}_T))$ represents how close the distribution of the final noisified input is to the standard Gaussian. It has no trainable parameters.
 
+<!-- ## 
+
+:::{}
+![](./images/tractable-posterior.svg){width=60%}
+:::
+
+The distribution $q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)$ is the tractable posterior distribution
+$$\begin{aligned}
+q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &= \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)} \\\\
+&= \mathcal{N}(\mathbf{x}_{t-1}; \mu_q(\mathbf{x}_t, \mathbf{x}_0, t), \sigma^2_t I)
+\end{aligned}$$
+where
+
+## 
+
+$$\begin{aligned}
+\mu_q(\mathbf{x}_t, \mathbf{x}_0, t) &= \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t + \frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}\mathbf{x}_0 \\\\
+\sigma^2_t &= \frac{(1-\alpha_t)(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}
+\end{aligned}$$ -->
+
 # (Some calculations later...)
 
 ## 
@@ -253,6 +294,8 @@ $$\begin{aligned}
 Interpretation 1: Denoising. Training a diffusion model amounts to learning a neural network that predicts the original ground truth $\mathbf{x}_0$ from a noisy input $\mathbf{x}_t$.
 :::
 
+Minimizing the summation of the $L_{t-1}$ terms across all noise levels $t$ can be approximated by minimizing the expectation over all timesteps as
+$$\arg \min_\theta \mathbb{E}_{t \sim U\\{2,T\\}} \mathbb{E}_{q(\mathbf{x}_t | \mathbf{x}_0)}\text{KL}(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) || p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) ).$$
 
 ##
 
@@ -289,6 +332,20 @@ $$
 $$
 
 :::
+
+
+## 
+
+The score function $\nabla_{\mathbf{x}_0} \log q(\mathbf{x}_0)$ is a vector field that points in the direction of the highest density of the data distribution $q(\mathbf{x}_0)$.
+
+It can be used to find modes of the data distribution or to generate samples by Langevin dynamics.
+
+:::{}
+![Credits: [Song](https://yang-song.net/blog/2021/score/), 2021.](images/langevin.gif){width=25%}
+:::
+
+Since $s_\theta(\mathbf{x}_t, t)$ is learned in expectation over the data distribution $q(\mathbf{x}_0)$, the score network will eventually approximate the score of the marginal distribution $q(\mathbf{x}_t$), for each noise level $t$, that is
+$$s_\theta(\mathbf{x}_t, t) \approx \nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t).$$
 
 ## Network architectures
 
