@@ -160,6 +160,15 @@ $$\begin{aligned}
 # Diffusion models
 
 ## 
+
+Variational diffusion models are Markovian HVAEs with the following constraints:
+
+- The latent dimension is the same as the data dimension.
+
+- The encoder is fixed to linear Gaussian transitions $q(\mathbf{x}_t | \mathbf{x}_{t-1})$.
+
+- The hyper-parameters are set such that $q(\mathbf{x}_T | \mathbf{x}_0)$ is a standard Gaussian. 
+ 
 ![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm.png)
 
 
@@ -205,7 +214,7 @@ q(\mathbf{x}_t | \mathbf{x}_{0}) &= \mathcal{N}(\mathbf{x}_t ; \sqrt{\bar{\alpha
 ![Credits: [Simon J.D. Prince](https://udlbook.github.io/udlbook/), 2023.](./images/diffusion-kernel-2.png)
 
 
-## Reverse denoising procees
+## Reverse denoising process
 
 :::{}
 ![Credits: [Kreis et al](https://cvpr2022-tutorial-diffusion-models.github.io/), 2022.](./images/vdm-reverse.png){width=70%}
@@ -321,14 +330,15 @@ $$\begin{aligned}
 Interpretation 3: Denoising score matching. Training a diffusion model amounts to learning a neural network that predicts the score $\nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t | \mathbf{x}_0)$  of the tractable posterior.
 
 The distribution $q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)$ is the tractable posterior distribution
-$$\begin{aligned}
-q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &= \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)} \\\\
-&= \mathcal{N}(\mathbf{x}_{t-1}; \mu_q(\mathbf{x}_t, \mathbf{x}_0, t), \sigma^2_t I)
-\end{aligned}$$
+$$
+q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) = \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)} = \mathcal{N}(\mathbf{x}_{t-1}; \mu_q(\mathbf{x}_t, \mathbf{x}_0, t), \sigma^2_t I)
+$$
 where
 $$
-\mu_q(\mathbf{x}_t, \mathbf{x}_0, t) = \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t + \frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}\mathbf{x}_0  \qquad\text{and} \qquad
-\sigma^2_t = \frac{(1-\alpha_t)(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}
+\begin{aligned}\mu_q(\mathbf{x}_t, \mathbf{x}_0, t) &= \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t + \frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}\mathbf{x}_0  \qquad\text{and} \qquad
+\sigma^2_t = \frac{(1-\alpha_t)(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\\
+&= \frac{1}{\sqrt{\alpha}_t} \mathbf{x}_t + \frac{1-\alpha_t}{\sqrt{\alpha_t}} \nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t | \mathbf{x}_0).
+\end{aligned}
 $$
 
 :::
