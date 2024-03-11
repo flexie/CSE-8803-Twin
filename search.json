@@ -3432,7 +3432,7 @@
     "href": "slides/week-09/09b-DL-generative.html#section-7",
     "title": "Deep Learning",
     "section": "",
-    "text": "Credits: Kreis et al, 2022."
+    "text": "Variational diffusion models are Markovian HVAEs with the following constraints:\n\nThe latent dimension is the same as the data dimension.\nThe encoder is fixed to linear Gaussian transitions \\(q(\\mathbf{x}_t | \\mathbf{x}_{t-1})\\).\nThe hyper-parameters are set such that \\(q(\\mathbf{x}_T | \\mathbf{x}_0)\\) is a standard Gaussian.\n\n\nCredits: Kreis et al, 2022."
   },
   {
     "objectID": "slides/week-09/09b-DL-generative.html#forward-diffusion-process",
@@ -3470,11 +3470,11 @@
     "text": "Credits: Simon J.D. Prince, 2023."
   },
   {
-    "objectID": "slides/week-09/09b-DL-generative.html#reverse-denoising-procees",
-    "href": "slides/week-09/09b-DL-generative.html#reverse-denoising-procees",
+    "objectID": "slides/week-09/09b-DL-generative.html#reverse-denoising-process",
+    "href": "slides/week-09/09b-DL-generative.html#reverse-denoising-process",
     "title": "Deep Learning",
-    "section": "Reverse denoising procees",
-    "text": "Reverse denoising procees\n\n\n\n\nCredits: Kreis et al, 2022.\n\n\n\n\\[\\begin{aligned}\np(\\mathbf{x}_{0:T}) &= p(\\mathbf{x}_T) \\prod_{t=1}^T p_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t)\\\\\\\\\np(\\mathbf{x}_T) &= \\mathcal{N}(\\mathbf{x}_T; \\mathbf{0}, I) \\\\\\\\\np_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t) &= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_\\theta(\\mathbf{x}_t, t), \\sigma^2_\\theta(\\mathbf{x}_t, t)\\mathbf{I}) \\\\\\\\\n\\mathbf{x}_{t-1} &= \\mu_\\theta(\\mathbf{x}_t, t) + \\sigma_\\theta(\\mathbf{x}_t, t) \\mathbf{z} \\quad\\text{with}\\quad \\mathbf{z} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\n\\end{aligned}\\]"
+    "section": "Reverse denoising process",
+    "text": "Reverse denoising process\n\n\n\n\nCredits: Kreis et al, 2022.\n\n\n\n\\[\\begin{aligned}\np(\\mathbf{x}_{0:T}) &= p(\\mathbf{x}_T) \\prod_{t=1}^T p_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t)\\\\\\\\\np(\\mathbf{x}_T) &= \\mathcal{N}(\\mathbf{x}_T; \\mathbf{0}, I) \\\\\\\\\np_\\theta(\\mathbf{x}_{t-1} | \\mathbf{x}_t) &= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_\\theta(\\mathbf{x}_t, t), \\sigma^2_\\theta(\\mathbf{x}_t, t)\\mathbf{I}) \\\\\\\\\n\\mathbf{x}_{t-1} &= \\mu_\\theta(\\mathbf{x}_t, t) + \\sigma_\\theta(\\mathbf{x}_t, t) \\mathbf{z} \\quad\\text{with}\\quad \\mathbf{z} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})\n\\end{aligned}\\]"
   },
   {
     "objectID": "slides/week-09/09b-DL-generative.html#markovian-hierarchical-vaes",
@@ -3523,7 +3523,7 @@
     "href": "slides/week-09/09b-DL-generative.html#section-14",
     "title": "Deep Learning",
     "section": "",
-    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\frac{1}{2\\sigma^2_t} \\frac{(1-\\alpha_t)^2}{\\alpha_t} || s_\\theta(\\mathbf{x}_t, t) - \\nabla_{\\mathbf{x}_t}  \\log q(\\mathbf{x}_t | \\mathbf{x}_0) ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 3: Denoising score matching. Training a diffusion model amounts to learning a neural network that predicts the score \\(\\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t | \\mathbf{x}_0)\\) of the tractable posterior.\nThe distribution \\(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0)\\) is the tractable posterior distribution \\[\\begin{aligned}\nq(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0) &= \\frac{q(\\mathbf{x}_t | \\mathbf{x}_{t-1}, \\mathbf{x}_0) q(\\mathbf{x}_{t-1} | \\mathbf{x}_0)}{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\\\\\\\\n&= \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t), \\sigma^2_t I)\n\\end{aligned}\\] where \\[\n\\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t) = \\frac{\\sqrt{\\alpha_t}(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\\mathbf{x}_t + \\frac{\\sqrt{\\bar{\\alpha}_{t-1}}(1-\\alpha_t)}{1-\\bar{\\alpha}_t}\\mathbf{x}_0  \\qquad\\text{and} \\qquad\n\\sigma^2_t = \\frac{(1-\\alpha_t)(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\n\\]"
+    "text": "\\[\\begin{aligned}\n&\\arg \\min_\\theta L_{t-1} \\\\\\\\\n=&\\arg \\min_\\theta \\mathbb{E}_{q(\\mathbf{x}_t | \\mathbf{x}_0)} \\frac{1}{2\\sigma^2_t} \\frac{(1-\\alpha_t)^2}{\\alpha_t} || s_\\theta(\\mathbf{x}_t, t) - \\nabla_{\\mathbf{x}_t}  \\log q(\\mathbf{x}_t | \\mathbf{x}_0) ||_2^2\n\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nInterpretation 3: Denoising score matching. Training a diffusion model amounts to learning a neural network that predicts the score \\(\\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t | \\mathbf{x}_0)\\) of the tractable posterior.\nThe distribution \\(q(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0)\\) is the tractable posterior distribution \\[\nq(\\mathbf{x}_{t-1}|\\mathbf{x}_t, \\mathbf{x}_0) = \\frac{q(\\mathbf{x}_t | \\mathbf{x}_{t-1}, \\mathbf{x}_0) q(\\mathbf{x}_{t-1} | \\mathbf{x}_0)}{q(\\mathbf{x}_t | \\mathbf{x}_0)} = \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t), \\sigma^2_t I)\n\\] where \\[\n\\begin{aligned}\\mu_q(\\mathbf{x}_t, \\mathbf{x}_0, t) &= \\frac{\\sqrt{\\alpha_t}(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\\mathbf{x}_t + \\frac{\\sqrt{\\bar{\\alpha}_{t-1}}(1-\\alpha_t)}{1-\\bar{\\alpha}_t}\\mathbf{x}_0  \\qquad\\text{and} \\qquad\n\\sigma^2_t = \\frac{(1-\\alpha_t)(1-\\bar{\\alpha}_{t-1})}{1-\\bar{\\alpha}_t}\\\\\n&= \\frac{1}{\\sqrt{\\alpha}_t} \\mathbf{x}_t + \\frac{1-\\alpha_t}{\\sqrt{\\alpha_t}} \\nabla_{\\mathbf{x}_t} \\log q(\\mathbf{x}_t | \\mathbf{x}_0).\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/week-09/09b-DL-generative.html#section-15",

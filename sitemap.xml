@@ -2,39 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//schedule.html</loc>
-    <lastmod>2024-01-09T21:24:23.718Z</lastmod>
+    <lastmod>2024-01-09T21:24:23.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//references.html</loc>
-    <lastmod>2023-12-04T18:45:05.000Z</lastmod>
+    <lastmod>2023-12-04T18:46:31.195Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-04/05-variational.html</loc>
-    <lastmod>2024-01-31T17:48:55.000Z</lastmod>
+    <lastmod>2024-01-31T17:48:55.557Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-03/04-AD.html</loc>
-    <lastmod>2024-01-29T20:11:41.000Z</lastmod>
+    <lastmod>2024-01-29T20:11:41.158Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-02/02-basics.html</loc>
-    <lastmod>2024-01-18T14:45:59.693Z</lastmod>
+    <lastmod>2024-01-18T14:45:59.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-05/07-DA-stat.html</loc>
-    <lastmod>2024-02-12T20:21:34.000Z</lastmod>
+    <lastmod>2024-02-12T20:21:34.491Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-09/12.html</loc>
-    <lastmod>2024-02-13T17:30:47.263Z</lastmod>
+    <lastmod>2024-02-13T17:30:47.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-06/08-DA-Bayes.html</loc>
-    <lastmod>2024-02-19T21:03:25.000Z</lastmod>
+    <lastmod>2024-02-19T21:03:25.870Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-01/01-intro.html</loc>
-    <lastmod>2024-01-08T20:21:37.000Z</lastmod>
+    <lastmod>2024-01-08T20:21:37.678Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-08/10-NF.html</loc>
@@ -42,27 +42,27 @@
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//index.html</loc>
-    <lastmod>2024-01-08T16:01:38.000Z</lastmod>
+    <lastmod>2024-01-08T16:01:38.210Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//seminar.html</loc>
-    <lastmod>2024-02-14T18:51:52.000Z</lastmod>
+    <lastmod>2024-02-14T18:51:52.427Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//hw/w3-hw02.html</loc>
-    <lastmod>2023-11-28T22:24:56.000Z</lastmod>
+    <lastmod>2023-11-28T22:24:56.404Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-03.html</loc>
-    <lastmod>2024-01-24T18:39:24.000Z</lastmod>
+    <lastmod>2024-01-24T18:39:24.322Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-06.html</loc>
-    <lastmod>2024-02-13T17:31:51.445Z</lastmod>
+    <lastmod>2024-02-12T17:06:02.767Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-05.html</loc>
-    <lastmod>2024-02-13T17:03:54.021Z</lastmod>
+    <lastmod>2024-02-12T20:03:27.107Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-09.html</loc>
@@ -70,99 +70,99 @@
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w2-lab01-PyTorch.html</loc>
-    <lastmod>2024-01-18T14:26:35.088Z</lastmod>
+    <lastmod>2024-01-18T14:26:20.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/01intro/underfitting_overfitting.html</loc>
-    <lastmod>2024-01-02T19:52:49.842Z</lastmod>
+    <lastmod>2024-01-02T19:52:49.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w2-lab01.html</loc>
-    <lastmod>2024-01-31T17:46:38.000Z</lastmod>
+    <lastmod>2024-01-31T17:46:38.977Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/05Examples/One-Dimensional-Kalman-Filters.html</loc>
-    <lastmod>2024-02-12T14:40:36.380Z</lastmod>
+    <lastmod>2024-02-12T14:40:36.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/07Examples/Particle-Filters.html</loc>
-    <lastmod>2024-02-22T02:53:12.055Z</lastmod>
+    <lastmod>2024-02-22T02:53:12.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w8-lab-normalizing-flow.html</loc>
-    <lastmod>2024-02-22T02:53:12.058Z</lastmod>
+    <lastmod>2024-02-22T02:53:12.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w1-lab01-intro.html</loc>
-    <lastmod>2024-01-18T01:12:35.630Z</lastmod>
+    <lastmod>2024-01-18T01:12:35.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/pytorch/pytorch_102.html</loc>
-    <lastmod>2023-10-08T00:55:01.762Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/pytorch/Torch_test_GPU_CPU.html</loc>
-    <lastmod>2023-10-08T00:55:01.758Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/ad/diff_prog.html</loc>
-    <lastmod>2023-10-08T00:55:01.644Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/ad/autograd_lin_reg.html</loc>
-    <lastmod>2023-10-08T00:55:01.640Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/08Examples/NF_homework.html</loc>
-    <lastmod>2024-02-22T02:53:12.057Z</lastmod>
+    <lastmod>2024-02-22T02:53:12.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w3-lab02-Diff-Prog.html</loc>
-    <lastmod>2024-01-25T03:17:25.009Z</lastmod>
+    <lastmod>2024-01-25T03:17:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w5-lab-1dkalman.html</loc>
-    <lastmod>2024-02-12T14:40:36.380Z</lastmod>
+    <lastmod>2024-02-12T14:40:36.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/ad/autograd_tut.html</loc>
-    <lastmod>2023-10-08T00:55:01.641Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/pytorch/diff_prog.html</loc>
-    <lastmod>2023-10-08T00:55:01.644Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/02Examples/pytorch/pytorch_101.html</loc>
-    <lastmod>2023-10-08T00:55:01.760Z</lastmod>
+    <lastmod>2023-10-08T00:55:01.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w7-lab-particle.html</loc>
-    <lastmod>2024-02-22T02:53:12.058Z</lastmod>
+    <lastmod>2024-02-22T02:53:12.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/06Examples/ensemble_kalman_lorenz.html</loc>
-    <lastmod>2024-02-14T18:12:44.000Z</lastmod>
+    <lastmod>2024-02-14T18:12:44.546Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w3-lab02.html</loc>
-    <lastmod>2024-01-31T17:46:38.000Z</lastmod>
+    <lastmod>2024-01-31T17:46:38.977Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w6-lab-ensemble.html</loc>
-    <lastmod>2024-02-14T18:12:44.000Z</lastmod>
+    <lastmod>2024-02-14T18:12:44.547Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/04Examples/threeDVar_l63.html</loc>
-    <lastmod>2024-01-31T17:46:45.000Z</lastmod>
+    <lastmod>2024-01-31T17:46:45.729Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w4-lab02-3DVar.html</loc>
-    <lastmod>2024-01-31T18:03:33.000Z</lastmod>
+    <lastmod>2024-01-31T18:03:33.884Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//labs/w6-lab-enf.html</loc>
-    <lastmod>2024-02-12T14:45:00.606Z</lastmod>
+    <lastmod>2024-02-12T14:45:00.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-08.html</loc>
@@ -170,31 +170,31 @@
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-04.html</loc>
-    <lastmod>2024-01-31T20:34:38.000Z</lastmod>
+    <lastmod>2024-01-31T20:34:38.968Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-07.html</loc>
-    <lastmod>2024-02-22T02:53:12.058Z</lastmod>
+    <lastmod>2024-02-22T02:53:12.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-02.html</loc>
-    <lastmod>2024-01-08T02:32:39.493Z</lastmod>
+    <lastmod>2024-01-08T02:24:45.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//weeks/week-01.html</loc>
-    <lastmod>2024-01-09T21:22:16.278Z</lastmod>
+    <lastmod>2024-01-09T21:22:16.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//hw/w2-hw01.html</loc>
-    <lastmod>2023-11-28T22:24:56.000Z</lastmod>
+    <lastmod>2023-11-28T22:24:56.404Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//goals.html</loc>
-    <lastmod>2023-12-30T16:56:43.993Z</lastmod>
+    <lastmod>2023-12-30T16:56:43.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-08/11.html</loc>
-    <lastmod>2024-02-13T17:30:33.303Z</lastmod>
+    <lastmod>2024-02-13T17:30:33.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-08/09-NF.html</loc>
@@ -202,7 +202,7 @@
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-01/02-basics.html</loc>
-    <lastmod>2024-01-17T19:42:07.000Z</lastmod>
+    <lastmod>2024-01-17T19:42:07.543Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-07/09a-DL-uncertainty.html</loc>
@@ -210,26 +210,26 @@
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-09/09b-DL-generative.html</loc>
-    <lastmod>2024-03-11T03:11:29.050Z</lastmod>
+    <lastmod>2024-03-11T19:04:40.037Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-05/08-DA-Bayes.html</loc>
-    <lastmod>2024-02-22T02:53:03.890Z</lastmod>
+    <lastmod>2024-02-22T02:53:03.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-03/03-adjoint.html</loc>
-    <lastmod>2024-01-22T20:49:22.000Z</lastmod>
+    <lastmod>2024-01-22T20:49:22.689Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//slides/week-04/06-Bayes-Inference.html</loc>
-    <lastmod>2024-02-05T17:24:49.000Z</lastmod>
+    <lastmod>2024-02-05T17:24:49.078Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//syllabus.html</loc>
-    <lastmod>2024-02-19T01:19:25.206Z</lastmod>
+    <lastmod>2024-02-19T01:19:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://flexie.github.io/CSE-8803-Twin//project.html</loc>
-    <lastmod>2024-03-11T03:20:59.702Z</lastmod>
+    <lastmod>2024-03-11T03:20:59.000Z</lastmod>
   </url>
 </urlset>

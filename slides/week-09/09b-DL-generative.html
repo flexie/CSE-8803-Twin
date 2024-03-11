@@ -508,6 +508,12 @@ q_\phi(\mathbf{z}|\mathbf{x}) &amp;= \mathcal{N}(\mathbf{z}; \mu, \sigma^2\mathb
 </section>
 <section id="section-7" class="slide level2 center">
 <h2></h2>
+<p>Variational diffusion models are Markovian HVAEs with the following constraints:</p>
+<ul>
+<li><p>The latent dimension is the same as the data dimension.</p></li>
+<li><p>The encoder is fixed to linear Gaussian transitions <span class="math inline">\(q(\mathbf{x}_t | \mathbf{x}_{t-1})\)</span>.</p></li>
+<li><p>The hyper-parameters are set such that <span class="math inline">\(q(\mathbf{x}_T | \mathbf{x}_0)\)</span> is a standard Gaussian.</p></li>
+</ul>
 
 <img data-src="./images/vdm.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://cvpr2022-tutorial-diffusion-models.github.io/">Kreis et al</a>, 2022.</p></section>
 <section id="forward-diffusion-process" class="slide level2 center">
@@ -549,8 +555,8 @@ q(\mathbf{x}_t | \mathbf{x}_{0}) &amp;= \mathcal{N}(\mathbf{x}_t ; \sqrt{\bar{\a
 <h2></h2>
 
 <img data-src="./images/diffusion-kernel-2.png" class="r-stretch quarto-figure-center"><p class="caption">Credits: <a href="https://udlbook.github.io/udlbook/">Simon J.D. Prince</a>, 2023.</p></section>
-<section id="reverse-denoising-procees" class="slide level2 center">
-<h2>Reverse denoising procees</h2>
+<section id="reverse-denoising-process" class="slide level2 center">
+<h2>Reverse denoising process</h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -681,12 +687,13 @@ $$\begin{aligned}
 </div>
 <div class="callout-content">
 <p>Interpretation 3: Denoising score matching. Training a diffusion model amounts to learning a neural network that predicts the score <span class="math inline">\(\nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t | \mathbf{x}_0)\)</span> of the tractable posterior.</p>
-<p>The distribution <span class="math inline">\(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)\)</span> is the tractable posterior distribution <span class="math display">\[\begin{aligned}
-q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) &amp;= \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)} \\\\
-&amp;= \mathcal{N}(\mathbf{x}_{t-1}; \mu_q(\mathbf{x}_t, \mathbf{x}_0, t), \sigma^2_t I)
-\end{aligned}\]</span> where <span class="math display">\[
-\mu_q(\mathbf{x}_t, \mathbf{x}_0, t) = \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t + \frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}\mathbf{x}_0  \qquad\text{and} \qquad
-\sigma^2_t = \frac{(1-\alpha_t)(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}
+<p>The distribution <span class="math inline">\(q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)\)</span> is the tractable posterior distribution <span class="math display">\[
+q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0) = \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)} = \mathcal{N}(\mathbf{x}_{t-1}; \mu_q(\mathbf{x}_t, \mathbf{x}_0, t), \sigma^2_t I)
+\]</span> where <span class="math display">\[
+\begin{aligned}\mu_q(\mathbf{x}_t, \mathbf{x}_0, t) &amp;= \frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\mathbf{x}_t + \frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}\mathbf{x}_0  \qquad\text{and} \qquad
+\sigma^2_t = \frac{(1-\alpha_t)(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}\\
+&amp;= \frac{1}{\sqrt{\alpha}_t} \mathbf{x}_t + \frac{1-\alpha_t}{\sqrt{\alpha_t}} \nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t | \mathbf{x}_0).
+\end{aligned}
 \]</span></p>
 </div>
 </div>
