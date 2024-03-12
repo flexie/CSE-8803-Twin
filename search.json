@@ -1311,13 +1311,6 @@
     "text": "Open-source software\nVarious open-source repositories and codes are available for both academic and operational data assimilation.\n\nDARC: https://research.reading.ac.uk/met-darc/ from Reading, UK.\nDAPPER: https://github.com/nansencenter/DAPPER from Nansen, Norway.\nDART: https://dart.ucar.edu/ from NCAR, US, specialized in ensemble DA.\nOpenDA: https://www.openda.org/.\nVerdandi: http://verdandi.sourceforge.net/ from INRIA, France.\nPyDA: https://github.com/Shady-Ahmed/PyDA, a Python implementation for academic use.\nFilterpy: https://github.com/rlabbe/filterpy, dedicated to KF variants.\nEnKF; https://enkf.nersc.no/, the original Ensemble KF from Geir Evensen."
   },
   {
-    "objectID": "slides/week-09/12.html",
-    "href": "slides/week-09/12.html",
-    "title": "Digital Twins for Physical Systems",
-    "section": "",
-    "text": "ReuseCC BY 4.0"
-  },
-  {
     "objectID": "slides/week-06/08-DA-Bayes.html#bayesian-filters",
     "href": "slides/week-06/08-DA-Bayes.html#bayesian-filters",
     "title": "Bayesian Data Assimilation",
@@ -1920,7 +1913,7 @@
     "href": "weeks/week-09.html",
     "title": "Week 09",
     "section": "",
-    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nDeep Learning\n\n\nDiffusion models\n\n\nMon, Mar 11\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nNormalizing flow\n\n\nFri, Mar 01\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 17-18 — Understanding Deep Learning\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
+    "text": "Lectures\n\n\n\n\n\nTopic\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nDeep Learning\n\n\nDiffusion models\n\n\nMon, Mar 11\n\n\n\n\nAn Uncertainty-Aware Digital Twin for Geological Carbon Storage\n\n\nDigital Twin\n\n\nMon, Mar 04\n\n\n\n\n\nNo matching items\n\n\n\n\nAssignments\n\n\n\n\n\nAssignment\n\n\nTitle\n\n\nDue\n\n\n\n\n\n\nLab\n\n\nNormalizing flow\n\n\nFri, Mar 01\n\n\n\n\n\nNo matching items\n\n\n\n\nReadings\n\n\n\n\n\n\nChapter 17-18 — Understanding Deep Learning\n\n\n\n\n\n\n\n\nReuseCC BY 4.0"
   },
   {
     "objectID": "labs/w2-lab01-PyTorch.html",
