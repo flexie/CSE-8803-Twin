@@ -2,7 +2,25 @@
 
 There are 9 time slots until the end the term. So, please prepare a 30 minute lecture on a paper of interest. This contents of the paper should be aligned with the general topics areas of this course. We encourage you to also choose a topic in the general area of your PhD research. When in doubt please reach out. 
 
+## List of papers
 
+Here is a list of papers that may be of interest when presenting your seminar. Please check the papers cited in these papers
 
+- [A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies by Thelen et. al.](https://openintro-ims.netlify.app/)
+ 
+-  [A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives by Thelen et. al. ](https://link.springer.com/article/10.1007/00158-022-03410-x)
+  
+- [Digital Twins for Materials by Kalidindi et. al.](https://www.frontiersin.org/articles/10.3389/fmats.2022.818535/full)
+
+- [A Probabilistic Graphical Model Foundation for Enabling Predictive Digital Twins at Scale by Kapteyn et. al.](https://www.nature.com/articles/s43588-021-00069-0)
+
+- [National Academies of Sciences, Engineering, and Medicine. 2023. Foundational Research Gaps and Future Directions for Digital Twins. Washington, DC: The National Academies Press.]( https://doi.org/10.17226/26894)
+
+- [Torzoni, M., Tezzele, M., Mariani, S., Manzoni, A. and Willcox K. A digital twin framework for civil engineering structures. To appear, Computer Methods in Applied Mechanics and Engineering, 2023.](https://kiwi.oden.utexas.edu/papers/digital_twin_civil_engineering_torzoni_willcox.pdf)
+
+- [Kapteyn, M. and Willcox, K., Design of digital twin sensing strategies via predictive modeling and interpretable machine learning. Journal of Mechanical Design, June 2022. https://doi.org/10.1115/1.4054907](https://kiwi.oden.utexas.edu/papers/Digital-twin-sensing-design-Kapteyn-Willcox.pdf)
+
+- [Niederer, S., Sacks, M., Girolami, M. and Willcox, K., Scaling digital twins from the artisanal to the industrial. Nature Computational Science, Vol. 1, No. 5, May 2021, pp. 313-320.](https://www.nature.com/articles/s43588-021-00072-5.epdf?sharing_token=_UenYrAOpLoKXS2qwCiS_tRgN0jAjWel9jnR3ZoTv0OAVptHkA-HS40IVDUY6_q1aEFrzp6mpLutDvzaFopYSmtjJBmEhrS1GcGsCchTs9G6KaFN-Lv4BeKwC2-4Cv_AaYqWOOVnsJzreS_5IC5kbiCCB_J8KYvyRmQ9SFhim6Q%3D)
+  
 ### Calendar for seminar
 <iframe src="https://calendar.google.com/calendar/embed?src=2qgpk7km772vtfu05dlj87duto%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 

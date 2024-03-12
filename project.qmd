@@ -18,6 +18,17 @@ On March 11th, everybody needs to give a 5 minute pitch on their project proposa
 
 [form]:https://www.dropbox.com/s/3qjsb9cws8ntilc/seminar_eval.pdf?dl=0
 
+#### Some hints on the pitch
+
+A 5-minute pitch is not meant to provide technical details. It is rather intended to convey context and goals of the project. A good guideline for structuring such a talk (the same applies to structuring sentences, paragraphs, sections, papers, theses) as follows
+
+1. Situation (1 min)
+2. Problem (1 min)
+3. Solution (2 min)
+4. Evaluation (1 min)
+
+Finally, always remember who you audience is and tailor your presentation towards that audience.
+
 #### Proposal
 
 Concise description of the work to be undertaken. The description should not exceed two pages and should contain
