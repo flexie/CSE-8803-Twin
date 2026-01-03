@@ -1,12 +1,8 @@
 ---
-title: "Syllabus"
+title: "Syllabus^[Syllabus updates: This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.
+]"
+subtitle: "Digital Twins for Physical Systems - CSE 8803 - DTP"
 ---
-
-**Spring 2024 syllabus: Digital Twins for Physical Systems --- 33655 - CSE 8803 - DTP**
-
-<hr>
-
-**Syllabus updates**:This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.
 
 ## Course Learning Objectives
 
@@ -18,9 +14,11 @@ By the end of the semester, you will be made familiar with ...
 
 For more on the Course outline, Topics, and Learning goals, see [Goals](goals.qmd).
 
-For a motivational article see [Digital Twins in the era of generative AI](https://slim.gatech.edu/Publications/Public/Journals/TheLeadingEdge/2023/herrmann2023dte/PresidentsPage.pdf)
+For a motivational article see [Digital Twins in the era of generative AI](https://slim.gatech.edu/Publications/Public/Journals/TheLeadingEdge/2023/herrmann2023dte/PresidentsPage.pdf) and this [Podcast](https://seg.org/podcasts/episode-275-digital-twins-and-generative-ai-in-subsurface-geophysics/)
 
-## Textbooks
+## Course Material
+
+### Textbooks
 
 |                                                                                                                                                                                                                                          |                        |            |
 |---------------------------------------------------|-----------|-----------|
@@ -37,7 +35,7 @@ For a motivational article see [Digital Twins in the era of generative AI](https
 - **The [Python notebook](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) is hands on, very practical, and contains very useful exercises with answers. You are encouraged to explore and we will incorporate material from this [notebook](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) in this course.**
 
 
-## Journal Papers
+### Journal Papers
 
 |                                                                                                                                                                                                              |                           |                |
 |-----------------------------------------------|---------|---------|
@@ -46,7 +44,12 @@ For a motivational article see [Digital Twins in the era of generative AI](https
 | [Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial](https://arxiv.org/abs/2201.08180)                                                                                        | @tatsis2022sequential     | Arxiv, 2022      |
 
 
-## Lectures & computational labs
+### Additional reading material
+
+Details on readings will be provided on a lecture by lecture basis following this [Schedule](schedule.qmd).
+
+
+### Lectures & computational labs
 
 In part the course is an adaptation of open-source Basic and Advanced courses ([CSU-IMU-2023](https://github.com/markasch/CSU-IMU-2023)) developed by [Mark Asch](https://markasch.github.io/DT-tbx-v1/). [Codes](https://markasch.github.io/DT-tbx-v1/codes/) will be drawn from the course and from the book. During the second half of the course, we will draw from the current literature.
 
@@ -54,7 +57,7 @@ In part the course is an adaptation of open-source Basic and Advanced courses ([
 
 ### Inclusive community
 
-It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with [Georgia Tech's Commitment to Diversity and Inclusion](https://catalog.gatech.edu/policies/diversity/). Your suggestions are encouraged and appreciated.
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity. Your suggestions are encouraged and appreciated.
 
 ### Discrimination, Harassment, and Sexual Misconduct
 
@@ -64,19 +67,20 @@ To maintain a safe learning environment that fosters the dignity, respect, and s
 
 If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.
 
-[Disability Services](https://disabilityservices.gatech.edu/about/accommodations) are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.
+[Disability Services](https://disabilityservices.gatech.edu) are available to ensure that students are able to engage with their courses and related assignments. Students should be in touch with the Student Disability Access Office to request or update accommodations under these circumstances.
 
 ### Communication
 
-All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website.
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course [website](https://flexie.github.io/CSE-8803-Twin/).
 
-Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.
+Announcements will be shared on [Piazza](https://piazza.com/gatech/spring2026/cse8803dtp).
 
 ## Activities & Assessment
 
-### Computational labs
+### Computational Assignments
 
-In labs, you will apply the concepts discussed during lectures, with a focus on the computation.
+Details on the assignments will be provided on a lecture by lecture basis following this [Schedule](schedule.qmd). These assignments will mostly involve Digital Twin-related programs, computer simulations, and data analysis. These assignments are designed for each student to work one by him/herself. Collaboration is to a reasonable degree encouraged. During these assignments, you will apply concepts discussed during lectures, with a focus on the computational aspects. These assignments will count towards 30% of your overall course grade.
+
 
 ### Exams
 
@@ -84,7 +88,7 @@ There will be no exams.
 
 ### Final Project
 
-The purpose of the [Final Project](project.qmd) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question.
+The purpose of the [Final Project](project.qmd) is to apply what you've learned throughout the semester to analyze interesting and relevant research questions related to Digital Twins.
 
 ## Grading
 
@@ -100,17 +104,17 @@ The final course grade will be calculated as follows:
 
 ## Important dates
 
--   **Jan 4:** Phase II Registration
+-   **Jan 5:** Phase II Registration
 
--   **Jan 8:** Classes begin
+-   **Jan 12:** Classes begin
 
--   **Jan 12:** Deadline for Registration/Schedule Changes
+-   **Jan 16:** Deadline for Registration/Schedule Changes closes
 
--   **March 13**: Last day to withdraw
+-   **March 18**: Last day to withdraw
 
--   **March 18-22:** Spring break
+-   **March 23-27:** Spring break
 
--   **April 24:** Final Instructional Class
+-   **April 27:** Final Instructional Class
 
 ## Course policies
 
@@ -121,25 +125,54 @@ Please abide by the following as you work on assignments in this course:
 -   You may discuss individual lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.
 -   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
 
-### Guidance on the use of Generative AI
+-   **Using AI-powered coding tools and agents**: Use of tools such as Claude Code, Codex, ChatGPT, Gemini, and GitHub Copilot is permitted, but you must abide by the following principles:
+    -   **Disclosure (required)**: If you used a generative AI tool for any part of an assignment or project, include an *AI Usage Statement* in your report/README that names the tool(s) and briefly describes what you used them for (e.g., debugging, drafting, test generation, refactoring).
+    -   **Provenance (required)**: Maintain a prompt/interaction log (e.g., `PROMPTS.md` or a `prompts/` folder) and commit it to your GitHub repository. Commits should reflect meaningful iterations and should reference prompt IDs or excerpts so the evolution of your work can be audited.
+    -   **Accountability (required)**: You are responsible for everything you submit. You must be able to explain your code and results, reproduce your experiments, and verify any factual claims or citations. You may be asked to walk through your work (code, derivations, and/or experiments).
+    -   **Spec-driven workflow**: For the final project, you must use a specification-driven workflow (e.g., [spec-kit](https://github.com/github/spec-kit), [agent-os](https://github.com/buildermethods/agent-os), or [cc-sdd](https://github.com/gotalab/cc-sdd), or an equivalent workflow that includes a written spec and acceptance tests). For labs, this is strongly encouraged.
+    -   **Privacy, IP, and licensing**: Do not paste confidential, proprietary, or sensitive data into external AI services. Ensure you comply with software licensing and provide attribution where appropriate.
 
-AI-based assistance, such as ChatGPT and Copilot, can be used in the same way as collaboration with other people for the following activities: For lab assignments in understanding the lecture and textbook materials, and in developing your ideals for the project proposals. In these activities you are welcome to talk about your ideas and work with other people, both inside and outside the class, as well as with AI- based assistants. In the course, we will discuss how you can use these tools as a study tool, or as an assistant in helping to draft code or summaries.
+### General guidance on the use of Generative AI
 
-#### Generating Research Ideas or Approaches:
+AI-based assistance (e.g., ChatGPT, Claude, Gemini, Copilot, and coding agents) can be a useful *study* and *software-development* aid in this course. You may use these tools to support learning the lecture/textbook material and to help develop your ideas for proposals, labs, and the final project. However, these tools do not replace your responsibility for independent work, correctness, and academic integrity.
 
--   Brainstorming: You can use the AI tool as a brainstorming partner, where you exchange ideas whether the AI prompts you or you prompt the AI for ideas. Brainstorming is an iterative process that can be made more effective with the way that the queries are posted. For more samples or information, post this query: “How can I use AI to help me to brainstorm an idea?”
+#### Required documentation when you use Generative AI (applies to labs and the final project)
 
--   Surveying Existing Approaches: Large Language Models, if trained broadly in a topic, can give a good initial overview of existing approaches or existing literature on a topic. Current research sources such as library or professional society databases are more reliable in terms of accuracy of peer-reviewed content.
+If you used generative AI for any part of your work, your submission must include:
 
--   Prompt engineering is important: Practice the prompts used for Generative AI. The value of the response depends on the value of the prompt. If you provide a low quality or vague prompt, you will get vague results. Varying skill levels among users might exacerbate existing inequalities among students. For example, students for whom English is the second language might be at a disadvantage.
+-   **AI Usage Statement** (in your report/README): tool name(s) + what you used them for + what you independently verified.
+-   **Prompt/interaction log** (in your GitHub repo): e.g., `PROMPTS.md` or a `prompts/` folder (redact anything sensitive).
+-   **Verification evidence** (in your repo): tests, sanity checks, references to derivations, or short notes describing how you validated AI-assisted outputs.
 
-#### Advice on Usage:
+Example AI Usage Statement (you may copy/adapt):
 
--   Be very skeptical of the results. Do not trust any outputs that you cannot evaluate yourself or trace back to original credible sources. There are many stories of generative AI giving citations of articles that do not exist (see the article in the Chronicles of Higher Education referenced below).
+> *Disclosure: I used generative AI tools (tool names and versions, if known) to support portions of this assignment (briefly describe: e.g., brainstorming, debugging, refactoring, drafting). I curated prompts, reviewed and edited all outputs, verified factual statements and citations, and take full responsibility for the final submission. A prompt/provenance record is included in the repository.*
 
--   Be scientific with your prompts (or queries): Prompting is not deterministic, so the same prompt at a different time may result in a different response. Small changes in the wording of the prompt may yield very different responses. Keep records, make small changes and see how it affects the outcome, etc.
+#### Generating research ideas or approaches
 
--   Don’t share any data or information that is confidential, proprietary, or have IP implications. Your uploaded data or ideas might be incorporated into the learning model to be available for others in your research area, prior to you having a chance to publish it. If you intend to pursue commercialization or other Intellectual Property avenues for your work, putting the information into an open AI platform may be considered as disclosure.
+-   **Brainstorming**: You can use an AI tool as a brainstorming partner. Treat it as an iterative process—try multiple prompts, request alternatives, and compare suggestions.
+-   **Surveying existing approaches**: AI tools can provide an initial overview of methods or literature, but you must verify claims and consult authoritative sources (papers, textbooks, and library/professional-society databases).
+-   **Prompting skill matters**: The value of the output depends on the quality of the prompt. Keep prompts specific, include constraints, and document the versions you tried.
+
+#### Allowed uses (examples)
+
+-   Explaining error messages, suggesting debugging strategies, or proposing minimal reproducible examples.
+-   Generating unit tests, docstrings, documentation, or refactoring suggestions that you then review and validate.
+-   Brainstorming model/design choices, experiment plans, ablations, and evaluation criteria.
+-   Drafting pseudocode or outlines that you then implement and verify yourself.
+
+#### Not allowed uses (examples)
+
+-   Submitting AI-generated code, text, figures, results, or citations that you cannot explain or reproduce.
+-   Using AI to fabricate citations, data, experiments, or results (all citations must be verifiable).
+-   Using AI to generate a complete solution and only lightly paraphrasing/editing it as your own work.
+-   Sharing private course materials or other students' work with an external AI tool, or pasting others' code/text into a prompt.
+
+#### Advice on usage
+
+-   **Be critical**: Do not trust any output you cannot independently evaluate or trace back to credible sources.
+-   **Be scientific with prompts**: Prompting is not deterministic; small changes can yield different answers. Keep records and compare outputs across prompt variants.
+-   **Protect privacy and IP**: Do not share confidential, proprietary, or sensitive information (including personally identifiable information) with external AI services. Treat prompts and uploads as potentially non-private. If you intend to pursue commercialization or other Intellectual Property avenues, uploading information to an open AI platform may constitute disclosure.
 
 ### Late work & extensions
 
@@ -147,7 +180,7 @@ The due dates for assignments are there to help you keep up with the course mate
 
 ### Campus Resources for Students
 
-Links to Campus Resources for Students --- e.g. Center for Academic Success, Communication Center, Office of Disability Services, OMED, Division of Student Life, etc. available at: <https://ctl.gatech.edu/sites/default/files/documents/campus_resources_students.pdf>
+Links to Campus Resources for Students --- e.g. Center for Academic Success, Communication Center, Office of Disability Services, OMED, Division of Student Life, etc. available at: <https://bpb-us-e1.wpmucdn.com/sites.gatech.edu/dist/d/4626/files/2025/07/campus_resources_students.pdf>
 
 #### Quick Guide on Student Mental Health and Wellness Resources:
 
@@ -184,13 +217,8 @@ Tara Holdampf, MS, LPC, (she/her), Satellite Counselor's Consultation Hours for 
 
 ##### Other useful web pages to explore:
 
-GT Wellness Hub: <https://gtwellnesshub.com> (self-paced online resources for students)
-
--   Free Headspace (for Students Only): [https://gtwellnesshub.com/personal-guide-to-health- happiness/](https://gtwellnesshub.com/personal-guide-to-health-%20happiness/)
--   Togetherall (for Students Only): <https://gtwellnesshub.com/one-on-one-personal-assistance/>
--   Silver cloud (for Students Only): [https://gtwellnesshub.com/helpful-resources-right-at-your- fingertips/](https://gtwellnesshub.com/helpful-resources-right-at-your-%20fingertips/)
-
-**Division of Student Engagement and Wellbeing:** <https://students.gatech.edu/>\
-**Health, Wellness & Recreation:** <https://students.gatech.edu/health-wellness-recreation>\
-**Tech Ends Suicide:** <https://mentalhealth.gatech.edu/end-suicide-initiative>\
-**Mental Health Services:** <https://mentalhealth.gatech.edu/about/services>
+[**Wellness Empowerment Center**](https://wellnesscenter.gatech.edu)  
+[**Student Engagement and Wellbeing**](https://students.gatech.edu/health-wellness-recreation)   
+[**Health, Wellness & Recreation**](https://students.gatech.edu/health-wellness-recreation)  
+[**Tech Ends Suicide**](https://mentalhealth.gatech.edu/resources/general/end-suicide-initiative) 
+[**Mental Health Services**](https://mentalhealth.gatech.edu/about/services)

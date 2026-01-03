@@ -25,17 +25,15 @@ editor: visual
 
 ### Labs
 
-Labs will be due on Fridays at 11:59pm. 
+Labs will be due on Fridays at 11:59pm.
 
 ### Lab software installation instructions
 
-Labs can be rerun in the language of your choice (Julia/R) but if you chose to reuse the Python code then you can easily run on Google Collab. This service includes a free tier that only requires a Google account. For future projects that require intensive matrix multiplication operations such as convolutional networks a hardware accelerator will drastically improve execution time. These are accessible in Collab by restarting the notebook after: Runtime -> Change runtime type ->  Hardware accelerator = T4 GPU (in free tier).
+Labs can be rerun in the language of your choice (Julia/R) but if you chose to reuse the Python code then you can easily run on Google Collab. This service includes a free tier that only requires a Google account. For future projects that require intensive matrix multiplication operations such as convolutional networks a hardware accelerator will drastically improve execution time. These are accessible in Collab by restarting the notebook after: Runtime -\> Change runtime type -\> Hardware accelerator = T4 GPU (in free tier).
 
 ### Lab submission instructions
 
-To submit assignments please export your notebook as PDF and send to TA's Gatech email: [Rafael Orozco](mailto:rorozco@gatech.edu) with subject line that includes the phrase "CSE-8803 Lab [# of lab]". To export notebook as PDF in Google collab: File -> Print -> Set Destination to "save as PDF" -> Save.
-
-
+To submit assignments please export your notebook as PDF and send to TA's Gatech email: [Rafael Orozco](mailto:rorozco@gatech.edu) with subject line that includes the phrase "CSE-8803 Lab \[# of lab\]". To export notebook as PDF in Google collab: File -\> Print -\> Set Destination to "save as PDF" -\> Save.
 
 ```{=html}
 <!-- ### Exams
