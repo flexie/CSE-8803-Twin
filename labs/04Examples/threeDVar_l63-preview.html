@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.549">
+    <meta name="generator" content="quarto-1.6.39">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Digital Twins for Physical Systems - 3D-Var for Lorenz63 System</title>
+    <title>3D-Var for Lorenz63 System – Digital Twins for Physical Systems</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@
       }
       @media print {
       pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
       }
       pre.numberSource code
         { counter-reset: source-line 0; }
@@ -156,10 +156,10 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-278f079c28f28dbf8752571db94a6592.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
      <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -202,13 +202,13 @@
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">3D-Var for Lorenz63 System</li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -218,7 +218,7 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -259,6 +259,12 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seminar</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Project</span></a>
   </div>
@@ -275,14 +281,7 @@
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#d-var-for-lorenz63-system" id="toc-d-var-for-lorenz63-system" class="nav-link active" data-scroll-target="#d-var-for-lorenz63-system">3D-Var for Lorenz63 System</a>
-  <ul class="collapse">
-  <li><a href="#problem-setup" id="toc-problem-setup" class="nav-link" data-scroll-target="#problem-setup">Problem setup</a>
-  <ul class="collapse">
-  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" id="toc-plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" class="nav-link" data-scroll-target="#plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem">Plot the ground truth and the observations. Note what you observe. Why might this be a difficult problem?</a></li>
+  <li><a href="#plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" id="toc-plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem" class="nav-link active" data-scroll-target="#plot-the-ground-truth-and-the-observations.-note-what-you-observe.-why-might-this-be-a-difficult-problem">Plot the ground truth and the observations. Note what you observe. Why might this be a difficult problem?</a></li>
   <li><a href="#plot-results-and-write-some-conclusions" id="toc-plot-results-and-write-some-conclusions" class="nav-link" data-scroll-target="#plot-results-and-write-some-conclusions">Plot results and write some conclusions</a></li>
   <li><a href="#redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them." id="toc-redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them." class="nav-link" data-scroll-target="#redo-experiment-with-less-observations-up-to-t1-instead-of-t2.-note-the-changes-on-the-results-and-give-an-explanation-on-them.">Redo experiment with less observations (up to t=1 instead of t=2). Note the changes on the results and give an explanation on them.</a></li>
   </ul>
@@ -290,7 +289,7 @@
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
@@ -310,8 +309,6 @@
 
 
 </header>     <div id="318dada5" class="cell markdown">
-<section id="d-var-for-lorenz63-system" class="level1">
-<h1>3D-Var for Lorenz63 System</h1>
 <p>We analyze the Lorenz63 system of nonlinear ODEs</p>
 <p><span class="math display">\[
 \begin{align}
@@ -343,7 +340,6 @@
 <li>After that, background state values are computed at <span class="math inline">\(t = 0.4\)</span> by time integration, starting from the analysis at <span class="math inline">\(t = 0.2,\)</span> and so on.</li>
 </ol>
 <p>The prediction is made up to time <span class="math inline">\(t=10.\)</span></p>
-</section>
 </section>
 </section>
 </div>
@@ -557,18 +553,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -600,7 +585,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -635,7 +658,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -683,7 +710,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
