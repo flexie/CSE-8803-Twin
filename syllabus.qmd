@@ -51,6 +51,8 @@ Details on readings will be provided on a lecture by lecture basis following thi
 
 ### Lectures & computational labs
 
+The lectures and computational assignments will be posted under [Schedule](schedule.qmd).
+
 In part the course is an adaptation of open-source Basic and Advanced courses ([CSU-IMU-2023](https://github.com/markasch/CSU-IMU-2023)) developed by [Mark Asch](https://markasch.github.io/DT-tbx-v1/). [Codes](https://markasch.github.io/DT-tbx-v1/codes/) will be drawn from the course and from the book. During the second half of the course, we will draw from the current literature.
 
 ## Course community
@@ -79,8 +81,7 @@ Announcements will be shared on [Piazza](https://piazza.com/gatech/spring2026/cs
 
 ### Computational Assignments
 
-Details on the assignments will be provided on a lecture by lecture basis following this [Schedule](schedule.qmd). These assignments will mostly involve Digital Twin-related programs, computer simulations, and data analysis. These assignments are designed for each student to work one by him/herself. Collaboration is to a reasonable degree encouraged. During these assignments, you will apply concepts discussed during lectures, with a focus on the computational aspects. These assignments will count towards 30% of your overall course grade.
-
+Details on the assignments will be provided on a lecture by lecture basis following this [Schedule](schedule.qmd). These assignments will mostly involve Digital Twin-related programs, computer simulations, and data analysis. These assignments are designed for each student to work one by him/herself. Collaboration is to a reasonable degree encouraged. During these assignments, you will apply concepts discussed during lectures, with a focus on the computational aspects. These assignments will count towards 30% of your overall course grade. There will be 8-10 computational assignments during the term.
 
 ### Exams
 
@@ -88,7 +89,7 @@ There will be no exams.
 
 ### Final Project
 
-The purpose of the [Final Project](project.qmd) is to apply what you've learned throughout the semester to analyze interesting and relevant research questions related to Digital Twins.
+The purpose of the [Final Project](project.qmd) is to apply what you've learned throughout the semester to analyze interesting and relevant research questions related to Digital Twins. See [Final Project](project.qmd) for details on  requirements and grading.
 
 ## Grading
 
@@ -112,9 +113,19 @@ The final course grade will be calculated as follows:
 
 -   **March 18**: Last day to withdraw
 
+-   **March 18** Presentation of 5 min pitch
+
+-   **March 20** Submission Project Proposal
+
 -   **March 23-27:** Spring break
 
+-   **March 30 - onwards** In-class Seminar presentations
+
 -   **April 27:** Final Instructional Class
+
+-   **April 27 and 29** Final Project Presentations
+
+-   **May 1** Submission Final Project Report    
 
 ## Course policies
 
