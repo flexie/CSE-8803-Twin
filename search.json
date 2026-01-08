@@ -1803,9 +1803,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Digital Twins for Physical Systems Course Website",
+    "title": "Digital Twins for Physical Systems",
     "section": "",
-    "text": "Course overview of CSE : Digital Twins for Physical Systems\nIBM defines “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making.” During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks. We will use this capability of capturing conditional distributions to train neural networks to learn prior-to-posterior mappings central to data assimilation methods. We will also discuss how to control and make decisions under uncertainty. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins to monitor and control complicated processes such as underground storage of CO2 or management of batteries.",
+    "text": "Course overview of CSE: Digital Twins for Physical Systems\nIBM defines “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making.” During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks. We will use this capability of capturing conditional distributions to train neural networks to learn prior-to-posterior mappings central to data assimilation methods. We will also discuss how to control and make decisions under uncertainty. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins to monitor and control complicated processes such as underground storage of CO2 or management of batteries.",
     "crumbs": [
       "Home"
     ]
@@ -1813,9 +1813,9 @@
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
-    "title": "Digital Twins for Physical Systems Course Website",
+    "title": "Digital Twins for Physical Systems",
     "section": "",
-    "text": "Course overview of CSE : Digital Twins for Physical Systems\nIBM defines “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making.” During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks. We will use this capability of capturing conditional distributions to train neural networks to learn prior-to-posterior mappings central to data assimilation methods. We will also discuss how to control and make decisions under uncertainty. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins to monitor and control complicated processes such as underground storage of CO2 or management of batteries.",
+    "text": "Course overview of CSE: Digital Twins for Physical Systems\nIBM defines “A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision-making.” During this course, we will explore these concepts and their significance in addressing the challenges of monitoring and control of physical systems described by partial-differential equations. After introducing deterministic & statistical data assimilation techniques, the course switches gears towards scientific machine learning to introduce the technique of simulation-based inference, during which uncertainty is captured with generative conditional neural networks. We will use this capability of capturing conditional distributions to train neural networks to learn prior-to-posterior mappings central to data assimilation methods. We will also discuss how to control and make decisions under uncertainty. The course concludes by incorporating these techniques into uncertainty-aware Digital Twins to monitor and control complicated processes such as underground storage of CO2 or management of batteries.",
     "crumbs": [
       "Home"
     ]
@@ -1823,7 +1823,7 @@
   {
     "objectID": "index.html#class-meetings",
     "href": "index.html#class-meetings",
-    "title": "Digital Twins for Physical Systems Course Website",
+    "title": "Digital Twins for Physical Systems",
     "section": "Class meetings",
     "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCollege of Computing, Room 53\nMon & Wed 5:00 - 6:15PM",
     "crumbs": [
@@ -1833,7 +1833,7 @@
   {
     "objectID": "index.html#prerequisites",
     "href": "index.html#prerequisites",
-    "title": "Digital Twins for Physical Systems Course Website",
+    "title": "Digital Twins for Physical Systems",
     "section": "Prerequisites",
     "text": "Prerequisites\nNumerical Linear Algebra, Statistics, Machine Learning, Experience w/ Python, or Julia",
     "crumbs": [
@@ -1843,7 +1843,7 @@
   {
     "objectID": "index.html#teaching-team",
     "href": "index.html#teaching-team",
-    "title": "Digital Twins for Physical Systems Course Website",
+    "title": "Digital Twins for Physical Systems",
     "section": "Teaching team",
     "text": "Teaching team\n\n\n\nName\nOffice hours\nLocation\n\n\n\n\nFelix J. Herrmann (Instructor)\nTBD\nZoom\n\n\nTuna Erdinc (TA)\nTBD\nZoom\n\n\nShiqin Zeng (TA)\nTBD\nZoom",
     "crumbs": [
@@ -1853,7 +1853,7 @@
   {
     "objectID": "index.html#access-to-piazza",
     "href": "index.html#access-to-piazza",
-    "title": "Digital Twins for Physical Systems Course Website",
+    "title": "Digital Twins for Physical Systems",
     "section": "Access to Piazza",
     "text": "Access to Piazza\nStudents are encouraged to post their questions on Piazza on Canvas or Piazza direct, which will be monitored by Shiqin Zeng and Tuna Erdinc.",
     "crumbs": [
