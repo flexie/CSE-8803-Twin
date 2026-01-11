@@ -4,9 +4,9 @@ The overall goal of this course is to bring you to where the current literature 
 
 - monitor physical systems from indirect measurements
 - assess uncertainty
-- control the system
+- control the systems
 
-The course will start with introducing topics from traditional Data Assimilation (DA) and Bayesian inference and will make it through to the latest developments in Differential Programming (DP), Simulation-Based Inference (SBI), recursive Bayesian Inference (RBI), and learned RBI through the use of Generative AI.
+The course will start with introducing topics from traditional Data Assimilation (DA) and Bayesian inference and will make it through to the latest developments in Differential Programming (DP), Simulation-Based Inference (SBI), ML-enabled DA the use of Generative AI.
 
 # Course outline {#sec-outline}
 
@@ -24,21 +24,20 @@ The course will start with introducing topics from traditional Data Assimilation
   - adjoint state method
   - variational data assimilation
 - Statistical Inverse Problems
-  -
-- differential programming
+  - differential programming
   - reverse-mode = adjoint state
 - Advanced Data Assimilation
 - Neural Density Estimation
   - generative Networks
   - Normalizing Flows
   - conditional Normalizing Flows
+  - score-based diffusion and flow matching
 - Simulation-based inference
   - introduction scientific ML
   - Bayesian inference
 - Surrogate Modeling
   - Fourier Neural Operators FNOs
 - Learned Data Assimilation
-  - 
 
 # Topics {#sec-topics}
 

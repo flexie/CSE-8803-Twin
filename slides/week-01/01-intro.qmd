@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Digital Twins for Physical Systems"
 subtitle: "Introduction"
-date: "Jan 08, 2024"
+date: "Jan 12, 2026"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 
@@ -24,17 +24,17 @@ bibliography: ../../references.bib
 
 <!-- Figure Suggestion: A cover image representing Digital Twins, possibly a graphical illustration of a physical object and its digital counterpart. -->
 
-## Course outline 
+## Course outline
 
-This is a new advanced course that is being developed during this term. 
+This is an advanced course that be further developed during this term.
 
-- [Syllabus](../../syllabus.qmd)
-- [Schedule](../../schedule.qmd)
-- etc.
+-   [Syllabus](../../syllabus.qmd)
+-   [Schedule](../../schedule.qmd)
+-   etc.
 
 are all made available and constantly updated on
 
-[https://flexie.github.io/CSE-8803-Twin//](https://flexie.github.io/CSE-8803-Twin//)
+<https://flexie.github.io/CSE-8803-Twin//>
 
 ## Objectives {.smaller}
 
@@ -42,29 +42,30 @@ By the end of the semester, you will be made familiar with ...
 
 -   the concept of Digital Twins and how they interact with their environment
 -   Statistical Inverse Problems and Bayesian Inference
--   techniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]
+-   techniques from Data Assimilation (DA), Generative AI, Simulation-Based Inference (SBI), ML-enabled DA, and Uncertainty Quantification \[UQ\]
 
 For more on the Course outline, Topics, and Learning goals, see [Goals](../../goals.qmd).
 
 ## Textbooks {.smaller}
 
-|                                                                                                                                                                                                                                          |                        |            |
-|---------------------------------------------------|-----------|-----------|
-| [Data assimilation: methods, algorithms, and applications](https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&context=L&vid=01GALI_GIT:GT&vid=01GALI_GIT&docid=alma9914381076402947&tab=default_tab&lang=en) | @asch2016data, Mark    | SIAM, 2016 |
-| [A toolbox for digital twins: from model-based to data-driven[^3]](https://epubs.siam.org/doi/book/10.1137/1.9781611976977)                                                                            | @asch2022toolbox, Mark | SIAM, 2022 |
+|  |  |  |
+|----------------------------------------------------|----------|----------|
+| [Data assimilation: methods, algorithms, and applications](https://galileo-gatech.primo.exlibrisgroup.com/discovery/fulldisplay?context=L&context=L&vid=01GALI_GIT:GT&vid=01GALI_GIT&docid=alma9914381076402947&tab=default_tab&lang=en) | @asch2016data, Mark | SIAM, 2016 |
+| [A toolbox for digital twins: from model-based to data-driven](https://epubs.siam.org/doi/book/10.1137/1.9781611976977)[^1] | @asch2022toolbox, Mark | SIAM, 2022 |
 
-[^3]: This 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage. **This book is available in electronic form (pdf) when online on Georgia Tech Campus.**
+[^1]: [This 1000 page book is rather comprehensive. While the complete material is beyond this course, you are encouraged to use the extensive cross-referencing in this book to your advantage. **This book is available in electronic form (pdf) when online on Georgia Tech Campus.**](https://epubs.siam.org/doi/book/10.1137/1.9781611976977)
 
+## Journal Papers {.smaller}
 
-## Journal Papers{.smaller}
-
-|                                                                                                                                                                                                              |                           |                |
-|-----------------------------------------------|---------|---------|
-| [A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies](https://openintro-ims.netlify.app/)                                                                             | @thelen2022comprehensivea | Springer, 2022 |
+|  |  |  |
+|--------------------------------------------------|-----------|-----------|
+| [A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies](https://openintro-ims.netlify.app/) | @thelen2022comprehensivea | Springer, 2022 |
 | [A comprehensive review of digital twin—part 2: roles of uncertainty quantification and optimization, a battery digital twin, and perspectives](https://link.springer.com/article/10.1007/00158-022-03410-x) | @thelen2023comprehensiveb | Springer, 2022 |
-| [Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial](https://arxiv.org/abs/2201.08180)                                                                                        | @tatsis2022sequential     | Arxiv, 2022      |
+| [Sequential Bayesian inference for uncertain nonlinear dynamic systems: A tutorial](https://arxiv.org/abs/2201.08180) | @tatsis2022sequential | Arxiv, 2022 |
+| [Some models are useful, but how do we know which ones? Towards a unified Bayesian model taxonomy](https://projecteuclid.org/journals/statistics-surveys/volume-17/issue-none/Some-models-are-useful-but-how-do-we-know-which/10.1214/23-SS145.short) | @burkner2023some | Statist. survey, 2023 |
+| [Diffusion Models in Simulation-Based Inference: A Tutorial Review](https://arxiv.org/abs/2512.20685) | @arruda2025diffusion | Arxiv, 2025 |
 
-## Introduction{.smaller}
+## Introduction {.smaller}
 
 -   Different definitions of Digital Twins
 -   Data Flows
@@ -82,7 +83,7 @@ Definition from [@asch2022toolbox]: "*A set of virtual information constructs th
 
 Definition by [IBM](https://www.ibm.com/topics/what-is-a-digital-twin): "*A digital twin is a virtual representation of an object or system that spans its lifecycle, is updated from real-time data, and uses simulation, machine learning and reasoning to help decision making.*"
 
-## Definition of Digital Twin (cont'ed)  {.smaller}
+## Definition of Digital Twin (cont'ed) {.smaller}
 
 Definition from [@national2023foundational]: "*A digital twin is a set of virtual information constructs that mimics the structure, context, and behavior of a natural, engineered, or social system (or system-of-systems), is dynamically updated with data from its physical twin, has a predictive capability, and informs decisions that realize value. The bidirectional interaction between the virtual and the physical is central to the digital twin.*"
 
@@ -90,10 +91,9 @@ Also see discussion [Section 2 of "A comprehensive review of digital twin — pa
 
 <!-- Figure Suggestion: A diagram showing a physical asset and its digital twin counterpart, highlighting dynamic data exchange. -->
 
-## Cyber-Physical Systems (CPS){.smaller}
+## Cyber-Physical Systems (CPS) {.smaller}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
 -   Model Systems of Systems (SoS) by equations
 -   How the two worlds—digital and physical—intertwine?
@@ -103,104 +103,94 @@ Also see discussion [Section 2 of "A comprehensive review of digital twin — pa
 ::: {.column width="40%"}
 ![[Source](https://www.techtarget.com/iotagenda/definition/smart-city)](images/smartcity.png){width="80%"}
 :::
-
-::::
+:::::
 
 <!-- Figure Suggestion: An illustration showing the integration of cyber systems with physical processes. -->
 
 ## Data flows {.smaller}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
+-   For a digital model, data flow between the physical space and virtual space is optional
 
-- For a digital model, data flow between the physical space and virtual space is optional
+-   For a digital shadow, data flow is unidirectional from physical to digital.
 
-- For a digital shadow, data flow is unidirectional from physical to digital. 
-
-- But for digital twin, the data flow has to be bidirectional. See Figure.
+-   But for digital twin, the data flow has to be bidirectional. See Figure.
 :::
-::: {.column width="40%"}
 
+::: {.column width="40%"}
 ![from [@thelen2022comprehensivea]](../images/data_flow.png)
 :::
-:::
+:::::
 
-## Five dimensional Digital Twin{.smaller}
+## Five dimensional Digital Twin {.smaller}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
-
 $$\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})$$
 
-five- dimensional digital twin model consists of 
+five- dimensional digital twin model consists of
 
-- a physical system (PS),
+-   a physical system (PS),
 
--  a digital system (DS), 
+-   a digital system (DS),
 
--  an updating engine (P2V), 
+-   an updating engine (P2V),
 
--  a prediction engine (V2P), 
+-   a prediction engine (V2P),
 
--  and an optimization dimension (OPT).
- 
+-   and an optimization dimension (OPT).
+
 $\mathbb{F}(⋅)$ integrates all five dimensions together to define a **Digital Twin**.
-
 :::
-::: {.column width="40%"}
 
+::: {.column width="40%"}
 ![from [@thelen2022comprehensivea]](../images/five_dim.png)
 :::
-:::
+:::::
 
 ## Five dimensions
 
 $$\mathrm{DT} = \mathbb{F} (\mathrm{PS, DS, P2V, V2P, OPT})$$
 
-
 ![from [@thelen2022comprehensivea]](../images/p2v.png)
-
 
 ## The Inference Cycle {.smaller}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
 -   Scientific method --- inferential process
 -   Abduction --- going from (unexplained) effect to (possible) cause
 -   Deduction --- going from cause to effect
 -   Induction --- going from specific to general
-
 :::
+
 ::: {.column width="40%"}
 ![Source @asch2022toolbox](images/cycle.png){width="80%"}
 :::
+:::::
 
-::::
 <!-- Figure Suggestion: A flowchart or cycle diagram showing the steps of abduction, deduction, and induction. -->
 
 ## The Concept of a Digital Twin {.smaller}
 
-- the availability of (large) volumes of (often real-time) data, 
+-   the availability of (large) volumes of (often real-time) data,
 
--  the accessibility to this data,
-  
-- the tools and implementations of AI-based algorithms,
-  
-- the body of knowledge of mathematical models,
-  
-- the readiness and low cost of computational devices,
+-   the accessibility to this data,
+
+-   the tools and implementations of AI-based algorithms,
+
+-   the body of knowledge of mathematical models,
+
+-   the readiness and low cost of computational devices,
 
 Necessary ingredients for a Digital Twin that learns during its life cycle
 
-- consists of *static* part --- initial model, design, and
+-   consists of *static* part --- initial model, design, and
 
-- *dynamic* part --- includes the simulation process, coupled with data acquisition, and finally autoupdating.
+-   *dynamic* part --- includes the simulation process, coupled with data acquisition, and finally autoupdating.
 
 <!-- Figure Suggestion: A Venn diagram showing the intersection of data, AI algorithms, and computational devices. -->
-
 
 ## The Spectrum of Digital Twins
 
@@ -209,51 +199,47 @@ Necessary ingredients for a Digital Twin that learns during its life cycle
 
 <!-- Figure Suggestion: A spectrum or continuum graphic showing the range from model-driven to data-driven Digital Twins. -->
 
+## Digital Twins in the Digital Continuum {.smaller}
 
-## Digital Twins in the Digital Continuum{.smaller}
-
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-
 -   Interaction with digital infrastructure
 -   Cloud computing, IoT, and cybersecurity
 -   Emphasis in this course will be on monitoring & control of physical systems ruled by PDEs
     -   geological CO~2~ storage
     -   battery life
-
 :::
+
 ::: {.column width="50%"}
 ![Source @asch2022toolbox](../images/continuum.png){width="80%"}
 :::
+:::::
 
-::::
-
-## Geological Carbon Storage{.smaller}
+## Geological Carbon Storage {.smaller}
 
 ![](https://slim.gatech.edu/Website-ResearchWebInfo/GeologicalCarbonStorage/figs/gcs.png)
 
-- coupling of fluid-flow physics and
-- wave physics
+-   coupling of fluid-flow physics and
+-   wave physics
 
 <!-- Figure Suggestion: A conceptual diagram illustrating how Digital Twins interact within the broader digital infrastructure. -->
 
-## Models, Data, and Coupling in Digital Twins{.smaller}
+## Models, Data, and Coupling in Digital Twins {.smaller}
 
 Questions:
 
-1. What is meant by a “model”?
-   
-2. What are data to be used for?
-   
-3. How, if possible, can we couple the above two to construct the most informative DT?
-   
+1.  What is meant by a “model”?
+
+2.  What are data to be used for?
+
+3.  How, if possible, can we couple the above two to construct the most informative DT?
+
 Will be discussing two types of models throughout the book:
 
-1. Equation-based models that are derived, most often, from some conservation laws.
-2. Statistical, data-driven models that are based on measured data and its analysis.
+1.  Equation-based models that are derived, most often, from some conservation laws.
+2.  Statistical, data-driven models that are based on measured data and its analysis.
 
-**A good statistical model:** should attain a good balance between under/overfitting. 
+**A good statistical model:** should attain a good balance between under/overfitting.
 
 **Physical models:** need to capture the higher order terms and neglect small terms.
 
@@ -269,49 +255,46 @@ Bloated models will often be difficult to solve numerically.
 
 <!-- Figure Suggestion: A collage or series of images depicting various applications of Digital Twins in different fields. -->
 
-## Recommended Approach---The Triple-Loop Method{.smaller}
+## Recommended Approach---The Triple-Loop Method {.smaller}
 
 Three loops: Space and time, optimization, decision-making
 
-- Loops over space and time and solution of the physical problem in the inner loop.
-  
--  Optimization in the outer loop, including control, solution of an inverse problem, parameter estimation, uncertainty quantification, and multifidelity modeling using surrogates.
+-   Loops over space and time and solution of the physical problem in the inner loop.
 
-- Decision making in the outer-outer loop--- preventative maintenance, shutting down operations ...
- 
-Important to ensure trustworthiness of the DT
- - checking operational and validity regimes of the model, and 
- - implement an expert system based on engineering experience.
+-   Optimization in the outer loop, including control, solution of an inverse problem, parameter estimation, uncertainty quantification, and multifidelity modeling using surrogates.
+
+-   Decision making in the outer-outer loop--- preventative maintenance, shutting down operations ...
+
+Important to ensure trustworthiness of the DT - checking operational and validity regimes of the model, and - implement an expert system based on engineering experience.
 
 <!-- Figure Suggestion: A triple-loop diagram illustrating the three aspects of the methodology. -->
 
+```{=html}
 <!-- ## Recommendations for Project Managers
 
 -   Developing in-house vs purchasing
 -   Intellectual property, model brittleness, uncertainty quantification -->
+```
 
 <!-- Figure Suggestion: A decision tree or a pros and cons list for in-house development vs. purchasing. -->
 
-## Future Directions{.smaller}
+## Future Directions {.smaller}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
 -   Evolution from simple to AI-integrated systems
 -   Theoretical and practical advancements
--   Facilitates a more general interpretation where  we can map machine learning techniques, or AI, to any of the stages
+-   Facilitates a more general interpretation where we can map machine learning techniques, or AI, to any of the stages
 :::
+
 ::: {.column width="50%"}
 ![from @asch2022toolbox](../images/inference_cycle.png)
-
 :::
-:::
+:::::
 
 <!-- Figure Suggestion: A timeline or roadmap visualizing the evolution and future prospects of Digital Twins. -->
 
-
-
-## References{.unnumbered}
+## References {.unnumbered}
 
 ::: {#refs}
 :::

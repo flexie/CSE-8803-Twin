@@ -1,7 +1,7 @@
 ---
 title: "Basics"
 subtitle: "Data Assimilation & Inverse Problems"
-date: "January 10, 2024"
+date: "January 14, 2026"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 license: CC BY
@@ -134,6 +134,9 @@ Closely related to
 :::
 
 See for [SLIM website](https://slim.gatech.edu) for our research on [Geological CO~2~ Storage](https://slim.gatech.edu/research/geological-carbon-storage).
+
+See also our recent publication [An uncertainty-aware digital shadow for underground multimodal CO2 storage monitoring](https://academic.oup.com/gji/article/242/1/ggaf176/8142541) [@gahlot2025uncertainty]
+
 
 ##
 

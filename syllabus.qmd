@@ -2,6 +2,7 @@
 title: "Syllabus^[Syllabus updates: This syllabus is subject to change throughout the semester. We will try to keep these updates to a minimum.
 ]"
 subtitle: "Digital Twins for Physical Systems - CSE 8803 - DTP"
+author: Felix J. Herrmann
 ---
 
 ## Course Learning Objectives
@@ -10,7 +11,7 @@ By the end of the semester, you will be made familiar with ...
 
 -   the concept of Digital Twins and how they interact with their environment
 -   Statistical Inverse Problems and Bayesian Inference
--   techniques from Data Assimilation (DAT), Simulation-Based Inference (SBI), and Recursive Bayesian Inference (RBI), and Uncertainty Quantification [UQ]
+-   techniques from Data Assimilation (DA), Simulation-Based Inference (SBI), Generative AI, and Uncertainty Quantification [UQ]
 
 For more on the Course outline, Topics, and Learning goals, see [Goals](goals.qmd).
 
@@ -19,6 +20,7 @@ For a motivational article see [Digital Twins in the era of generative AI](https
 ## Course Material
 
 ### Textbooks
+
 
 |                                                                                                                                                                                                                                          |                        |            |
 |---------------------------------------------------|-----------|-----------|

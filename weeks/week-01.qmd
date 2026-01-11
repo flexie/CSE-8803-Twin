@@ -1,7 +1,7 @@
 ---
 title: "Week 01"
 subtitle: "Welcome to Digital Twins for Physical Systems"
-description: "Jan 08  - Jan 12"
+description: "Jan 12  - Jan 16"
 author: "Felix J. Herrmann"
 date: ""
 listing:
