@@ -3,9 +3,11 @@ title: "Differentiable Programming"
 date: "January 26, 2024"
 categories: "Lab"
 notebook-view: 
-  - notebook: 02Examples/ad/diff_prog.ipynb
+  - notebook: 03Examples/ad/diff_prog.ipynb
     title: "Intro Differentiable Programming"
-  - notebook: 02Examples/ad/autograd_tut.ipynb
+  - notebook: 03Examples/ad/autograd_tut.ipynb
+    title: "`Autograd` tutorial"
+  - notebook: 03Examples/ad/autograd_lin_reg.ipynb
     title: "`Autograd` tutorial"
 ---
 
