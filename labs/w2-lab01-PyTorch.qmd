@@ -25,6 +25,8 @@ The notebooks can be downloaded from here
 - [NN Basics & Workflows - pytorch_102.ipynb](https://www.dropbox.com/scl/fi/p1o7ytu22k7mwjsprtyro/pytorch_102.ipynb?rlkey=oof1b25tdnoi4qvls1sff9zyr&dl=0)
 - [GPUs - Torch_test_GPU_CPU.ipynb](https://www.dropbox.com/scl/fi/wsgdho4a78bfd79kxgbw0/Torch_test_GPU_CPU.ipynb?rlkey=5fnpy11l1rh7r8zuisy99kth5&dl=0)
 
+Depending on your execution environment (local machine vs. Google Colab), you must configure PyTorch to use the appropriate GPU backend (CUDA for NVIDIA GPUs, MPS for Apple Silicon) in the Torch_test_GPU_CPU.ipynb notebook.
+
   <!-- - notebook: 02Examples/pytorch/pytorch_102.ipynb
     title: "NN Basics"
   - notebook: 02Examples/pytorch/Torch_test_GPU_CPU.ipynb

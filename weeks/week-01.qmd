@@ -53,4 +53,4 @@ tbl-colwidths: [10,50,40]
 | [Section --- 2 A comprehensive review of digital twin — part 1](https://link.springer.com/article/10.1007/s00158-022-03425-4) |
 | [Chapter 8 --- A toolbox for digital twins until section 8.7[^1] ](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 |
 
-[^1]: There is a lot of material there that you may want to read through. Use material presented in class as a guide what is important.
+[^1]: There is a lot of material there that you may want to read through. Use materials presented in class as a guide what is important.
