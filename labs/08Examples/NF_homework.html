@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-79df7ed5347781c1339259261daa236f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e2886813ffd81db4f823f0bbbf45b6b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -101,10 +102,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -120,7 +121,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -162,7 +163,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
     <a href="https://flexie.github.io/CSE-8803-Twin/" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -271,7 +273,7 @@ window.Quarto = {
 <p>In this tutorial, we will take a closer look at complex, deep normalizing flows. The most popular, current application of deep normalizing flows is to model datasets of images. As for other generative models, images are a good domain to start working on because (1) CNNs are widely studied and strong models exist, (2) images are high-dimensional and complex, and (3) images are discrete integers. In this tutorial, we will review current advances in normalizing flows for image modeling, and get hands-on experience on coding normalizing flows. Note that normalizing flows are commonly parameter heavy and therefore computationally expensive. We will use relatively simple and shallow flows to save computational cost and allow you to run the notebook on CPU, but keep in mind that a simple way to improve the scores of the flows we study here is to make them deeper.</p>
 <p>Throughout this notebook, we make use of <a href="https://pytorch-lightning.readthedocs.io/en/latest/">PyTorch Lightning</a>. The first cell imports our usual libraries.</p>
 <div id="cell-1" class="cell" data-outputid="0fe20bf1-91a6-4fbc-a292-22e5b09aa6bc" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Standard libraries</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Standard libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
@@ -323,7 +325,7 @@ window.Quarto = {
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetching the device that will be used throughout this notebook</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> torch.device(<span class="st">"cpu"</span>) <span class="cf">if</span> <span class="kw">not</span> torch.cuda.is_available() <span class="cf">else</span> torch.device(<span class="st">"cuda:0"</span>)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using device"</span>, device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using device"</span>, device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>DeprecationWarning: `set_matplotlib_formats` is deprecated since IPython 7.23, directly use `matplotlib_inline.backend_inline.set_matplotlib_formats()`
   set_matplotlib_formats('svg', 'pdf') # For export
@@ -336,7 +338,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42</code></pre>
 <p>We will use the MNIST dataset in this notebook. MNIST constitutes, despite its simplicity, a challenge for small generative models as it requires the global understanding of an image. At the same time, we can easily judge whether generated images come from the same distribution as the dataset (i.e.&nbsp;represent real digits), or not.</p>
 <p>To deal better with the discrete nature of the images, we transform them from a range of 0-1 to a range of 0-255 as integers.</p>
 <div id="cell-3" class="cell" data-outputid="1312d35a-d0c4-403b-e993-f51755aee71a" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert images from 0-1 to 0-255 (integers)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert images from 0-1 to 0-255 (integers)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> discretize(sample):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (sample <span class="op">*</span> <span class="dv">255</span>).to(torch.int32)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -357,7 +359,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42</code></pre>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># with a lower batch size.</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> data.DataLoader(train_set, batch_size<span class="op">=</span><span class="dv">256</span>, shuffle<span class="op">=</span><span class="va">False</span>, drop_last<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>val_loader <span class="op">=</span> data.DataLoader(val_set, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">False</span>, drop_last<span class="op">=</span><span class="va">False</span>, num_workers<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>test_loader <span class="op">=</span> data.DataLoader(test_set, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">False</span>, drop_last<span class="op">=</span><span class="va">False</span>, num_workers<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>test_loader <span class="op">=</span> data.DataLoader(test_set, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">False</span>, drop_last<span class="op">=</span><span class="va">False</span>, num_workers<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ../data/MNIST/raw/train-images-idx3-ubyte.gz</code></pre>
@@ -406,7 +408,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 </div>
 <p>In addition, we will define below a function to simplify the visualization of images/samples. Some training examples of the MNIST dataset is shown below.</p>
 <div id="cell-5" class="cell" data-outputid="3f7b89be-b850-48c1-80ff-d00bb55b7daa" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:262}}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_imgs(imgs, title<span class="op">=</span><span class="va">None</span>, row_size<span class="op">=</span><span class="dv">4</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_imgs(imgs, title<span class="op">=</span><span class="va">None</span>, row_size<span class="op">=</span><span class="dv">4</span>):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Form a grid of pictures (we use max. 8 columns)</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    num_imgs <span class="op">=</span> imgs.shape[<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(imgs, torch.Tensor) <span class="cf">else</span> <span class="bu">len</span>(imgs)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    is_int <span class="op">=</span> imgs.dtype<span class="op">==</span>torch.int32 <span class="cf">if</span> <span class="bu">isinstance</span>(imgs, torch.Tensor) <span class="cf">else</span> imgs[<span class="dv">0</span>].dtype<span class="op">==</span>torch.int32</span>
@@ -423,7 +425,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>show_imgs([train_set[i][<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>show_imgs([train_set[i][<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -471,7 +473,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <p><span class="math display">\[\text{bpd} = \text{nll} \cdot \log_2\left(\exp(1)\right) \cdot \left(\prod d_i\right)^{-1}\]</span></p>
 <p>where <span class="math inline">\(d_1,...,d_K\)</span> are the dimensions of the input. For images, this would be the height, width and channel number. We divide the log likelihood by these extra dimensions to have a metric which we can compare for different image resolutions. In the original image space, MNIST examples have a bits per dimension score of 8 (we need 8 bits to encode each pixel as there are 256 possible values).</p>
 <div id="cell-8" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ImageFlow(pl.LightningModule):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ImageFlow(pl.LightningModule):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, flows, import_samples<span class="op">=</span><span class="dv">8</span>):</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
@@ -566,7 +568,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a>        bpd <span class="op">=</span> <span class="op">-</span>img_ll <span class="op">*</span> np.log2(np.exp(<span class="dv">1</span>)) <span class="op">/</span> np.prod(batch[<span class="dv">0</span>].shape[<span class="dv">1</span>:])</span>
 <span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a>        bpd <span class="op">=</span> bpd.mean()</span>
 <span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.log(<span class="st">'test_bpd'</span>, bpd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.log(<span class="st">'test_bpd'</span>, bpd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>test_step</code> function differs from the training and validation step in that it makes use of importance sampling. We will discuss the motiviation and details behind this after understanding how flows model discrete images in continuous space.</p>
 <section id="dequantization" class="level3">
@@ -586,7 +588,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 </ol>
 <p>Overall, we can implement dequantization as follows:</p>
 <div id="cell-11" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dequantization(nn.Module):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dequantization(nn.Module):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, alpha<span class="op">=</span><span class="fl">1e-5</span>, quants<span class="op">=</span><span class="dv">256</span>):</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
@@ -631,11 +633,11 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> z <span class="op">+</span> torch.rand_like(z).detach()</span>
 <span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> z <span class="op">/</span> <span class="va">self</span>.quants</span>
 <span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>        ldj <span class="op">-=</span> np.log(<span class="va">self</span>.quants) <span class="op">*</span> np.prod(z.shape[<span class="dv">1</span>:])</span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A good check whether a flow is correctly implemented or not, is to verify that it is invertible. Hence, we will dequantize a randomly chosen training image, and then quantize it again. We would expect that we would get the exact same image out:</p>
 <div id="cell-13" class="cell" data-outputid="761b8332-fb7e-417b-b899-b8e2fca17b35" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Testing invertibility of dequantization layer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Testing invertibility of dequantization layer</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>orig_img <span class="op">=</span> train_set[<span class="dv">0</span>][<span class="dv">0</span>].unsqueeze(dim<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ldj <span class="op">=</span> torch.zeros(<span class="dv">1</span>,)</span>
@@ -653,7 +655,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Successfully inverted dequantization"</span>)</span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Layer is not strictly invertible due to float precision constraints</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co"># assert (orig_img == reconst_img).all().item()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co"># assert (orig_img == reconst_img).all().item()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:lightning_fabric.utilities.seed:Seed set to 42</code></pre>
 </div>
@@ -664,7 +666,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <p>The test succeeds as we would expect. However, there is a chance that the test fails due to numerical inaccuracies in the sigmoid invert. While the input space to the inverted sigmoid is scaled between 0 and 1, the output space is between <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(\infty\)</span>. And as we use 32 bits to represent the numbers (in addition to applying logs over and over again), such inaccuries can occur and should not be worrisome. Nevertheless, it is good to be aware of them, and can be improved by using a double tensor (float64).</p>
 <p>Finally, we can take our dequantization and actually visualize the distribution it transforms the discrete values into:</p>
 <div id="cell-15" class="cell" data-outputid="ec9281b2-d8fd-4cb6-90ef-f72972b4b3ac" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:322}}" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_dequantization(quants, prior<span class="op">=</span><span class="va">None</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_dequantization(quants, prior<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function for visualizing the dequantization values of discrete values in continuous space</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
@@ -705,7 +707,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
 <span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>visualize_dequantization(quants<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>visualize_dequantization(quants<span class="op">=</span><span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -726,7 +728,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <p>Dequantization uses a uniform distribution for the noise <span class="math inline">\(u\)</span> which effectively leads to images being represented as hypercubes (cube in high dimensions) with sharp borders. However, modeling such sharp borders is not easy for a flow as it uses smooth transformations to convert it into a Gaussian distribution.</p>
 <p>Another way of looking at it is if we change the prior distribution in the previous visualization. Imagine we have independent Gaussian noise on pixels which is commonly the case for any real-world taken picture. Therefore, the flow would have to model a distribution as above, but with the individual volumes scaled as follows:</p>
 <div id="cell-18" class="cell" data-outputid="dd44dde5-34ae-4000-94bf-54bf68ed6cf8" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:322}}" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>visualize_dequantization(quants<span class="op">=</span><span class="dv">8</span>, prior<span class="op">=</span>np.array([<span class="fl">0.075</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.075</span>, <span class="fl">0.025</span>, <span class="fl">0.0125</span>, <span class="fl">0.0125</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>visualize_dequantization(quants<span class="op">=</span><span class="dv">8</span>, prior<span class="op">=</span>np.array([<span class="fl">0.075</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.075</span>, <span class="fl">0.025</span>, <span class="fl">0.0125</span>, <span class="fl">0.0125</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -738,7 +740,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <p>Transforming such a probability into a Gaussian is a difficult task, especially with such hard borders. Dequantization has therefore been extended to more sophisticated, learnable distributions beyond uniform in a variational framework. In particular, if we remember the learning objective <span class="math inline">\(\log p(x) = \log \mathbb{E}_{u}\left[\frac{p(x+u)}{q(u|x)} \right]\)</span>, the uniform distribution can be replaced by a learned distribution <span class="math inline">\(q_{\theta}(u|x)\)</span> with support over <span class="math inline">\(u\in[0,1)^D\)</span>. This approach is called Variational Dequantization and has been proposed by Ho et al.&nbsp;[3]. How can we learn such a distribution? We can use a second normalizing flow that takes <span class="math inline">\(x\)</span> as external input and learns a flexible distribution over <span class="math inline">\(u\)</span>. To ensure a support over <span class="math inline">\([0,1)^D\)</span>, we can apply a sigmoid activation function as final flow transformation.</p>
 <p>Inheriting the original dequantization class, we can implement variational dequantization as follows:</p>
 <div id="cell-20" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> VariationalDequantization(Dequantization):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> VariationalDequantization(Dequantization):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, var_flows, alpha<span class="op">=</span><span class="fl">1e-5</span>):</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
@@ -764,7 +766,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># After the flows, apply u as in standard dequantization</span></span>
 <span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> (z <span class="op">+</span> deq_noise) <span class="op">/</span> <span class="fl">256.0</span></span>
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        ldj <span class="op">-=</span> np.log(<span class="fl">256.0</span>) <span class="op">*</span> np.prod(z.shape[<span class="dv">1</span>:])</span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Variational dequantization can be used as a substitute for dequantization. We will compare dequantization and variational dequantization in later experiments.</p>
 </section>
@@ -780,7 +782,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 </center>
 <p>In our implementation, we will realize the splitting of variables as masking. The variables to be transformed, <span class="math inline">\(z_{j+1:d}\)</span>, are masked when passing <span class="math inline">\(z\)</span> to the shared network to predict the transformation parameters. When applying the transformation, we mask the parameters for <span class="math inline">\(z_{1:j}\)</span> so that we have an identity operation for those variables:</p>
 <div id="cell-23" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CouplingLayer(nn.Module):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CouplingLayer(nn.Module):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, network, mask, c_in):</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
@@ -835,11 +837,11 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb24-53"><a href="#cb24-53" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> (z <span class="op">*</span> torch.exp(<span class="op">-</span>s)) <span class="op">-</span> t</span>
 <span id="cb24-54"><a href="#cb24-54" aria-hidden="true" tabindex="-1"></a>            ldj <span class="op">-=</span> s.<span class="bu">sum</span>(dim<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb24-55"><a href="#cb24-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-56"><a href="#cb24-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-56"><a href="#cb24-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For stabilization purposes, we apply a <span class="math inline">\(\tanh\)</span> activation function on the scaling output. This prevents sudden large output values for the scaling that can destabilize training. To still allow scaling factors smaller or larger than -1 and 1 respectively, we have a learnable parameter per dimension, called <code>scaling_factor</code>. This scales the tanh to different limits. Below, we visualize the effect of the scaling factor on the output activation of the scaling terms:</p>
 <div id="cell-25" class="cell" data-outputid="ae73f2b4-ad52-4669-d20d-8b46af08b050" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:309}}" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> torch.arange(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="fl">0.01</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    scaling_factors <span class="op">=</span> [<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    sns.<span class="bu">set</span>()</span>
@@ -851,7 +853,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        ax[i].set_ylim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    plt.subplots_adjust(wspace<span class="op">=</span><span class="fl">0.4</span>)</span>
 <span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    sns.reset_orig()</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -863,7 +865,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <p>Coupling layers generalize to any masking technique we could think of. However, the most common approach for images is to split the input <span class="math inline">\(z\)</span> in half, using a checkerboard mask or channel mask. A checkerboard mask splits the variables across the height and width dimensions and assigns each other pixel to <span class="math inline">\(z_{j+1:d}\)</span>. Thereby, the mask is shared across channels. In contrast, the channel mask assigns half of the channels to <span class="math inline">\(z_{j+1:d}\)</span>, and the other half to <span class="math inline">\(z_{1:j+1}\)</span>. Note that when we apply multiple coupling layers, we invert the masking for each other layer so that each variable is transformed a similar amount of times.</p>
 <p>Let’s implement a function that creates a checkerboard mask and a channel mask for us:</p>
 <div id="cell-27" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_checkerboard_mask(h, w, invert<span class="op">=</span><span class="va">False</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_checkerboard_mask(h, w, invert<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> torch.arange(h, dtype<span class="op">=</span>torch.int32), torch.arange(w, dtype<span class="op">=</span>torch.int32)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> torch.meshgrid(x, y, indexing<span class="op">=</span><span class="st">'ij'</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> torch.fmod(xx <span class="op">+</span> yy, <span class="dv">2</span>)</span>
@@ -878,15 +880,15 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> mask.view(<span class="dv">1</span>, c_in, <span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> invert:</span>
 <span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        mask <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> mask</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mask</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mask</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can also visualize the corresponding masks for an image of size <span class="math inline">\(8\times 8\times 2\)</span> (2 channels):</p>
 <div id="cell-29" class="cell" data-outputid="2c698223-3093-469e-9c54-8909f76b46da" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:325}}" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>checkerboard_mask <span class="op">=</span> create_checkerboard_mask(h<span class="op">=</span><span class="dv">8</span>, w<span class="op">=</span><span class="dv">8</span>).expand(<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>checkerboard_mask <span class="op">=</span> create_checkerboard_mask(h<span class="op">=</span><span class="dv">8</span>, w<span class="op">=</span><span class="dv">8</span>).expand(<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>channel_mask <span class="op">=</span> create_channel_mask(c_in<span class="op">=</span><span class="dv">2</span>).expand(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">8</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>show_imgs(checkerboard_mask.transpose(<span class="dv">0</span>,<span class="dv">1</span>), <span class="st">"Checkerboard mask"</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>show_imgs(channel_mask.transpose(<span class="dv">0</span>,<span class="dv">1</span>), <span class="st">"Channel mask"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>show_imgs(channel_mask.transpose(<span class="dv">0</span>,<span class="dv">1</span>), <span class="st">"Channel mask"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -904,7 +906,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 </div>
 <p>As a last aspect of coupling layers, we need to decide for the deep neural network we want to apply in the coupling layers. The input to the layers is an image, and hence we stick with a CNN. Because the input to a transformation depends on all transformations before, it is crucial to ensure a good gradient flow through the CNN back to the input, which can be optimally achieved by a ResNet-like architecture. Specifically, we use a Gated ResNet that adds a <span class="math inline">\(\sigma\)</span>-gate to the skip connection, similarly to the input gate in LSTMs. The details are not necessarily important here, and the network is strongly inspired from Flow++ [3] in case you are interested in building even stronger models.</p>
 <div id="cell-31" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ConcatELU(nn.Module):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ConcatELU(nn.Module):</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Activation function that applies ELU in both direction (inverted and plain).</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Allows non-linearity while providing strong gradients for any input (important for final convolution)</span></span>
@@ -985,7 +987,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.nn[<span class="op">-</span><span class="dv">1</span>].bias.data.zero_()</span>
 <span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-81"><a href="#cb28-81" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb28-82"><a href="#cb28-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.nn(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-82"><a href="#cb28-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.nn(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="training-loop" class="level3">
@@ -995,7 +997,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <img src="https://github.com/phlippe/uvadlc_notebooks/blob/master/docs/tutorial_notebooks/tutorial11/vanilla_flow.svg?raw=1" width="900px">
 </center>
 <div id="cell-33" class="cell" data-scrolled="true" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_simple_flow(use_vardeq<span class="op">=</span><span class="va">True</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_simple_flow(use_vardeq<span class="op">=</span><span class="va">True</span>):</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    flow_layers <span class="op">=</span> []</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> use_vardeq:</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        vardeq_layers <span class="op">=</span> [CouplingLayer(network<span class="op">=</span>GatedConvNet(c_in<span class="op">=</span><span class="dv">2</span>, c_out<span class="op">=</span><span class="dv">2</span>, c_hidden<span class="op">=</span><span class="dv">16</span>),</span>
@@ -1011,11 +1013,11 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>                                      c_in<span class="op">=</span><span class="dv">1</span>)]</span>
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    flow_model <span class="op">=</span> ImageFlow(flow_layers).to(device)</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> flow_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> flow_model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For implementing the training loop, we use the framework of PyTorch Lightning and reduce the code overhead. If interested, you can take a look at the generated tensorboard file, in particularly the graph to see an overview of flow transformations that are applied. Note that we again provide pre-trained models (see later on in the notebook) as normalizing flows are particularly expensive to train. We have also run validation and testing as this can take some time as well with the added importance sampling.</p>
 <div id="cell-35" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_flow(flow, model_name<span class="op">=</span><span class="st">"MNISTFlow"</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_flow(flow, model_name<span class="op">=</span><span class="st">"MNISTFlow"</span>):</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a PyTorch Lightning trainer</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    trainer <span class="op">=</span> pl.Trainer(default_root_dir<span class="op">=</span>os.path.join(CHECKPOINT_PATH, model_name),</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                         accelerator<span class="op">=</span><span class="st">"gpu"</span> <span class="cf">if</span> <span class="bu">str</span>(device).startswith(<span class="st">"cuda"</span>) <span class="cf">else</span> <span class="st">"cpu"</span>,</span>
@@ -1051,7 +1053,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>        duration <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
 <span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> {<span class="st">"test"</span>: test_result, <span class="st">"val"</span>: val_result, <span class="st">"time"</span>: duration <span class="op">/</span> <span class="bu">len</span>(test_loader) <span class="op">/</span> flow.import_samples}</span>
 <span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> flow, result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> flow, result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1067,7 +1069,7 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 </center>
 <p>The input of <span class="math inline">\(4\times 4\times 1\)</span> is scaled to <span class="math inline">\(2\times 2\times 4\)</span> following the idea of grouping the pixels in <span class="math inline">\(2\times 2\times 1\)</span> subsquares. Next, let’s try to implement this layer:</p>
 <div id="cell-38" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SqueezeFlow(nn.Module):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SqueezeFlow(nn.Module):</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, z, ldj, reverse<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        B, C, H, W <span class="op">=</span> z.shape</span>
@@ -1081,17 +1083,17 @@ INFO:lightning_fabric.utilities.seed:Seed set to 42
 <span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> z.reshape(B, C<span class="op">//</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, H, W)</span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> z.permute(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> z.reshape(B, C<span class="op">//</span><span class="dv">4</span>, H<span class="op">*</span><span class="dv">2</span>, W<span class="op">*</span><span class="dv">2</span>)</span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Before moving on, we can verify our implementation by comparing our output with the example figure above:</p>
 <div id="cell-40" class="cell" data-outputid="d09913d5-c170-4bf2-a7b3-dbc3ba8c6cd4" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sq_flow <span class="op">=</span> SqueezeFlow()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sq_flow <span class="op">=</span> SqueezeFlow()</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>rand_img <span class="op">=</span> torch.arange(<span class="dv">1</span>,<span class="dv">17</span>).view(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Image (before)</span><span class="ch">\n</span><span class="st">"</span>, rand_img)</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>forward_img, _ <span class="op">=</span> sq_flow(rand_img, ldj<span class="op">=</span><span class="va">None</span>, reverse<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Image (forward)</span><span class="ch">\n</span><span class="st">"</span>, forward_img.permute(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)) <span class="co"># Permute for readability</span></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>reconst_img, _ <span class="op">=</span> sq_flow(forward_img, ldj<span class="op">=</span><span class="va">None</span>, reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Image (reverse)</span><span class="ch">\n</span><span class="st">"</span>, reconst_img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Image (reverse)</span><span class="ch">\n</span><span class="st">"</span>, reconst_img)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Image (before)
  tensor([[[[ 1,  2,  3,  4],
@@ -1115,7 +1117,7 @@ Image (reverse)
 </div>
 <p>The split operation divides the input into two parts, and evaluates one part directly on the prior. So that our flow operation fits to the implementation of the previous layers, we will return the prior probability of the first part as the log determinant jacobian of the layer. It has the same effect as if we would combine all variable splits at the end of the flow, and evaluate them together on the prior.</p>
 <div id="cell-42" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SplitFlow(nn.Module):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SplitFlow(nn.Module):</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -1129,7 +1131,7 @@ Image (reverse)
 <span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>            z_split <span class="op">=</span> <span class="va">self</span>.prior.sample(sample_shape<span class="op">=</span>z.shape).to(device)</span>
 <span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> torch.cat([z, z_split], dim<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>            ldj <span class="op">-=</span> <span class="va">self</span>.prior.log_prob(z_split).<span class="bu">sum</span>(dim<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> z, ldj</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="building-a-multi-scale-flow" class="level3">
@@ -1141,7 +1143,7 @@ Image (reverse)
 </center>
 <p>Note that while the feature maps inside the coupling layers reduce with the height and width of the input, the increased number of channels is not directly considered. To counteract this, we increase the hidden dimensions for the coupling layers on the squeezed input. The dimensions are often scaled by 2 as this approximately increases the computation cost by 4 canceling with the squeezing operation. However, we will choose the hidden dimensionalities <span class="math inline">\(32, 48, 64\)</span> for the three scales respectively to keep the number of parameters reasonable and show the efficiency of multi-scale architectures.</p>
 <div id="cell-44" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_multiscale_flow():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_multiscale_flow():</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    flow_layers <span class="op">=</span> []</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    vardeq_layers <span class="op">=</span> [CouplingLayer(network<span class="op">=</span>GatedConvNet(c_in<span class="op">=</span><span class="dv">2</span>, c_out<span class="op">=</span><span class="dv">2</span>, c_hidden<span class="op">=</span><span class="dv">16</span>),</span>
@@ -1169,17 +1171,17 @@ Image (reverse)
 <span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#-------------------------</span></span>
 <span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    flow_model <span class="op">=</span> ImageFlow(flow_layers).to(device)</span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> flow_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> flow_model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can show the difference in number of parameters below:</p>
 <div id="cell-46" class="cell" data-outputid="aeeaa520-7aad-42dd-c2b6-fb52328d2052" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_num_params(model):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_num_params(model):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    num_params <span class="op">=</span> <span class="bu">sum</span>([np.prod(p.shape) <span class="cf">for</span> p <span class="kw">in</span> model.parameters()])</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Number of parameters: </span><span class="sc">{:,}</span><span class="st">"</span>.<span class="bu">format</span>(num_params))</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>print_num_params(create_simple_flow(use_vardeq<span class="op">=</span><span class="va">False</span>))</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>print_num_params(create_simple_flow(use_vardeq<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>print_num_params(create_multiscale_flow())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>print_num_params(create_multiscale_flow())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of parameters: 556,312
 Number of parameters: 628,388
@@ -1196,10 +1198,10 @@ Number of parameters: 534,122</code></pre>
 <h3 class="anchored" data-anchor-id="training-flow-variants">Training flow variants</h3>
 <p>Before we can analyse the flow models, we need to train them first. We provide pre-trained models that contain the validation and test performance, and run-time information. As flow models are computationally expensive, we advice you to rely on those pretrained models for a first run through the notebook.</p>
 <div id="cell-49" class="cell" data-scrolled="false" data-outputid="c43eef1e-a195-49e7-cda7-e0354ef501b3" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:510}}" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>flow_dict <span class="op">=</span> {<span class="st">"simple"</span>: {}, <span class="st">"vardeq"</span>: {}, <span class="st">"multiscale"</span>: {}}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>flow_dict <span class="op">=</span> {<span class="st">"simple"</span>: {}, <span class="st">"vardeq"</span>: {}, <span class="st">"multiscale"</span>: {}}</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>flow_dict[<span class="st">"simple"</span>][<span class="st">"model"</span>], flow_dict[<span class="st">"simple"</span>][<span class="st">"result"</span>] <span class="op">=</span> train_flow(create_simple_flow(use_vardeq<span class="op">=</span><span class="va">False</span>), model_name<span class="op">=</span><span class="st">"MNISTFlow_simple"</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>flow_dict[<span class="st">"vardeq"</span>][<span class="st">"model"</span>], flow_dict[<span class="st">"vardeq"</span>][<span class="st">"result"</span>] <span class="op">=</span> train_flow(create_simple_flow(use_vardeq<span class="op">=</span><span class="va">True</span>), model_name<span class="op">=</span><span class="st">"MNISTFlow_vardeq"</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>], flow_dict[<span class="st">"multiscale"</span>][<span class="st">"result"</span>] <span class="op">=</span> train_flow(create_multiscale_flow(), model_name<span class="op">=</span><span class="st">"MNISTFlow_multiscale"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>], flow_dict[<span class="st">"multiscale"</span>][<span class="st">"result"</span>] <span class="op">=</span> train_flow(create_multiscale_flow(), model_name<span class="op">=</span><span class="st">"MNISTFlow_multiscale"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:pytorch_lightning.utilities.rank_zero:GPU available: False, used: False
 INFO:pytorch_lightning.utilities.rank_zero:TPU available: False, using: 0 TPU cores
@@ -1337,7 +1339,7 @@ WARNING:pytorch_lightning.loggers.tensorboard:Missing logger folder: ../saved_mo
 </div>
 </div>
 <div id="cell-50" class="cell" data-outputid="574a98e0-dd44-44b4-a54e-373eaa77b41b" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>flow_dict[<span class="st">"simple"</span>][<span class="st">"result"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>flow_dict[<span class="st">"simple"</span>][<span class="st">"result"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>{'test': [{'test_bpd': 1.07839834690094}],
  'val': [{'test_bpd': 1.0798484086990356}],
@@ -1350,12 +1352,12 @@ WARNING:pytorch_lightning.loggers.tensorboard:Missing logger folder: ../saved_mo
 <h3 class="anchored" data-anchor-id="density-modeling-and-sampling">Density modeling and sampling</h3>
 <p>Firstly, we can compare the models on their quantitative results. The following table shows all important statistics. The inference time specifies the time needed to determine the probability for a batch of 64 images for each model, and the sampling time the duration it took to sample a batch of 64 images.</p>
 <div id="cell-52" class="cell" data-scrolled="true" data-outputid="4f6abba0-f436-4da9-a387-8e4ec144bd97" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:17}}">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>html</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>html</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> Some HTML code to increase font size <span class="kw">in</span> the following table <span class="op">--&gt;</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>style<span class="op">&gt;</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>th {font<span class="op">-</span>size: <span class="dv">120</span><span class="op">%;</span>}</span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>td {font<span class="op">-</span>size: <span class="dv">120</span><span class="op">%;</span>}</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>style<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>style<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <!-- Some HTML code to increase font size in the following table -->
 <style>
@@ -1365,7 +1367,7 @@ td {font-size: 120%;}
 </div>
 </div>
 <div id="cell-53" class="cell" data-scrolled="true" data-outputid="409b5ee8-816a-4fde-cbf3-3f82c49994e6" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:104}}">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tabulate</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tabulate</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> [[key,</span>
@@ -1375,9 +1377,9 @@ td {font-size: 120%;}
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>          <span class="st">"%2.0f ms"</span> <span class="op">%</span> (<span class="dv">1000</span> <span class="op">*</span> flow_dict[key][<span class="st">"result"</span>].get(<span class="st">"samp_time"</span>, <span class="dv">0</span>)),</span>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>          <span class="st">"</span><span class="sc">{:,}</span><span class="st">"</span>.<span class="bu">format</span>(<span class="bu">sum</span>([np.prod(p.shape) <span class="cf">for</span> p <span class="kw">in</span> flow_dict[key][<span class="st">"model"</span>].parameters()]))]</span>
 <span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>         <span class="cf">for</span> key <span class="kw">in</span> flow_dict]</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>display(HTML(tabulate.tabulate(table, tablefmt<span class="op">=</span><span class="st">'html'</span>, headers<span class="op">=</span>[<span class="st">"Model"</span>, <span class="st">"Validation Bpd"</span>, <span class="st">"Test Bpd"</span>, <span class="st">"Inference time"</span>, <span class="st">"Sampling time"</span>, <span class="st">"Num Parameters"</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>display(HTML(tabulate.tabulate(table, tablefmt<span class="op">=</span><span class="st">'html'</span>, headers<span class="op">=</span>[<span class="st">"Model"</span>, <span class="st">"Validation Bpd"</span>, <span class="st">"Test Bpd"</span>, <span class="st">"Inference time"</span>, <span class="st">"Sampling time"</span>, <span class="st">"Num Parameters"</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Model</th>
@@ -1420,9 +1422,9 @@ td {font-size: 120%;}
 <p>Question1: Does variational dequantization improves bits per dimensions.Why?</p>
 <p>Question2: Compare the sample quality of variational and standard dequantization?</p>
 <div id="cell-56" class="cell" data-outputid="c0362118-d641-46a0-ef5b-d3505e8af11c" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:501}}">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">44</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">44</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> flow_dict[<span class="st">"vardeq"</span>][<span class="st">"model"</span>].sample(img_shape<span class="op">=</span>[<span class="dv">16</span>,<span class="dv">1</span>,<span class="dv">28</span>,<span class="dv">28</span>])</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>show_imgs(samples.cpu())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>show_imgs(samples.cpu())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:lightning_fabric.utilities.seed:Seed set to 44</code></pre>
 </div>
@@ -1435,9 +1437,9 @@ td {font-size: 120%;}
 </div>
 </div>
 <div id="cell-57" class="cell" data-outputid="11cddadf-70c5-404f-bb83-d0f52add4e15" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:501}}">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>].sample(img_shape<span class="op">=</span>[<span class="dv">16</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">7</span>])</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>show_imgs(samples.cpu())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>show_imgs(samples.cpu())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:lightning_fabric.utilities.seed:Seed set to 42</code></pre>
 </div>
@@ -1455,7 +1457,7 @@ td {font-size: 120%;}
 <h3 class="anchored" data-anchor-id="interpolation-in-latent-space">Interpolation in latent space</h3>
 <p>Another popular test for the smoothness of the latent space of generative models is to interpolate between two training examples. As normalizing flows are strictly invertible, we can guarantee that any image is represented in the latent space. We again compare the variational dequantization model with the multi-scale model below.</p>
 <div id="cell-60" class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="at">@torch.no_grad</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="at">@torch.no_grad</span>()</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> interpolate(model, img1, img2, num_steps<span class="op">=</span><span class="dv">8</span>):</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Inputs:</span></span>
@@ -1470,12 +1472,12 @@ td {font-size: 120%;}
 <span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>    interp_imgs <span class="op">=</span> model.sample(interpolations.shape[:<span class="dv">1</span>] <span class="op">+</span> imgs.shape[<span class="dv">1</span>:], z_init<span class="op">=</span>interpolations)</span>
 <span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>    show_imgs(interp_imgs, row_size<span class="op">=</span><span class="dv">8</span>)</span>
 <span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>exmp_imgs, _ <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_loader))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>exmp_imgs, _ <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_loader))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-61" class="cell" data-outputid="e059017d-b305-4aca-ed3e-ddd865eeefb2" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:303}}">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    interpolate(flow_dict[<span class="st">"vardeq"</span>][<span class="st">"model"</span>], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i<span class="op">+</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    interpolate(flow_dict[<span class="st">"vardeq"</span>][<span class="st">"model"</span>], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i<span class="op">+</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:lightning_fabric.utilities.seed:Seed set to 42</code></pre>
 </div>
@@ -1495,9 +1497,9 @@ td {font-size: 120%;}
 </div>
 </div>
 <div id="cell-62" class="cell" data-outputid="c6618a2c-d025-48ee-d91a-b6957d7a7067" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:303}}">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">42</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    interpolate(flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i<span class="op">+</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    interpolate(flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i], exmp_imgs[<span class="dv">2</span><span class="op">*</span>i<span class="op">+</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:lightning_fabric.utilities.seed:Seed set to 42</code></pre>
 </div>
@@ -1522,12 +1524,12 @@ td {font-size: 120%;}
 <h3 class="anchored" data-anchor-id="visualization-of-latents-in-different-levels-of-multi-scale">Visualization of latents in different levels of multi-scale</h3>
 <p>In the following we will focus more on the multi-scale flow. We want to analyse what information is being stored in the variables split at early layers, and what information for the final variables. For this, we sample 8 images where each of them share the same final latent variables, but differ in the other part of the latent variables. Below we visualize three examples of this:</p>
 <div id="cell-65" class="cell" data-scrolled="false" data-outputid="f1114bcf-215b-4fee-9429-0448b488dab1" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:769}}">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">44</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>pl.seed_everything(<span class="dv">44</span>)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    z_init <span class="op">=</span> flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>].prior.sample(sample_shape<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">7</span>])</span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    z_init <span class="op">=</span> z_init.expand(<span class="dv">8</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    samples <span class="op">=</span> flow_dict[<span class="st">"multiscale"</span>][<span class="st">"model"</span>].sample(img_shape<span class="op">=</span>z_init.shape, z_init<span class="op">=</span>z_init)</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    show_imgs(samples.cpu())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    show_imgs(samples.cpu())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>INFO:lightning_fabric.utilities.seed:Seed set to 44</code></pre>
 </div>
@@ -1559,7 +1561,7 @@ td {font-size: 120%;}
 <h3 class="anchored" data-anchor-id="visualizing-dequantization">Visualizing Dequantization</h3>
 <p>As a final part of this notebook, we will look at the effect of variational dequantization. We have motivated variational dequantization by the issue of sharp edges/boarders being difficult to model, and a flow would rather prefer smooth, prior-like distributions. To check how what noise distribution <span class="math inline">\(q(u|x)\)</span> the flows in the variational dequantization module have learned, we can plot a histogram of output values from the dequantization and variational dequantization module.</p>
 <div id="cell-68" class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_dequant_distribution(model : ImageFlow, imgs : torch.Tensor, title:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_dequant_distribution(model : ImageFlow, imgs : torch.Tensor, title:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Inputs:</span></span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co">        model - The flow of which we want to visualize the dequantization distribution</span></span>
@@ -1582,10 +1584,10 @@ td {font-size: 120%;}
 <span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
 <span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>sample_imgs, _ <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_loader))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>sample_imgs, _ <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_loader))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-69" class="cell" data-outputid="cc33f829-f780-4609-f153-b6e5818a00d9" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:309,&quot;referenced_widgets&quot;:[&quot;215b5ab6b439442480d75a5b71070373&quot;,&quot;155f2d34ca6c4413b5d55f0e23f64928&quot;,&quot;b5fe392a1bf14a8396622e1bc8738a61&quot;,&quot;bc69ae3f3abb42f9b40b86aa24de90fd&quot;,&quot;8e500caf1edd424ba31207deaf4d4823&quot;,&quot;3f583bf58f9d49d28bd4d964ff4c0def&quot;,&quot;b5d25aff8bc1426391c7ca0f04b778ac&quot;,&quot;b85030beffdf48a7ae9000ff2b769909&quot;,&quot;d82f6397b31841aea896fcdf7301980a&quot;,&quot;8030d858dea8460f957311f88be9ce50&quot;,&quot;07c35f47f16a428eac22a5cf8734748d&quot;]}}">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>visualize_dequant_distribution(flow_dict[<span class="st">"simple"</span>][<span class="st">"model"</span>], sample_imgs, title<span class="op">=</span><span class="st">"Dequantization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>visualize_dequant_distribution(flow_dict[<span class="st">"simple"</span>][<span class="st">"model"</span>], sample_imgs, title<span class="op">=</span><span class="st">"Dequantization"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
 {"version_major":2,"version_minor":0,"model_id":"215b5ab6b439442480d75a5b71070373","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
@@ -1600,7 +1602,7 @@ td {font-size: 120%;}
 </div>
 </div>
 <div id="cell-70" class="cell" data-outputid="cd1b51a9-064e-4442-eb78-10340b924979" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:309,&quot;referenced_widgets&quot;:[&quot;179fae4ce5c945e4971d2ad994530be4&quot;,&quot;aa66ac98b151450f9fbade1a32345820&quot;,&quot;214bfb6f37e14b549a9eac3f81ae4b29&quot;,&quot;f28cfbe35e4247a6a16914415a2edca4&quot;,&quot;80e766f571f746b89acbdc5292ea4101&quot;,&quot;cf76f0ec28d94651bdc221c338558cab&quot;,&quot;408de8e7891f41a0861937f772c4b1d0&quot;,&quot;b43a0ab2bbf4469ca810780cfb040bf7&quot;,&quot;c1f6604fdb284e7aa4ca2d2aa2b3be72&quot;,&quot;77b6c34263614df4b28e995dac9712ab&quot;,&quot;aa500ff81a4b4e0e8266570ac20f4566&quot;]}}">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>visualize_dequant_distribution(flow_dict[<span class="st">"vardeq"</span>][<span class="st">"model"</span>], sample_imgs, title<span class="op">=</span><span class="st">"Variational dequantization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>visualize_dequant_distribution(flow_dict[<span class="st">"vardeq"</span>][<span class="st">"model"</span>], sample_imgs, title<span class="op">=</span><span class="st">"Variational dequantization"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
 {"version_major":2,"version_minor":0,"model_id":"179fae4ce5c945e4971d2ad994530be4","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
@@ -1649,7 +1651,7 @@ Given an input of shape <span class="math inline">\(H\times W\times C\)</span> a
 </center>
 <p>Enough descriptions! Now let’s take a look at the code.</p>
 <div id="cell-79" class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.nn <span class="im">import</span> functional <span class="im">as</span> F</span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1679,7 +1681,7 @@ Given an input of shape <span class="math inline">\(H\times W\times C\)</span> a
 <span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a>            out <span class="op">=</span> F.conv2d(<span class="bu">input</span>, <span class="va">self</span>.weight.squeeze().inverse().unsqueeze(<span class="dv">2</span>).unsqueeze(<span class="dv">3</span>))</span>
 <span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>            logdet <span class="op">=</span> logdet <span class="op">-</span> dlogdet</span>
 <span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> out, logdet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> out, logdet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that to calculate the determinant of <span class="math inline">\(W\)</span> could be computationally expensive, thus there’s also an <a href="https://github.com/rosinality/glow-pytorch/blob/master/model.py#L88">implementation</a> which utilizes LU decomposition to speed up, as suggested in the Glow paper.</p>
 <p>The idea is to parameterizing <span class="math inline">\(W\)</span> directly in its LU decomposition:</p>
@@ -1701,7 +1703,7 @@ W = PL(U + \text{diag}(s)),
 <h3 class="anchored" data-anchor-id="a-complete-flow-block">A complete flow block</h3>
 <p>Now we have the <strong>Invertible 1x1 Convolution</strong>. Together with the aforementioned <strong>Actnorm</strong> and <strong>Coupling Layer</strong>, we are ready to try out the power of the Glow by plugging the block into the model we had in the NFs tutorial!</p>
 <div id="cell-83" class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ActNorm(nn.Module):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ActNorm(nn.Module):</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_channel):</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1752,7 +1754,7 @@ W = PL(U + \text{diag}(s)),
 <span id="cb60-49"><a href="#cb60-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
 <span id="cb60-50"><a href="#cb60-50" aria-hidden="true" tabindex="-1"></a>            dlogdet <span class="op">*=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb60-51"><a href="#cb60-51" aria-hidden="true" tabindex="-1"></a>            logdet <span class="op">+=</span> dlogdet</span>
-<span id="cb60-52"><a href="#cb60-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">input</span> <span class="op">/</span> <span class="va">self</span>.log_scale.exp() <span class="op">-</span> <span class="va">self</span>.loc, logdet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-52"><a href="#cb60-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">input</span> <span class="op">/</span> <span class="va">self</span>.log_scale.exp() <span class="op">-</span> <span class="va">self</span>.loc, logdet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1824,13 +1826,14 @@ W = PL(U + \text{diag}(s)),
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1845,7 +1848,7 @@ W = PL(U + \text{diag}(s)),
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
+        var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
