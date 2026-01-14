@@ -1,1 +1,1 @@
-Sitemap: https://flexie.github.io/CSE-8803-Twin/sitemap.xml
+Sitemap: https://flexie.github.io/CSE-8803-Twin//sitemap.xml
