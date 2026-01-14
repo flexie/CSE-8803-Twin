@@ -27,7 +27,6 @@
     "listing": "/weeks/week-02.html",
     "items": [
       "/slides/week-02/02-basics.html",
-      "/labs/w2-lab01.html",
       "/labs/w2-lab01-PyTorch.html"
     ]
   },
