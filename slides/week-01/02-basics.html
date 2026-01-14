@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="dcterms.date" content="2026-01-14">
   <title>Digital Twins for Physical Systems – Basics</title>
@@ -49,7 +49,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8a5cdbf101a0845817b98f2425171703.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-832775eafbd512325564c8c290c39367.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -406,7 +406,7 @@
     \end{aligned}\]</span></p>
 <p>where <span class="math inline">\(\mathcal{M}\)</span> and <span class="math inline">\(\mathcal{D}\)</span> are the corresponding model parameter space and data space.</p>
 <p>The mapping <span class="math inline">\(G\colon\mathcal{M}\rightarrow\mathcal{D}\)</span> is defined by the <span style="color: magenta">direct</span> (or forward) model</p>
-<p><span id="eq-forward"><span class="math display">\[\mathbf{d}=g(\mathbf{m}), \qquad(1)\]</span></span> where</p>
+<p><span id="eq-forward"><span class="math display">\[\mathbf{d}=g(\mathbf{m}), \tag{1}\]</span></span> where</p>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Applied mathematicians often call the equation <span class="math inline">\(G(m)=d\)</span> a mathematical model and <span class="math inline">\(m\)</span> the parameters. Other scientists call <span class="math inline">\(G\)</span> the forward operator and <span class="math inline">\(m\)</span> the model. We will adopt the more mathematical convention, where <span class="math inline">\(m\)</span> will be referred to as the model parameters, <span class="math inline">\(G\)</span> the model and <span class="math inline">\(d\)</span> the data.</p></li></ol></aside></section>
 <section id="section-4" class="slide level2 smaller center">
 <h2></h2>
@@ -429,7 +429,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>In addition, there will be some <span style="color: magenta">random noise</span> in the system, usually modeled as additive noise, giving the more realistic, stochastic direct model <span id="eq-noisy"><span class="math display">\[\mathbf{d}=g(\mathbf{m})+\mathbf{\epsilon},\label{eq:stat-inv-pb} \qquad(2)\]</span></span> where <span class="math inline">\(\mathbf{\epsilon}\)</span> is a random vector.</p>
+<p>In addition, there will be some <span style="color: magenta">random noise</span> in the system, usually modeled as additive noise, giving the more realistic, stochastic direct model <span id="eq-noisy"><span class="math display">\[\mathbf{d}=g(\mathbf{m})+\mathbf{\epsilon},\label{eq:stat-inv-pb} \tag{2}\]</span></span> where <span class="math inline">\(\mathbf{\epsilon}\)</span> is a random vector.</p>
 </div>
 </div>
 </div>
@@ -525,7 +525,7 @@
 </section>
 <section id="trcomputing-the-regularization-parameter-1" class="slide level2 smaller nostretch center">
 <h2>TR—Computing the Regularization Parameter</h2>
-<div id="fig-L" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" width="35%">
+<div id="fig-L" class="quarto-float quarto-figure quarto-figure-center" width="35%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-L-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="../images/L-curve.png" id="fig-L" class="quarto-figure quarto-figure-center" style="width:35.0%">
@@ -585,7 +585,7 @@ Figure&nbsp;1
 <section id="standard-notation" class="slide level2 smaller center">
 <h2>Standard notation</h2>
 <p>A <span style="color: blue">discrete model f</span>or the evolution of a physical (atmospheric, oceanic, etc.) system from time <span class="math inline">\(t_{k}\)</span> to time <span class="math inline">\(t_{k+1}\)</span> is described by a dynamic, <em>state equation</em></p>
-<p><span id="eq-state"><span class="math display">\[\mathbf{x}^{f}(t_{k+1})=M_{k+1}\left[\mathbf{x}^{f}(t_{k})\right], \qquad(3)\]</span></span></p>
+<p><span id="eq-state"><span class="math display">\[\mathbf{x}^{f}(t_{k+1})=M_{k+1}\left[\mathbf{x}^{f}(t_{k})\right], \tag{3}\]</span></span></p>
 <ul>
 <li><p><span class="math inline">\(\mathbf{x}\)</span> is the model’s <em>state vector</em> of dimension <span class="math inline">\(n,\)</span></p></li>
 <li><p><span class="math inline">\(M\)</span> is the corresponding <em>dynamics operator</em> (finite difference or finite element discretization), which can be time dependent.</p></li>
@@ -872,7 +872,7 @@ Gahlot, Abhinav Prakash, Rafael Orozco, Ziyi Yin, Grant Bruer, and Felix J Herrm
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -946,13 +946,14 @@ Gahlot, Abhinav Prakash, Rafael Orozco, Ziyi Yin, Grant Bruer, and Felix J Herrm
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
