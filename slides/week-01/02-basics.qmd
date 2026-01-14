@@ -269,17 +269,17 @@ Many remedies (fortunately) exist...
     $J(\theta)=\left|y_{1}-f(\theta)\right|^{2}$ by a "nearby" problem
     for
     $$J_{\beta}(\theta)=\left|y_{1}-f(\theta)\right|^{2}+\beta\left|\theta-\theta_{0}\right|^{2}$$
-    where $\beta$ is "suitably chosen" regularization/penalization
-    parametersee below for details.
+    where $\beta$ is "suitably chosen" regularization/penalization parameter, see below for details.
 
 
--   [x] When it is done correctly, TR provides convexity and compactness.
+- When it is done correctly, TR provides convexity and compactness[^10].
 
 -    Even when done correctly, it [*modifies the problem*]{style="color: red"} and new solutions may be far from the
 original ones.
 
--  It is not trivial to regularize correctly or even to know if you have
-succeeded...
+-  It is not trivial to regularize correctly or even to know if you have succeeded...
+
+[^10]: *Convexity* means that the function resembles a quadratic function, $f(x) = x^2$ with positive second derivative; *compactness* means that any infinite sequence of functions must get arbitrarily close to some function of the space.
 
 ## Non uniqueness: seismic travel-time tomography{.smaller .nostretch}
 
@@ -486,7 +486,7 @@ Once the data discrepancy and regularization functionals have been
     parameter, $\alpha.$
 
 We have here, similarly to the [bias-variance
-    trade-off]{style="color: magenta"} of ML Lectures, a competition
+    trade-off]{style="color: magenta"} of Chapter 5 (and 9), a competition
     between the discrepancy error and the magnitude of the
     regularization term.
 
@@ -550,9 +550,7 @@ The **[ discrepancy principle]{style="color: magenta"}**
         the truncation level implicitly defines the regularization
         parameter.
 
-**[Cross-validation]{style="color: magenta"}**, as we explained in
-    ML Lectures, is a way of using the observations themselves to
-    estimate a parameter.
+**[Cross-validation]{style="color: magenta"}**, as we explained in Chapter 9, is a way of using the observations themselves to  estimate a parameter.
 
 -   We then employ the classical approach of either LOOCV or
         $k$-fold cross validation, and choose the value of $\alpha$ that
@@ -567,9 +565,11 @@ The **[ discrepancy principle]{style="color: magenta"}**
 ## 
 
 ::: center
-**[DATA ASSIMILATION]{style="color: blue"}**
+**[DATA ASSIMILATION]{style="color: blue"}**[^11]
 :::
 
+[^11]: Chapter 9
+ 
 ## Definitions and notation{.smaller}
 
 [Analysis]{style="color: magenta"} is the process of approximating the
