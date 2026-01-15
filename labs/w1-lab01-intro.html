@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -191,8 +220,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- Rerun the examples of this Notebook and redo the experiment for $y=-2\tan(\pi x)$. [underfitting_overfitting.ipynb](https://www.dropbox.com/scl/fi/exu8xv0jx4wqx44vvr47o/underfitting_overfitting.ipynb?rlkey=dzoyyr7yl4sehw2cc8bwapwik&dl=0
-) -->
+<p>Rerun the examples of this Notebook and redo the experiment for <span class="math inline">\(y=-2\tan(\pi x)\)</span>. <a href="https://www.dropbox.com/scl/fi/exu8xv0jx4wqx44vvr47o/underfitting_overfitting.ipynb?rlkey=dzoyyr7yl4sehw2cc8bwapwik&amp;dl=0">underfitting_overfitting.ipynb</a></p>
 <!-- {{< embed 01intro/underfitting_overfitting.ipynb >}} -->
 <!-- <a href="01intro/underfitting_overfitting.ipynb" download>Download Notebook</a> -->
 
@@ -272,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
+        var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
