@@ -33,7 +33,7 @@ Labs can be rerun in the language of your choice (Julia/R) but if you chose to r
 
 ### Lab submission instructions
 
-To submit assignments please export your notebook as PDF and send to TA's Gatech email: [Rafael Orozco](mailto:rorozco@gatech.edu) with subject line that includes the phrase "CSE-8803 Lab \[# of lab\]". To export notebook as PDF in Google collab: File -\> Print -\> Set Destination to "save as PDF" -\> Save.
+To submit assignments please export your notebook as PDF and send to TA's Gatech email: [Tuna Erdinc](mailto:herdinc3@gatech.edu) or [Shiqin Zeng](mailto:szeng44@gatech.edu) with subject line that includes the phrase "CSE-8803 Lab \[# of lab\]". To export notebook as PDF in Google collab: File -\> Print -\> Set Destination to "save as PDF" -\> Save.
 
 ```{=html}
 <!-- ### Exams
