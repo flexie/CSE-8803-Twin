@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="dcterms.date" content="2024-01-22">
   <title>Digital Twins for Physical Systems – Differential Programming</title>
@@ -115,7 +115,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-832775eafbd512325564c8c290c39367.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8a5cdbf101a0845817b98f2425171703.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -524,8 +524,8 @@
 <h2></h2>
 <p>We can prove <span style="color: magenta">mathematically</span> the following equivalences:</p>
 <div class="cell" data-reveal="true" data-layout-align="default">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a></a>flowchart TD</span>
-<span id="cb1-2"><a></a>  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a></a>flowchart TD</span>
+<span id="cb1-2"><a></a>  A[Backpropagation]&lt;--&gt;B[Reverse-mode automatic differentiation]&lt;--&gt;C[Discrete adjoint-state method]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -592,8 +592,8 @@
 </section>
 <section id="section-14" class="slide level2 smaller center">
 <h2></h2>
-<div id="59ee414f" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># set some inputs</span></span>
+<div id="d04ac3f7" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># set some inputs</span></span>
 <span id="cb2-2"><a></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">;</span> y <span class="op">=</span> <span class="dv">5</span><span class="op">;</span> z <span class="op">=</span> <span class="op">-</span><span class="dv">4</span></span>
 <span id="cb2-3"><a></a><span class="co"># perform the forward pass</span></span>
 <span id="cb2-4"><a></a>q <span class="op">=</span> x <span class="op">+</span> y <span class="co"># q becomes 3</span></span>
@@ -608,7 +608,7 @@
 <span id="cb2-13"><a></a></span>
 <span id="cb2-14"><a></a><span class="co"># now backprop through q = x + y</span></span>
 <span id="cb2-15"><a></a>dfdx <span class="op">=</span> dfdq <span class="op">*</span> dqdx  <span class="co"># The * here is the chain rule!</span></span>
-<span id="cb2-16"><a></a>dfdy <span class="op">=</span> dfdq <span class="op">*</span> dqdy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-16"><a></a>dfdy <span class="op">=</span> dfdq <span class="op">*</span> dqdy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We obtain the <span style="color: magenta">gradient</span> in the variables <span style="color: teal"><code>[``dfdx, dfdy, dfdz``]</code></span> that give us the <span style="color: magenta">sensitivity</span> of the function <span style="color: teal"><code>f</code></span> to the variables <span style="color: teal"><code>x, y</code></span> and <span style="color: teal"><code>z</code></span>.</p>
 <p>It’s all done with <span style="color: magenta">graphs</span>... DAGs, in fact</p>
@@ -1173,14 +1173,13 @@ Rackauckas, Christopher, and Qing Nie. 2017. <span>“Differentialequations.jl�
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
@@ -1195,7 +1194,7 @@ Rackauckas, Christopher, and Qing Nie. 2017. <span>“Differentialequations.jl�
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/");
+            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

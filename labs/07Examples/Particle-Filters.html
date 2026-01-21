@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -66,15 +66,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e2886813ffd81db4f823f0bbbf45b6b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-79df7ed5347781c1339259261daa236f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -120,7 +119,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -162,8 +161,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../images/digitaltwin.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
     <a href="https://flexie.github.io/CSE-8803-Twin/" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -267,16 +265,16 @@ window.Quarto = {
 <section id="particle-filters" class="level1">
 <h1>Particle Filters</h1>
 <div id="cell-2" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-3" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install filterpy</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>unzip kf_book.<span class="bu">zip</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install filterpy</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>unzip kf_book.<span class="bu">zip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-4" class="cell" data-outputid="de60f23b-38fd-4df8-e91a-563ef8591d95">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#format the book</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#format the book</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#import book_format</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#book_format.set_style()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#book_format.set_style()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 
         <style>
@@ -317,8 +315,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="monte-carlo-sampling">Monte Carlo Sampling</h2>
 <p>In the UKF chapter I generated a plot similar to this to illustrate the effects of nonlinear systems on Gaussians:</p>
 <div id="cell-7" class="cell" data-outputid="5e5c5c8f-1d0c-41fa-ec23-97b7b919958e">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import kf_book.pf_internal as pf_internal #version difference caused error here, dont worry about running this</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#pf_internal.plot_monte_carlo_ukf() #version difference caused error here, dont worry about running this</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import kf_book.pf_internal as pf_internal #version difference caused error here, dont worry about running this</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#pf_internal.plot_monte_carlo_ukf() #version difference caused error here, dont worry about running this</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -360,7 +358,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>This naive algorithm has practical difficulties which we will need to overcome, but this is the general idea. Let’s see an example. I wrote a particle filter for the robot localization problem from the UKF and EKF chapters. The robot has steering and velocity control inputs. It has sensors that measures distance to visible landmarks. Both the sensors and control mechanism have noise in them, and we need to track the robot’s position.</p>
 <p>Here I run a particle filter and plotted the positions of the particles. The plot on the left is after one iteration, and on the right is after 10. The red ‘X’ shows the actual position of the robot, and the large circle is the computed weighted mean position.</p>
 <div id="cell-10" class="cell" data-outputid="6e8875f7-8af0-4dca-f887-84af460a110b">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pf_internal.show_two_pf_plots()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pf_internal.show_two_pf_plots()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you are viewing this in a browser, this animation shows the entire sequence:</p>
 <p><img src="animations/particle_filter_anim.gif"></p>
@@ -376,15 +374,15 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>You can use this technique to numerically integrate a function of any arbitrary difficulty. this includes non-integrable and noncontinuous functions. This technique was invented by Stanley Ulam at Los Alamos National Laboratory to allow him to perform computations for nuclear reactions which were unsolvable on paper.</p>
 <p>Let’s compute <span class="math inline">\(\pi\)</span> by finding the area of a circle. We will define a circle with a radius of 1, and bound it in a square. The side of the square has length 2, so the area is 4. We generate a set of uniformly distributed random points within the box, and count how many fall inside the circle. The area of the circle is computed as the area of the box times the ratio of points inside the circle vs.&nbsp;the total number of points. Finally, we know that <span class="math inline">\(A = \pi r^2\)</span>, so we compute <span class="math inline">\(\pi = A / r^2\)</span>.</p>
 <p>We start by creating the points.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">20000</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, (N, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">20000</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, (N, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A point is inside a circle if its distance from the center of the circle is less than or equal to the radius. We compute the distance with <code>numpy.linalg.norm</code>, which computes the magnitude of a vector. Since vectors start at (0, 0) calling norm will compute the point’s distance from the origin.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> np.linalg.norm(pts, axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> np.linalg.norm(pts, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Next we compute which of this distances fit the criteria. This code returns a bool array that contains <code>True</code> if it meets the condition <code>dist &lt;= 1</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>in_circle <span class="op">=</span> dist <span class="op">&lt;=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>in_circle <span class="op">=</span> dist <span class="op">&lt;=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>All that is left is to count the points inside the circle, compute pi, and plot the results. I’ve put it all in one cell so you can experiment with alternative values for <code>N</code>, the number of points.</p>
 <div id="cell-15" class="cell" data-outputid="5c700f00-b619-4b71-a3a1-e84ce456b1d2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -409,18 +407,18 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'equal'</span>)</span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'mean pi(N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">)= </span><span class="sc">{</span>pi<span class="sc">:.4f}</span><span class="ss">'</span>)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'err  pi(N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">)= </span><span class="sc">{</span>np<span class="sc">.</span>pi<span class="op">-</span>pi<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'err  pi(N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">)= </span><span class="sc">{</span>np<span class="sc">.</span>pi<span class="op">-</span>pi<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This insight leads us to the realization that we can use Monte Carlo to compute the probability density of any probability distribution. For example, suppose we have this Gaussian:</p>
 <div id="cell-17" class="cell" data-outputid="834c4736-abe5-403a-c96c-090724b9a8a1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> filterpy.stats <span class="im">import</span> plot_gaussian_pdf</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plot_gaussian_pdf(mean<span class="op">=</span><span class="dv">2</span>, variance<span class="op">=</span><span class="dv">3</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> filterpy.stats <span class="im">import</span> plot_gaussian_pdf</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plot_gaussian_pdf(mean<span class="op">=</span><span class="dv">2</span>, variance<span class="op">=</span><span class="dv">3</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The probability density function (PDF) gives the probability that the random value falls between 2 values. For example, we may want to know the probability of x being between 0 and 2 in the graph above. This is a continuous function, so we need to take the integral to find the area under the curve, as the area is equal to the probability for that range of values to occur.</p>
 <p><span class="math display">\[P[a \le X \le b] = \int_a^b f_X(x) \, dx\]</span></p>
 <p>It is easy to compute this integral for a Gaussian. But real life is not so easy. For example, the plot below shows a probability distribution. There is no way to analytically describe an arbitrary curve, let alone integrate it.</p>
 <div id="cell-19" class="cell" data-outputid="f559da83-d1c5-4a0e-9c0d-11b37422d42a">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pf_internal.plot_random_pd()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pf_internal.plot_random_pd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can use Monte Carlo methods to compute any integral. The PDF is computed with an integral, hence we can compute the PDF of this curve using Monte Carlo.</p>
 </section>
@@ -435,7 +433,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>If you are passively tracking something (no control input), then you would need to include velocity in the state and use that estimate to make the prediction. More dimensions requires exponentially more particles to form a good estimate, so we always try to minimize the number of random variables in the state.</p>
 <p>This code creates a uniform and Gaussian distribution of particles over a region:</p>
 <div id="cell-22" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_uniform_particles(x_range, y_range, hdg_range, N):</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    particles <span class="op">=</span> np.empty((N, <span class="dv">3</span>))</span>
@@ -451,11 +449,11 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    particles[:, <span class="dv">1</span>] <span class="op">=</span> mean[<span class="dv">1</span>] <span class="op">+</span> (randn(N) <span class="op">*</span> std[<span class="dv">1</span>])</span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    particles[:, <span class="dv">2</span>] <span class="op">=</span> mean[<span class="dv">2</span>] <span class="op">+</span> (randn(N) <span class="op">*</span> std[<span class="dv">2</span>])</span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    particles[:, <span class="dv">2</span>] <span class="op">%=</span> <span class="dv">2</span> <span class="op">*</span> np.pi</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> particles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> particles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For example:</p>
 <div id="cell-24" class="cell" data-outputid="44859b63-9950-4690-8cf7-50038ced8dea">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>create_uniform_particles((<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>, np.pi<span class="op">*</span><span class="dv">2</span>), <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>create_uniform_particles((<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>, np.pi<span class="op">*</span><span class="dv">2</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([[0.772, 0.336, 4.171],
        [0.333, 0.34 , 4.319],
@@ -467,7 +465,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <h3 class="anchored" data-anchor-id="predict-step">Predict Step</h3>
 <p>The predict step in the Bayes algorithm uses the process model to update the belief in the system state. How would we do that with particles? Each particle represents a possible position for the robot. Suppose we send a command to the robot to move 0.1 meters while turning by 0.007 radians. We could move each particle by this amount. If we did that we would soon run into a problem. The robot’s controls are not perfect so it will not move exactly as commanded. Therefore we need to add noise to the particle’s movements to have a reasonable chance of capturing the actual movement of the robot. If you do not model the uncertainty in the system the particle filter will not correctly model the probability distribution of our belief in the robot’s position.</p>
 <div id="cell-26" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(particles, u, std, dt<span class="op">=</span><span class="fl">1.</span>):</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(particles, u, std, dt<span class="op">=</span><span class="fl">1.</span>):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" move according to control input u (heading change, velocity)</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">    with noise Q (std heading change, std velocity)`"""</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -479,16 +477,16 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># move in the (noisy) commanded direction</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">=</span> (u[<span class="dv">1</span>] <span class="op">*</span> dt) <span class="op">+</span> (randn(N) <span class="op">*</span> std[<span class="dv">1</span>])</span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    particles[:, <span class="dv">0</span>] <span class="op">+=</span> np.cos(particles[:, <span class="dv">2</span>]) <span class="op">*</span> dist</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    particles[:, <span class="dv">1</span>] <span class="op">+=</span> np.sin(particles[:, <span class="dv">2</span>]) <span class="op">*</span> dist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    particles[:, <span class="dv">1</span>] <span class="op">+=</span> np.sin(particles[:, <span class="dv">2</span>]) <span class="op">*</span> dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="update-step" class="level3">
 <h3 class="anchored" data-anchor-id="update-step">Update Step</h3>
 <p>Next we get a set of measurements - one for each landmark currently in view. How should these measurements be used to alter our probability distribution as modeled by the particles?</p>
 <p>Think back to the <strong>Discrete Bayes</strong> chapter. In that chapter we modeled positions in a hallway as discrete and uniformly spaced. We assigned a probability to each position which we called the <em>prior</em>. When a new measurement came in we multiplied the current probability of that position (the <em>prior</em>) by the <em>likelihood</em> that the measurement matched that location:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(likelihood, prior):</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(likelihood, prior):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    posterior <span class="op">=</span> prior <span class="op">*</span> likelihood</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normalize(posterior)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normalize(posterior)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>which is an implementation of the equation</p>
 <p><span class="math display">\[x = \| \mathcal L \bar x \|\]</span></p>
 <p>which is a realization of Bayes theorem:</p>
@@ -496,13 +494,13 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 &amp;= \frac{\mathtt{likelihood}\times \mathtt{prior}}{\mathtt{normalization}}\end{aligned}\]</span></p>
 <p>We do the same with our particles. Each particle has a position and a weight which estimates how well it matches the measurement. Normalizing the weights so they sum to one turns them into a probability distribution. The particles those that are closest to the robot will generally have a higher weight than ones far from the robot.</p>
 <div id="cell-29" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(particles, weights, z, R, landmarks):</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(particles, weights, z, R, landmarks):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, landmark <span class="kw">in</span> <span class="bu">enumerate</span>(landmarks):</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        distance <span class="op">=</span> <span class="co">#FILL IN CODE! calculate norm between particles and landmark</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        weights <span class="op">*=</span> scipy.stats.norm(distance, R).pdf(z[i])</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    weights <span class="op">+=</span> <span class="fl">1.e-300</span>      <span class="co"># avoid round-off to zero</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#FILL IN CODE! normalize so that they sum to one</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#FILL IN CODE! normalize so that they sum to one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the literature this part of the algorithm is called <em>Sequential Importance Sampling</em>, or SIS. The equation for the weights is called the <em>importance density</em>. I will give these theoretical underpinnings in a following section. For now I hope that this makes intuitive sense. If we weight the particles according to how well they match the measurements they are probably a good sample for the probability distribution of the system after incorporating the measurements. Theory proves this is so. The weights are the <em>likelihood</em> in Bayes theorem. Different problems will need to tackle this step in slightly different ways but this is the general idea.</p>
 </section>
@@ -513,19 +511,19 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>Here I adopt the notation <span class="math inline">\(x^i\)</span> to indicate the <span class="math inline">\(\mathtt{i}^{th}\)</span> particle. A superscript is used because we often need to use subscripts to denote time steps, yielding the unwieldy <span class="math inline">\(x^i_{k+1}\)</span> for the <span class="math inline">\(\mathtt{k+1}^{th}\)</span> time step for example.</p>
 <p>This function computes both the mean and variance of the particles:</p>
 <div id="cell-32" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate(particles, weights):</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate(particles, weights):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""returns mean and variance of the weighted particles"""</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> particles[:, <span class="dv">0</span>:<span class="dv">2</span>]</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    mean <span class="op">=</span> np.average(pos, weights<span class="op">=</span>weights, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    var  <span class="op">=</span> np.average((pos <span class="op">-</span> mean)<span class="op">**</span><span class="dv">2</span>, weights<span class="op">=</span>weights, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mean, var</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mean, var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we create a uniform distribution of points in a 1x1 square with equal weights we get a mean position very near the center of the square at (0.5, 0.5) and a small variance.</p>
 <div id="cell-34" class="cell" data-outputid="96ccdfc0-ffb9-473d-a13c-bf16d95a8543">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>particles <span class="op">=</span> create_uniform_particles((<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">1000</span>)</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>particles <span class="op">=</span> create_uniform_particles((<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>,<span class="dv">1</span>), (<span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">1000</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> np.array([<span class="fl">.25</span>]<span class="op">*</span><span class="dv">1000</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>estimate(particles, weights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>estimate(particles, weights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>(array([0.494, 0.514]), array([0.083, 0.085]))</code></pre>
 </div>
@@ -538,7 +536,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>There are many resampling algorithms. For now let’s look at one of the simplest, <em>simple random resampling</em>, also called <em>multinomial resampling</em>. It samples from the current particle set <span class="math inline">\(N\)</span> times, making a new set of particles from the sample. The probability of selecting any given particle should be proportional to its weight.</p>
 <p>We accomplish this with NumPy’s <code>cumsum</code> function. <code>cumsum</code> computes the cumulative sum of an array. That is, element one is the sum of elements zero and one, element two is the sum of elements zero, one and two, etc. Then we generate random numbers in the range of 0.0 to 1.0 and do a binary search to find the weight that most closely matches that number:</p>
 <div id="cell-36" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simple_resample(particles, weights):</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simple_resample(particles, weights):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(particles)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    cumulative_sum <span class="op">=</span> np.cumsum(weights)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    cumulative_sum[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="fl">1.</span> <span class="co"># avoid round-off error</span></span>
@@ -546,14 +544,14 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># resample according to indexes</span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    particles[:] <span class="op">=</span> particles[indexes]</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    weights.fill(<span class="fl">1.0</span> <span class="op">/</span> N)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    weights.fill(<span class="fl">1.0</span> <span class="op">/</span> N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We don’t resample at every epoch. For example, if you received no new measurements you have not received any information from which the resample can benefit. We can determine when to resample by using something called the <em>effective N</em>, which approximately measures the number of particles which meaningfully contribute to the probability distribution. The equation for this is</p>
 <p><span class="math display">\[\hat{N}_\text{eff} = \frac{1}{\sum w^2}\]</span></p>
 <p>and we can implement this in Python with</p>
 <div id="cell-38" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neff(weights):</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.</span> <span class="op">/</span> np.<span class="bu">sum</span>(np.square(weights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neff(weights):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.</span> <span class="op">/</span> np.<span class="bu">sum</span>(np.square(weights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If <span class="math inline">\(\hat{N}_\text{eff}\)</span> falls below some threshold it is time to resample. A useful starting point is <span class="math inline">\(N/2\)</span>, but this varies by problem. It is also possible for <span class="math inline">\(\hat{N}_\text{eff} = N\)</span>, which means the particle set has collapsed to one point (each has equal weight). It may not be theoretically pure, but if that happens I create a new distribution of particles in the hopes of generating particles with more diversity. If this happens to you often, you may need to increase the number of particles, or otherwise adjust your filter. We will talk more of this later.</p>
 </section>
@@ -563,14 +561,14 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>There is more to learn, but we know enough to implement a full particle filter. We will implement the <em>Sampling Importance Resampling filter</em>, or SIR.</p>
 <p>I need to introduce a more sophisticated resampling method than I gave above. FilterPy provides several resampling methods. I will describe them later. They take an array of weights and returns indexes to the particles that have been chosen for the resampling. We just need to write a function that performs the resampling from these indexes:</p>
 <div id="cell-41" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> resample_from_index(particles, weights, indexes):</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> resample_from_index(particles, weights, indexes):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    particles[:] <span class="op">=</span> particles[indexes]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    weights.resize(<span class="bu">len</span>(particles))</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    weights.fill (<span class="fl">1.0</span> <span class="op">/</span> <span class="bu">len</span>(weights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    weights.fill (<span class="fl">1.0</span> <span class="op">/</span> <span class="bu">len</span>(weights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To implement the filter we need to create the particles and the landmarks. We then execute a loop, successively calling <code>predict</code>, <code>update</code>, resampling, and then computing the new state estimate with <code>estimate</code>.</p>
 <div id="cell-43" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> filterpy.monte_carlo <span class="im">import</span> systematic_resample</span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> filterpy.monte_carlo <span class="im">import</span> systematic_resample</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> norm</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> randn</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats</span>
@@ -640,10 +638,10 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <span id="cb24-68"><a href="#cb24-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-69"><a href="#cb24-69" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> seed</span>
 <span id="cb24-70"><a href="#cb24-70" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">2</span>)</span>
-<span id="cb24-71"><a href="#cb24-71" aria-hidden="true" tabindex="-1"></a>run_pf1(N<span class="op">=</span><span class="dv">5000</span>, plot_particles<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-71"><a href="#cb24-71" aria-hidden="true" tabindex="-1"></a>run_pf1(N<span class="op">=</span><span class="dv">5000</span>, plot_particles<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Most of this code is devoted to initialization and plotting. The entirety of the particle filter processing consists of these lines:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move diagonally forward to (x+1, x+1)</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move diagonally forward to (x+1, x+1)</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>predict(particles, u<span class="op">=</span>(<span class="fl">0.00</span>, <span class="fl">1.414</span>), std<span class="op">=</span>(<span class="fl">.2</span>, <span class="fl">.05</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># incorporate measurements</span></span>
@@ -655,15 +653,15 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    indexes <span class="op">=</span> systematic_resample(weights)</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    resample_from_index(particles, weights, indexes)</span>
 <span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>mu, var <span class="op">=</span> estimate(particles, weights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>mu, var <span class="op">=</span> estimate(particles, weights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The first line predicts the position of the particles with the assumption that the robot is moving in a straight line (<code>u[0] == 0</code>) and moving 1 unit in both the x and y axis (<code>u[1]==1.414</code>). The standard deviation for the error in the turn is 0.2, and the standard deviation for the distance is 0.05. When this call returns the particles will all have been moved forward, but the weights are no longer correct as they have not been updated.</p>
 <p>The next line incorporates the measurement into the filter. This does not alter the particle positions, it only alters the weights. If you recall the weight of the particle is computed as the probability that it matches the Gaussian of the sensor error model. The further the particle from the measured distance the less likely it is to be a good representation.</p>
 <p>The final two lines example the effective particle count (<span class="math inline">\(\hat{N}_\text{eff})\)</span>. If it falls below <span class="math inline">\(N/2\)</span> we perform resampling to try to ensure our particles form a good representation of the actual probability distribution.</p>
 <p>Now let’s look at this with all the particles plotted. Seeing this happen interactively is much more instructive, but this format still gives us useful information. I plotted the original random distribution of points in a very pale green and large circles to help distinguish them from the subsequent iterations where the particles are plotted with black pixels. The number of particles makes it hard to see the details, so I limited the number of iterations to 8 so we can zoom in and look more closely.</p>
 <div id="cell-45" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">2</span>)</span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">2</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>run_pf1(N<span class="op">=</span><span class="dv">5000</span>, iters<span class="op">=</span><span class="dv">8</span>, plot_particles<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        xlim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        xlim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>From the plot it looks like there are only a few particles at the first two robot positions. This is not true; there are 5,000 particles, but due to resampling most are duplicates of each other. The reason for this is the Gaussian for the sensor is very narrow. This is called <em>sample impoverishment</em> and can lead to filter divergence. I’ll address this in detail below. For now, looking at the second step at x=2 we can see that the particles have dispersed a bit. This dispersion is due to the motion model noise. All particles are projected forward according to the control input <code>u</code>, but noise is added to each particle proportional to the error in the control mechanism in the robot. By the third step the particles have dispersed enough to make a convincing cloud of particles around the robot.</p>
 <p>The shape of the particle cloud is an ellipse. This is not a coincidence. The sensors and robot control are both modeled as Gaussian, so the probability distribution of the system is also a Gaussian. The particle filter is a sampling of the probability distribution, so the cloud should be an ellipse.</p>
@@ -674,9 +672,9 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <p>We can reason about why this is true. If <span class="math inline">\(\sigma=0.1\)</span>, the robot is at (1, 1) and a particle is at (2, 2) the particle is 14 standard deviations away from the robot. This gives it a near zero probability. It contributes nothing to the estimate of the mean, and it is extremely unlikely to survive after the resampling. If <span class="math inline">\(\sigma=1.4\)</span> then the particle is only <span class="math inline">\(1\sigma\)</span> away and thus it will contribute to the estimate of the mean. During resampling it is likely to be copied one or more times.</p>
 <p>This is <em>very important</em> to understand - a very accurate sensor can lead to poor performance of the filter because few of the particles will be a good sample of the probability distribution. There are a few fixes available to us. First, we can artificially increase the sensor noise standard deviation so the particle filter will accept more points as matching the robots probability distribution. This is non-optimal because some of those points will be a poor match. The real problem is that there aren’t enough points being generated such that enough are near the robot. Increasing <code>N</code> usually fixes this problem. This decision is not cost free as increasing the number of particles significantly increase the computation time. Still, let’s look at the result of using 100,000 particles.</p>
 <div id="cell-48" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">2</span>)</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">2</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>run_pf1(N<span class="op">=</span><span class="dv">100000</span>, iters<span class="op">=</span><span class="dv">8</span>, plot_particles<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        xlim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        xlim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -688,7 +686,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <h3 class="anchored" data-anchor-id="filter-degeneracy-from-inadequate-samples">Filter Degeneracy From Inadequate Samples</h3>
 <p>Please rerun the filter but with 5000 samples instead of 100000.</p>
 <div id="cell-52" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FILL IN CODE: RERUN WITH 5000 samples.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FILL IN CODE: RERUN WITH 5000 samples.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -696,8 +694,8 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
 <h2 class="anchored" data-anchor-id="fill-in-observe-results-and-write-conclusions-1">FILL IN: Observe results and write conclusions</h2>
 <p>Let’s make use of the <code>create_gaussian_particles()</code> method to try to generate more points near the robot. We can do this by using the <code>initial_x</code> parameter to specify a location to create the particles.</p>
 <div id="cell-55" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">6</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>run_pf1(N<span class="op">=</span><span class="dv">5000</span>, plot_particles<span class="op">=</span><span class="va">True</span>, initial_x<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>, np.pi<span class="op">/</span><span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">6</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>run_pf1(N<span class="op">=</span><span class="dv">5000</span>, plot_particles<span class="op">=</span><span class="va">True</span>, initial_x<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>, np.pi<span class="op">/</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fill-in-observe-results-and-write-conclusions-2" class="level2">
@@ -774,14 +772,13 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -796,7 +793,7 @@ y &amp;= 0.1x^2 + y^2\end{aligned}\]</span></p>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/");
+        var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
