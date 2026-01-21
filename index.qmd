@@ -14,7 +14,7 @@ title: "Digital Twins for Physical Systems"
 
 | Meeting | Location | Time                   |
 |---------|----------|------------------------|
-| Lecture | College of Computing, Room 53  | Mon & Wed 5:00 - 6:15PM |
+| Lecture | College of Skiles, Room 254  | Mon & Wed 5:00 - 6:15PM |
 
 ## Prerequisites
 

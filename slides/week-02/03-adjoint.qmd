@@ -1,7 +1,7 @@
 ---
 title: "Adjoint state"
 subtitle: "Inverse Problems"
-date: "January 22, 2024"
+date: "January 21, 2026"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 
@@ -317,6 +317,8 @@ A number of important remarks can be made.
     c.  [*Hybrid*]{style="color: magenta"} algorithms, that combine
             stochastic and deterministic optimization (e.g., Simulated
             Annealing), can be used to avoid local minima.
+
+    e. [Model-space extensions]{style="color: magenta"} that extend the search space, e.g. by replacing PDE constraints by penalties (solution of PDE becomes a variable) or by introducing operator coefficients.
 
     d.  Judicious use of [machine learning]{style="color: magenta"}
             techniques and methods.

@@ -1,7 +1,7 @@
 ---
 title: "Week 03"
 subtitle: "Automatic Differentiation & Variational Data Assimilation"
-description: "January 22- 26"
+description: "January 26- 30"
 author: ""
 date: ""
 listing:

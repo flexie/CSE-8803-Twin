@@ -1,6 +1,6 @@
 ---
 title: "Week 02"
-subtitle: "Adjoint methods for inverse problems"
+subtitle: "Adjoint-state methods for inverse problems"
 description: "January 19 - 23"
 author: ""
 date: ""
@@ -49,3 +49,5 @@ tbl-colwidths: [10,50,40]
 |                                                                                                           |
 |-----------------------------------------------------------------------------------------------------------|
 | [Chapter 8 --- A toolbox for digital twins section 8.7](https://galileo-gatech.primo.exlibrisgroup.com/permalink/01GALI_GIT/naju39/alma9937674297402486)                 | 
+|                                                                                                           |
+

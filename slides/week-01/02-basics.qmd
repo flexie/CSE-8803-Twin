@@ -1,5 +1,5 @@
 ---
-title: "Basics"
+title: "Basics I"
 subtitle: "Data Assimilation & Inverse Problems"
 date: "January 14, 2026"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
@@ -263,7 +263,7 @@ Many remedies (fortunately) exist...
 
 -   [x] [machine learning]{style="color: magenta"}...
 
-## Tikhonov regularization{.smaller}
+<!-- ## Tikhonov regularization{.smaller}
 
 **Idea:** is to replace the ill-posed problem for
     $J(\theta)=\left|y_{1}-f(\theta)\right|^{2}$ by a "nearby" problem
@@ -717,7 +717,7 @@ academic and operational data assimilation.
 
 9. [DataAssim.jl](https://juliapackages.com/p/dataassim)
 
-10. [EnKF.jl](https://nextjournal.com/mleprovost/enkfjl-tools-for-data-assimilation-with-ensemble-kalman-filter-1)
+10. [EnKF.jl](https://nextjournal.com/mleprovost/enkfjl-tools-for-data-assimilation-with-ensemble-kalman-filter-1) -->
 
 ## References{.smaller}
 
