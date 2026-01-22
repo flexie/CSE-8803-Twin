@@ -2,6 +2,10 @@
 title: "PyTorch intro"
 date: "Jan 23, 2026"
 categories: "Lab"
+resources:
+  - 02Examples/pytorch/pytorch_101.ipynb
+  - 02Examples/pytorch/pytorch_102.ipynb
+  - 02Examples/pytorch/Torch_test_GPU_CPU.ipynb
 notebook-view: 
   - notebook: 02Examples/pytorch/pytorch_101.ipynb
     title: "Basics"
