@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="dcterms.date" content="2026-01-14">
   <title>Digital Twins for Physical Systems – Basics I</title>
@@ -49,7 +49,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8a5cdbf101a0845817b98f2425171703.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-832775eafbd512325564c8c290c39367.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +254,7 @@
 </ul>
 </div>
 <p>See for <a href="https://slim.gatech.edu">SLIM website</a> for our research on <a href="https://slim.gatech.edu/research/geological-carbon-storage">Geological CO<sub>2</sub> Storage</a>.</p>
-<p>See also our recent publication <a href="https://academic.oup.com/gji/article/242/1/ggaf176/8142541">An uncertainty-aware digital shadow for underground multimodal CO2 storage monitoring</a> <span class="citation" data-cites="gahlot2025uncertainty">(<a href="#/references" role="doc-biblioref" onclick="">Gahlot et al. 2025</a>)</span></p>
+<p>See also our recent publication <a href="https://academic.oup.com/gji/article/242/1/ggaf176/8142541">An uncertainty-aware digital shadow for underground multimodal CO2 storage monitoring</a> <span class="citation" data-cites="gahlot2025uncertainty">(<a href="#/references" role="doc-biblioref" onclick=""><strong>gahlot2025uncertainty?</strong></a>)</span></p>
 </section>
 <section id="section-1" class="slide level2 center">
 <h2></h2>
@@ -845,9 +845,6 @@ academic and operational data assimilation.
 <div id="ref-asch2022toolbox" class="csl-entry" role="listitem">
 Asch, Mark. 2022. <em>A Toolbox for Digital Twins: From Model-Based to Data-Driven</em>. SIAM.
 </div>
-<div id="ref-gahlot2025uncertainty" class="csl-entry" role="listitem">
-Gahlot, Abhinav Prakash, Rafael Orozco, Ziyi Yin, Grant Bruer, and Felix J Herrmann. 2025. <span>“An Uncertainty-Aware Digital Shadow for Underground Multimodal CO2 Storage Monitoring.”</span> <em>Geophysical Journal International</em> 242 (1): ggaf176.
-</div>
 </div>
 
 
@@ -1044,7 +1041,7 @@ Gahlot, Abhinav Prakash, Rafael Orozco, Ziyi Yin, Grant Bruer, and Felix J Herrm
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1118,13 +1115,14 @@ Gahlot, Abhinav Prakash, Rafael Orozco, Ziyi Yin, Grant Bruer, and Felix J Herrm
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
@@ -1139,7 +1137,7 @@ Gahlot, Abhinav Prakash, Rafael Orozco, Ziyi Yin, Grant Bruer, and Felix J Herrm
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
+            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
