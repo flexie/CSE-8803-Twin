@@ -12,7 +12,7 @@ notebook-view:
   - notebook: 03Examples/ad/autograd_tut.ipynb
     title: "`Autograd` tutorial"
   - notebook: 03Examples/ad/autograd_lin_reg.ipynb
-    title: "`Autograd` tutorial"
+    title: "`Linear Regression"
 ---
 
 <!-- The notebooks can be downloaded from here
