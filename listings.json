@@ -4,7 +4,8 @@
     "items": [
       "/weeks/week-01.html",
       "/weeks/week-02.html",
-      "/weeks/week-03.html"
+      "/weeks/week-03.html",
+      "/weeks/week-04.html"
     ]
   },
   {
@@ -33,19 +34,20 @@
     ]
   },
   {
+    "listing": "/weeks/week-04.html",
+    "items": [
+      "/slides/week-04/04-AD.html",
+      "/slides/week-04/05-variational.html",
+      "/slides/week-04/06-Bayes-Inference.html",
+      "/labs/w4-lab02-3DVar.html"
+    ]
+  },
+  {
     "listing": "/weeks/week-05.html",
     "items": [
       "/slides/week-05/07-DA-stat.html",
       "/slides/week-05/08-DA-Bayes.html",
       "/labs/w5-lab-1dkalman.html"
-    ]
-  },
-  {
-    "listing": "/weeks/week-04.html",
-    "items": [
-      "/slides/week-04/05-variational.html",
-      "/slides/week-04/06-Bayes-Inference.html",
-      "/labs/w4-lab02-3DVar.html"
     ]
   },
   {
@@ -76,7 +78,6 @@
     "items": [
       "/slides/week-09/09b-DL-generative.html",
       "/slides/week-09/12-DT.html",
-      "/slides/week-09/12.html",
       "/labs/w8-lab-normalizing-flow.html"
     ]
   }
