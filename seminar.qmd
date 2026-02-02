@@ -26,5 +26,7 @@ Here is a list of papers that may be of interest when presenting your seminar. P
 
 - [San, O., Pawar, S., & Rasheed, A. 2023. Decentralized digital twins of complex dynamical systems. *Scientific Reports* 13, 20087.https://doi.org/10.1038/s41586-025-08744-2](https://www.nature.com/articles/s41598-023-47078-9)
 
+- [Bruer, Grant., Gahlot, Abhinav Prakash., Chow, Edmond., Herrmann, Felix. 2025. Seismic Monitoring of CO₂ Plume Dynamics Using Ensemble Kalman Filtering. *IEEE Transactions on Geoscience and Remote Sensing*, 63, 1-22.](https://ieeexplore.ieee.org/document/11048629)
+
 ### Calendar for seminar
 <iframe src="https://calendar.google.com/calendar/embed?src=2qgpk7km772vtfu05dlj87duto%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 
