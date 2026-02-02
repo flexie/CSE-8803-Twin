@@ -1,6 +1,6 @@
 ---
 title: "Week 03"
-subtitle: "Automatic Differentiation & Variational Data Assimilation"
+subtitle: "Adjoint-state methods for inverse problems & Automatic Differentiation"
 description: "January 26- 30"
 author: ""
 date: ""

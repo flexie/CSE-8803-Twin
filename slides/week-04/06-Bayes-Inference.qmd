@@ -1,7 +1,7 @@
 ---
 title: "Statistical Inverse Problems"
 subtitle: "Bayesian Inference"
-date: "January 31, 2024"
+date: "February 4, 2026"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 

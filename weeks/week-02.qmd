@@ -1,6 +1,6 @@
 ---
 title: "Week 02"
-subtitle: "Adjoint-state methods for inverse problems"
+subtitle: "Basics"
 description: "January 19 - 23"
 author: ""
 date: ""
