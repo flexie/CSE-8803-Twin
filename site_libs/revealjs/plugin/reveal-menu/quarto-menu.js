@@ -37,10 +37,4 @@ window.RevealMenuToolHandlers = {
   downloadDrawings: revealMenuToolHandler(function () {
     RevealChalkboard.download();
   }),
-  togglePdfExport: revealMenuToolHandler(function () {
-    PdfExport.togglePdfExport();
-  }),
-  toggleScrollView: revealMenuToolHandler(function() {
-    Reveal.getPlugin("quarto-support").toggleScrollView();
-  })
 };
