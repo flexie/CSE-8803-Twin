@@ -186,7 +186,7 @@
 <section id="ad-notes-adapted-from-adrian-hill" class="slide level2 center">
 <h2>AD notes adapted from <a href="https://adrianhill.de/julia-ml-course/L6_Automatic_Differentiation/" class="smaller">Adrian Hill</a></h2>
 </section>
-<section id="what-is-a-derivative" class="slide level2 center">
+<section id="what-is-a-derivative" class="slide level2 smaller center">
 <h2>What is a derivative?</h2>
 <p>The (<a href="https://en.wikipedia.org/wiki/Total_derivative">total</a>) derivative of a function <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> at a point <span class="math inline">\(\tilde{x} \in \mathbb{R}^n\)</span> is the <strong>linear approximation of <span class="math inline">\(f\)</span> near the point <span class="math inline">\(\tilde{x}\)</span></strong>.</p>
 <p>We give the derivative the symbol <span class="math inline">\(\mathcal{D}f_\tilde{x}\)</span>. You can read this as “<span class="math inline">\(\mathcal{D}\)</span>erivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(\tilde{x}\)</span>”.</p>
@@ -205,6 +205,9 @@
     \dfrac{\partial f_m}{\partial x_n}
 \end{bmatrix}\]</span></p>
 <p>Note that every entry <span class="math inline">\([J_f]_{ij}=\frac{\partial f_i}{\partial x_j}\)</span> in this matrix is a scalar function <span class="math inline">\(\mathbb{R} \rightarrow \mathbb{R}\)</span>. If we evaluate the Jacobian at a specific point <span class="math inline">\(\tilde{x}\)</span>, we get the matrix corresponding to <span class="math inline">\(\mathcal{D}f_\tilde{x}\)</span>:</p>
+</section>
+<section id="section-2" class="slide level2 smaller center">
+<h2></h2>
 <p><span class="math display">\[J_f\big|_\tilde{x} = \begin{bmatrix}
     \dfrac{\partial f_1}{\partial x_1}\Bigg|_\tilde{x} &amp; \cdots &amp;
     \dfrac{\partial f_1}{\partial x_n}\Bigg|_\tilde{x}\\
@@ -213,7 +216,7 @@
     \dfrac{\partial f_m}{\partial x_n}\Bigg|_\tilde{x}
 \end{bmatrix} \in \mathbb{R}^{m \times n}\]</span></p>
 </section>
-<section id="section-2" class="slide level2 smaller center">
+<section id="section-3" class="slide level2 smaller center">
 <h2></h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -279,10 +282,10 @@
 <p><span class="math display">\[\mathcal{D}h_\tilde{x}
 = \mathcal{D}(g \circ f)_\tilde{x}
 = \mathcal{D}g_{f(\tilde{x})} \circ \mathcal{D}f_\tilde{x}\]</span></p>
-<p>As we have seen in the section on linear maps, this composition of linear maps is also a linear map. It corresponds to simple matrix multiplication.</p>
+<p>This composition of linear maps is also a linear map. It corresponds to simple matrix multiplication.</p>
 <p>A proof of the chain rule can be found on page 19 of Spivak’s <em>Calculus on manifolds</em>.</p>
 </section>
-<section id="section-3" class="slide level2 smaller center">
+<section id="section-4" class="slide level2 smaller center">
 <h2></h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -324,7 +327,7 @@
 </div>
 </div>
 </section>
-<section id="section-4" class="slide level2 center">
+<section id="section-5" class="slide level2 center">
 <h2></h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -406,7 +409,7 @@
 \end{align}\]</span></p>
 <p>we obtain the <span class="math inline">\(i\)</span>-th column in the Jacobian</p>
 </section>
-<section id="section-5" class="slide level2 smaller center">
+<section id="section-6" class="slide level2 smaller center">
 <h2></h2>
 <p><span class="math display">\[\begin{align}
 \mathcal{D}f_\tilde{x}(e_i)
@@ -428,9 +431,7 @@
 </section>
 <section id="reverse-mode-ad" class="slide level2 smaller center">
 <h2>Reverse-mode AD</h2>
-<p>In the previous slide, we’ve seen that for functions <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span>, we can construct a <span class="math inline">\(m \times n\)</span> Jacobian by computing <span class="math inline">\(n\)</span> JVPs, one for each column.</p>
-<p>There is an alternative way: instead of right-multiplying standard basis vectors, we could also obtain the Jacobian by left-multiplying row basis vectors <span class="math inline">\(e_1^T\)</span> to <span class="math inline">\(e_m^T\)</span>.</p>
-<p>We obtain the <span class="math inline">\(i\)</span>-th <em>row</em> of the Jacobian as</p>
+<p>In the previous slide, we’ve seen that for functions <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span>, we can construct a <span class="math inline">\(m \times n\)</span> Jacobian by computing <span class="math inline">\(n\)</span> JVPs, one for each column. There is an alternative way: instead of right-multiplying standard basis vectors, we could also obtain the Jacobian by left-multiplying row basis vectors <span class="math inline">\(e_1^\top\)</span> to <span class="math inline">\(e_m^\top\)</span>. We obtain the <span class="math inline">\(i\)</span>-th <em>row</em> of the Jacobian as</p>
 <p><span class="math display">\[\begin{align}
 e_i^T \cdot J_f\big|_\tilde{x}
 &amp;= e_i^T \cdot \begin{bmatrix}
@@ -469,7 +470,7 @@ e_i^T \cdot J_f\big|_\tilde{x}
 \end{align}\]</span></p>
 <p>where brackets are added to emphasize that the compositional structure can be seen as a series of nested JVPs.</p>
 </section>
-<section id="section-6" class="slide level2 smaller center">
+<section id="section-7" class="slide level2 smaller center">
 <h2></h2>
 <p>Let’s use the same notation to write down the Vector-Jacobian product:</p>
 <p><span class="math display">\[\begin{align}
@@ -548,7 +549,7 @@ w^\top \cdot J_f\big|_\tilde{x}
 \end{align}\]</span></p>
 <p><strong>Computing gradients with reverse-mode AD is cheap</strong>: we only need to evaluate a single VJP since the output dimensionality of <span class="math inline">\(f\)</span> is <span class="math inline">\(m=1\)</span>.</p>
 </section>
-<section id="section-7" class="slide level2 center">
+<section id="section-8" class="slide level2 center">
 <h2></h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -615,7 +616,7 @@ w^\top \cdot J_f\big|_\tilde{x}
 </table>
 </div>
 </section>
-<section id="section-8" class="slide level2 smaller center">
+<section id="section-9" class="slide level2 smaller center">
 <h2></h2>
 <div id="tab-procon_b">
 <table class="caption-top">
@@ -671,7 +672,7 @@ w^\top \cdot J_f\big|_\tilde{x}
 </table>
 </div>
 </section>
-<section id="section-9" class="slide level2 smaller center">
+<section id="section-10" class="slide level2 smaller center">
 <h2></h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -986,7 +987,7 @@ w^\top \cdot J_f\big|_\tilde{x}
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/");
+            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
