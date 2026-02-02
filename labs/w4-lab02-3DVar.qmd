@@ -1,6 +1,6 @@
 ---
 title: "3DVar"
-date: "February 6, 2024"
+date: "February 6, 2026"
 categories: "Lab"
 resources:
   - 04Examples/threeDVar_l63.ipynb
