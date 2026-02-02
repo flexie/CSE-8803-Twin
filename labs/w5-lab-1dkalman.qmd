@@ -1,6 +1,6 @@
 ---
 title: "1-D Kalman Filter"
-date: "February 9, 2024"
+date: "February 13, 2026"
 categories: "Lab"
 notebook-view: 
   - notebook: 05Examples/One-Dimensional-Kalman-Filters.ipynb
