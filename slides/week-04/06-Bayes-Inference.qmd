@@ -51,7 +51,7 @@ Reality is different
 
 **Definition 11.1 (UQ).** *UQ is the composite task of assessing uncertainty in the computational estimate of a given quantity of interest (QoI).*
 
-**Definition 11.2 (QoI).** *In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is know as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.*
+**Definition 11.2 (QoI).** *In an uncertainty quantification problem, we seek statistical information about a chosen output of interest. This statistic is known as the quantity of interest (QoI) and is usually defined by a high-dimensional integral. The QoI accounts for uncertainty in the model or process.*
 
 We can decompose UQ into a number of subtasks:
 
@@ -403,7 +403,7 @@ where
 
 ##  {.smaller}
 
-We have $$\mathcal{D}=\left\{(\mathbf{x}_i,y_1),\,i=1,\dots n\right\}$$
+We have $$\mathcal{D}=\left\{(\mathbf{x}_i,y_i),\,i=1,\dots n\right\}$$
 
 that can be solved by
 
