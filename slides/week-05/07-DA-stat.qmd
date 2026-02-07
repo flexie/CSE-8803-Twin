@@ -1,7 +1,7 @@
 ---
 title: "Statistical Data Assimilation"
 subtitle: "Data Assimilation"
-date: "February 9, 2026"
+date: "February 11, 2026"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "images/logo.png"
 format: 

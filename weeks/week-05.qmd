@@ -1,7 +1,7 @@
 ---
 title: "Week 05"
 subtitle: "Statistical Data Assimilation"
-description: "Feb 05 - 09"
+description: "Feb 09 - 13"
 author: ""
 date: ""
 listing:
