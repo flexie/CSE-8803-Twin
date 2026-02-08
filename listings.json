@@ -10,36 +10,35 @@
     ]
   },
   {
-    "listing": "/weeks/week-08.html",
+    "listing": "/weeks/week-09.html",
     "items": [
-      "/slides/week-08/09-NF.html",
-      "/slides/week-08/10-NF.html",
-      "/slides/week-08/11.html",
+      "/slides/week-09/09b-DL-generative.html",
+      "/slides/week-09/12-DT.html",
+      "/slides/week-09/12.html",
       "/labs/w8-lab-normalizing-flow.html"
     ]
   },
   {
-    "listing": "/weeks/week-01.html",
+    "listing": "/weeks/week-07.html",
     "items": [
-      "/slides/week-01/01-intro.html",
-      "/slides/week-01/02-basics.html",
-      "/labs/w1-lab01-intro.html"
+      "/slides/week-07/09a-DL-uncertainty.html",
+      "/labs/w7-lab-particle.html"
     ]
   },
   {
-    "listing": "/weeks/week-02.html",
+    "listing": "/weeks/week-03.html",
     "items": [
-      "/slides/week-02/02-basics.html",
-      "/slides/week-02/03-adjoint.html",
-      "/labs/w2-lab01-PyTorch.html"
+      "/slides/week-03/03-adjoint.html",
+      "/slides/week-03/04-AD.html",
+      "/labs/w3-lab02-Diff-Prog.html"
     ]
   },
   {
-    "listing": "/weeks/week-05.html",
+    "listing": "/weeks/week-06.html",
     "items": [
-      "/slides/week-05/06-Bayes-Inference.html",
-      "/slides/week-05/07-DA-stat.html",
-      "/labs/w5-lab-1dkalman.html"
+      "/slides/week-06/08-DA-Bayes.html",
+      "/labs/w6-lab-ensemble.html",
+      "/labs/w6-lab-enf.html"
     ]
   },
   {
@@ -52,33 +51,35 @@
     ]
   },
   {
-    "listing": "/weeks/week-06.html",
+    "listing": "/weeks/week-05.html",
     "items": [
-      "/slides/week-06/08-DA-Bayes.html",
-      "/labs/w6-lab-ensemble.html",
-      "/labs/w6-lab-enf.html"
+      "/slides/week-05/06-Bayes-Inference.html",
+      "/slides/week-05/07-DA-stat.html",
+      "/labs/w5-lab-1dkalman.html"
     ]
   },
   {
-    "listing": "/weeks/week-03.html",
+    "listing": "/weeks/week-02.html",
     "items": [
-      "/slides/week-03/03-adjoint.html",
-      "/slides/week-03/04-AD.html",
-      "/labs/w3-lab02-Diff-Prog.html"
+      "/slides/week-02/02-basics.html",
+      "/slides/week-02/03-adjoint.html",
+      "/labs/w2-lab01-PyTorch.html"
     ]
   },
   {
-    "listing": "/weeks/week-07.html",
+    "listing": "/weeks/week-01.html",
     "items": [
-      "/slides/week-07/09a-DL-uncertainty.html",
-      "/labs/w7-lab-particle.html"
+      "/slides/week-01/01-intro.html",
+      "/slides/week-01/02-basics.html",
+      "/labs/w1-lab01-intro.html"
     ]
   },
   {
-    "listing": "/weeks/week-09.html",
+    "listing": "/weeks/week-08.html",
     "items": [
-      "/slides/week-09/09b-DL-generative.html",
-      "/slides/week-09/12-DT.html",
+      "/slides/week-08/09-NF.html",
+      "/slides/week-08/10-NF.html",
+      "/slides/week-08/11.html",
       "/labs/w8-lab-normalizing-flow.html"
     ]
   }
