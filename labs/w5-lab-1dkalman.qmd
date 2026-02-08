@@ -2,6 +2,8 @@
 title: "1-D Kalman Filter"
 date: "February 13, 2026"
 categories: "Lab"
+resources:
+  - 05Examples/One-Dimensional-Kalman-Filters.ipynb
 notebook-view: 
   - notebook: 05Examples/One-Dimensional-Kalman-Filters.ipynb
     title: "1-D Kalman Filter for Dog tracking"
