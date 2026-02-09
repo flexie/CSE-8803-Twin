@@ -29,4 +29,4 @@ Here is a list of papers that may be of interest when presenting your seminar. P
 - [Bruer, Grant., Gahlot, Abhinav Prakash., Chow, Edmond., Herrmann, Felix. 2025. Seismic Monitoring of CO₂ Plume Dynamics Using Ensemble Kalman Filtering. *IEEE Transactions on Geoscience and Remote Sensing*, 63, 1-22.](https://ieeexplore.ieee.org/document/11048629)
 
 ### Calendar for seminar
-<iframe src="https://calendar.google.com/calendar/embed?src=2qgpk7km772vtfu05dlj87duto%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 
+<iframe src="https://calendar.google.com/calendar/u/0?cid=OTU4ZmE0OTQwMWIzNjY4MzA2NmM2NDM0Y2EyMWMzZDBmNjQyZTJlMGEyNDI1ZGQzYTBhOTUyYzIxMmJkZTBmNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 

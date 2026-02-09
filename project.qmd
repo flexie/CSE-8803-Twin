@@ -86,4 +86,4 @@ Late submission is unacceptable and will lead to deductions in your grade. The d
 -->
 
 ### Calendar for events
-<iframe src="https://calendar.google.com/calendar/embed?src=2qgpk7km772vtfu05dlj87duto%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 
+<iframe src="https://calendar.google.com/calendar/u/0?cid=OTU4ZmE0OTQwMWIzNjY4MzA2NmM2NDM0Y2EyMWMzZDBmNjQyZTJlMGEyNDI1ZGQzYTBhOTUyYzIxMmJkZTBmNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 
