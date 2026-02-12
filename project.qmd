@@ -4,60 +4,68 @@ title: "Project^[The final project is subject to change throughout the semester.
 subtitle: "Digital Twins for Physical Systems - CSE 8803 - DTP"
 ---
 
-
 ## Final Project
 
 ### Goal
 
-The goal of the Final Project is to give students the opportunity to apply and further develop their understanding of Digital Twins to a topic close to their graduate research interests.
+The goal of the Final Project is to give students the opportunity to apply and further develop their understanding of Digital Twins in a topic closely related to their graduate research interests.
 
 ### Requirements
 
-The Final Project consist of three parts
+The Final Project consists of **four parts**:
 
-1. Project Proposal consisting of a “one pager” + "5 min pitch"
-2. Project Presentation of 20 minutes with 5 minutes questions, presented at the end of the term
-3. A final Project Report
+1. **Project Proposal**, consisting of:
+   - a *two-page abstract*, and  
+   - a *4-minute pitch*.
+2. **Short Project Presentation** (4–5 minutes), presented at the end of the term.
+3. **Long Project Presentation** (30–40 minutes), to be recorded and uploaded to YouTube.
+4. **Final Project Report**.
 
-#### One pager Project Proposal + 5 min pitch
+### Two-Page Project Proposal and 4-Minute Pitch
 
-On March 11th, everybody needs to give a 5 minute pitch on their project proposal. That same day, the "one pager" outlining the project is due by 6:00 PM on March 13. See description below. Your seminar will be evaluated with this [form]. Please send the slides for your presentation to the course instructor with CSE 8803 in the subject line or bring a memory stick. The 5 minutes presentations include time for questions. Since time is limited, the 5 minute limit will be strictly enforced. So please stick to the main message, the problem you want to tackle, what techniques you will be using, and why it is important.
+On **March 9**, each group will give a **4-minute pitch** presenting their project proposal in class. The written proposal outlining the project is due the same day by **11:59 PM (March 9)**. See the description below for details.
+
+The pitch will be evaluated using this **evaluation form**. Please send the slides for your presentation to the course instructor with **“CSE 8803”** in the subject line, or bring them on a USB memory stick. Please focus on:
+- the main idea of your project,
+- the problem you aim to address,
+- the techniques you plan to use, and
+- why the problem is important.
 
 [form]:https://www.dropbox.com/s/3qjsb9cws8ntilc/seminar_eval.pdf?dl=0
 
 #### Some hints on the pitch
 
-A 5-minute pitch is not meant to provide technical details. It is rather intended to convey context and goals of the project. A good guideline for structuring such a talk (the same applies to structuring sentences, paragraphs, sections, papers, theses) as follows
+A 4-minute pitch is not meant to provide technical details. It is rather intended to convey context and goals of the project. A good guideline for structuring such a talk (the same applies to structuring sentences, paragraphs, sections, papers, theses) as follows
 
-1. Situation (1 min)
-2. Problem (1 min)
-3. Solution (2 min)
-4. Evaluation (1 min)
+1. **Situation** (1 minute)  
+2. **Problem** (1 minute)  
+3. **Solution** (1.5 minutes)  
+4. **Evaluation** (0.5 minutes)
 
 Finally, always remember who you audience is and tailor your presentation towards that audience.
 
-#### Requirements for proposal
+#### Requirements for the Proposal
 
-Concise description of the work to be undertaken. The description should not exceed two pages and should contain
+The proposal should provide a **concise description** of the work to be undertaken. The document should **not exceed two pages** and must include the following elements:
 
-1. Title of the Final Project
-2. Problem Statement
-3. Relevance
-4. Identification of methodology that will be used to solve the problem
+1. **Title** of the Final Project  
+2. **Problem Statement**  
+3. **Relevance** of the project  
+4. **Methodology** to be used to address the problem  
 
-Proposal should be submitted in PDF format or a link to an html page. The project proposals are due March 13 at 6:00 PM and presentations are scheduled for that same day during class. The presentations are five minutes each for each person.
+The proposal must be submitted either as a **PDF** or as a **link to an HTML page**. Project proposals are due on **March 9 at 11:59 PM**, and the corresponding **4-minute presentations** will take place **during class on the same day**.
 
-#### Project presentation at the end of the term
+#### Project Presentation at the End of the Term
 
-Each project presentation will be allotted 20 minutes precisely with 5 minutes of questions. The presentation should reflect the current status of the project, which may be subject to change when the project is finalized. 
+On **April 22**, each group will give a **4–5 minute presentation** about their project. The presentation should reflect the current results of the project at that time, noting that updates may occur when the final project report is completed. In addition, each group must upload a **long-form version** of their presentation (30–40 minutes) to YouTube, providing a more detailed explanation and the potential future impact of the project. The long-form presentation video and the final report are due on the same data.
 
-The seminar will be evaluated using the following [form2].
+The preseantations will be evaluated using the following [form2].
 
 [form2]:https://www.dropbox.com/s/nt2vbjaccywwp2b/report_eval.pdf?dl=0
 
 #### Final Report
 
-The report needs to be written as a short journal paper. Students will be required to use the IEEE template in two-column mode. The paper should be four-to-six pages including abstract, body text, figures, and bibliography. Reports should consist of
+The report needs to be written as a short journal paper. Students will be required to use the IEEE template in two-column mode. The paper should be four-to-six pages including abstract, body text, figures, and bibliography but excluding appendix. Reports should consist of
 
 1. abstract
 2. introduction
@@ -70,15 +78,16 @@ The report needs to be written as a short journal paper. Students will be requir
 
 <!-- The report will be evaluated using the following [form]. -->
 
-#### Grading Project (alone)
+#### Grading Project
 
 1. 10% Proposal plus speed presentation
-2. 30% Project presentation
-3. 60% Final Report
+2. 15% Short in-class presentation  
+3. 25% Long presentation
+4. 50% Final project report
 
 #### Late policy
 
-Late submission is unacceptable and will lead to deductions in your grade. The deadline for submission will be communicate in class.
+Late submission is unacceptable and will lead to deductions in your grade. The deadline for submission will be communicated in class.
 
 <!-- 
 ### Spreadsheet for paper presentations
