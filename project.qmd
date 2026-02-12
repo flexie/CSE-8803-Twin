@@ -25,7 +25,7 @@ The Final Project consists of **four parts**:
 
 On **March 9**, each group will give a **4-minute pitch** presenting their project proposal in class. The written proposal outlining the project is due the same day by **11:59 PM (March 9)**. See the description below for details.
 
-The pitch will be evaluated using this **evaluation form**. Please send the slides for your presentation to the course instructor with **“CSE 8803”** in the subject line, or bring them on a USB memory stick. Please focus on:
+The pitch will be evaluated using this [form]. Please send the slides for your presentation to the course instructor with **“CSE 8803”** in the subject line, or bring them on a USB memory stick. Please focus on:
 - the main idea of your project,
 - the problem you aim to address,
 - the techniques you plan to use, and
