@@ -55,7 +55,7 @@ The proposal should provide a **concise description** of the work to be undertak
 
 The proposal must be submitted either as a **PDF** or as a **link to an HTML page**. Project proposals are due on **March 9 at 11:59 PM**, and the corresponding **4-minute presentations** will take place **during class on the same day**.
 
-#### Project Presentation at the End of the Term
+### Project Presentation at the End of the Term
 
 On **April 22**, each group will give a **4–5 minute presentation** about their project. The presentation should reflect the current results of the project at that time, noting that updates may occur when the final project report is completed. In addition, each group must upload a **long-form version** of their presentation (30–40 minutes) to YouTube, providing a more detailed explanation and the potential future impact of the project. The long-form presentation video and the final report are due on the same data.
 
@@ -63,7 +63,7 @@ The preseantations will be evaluated using the following [form2].
 
 [form2]:https://www.dropbox.com/s/nt2vbjaccywwp2b/report_eval.pdf?dl=0
 
-#### Final Report
+### Final Report
 
 The report needs to be written as a short journal paper. Students will be required to use the IEEE template in two-column mode. The paper should be four-to-six pages including abstract, body text, figures, and bibliography but excluding appendix. Reports should consist of
 

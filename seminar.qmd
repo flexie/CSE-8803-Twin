@@ -1,10 +1,12 @@
 # Seminar
 
-There are 10 time slots until the end the term. So, please prepare a 1 hour 15 minutes lecture on a paper of interest. This contents of the paper should be aligned with the general topics areas of this course. We encourage you to also choose a topic in the general area of your PhD research. When in doubt please reach out. 
+There are 10 time slots until the end the term. So, please prepare a 1 hour 15 minutes lecture on a one paper or a set of related papers. The selected paper(s) should align with the general topic areas of the course. Students are encouraged to choose a topic that also connects to their PhD research interests. When in doubt please reach out. 
 
 ## List of papers
 
 Here is a list of papers that may be of interest when presenting your seminar. Please check the papers cited in these papers
+
+### Digital Twins
 
 - [A comprehensive review of digital twin—part 1: modeling and twinning enabling technologies by Thelen et. al.](https://openintro-ims.netlify.app/)
  
@@ -22,11 +24,59 @@ Here is a list of papers that may be of interest when presenting your seminar. P
 
 - [Niederer, S., Sacks, M., Girolami, M. and Willcox, K., Scaling digital twins from the artisanal to the industrial. Nature Computational Science, Vol. 1, No. 5, May 2021, pp. 313-320.](https://www.nature.com/articles/s43588-021-00072-5.epdf?sharing_token=_UenYrAOpLoKXS2qwCiS_tRgN0jAjWel9jnR3ZoTv0OAVptHkA-HS40IVDUY6_q1aEFrzp6mpLutDvzaFopYSmtjJBmEhrS1GcGsCchTs9G6KaFN-Lv4BeKwC2-4Cv_AaYqWOOVnsJzreS_5IC5kbiCCB_J8KYvyRmQ9SFhim6Q%3D)
 
-- [Hafner, D., Pasukonis, J., Ba, J., & Lillicrap, T. 2025. Mastering diverse control tasks through world models. *Nature* 640, 647–653.](https://www.nature.com/articles/s41586-025-08744-2)
-
 - [San, O., Pawar, S., & Rasheed, A. 2023. Decentralized digital twins of complex dynamical systems. *Scientific Reports* 13, 20087.https://doi.org/10.1038/s41586-025-08744-2](https://www.nature.com/articles/s41598-023-47078-9)
 
 - [Bruer, Grant., Gahlot, Abhinav Prakash., Chow, Edmond., Herrmann, Felix. 2025. Seismic Monitoring of CO₂ Plume Dynamics Using Ensemble Kalman Filtering. *IEEE Transactions on Geoscience and Remote Sensing*, 63, 1-22.](https://ieeexplore.ieee.org/document/11048629)
+
+- [Gahlot, A. P., Orozco, R., Yin, Z., Bruer, G., & Herrmann, F. J. (2025). An uncertainty-aware digital shadow for underground multimodal CO₂ storage monitoring. *Geophysical Journal International*, 242(1), ggaf176.](https://academic.oup.com/gji/article/242/1/ggaf176/8142541)
+ 
+- [Kalidindi, S. R., Buzzy, M., Boyce, B. L., & Dingreville, R. (2022). Digital twins for materials. *Frontiers in Materials*, 9, 818535. https://doi.org/10.3389/fmats.2022.818535](https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2022.818535/full)
+
+- [Sharma, A., Kosasih, E., Zhang, J., Brintrup, A., & Calinescu, A. (2022). Digital twins: State of the art theory and practice, challenges, and open research questions. *Journal of Industrial Information Integration*, 30, 100383.](https://www.sciencedirect.com/science/article/pii/S2452414X22000516)
+
+- [Antoun, M., et al. (2025). Interactive digital twins enabling responsible extended reality applications. *Scientific Reports*, 15, 34539.](https://www.nature.com/articles/s41598-025-17855-9)
+
+- [Zhou, R., et al. (2026). Digital twin AI: Opportunities and challenges from large language models to world models. *arXiv preprint arXiv:2601.01321*.](https://arxiv.org/abs/2601.01321)
+
+- [Robles, J., Martín, C., & Díaz, M. (2023). OpenTwins: An open-source framework for the development of next-gen compositional digital twins. *Computers in Industry*, 152, 104007.](https://www.sciencedirect.com/science/article/pii/S0166361523001574)
+
+### Simulation Based Inference
+
+- [Deistler, M., Boelts, J., Steinbach, P., Moss, G., Moreau, T., Gloeckler, M., Rodrigues, P. L. C., Linhart, J., Lappalainen, J. K., Kurt Miller, B., Gonçalves, P. J., Lueckmann, J.-M., Schröder, C., & Macke, J. H. (2025). Simulation-Based Inference: A Practical Guide. *arXiv preprint arXiv:2508.12939*.](https://arxiv.org/abs/2508.12939)
+
+- [Brehmer, J., & Cranmer, K. (2020). Simulation-based inference methods for particle physics. *arXiv preprint arXiv:2010.06439*.](https://arxiv.org/abs/2010.06439) 
+
+- [Arruda, J., Bracher, N., Köthe, U., Hasenauer, J., & Radev, S. T. (2025). Diffusion models in simulation-based inference: A tutorial review. *arXiv preprint arXiv:2512.20685*.](https://arxiv.org/abs/2512.20685)
+
+- [Bracher, N., Kühmichel, L., Ivanova, D. R., Intes, X., Bürkner, P.-C., & Radev, S. T. (2025). JADAI: Jointly Amortizing Adaptive Design and Bayesian Inference. *arXiv preprint arXiv:2512.22999*.](https://arxiv.org/abs/2512.22999)
+
+- [Schmitt, M., Pratz, V., Köthe, U., Bürkner, P.-C., & Radev, S. T. (2024). Consistency models for scalable and fast simulation-based inference. *Advances in Neural Information Processing Systems*, 37 (NeurIPS 2024).](https://neurips.cc/virtual/2024/poster/95775) 
+
+- [Säilynoja, T., Schmitt, M., Bürkner, P.-C., & Vehtari, A. (2026). Posterior SBC: Simulation-based calibration checking conditional on data. *Statistics and Computing*, 36, 78.](https://link.springer.com/article/10.1007/s11222-026-10825-9) 
+
+- [Reiser, P., Aguilar, J. E., Guthke, A., & Bürkner, P.-C. (2025). Uncertainty quantification and propagation in surrogate-based Bayesian inference. *Statistics and Computing*, 35(3), 66.](https://link.springer.com/article/10.1007/s11222-025-10597-8)
+
+- Highly recommend checking this website for other relevant publications (https://simulation-based-inference.org/)
+
+### Generative Modeling
+
+- [Lipman, Y., et al. (2024). Flow matching guide and code. *arXiv preprint arXiv:2412.06264*.](https://arxiv.org/abs/2412.06264)
+
+- [Gebreab, S., et al. (2024). Accelerating digital twin development with generative AI: A framework for 3D modeling and data integration. *IEEE Access*, 12.](https://ieeexplore.ieee.org/document/10786996)
+
+- [Naiff, D., Pires, G., Schaeffer, B. P., Stojkovic, D., Rapstine, T., & Ramos, F. (2025). Controlled latent diffusion models for 3D porous media reconstruction. *arXiv preprint arXiv:2503.24083v1*.](https://arxiv.org/abs/2503.24083v1)
+
+- [Kadkhodaie, Z., Mallat, S., & Simoncelli, E. P. (2024). Feature-guided score diffusion for sampling conditional densities. *arXiv preprint arXiv:2410.11646*.](https://arxiv.org/abs/2410.11646) 
+
+- [Holderrieth, P., & Erives, E. (2025). An introduction to flow matching and diffusion models. *arXiv preprint arXiv:2506.02070*.](https://arxiv.org/abs/2506.02070)
+
+### World models
+
+- [Hafner, D., Pasukonis, J., Ba, J., & Lillicrap, T. 2025. Mastering diverse control tasks through world models. *Nature* 640, 647–653.](https://www.nature.com/articles/s41586-025-08744-2)
+
+- [Zhang, P.-F., Cheng, Y., Sun, X., Wang, S., Li, F., Zhu, L., & Shen, H. T. (2025). A step toward world models: A survey on robotic manipulation. *arXiv preprint arXiv:2511.02097*.](https://arxiv.org/abs/2511.02097)
+
+- [Yang, S. (2026). World models as an intermediary between agents and the real world. *arXiv preprint arXiv:2602.00785*.](https://arxiv.org/abs/2602.00785)
 
 ### Calendar for seminar
 <iframe src="https://calendar.google.com/calendar/embed?src=958fa49401b36683066c6434ca21c3d0f642e2e0a2425dd3a0a952c212bde0f6%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> 
