@@ -6,7 +6,8 @@
       "/weeks/week-02.html",
       "/weeks/week-03.html",
       "/weeks/week-04.html",
-      "/weeks/week-05.html"
+      "/weeks/week-05.html",
+      "/weeks/week-06.html"
     ]
   },
   {
@@ -14,7 +15,6 @@
     "items": [
       "/slides/week-09/09b-DL-generative.html",
       "/slides/week-09/12-DT.html",
-      "/slides/week-09/12.html",
       "/labs/w8-lab-normalizing-flow.html"
     ]
   },
@@ -36,6 +36,7 @@
   {
     "listing": "/weeks/week-06.html",
     "items": [
+      "/slides/week-06/07-DA-stat.html",
       "/slides/week-06/08-DA-Bayes.html",
       "/labs/w6-lab-ensemble.html",
       "/labs/w6-lab-enf.html"
