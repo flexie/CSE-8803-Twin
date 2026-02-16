@@ -1,7 +1,7 @@
 ---
 title: "Week 06"
 subtitle: "Bayesian Data Assimilation"
-description: "Feb 12 - 16"
+description: "Feb 16 - 20"
 author: ""
 date: ""
 listing:
