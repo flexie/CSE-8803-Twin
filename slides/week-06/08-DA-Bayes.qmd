@@ -191,14 +191,13 @@ $$p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})=\int p(\mathbf{x}_{k}\mid\mathbf{x}_{k
 
 ::: {.r-fit-text}
 
-$$p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\frac{p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}{\int p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}\,\mathrm{d}\mathbf{x}_{k}.$$
+$$p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\frac{p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}{\int p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})\,\mathrm{d}\mathbf{x}_{k}}.$$
 
 
 Now, if we assume that the [dynamic and measurement models are
 linear]{style="color: magenta"}, with i.i.d. [Gaussian
 noise]{style="color: magenta"}, then we obtain the closed-form solution
-for the [Kalman filter]{style="color: magenta"}, already derived in the
-Basic Course. We recall the linear, Gaussian state-space model,
+for the [Kalman filter]{style="color: magenta"}, already derived. We recall the linear, Gaussian state-space model,
 $$\begin{aligned}
 \mathbf{x}_{k} & =\mathbf{M}_{k-1}\mathbf{x}_{k-1}+\mathbf{w}_{k-1},\label{eq:kf-1}\\
 \mathbf{y}_{k} & =\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{v}_{k},\label{eq:kf-2}
@@ -366,49 +365,49 @@ computed by `kf_gauss_state.m`.
 % Set parameters
 sig_w = 1; sig_v = 0.5;
 M = 1;
-Q = sig_w\^2;
+Q = sig_w^2;
 H = 1;
-R = sig_v\^2;
+R = sig_v^2;
 % Initialize
 m0 = 0;
 P0 = 1;
 % Simulate data
 randn('state',1234);
-steps = 100; T = \[1:steps\];
+steps = 100; T = [1:steps];
 X = zeros(1,steps);
 Y = zeros(1,steps);
 x = m0;
 for k=1:steps
-  w = Q'\*randn(1);
-  x = M\*x + w;
-  y = H\*x + sig_v\*randn(1);
+  w = Q'*randn(1);
+  x = M*x + w;
+  y = H*x + sig_v*randn(1);
   X(k) = x;
   Y(k) = y;
 end
 plot(T,X,'-',T,Y,'.');
 legend('Signal','Measurements');
-xlabel('{k}'); ylabel('{x}\_k');
+xlabel('{k}'); ylabel('{x}_k');
 % Kalman filter
 m = m0;
 P = P0;
 for k=1:steps
-  m = M\*m;
-  P = M\*P\*M' + Q;
-  d = Y(:,k) - H\*m;
-  S = H\*P\*H' + R;
-  K = P\*H'/S;
-  m = m + K\*d;
-  P = P - K\*S\*K';
+  m = M*m;
+  P = M*P*M' + Q;
+  d = Y(:,k) - H*m;
+  S = H*P*H' + R;
+  K = P*H'/S;
+  m = m + K*d;
+  P = P - K*S*K';
   kf_m(k) = m;
   kf_P(k) = P;
 end
 % Plot   
 clf; hold on
-fill(\[T fliplr(T)\],\[kf_m+1.96\*sqrt(kf_P) \...
-  fliplr(kf_m-1.96\*sqrt(kf_P))\],1, \...
-  'FaceColor',\[.9 .9 .9\],'EdgeColor',\[.9 .9 .9\])
+fill([T fliplr(T)],[kf_m+1.96*sqrt(kf_P) ...
+  fliplr(kf_m-1.96\*sqrt(kf_P))],1, ...
+  'FaceColor',[.9 .9 .9],'EdgeColor',[.9 .9 .9])
 plot(T,X,'-b',T,Y,'or',T, kf_m(1,:),'-g')
-plot(T,kf_m+1.96\*sqrt(kf_P),':r',T,kf_m-1.96\*sqrt(kf_P),':r');
+plot(T,kf_m+1.96*sqrt(kf_P),':r',T,kf_m-1.96*sqrt(kf_P),':r');
 hold off
 ```
 :::
@@ -931,8 +930,7 @@ The linear and Gaussian hypotheses can then be ruled out, in theory.
 
 In practice though, the particle filter cannot yet be applied to
     very high dimensional systems (this is often referred to as "the
-    curse of dimensionality"). Though recent work by \[Friedemann,
-    Raffin2023\] has improved this by sophisticated parallel computing.
+    curse of dimensionality"). Though recent work by [@friedemann2023framework] has improved this by sophisticated parallel computing.
 
 Particle filters are methods for obtaining [*Monte Carlo
     approximations*]{style="color: magenta"} of the solutions of the
