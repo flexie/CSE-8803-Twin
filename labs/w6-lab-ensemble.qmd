@@ -2,6 +2,8 @@
 title: "Ensemble Kalman Filter"
 date: "February 16, 2024"
 categories: "Lab"
+resources: 
+  - 06Examples/ensemble_kalman_lorenz.ipynb
 notebook-view: 
   - notebook: 06Examples/ensemble_kalman_lorenz.ipynb
     title: "Ensemble Kalman Filter for Lorenz 64 digital twin"
