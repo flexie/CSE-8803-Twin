@@ -711,6 +711,27 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 </div>
 </div></div>
 </section>
+<section id="avoidance-of-adjoints-for-observations" class="slide level2 smaller center">
+<h2>Avoidance of Adjoints for Observations</h2>
+<span class="math display">\[\begin{aligned}
+&amp;\begin{aligned}
+\overline{\mathbf{y}}^{\mathrm{f}} &amp; =\frac{1}{m} \sum_{i=1}^m \mathcal{H}\left(\mathbf{x}_i^{\mathrm{f}}\right), \\
+\mathbf{P}^{\mathrm{f}} \mathbf{H}^{\mathrm{T}} &amp; =\frac{1}{m-1} \sum_{i=1}^m\left(\mathbf{x}_i^{\mathrm{f}}-\overline{\mathbf{x}}^{\mathrm{f}}\right)\left[\mathbf{H}\left(\mathbf{x}_i^{\mathrm{f}}-\overline{\mathbf{x}}^{\mathrm{f}}\right)\right]^{\mathrm{T}} \\
+&amp; \simeq \frac{1}{m-1} \sum_{i=1}^m\left(\mathbf{x}_i^{\mathrm{f}}-\overline{\mathbf{x}}^{\mathrm{f}}\right)\left[\mathcal{H}\left(\mathbf{x}_i^{\mathrm{f}}\right)-\overline{\mathbf{y}}^{\mathrm{f}}\right]^{\mathrm{T}}, \\
+\mathbf{H} \mathbf{P}^{\mathrm{f}} \mathbf{H}^{\mathrm{T}} &amp; =\frac{1}{m-1}\left[\mathbf{H}\left(\mathbf{x}_i^{\mathrm{f}}-\overline{\mathbf{x}}^{\mathrm{f}}\right)\right]\left[\mathbf{H}\left(\mathbf{x}_i^{\mathrm{f}}-\overline{\mathbf{x}}^{\mathrm{f}}\right)\right]^{\mathrm{T}} \\
+&amp; \simeq \frac{1}{m-1} \sum_{i=1}^m\left[\mathcal{H}\left(\mathbf{x}_i^{\mathrm{f}}\right)-\overline{\mathbf{y}}^{\mathrm{f}}\right]\left[\mathcal{H}\left(\mathbf{x}_i^{\mathrm{f}}\right)-\overline{\mathbf{y}}^{\mathrm{f}}\right]^{\mathrm{T}} .
+\end{aligned}\\
+\end{aligned}\]</span>
+<p>The key assumption in these derivations is the approximation</p>
+<p><span class="math display">\[\mathbf{H}\left(\mathbf{x}_i^{\mathrm{f}}-\overline{\mathbf{x}}^{\mathrm{f}}\right) \simeq \mathcal{H}\left(\mathbf{x}_i^{\mathrm{f}}\right)-\overline{\mathbf{y}}^{\mathrm{f}}\]</span></p>
+</section>
+<section id="section-23" class="slide level2 center">
+<h2></h2>
+<p>So, we can replace</p>
+<p><span class="math display">\[\left[\mathbf{Y}_{\mathrm{f}}\right]_{i,k}=\frac{\mathbf{H}_{k}\mathbf{x}_{i,k}^{\mathrm{f}}-\mathbf{u}_{i}-\mathbf{H}_{k}\overline{\mathbf{x}}_{k}^{\mathrm{f}}+\overline{\mathbf{u}}}{\sqrt{m-1}}\]</span></p>
+<p>by</p>
+<p><span class="math display">\[\left[\mathbf{Y}_{\mathrm{f}}\right]_{i,k}=\frac{\mathcal{H}_{k}(\mathbf{x}_{i,k}^{\mathrm{f}})-\overline{\mathbf{y}}^{\mathrm{f}}-\mathbf{u}_i-\overline{\mathbf{u}}}{\sqrt{m-1}}\]</span></p>
+</section>
 <section id="localization-and-inflation" class="slide level2 center">
 <h2>Localization and Inflation</h2>
 <p>We have traded the extended Kalman filter for a seemingly considerably cheaper filter meant to achieve similar performances.</p>
@@ -722,7 +743,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <li><p>Even though the unstable degrees of freedom of dynamical systems that we wish to control with a filter are usually far fewer than the dimension of the system, they often still represent a substantial fraction of the total degrees of freedom. Forecasting an ensemble of such size is usually not affordable.</p></li>
 </ul>
 </section>
-<section id="section-23" class="slide level2 center">
+<section id="section-24" class="slide level2 center">
 <h2></h2>
 <p>The consequence of this issue always is the <span style="color: red">divergence of the filter</span>.</p>
 <p>Hence, the EnKF is useful on the condition that efficient <span style="color: magenta">fixes</span> are applied.</p>
@@ -756,7 +777,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
 <li>For instance, after the analysis, <span class="math display">\[\mathbf{P}^{\rm a}\longrightarrow\lambda^{2}\mathbf{P}^{\mathrm{a}}.\]</span></li>
 </ul>
 </section>
-<section id="section-24" class="slide level2 center">
+<section id="section-25" class="slide level2 center">
 <h2></h2>
 <ul>
 <li>Another way to achieve this is to inflate the <span style="color: magenta">ensemble</span>, <span class="math display">\[\mathbf{x}^{\mathrm{a}}_{i}\longrightarrow\overline{\mathbf{x}}^{{\rm a}}+\lambda{\mathbf{x}^{\mathrm{a}}_{i}-\overline{\mathbf{x}}^{{\rm a}}},\]</span> which can alternatively be enforced on the prior (forecast) ensemble. This type of inflation is called <span style="color: magenta"><em>multiplicative inflation.</em></span></li>
@@ -784,13 +805,13 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
     -   [*Hierarchical*]{style="color: magenta"} EnKF based on the use
         of a Bayesian statistical hierarchy.  -->
 </section>
-<section id="section-25" class="slide level2 center">
+<section id="section-26" class="slide level2 center">
 <h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">EXAMPLES</span></strong></p>
 </div>
 </section>
-<section id="section-26" class="slide level2 center">
+<section id="section-27" class="slide level2 center">
 <h2></h2>
 <p>As in the previous Lecture, we consider the same scalar 4D-Var example, but this time apply the Kalman filter to it.</p>
 <p>We take the most <span style="color: magenta">simple linear forecast model</span>, <span class="math display">\[\frac{\mathrm{d}x}{\mathrm{d}t}=-\alpha x,\]</span> with <span class="math inline">\(\alpha\)</span> a known positive constant.</p>
@@ -800,7 +821,7 @@ Figure&nbsp;3: Kalman filter loop, showing the two phases, predict and correct, 
     y_{k+1} &amp; =x_{k}^{\mathrm{t}}+v_{k},
     \end{aligned}\]</span> where <span class="math inline">\(w_{k}\thicksim\mathcal{N}(0,\sigma_{Q}^{2}),\)</span> <span class="math inline">\(v_{k}\thicksim\mathcal{N}(0,\sigma_{R}^{2})\)</span> and <span class="math inline">\(x_{0}^{\mathrm{t}}-x_{0}^{\mathrm{b}}\thicksim\mathcal{N}(0,\sigma_{B}^{2}).\)</span></p>
 </section>
-<section id="section-27" class="slide level2 center">
+<section id="section-28" class="slide level2 center">
 <h2></h2>
 <p>The <span style="color: magenta">Kalman filter</span> steps are</p>
 <p><strong>Forecast:</strong></p>
@@ -820,7 +841,7 @@ x_{0}^{\mathrm{a}}  =x_{0}^{\mathrm{b}},\quad
 P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
 \end{equation}\]</span></p>
 </section>
-<section id="section-28" class="slide level2 center">
+<section id="section-29" class="slide level2 center">
 <h2></h2>
 <p>We start with the initial state, at time step <span class="math inline">\(k=0.\)</span> The initial conditions are as above. The forecast is <span class="math display">\[\begin{aligned}
     x_{1}^{\mathrm{f}} &amp; =M(x_{0}^{\mathrm{a}})=\gamma x_{0}^{\mathrm{b}},\\
@@ -838,7 +859,7 @@ P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
     P_{2}^{\mathrm{f}} &amp; =\gamma^{2}P_{1}^{\mathrm{a}}+\sigma_{Q}^{2}=\gamma^{4}\sigma_{B}^{2}+(\gamma^{2}+1)\sigma_{Q}^{2}.
     \end{aligned}\]</span></p>
 </section>
-<section id="section-29" class="slide level2 center">
+<section id="section-30" class="slide level2 center">
 <h2></h2>
 <p>Once again there is no observation available, <span class="math inline">\(H=0,\)</span> and the analysis yields <span class="math display">\[\begin{aligned}
     K_{2} &amp; =0,\\
@@ -855,19 +876,19 @@ P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
     P_{3}^{\mathrm{a}} &amp; =(1-K_{3})P_{3}^{\mathrm{f}}.
     \end{aligned}\]</span></p>
 </section>
-<section id="section-30" class="slide level2 center">
+<section id="section-31" class="slide level2 center">
 <h2></h2>
 <p>Substituting and simplifying, we find <span id="eq-saclarKF_xa"><span class="math display">\[x_{3}^{\mathrm{a}}=\gamma^{3}x_{0}^{\mathrm{b}}+\frac{\gamma^{6}\sigma_{B}^{2}+(\gamma^{4}+\gamma^{2}+1)\sigma_{Q}^{2}}{\sigma_{R}^{2}+\gamma^{6}\sigma_{B}^{2}+(\gamma^{4}+\gamma^{2}+1)\sigma_{Q}^{2}}\left(x_{3}^{\mathrm{o}}-\gamma^{3}x_{0}^{\mathrm{b}}\right).\label{eq:saclarKF_xa} \tag{10}\]</span></span></p>
 <p><strong>Case 1:</strong> Assume we have a <span style="color: magenta">perfect model</span>, then <span class="math inline">\(\sigma_{Q}^{2}=0\)</span> and the Kalman filter state <a href="#/eq-saclarKF_xa" class="quarto-xref">10</a> becomes <span class="math display">\[x_{3}^{\mathrm{a}}=\gamma^{3}x_{0}^{\mathrm{b}}+\frac{\gamma^{6}\sigma_{B}^{2}}{\sigma_{R}^{2}+\gamma^{6}\sigma_{B}^{2}}\left(x_{3}^{\mathrm{o}}-\gamma^{3}x_{0}^{\mathrm{b}}\right),\]</span> which is precisely the 4D-Var expression obtained before.</p>
 <p><strong>Case 2:</strong> When the parameter <span class="math inline">\(\alpha\)</span> tends to zero, then <span class="math inline">\(\gamma\)</span> tends to one, the <span style="color: magenta">model is stationary</span> and the Kalman filter state <a href="#/eq-saclarKF_xa" class="quarto-xref">10</a> becomes <span class="math display">\[x_{3}^{\mathrm{a}}=x_{0}^{\mathrm{b}}+\frac{\sigma_{B}^{2}+3\sigma_{Q}^{2}}{\sigma_{R}^{2}+\sigma_{B}^{2}+3\sigma_{Q}^{2}}\left(x_{3}^{\mathrm{o}}-x_{0}^{\mathrm{b}}\right),\]</span></p>
 </section>
-<section id="section-31" class="slide level2 center">
+<section id="section-32" class="slide level2 center">
 <h2></h2>
 <p>which, when <span class="math inline">\(\sigma_{Q}^{2}=0,\)</span> reduces to the 3D-Var solution, <span class="math display">\[x_{3}^{\mathrm{a}}=x_{0}^{\mathrm{b}}+\frac{\sigma_{B}^{2}}{\sigma_{R}^{2}+\sigma_{B}^{2}}\left(x_{3}^{\mathrm{o}}-x_{0}^{\mathrm{b}}\right),\]</span> that was obtained before.</p>
 <p><strong>Case 3:</strong> When <span class="math inline">\(\alpha\)</span> tends to infinity, then <span class="math inline">\(\gamma\)</span> goes to zero, and we are in the case where there is <span style="color: magenta">no longer any memory</span> with <span class="math display">\[x_{3}^{\mathrm{a}}=\frac{\sigma_{Q}^{2}}{\sigma_{R}^{2}+\sigma_{Q}^{2}}x_{3}^{\mathrm{o}}.\]</span> Then, if the model is perfect, <span class="math inline">\(\sigma_{Q}^{2}=0\)</span> and <span class="math inline">\(x_{3}^{\mathrm{a}}=0.\)</span> If the observation is perfect, <span class="math inline">\(\sigma_{R}^{2}=0\)</span> and <span class="math inline">\(x_{3}^{\mathrm{a}}=x_{3}^{\mathrm{o}}.\)</span></p>
 <p>This example shows the <span style="color: magenta">complete chain</span>, from the Kalman filter solution, through the 4D-Var, and finally reaching the 3D-Var one. Hopefully this clarifies the relationship between the three and demonstrates why the Kalman filter provides the <span style="color: magenta">most general solution</span> possible.</p>
 </section>
-<section id="section-32" class="slide level2 larger center">
+<section id="section-33" class="slide level2 larger center">
 <h2></h2>
 <div class="center">
 <p><strong><span style="color: blue">PRACTICAL GUIDELINES</span></strong></p>
@@ -886,7 +907,7 @@ P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
 <p>The traditional approach, often employed in mathematical and numerical modeling, is to begin with some simplified, or at least well-known, situation.</p>
 <p>Once the above four items have been successfully implemented and tested on this instance, we then proceed to take into account more and more reality in the form of real data, more realistic models, more robust optimization procedures, etc.</p>
 </section>
-<section id="section-33" class="slide level2 center">
+<section id="section-34" class="slide level2 center">
 <h2></h2>
 <p>In other words, we introduce uncertainty, but into a system where we at least control some of the aspects.</p>
 <p>Twin experiments, or synthetic runs, are a basic and indispensable tool for all inverse problems. In order to evaluate the performance of a data assimilation system we invariably begin with the following methodology.</p>
@@ -898,7 +919,7 @@ P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
 <li><p>Evaluate the performance, modify the model/algorithm/observations, and cycle back to step 1.</p></li>
 </ol>
 </section>
-<section id="section-34" class="slide level2 center">
+<section id="section-35" class="slide level2 center">
 <h2></h2>
 <p>Twin experiments thus provide a <span style="color: magenta">well-structured methodological framework</span>.</p>
 <p>Within this framework we can perform different “<span style="color: magenta">stress tests</span>” of our system.</p>
@@ -911,7 +932,7 @@ P_{0}^{\mathrm{a}}  =\sigma_{B}^{2}.
 <p>In fact, these experiments can be performed on the full physical model, or on some simpler (or reduced-order) model.</p>
 <p>Toy models are, by definition, simplified models that we can play with. Yes, but these are of course “serious games.” In certain complex physical contexts, of which meteorology is a famous example, we have well-established toy models, often of increasing complexity. These can be substituted for the real model, whose computational complexity is often too large, and provide a cheaper test-bed.</p>
 </section>
-<section id="section-35" class="slide level2 center">
+<section id="section-36" class="slide level2 center">
 <h2></h2>
 <p>Some well-known examples of toy models are:</p>
 <ul>

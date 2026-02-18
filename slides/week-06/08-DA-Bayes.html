@@ -308,8 +308,8 @@ Figure&nbsp;1: Gaussian random walk state space model equations <a href="#/eq-GR
 <h2></h2>
 <p><strong>Correction</strong>: <em>Compute the posterior distribution by Bayes’ rule,</em></p>
 <div class="r-fit-text">
-<p><span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\frac{p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}{\int p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}\,\mathrm{d}\mathbf{x}_{k}.\]</span></p>
-<p>Now, if we assume that the <span style="color: magenta">dynamic and measurement models are linear</span>, with i.i.d. <span style="color: magenta">Gaussian noise</span>, then we obtain the closed-form solution for the <span style="color: magenta">Kalman filter</span>, already derived in the Basic Course. We recall the linear, Gaussian state-space model, <span id="eq-kf"><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k})=\frac{p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})}{\int p(\mathbf{y}_{k}\mid\mathbf{x}_{k})p(\mathbf{x}_{k}\mid\mathbf{y}_{1:k-1})\,\mathrm{d}\mathbf{x}_{k}}.\]</span></p>
+<p>Now, if we assume that the <span style="color: magenta">dynamic and measurement models are linear</span>, with i.i.d. <span style="color: magenta">Gaussian noise</span>, then we obtain the closed-form solution for the <span style="color: magenta">Kalman filter</span>, already derived. We recall the linear, Gaussian state-space model, <span id="eq-kf"><span class="math display">\[\begin{aligned}
 \mathbf{x}_{k} &amp; =\mathbf{M}_{k-1}\mathbf{x}_{k-1}+\mathbf{w}_{k-1},\label{eq:kf-1}\\
 \mathbf{y}_{k} &amp; =\mathbf{H}_{k}\mathbf{x}_{k}+\mathbf{v}_{k},\label{eq:kf-2}
 \end{aligned} \tag{3}\]</span></span> for the Kalman filter, where</p>
@@ -408,49 +408,49 @@ Figure&nbsp;2: Kalman filter for tracking a Gaussian random walk state space mod
 <span id="cb2-2"><a></a>%&nbsp;Set&nbsp;parameters</span>
 <span id="cb2-3"><a></a>sig_w&nbsp;=&nbsp;1;&nbsp;sig_v&nbsp;=&nbsp;0.5;</span>
 <span id="cb2-4"><a></a>M&nbsp;=&nbsp;1;</span>
-<span id="cb2-5"><a></a>Q&nbsp;=&nbsp;sig_w\^2;</span>
+<span id="cb2-5"><a></a>Q&nbsp;=&nbsp;sig_w^2;</span>
 <span id="cb2-6"><a></a>H&nbsp;=&nbsp;1;</span>
-<span id="cb2-7"><a></a>R&nbsp;=&nbsp;sig_v\^2;</span>
+<span id="cb2-7"><a></a>R&nbsp;=&nbsp;sig_v^2;</span>
 <span id="cb2-8"><a></a>%&nbsp;Initialize</span>
 <span id="cb2-9"><a></a>m0&nbsp;=&nbsp;0;</span>
 <span id="cb2-10"><a></a>P0&nbsp;=&nbsp;1;</span>
 <span id="cb2-11"><a></a>%&nbsp;Simulate&nbsp;data</span>
 <span id="cb2-12"><a></a>randn('state',1234);</span>
-<span id="cb2-13"><a></a>steps&nbsp;=&nbsp;100;&nbsp;T&nbsp;=&nbsp;\[1:steps\];</span>
+<span id="cb2-13"><a></a>steps&nbsp;=&nbsp;100;&nbsp;T&nbsp;=&nbsp;[1:steps];</span>
 <span id="cb2-14"><a></a>X&nbsp;=&nbsp;zeros(1,steps);</span>
 <span id="cb2-15"><a></a>Y&nbsp;=&nbsp;zeros(1,steps);</span>
 <span id="cb2-16"><a></a>x&nbsp;=&nbsp;m0;</span>
 <span id="cb2-17"><a></a>for&nbsp;k=1:steps</span>
-<span id="cb2-18"><a></a>&nbsp;&nbsp;w&nbsp;=&nbsp;Q'\*randn(1);</span>
-<span id="cb2-19"><a></a>&nbsp;&nbsp;x&nbsp;=&nbsp;M\*x&nbsp;+&nbsp;w;</span>
-<span id="cb2-20"><a></a>&nbsp;&nbsp;y&nbsp;=&nbsp;H\*x&nbsp;+&nbsp;sig_v\*randn(1);</span>
+<span id="cb2-18"><a></a>&nbsp;&nbsp;w&nbsp;=&nbsp;Q'*randn(1);</span>
+<span id="cb2-19"><a></a>&nbsp;&nbsp;x&nbsp;=&nbsp;M*x&nbsp;+&nbsp;w;</span>
+<span id="cb2-20"><a></a>&nbsp;&nbsp;y&nbsp;=&nbsp;H*x&nbsp;+&nbsp;sig_v*randn(1);</span>
 <span id="cb2-21"><a></a>&nbsp;&nbsp;X(k)&nbsp;=&nbsp;x;</span>
 <span id="cb2-22"><a></a>&nbsp;&nbsp;Y(k)&nbsp;=&nbsp;y;</span>
 <span id="cb2-23"><a></a>end</span>
 <span id="cb2-24"><a></a>plot(T,X,'-',T,Y,'.');</span>
 <span id="cb2-25"><a></a>legend('Signal','Measurements');</span>
-<span id="cb2-26"><a></a>xlabel('{k}');&nbsp;ylabel('{x}\_k');</span>
+<span id="cb2-26"><a></a>xlabel('{k}');&nbsp;ylabel('{x}_k');</span>
 <span id="cb2-27"><a></a>%&nbsp;Kalman&nbsp;filter</span>
 <span id="cb2-28"><a></a>m&nbsp;=&nbsp;m0;</span>
 <span id="cb2-29"><a></a>P&nbsp;=&nbsp;P0;</span>
 <span id="cb2-30"><a></a>for&nbsp;k=1:steps</span>
-<span id="cb2-31"><a></a>&nbsp;&nbsp;m&nbsp;=&nbsp;M\*m;</span>
-<span id="cb2-32"><a></a>&nbsp;&nbsp;P&nbsp;=&nbsp;M\*P\*M'&nbsp;+&nbsp;Q;</span>
-<span id="cb2-33"><a></a>&nbsp;&nbsp;d&nbsp;=&nbsp;Y(:,k)&nbsp;-&nbsp;H\*m;</span>
-<span id="cb2-34"><a></a>&nbsp;&nbsp;S&nbsp;=&nbsp;H\*P\*H'&nbsp;+&nbsp;R;</span>
-<span id="cb2-35"><a></a>&nbsp;&nbsp;K&nbsp;=&nbsp;P\*H'/S;</span>
-<span id="cb2-36"><a></a>&nbsp;&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;K\*d;</span>
-<span id="cb2-37"><a></a>&nbsp;&nbsp;P&nbsp;=&nbsp;P&nbsp;-&nbsp;K\*S\*K';</span>
+<span id="cb2-31"><a></a>&nbsp;&nbsp;m&nbsp;=&nbsp;M*m;</span>
+<span id="cb2-32"><a></a>&nbsp;&nbsp;P&nbsp;=&nbsp;M*P*M'&nbsp;+&nbsp;Q;</span>
+<span id="cb2-33"><a></a>&nbsp;&nbsp;d&nbsp;=&nbsp;Y(:,k)&nbsp;-&nbsp;H*m;</span>
+<span id="cb2-34"><a></a>&nbsp;&nbsp;S&nbsp;=&nbsp;H*P*H'&nbsp;+&nbsp;R;</span>
+<span id="cb2-35"><a></a>&nbsp;&nbsp;K&nbsp;=&nbsp;P*H'/S;</span>
+<span id="cb2-36"><a></a>&nbsp;&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;K*d;</span>
+<span id="cb2-37"><a></a>&nbsp;&nbsp;P&nbsp;=&nbsp;P&nbsp;-&nbsp;K*S*K';</span>
 <span id="cb2-38"><a></a>&nbsp;&nbsp;kf_m(k)&nbsp;=&nbsp;m;</span>
 <span id="cb2-39"><a></a>&nbsp;&nbsp;kf_P(k)&nbsp;=&nbsp;P;</span>
 <span id="cb2-40"><a></a>end</span>
 <span id="cb2-41"><a></a>%&nbsp;Plot&nbsp;&nbsp;&nbsp;</span>
 <span id="cb2-42"><a></a>clf;&nbsp;hold&nbsp;on</span>
-<span id="cb2-43"><a></a>fill(\[T&nbsp;fliplr(T)\],\[kf_m+1.96\*sqrt(kf_P)&nbsp;\...</span>
-<span id="cb2-44"><a></a>&nbsp;&nbsp;fliplr(kf_m-1.96\*sqrt(kf_P))\],1,&nbsp;\...</span>
-<span id="cb2-45"><a></a>&nbsp;&nbsp;'FaceColor',\[.9&nbsp;.9&nbsp;.9\],'EdgeColor',\[.9&nbsp;.9&nbsp;.9\])</span>
+<span id="cb2-43"><a></a>fill([T&nbsp;fliplr(T)],[kf_m+1.96*sqrt(kf_P)&nbsp;...</span>
+<span id="cb2-44"><a></a>&nbsp;&nbsp;fliplr(kf_m-1.96\*sqrt(kf_P))],1,&nbsp;...</span>
+<span id="cb2-45"><a></a>&nbsp;&nbsp;'FaceColor',[.9&nbsp;.9&nbsp;.9],'EdgeColor',[.9&nbsp;.9&nbsp;.9])</span>
 <span id="cb2-46"><a></a>plot(T,X,'-b',T,Y,'or',T,&nbsp;kf_m(1,:),'-g')</span>
-<span id="cb2-47"><a></a>plot(T,kf_m+1.96\*sqrt(kf_P),':r',T,kf_m-1.96\*sqrt(kf_P),':r');</span>
+<span id="cb2-47"><a></a>plot(T,kf_m+1.96*sqrt(kf_P),':r',T,kf_m-1.96*sqrt(kf_P),':r');</span>
 <span id="cb2-48"><a></a>hold&nbsp;off</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:40%;">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -795,7 +795,7 @@ w^{(\pm i)} &amp; =\frac{\lambda}{2\left(n+\lambda\right)},\quad i=1,2,\ldots,n.
 </section>
 <section id="section-29" class="slide level2 center">
 <h2></h2>
-<p>In practice though, the particle filter cannot yet be applied to very high dimensional systems (this is often referred to as “the curse of dimensionality”). Though recent work by [Friedemann, Raffin2023] has improved this by sophisticated parallel computing.</p>
+<p>In practice though, the particle filter cannot yet be applied to very high dimensional systems (this is often referred to as “the curse of dimensionality”). Though recent work by <span class="citation" data-cites="friedemann2023framework">(<a href="#/references" role="doc-biblioref" onclick="">Friedemann et al. 2023</a>)</span> has improved this by sophisticated parallel computing.</p>
 <p>Particle filters are methods for obtaining <span style="color: magenta"><em>Monte Carlo approximations</em></span> of the solutions of the Bayesian filtering equations.</p>
 <p>Rather than trying to compute the exact solution of the Bayesian filtering equations, the transformations of such filtering (Bayes’ rule for the analysis, model propagation for the forecast) are applied to the members of the sample.</p>
 <ul>
@@ -915,6 +915,9 @@ Table&nbsp;1: Decision matrix for choice of Kalman filters.
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-doucet2009tutorial" class="csl-entry" role="listitem">
 Doucet, Arnaud, Adam M Johansen, et al. 2009. <span>“A Tutorial on Particle Filtering and Smoothing: Fifteen Years Later.”</span> <em>Handbook of Nonlinear Filtering</em> 12 (656-704): 3.
+</div>
+<div id="ref-friedemann2023framework" class="csl-entry" role="listitem">
+Friedemann, Sebastian, Kai Keller, Yen-Sen Lu, Bruno Raffin, and Leonardo Bautista Gomez. 2023. <span>“A Framework for Large Scale Particle Filters Validated with Data Assimilation for Weather Simulation.”</span> <em>arXiv Preprint arXiv:2301.02668</em>.
 </div>
 <div id="ref-sarkka2013" class="csl-entry" role="listitem">
 Särkkä, Simo, and Lennart Svensson. 2023. <em>Bayesian Filtering and Smoothing</em>. Vol. 17. Cambridge university press.
