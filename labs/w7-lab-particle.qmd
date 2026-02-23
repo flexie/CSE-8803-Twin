@@ -2,6 +2,8 @@
 title: "Particle Filter"
 date: "February 22, 2024"
 categories: "Lab"
+resources: 
+  - 07Examples/Particle-Filters.ipynb
 notebook-view: 
   - notebook: 07Examples/Particle-Filters.ipynb
     title: "Particle Filter for Robot Tracking"
