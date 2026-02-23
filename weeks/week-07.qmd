@@ -1,7 +1,7 @@
 ---
 title: "Week 07"
 subtitle: "Machine Learning"
-description: "February 19 - 23"
+description: "February 23 - 27"
 author: ""
 date: ""
 listing:
