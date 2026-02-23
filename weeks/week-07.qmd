@@ -1,6 +1,6 @@
 ---
 title: "Week 07"
-subtitle: "Machine Learning"
+subtitle: "EnKF Application"
 description: "February 23 - 27"
 author: ""
 date: ""
