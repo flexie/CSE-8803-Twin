@@ -8,15 +8,8 @@
       "/weeks/week-04.html",
       "/weeks/week-05.html",
       "/weeks/week-06.html",
-      "/weeks/week-07.html"
-    ]
-  },
-  {
-    "listing": "/weeks/week-09.html",
-    "items": [
-      "/slides/week-09/09b-DL-generative.html",
-      "/slides/week-09/12-DT.html",
-      "/labs/w8-lab-normalizing-flow.html"
+      "/weeks/week-07.html",
+      "/weeks/week-08.html"
     ]
   },
   {
@@ -54,6 +47,13 @@
     ]
   },
   {
+    "listing": "/weeks/week-08.html",
+    "items": [
+      "/slides/week-08/10-sbi.html",
+      "/labs/w8-lab-normalizing-flow.html"
+    ]
+  },
+  {
     "listing": "/weeks/week-05.html",
     "items": [
       "/slides/week-05/06-Bayes-Inference.html",
@@ -79,11 +79,10 @@
     ]
   },
   {
-    "listing": "/weeks/week-08.html",
+    "listing": "/weeks/week-09.html",
     "items": [
-      "/slides/week-08/09-NF.html",
-      "/slides/week-08/10-NF.html",
-      "/slides/week-08/11.html",
+      "/slides/week-09/09b-DL-generative.html",
+      "/slides/week-09/12-DT.html",
       "/labs/w8-lab-normalizing-flow.html"
     ]
   }
