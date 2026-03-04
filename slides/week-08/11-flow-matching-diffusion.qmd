@@ -2,7 +2,7 @@
 title: "Flow Matching & Score-Based Diffusion"
 subtitle: "Digital Twins for Physical Systems"
 date: "March 4, 2026"
-institute: "School of Earth & Atmospheric Sciences — Georgia Institute of Technology"
+institute: "Computational Science and Engineering — Georgia Institute of Technology"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "../images/logo.png"
 author: "Felix J. Herrmann"
