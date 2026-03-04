@@ -1665,7 +1665,7 @@
     "href": "slides/week-08/11-flow-matching-diffusion.html#marginal-probability-path",
     "title": "Flow Matching & Score-Based Diffusion",
     "section": "Marginal Probability Path",
-    "text": "Marginal Probability Path\nEvery conditional path \\(p_t(x \\mid z)\\) induces a marginal probability path:\n\\[\\begin{align}\\text{Sample: } z &\\sim p_\\text{data}, \\; x \\sim p_t(\\cdot \\mid z) \\;\\Rightarrow\\; x \\sim p_t\\qquad\\blacktriangleright\\text{sampling from marginal path}\\\\\np_t(x) &= \\int p_t(x \\mid z)\\, p_\\text{data}(z)\\, \\mathrm{d}z \\qquad\\qquad\\quad\\;\\; \\blacktriangleright\\text{density of marginal path}\\end{align}\\]\n\nThe marginal path interpolates between noise and data:\n\\[p_0 = p_\\text{init} \\qquad \\text{and} \\qquad p_1 = p_\\text{data}\\]\n\n\n\n\n\n\nWarning\n\n\nWe do not know the density \\(p_t(x)\\) because the integral is intractable. But we can sample from it."
+    "text": "Marginal Probability Path\nEvery conditional path \\(p_t(x \\mid z)\\) induces a marginal probability path:\n\\[\\begin{align}\\text{Sample: } z &\\sim p_\\text{data}, \\; x \\sim p_t(\\cdot \\mid z) \\;\\qquad\\;\\;\\qquad\\qquad\\blacktriangleright\\text{sampling from marginal path}\\\\\np_t(x) &= \\int p_t(x \\mid z)\\, p_\\text{data}(z)\\, \\mathrm{d}z \\qquad\\qquad\\quad\\;\\; \\blacktriangleright\\text{density of marginal path}\\end{align}\\]\n\nThe marginal path interpolates between noise and data:\n\\[p_0 = p_\\text{init} \\qquad \\text{and} \\qquad p_1 = p_\\text{data}\\]\n\n\n\n\n\n\nWarning\n\n\nWe do not know the density \\(p_t(x)\\) because the integral is intractable. But we can sample from it."
   },
   {
     "objectID": "slides/week-08/11-flow-matching-diffusion.html#gaussian-conditional-probability-path",
@@ -1983,7 +1983,7 @@
     "href": "weeks/week-08.html",
     "title": "Week 08",
     "section": "",
-    "text": "Topic\n\n\n\nSubtitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nSimulation-Based Inference\n\n\nFrom Bayesian Foundations to Neural Density Estimation\n\n\nMon, Mar 02\n\n\n\n\n\n\nFlow Matching & Score-Based Diffusion\n\n\nDigital Twins for Physical Systems\n\n\nMon, Mar 02\n\n\n\n\n\n\nNo matching items"
+    "text": "Topic\n\n\n\nSubtitle\n\n\n\nDate\n\n\n\n\n\n\n\n\nSimulation-Based Inference\n\n\nFrom Bayesian Foundations to Neural Density Estimation\n\n\nMon, Mar 02\n\n\n\n\n\n\nFlow Matching & Score-Based Diffusion\n\n\nDigital Twins for Physical Systems\n\n\nWed, Mar 04\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "weeks/week-08.html#remote-classes",

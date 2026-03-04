@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Felix J. Herrmann">
-  <meta name="dcterms.date" content="2026-03-02">
+  <meta name="dcterms.date" content="2026-03-04">
   <title>Digital Twins for Physical Systems – Flow Matching &amp; Score-Based Diffusion</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -163,7 +163,7 @@ Felix J. Herrmann
     </div>
 </div>
 
-  <p class="date">2026-03-02</p>
+  <p class="date">2026-03-04</p>
 </section>
 <section id="title-custom" class="slide level2 center" data-background-color="white">
 <h2></h2>
@@ -575,7 +575,7 @@ X_0 &amp; \sim p_\text{init} \qquad\qquad\qquad\qquad\;\; \blacktriangleright \t
 <section id="marginal-probability-path" class="slide level2 smaller">
 <h2>Marginal Probability Path</h2>
 <p>Every conditional path <span class="math inline">\(p_t(x \mid z)\)</span> induces a <strong>marginal probability path</strong>:</p>
-<p><span class="math display">\[\begin{align}\text{Sample: } z &amp;\sim p_\text{data}, \; x \sim p_t(\cdot \mid z) \;\Rightarrow\; x \sim p_t\qquad\blacktriangleright\text{sampling from marginal path}\\
+<p><span class="math display">\[\begin{align}\text{Sample: } z &amp;\sim p_\text{data}, \; x \sim p_t(\cdot \mid z) \;\qquad\;\;\qquad\qquad\blacktriangleright\text{sampling from marginal path}\\
 p_t(x) &amp;= \int p_t(x \mid z)\, p_\text{data}(z)\, \mathrm{d}z \qquad\qquad\quad\;\; \blacktriangleright\text{density of marginal path}\end{align}\]</span></p>
 <div class="fragment">
 <p>The marginal path <strong>interpolates</strong> between noise and data:</p>
