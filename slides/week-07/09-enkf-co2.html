@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Based on Bruer, Gahlot, Chow &amp; Herrmann (IEEE TGRS, 2025)">
   <meta name="dcterms.date" content="2026-02-25">
@@ -50,7 +50,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8a5cdbf101a0845817b98f2425171703.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-832775eafbd512325564c8c290c39367.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -369,7 +369,7 @@ Based on Bruer, Gahlot, Chow &amp; Herrmann (IEEE TGRS, 2025)
 <section class="slide level2 center">
 <h2>Pre-existing DA research for seismic-CO<sub>2</sub></h2>
 <p><strong>No one does scalable DA with fluid dynamics and full waveform seismic.</strong></p>
-<table class="caption-top" data-quarto-postprocess="true" style="font-size: 0.6em; margin-top: 0.5em;">
+<table class="caption-top" style="font-size: 0.6em; margin-top: 0.5em;">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th"></th>
@@ -478,7 +478,7 @@ Based on Bruer, Gahlot, Chow &amp; Herrmann (IEEE TGRS, 2025)
 <section class="slide level2 center">
 <h2>Pre-existing research for seismic-CO<sub>2</sub>: ML (machine learning)</h2>
 <p><strong>No one does scalable DA with fluid dynamics and full waveform seismic.</strong></p>
-<table class="caption-top" data-quarto-postprocess="true" style="font-size: 0.55em; margin-top: 0.5em;">
+<table class="caption-top" style="font-size: 0.55em; margin-top: 0.5em;">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th"></th>
@@ -1773,13 +1773,14 @@ Bruer, Grant, Abhinav Prakash Gahlot, Edmond Chow, and Felix Herrmann. 2025. <sp
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

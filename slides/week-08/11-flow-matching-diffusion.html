@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="Felix J. Herrmann">
+  <meta name="dcterms.date" content="2026-03-02">
+  <title>Digital Twins for Physical Systems – Flow Matching &amp; Score-Based Diffusion</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-86a7b438009151bd84a4df6d16a5bd77.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Flow Matching &amp; Score-Based Diffusion</h1>
+  <p class="subtitle">Digital Twins for Physical Systems</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Felix J. Herrmann 
+</div>
+        <p class="quarto-title-affiliation">
+            School of Earth &amp; Atmospheric Sciences — Georgia Institute of Technology
+          </p>
+    </div>
+</div>
+
+  <p class="date">2026-03-02</p>
+</section>
+<section id="title-custom" class="slide level2 center" data-background-color="white">
+<h2></h2>
+<div style="display: flex; justify-content: center; align-items: center; gap: 2.5em; margin-bottom: 1em;">
+<p><img data-src="figures_FM/GTLogo.png" height="100"> <img data-src="figures_FM/ClaudeLogo.png" height="100"></p>
+</div>
+<h3 style="margin-bottom: 0.1em;" id="flow-matching-score-based-diffusion">Flow Matching &amp; Score-Based Diffusion</h3>
+<h4 style="color: #555; font-weight: normal;" id="a-tutorial">a tutorial</h4>
+<p><strong>Felix J. Herrmann</strong></p>
+<p>School of Computational Science and Engineering — Georgia Institute of Technology</p>
+<p>Slides build on <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span> — <a href="https://diffusion.csail.mit.edu/2026/index.html">Course website</a></p>
+</section>
+<section id="outline" class="slide level2 smaller scrollable">
+<h2>Outline</h2>
+<ol type="1">
+<li><strong>Motivation</strong>: From discrete to continuous normalizing flows</li>
+<li><strong>Generative modeling as sampling</strong></li>
+<li><strong>Flow models</strong>: ODEs, vector fields, and flows</li>
+<li><strong>Diffusion models</strong>: SDEs and stochastic sampling</li>
+<li><strong>Probability paths</strong>: Conditional and marginal</li>
+<li><strong>Vector fields</strong>: Conditional and marginal</li>
+<li><strong>Score functions</strong>: Conditional and marginal</li>
+<li><strong>Training flow matching</strong></li>
+<li><strong>Training score matching</strong></li>
+<li><strong>Reparameterization &amp; unified view</strong></li>
+</ol>
+<aside class="notes">
+<p>This lecture compresses material from 3 MIT lectures into one. We follow the MIT notes by Holderrieth &amp; Erives closely.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="motivation-why-continuous-flows" class="slide level2 smaller">
+<h2>Motivation: Why Continuous Flows?</h2>
+<p><strong>Discrete normalizing flows</strong> <span class="citation" data-cites="normalizing_flow nice realnvp">(<a href="#/references" role="doc-biblioref" onclick="">Rezende and Mohamed 2016</a>; <a href="#/references" role="doc-biblioref" onclick="">Dinh, Krueger, and Bengio 2015</a>; <a href="#/references" role="doc-biblioref" onclick="">Dinh, Sohl-Dickstein, and Bengio 2017</a>)</span>:</p>
+<ul>
+<li>Model <span class="math inline">\(p(x) = p(z) \left|\det \frac{\partial f^{-1}}{\partial x}\right|\)</span> via a chain of invertible transformations <span class="math inline">\(f = f_K \circ \cdots \circ f_1\)</span></li>
+<li>Each layer must be <strong>invertible</strong> with a <strong>tractable Jacobian determinant</strong></li>
+<li>This severely constrains architecture choices</li>
+</ul>
+<div class="fragment">
+<p><strong>Key limitations:</strong></p>
+<ul>
+<li><strong>End-to-end automatic differentiation</strong> through the entire chain is expensive</li>
+<li>Training requires backprop through all <span class="math inline">\(K\)</span> layers simultaneously</li>
+<li>Architectural constraints limit expressiveness</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Continuous normalizing flows</strong> <span class="citation" data-cites="chen2018neural">(<a href="#/references" role="doc-biblioref" onclick="">Chen et al. 2018</a>)</span>: Replace the discrete chain with an ODE</p>
+<ul>
+<li>Parameterize a <strong>vector field</strong> <span class="math inline">\(u_t^\theta(x)\)</span> instead of invertible layers</li>
+<li><strong>No Jacobian constraint</strong> on the network architecture</li>
+<li>Training can be done via <strong>regression</strong> (flow matching) – analogous to layer-by-layer training</li>
+<li>Much simpler and more scalable!</li>
+</ul>
+</div>
+</section>
+<section>
+<section id="part-i-generative-modeling-as-sampling" class="title-slide slide level1 center">
+<h1>Part I: Generative Modeling as Sampling</h1>
+
+</section>
+<section id="generative-ai-images-and-video" class="slide level2 smaller">
+<h2>Generative AI: Images and Video</h2>
+<p>We represent the objects we want to generate as <strong>vectors</strong> <span class="math inline">\(z \in \mathbb{R}^d\)</span>:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 40%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modality</th>
+<th>Representation</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Image</strong></td>
+<td><span class="math inline">\(z \in \mathbb{R}^{H \times W \times 3}\)</span></td>
+<td>e.g., <span class="math inline">\(256 \times 256 \times 3 \approx 200\text{K}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Video</strong></td>
+<td><span class="math inline">\(z \in \mathbb{R}^{T \times H \times W \times 3}\)</span></td>
+<td>e.g., <span class="math inline">\(16 \times 256 \times 256 \times 3 \approx 3.1\text{M}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>State-of-the-art generative models for images/videos are <strong>flow and diffusion models</strong>:</p>
+<ul>
+<li><em>Stable Diffusion 3</em> <span class="citation" data-cites="sd3">(<a href="#/references" role="doc-biblioref" onclick="">Esser et al. 2024</a>)</span> – image generation via <strong>flow matching</strong></li>
+<li><em>Meta Movie Gen</em> <span class="citation" data-cites="moviegen">(<a href="#/references" role="doc-biblioref" onclick="">Polyak et al. 2024</a>)</span> – video generation via <strong>flow matching</strong></li>
+<li><em>AlphaFold3</em> – protein structure via <strong>diffusion</strong></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Objects as Vectors</strong></p>
+</div>
+<div class="callout-content">
+<p>Throughout this lecture, we identify the objects being generated as vectors <span class="math inline">\(z \in \mathbb{R}^d\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="generation-as-sampling" class="slide level2 smaller">
+<h2>Generation as Sampling</h2>
+<blockquote>
+<p><em>“Creating noise from data is easy; creating data from noise is generative modeling.”</em> — Song et al. <span class="citation" data-cites="song2020score">(<a href="#/references" role="doc-biblioref" onclick="">Song et al. 2020</a>)</span></p>
+</blockquote>
+<p>There is no single “best” image of a dog. Rather, there is a <strong>data distribution</strong> <span class="math inline">\(p_\text{data}\)</span> giving higher likelihood to better images.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Generative Model</strong></p>
+</div>
+<div class="callout-content">
+<p>A <strong>generative model</strong> is a machine learning model that generates samples <span class="math inline">\(z \sim p_\text{data}\)</span> given a <strong>dataset</strong> <span class="math inline">\(z_1, \ldots, z_N \sim p_\text{data}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Conditional generation</strong>: sample from <span class="math inline">\(z \sim p_\text{data}(\cdot \mid y)\)</span> where <span class="math inline">\(y\)</span> is a conditioning variable (e.g., text prompt).</p>
+</div>
+</section>
+<section id="from-noise-to-data" class="slide level2 smaller scrollable">
+<h2>From Noise to Data</h2>
+<p>Assume access to a simple <strong>initial distribution</strong> <span class="math inline">\(p_\text{init}\)</span> (e.g., <span class="math inline">\(p_\text{init} = \mathcal{N}(0, I_d)\)</span>).</p>
+<p><strong>Goal</strong>: Transform samples <span class="math inline">\(x \sim p_\text{init}\)</span> into samples from <span class="math inline">\(p_\text{data}\)</span>.</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Initial distribution</strong> <span class="math inline">\(p_\text{init}\)</span></p>
+<ul>
+<li>Simple (e.g., Gaussian)</li>
+<li>Easy to sample from</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Data distribution</strong> <span class="math inline">\(p_\text{data}\)</span></p>
+<ul>
+<li>Complex, unknown density</li>
+<li>We only have samples <span class="math inline">\(z_1, \ldots, z_N\)</span></li>
+</ul>
+</div></div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Summary</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Objects = vectors <span class="math inline">\(z \in \mathbb{R}^d\)</span></li>
+<li>Generation = sampling from <span class="math inline">\(p_\text{data}\)</span></li>
+<li><strong>Goal</strong>: train a model to transform <span class="math inline">\(p_\text{init} \to p_\text{data}\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="generative-models" class="slide level2 smaller">
+<h2>Generative Models</h2>
+<p>A <strong>generative model</strong> converts samples from an initial distribution into samples from the data distribution:</p>
+<p><span class="math display">\[x \sim p_\text{init} \;\xrightarrow{\text{Generative Model}}\; z \sim p_\text{data}\]</span></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><strong>Initial distribution</strong> <span class="math inline">\(p_\text{init}\)</span></p>
+<p>Default: <span class="math inline">\(\mathcal{N}(0, I_d)\)</span></p>
+<ul>
+<li>Simple, known density</li>
+<li>Easy to sample</li>
+</ul>
+</div><div class="column center" style="width:30%;">
+<p><span class="math display">\[\Longrightarrow\]</span></p>
+<p><strong>Generative Model</strong></p>
+<p>(parameterized by <span class="math inline">\(\theta\)</span>)</p>
+</div><div class="column" style="width:35%;">
+<p><strong>Data distribution</strong> <span class="math inline">\(p_\text{data}\)</span></p>
+<ul>
+<li>Complex, unknown</li>
+<li>Only have samples <span class="math inline">\(z_1, \ldots, z_N\)</span></li>
+</ul>
+</div></div>
+</div>
+<div class="fragment">
+<p><strong>How?</strong> Flow and diffusion models use <strong>differential equations</strong> to transport <span class="math inline">\(p_\text{init} \to p_\text{data}\)</span>.</p>
+</div>
+</section></section>
+<section>
+<section id="part-ii-flow-models" class="title-slide slide level1 center">
+<h1>Part II: Flow Models</h1>
+
+</section>
+<section id="ordinary-differential-equations" class="slide level2 smaller">
+<h2>Ordinary Differential Equations</h2>
+<p>A <strong>trajectory</strong> maps time to space: <span class="math inline">\(X: [0,1] \to \mathbb{R}^d, \quad t \mapsto X_t\)</span></p>
+<p>A <strong>vector field</strong> prescribes velocities: <span class="math inline">\(u: \mathbb{R}^d \times [0,1] \to \mathbb{R}^d, \quad (x,t) \mapsto u_t(x)\)</span></p>
+<div class="fragment">
+<p>An <strong>ODE</strong> requires the trajectory to follow the vector field:</p>
+<p><span class="math display">\[\begin{align}\frac{\mathrm{d}}{\mathrm{d}t} X_t &amp;= u_t(X_t)  \qquad\quad \blacktriangleright \text{ODE}\\
+X_0 &amp;= x_0 \qquad\qquad\quad \blacktriangleright \text{initial condition}\end{align}\]</span></p>
+<p>The solution is the <strong>flow</strong> <span class="math inline">\(\psi_t\)</span>: <span class="math inline">\(\quad X_t = \psi_t(X_0)\)</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Vector fields</strong> define <strong>ODEs</strong> whose solutions are <strong>flows</strong>.</p>
+</div>
+</div>
+</div>
+
+</div>
+<aside><div>
+<p>See interactive ODE trajectory visualization at <a href="https://mariogemoll.com/flow-matching">mariogemoll.com/flow-matching</a></p>
+</div></aside></section>
+<section id="the-flow-warping-space" class="slide level2 smaller">
+<h2>The Flow: Warping Space</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><img data-src="figures_FM/flow_1.png" style="width:100.0%"></p>
+</div><div class="column" style="width:33%;">
+<p><img data-src="figures_FM/flow_10.png" style="width:100.0%"></p>
+</div><div class="column" style="width:33%;">
+<p><img data-src="figures_FM/flow_16.png" style="width:100.0%"></p>
+</div></div>
+<p>A flow <span class="math inline">\(\psi_t: \mathbb{R}^d \to \mathbb{R}^d\)</span> (red grid) defined by a velocity field <span class="math inline">\(u_t\)</span> (blue arrows) that prescribes instantaneous movements (<span class="math inline">\(d=2\)</span>). A flow is a diffeomorphism that “warps” space. Figure from <span class="citation" data-cites="lipman2024flow">Lipman et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>.</p>
+<p><strong>Existence &amp; uniqueness</strong>: If <span class="math inline">\(u_t\)</span> is continuously differentiable with bounded derivative, the ODE has a <strong>unique</strong> flow <span class="math inline">\(\psi_t\)</span> that is a <strong>diffeomorphism</strong> <span class="citation" data-cites="perko2013differential">(<a href="#/references" role="doc-biblioref" onclick="">Perko 2013</a>)</span>.</p>
+</section>
+<section id="simulating-odes-eulers-method" class="slide level2 smaller">
+<h2>Simulating ODEs: Euler’s Method</h2>
+<p>In general, we cannot compute <span class="math inline">\(\psi_t\)</span> explicitly. We use <strong>numerical methods</strong>.</p>
+<p><strong>Euler method</strong>: Initialize <span class="math inline">\(X_0 = x_0\)</span>, step size <span class="math inline">\(h = 1/n\)</span>, then update:</p>
+<p><span class="math display">\[X_{t+h} = X_t + h\, u_t(X_t) \qquad (t = 0, h, 2h, \ldots, 1-h)\]</span></p>
+<div class="fragment">
+<p>Simple but effective. More sophisticated methods (Heun) also available <span class="citation" data-cites="iserles2009first">(<a href="#/references" role="doc-biblioref" onclick="">Iserles 2009</a>)</span>.</p>
+</div>
+</section>
+<section id="flow-models" class="slide level2 smaller">
+<h2>Flow Models</h2>
+<p>A <strong>flow model</strong> uses an ODE to transform <span class="math inline">\(p_\text{init} \to p_\text{data}\)</span>:</p>
+<p><span class="math display">\[\begin{align}X_0 &amp;\sim p_\text{init} \qquad\qquad\quad\;\; \blacktriangleright \text{random initialization}\\
+\frac{\mathrm{d}}{\mathrm{d}t} X_t &amp;= u_t^\theta(X_t) \qquad \qquad\;\blacktriangleright \text{ODE with neural network } u_t^\theta\end{align}\]</span></p>
+<div class="fragment">
+<p><strong>Goal</strong>: Make the endpoint <span class="math inline">\(X_1 \sim p_\text{data}\)</span>, i.e., <span class="math inline">\(\psi_1^\theta(X_0) \sim p_\text{data}\)</span>.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>The neural network parameterizes the <strong>vector field</strong>, not the flow. To compute the flow, we must <strong>simulate</strong> the ODE.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="algorithm-1-sampling-from-a-flow-model" class="slide level2 smaller scrollable">
+<h2>Algorithm 1: Sampling from a Flow Model</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sampling from a Flow Model (Euler method)</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Input</strong>: Neural network vector field <span class="math inline">\(u_t^\theta\)</span>, number of steps <span class="math inline">\(n\)</span></p>
+<ol type="1">
+<li>Set <span class="math inline">\(t = 0\)</span>, step size <span class="math inline">\(h = 1/n\)</span></li>
+<li>Draw <span class="math inline">\(X_0 \sim p_\text{init}\)</span></li>
+<li><strong>For</strong> <span class="math inline">\(i = 1, \ldots, n-1\)</span>:
+<ul>
+<li><span class="math inline">\(X_{t+h} = X_t + h\, u_t^\theta(X_t)\)</span></li>
+<li><span class="math inline">\(t \leftarrow t + h\)</span></li>
+</ul></li>
+<li><strong>Return</strong> <span class="math inline">\(X_1\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="part-iii-diffusion-models" class="title-slide slide level1 center">
+<h1>Part III: Diffusion Models</h1>
+
+</section>
+<section id="stochastic-processes-and-sdes" class="slide level2 smaller">
+<h2>Stochastic Processes and SDEs</h2>
+<p>A <strong>stochastic process</strong> <span class="math inline">\((X_t)_{0 \le t \le 1}\)</span> has random trajectories: simulating twice may yield different outcomes.</p>
+<p><strong>Brownian motion</strong> <span class="math inline">\(W_t\)</span>: a continuous random walk with <span class="math inline">\(W_0 = 0\)</span>, normal increments <span class="math inline">\(W_t - W_s \sim \mathcal{N}(0, (t-s)I_d)\)</span>, and independent increments.</p>
+<div class="fragment">
+<p><strong>From ODEs to SDEs</strong>: Add stochastic dynamics driven by Brownian motion:</p>
+<p><span class="math display">\[\begin{align}\mathrm{d}X_t &amp;= u_t(X_t)\,\mathrm{d}t + \sigma_t\,\mathrm{d}W_t \qquad \blacktriangleright \text{ SDE}\\
+X_0 &amp;= x_0 \qquad\qquad\qquad\qquad\quad \blacktriangleright \text{ initial condition}\end{align}\]</span></p>
+<p>where <span class="math inline">\(\sigma_t \geq 0\)</span> is the <strong>diffusion coefficient</strong>. An ODE is an SDE with <span class="math inline">\(\sigma_t = 0\)</span>.</p>
+</div>
+</section>
+<section id="ornstein-uhlenbeck-processes" class="slide level2 smaller">
+<h2>Ornstein-Uhlenbeck Processes</h2>
+
+<img data-src="figures_FM/ou_process.png" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">Ornstein-Uhlenbeck processes <span class="math inline">\(\mathrm{d}X_t = -\theta X_t\,\mathrm{d}t + \sigma\,\mathrm{d}W_t\)</span> for <span class="math inline">\(\theta = 0.25\)</span> and various <span class="math inline">\(\sigma\)</span>. For <span class="math inline">\(\sigma = 0\)</span>: deterministic flow converging to origin. For <span class="math inline">\(\sigma &gt; 0\)</span>: random paths converging to <span class="math inline">\(\mathcal{N}(0, \sigma^2/(2\theta))\)</span>. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</p></section>
+<section id="diffusion-models" class="slide level2 smaller">
+<h2>Diffusion Models</h2>
+<p>A <strong>diffusion model</strong> parameterizes an SDE with neural network <span class="math inline">\(u_t^\theta\)</span>:</p>
+<p><span class="math display">\[\begin{align}\mathrm{d}X_t &amp;= u_t^\theta(X_t)\,\mathrm{d}t + \sigma_t\,\mathrm{d}W_t \qquad \blacktriangleright \text{ SDE}\\
+X_0 &amp; \sim p_\text{init} \qquad\qquad\qquad\qquad\;\; \blacktriangleright \text{ random initialization}\end{align}\]</span></p>
+<p><strong>Goal</strong>: <span class="math inline">\(X_1 \sim p_\text{data}\)</span>. A diffusion model with <span class="math inline">\(\sigma_t = 0\)</span> is a <strong>flow model</strong>.</p>
+</section>
+<section id="algorithm-2-sampling-from-a-diffusion-model" class="slide level2 smaller scrollable">
+<h2>Algorithm 2: Sampling from a Diffusion Model</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sampling from a Diffusion Model (Euler-Maruyama method)</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Input</strong>: Neural network <span class="math inline">\(u_t^\theta\)</span>, steps <span class="math inline">\(n\)</span>, diffusion coefficient <span class="math inline">\(\sigma_t\)</span></p>
+<ol type="1">
+<li>Set <span class="math inline">\(t = 0\)</span>, step size <span class="math inline">\(h = 1/n\)</span></li>
+<li>Draw <span class="math inline">\(X_0 \sim p_\text{init}\)</span></li>
+<li><strong>For</strong> <span class="math inline">\(i = 1, \ldots, n-1\)</span>:
+<ul>
+<li>Draw <span class="math inline">\(\epsilon \sim \mathcal{N}(0, I_d)\)</span></li>
+<li><span class="math inline">\(X_{t+h} = X_t + h\, u_t^\theta(X_t) + \sigma_t \sqrt{h}\, \epsilon\)</span></li>
+<li><span class="math inline">\(t \leftarrow t + h\)</span></li>
+</ul></li>
+<li><strong>Return</strong> <span class="math inline">\(X_1\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="the-training-problem" class="slide level2 smaller scrollable">
+<h2>The Training Problem</h2>
+<p>We need to train <span class="math inline">\(u_t^\theta\)</span> by minimizing a loss:</p>
+<p><span class="math display">\[\mathcal{L}(\theta) = \|u_t^\theta(x) - \underbrace{u_t^\text{target}(x)}_{\text{training target}}\|^2\]</span></p>
+<div class="fragment">
+<p><strong>Two-step approach</strong>:</p>
+<ol type="1">
+<li><strong>Find the training target</strong> <span class="math inline">\(u_t^\text{target}\)</span>: a vector field whose ODE/SDE converts <span class="math inline">\(p_\text{init}\)</span> into <span class="math inline">\(p_\text{data}\)</span></li>
+<li><strong>Train</strong> <span class="math inline">\(u_t^\theta\)</span> to approximate <span class="math inline">\(u_t^\text{target}\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/noised_mnist_reversed.png" style="width:85.0%"></p>
+<figcaption>Gradual interpolation from noise to data via a Gaussian conditional probability path. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</figcaption>
+</figure>
+</div>
+</div>
+</section></section>
+<section>
+<section id="part-iv-constructing-the-training-target" class="title-slide slide level1 center">
+<h1>Part IV: Constructing the Training Target</h1>
+<!-- ## Probability Paths: Noise to Data {.smaller}
+
+![Gradual interpolation from noise to data via a Gaussian conditional probability path. From @holderrieth2025introduction.](figures_FM/noised_mnist_reversed.png){width="85%" fig-align="center"}
+
+--- -->
+</section>
+<section id="conditional-probability-path" class="slide level2 smaller">
+<h2>Conditional Probability Path</h2>
+
+<img data-src="figures_FM/vdm.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Variational diffusion model: forward noising process. From <span class="citation" data-cites="kreis2022design">Kreis et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p><p>A <strong>conditional probability path</strong> <span class="math inline">\(p_t(x \mid z)\)</span> is a family of distributions over <span class="math inline">\(\mathbb{R}^d\)</span> such that:</p>
+<p><span class="math display">\[p_0(\cdot \mid z) = p_\text{init}, \qquad p_1(\cdot \mid z) = \delta_z \qquad \forall z \in \mathbb{R}^d\]</span></p>
+<p>It gradually converts a <strong>single data point</strong> <span class="math inline">\(z\)</span> into <span class="math inline">\(p_\text{init}\)</span>.</p>
+</section>
+<section id="marginal-probability-path" class="slide level2 smaller">
+<h2>Marginal Probability Path</h2>
+<p>Every conditional path <span class="math inline">\(p_t(x \mid z)\)</span> induces a <strong>marginal probability path</strong>:</p>
+<p><span class="math display">\[\begin{align}\text{Sample: } z &amp;\sim p_\text{data}, \; x \sim p_t(\cdot \mid z) \;\Rightarrow\; x \sim p_t\qquad\blacktriangleright\text{sampling from marginal path}\\
+p_t(x) &amp;= \int p_t(x \mid z)\, p_\text{data}(z)\, \mathrm{d}z \qquad\qquad\quad\;\; \blacktriangleright\text{density of marginal path}\end{align}\]</span></p>
+<div class="fragment">
+<p>The marginal path <strong>interpolates</strong> between noise and data:</p>
+<p><span class="math display">\[p_0 = p_\text{init} \qquad \text{and} \qquad p_1 = p_\text{data}\]</span></p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>We do <strong>not</strong> know the density <span class="math inline">\(p_t(x)\)</span> because the integral is <strong>intractable</strong>. But we can <strong>sample</strong> from it.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gaussian-conditional-probability-path" class="slide level2 smaller">
+<h2>Gaussian Conditional Probability Path</h2>
+
+<img data-src="figures_FM/conditional_vs_marginal.png" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">Conditional (top) vs marginal (bottom) probability path for Gaussian path with <span class="math inline">\(\alpha_t = t, \beta_t = 1-t\)</span>. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</p><p><span class="math display">\[p_t(\cdot \mid z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)\]</span></p>
+<p>where <span class="math inline">\(\alpha_t, \beta_t\)</span> are <strong>noise schedulers</strong>: monotonic with <span class="math inline">\(\alpha_0 = \beta_1 = 0\)</span>, <span class="math inline">\(\alpha_1 = \beta_0 = 1\)</span>.</p>
+<p>Sampling from the marginal path: <span class="math inline">\(\;z \sim p_\text{data},\; \epsilon \sim \mathcal{N}(0, I_d) \;\Rightarrow\; x = \alpha_t z + \beta_t \epsilon \sim p_t\)</span></p>
+</section></section>
+<section>
+<section id="part-v-conditional-and-marginal-vector-fields" class="title-slide slide level1 center">
+<h1>Part V: Conditional and Marginal Vector Fields</h1>
+
+</section>
+<section id="the-marginalization-trick" class="slide level2 smaller">
+<h2>The Marginalization Trick</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Theorem (Marginalization Trick) <span class="citation" data-cites="lipman2022flow">(<a href="#/references" role="doc-biblioref" onclick="">Lipman et al. 2022</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>For each <span class="math inline">\(z \in \mathbb{R}^d\)</span>, let <span class="math inline">\(u_t^\text{target}(\cdot \mid z)\)</span> be a <strong>conditional vector field</strong> such that:</p>
+<p><span class="math display">\[X_0 \sim p_\text{init}, \quad \frac{\mathrm{d}}{\mathrm{d}t} X_t = u_t^\text{target}(X_t \mid z) \;\Rightarrow\; X_t \sim p_t(\cdot \mid z)\]</span></p>
+<p>Then the <strong>marginal vector field</strong>:</p>
+<p><span class="math display">\[u_t^\text{target}(x) = \int u_t^\text{target}(x \mid z) \frac{p_t(x \mid z)\, p_\text{data}(z)}{p_t(x)}\, \mathrm{d}z\]</span></p>
+<p>follows the <strong>marginal</strong> probability path: <span class="math inline">\(X_0 \sim p_\text{init}, \; \frac{\mathrm{d}}{\mathrm{d}t} X_t = u_t^\text{target}(X_t) \;\Rightarrow\; X_t \sim p_t\)</span>.</p>
+<p>In particular, <span class="math inline">\(X_1 \sim p_\text{data}\)</span>. So, “<span class="math inline">\(u_t^\text{target}\)</span> converts <span class="math inline">\(p_\text{init}\)</span> into data <span class="math inline">\(p_\text{data}\)</span>” <span class="citation" data-cites="holderrieth2025introduction">(<a href="#/references" role="doc-biblioref" onclick="">Holderrieth and Erives 2025</a>)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="conditional-vector-field-for-gaussian-paths" class="slide level2 smaller">
+<h2>Conditional Vector Field for Gaussian Paths</h2>
+<p>For <span class="math inline">\(p_t(\cdot \mid z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)\)</span>, the <strong>conditional Gaussian vector field</strong> is:</p>
+<p><span class="math display">\[u_t^\text{target}(x \mid z) = \left(\dot{\alpha}_t - \frac{\dot{\beta}_t}{\beta_t}\alpha_t\right)z + \frac{\dot{\beta}_t}{\beta_t}x\]</span></p>
+<p>with conditional flow <span class="math inline">\(\psi_t^\text{target}(x \mid z) = \alpha_t z + \beta_t x\)</span> and <span class="math inline">\(\dot{\;}\)</span> denoting temporal derivative.</p>
+<!-- . . .
+
+**Proof sketch**: If $X_0 \sim \mathcal{N}(0, I_d)$, then $X_t = \psi_t^\text{target}(X_0 \mid z) = \alpha_t z + \beta_t X_0 \sim \mathcal{N}(\alpha_t z, \beta_t^2 I_d)$.
+
+Extract $u_t^\text{target}$ by differentiating the flow w.r.t. $t$ and substituting. -->
+</section>
+<section id="conditional-vs-marginal-ode" class="slide level2 smaller">
+<h2>Conditional vs Marginal ODE</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/conditional_ode.png" class="quarto-figure quarto-figure-center" style="width:65.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/marginal_ode.png" style="width:65.0%"></p>
+<figcaption><strong>Top</strong>: Conditional probability path – ODE with <span class="math inline">\(u_t^\text{target}(x \mid z)\)</span> transports <span class="math inline">\(p_\text{init}\)</span> to <span class="math inline">\(\delta_z\)</span>. <strong>Bottom</strong>: Marginal probability path – ODE with <span class="math inline">\(u_t^\text{target}(x)\)</span> transports <span class="math inline">\(p_\text{init}\)</span> to <span class="math inline">\(p_\text{data}\)</span>. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="marginal-probability-path-and-marginal-vector-field" class="slide level2 smaller">
+<h2>Marginal Probability Path and Marginal Vector Field</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 51%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Conditional</strong></th>
+<th><strong>Marginal</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Prob. path</strong></td>
+<td><span class="math inline">\(p_t(x \mid z)\)</span>: interpolates <span class="math inline">\(p_\text{init}\)</span> and <span class="math inline">\(\delta_z\)</span></td>
+<td><span class="math inline">\(p_t(x) = \int p_t(x\mid z) p_\text{data}(z)\,\mathrm{d}z\)</span>: interpolates <span class="math inline">\(p_\text{init}\)</span> and <span class="math inline">\(p_\text{data}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Vector field</strong></td>
+<td><span class="math inline">\(u_t^\text{target}(x \mid z)\)</span>: ODE follows cond. path</td>
+<td><span class="math inline">\(u_t^\text{target}(x) = \int u_t^\text{target}(x\mid z) \frac{p_t(x\mid z) p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z\)</span>: ODE follows marginal path</td>
+</tr>
+</tbody>
+</table>
+<!-- ## Summary: Conditional vs Marginal {.smaller}
+
+|  | **Conditional** | **Marginal** |
+|--|----------------|-------------|
+| **Prob. path** | $p_t(x \mid z)$: interpolates $p_\text{init}$ and $\delta_z$ | $p_t(x) = \int p_t(x\mid z) p_\text{data}(z)\,\mathrm{d}z$: interpolates $p_\text{init}$ and $p_\text{data}$ |
+| **Vector field** | $u_t^\text{target}(x \mid z)$: ODE follows cond. path | $u_t^\text{target}(x) = \int u_t^\text{target}(x\mid z) \frac{p_t(x\mid z) p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z$: ODE follows marginal path |
+| **Score** | $\nabla \log p_t(x \mid z)$ | $\nabla \log p_t(x) = \int \nabla \log p_t(x\mid z) \frac{p_t(x\mid z) p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z$ |
+| **Gaussian** | $\mathcal{N}(\alpha_t z, \beta_t^2 I_d)$ | Intractable density, but can sample |
+
+--- -->
+</section>
+<section id="the-continuity-equation" class="slide level2 smaller">
+<h2>The Continuity Equation</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Theorem (Continuity Equation)</strong></p>
+</div>
+<div class="callout-content">
+<p>For a flow model with vector field <span class="math inline">\(u_t^\text{target}\)</span> and <span class="math inline">\(X_0 \sim p_\text{init}\)</span>:</p>
+<p><span class="math display">\[X_t \sim p_t \;\;\forall t \quad\Longleftrightarrow\quad \partial_t p_t(x) = -\mathrm{div}(p_t\, u_t^\text{target})(x)\]</span></p>
+<p>where <span class="math inline">\(\mathrm{div}(v_t)(x) = \sum_{i=1}^d \frac{\partial}{\partial x_i} v_t(x)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Interpretation</strong>: The change of probability mass at <span class="math inline">\(x\)</span> equals the <strong>net inflow</strong> of mass carried by the vector field. Probability mass is conserved – like fluid flow!</p>
+</div>
+</section>
+<section id="the-fokker-planck-equation" class="slide level2 smaller">
+<h2>The Fokker-Planck Equation</h2>
+<p>The continuity equation generalizes to SDEs via the <strong>Fokker-Planck equation</strong>:</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Theorem (Fokker-Planck Equation)</strong></p>
+</div>
+<div class="callout-content">
+<p>For the SDE <span class="math inline">\(\;\mathrm{d}X_t = u_t(X_t)\,\mathrm{d}t + \sigma_t\,\mathrm{d}W_t\)</span> with <span class="math inline">\(X_0 \sim p_\text{init}\)</span>:</p>
+<p><span class="math display">\[X_t \sim p_t \;\;\forall t \quad\Longleftrightarrow\quad \partial_t p_t(x) = -\mathrm{div}(p_t\, u_t)(x) + \frac{\sigma_t^2}{2}\Delta p_t(x)\]</span></p>
+<p>where <span class="math inline">\(\Delta p_t(x) = \sum_{i=1}^d \frac{\partial^2}{\partial x_i^2} p_t(x)\)</span> is the <strong>Laplacian</strong>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>For <span class="math inline">\(\sigma_t = 0\)</span>: recovers the <strong>continuity equation</strong></li>
+<li>The Laplacian term <span class="math inline">\(\Delta p_t\)</span> is the same as in the <strong>heat equation</strong> – diffusion disperses probability mass</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="part-vi-conditional-and-marginal-score-functions" class="title-slide slide level1 center">
+<h1>Part VI: Conditional and Marginal Score Functions</h1>
+
+</section>
+<section id="sde-extension-trick" class="slide level2 smaller">
+<h2>SDE Extension Trick</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/conditional_sde.png" class="quarto-figure quarto-figure-center" style="width:65.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/marginal_sde.png" style="width:65.0%"></p>
+<figcaption><strong>Top</strong>: Conditional SDE path. <strong>Bottom</strong>: Marginal SDE path. The SDE also transports <span class="math inline">\(p_\text{init}\)</span> to <span class="math inline">\(p_\text{data}\)</span>. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="sde-extension" class="slide level2 smaller">
+<h2>SDE Extension</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Theorem (SDE Extension Trick) <span class="citation" data-cites="albergo2023stochastic">(<a href="#/references" role="doc-biblioref" onclick="">Albergo, Boffi, and Vanden-Eijnden 2023</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Given <span class="math inline">\(u_t^\text{target}(x)\)</span> and <span class="math inline">\(\nabla \log p_t(x)\)</span>, for any diffusion coefficient <span class="math inline">\(\sigma_t \geq 0\)</span>:</p>
+<p><span class="math display">\[X_0 \sim p_\text{init}, \quad \mathrm{d}X_t = \left[u_t^\text{target}(X_t) + \frac{\sigma_t^2}{2}\nabla \log p_t(X_t)\right]\mathrm{d}t + \sigma_t\,\mathrm{d}W_t\]</span></p>
+<p><span class="math display">\[\Rightarrow X_t \sim p_t \quad (0 \leq t \leq 1)\]</span></p>
+<p>In particular, <span class="math inline">\(X_1 \sim p_\text{data}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>The same identity holds if we replace <span class="math inline">\(p_t(x)\)</span> and <span class="math inline">\(u_t^\text{target}(x)\)</span> with <span class="math inline">\(p_t(x \mid z)\)</span> and <span class="math inline">\(u_t^\text{target}(x \mid z)\)</span>.</p>
+</div>
+</section>
+<section id="conditional-path-vector-field-and-score" class="slide level2 smaller">
+<h2>Conditional Path, Vector Field, and Score</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Notation</strong></th>
+<th><strong>Key Property</strong></th>
+<th><strong>Gaussian Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Prob. Path</strong></td>
+<td><span class="math inline">\(p_t(x \mid z)\)</span></td>
+<td>Interpolates <span class="math inline">\(p_\text{init}\)</span> and <span class="math inline">\(\delta_z\)</span></td>
+<td><span class="math inline">\(\mathcal{N}(\alpha_t z, \beta_t^2 I_d)\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Vector Field</strong></td>
+<td><span class="math inline">\(u_t^\text{target}(x \mid z)\)</span></td>
+<td>ODE follows cond. path</td>
+<td><span class="math inline">\((\dot{\alpha}_t - \frac{\dot{\beta}_t}{\beta_t}\alpha_t)z + \frac{\dot{\beta}_t}{\beta_t}x\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Score</strong></td>
+<td><span class="math inline">\(\nabla \log p_t(x \mid z)\)</span></td>
+<td>Gradient of log-likelihood</td>
+<td><span class="math inline">\(-\frac{x - \alpha_t z}{\beta_t^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>for noise schedules <span class="math inline">\(\alpha_t,\beta_t\in \mathbb{R}\)</span> continuously differentiable, monotonic, and <span class="math inline">\(\alpha_0=\beta_0=0\)</span> and <span class="math inline">\(\alpha_1=\beta_1=1\)</span></p>
+</section>
+<section id="marginal-path-vector-field-and-score" class="slide level2 smaller">
+<h2>Marginal Path, Vector Field, and Score</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Notation</strong></th>
+<th><strong>Key Property</strong></th>
+<th><strong>Formula</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Prob. Path</strong></td>
+<td><span class="math inline">\(p_t(x)\)</span></td>
+<td>Interpolates <span class="math inline">\(p_\text{init}\)</span> and <span class="math inline">\(p_\text{data}\)</span></td>
+<td><span class="math inline">\(\int p_t(x \mid z) p_\text{data}(z)\,\mathrm{d}z\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Vector Field</strong></td>
+<td><span class="math inline">\(u_t^\text{target}(x)\)</span></td>
+<td>ODE follows marginal path</td>
+<td><span class="math inline">\(\int u_t^\text{target}(x\mid z) \frac{p_t(x\mid z) p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Score</strong></td>
+<td><span class="math inline">\(\nabla \log p_t(x)\)</span></td>
+<td>Can extend ODE to SDE</td>
+<td><span class="math inline">\(\int \nabla \log p_t(x\mid z) \frac{p_t(x\mid z) p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>We can learn the marginal vector field by approximating the conditional Vector Field for many different data points <span class="math inline">\(z\)</span>.</p>
+</div>
+</section>
+<section id="score-functions" class="slide level2 smaller">
+<h2>Score Functions</h2>
+<p>The <strong>marginal score function</strong> <span class="math inline">\(\nabla \log p_t(x)\)</span> can be expressed via <strong>conditional scores</strong>:</p>
+<p><span class="math display">\[\nabla \log p_t(x) = \int \nabla \log p_t(x \mid z) \frac{p_t(x \mid z)\, p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z\]</span></p>
+<div class="fragment">
+<p>For the <strong>Gaussian path</strong> <span class="math inline">\(p_t(x \mid z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)\)</span>:</p>
+<p><span class="math display">\[\nabla \log p_t(x \mid z) = -\frac{x - \alpha_t z}{\beta_t^2}\]</span></p>
+<p>The conditional score is a <strong>linear function</strong> of <span class="math inline">\(x\)</span> – a unique feature of Gaussians.</p>
+</div>
+</section>
+<section id="score-based-sampling-langevin-dynamics" class="slide level2 smaller">
+<h2>Score-Based Sampling: Langevin Dynamics</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Langevin dynamics</strong> is a special case where <span class="math inline">\(p_t = p\)</span> is static and <span class="math inline">\(u_t^\text{target} = 0\)</span>:</p>
+<p><span class="math display">\[\mathrm{d}X_t = \frac{\sigma_t^2}{2}\nabla \log p(X_t)\,\mathrm{d}t + \sigma_t\,\mathrm{d}W_t\]</span></p>
+<p>The distribution <span class="math inline">\(p\)</span> is a <strong>stationary distribution</strong>: <span class="math inline">\(X_0 \sim p \;\Rightarrow\; X_t \sim p\;\;(t \geq 0)\)</span>.</p>
+<p>Under mild conditions, <span class="math inline">\(X_t \to p\)</span> regardless of initialization.</p>
+<p>This is the basis of <strong>molecular dynamics</strong> simulations and MCMC methods.</p>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/langevin.gif" style="width:100.0%"></p>
+<figcaption>Langevin dynamics converging to a Gaussian mixture. From <span class="citation" data-cites="song2019generative">Song and Ermon (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="langevin-dynamics-convergence" class="slide level2 smaller">
+<h2>Langevin Dynamics: Convergence</h2>
+
+<img data-src="figures_FM/langevin.png" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">Particles evolving under Langevin dynamics with <span class="math inline">\(p(x)\)</span> taken to be a Gaussian mixture with 5 modes. The distribution of samples converges to the equilibrium distribution <span class="math inline">\(p\)</span> (blue background). From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</p></section>
+<section id="score-estimation-pitfalls" class="slide level2 smaller">
+<h2>Score Estimation: Pitfalls</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Estimating the score <span class="math inline">\(\nabla \log p(x)\)</span> in <strong>low-density regions</strong> is inaccurate because few data points are available there.</p>
+<p><strong>Solution</strong>: Perturb data with <strong>multiple noise levels</strong> to fill in low-density regions <span class="citation" data-cites="song2019generative">(<a href="#/references" role="doc-biblioref" onclick="">Song and Ermon 2019</a>)</span>.</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/pitfalls.jpg" style="width:100.0%"></p>
+<figcaption>Score estimation pitfalls in low-density regions. From <span class="citation" data-cites="song2019generative">Song and Ermon (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="annealed-langevin-dynamics" class="slide level2 smaller">
+<h2>Annealed Langevin Dynamics</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/ald.gif" style="width:100.0%"></p>
+<figcaption>Annealed Langevin dynamics: decreasing noise levels improve sampling. From <span class="citation" data-cites="song2019generative">Song and Ermon (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Train score networks at <strong>multiple noise levels</strong> and use <strong>annealed Langevin dynamics</strong>: start with high noise, gradually decrease.</p>
+<p>This gives accurate score estimates throughout the space and enables high-quality sampling.</p>
+</div></div>
+</section>
+<section id="forward-diffusion-denoising" class="slide level2 smaller">
+<h2>Forward Diffusion &amp; Denoising</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Perturbing</strong> data with increasing noise (VP schedule):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/perturb_vp.gif" style="width:100.0%"></p>
+<figcaption>Forward diffusion (variance preserving). From <span class="citation" data-cites="song2020score">Song et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Denoising</strong> – reversing the diffusion process:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/denoise_vp.gif" style="width:100.0%"></p>
+<figcaption>Reverse denoising process. From <span class="citation" data-cites="song2020score">Song et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>.</figcaption>
+</figure>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="part-vii-training-flow-matching" class="title-slide slide level1 center">
+<h1>Part VII: Training Flow Matching</h1>
+
+</section>
+<section id="flow-matching-loss" class="slide level2 smaller">
+<h2>Flow Matching Loss</h2>
+<p>We want to find <span class="math inline">\(\theta\)</span> so that <span class="math inline">\(u_t^\theta \approx u_t^\text{target}\)</span>.</p>
+<p>The <strong>flow matching loss</strong> (marginal):</p>
+<p><span class="math display">\[\mathcal{L}_\text{FM}(\theta) = \mathbb{E}_{t \sim \text{Unif}, x \sim p_t}\left[\|u_t^\theta(x) - u_t^\text{target}(x)\|^2\right]\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[= \mathbb{E}_{t \sim \text{Unif}, z \sim p_\text{data}, x \sim p_t(\cdot \mid z)}\left[\|u_t^\theta(x) - u_t^\text{target}(x)\|^2\right]\]</span></p>
+<p><strong>Problem</strong>: We <strong>cannot compute</strong> <span class="math inline">\(u_t^\text{target}(x)\)</span> because the integral in its definition is <strong>intractable</strong>.</p>
+</div>
+</section>
+<section id="conditional-flow-matching-loss" class="slide level2 smaller">
+<h2>Conditional Flow Matching Loss</h2>
+<p>The <strong>conditional</strong> vector field <span class="math inline">\(u_t^\text{target}(x \mid z)\)</span> <strong>is</strong> tractable! Define the <strong>conditional flow matching (CFM) loss</strong>:</p>
+<p><span class="math display">\[\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t \sim \text{Unif}, z \sim p_\text{data}, x \sim p_t(\cdot \mid z)}\left[\|u_t^\theta(x) - u_t^\text{target}(x \mid z)\|^2\right]\]</span></p>
+<p><strong>Note:</strong> <span class="math inline">\(u_t^\text{target}(x \mid z)\)</span> is used instead of <span class="math inline">\(u_t^\text{target}(x)\)</span> . . .</p>
+<blockquote>
+<p>What sense does it make to regress against the <strong>conditional</strong> vector field if it’s the <strong>marginal</strong> vector field we care about?</p>
+<p>As it turns out, by <em>explicitly</em> regressing against the tractable, conditional vector field, we are <em>implicitly</em> regressing against the intractable, marginal vector field <span class="citation" data-cites="holderrieth2025introduction">(<a href="#/references" role="doc-biblioref" onclick="">Holderrieth and Erives 2025</a>)</span>.</p>
+</blockquote>
+</section>
+<section id="key-theorem-cfm-fm-up-to-constant" class="slide level2 smaller">
+<h2>Key Theorem: CFM = FM (up to constant)</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Theorem <span class="citation" data-cites="lipman2022flow">(<a href="#/references" role="doc-biblioref" onclick="">Lipman et al. 2022</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\mathcal{L}_\text{FM}(\theta) = \mathcal{L}_\text{CFM}(\theta) + C\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is independent of <span class="math inline">\(\theta\)</span>. Therefore:</p>
+<p><span class="math display">\[\nabla_\theta \mathcal{L}_\text{FM}(\theta) = \nabla_\theta \mathcal{L}_\text{CFM}(\theta)\]</span></p>
+<p>Minimizing <span class="math inline">\(\mathcal{L}_\text{CFM}\)</span> with SGD is <strong>equivalent</strong> to minimizing <span class="math inline">\(\mathcal{L}_\text{FM}\)</span>.</p>
+</div>
+</div>
+</div>
+<p><strong>Proof idea</strong>: Expand <span class="math inline">\(\|u_t^\theta - u_t^\text{target}\|^2\)</span>, use linearity of expectation, and apply the marginalization trick to swap conditional ↔︎ marginal in the cross-term.</p>
+</section>
+<section id="flow-matching-for-gaussian-paths" class="slide level2 smaller">
+<h2>Flow Matching for Gaussian Paths</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Theorem (Gaussian CFM Loss)</strong></p>
+</div>
+<div class="callout-content">
+<p>For Gaussian <span class="math inline">\(p_t(\cdot \mid z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)\)</span>, with <span class="math inline">\(x_t = \alpha_t z + \beta_t \epsilon\)</span> for <span class="math inline">\(\epsilon \sim \mathcal{N}(0, I_d)\)</span>:</p>
+<p><span class="math display">\[\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t, z \sim p_\text{data}, \epsilon \sim \mathcal{N}(0, I_d)}\left[\|u_t^\theta(\alpha_t z + \beta_t \epsilon) - (\dot{\alpha}_t z + \dot{\beta}_t \epsilon)\|^2\right]\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>CondOT path</strong> (<span class="math inline">\(\alpha_t = t, \beta_t = 1-t\)</span>): <span class="math inline">\(\quad\dot{\alpha}_t = 1, \dot{\beta}_t = -1\)</span></p>
+<p><span class="math display">\[\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t, z, \epsilon}\left[\|u_t^\theta(tz + (1-t)\epsilon) - (z - \epsilon)\|^2\right]\]</span></p>
+<p>This is what <em>Stable Diffusion 3</em> and <em>Meta Movie Gen Video</em> use!</p>
+</div>
+</section>
+<section id="visualizing-flow-matching-training" class="slide level2 smaller">
+<h2>Visualizing Flow Matching Training</h2>
+
+<img data-src="figures_FM/conditional_marginal_path.png" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">Training a flow matching model with Gaussian CondOT path. <strong>Top</strong>: ground truth marginal probability path <span class="math inline">\(p_t\)</span>. <strong>Bottom</strong>: samples from trained flow matching model. After training, the distributions match. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</p></section>
+<section id="algorithm-3-flow-matching-training" class="slide level2 smaller scrollable">
+<h2>Algorithm 3: Flow Matching Training</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Flow Matching Training (Gaussian CondOT path <span class="math inline">\(p_t(x\mid z) = \mathcal{N}(tz, (1-t)^2 I_d)\)</span>)</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Input</strong>: Dataset <span class="math inline">\(z \sim p_\text{data}\)</span>, neural network <span class="math inline">\(u_t^\theta\)</span></p>
+<p><strong>For</strong> each mini-batch:</p>
+<ol type="1">
+<li>Sample data <span class="math inline">\(z\)</span> from dataset</li>
+<li>Sample <span class="math inline">\(t \sim \text{Unif}_{[0,1]}\)</span></li>
+<li>Sample <span class="math inline">\(\epsilon \sim \mathcal{N}(0, I_d)\)</span></li>
+<li>Set <span class="math inline">\(x = tz + (1-t)\epsilon\)</span></li>
+<li>Compute loss: <span class="math inline">\(\mathcal{L}(\theta) = \|u_t^\theta(x) - (z - \epsilon)\|^2\)</span>
+<ul>
+<li>General: <span class="math inline">\(\mathcal{L}(\theta) = \|u_t^\theta(x) - u_t^\text{target}(x \mid z)\|^2\)</span></li>
+</ul></li>
+<li>Update <span class="math inline">\(\theta\)</span> via gradient descent on <span class="math inline">\(\mathcal{L}(\theta)\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="condot-path-linear-interpolation" class="slide level2 smaller">
+<h2>CondOT Path: Linear Interpolation</h2>
+<p>For the <strong>straight-line schedule</strong> <span class="math inline">\(\alpha_t = t\)</span>, <span class="math inline">\(\beta_t = 1-t\)</span>:</p>
+<p><span class="math display">\[x_t = tz + (1-t)\epsilon \qquad \blacktriangleright \text{ linear interpolation of noise and data}\]</span></p>
+<p><span class="math display">\[u_t^\text{target}(x \mid z) = z - \epsilon \qquad \blacktriangleright \text{ velocity = difference of data and noise}\]</span></p>
+<div class="fragment">
+<p><strong>Intuition</strong>: The conditional velocity field points from noise <span class="math inline">\(\epsilon\)</span> to data <span class="math inline">\(z\)</span> at constant speed.</p>
+<p>This is the <strong>rectified flow</strong> <span class="citation" data-cites="liu2022flow">(<a href="#/references" role="doc-biblioref" onclick="">Liu, Gong, and Liu 2022</a>)</span> / <strong>CondOT</strong> formulation.</p>
+</div>
+</section>
+<section id="the-big-picture-flow-matching" class="slide level2 smaller">
+<h2>The Big Picture: Flow Matching</h2>
+<p><span class="math display">\[\underbrace{z \sim p_\text{data}}_{\text{sample data}}, \quad \underbrace{\epsilon \sim \mathcal{N}(0,I_d)}_{\text{sample noise}}, \quad \underbrace{t \sim \text{Unif}_{[0,1]}}_{\text{sample time}}\]</span></p>
+<p><span class="math display">\[\underbrace{x_t = \alpha_t z + \beta_t \epsilon}_{\text{noised sample}}, \quad \underbrace{u_t^\text{target}(x_t \mid z) = \dot{\alpha}_t z + \dot{\beta}_t \epsilon}_{\text{target velocity}}\]</span></p>
+<p><span class="math display">\[\underbrace{\mathcal{L}_\text{CFM}(\theta) = \|u_t^\theta(x_t) - u_t^\text{target}(x_t \mid z)\|^2}_{\text{regression loss (MSE)}}\]</span></p>
+<div class="fragment">
+<p><strong>After training</strong>: simulate <span class="math inline">\(\mathrm{d}X_t = u_t^\theta(X_t)\,\mathrm{d}t\)</span> from <span class="math inline">\(X_0 \sim p_\text{init}\)</span> to get <span class="math inline">\(X_1 \sim p_\text{data}\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-viii-training-score-matching" class="title-slide slide level1 center">
+<h1>Part VIII: Training Score Matching</h1>
+
+</section>
+<section id="extending-to-sdes" class="slide level2 smaller">
+<h2>Extending to SDEs</h2>
+<p>We can extend the target ODE to an SDE with the <strong>same marginal distribution</strong>:</p>
+<p><span class="math display">\[\mathrm{d}X_t = \left[u_t^\text{target}(X_t) + \frac{\sigma_t^2}{2}\nabla \log p_t(X_t)\right]\mathrm{d}t + \sigma_t\,\mathrm{d}W_t\]</span> <span class="math display">\[X_0 \sim p_\text{init} \quad\Rightarrow\quad X_t \sim p_t \;\;(0 \leq t \leq 1)\]</span></p>
+<div class="fragment">
+<p>The <strong>marginal score</strong> <span class="math inline">\(\nabla \log p_t(x)\)</span> is also intractable, like <span class="math inline">\(u_t^\text{target}\)</span>:</p>
+<p><span class="math display">\[\nabla \log p_t(x) = \int \nabla \log p_t(x \mid z)\,\frac{p_t(x\mid z)\,p_\text{data}(z)}{p_t(x)}\,\mathrm{d}z\]</span></p>
+</div>
+</section>
+<section id="score-matching-loss" class="slide level2 smaller">
+<h2>Score Matching Loss</h2>
+<p>Introduce a <strong>score network</strong> <span class="math inline">\(s_t^\theta: \mathbb{R}^d \times [0,1] \to \mathbb{R}^d\)</span> to approximate <span class="math inline">\(\nabla \log p_t\)</span>.</p>
+<p><strong>Score matching</strong> vs <strong>conditional score matching</strong>:</p>
+<p><span class="math display">\[\mathcal{L}_\text{SM}(\theta) = \mathbb{E}_{t, z, x \sim p_t(\cdot \mid z)}\left[\|s_t^\theta(x) - \nabla \log p_t(x)\|^2\right] \qquad \blacktriangleright \text{ intractable}\]</span></p>
+<p><span class="math display">\[\mathcal{L}_\text{CSM}(\theta) = \mathbb{E}_{t, z, x \sim p_t(\cdot \mid z)}\left[\|s_t^\theta(x) - \nabla \log p_t(x \mid z)\|^2\right] \quad \blacktriangleright \text{ tractable!}\]</span></p>
+<div class="fragment">
+<p>As before: <span class="math inline">\(\mathcal{L}_\text{SM}(\theta) = \mathcal{L}_\text{CSM}(\theta) + C\)</span>, so they have the <strong>same gradient</strong>.</p>
+</div>
+</section>
+<section id="score-matching-for-gaussian-paths" class="slide level2 smaller">
+<h2>Score Matching for Gaussian Paths</h2>
+<p>For <span class="math inline">\(p_t(x \mid z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)\)</span>:</p>
+<p><span class="math display">\[\nabla \log p_t(x \mid z) = -\frac{x - \alpha_t z}{\beta_t^2} = -\frac{\epsilon}{\beta_t}\]</span></p>
+<p>The conditional score matching loss becomes:</p>
+<p><span class="math display">\[\mathcal{L}_\text{CSM}(\theta) = \mathbb{E}_{t, z, \epsilon}\left[\left\|s_t^\theta(\alpha_t z + \beta_t \epsilon) + \frac{\epsilon}{\beta_t}\right\|^2\right]\]</span></p>
+<div class="fragment">
+<p>The network learns to <strong>predict the noise</strong> used to corrupt data – hence <strong>denoising</strong> score matching <span class="citation" data-cites="ho2020denoising">(<a href="#/references" role="doc-biblioref" onclick="">Ho, Jain, and Abbeel 2020</a>)</span>.</p>
+</div>
+</section>
+<section id="denoising-diffusion-models-ddpm" class="slide level2 smaller">
+<h2>Denoising Diffusion Models (DDPM)</h2>
+<p>The loss <span class="math inline">\(\|s_t^\theta(x_t) + \epsilon/\beta_t\|^2\)</span> is <strong>numerically unstable</strong> for <span class="math inline">\(\beta_t \approx 0\)</span> (low noise).</p>
+<p><strong>Solution</strong> <span class="citation" data-cites="ho2020denoising">(<a href="#/references" role="doc-biblioref" onclick="">Ho, Jain, and Abbeel 2020</a>)</span>: Reparameterize <span class="math inline">\(s_t^\theta\)</span> into a <strong>noise predictor</strong> <span class="math inline">\(\epsilon_t^\theta\)</span>:</p>
+<p><span class="math display">\[-\beta_t\, s_t^\theta(x) = \epsilon_t^\theta(x)\]</span></p>
+<p><span class="math display">\[\Rightarrow \quad \mathcal{L}_\text{DDPM}(\theta) = \mathbb{E}_{t, z, \epsilon}\left[\|\epsilon_t^\theta(\alpha_t z + \beta_t \epsilon) - \epsilon\|^2\right]\]</span></p>
+<div class="fragment">
+<p><strong>What the network does</strong>: Predict the noise <span class="math inline">\(\epsilon\)</span> that was used to corrupt data point <span class="math inline">\(z\)</span>.</p>
+<p>This is the formulation used by the original <strong>Denoising Diffusion Probabilistic Models</strong> (DDPM) <span class="citation" data-cites="ho2020denoising">(<a href="#/references" role="doc-biblioref" onclick="">Ho, Jain, and Abbeel 2020</a>)</span>.</p>
+</div>
+</section>
+<section id="algorithm-4-score-matching-training" class="slide level2 smaller scrollable">
+<h2>Algorithm 4: Score Matching Training</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Score Matching Training (Gaussian probability path)</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Input</strong>: Dataset <span class="math inline">\(z \sim p_\text{data}\)</span>, score network <span class="math inline">\(s_t^\theta\)</span> (or noise predictor <span class="math inline">\(\epsilon_t^\theta\)</span>)</p>
+<p><strong>For</strong> each mini-batch:</p>
+<ol type="1">
+<li>Sample data <span class="math inline">\(z\)</span> from dataset</li>
+<li>Sample <span class="math inline">\(t \sim \text{Unif}_{[0,1]}\)</span></li>
+<li>Sample <span class="math inline">\(\epsilon \sim \mathcal{N}(0, I_d)\)</span></li>
+<li>Set <span class="math inline">\(x_t = \alpha_t z + \beta_t \epsilon\)</span></li>
+<li>Compute loss:
+<ul>
+<li><span class="math inline">\(\mathcal{L}(\theta) = \|s_t^\theta(x_t) + \epsilon/\beta_t\|^2\)</span></li>
+<li>Alternative: <span class="math inline">\(\mathcal{L}(\theta) = \|\epsilon_t^\theta(x_t) - \epsilon\|^2\)</span> (noise prediction)</li>
+</ul></li>
+<li>Update <span class="math inline">\(\theta\)</span> via gradient descent</li>
+</ol>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="part-ix-unifying-flow-and-score-matching" class="title-slide slide level1 center">
+<h1>Part IX: Unifying Flow and Score Matching</h1>
+
+</section>
+<section id="deterministic-vs-stochastic-sampling" class="slide level2 smaller">
+<h2>Deterministic vs Stochastic Sampling</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Flow Model (ODE)</strong></th>
+<th><strong>Diffusion Model (SDE)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Dynamics</strong></td>
+<td><span class="math inline">\(\mathrm{d}X_t = u_t^\theta(X_t)\,\mathrm{d}t\)</span></td>
+<td><span class="math inline">\(\mathrm{d}X_t = [u_t^\theta + \frac{\sigma_t^2}{2}s_t^\theta]\,\mathrm{d}t + \sigma_t\,\mathrm{d}W_t\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Randomness</strong></td>
+<td>Only in <span class="math inline">\(X_0 \sim p_\text{init}\)</span></td>
+<td>In <span class="math inline">\(X_0\)</span> and Brownian motion</td>
+</tr>
+<tr class="odd">
+<td><strong>Training</strong></td>
+<td>Flow matching</td>
+<td>Score matching (or flow matching)</td>
+</tr>
+<tr class="even">
+<td><strong>Sampling</strong></td>
+<td>Deterministic</td>
+<td>Stochastic</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>In theory, all <span class="math inline">\(\sigma_t\)</span> give <span class="math inline">\(X_1 \sim p_\text{data}\)</span>. In practice, the optimal <span class="math inline">\(\sigma_t\)</span> depends on training/simulation errors and is found empirically <span class="citation" data-cites="karras2022elucidating ma2024sit">(<a href="#/references" role="doc-biblioref" onclick="">Karras et al. 2022</a>; <a href="#/references" role="doc-biblioref" onclick="">Ma et al. 2024</a>)</span>.</p>
+<p><strong>Good news</strong>: ODE sampling often gives the best results. SDE sampling is an option, not a must!</p>
+</div>
+</section>
+<section id="reparameterization-velocity-score" class="slide level2 smaller">
+<h2>Reparameterization: Velocity ↔︎ Score</h2>
+<p>For <strong>Gaussian probability paths</strong>, the conditional vector field and score are <strong>linear functions</strong> with different coefficients:</p>
+<p><span class="math display">\[u_t^\text{target}(x \mid z) = \left(\dot{\alpha}_t - \frac{\dot{\beta}_t}{\beta_t}\alpha_t\right)z + \frac{\dot{\beta}_t}{\beta_t}x\]</span></p>
+<p><span class="math display">\[\nabla \log p_t(x \mid z) = -\frac{x - \alpha_t z}{\beta_t^2}\]</span></p>
+<div class="fragment">
+<p><strong>Conversion formula</strong> (extends to marginals):</p>
+<p><span class="math display">\[u_t^\theta(x) = \left(\beta_t^2\frac{\dot{\alpha}_t}{\alpha_t} - \dot{\beta}_t\beta_t\right)s_t^\theta(x) + \frac{\dot{\alpha}_t}{\alpha_t}x\]</span></p>
+<p><span class="math display">\[s_t^\theta(x) = \frac{\alpha_t\, u_t^\theta(x) - \dot{\alpha}_t\, x}{\beta_t^2 \dot{\alpha}_t - \alpha_t \dot{\beta}_t \beta_t}\]</span></p>
+</div>
+</section>
+<section id="unified-training-no-need-for-both" class="slide level2 smaller">
+<h2>Unified Training: No Need for Both</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Key Result</strong></p>
+</div>
+<div class="callout-content">
+<p>For Gaussian probability paths, there is <strong>no need to separately train</strong> both <span class="math inline">\(u_t^\theta\)</span> and <span class="math inline">\(s_t^\theta\)</span>. Knowledge of one is sufficient to compute the other via the conversion formula.</p>
+<p>We can choose whether to use <strong>flow matching</strong> or <strong>score matching</strong> to train – the result is equivalent.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Stochastic sampling</strong> from a trained score network <span class="math inline">\(s_t^\theta\)</span>:</p>
+<p><span class="math display">\[\mathrm{d}X_t = \left[\left(\beta_t^2\frac{\dot{\alpha}_t}{\alpha_t} - \dot{\beta}_t\beta_t + \frac{\sigma_t^2}{2}\right)s_t^\theta(X_t) + \frac{\dot{\alpha}_t}{\alpha_t}X_t\right]\mathrm{d}t + \sigma_t\,\mathrm{d}W_t\]</span></p>
+</div>
+</section>
+<section id="algorithm-6-unified-sampling" class="slide level2 smaller scrollable">
+<h2>Algorithm 6: Unified Sampling</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sampling from a Trained Model (Gaussian path)</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Input</strong>: Trained network (<span class="math inline">\(u_t^\theta\)</span> or <span class="math inline">\(s_t^\theta\)</span>), steps <span class="math inline">\(n\)</span>, diffusion coefficient <span class="math inline">\(\sigma_t\)</span></p>
+<ol type="1">
+<li>Draw <span class="math inline">\(X_0 \sim p_\text{init} = \mathcal{N}(0, I_d)\)</span></li>
+<li>Convert between <span class="math inline">\(u_t^\theta \leftrightarrow s_t^\theta\)</span> if needed via conversion formula</li>
+<li>Set <span class="math inline">\(h = 1/n\)</span></li>
+<li><strong>For</strong> <span class="math inline">\(t = 0, h, 2h, \ldots, 1-h\)</span>:
+<ul>
+<li>Draw <span class="math inline">\(\epsilon \sim \mathcal{N}(0, I_d)\)</span></li>
+<li><span class="math inline">\(X_{t+h} = X_t + h\left[u_t^\theta(X_t) + \frac{\sigma_t^2}{2}s_t^\theta(X_t)\right] + \sigma_t\sqrt{h}\,\epsilon\)</span></li>
+</ul></li>
+<li><strong>Return</strong> <span class="math inline">\(X_1\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(\sigma_t = 0\)</span>: <strong>deterministic</strong> (flow / probability flow ODE)</li>
+<li><span class="math inline">\(\sigma_t &gt; 0\)</span>: <strong>stochastic</strong> (diffusion / SDE sampling)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="score-field-comparison" class="slide level2 smaller">
+<h2>Score Field Comparison</h2>
+
+<img data-src="figures_FM/score_field_comparison.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p class="caption"><strong>Top</strong>: Score field <span class="math inline">\(s_t^\theta(x)\)</span> learned via score matching. <strong>Bottom</strong>: Score field derived from <span class="math inline">\(u_t^\theta\)</span> via conversion formula. Both agree, confirming equivalence. From <span class="citation" data-cites="holderrieth2025introduction">Holderrieth and Erives (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>.</p></section></section>
+<section>
+<section id="part-x-architecture-practical-considerations" class="title-slide slide level1 center">
+<h1>Part X: Architecture &amp; Practical Considerations</h1>
+
+</section>
+<section id="neural-network-architecture" class="slide level2 smaller">
+<h2>Neural Network Architecture</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>The neural network <span class="math inline">\(u_t^\theta(x \mid y)\)</span> must accept:</p>
+<ul>
+<li><span class="math inline">\(x \in \mathbb{R}^d\)</span> (noised input)</li>
+<li><span class="math inline">\(t \in [0,1]\)</span> (time)</li>
+<li><span class="math inline">\(y \in \mathcal{Y}\)</span> (conditioning)</li>
+</ul>
+<p>Common architectures:</p>
+<ul>
+<li><strong>U-Net</strong> for images (convolutional)</li>
+<li><strong>Diffusion Transformer (DiT)</strong> – attention-based</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures_FM/architecture.png" style="width:100.0%"></p>
+<figcaption>Diffusion model architecture overview. From <span class="citation" data-cites="kreis2022design">Kreis et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="summary-1" class="slide level2 smaller scrollable">
+<h2>Summary</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>What We Learned</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><strong>Generative modeling = sampling</strong>: transform <span class="math inline">\(p_\text{init} \to p_\text{data}\)</span> via ODE/SDE</li>
+<li><strong>Flow models</strong>: deterministic ODE <span class="math inline">\(\mathrm{d}X_t = u_t^\theta(X_t)\,\mathrm{d}t\)</span></li>
+<li><strong>Diffusion models</strong>: stochastic SDE adding <span class="math inline">\(\sigma_t\,\mathrm{d}W_t\)</span></li>
+<li><strong>Probability paths</strong>: conditional <span class="math inline">\(p_t(x \mid z)\)</span> ↔︎ marginal <span class="math inline">\(p_t(x)\)</span> via marginalization</li>
+<li><strong>Training</strong>: Regress against <strong>conditional</strong> vector field/score (tractable) to implicitly learn the <strong>marginal</strong> (intractable)</li>
+<li><strong>Flow matching</strong> ↔︎ <strong>Score matching</strong>: equivalent for Gaussian paths</li>
+<li><strong>Sampling</strong>: Choose <span class="math inline">\(\sigma_t = 0\)</span> (ODE) or <span class="math inline">\(\sigma_t &gt; 0\)</span> (SDE)</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="fragment">
+<blockquote>
+<p><em>“Creating noise from data is easy; creating data from noise is generative modeling.”</em></p>
+</blockquote>
+</div>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-albergo2023stochastic" class="csl-entry" role="listitem">
+Albergo, Michael S, Nicholas M Boffi, and Eric Vanden-Eijnden. 2023. <span>“Stochastic Interpolants: A Unifying Framework for Flows and Diffusions.”</span> <em>arXiv Preprint arXiv:2303.08797</em>.
+</div>
+<div id="ref-chen2018neural" class="csl-entry" role="listitem">
+Chen, Ricky T. Q., Yulia Rubanova, Jesse Bettencourt, and David K Duvenaud. 2018. <span>“Neural Ordinary Differential Equations.”</span> <em>Advances in Neural Information Processing Systems</em> 31.
+</div>
+<div id="ref-nice" class="csl-entry" role="listitem">
+Dinh, Laurent, David Krueger, and Yoshua Bengio. 2015. <span>“NICE: Non-Linear Independent Components Estimation.”</span> <a href="https://arxiv.org/abs/1410.8516">https://arxiv.org/abs/1410.8516</a>.
+</div>
+<div id="ref-realnvp" class="csl-entry" role="listitem">
+Dinh, Laurent, Jascha Sohl-Dickstein, and Samy Bengio. 2017. <span>“Density Estimation Using Real NVP.”</span> <a href="https://arxiv.org/abs/1605.08803">https://arxiv.org/abs/1605.08803</a>.
+</div>
+<div id="ref-sd3" class="csl-entry" role="listitem">
+Esser, Patrick, Sumith Kulal, Andreas Blattmann, et al. 2024. <span>“Scaling Rectified Flow Transformers for High-Resolution Image Synthesis.”</span> <a href="https://arxiv.org/abs/2403.03206">https://arxiv.org/abs/2403.03206</a>.
+</div>
+<div id="ref-ho2020denoising" class="csl-entry" role="listitem">
+Ho, Jonathan, Ajay Jain, and Pieter Abbeel. 2020. <span>“Denoising Diffusion Probabilistic Models.”</span> <em>Advances in Neural Information Processing Systems</em> 33: 6840–51.
+</div>
+<div id="ref-holderrieth2025introduction" class="csl-entry" role="listitem">
+Holderrieth, Peter, and Ezra Erives. 2025. <span>“An Introduction to Flow Matching and Diffusion Models.”</span> <em>MIT Class 6.S184</em>. <a href="https://diffusion.csail.mit.edu/2026/index.html">https://diffusion.csail.mit.edu/2026/index.html</a>.
+</div>
+<div id="ref-iserles2009first" class="csl-entry" role="listitem">
+Iserles, Arieh. 2009. <em>A First Course in the Numerical Analysis of Differential Equations</em>. Cambridge university press.
+</div>
+<div id="ref-karras2022elucidating" class="csl-entry" role="listitem">
+Karras, Tero, Miika Aittala, Timo Aila, and Samuli Laine. 2022. <span>“Elucidating the Design Space of Diffusion-Based Generative Models.”</span> <em>Advances in Neural Information Processing Systems</em> 35: 26565–77.
+</div>
+<div id="ref-kreis2022design" class="csl-entry" role="listitem">
+Kreis, Karsten, Tim Dockhorn, Zhifeng Li, and Ellen Zhong. 2022. <span>“On the Design of Cascaded Latent Diffusion Models.”</span> <em>NeurIPS Workshop on Score-Based Methods</em>.
+</div>
+<div id="ref-lipman2022flow" class="csl-entry" role="listitem">
+Lipman, Yaron, Ricky TQ Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le. 2022. <span>“Flow Matching for Generative Modeling.”</span> <em>arXiv Preprint arXiv:2210.02747</em>.
+</div>
+<div id="ref-lipman2024flow" class="csl-entry" role="listitem">
+Lipman, Yaron, Marton Havasi, Peter Holderrieth, Neta Shaul, Matt Le, Brian Karrer, Ricky TQ Chen, David Lopez-Paz, Heli Ben-Hamu, and Itai Gat. 2024. <span>“Flow Matching Guide and Code.”</span> <em>arXiv Preprint arXiv:2412.06264</em>.
+</div>
+<div id="ref-liu2022flow" class="csl-entry" role="listitem">
+Liu, Xingchao, Chengyue Gong, and Qiang Liu. 2022. <span>“Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow.”</span> <em>arXiv Preprint arXiv:2209.03003</em>.
+</div>
+<div id="ref-ma2024sit" class="csl-entry" role="listitem">
+Ma, Nanye, Mark Goldstein, Michael S Albergo, Nicholas M Boffi, Eric Vanden-Eijnden, and Saining Xie. 2024. <span>“Sit: Exploring Flow and Diffusion-Based Generative Models with Scalable Interpolant Transformers.”</span> <em>arXiv Preprint arXiv:2401.08740</em>.
+</div>
+<div id="ref-perko2013differential" class="csl-entry" role="listitem">
+Perko, Lawrence. 2013. <em>Differential Equations and Dynamical Systems</em>. Vol. 7. Springer Science &amp; Business Media.
+</div>
+<div id="ref-moviegen" class="csl-entry" role="listitem">
+Polyak, Adam, Amit Zohar, Andrew Brown, et al. 2024. <span>“Movie Gen: A Cast of Media Foundation Models.”</span> <a href="https://arxiv.org/abs/2410.13720">https://arxiv.org/abs/2410.13720</a>.
+</div>
+<div id="ref-normalizing_flow" class="csl-entry" role="listitem">
+Rezende, Danilo Jimenez, and Shakir Mohamed. 2016. <span>“Variational Inference with Normalizing Flows.”</span> <a href="https://arxiv.org/abs/1505.05770">https://arxiv.org/abs/1505.05770</a>.
+</div>
+<div id="ref-song2019generative" class="csl-entry" role="listitem">
+Song, Yang, and Stefano Ermon. 2019. <span>“Generative Modeling by Estimating Gradients of the Data Distribution.”</span> <em>Advances in Neural Information Processing Systems</em> 32.
+</div>
+<div id="ref-song2020score" class="csl-entry" role="listitem">
+Song, Yang, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. 2020. <span>“Score-Based Generative Modeling Through Stochastic Differential Equations.”</span> <em>arXiv Preprint arXiv:2011.13456</em>.
+</div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://flexie.github.io/CSE-8803-Twin/">🔗 https://flexie.github.io/CSE-8803-Twin/</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/flexie\.github\.io\/CSE-8803-Twin\/\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
