@@ -1,7 +1,7 @@
 ---
 title: "Week 08"
 subtitle: "Machine Learning"
-description: "March 04 - 08"
+description: "March 02 - 06"
 author: ""
 date: ""
 listing:
@@ -20,7 +20,7 @@ listing:
   - id: assignments
     contents:
       # - ../hw/w3-*.qmd
-      - ../labs/w8-*.qmd
+       - ../labs/w8-*.qmd
     type: table
     fields: [categories, title, date]
     date-format: "ddd, MMM DD"

@@ -1,7 +1,7 @@
 ---
 title: "Flow Matching & Score-Based Diffusion"
 subtitle: "Digital Twins for Physical Systems"
-date: "March 2, 2026"
+date: "March 4, 2026"
 institute: "School of Earth & Atmospheric Sciences — Georgia Institute of Technology"
 footer: "[🔗 https://flexie.github.io/CSE-8803-Twin/](https://flexie.github.io/CSE-8803-Twin/)"
 logo: "../images/logo.png"
@@ -390,7 +390,7 @@ It gradually converts a **single data point** $z$ into $p_\text{init}$.
 
 Every conditional path $p_t(x \mid z)$ induces a **marginal probability path**:
 
-$$\begin{align}\text{Sample: } z &\sim p_\text{data}, \; x \sim p_t(\cdot \mid z) \;\Rightarrow\; x \sim p_t\qquad\blacktriangleright\text{sampling from marginal path}\\
+$$\begin{align}\text{Sample: } z &\sim p_\text{data}, \; x \sim p_t(\cdot \mid z) \;\qquad\;\;\qquad\qquad\blacktriangleright\text{sampling from marginal path}\\
 p_t(x) &= \int p_t(x \mid z)\, p_\text{data}(z)\, \mathrm{d}z \qquad\qquad\quad\;\; \blacktriangleright\text{density of marginal path}\end{align}$$
 
 . . .
