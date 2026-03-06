@@ -4793,7 +4793,7 @@
     "href": "slides/week-02/02-basics.html#inverse-problems-general-formulation",
     "title": "Basics II",
     "section": "Inverse Problems: General Formulation",
-    "text": "Inverse Problems: General Formulation\nAll inverse problems share a common formulation.\nLet the model parameters1 be a vector (in general, a multivariate random variable), \\(\\mathbf{m},\\) and the data be \\(\\mathbf{d},\\) \\[\\begin{aligned}\n    \\mathbf{m} & =\\left(m_{1},\\ldots,m_{p}\\right)\\in\\mathcal{M},\\\\\n    \\mathbf{d} & =\\left(d_{1},\\ldots,d_{n}\\right)\\in\\mathcal{D},\n    \\end{aligned}\\]\nwhere \\(\\mathcal{M}\\) and \\(\\mathcal{D}\\) are the corresponding model parameter space and data space.\nThe mapping \\(G\\colon\\mathcal{M}\\rightarrow\\mathcal{D}\\) is defined by the direct (or forward) model\n\\[\\mathbf{d}=g(\\mathbf{m}), \\tag{1}\\] where\nApplied mathematicians often call the equation \\(G(m)=d\\) a mathematical model and \\(m\\) the parameters. Other scientists call \\(G\\) the forward operator and \\(m\\) the model. We will adopt the more mathematical convention, where \\(m\\) will be referred to as the model parameters, \\(G\\) the model and \\(d\\) the data."
+    "text": "Inverse Problems: General Formulation\nAll inverse problems share a common formulation.\nLet the model parameters1 be a vector (in general, a multivariate random variable), \\(\\mathbf{m},\\) and the data be \\(\\mathbf{d},\\) \\[\\begin{aligned}\n    \\mathbf{m} & =\\left(m_{1},\\ldots,m_{p}\\right)\\in\\mathcal{M},\\\\\n    \\mathbf{d} & =\\left(d_{1},\\ldots,d_{n}\\right)\\in\\mathcal{D},\n    \\end{aligned}\\]\nwhere \\(\\mathcal{M}\\) and \\(\\mathcal{D}\\) are the corresponding model parameter space and data space.\nThe mapping \\(G\\colon\\mathcal{M}\\rightarrow\\mathcal{D}\\) is defined by the direct (or forward) model\n\\[\\mathbf{d}=g(\\mathbf{m}), \\qquad(1)\\] where\nApplied mathematicians often call the equation \\(G(m)=d\\) a mathematical model and \\(m\\) the parameters. Other scientists call \\(G\\) the forward operator and \\(m\\) the model. We will adopt the more mathematical convention, where \\(m\\) will be referred to as the model parameters, \\(G\\) the model and \\(d\\) the data."
   },
   {
     "objectID": "slides/week-02/02-basics.html#section-1",
@@ -4807,7 +4807,7 @@
     "href": "slides/week-02/02-basics.html#section-2",
     "title": "Basics II",
     "section": "",
-    "text": "Note\n\n\nIn addition, there will be some random noise in the system, usually modeled as additive noise, giving the more realistic, stochastic direct model \\[\\mathbf{d}=g(\\mathbf{m})+\\mathbf{\\epsilon},\\label{eq:stat-inv-pb} \\tag{2}\\] where \\(\\mathbf{\\epsilon}\\) is a random vector."
+    "text": "Note\n\n\nIn addition, there will be some random noise in the system, usually modeled as additive noise, giving the more realistic, stochastic direct model \\[\\mathbf{d}=g(\\mathbf{m})+\\mathbf{\\epsilon},\\label{eq:stat-inv-pb} \\qquad(2)\\] where \\(\\mathbf{\\epsilon}\\) is a random vector."
   },
   {
     "objectID": "slides/week-02/02-basics.html#inverse-problemsclassification",
@@ -4898,7 +4898,7 @@
     "href": "slides/week-02/02-basics.html#standard-notation",
     "title": "Basics II",
     "section": "Standard notation",
-    "text": "Standard notation\nA discrete model for the evolution of a physical (atmospheric, oceanic, etc.) system from time \\(t_{k}\\) to time \\(t_{k+1}\\) is described by a dynamic, state equation\n\\[\\mathbf{x}^{f}(t_{k+1})=M_{k+1}\\left[\\mathbf{x}^{f}(t_{k})\\right], \\tag{3}\\]\n\n\\(\\mathbf{x}\\) is the model’s state vector of dimension \\(n,\\)\n\\(M\\) is the corresponding dynamics operator (finite difference or finite element discretization), which can be time dependent.\n\nThe error covariance matrix associated with \\(\\mathbf{x}\\) is given by \\(\\mathbf{P}\\) since the true state will differ from the simulated state (Equation 3) by random or systematic errors.\nObservations, or measurements, at time \\(t_{k}\\) are defined by"
+    "text": "Standard notation\nA discrete model for the evolution of a physical (atmospheric, oceanic, etc.) system from time \\(t_{k}\\) to time \\(t_{k+1}\\) is described by a dynamic, state equation\n\\[\\mathbf{x}^{f}(t_{k+1})=M_{k+1}\\left[\\mathbf{x}^{f}(t_{k})\\right], \\qquad(3)\\]\n\n\\(\\mathbf{x}\\) is the model’s state vector of dimension \\(n,\\)\n\\(M\\) is the corresponding dynamics operator (finite difference or finite element discretization), which can be time dependent.\n\nThe error covariance matrix associated with \\(\\mathbf{x}\\) is given by \\(\\mathbf{P}\\) since the true state will differ from the simulated state (Equation 3) by random or systematic errors.\nObservations, or measurements, at time \\(t_{k}\\) are defined by"
   },
   {
     "objectID": "slides/week-02/02-basics.html#section-7",
