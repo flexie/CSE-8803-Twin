@@ -9,15 +9,8 @@
       "/weeks/week-05.html",
       "/weeks/week-06.html",
       "/weeks/week-07.html",
-      "/weeks/week-08.html"
-    ]
-  },
-  {
-    "listing": "/weeks/week-09.html",
-    "items": [
-      "/slides/week-09/09b-DL-generative.html",
-      "/slides/week-09/12-DT.html",
-      "/labs/w8-lab-normalizing-flow.html"
+      "/weeks/week-08.html",
+      "/weeks/week-09.html"
     ]
   },
   {
@@ -43,6 +36,13 @@
       "/slides/week-05/06-Bayes-Inference.html",
       "/slides/week-05/07-DA-stat.html",
       "/labs/w5-lab-1dkalman.html"
+    ]
+  },
+  {
+    "listing": "/weeks/week-09.html",
+    "items": [
+      "/slides/week-09/12-DT-CO2-ML.html",
+      "/labs/w8-lab-normalizing-flow.html"
     ]
   },
   {
